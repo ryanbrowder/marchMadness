@@ -1,0 +1,366 @@
+Team,PowerRank,Year
+Arizona (20-0),1,2026
+Michigan (18-1),2,2026
+Duke (18-1),3,2026
+Michigan State (18-2),4,2026
+Connecticut (19-1),5,2026
+Iowa State (18-2),6,2026
+Nebraska (20-0),7,2026
+Florida (14-6),8,2026
+Gonzaga (21-1),9,2026
+Illinois (17-3),10,2026
+Purdue (17-3),11,2026
+Houston (17-2),12,2026
+Brigham Young (17-2),13,2026
+Texas Tech (16-4),14,2026
+Vanderbilt (17-3),15,2026
+Kansas (15-5),16,2026
+Virginia (16-3),17,2026
+Arkansas (15-5),18,2026
+Saint Louis (18-1),19,2026
+Alabama (13-6),20,2026
+Iowa (14-5),21,2026
+North Carolina (16-4),22,2026
+Tennessee (13-6),23,2026
+St. John’s (15-5),24,2026
+Clemson (17-4),25,2026
+Louisville (14-5),26,2026
+SMU (15-5),27,2026
+Auburn (13-7),28,2026
+TCU (13-7),29,2026
+Villanova (15-5),30,2026
+Georgia (16-4),31,2026
+North Carolina State (14-6),32,2026
+Texas (11-8),33,2026
+St. Mary’s (18-3),34,2026
+Wisconsin (14-6),35,2026
+Miami (FL) (16-4),36,2026
+Texas A&M (16-4),37,2026
+UCLA (14-6),38,2026
+Ohio State (13-6),39,2026
+UCF (15-4),40,2026
+Kentucky (14-6),41,2026
+Santa Clara (16-5),42,2026
+Seton Hall (14-6),43,2026
+LSU (13-7),44,2026
+New Mexico (15-4),45,2026
+Wake Forest (11-9),46,2026
+Virginia Tech (15-6),47,2026
+Utah State (15-3),48,2026
+Indiana (13-7),49,2026
+VCU (14-6),50,2026
+Butler (13-7),51,2026
+Cincinnati (10-10),52,2026
+Washington (11-9),53,2026
+West Virginia (13-7),54,2026
+Oklahoma State (14-6),55,2026
+Missouri (14-6),56,2026
+Oklahoma (11-9),57,2026
+Stanford (14-6),58,2026
+Tulsa (15-3),59,2026
+Arizona State (11-9),60,2026
+California (14-5),61,2026
+USC (14-5),62,2026
+San Diego State (13-5),63,2026
+South Florida (12-7),64,2026
+Syracuse (12-8),65,2026
+Creighton (12-8),66,2026
+Providence (9-11),67,2026
+Colorado (12-8),68,2026
+Northwestern (9-11),69,2026
+George Mason (17-2),70,2026
+George Washington (12-7),71,2026
+Belmont (17-3),72,2026
+Notre Dame (11-9),73,2026
+Baylor (10-8),74,2026
+Miami (OH) (17-0),75,2026
+Boise State (11-7),76,2026
+Akron (14-4),77,2026
+Florida State (8-12),78,2026
+McNeese State (14-4),79,2026
+Kansas State (10-10),80,2026
+Dayton (14-6),81,2026
+Mississippi (11-9),82,2026
+Stephen F. Austin (15-3),83,2026
+Nevada (14-6),84,2026
+South Carolina (11-9),85,2026
+San Francisco (12-9),86,2026
+Grand Canyon (13-6),87,2026
+Murray State (16-5),88,2026
+Minnesota (10-10),89,2026
+Georgetown (10-10),90,2026
+Xavier (11-9),91,2026
+DePaul (12-8),92,2026
+Georgia Tech (11-9),93,2026
+Winthrop (12-8),94,2026
+Wichita State (12-8),95,2026
+Mississippi State (10-10),96,2026
+Yale (13-3),97,2026
+Penn State (9-10),98,2026
+Liberty (14-3),99,2026
+Utah (9-11),100,2026
+Colorado State (11-8),101,2026
+Florida Atlantic (12-7),102,2026
+Wyoming (11-8),103,2026
+Illinois State (13-7),104,2026
+Northern Iowa (12-8),105,2026
+Memphis (9-10),106,2026
+High Point (15-4),107,2026
+Hofstra (11-8),108,2026
+Seattle (12-8),109,2026
+Sam Houston State (10-7),110,2026
+Oakland (11-10),111,2026
+UC San Diego (13-6),112,2026
+Troy (13-6),113,2026
+Utah Valley (12-6),114,2026
+Pittsburgh (8-12),115,2026
+Montana State (10-8),116,2026
+Rhode Island (12-8),117,2026
+Oregon (8-12),118,2026
+Hawaii (13-4),119,2026
+North Dakota State (15-5),120,2026
+UNLV (9-9),121,2026
+William & Mary (12-6),122,2026
+North Carolina Wilmington (16-3),123,2026
+California Baptist (15-6),124,2026
+Richmond (12-8),125,2026
+UC Irvine (12-7),126,2026
+St. Thomas – Minnesota (14-5),127,2026
+New Mexico State (7-9),128,2026
+Middle Tennessee (8-8),129,2026
+Bowling Green (10-7),130,2026
+Mercer (10-8),131,2026
+Pacific (12-8),132,2026
+Portland State (10-5),133,2026
+UAB (11-8),134,2026
+Duquesne (9-9),135,2026
+Wright State (11-8),136,2026
+Davidson (11-7),137,2026
+Illinois Chicago (9-10),138,2026
+North Texas (10-8),139,2026
+Washington State (8-13),140,2026
+St. Bonaventure (11-8),141,2026
+Northern Colorado (8-10),142,2026
+Montana (9-8),143,2026
+Southern Illinois (7-12),144,2026
+Marquette (7-14),145,2026
+East Tennessee State (13-6),146,2026
+Texas Arlington (11-6),147,2026
+Maryland (8-12),148,2026
+Boston College (9-11),149,2026
+Rutgers (9-11),150,2026
+Bradley (13-8),151,2026
+Kent State (13-5),152,2026
+Fresno State (8-11),153,2026
+UC Davis (10-8),154,2026
+Massachusetts (12-8),155,2026
+Western Kentucky (9-9),156,2026
+Drake (9-10),157,2026
+Kennesaw State (9-8),158,2026
+Toledo (9-9),159,2026
+Marshall (12-7),160,2026
+Temple (12-7),161,2026
+Arkansas State (11-8),162,2026
+UCSB (11-7),163,2026
+Valparaiso (9-10),164,2026
+St. Joseph’s (10-8),165,2026
+Colgate (10-9),166,2026
+Monmouth (9-11),167,2026
+Marist (12-7),168,2026
+Loyola Marymount (10-11),169,2026
+Towson (10-10),170,2026
+Buffalo (11-7),171,2026
+Quinnipiac (13-8),172,2026
+Cal State Fullerton (8-12),173,2026
+UT Rio Grande Valley (7-11),174,2026
+Elon (10-9),175,2026
+Texas A&M Corpus Christi (7-9),176,2026
+Idaho (9-8),177,2026
+Eastern Michigan (8-11),178,2026
+Columbia (11-6),179,2026
+Charlotte (10-9),180,2026
+Oregon State (10-12),181,2026
+Lipscomb (12-7),182,2026
+Charleston (12-8),183,2026
+Weber State (8-11),184,2026
+Austin Peay (11-6),185,2026
+Incarnate Word (6-11),186,2026
+Furman (11-7),187,2026
+Siena (14-7),188,2026
+Florida International (7-10),189,2026
+Tennessee-Martin (12-5),190,2026
+Idaho State (7-11),191,2026
+New Orleans (7-13),192,2026
+Tarleton State (7-9),193,2026
+Northern Kentucky (11-8),194,2026
+Missouri State (9-8),195,2026
+San Diego (7-13),196,2026
+Coastal Carolina (12-9),197,2026
+Portland (8-12),198,2026
+Utah Tech (8-11),199,2026
+South Dakota State (7-11),200,2026
+Pennsylvania (8-9),201,2026
+Appalachian State (11-9),202,2026
+Robert Morris (11-9),203,2026
+South Alabama (12-6),204,2026
+Navy (13-6),205,2026
+Denver (6-13),206,2026
+Harvard (9-9),207,2026
+Youngstown State (7-12),208,2026
+Jacksonville State (7-9),209,2026
+Cornell (7-9),210,2026
+LIU Brooklyn (12-8),211,2026
+Campbell (7-12),212,2026
+Cal State Northridge (9-10),213,2026
+Vermont (11-8),214,2026
+Lamar (8-10),215,2026
+Drexel (9-11),216,2026
+North Carolina Asheville (6-12),217,2026
+Iona (14-8),218,2026
+Fordham (7-10),219,2026
+Purdue Fort Wayne (10-8),220,2026
+Green Bay (10-10),221,2026
+South Carolina Upstate (6-13),222,2026
+Eastern Washington (4-15),223,2026
+American (11-8),224,2026
+Samford (8-11),225,2026
+Central Arkansas (8-10),226,2026
+Princeton (6-13),227,2026
+Charleston Southern (8-11),228,2026
+La Salle (6-13),229,2026
+Tennessee State (10-7),230,2026
+Northeastern (6-14),231,2026
+Abilene Christian (7-9),232,2026
+Tulane (11-8),233,2026
+Stony Brook (10-9),234,2026
+Indiana State (7-12),235,2026
+St. Peter’s (10-7),236,2026
+Merrimack (13-9),237,2026
+Longwood (9-10),238,2026
+Georgia Southern (11-9),239,2026
+Queens (11-9),240,2026
+Delaware (5-13),241,2026
+Southeast Missouri State (8-10),242,2026
+Southern Miss (9-11),243,2026
+San Jose State (5-14),244,2026
+Wofford (12-7),245,2026
+James Madison (9-11),246,2026
+Southeastern Louisiana (5-14),247,2026
+Cal Poly (5-14),248,2026
+Nicholls (7-12),249,2026
+Ohio (9-10),250,2026
+Georgia State (7-12),251,2026
+Wisconsin Milwaukee (8-13),252,2026
+Radford (8-11),253,2026
+Old Dominion (5-15),254,2026
+Dartmouth (7-9),255,2026
+Hampton (8-11),256,2026
+Nebraska Omaha (6-12),257,2026
+Long Beach State (6-13),258,2026
+Western Michigan (7-11),259,2026
+Florida Gulf Coast (6-13),260,2026
+Fairfield (12-9),261,2026
+Rice (6-12),262,2026
+Mercyhurst (8-11),263,2026
+Central Connecticut (8-8),264,2026
+North Dakota (9-12),265,2026
+SIU Edwardsville (10-8),266,2026
+UTEP (4-13),267,2026
+Bethune-Cookman (7-11),268,2026
+Loyola Chicago (5-16),269,2026
+UMBC (10-7),270,2026
+Lindenwood (9-9),271,2026
+Pepperdine (4-16),272,2026
+Alabama State (5-13),273,2026
+North Carolina A&T (7-10),274,2026
+Northwestern State (4-13),275,2026
+Boston University (7-13),276,2026
+Presbyterian (8-11),277,2026
+Chattanooga (6-12),278,2026
+Louisiana Tech (8-8),279,2026
+Le Moyne (9-10),280,2026
+UC Riverside (5-14),281,2026
+Brown (5-11),282,2026
+Eastern Kentucky (5-14),283,2026
+Lehigh (7-12),284,2026
+Wagner (3-12),285,2026
+Southern Utah (4-14),286,2026
+Howard (8-9),287,2026
+Maryland Eastern Shore (6-13),288,2026
+East Carolina (5-14),289,2026
+Bellarmine (5-13),290,2026
+Northern Arizona (4-14),291,2026
+South Dakota (8-11),292,2026
+Evansville (3-15),293,2026
+IU Indy (4-16),294,2026
+East Texas A&M (6-12),295,2026
+Detroit (6-12),296,2026
+Southern (4-12),297,2026
+Texas State (9-11),298,2026
+Oral Roberts (2-17),299,2026
+Houston Christian (5-13),300,2026
+New Hampshire (5-12),301,2026
+Sacramento State (3-13),302,2026
+Mount St. Mary’s (8-13),303,2026
+Grambling State (6-10),304,2026
+Norfolk State (6-12),305,2026
+Sacred Heart (8-13),306,2026
+West Georgia (8-10),307,2026
+Western Carolina (5-12),308,2026
+Holy Cross (6-13),309,2026
+North Alabama (4-12),310,2026
+Eastern Illinois (6-12),311,2026
+Morehead State (8-10),312,2026
+Ball State (5-13),313,2026
+Prairie View A&M (4-12),314,2026
+Jacksonville (6-13),315,2026
+CSU Bakersfield (6-13),316,2026
+Alabama A&M (7-9),317,2026
+Arkansas Little Rock (7-11),318,2026
+New Haven (6-11),319,2026
+Arkansas Pine Bluff (5-13),320,2026
+Northern Illinois (4-13),321,2026
+Loyola (MD) (5-14),322,2026
+Lafayette (4-16),323,2026
+North Carolina Greensboro (6-13),324,2026
+Albany (4-14),325,2026
+Southern Indiana (3-15),326,2026
+Tennessee Tech (4-14),327,2026
+Bryant (4-14),328,2026
+Bucknell (6-15),329,2026
+Stonehill (4-14),330,2026
+Central Michigan (3-15),331,2026
+Cleveland State (4-14),332,2026
+Massachusetts Lowell (5-13),333,2026
+Army (6-13),334,2026
+Maine (4-17),335,2026
+Louisiana (5-16),336,2026
+Farleigh Dickinson (4-13),337,2026
+Manhattan (7-14),338,2026
+NJIT (8-12),339,2026
+Stetson (5-14),340,2026
+Florida A&M (6-9),341,2026
+Missouri Kansas City (1-17),342,2026
+Air Force (3-17),343,2026
+North Carolina Central (3-12),344,2026
+Chicago State (1-19),345,2026
+Western Illinois (1-17),346,2026
+UTSA (2-16),347,2026
+Canisius (7-13),348,2026
+Citadel (3-15),349,2026
+North Florida (3-16),350,2026
+Rider (1-17),351,2026
+Virginia Military (3-15),352,2026
+Louisiana Monroe (1-18),353,2026
+Niagara (4-15),354,2026
+St. Francis (PA) (4-14),355,2026
+Alcorn State (3-15),356,2026
+Delaware State (2-13),357,2026
+Texas Southern (3-13),358,2026
+Binghamton (1-18),359,2026
+Morgan State (4-13),360,2026
+Jackson State (5-14),361,2026
+Gardner-Webb (1-18),362,2026
+South Carolina State (2-16),363,2026
+Coppin State (2-19),364,2026
+Mississippi Valley State (0-19),365,2026

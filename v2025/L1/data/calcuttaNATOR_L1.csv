@@ -1,0 +1,69 @@
+,Seed,Team,Golden Ratio,VEGsemble
+0,1,Duke,20,30
+1,1,Auburn,20,20
+2,1,Florida,30,42
+3,1,Houston,42,6
+4,2,Tennessee,12,6
+5,2,Alabama,12,12
+6,2,St. John's,6,2
+7,2,Michigan State,12,12
+8,3,Iowa State,6,2
+9,3,Texas Tech,13,12
+10,3,Wisconsin,6,2
+11,3,Kentucky,2,13
+12,4,Maryland,6,2
+13,4,Arizona,6,6
+14,4,Purdue,2,24
+15,4,Texas A&M,6,6
+16,5,Clemson,7,2
+17,5,Oregon,2,0
+18,5,Memphis,0,2
+19,5,Michigan,2,2
+20,6,BYU,0,9
+21,6,Missouri,2,2
+22,6,Mississippi,0,0
+23,6,Illinois,9,2
+24,7,Kansas,2,0
+25,7,Saint Mary's,2,2
+26,7,Marquette,2,0
+27,7,UCLA,2,2
+28,8,Connecticut,2,2
+29,8,Louisville,0,2
+30,8,Mississippi State,0,0
+31,8,Gonzaga,2,2
+32,9,Oklahoma,0,0
+33,9,Baylor,3,3
+34,9,Creighton,3,0
+35,9,Georgia,0,0
+36,10,Arkansas,0,17
+37,10,Vanderbilt,0,0
+38,10,New Mexico,0,5
+39,10,Utah State,0,0
+40,11,North Carolina,8,20
+41,11,Drake,0,0
+42,11,San Diego State,0,0
+43,11,VCU,7,0
+44,11,Texas,0,0
+45,11,Xavier,1,1
+46,12,UC San Diego,0,0
+47,12,Colorado State,9,0
+48,12,Liberty,0,9
+49,12,McNeese State,0,0
+50,13,Yale,0,0
+51,13,Grand Canyon,0,0
+52,13,Akron,0,0
+53,13,High Point,0,0
+54,14,Lipscomb,0,0
+55,14,NC Wilmington,0,0
+56,14,Montana,0,0
+57,14,Troy,0,0
+58,15,Bryant,0,0
+59,15,Omaha,0,0
+60,15,Robert Morris,0,0
+61,15,Wofford,0,0
+62,16,Alabama State,0,0
+63,16,Saint Francis (PA),0,0
+64,16,Norfolk State,0,0
+65,16,American,0,0
+66,16,Mount St. Mary's,0,0
+67,16,SIU Edwardsville,0,0

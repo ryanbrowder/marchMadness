@@ -1,0 +1,462 @@
+,Team,Index
+0,Abilene Christian,6001
+1,Air Force,6002
+2,Akron,6003
+3,Alabama,6004
+4,Alabama A&M,6005
+5,Alabama State,6006
+6,Alabama_St,6006
+7,Alabama St.,6006
+8,Albany-NY,6007
+9,Alcorn State,6008
+10,American U.,6009
+11,American_Univ,6009
+12,American,6009
+13,Appalachian State,6010
+14,Arizona,6011
+15,Arizona State,6012
+16,Arizona_St,6012
+17,Ark.-Pine Bluff,6013
+18,Arkansas,6014
+19,Arkansas State,6015
+20,Army West Point,6016
+21,Auburn,6017
+22,Austin Peay,6018
+23,Ball State,6019
+24,Baylor,6020
+25,Belmont,6021
+26,Bethune-Cookman,6022
+27,Binghamton-NY,6023
+28,Boise St.,6024
+29,Boise State,6024
+30,Boise_St,6024
+31,Boston College,6025
+32,Boston U.,6026
+33,Bowling Green,6027
+34,Bradley,6028
+35,Brown,6029
+36,Bryant,6030
+37,Bucknell,6031
+38,Buffalo,6032
+39,Butler,6033
+40,BYU,6034
+41,Brigham Young,6034
+42,Cal Poly-SLO,6035
+43,California,6036
+44,California Baptist,6037
+45,Campbell,6038
+46,Canisius,6039
+47,Central Arkansas,6040
+48,Central Connecticut St.,6041
+49,Central Florida(UCF),6042
+50,Central Michigan,6043
+51,Charleston,6053
+52,Charleston Southern,6044
+53,Charlotte,6045
+54,Chattanooga,6046
+55,Chicago State,6047
+56,Cincinnati,6048
+57,Clemson,6049
+58,Cleveland State,6050
+59,Coastal Carolina,6051
+60,Col_Charleston,6053
+61,Colgate,6052
+62,College of Charleston,6053
+63,Colorado,6054
+64,Colorado State,6055
+65,Colorado St.,6055
+66,Colorado_St,6055
+67,Colorado_St,6055
+68,Columbia,6056
+69,Connecticut,6057
+70,Coppin State,6058
+71,Cornell,6059
+72,Creighton,6060
+73,CS Bakersfield,6061
+74,CS Fullerton,6062
+75,CS Northridge,6063
+76,Dartmouth,6064
+77,Davidson,6065
+78,Dayton,6066
+79,Delaware,6067
+80,Delaware State,6068
+81,Denver,6069
+82,DePaul,6070
+83,Detroit Mercy,6071
+84,Drake,6072
+85,Drexel,6073
+86,Duke,6074
+87,Duquesne,6075
+88,East Carolina,6076
+89,East Tennessee State,6077
+90,Eastern Illinois,6078
+91,Eastern Kentucky,6079
+92,Eastern Michigan,6080
+93,Eastern Washington,6081
+94,Elon,6082
+95,Evansville,6083
+96,Fairfield,6084
+97,Fairleigh Dickinson,6085
+98,FL_Atlantic,6089
+99,Fla. International,6086
+100,Florida,6087
+101,Florida A&M,6088
+102,Florida Atlantic,6089
+103,Florida Gulf Coast,6090
+104,Florida St,6091
+105,Fordham,6092
+106,Fort Wayne(PFW),6093
+107,Fresno State,6094
+108,Furman,6095
+109,Gardner-Webb,6096
+110,George Mason,6097
+111,George Washington,6098
+112,Georgetown,6099
+113,Georgia,6100
+114,Georgia Southern,6101
+115,Georgia State,6102
+116,Georgia Tech,6103
+117,Gonzaga,6104
+118,Grambling State,6105
+119,Grambling,6105
+120,Grand Canyon,6106
+121,Grand_Canyon,6106
+122,Green Bay,6107
+123,Hampton,6108
+124,Hartford,6109
+125,Harvard,6110
+126,Hawai'i,6111
+127,High Point,6112
+128,Hofstra,6113
+129,Holy Cross,6114
+130,Houston,6115
+131,Houston Baptist,6116
+132,Howard,6117
+133,Idaho,6118
+134,Idaho State,6119
+135,Illinois,6120
+136,Illinois State,6121
+137,Illinois-Chicago,6122
+138,Incarnate Word,6123
+139,Indiana,6124
+140,Indiana State,6125
+141,Indiana_St,6125
+142,Iona,6126
+143,Iona College,6126
+144,Iowa,6127
+145,Iowa St.,6128
+146,Iowa State,6128
+147,Iowa_St,6128
+148,IUPUI,6129
+149,Jackson State,6130
+150,Jacksonville,6131
+151,Jacksonville State,6132
+152,James Madison,6133
+153,James_Madison,6133
+154,Kansas,6134
+155,Kansas City(UMKC),6135
+156,Kansas St.,6136
+157,Kansas State,6136
+158,Kansas_St,6136
+159,Kennesaw,6137
+160,Kennesaw State,6137
+161,Kent,6138
+162,Kent State,6138
+163,Kentucky,6139
+164,La Salle,6140
+165,Lafayette,6141
+166,Lamar,6142
+167,Lehigh,6143
+168,Liberty,6144
+169,Lipscomb,6145
+170,Little Rock,6146
+171,Long Beach State,6147
+172,Long_Beach_St,6147
+173,Long Island U.(LIU),6148
+174,Longwood,6149
+175,Louisiana,6150
+176,Louisiana Tech,6151
+177,Louisville,6152
+178,Loyola Marymount,6153
+179,Loyola-Chicago,6154
+180,Loyola-Maryland,6155
+181,LSU,6156
+182,Maine,6157
+183,Manhattan,6158
+184,Marist,6159
+185,Marquette,6160
+186,Marshall,6161
+187,Maryland,6162
+188,Massachusetts,6163
+189,McNeese,6164
+190,McNeese_St,6164
+191,McNeese State,6164
+192,McNeese_St,6164
+193,Md.-Eastern Shore(UMES),6165
+194,Memphis,6166
+195,Mercer,6167
+196,Merrimack,6168
+197,Miami,6169
+198,Miami FL,6169
+199,Miami_FL,6169
+200,Miami-Florida,6169
+201,Miami-Ohio,6170
+202,Michigan,6171
+203,Michigan St.,6172
+204,Michigan State,6172
+205,Michigan_St,6172
+206,Middle Tennessee,6173
+207,Milwaukee,6174
+208,Minnesota,6175
+209,Mississippi,6176
+210,Mississippi St.,6177
+211,Mississippi State,6177
+212,Mississippi_St,6177
+213,Missouri,6178
+214,Missouri State,6179
+215,Monmouth-NJ,6180
+216,Montana,6181
+217,Montana State,6182
+218,Montana_St,6182
+219,Morehead State,6183
+220,Morehead_St,6183
+221,Morgan State,6184
+222,Mount St. Mary's,6185
+223,Mount St. Mary’s,6185
+224,Mt_St_Mary's,6185
+225,Murray State,6186
+226,MVSU(Miss. Valley St.),6187
+227,N_Kentucky,6216
+228,N.C. State,6193
+229,Navy,6188
+230,NC A&T,6189
+231,NC Asheville,6190
+232,NC Central,6191
+233,NC Greensboro,6192
+234,NC State,6193
+235,North Carolina Wilmington,6194
+236,NC Wilmington,6194
+237,UNC_Wilmington,6194
+238,UNC Wilmington,6194
+239,NC_State,6193
+240,Nebraska,6195
+241,Nevada,6196
+242,New Hampshire,6197
+243,New Mexico,6198
+244,New Mexico State,6199
+245,New Orleans,6200
+246,New_Mexico,6198
+247,Niagara,6201
+248,Nicholls State,6202
+249,NJIT(New Jersey Tech),6203
+250,Norfolk State,6204
+251,Norfolk St,6204
+252,Norfolk St,6204
+253,Norfolk_St,6204
+254,North Alabama,6205
+255,North Carolina,6206
+256,North Dakota,6207
+257,North Dakota State,6208
+258,North Florida(UNF),6209
+259,North Texas,6210
+260,North_Carolina,6206
+261,Northeastern,6211
+262,Northern Arizona,6212
+263,Northern Colorado,6213
+264,Northern Illinois,6214
+265,Northern Iowa,6215
+266,Northern Kentucky,6216
+267,Northwestern,6217
+268,Northwestern State,6218
+269,Notre Dame,6219
+270,Oakland-Mich.,6220
+271,Oakland,6220
+272,Ohio,6221
+273,Ohio State,6222
+274,Ohio_St,6222
+275,Oklahoma,6223
+276,Oklahoma St.,6224
+277,Oklahoma State,6224
+278,Oklahoma_St,6224
+279,Old Dominion,6225
+280,Nebraska Omaha,6226
+281,Omaha,6226
+282,Omaha(Neb.-Omaha),6226
+283,NE_Omaha,6226
+284,Oral Roberts,6227
+285,Oral_Roberts,6227
+286,Oregon,6228
+287,Oregon State,6229
+288,Pacific,6230
+289,Penn St.,6231
+290,Penn State,6231
+291,Penn_St,6231
+292,Pennsylvania,6232
+293,Pepperdine,6233
+294,Pittsburgh,6234
+295,Portland,6235
+296,Portland State,6236
+297,Prairie View A&M,6237
+298,Presbyterian College,6238
+299,Princeton,6239
+300,Providence,6240
+301,Purdue,6241
+302,Quinnipiac,6242
+303,Radford,6243
+304,Rhode Island,6244
+305,Rice,6245
+306,Richmond,6246
+307,Rider,6247
+308,Robert Morris,6248
+309,Rutgers,6249
+310,Sacramento State,6250
+311,Sacred Heart,6251
+312,Saint Francis,6252
+313,St. Francis (PA),6252
+314,St. Francis (PA),6252
+315,Saint Francis-Pa.,6252
+316,Saint Francis (PA),6252
+317,St_Francis_PA,6252
+318,Saint Joseph's-Pa.,6253
+319,Saint Louis,6254
+320,St. Mary’s,6255
+321,Saint Mary's,6255
+322,Saint Mary's-Cal.,6255
+323,St_Mary's_CA,6255
+324,Saint Peter's,6256
+325,St. Peter's,6256
+326,St_Peter's,6256
+327,Sam Houston State,6257
+328,Samford,6258
+329,San Diego,6259
+330,San Diego St.,6260
+331,San Diego State,6260
+332,San Francisco,6261
+333,San Jose State,6262
+334,San_Diego_St,6260
+335,Santa Clara,6263
+336,SC State,6264
+337,SE Louisiana,6265
+338,SE Missouri State(SEMO),6266
+339,Seattle,6267
+340,Seton Hall,6268
+341,Seton_Hall,6268
+342,Siena,6269
+343,SIU-Edwardsville,6270
+344,SIU Edwardsville,6270
+345,SIUE,6270
+346,SMU,6271
+347,South Alabama,6272
+348,South Carolina,6273
+349,South Dakota,6274
+350,South Dakota State,6275
+351,S_Dakota_St,6275
+352,South Florida,6276
+353,South_Carolina,6273
+354,Southern California,6277
+355,Southern Illinois,6278
+356,Southern Miss,6279
+357,Southern U.,6280
+358,Southern Utah,6281
+359,St_John's,6284
+360,St_Mary's_CA,6255
+361,St Mary's CA,6255
+362,St. Mary's,6255
+363,St. Bonaventure,6282
+364,St. Francis-NY,6283
+365,St. John’s,6284
+366,St. John's,6284
+367,St John's,6284
+368,St_John's,6284
+369,Stanford,6285
+370,Stephen F. Austin,6286
+371,Stetson,6287
+372,Stony Brook-NY,6288
+373,Syracuse,6289
+374,TAM_C._Christi,6354
+375,TCU,6290
+376,Temple,6291
+377,Tennessee,6292
+378,Tennessee State,6293
+379,Tennessee Tech,6294
+380,Tennessee-Martin,6295
+381,Texas,6296
+382,Texas A&M,6297
+383,Texas A&M CC,6354
+384,Texas A&M Corpus Chris,6354
+385,"Texas A&M-Corpus Christi
+",6354
+386,Texas A&M-CorpusChristi,6298
+387,Texas A&M-CorpusChristi,6354
+388,Texas Southern,6299
+389,Texas State,6300
+390,Texas Tech,6301
+391,Texas_A&M,6297
+392,Texas_Tech,6301
+393,The Citadel,6302
+394,Toledo,6303
+395,Towson,6304
+396,Troy,6305
+397,Tulane,6306
+398,Tulsa,6307
+399,TX_Southern,6299
+400,UAB,6308
+401,UC Davis,6309
+402,UC Irvine,6310
+403,UC Riverside,6311
+404,UC San Diego,6354
+405,UC Santa Barbara,6312
+406,UC_Santa_Barbara,6312
+407,UCLA,6313
+408,UConn,6057
+409,UCSB,6312
+410,ULM,6314
+411,UMass Lowell,6315
+412,UMBC,6316
+413,UNC_Asheville,6190
+414,UNLV,6317
+415,USC,6277
+416,USC Upstate,6318
+417,UT Arlington,6319
+418,Utah,6320
+419,Utah St.,6321
+420,Utah State,6321
+421,Utah Valley,6322
+422,Utah_St,6321
+423,UTEP,6323
+424,UTRGV,6324
+425,UTSA,6325
+426,Valparaiso,6326
+427,Vanderbilt,6327
+428,VCU,6328
+429,Vermont,6329
+430,Villanova,6330
+431,Virginia,6331
+432,Virginia Tech,6332
+433,Virginia_Tech,6332
+434,VMI,6333
+435,Wagner,6334
+436,Wake Forest,6335
+437,Wake_Forest,6335
+438,Washington,6336
+439,Washington State,6337
+440,Washington_St,6337
+441,Weber State,6338
+442,West Virginia,6339
+443,West_Virginia,6339
+444,Western Carolina,6340
+445,Western Illinois,6341
+446,Western Kentucky,6342
+447,WKU,6342
+448,Western Michigan,6343
+449,Wichita State,6344
+450,William & Mary,6345
+451,Winthrop,6346
+452,Wisconsin,6347
+453,Wofford,6348
+454,Wright State,6349
+455,Wyoming,6350
+456,Xavier,6351
+457,Xavier-Ohio,6351
+458,Yale,6352
+459,Youngstown State,6353

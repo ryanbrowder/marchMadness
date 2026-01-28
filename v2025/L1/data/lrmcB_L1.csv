@@ -1,0 +1,364 @@
+,Team,LRMC B Rank,Index
+0,Duke,1.0,6074.0
+1,Florida,2.0,6087.0
+2,Auburn,3.0,6017.0
+3,Houston,4.0,6115.0
+4,Gonzaga,5.0,6104.0
+5,Tennessee,6.0,6292.0
+6,Alabama,7.0,6004.0
+7,Iowa St.,8.0,6128.0
+8,St John's,9.0,6284.0
+9,Texas Tech,10.0,6301.0
+10,Maryland,11.0,6162.0
+11,Wisconsin,12.0,6347.0
+12,Michigan St.,13.0,6172.0
+13,Arizona,14.0,6011.0
+14,Kentucky,15.0,6139.0
+15,Missouri,16.0,6178.0
+16,Kansas,17.0,6134.0
+17,Clemson,18.0,6049.0
+18,Marquette,19.0,6160.0
+19,Purdue,20.0,6241.0
+20,BYU,21.0,6034.0
+21,Illinois,22.0,6120.0
+22,Texas A&M,23.0,6297.0
+23,St Mary's CA,24.0,6255.0
+24,Louisville,25.0,6152.0
+25,Michigan,26.0,6171.0
+26,Mississippi,27.0,6176.0
+27,Connecticut,28.0,6057.0
+28,VCU,29.0,6328.0
+29,UCLA,30.0,6313.0
+30,New Mexico,31.0,6198.0
+31,UC San Diego,32.0,6354.0
+32,North Carolina,33.0,6206.0
+33,Baylor,34.0,6020.0
+34,Mississippi St.,35.0,6177.0
+35,Creighton,36.0,6060.0
+36,Memphis,37.0,6166.0
+37,Oregon,38.0,6228.0
+38,Xavier,39.0,6351.0
+39,Georgia,40.0,6100.0
+40,Arkansas,41.0,6014.0
+41,Boise St.,42.0,6024.0
+42,Ohio St.,43.0,
+43,Colorado St.,44.0,6055.0
+44,Texas,45.0,6296.0
+45,Oklahoma,46.0,6223.0
+46,Utah St.,47.0,6321.0
+47,San Diego St.,48.0,6260.0
+48,West Virginia,49.0,6339.0
+49,Villanova,50.0,6330.0
+50,SMU,51.0,6271.0
+51,Cincinnati,52.0,6048.0
+52,Indiana,53.0,6124.0
+53,Vanderbilt,54.0,6327.0
+54,Liberty,55.0,6144.0
+55,Northwestern,56.0,6217.0
+56,Santa Clara,57.0,6263.0
+57,McNeese State,58.0,6164.0
+58,UC Irvine,59.0,6310.0
+59,Kansas St.,60.0,6136.0
+60,Pittsburgh,61.0,6234.0
+61,Drake,62.0,6072.0
+62,Penn St.,63.0,6231.0
+63,Nebraska,64.0,6195.0
+64,St Joseph's PA,65.0,
+65,USC,66.0,6277.0
+66,Yale,67.0,6352.0
+67,UCF,68.0,
+68,Arizona St.,69.0,
+69,San Francisco,70.0,6261.0
+70,Dayton,71.0,6066.0
+71,Wake Forest,72.0,6335.0
+72,Rutgers,73.0,6249.0
+73,George Mason,74.0,6097.0
+74,North Texas,75.0,6210.0
+75,Nevada,76.0,6196.0
+76,Iowa,77.0,6127.0
+77,South Carolina,78.0,6273.0
+78,Colorado,79.0,6054.0
+79,High Point,80.0,6112.0
+80,TCU,81.0,6290.0
+81,Lipscomb,82.0,6145.0
+82,Butler,83.0,6033.0
+83,Arkansas St.,84.0,
+84,Grand Canyon,85.0,6106.0
+85,Utah,86.0,6320.0
+86,Bradley,87.0,6028.0
+87,Stanford,88.0,6285.0
+88,Notre Dame,89.0,6219.0
+89,Akron,90.0,6003.0
+90,LSU,91.0,6156.0
+91,Georgetown,92.0,6099.0
+92,Florida St.,93.0,
+93,Minnesota,94.0,6175.0
+94,UNLV,95.0,6317.0
+95,Oregon St.,96.0,
+96,Troy,97.0,6305.0
+97,Providence,98.0,6240.0
+98,UNC Wilmington,99.0,6194.0
+99,UAB,100.0,6308.0
+100,Georgia Tech,101.0,6103.0
+101,St Bonaventure,102.0,
+102,Northern Iowa,103.0,6215.0
+103,N Colorado,104.0,
+104,Utah Valley,105.0,6322.0
+105,St Thomas MN,106.0,
+106,Chattanooga,107.0,6046.0
+107,California,108.0,6036.0
+108,Virginia,109.0,6331.0
+109,S Dakota St.,110.0,
+110,Oklahoma St.,111.0,6224.0
+111,G Washington,112.0,
+112,FL Atlantic,113.0,
+113,St Louis,114.0,
+114,MTSU,115.0,
+115,Washington St.,116.0,
+116,North Alabama,117.0,6205.0
+117,NC St.ate,118.0,
+118,Illinois St.,119.0,
+119,Syracuse,120.0,6289.0
+120,Washington,121.0,6336.0
+121,Wichita St.,122.0,
+122,Wofford,123.0,6348.0
+123,Samford,124.0,6258.0
+124,Jacksonville St.,125.0,
+125,CS Northridge,126.0,6063.0
+126,Bryant,127.0,6030.0
+127,Kent,128.0,6138.0
+128,Belmont,129.0,6021.0
+129,Loyola-Chicago,130.0,6154.0
+130,N Dakota St.,131.0,
+131,Murray St.,132.0,
+132,Robert Morris,133.0,6248.0
+133,Seattle,134.0,6267.0
+134,DePaul,135.0,6070.0
+135,Omaha,136.0,6226.0
+136,Norfolk State,137.0,6204.0
+137,Duquesne,138.0,6075.0
+138,WI Milwaukee,139.0,
+139,Tulane,140.0,6306.0
+140,Towson,141.0,6304.0
+141,South Alabama,142.0,6272.0
+142,UC Riverside,143.0,6311.0
+143,Louisiana Tech,144.0,6151.0
+144,Col Charleston,145.0,
+145,Furman,146.0,6095.0
+146,Kennesaw,147.0,6137.0
+147,Miami OH,148.0,
+148,Cal Baptist,149.0,
+149,New Mexico St.,150.0,
+150,Virginia Tech,151.0,6332.0
+151,ETSU,152.0,
+152,Montana,153.0,6181.0
+153,Davidson,154.0,6065.0
+154,Temple,155.0,6291.0
+155,UNC Greensboro,156.0,
+156,Rhode Island,157.0,6244.0
+157,James Madison,158.0,6133.0
+158,S Carolina St.,159.0,
+159,Central Conn,160.0,
+160,Marshall,161.0,6161.0
+161,Merrimack,162.0,6168.0
+162,UC Santa Barbara,163.0,6312.0
+163,Cornell,164.0,6059.0
+164,Montana St.,165.0,
+165,FGCU,166.0,
+166,Drexel,167.0,6073.0
+167,Winthrop,168.0,6346.0
+168,E Kentucky,169.0,
+169,UTEP,170.0,6323.0
+170,Oakland,171.0,6220.0
+171,Cal Poly,172.0,
+172,Cleveland St.,173.0,
+173,WKU,174.0,6342.0
+174,TAM C. Christi,175.0,
+175,Ohio,176.0,6221.0
+176,Radford,177.0,6243.0
+177,IL Chicago,178.0,
+178,PFW,179.0,
+179,East Carolina,180.0,6076.0
+180,Loy Marymount,181.0,
+181,Bucknell,182.0,6031.0
+182,Elon,183.0,6082.0
+183,SE Missouri St.,184.0,
+184,Jacksonville,185.0,6131.0
+185,Youngstown St.,186.0,
+186,UT San Antonio,187.0,
+187,Quinnipiac,188.0,6242.0
+188,Delaware,189.0,6067.0
+189,Nicholls St.,190.0,
+190,Boston College,191.0,6025.0
+191,Lamar,192.0,6142.0
+192,Miami FL,193.0,6169.0
+193,Rice,194.0,6245.0
+194,Appalachian St.,195.0,
+195,San Jose St.,196.0,
+196,Northeastern,197.0,6211.0
+197,Maine,198.0,6157.0
+198,S Illinois,199.0,
+199,Hofstra,200.0,6113.0
+200,Portland St.,201.0,
+201,Massachusetts,202.0,6163.0
+202,Valparaiso,203.0,6326.0
+203,La Salle,204.0,6140.0
+204,Texas St.,205.0,
+205,Ark Little Rock,206.0,
+206,SIUE,207.0,6270.0
+207,Sam Houston St.,208.0,
+208,South Florida,209.0,6276.0
+209,Toledo,210.0,6303.0
+210,Princeton,211.0,6239.0
+211,Wright St.,212.0,
+212,Hampton,213.0,6108.0
+213,Longwood,214.0,6149.0
+214,N Kentucky,215.0,
+215,Wyoming,216.0,6350.0
+216,Colgate,217.0,6052.0
+217,Tennessee St.,218.0,
+218,Indiana St.,219.0,
+219,Queens NC,220.0,
+220,Southern Univ,221.0,
+221,UNC Asheville,222.0,
+222,Jackson St.,223.0,
+223,Missouri St.,224.0,
+224,Mount St. Mary's,225.0,6185.0
+225,William & Mary,226.0,6345.0
+226,C Michigan,227.0,
+227,Idaho St.,228.0,
+228,SE Louisiana,229.0,6265.0
+229,Siena,230.0,6269.0
+230,Alabama St.,231.0,6006.0
+231,Fordham,232.0,6092.0
+232,Pepperdine,233.0,6233.0
+233,American,234.0,6009.0
+234,Monmouth NJ,235.0,
+235,Campbell,236.0,6038.0
+236,Missouri KC,237.0,
+237,Bethune-Cookman,238.0,6022.0
+238,Dartmouth,239.0,6064.0
+239,Northwestern LA,240.0,
+240,Seton Hall,241.0,6268.0
+241,Vermont,242.0,6329.0
+242,Iona,243.0,6126.0
+243,Ga Southern,244.0,
+244,Presbyterian,245.0,
+245,Richmond,246.0,6246.0
+246,Manhattan,247.0,6158.0
+247,UT Arlington,248.0,6319.0
+248,MA Lowell,249.0,
+249,Navy,250.0,6188.0
+250,Sacred Heart,251.0,6251.0
+251,Charlotte,252.0,6045.0
+252,Gardner Webb,253.0,
+253,North Florida,254.0,
+254,South Dakota,255.0,6274.0
+255,Evansville,256.0,6083.0
+256,Tulsa,257.0,6307.0
+257,Abilene Chr,258.0,
+258,Northern Arizona,259.0,6212.0
+259,UC Davis,260.0,6309.0
+260,Incarnate Word,261.0,6123.0
+261,North Dakota,262.0,6207.0
+262,UTRGV,263.0,6324.0
+263,Grambling,264.0,6105.0
+264,SUNY Albany,265.0,
+265,Lafayette,266.0,6141.0
+266,W Michigan,267.0,
+267,Hawaii,268.0,
+268,Idaho,269.0,6118.0
+269,Marist,270.0,6159.0
+270,TN Martin,271.0,
+271,Georgia St.,272.0,
+272,Brown,273.0,6029.0
+273,E Washington,274.0,
+274,Florida Intl,275.0,
+275,E Michigan,276.0,
+276,CS Bakersfield,277.0,6061.0
+277,Pacific,278.0,6230.0
+278,LIU Brooklyn,279.0,
+279,Bowling Green,280.0,6027.0
+280,Austin Peay,281.0,6018.0
+281,Ball St.,282.0,
+282,Fresno St.,283.0,
+283,Mercer,284.0,6167.0
+284,TX Southern,285.0,
+285,Tennessee Tech,286.0,6294.0
+286,Harvard,287.0,6110.0
+287,Old Dominion,288.0,6225.0
+288,Rider,289.0,6247.0
+289,Weber St.,290.0,
+290,Boston Univ,291.0,
+291,Houston Chr,292.0,
+292,San Diego,293.0,6259.0
+293,St Peter's,294.0,
+294,Southern Miss,295.0,6279.0
+295,Portland,296.0,6235.0
+296,Lehigh,297.0,6143.0
+297,Denver,298.0,6069.0
+298,SF Austin,299.0,
+299,Charleston So,300.0,
+300,Louisiana,301.0,6150.0
+301,F Dickinson,302.0,
+302,Howard,303.0,6117.0
+303,Alcorn St.,304.0,
+304,Holy Cross,305.0,6114.0
+305,NC Central,306.0,6191.0
+306,Utah Tech,307.0,
+307,UMBC,308.0,6316.0
+308,Loyola MD,309.0,
+309,Saint Francis (PA),310.0,6252.0
+310,Niagara,311.0,6201.0
+311,Lindenwood,312.0,
+312,Florida A&M,313.0,6088.0
+313,NC A&T,314.0,6189.0
+314,E Illinois,315.0,
+315,Long Beach St.,316.0,
+316,Tarleton St.,317.0,
+317,Delaware St.,318.0,
+318,Stonehill,319.0,
+319,Stony Brook,320.0,
+320,IUPUI,321.0,6129.0
+321,Morehead St.,322.0,
+322,Coastal Car,323.0,
+323,Columbia,324.0,6056.0
+324,Southern Indiana,325.0,
+325,Penn,326.0,
+326,VMI,327.0,6333.0
+327,Air Force,328.0,6002.0
+328,Army,329.0,
+329,Fairfield,330.0,6084.0
+330,Binghamton,331.0,
+331,Southern Utah,332.0,6281.0
+332,Morgan St.,333.0,
+333,Detroit,334.0,
+334,WI Green Bay,335.0,
+335,Oral Roberts,336.0,6227.0
+336,Mercyhurst,337.0,
+337,CS Sacramento,338.0,
+338,Cent Arkansas,339.0,
+339,Bellarmine,340.0,
+340,Prairie View,341.0,
+341,West Georgia,342.0,
+342,Wagner,343.0,6334.0
+343,W Illinois,344.0,
+344,Le Moyne,345.0,
+345,Buffalo,346.0,6032.0
+346,ULM,347.0,6314.0
+347,SC Upstate,348.0,
+348,Stetson,349.0,6287.0
+349,NJIT,350.0,
+350,N Illinois,351.0,
+351,New Orleans,352.0,6200.0
+352,Canisius,353.0,6039.0
+353,Chicago St.,354.0,
+354,CS Fullerton,355.0,6062.0
+355,W Carolina,356.0,
+356,Alabama A&M,357.0,6005.0
+357,MD E Shore,358.0,
+358,New Hampshire,359.0,6197.0
+359,Coppin St.,360.0,
+360,Citadel,361.0,
+361,Ark Pine Bluff,362.0,
+362,MS Valley St.,363.0,

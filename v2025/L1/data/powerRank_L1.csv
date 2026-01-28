@@ -1,0 +1,366 @@
+,PowerRank Rank,Team,Index
+0,1,Florida,6087.0
+1,2,Duke,6074.0
+2,3,Auburn,6017.0
+3,4,Houston,6115.0
+4,5,Tennessee,6292.0
+5,6,Alabama,6004.0
+6,7,St. John’s,6284.0
+7,8,Michigan State,6172.0
+8,9,Gonzaga,6104.0
+9,10,Iowa State,6128.0
+10,11,Maryland,6162.0
+11,12,Wisconsin,6347.0
+12,13,Missouri,6178.0
+13,14,Texas Tech,6301.0
+14,15,Kentucky,6139.0
+15,16,Texas A&M,6297.0
+16,17,Arizona,6011.0
+17,18,Clemson,6049.0
+18,19,Kansas,6134.0
+19,20,Purdue,6241.0
+20,21,Marquette,6160.0
+21,22,St. Mary’s,6255.0
+22,23,Mississippi,6176.0
+23,24,Michigan,6171.0
+24,25,Illinois,6120.0
+25,26,Connecticut,6057.0
+26,27,Oregon,6228.0
+27,28,Brigham Young,6034.0
+28,29,Louisville,6152.0
+29,30,UCLA,6313.0
+30,31,Memphis,6166.0
+31,32,Creighton,6060.0
+32,33,New Mexico,6198.0
+33,34,Mississippi State,6177.0
+34,35,Baylor,6020.0
+35,36,VCU,6328.0
+36,37,Georgia,6100.0
+37,38,Oklahoma,6223.0
+38,39,Arkansas,6014.0
+39,40,Xavier,6351.0
+40,41,San Diego State,6260.0
+41,42,North Carolina,6206.0
+42,43,UC San Diego,6354.0
+43,44,Ohio State,6222.0
+44,45,Texas,6296.0
+45,46,Boise State,6024.0
+46,47,Vanderbilt,6327.0
+47,48,Indiana,6124.0
+48,49,Villanova,6330.0
+49,50,Colorado State,6055.0
+50,51,Utah State,6321.0
+51,52,Nebraska,6195.0
+52,53,Northwestern,6217.0
+53,54,Drake,6072.0
+54,55,West Virginia,6339.0
+55,56,Penn State,6231.0
+56,57,SMU,6271.0
+57,58,Liberty,6144.0
+58,59,McNeese State,6164.0
+59,60,Cincinnati,6048.0
+60,61,Kansas State,6136.0
+61,62,Dayton,6066.0
+62,63,USC,6277.0
+63,64,Santa Clara,6263.0
+64,65,South Carolina,6273.0
+65,66,Pittsburgh,6234.0
+66,67,UC Irvine,6310.0
+67,68,Yale,6352.0
+68,69,Rutgers,6249.0
+69,70,North Texas,6210.0
+70,71,San Francisco,6261.0
+71,72,Iowa,6127.0
+72,73,UCF,
+73,74,St. Joseph’s,
+74,75,Butler,6033.0
+75,76,Arizona State,6012.0
+76,77,Wake Forest,6335.0
+77,78,Georgetown,6099.0
+78,79,George Mason,6097.0
+79,80,Providence,6240.0
+80,81,LSU,6156.0
+81,82,Nevada,6196.0
+82,83,Arkansas State,6015.0
+83,84,Colorado,6054.0
+84,85,Minnesota,6175.0
+85,86,Utah,6320.0
+86,87,TCU,6290.0
+87,88,Oregon State,6229.0
+88,89,Grand Canyon,6106.0
+89,90,UNLV,6317.0
+90,91,Bradley,6028.0
+91,92,High Point,6112.0
+92,93,Stanford,6285.0
+93,94,Georgia Tech,6103.0
+94,95,Florida State,
+95,96,Notre Dame,6219.0
+96,97,UAB,6308.0
+97,98,Akron,6003.0
+98,99,Lipscomb,6145.0
+99,100,Troy,6305.0
+100,101,St. Bonaventure,6282.0
+101,102,Saint Louis,6254.0
+102,103,Wichita State,6344.0
+103,104,North Carolina Wilmington,6194.0
+104,105,Virginia,6331.0
+105,106,Washington,6336.0
+106,107,Oklahoma State,6224.0
+107,108,Middle Tennessee,6173.0
+108,109,North Carolina State,
+109,110,California,6036.0
+110,111,Northern Iowa,6215.0
+111,112,Chattanooga,6046.0
+112,113,George Washington,6098.0
+113,114,Washington State,6337.0
+114,115,Jacksonville State,6132.0
+115,116,Utah Valley,6322.0
+116,117,South Dakota State,6275.0
+117,118,Louisiana Tech,6151.0
+118,119,Syracuse,6289.0
+119,120,Florida Atlantic,6089.0
+120,121,Illinois State,6121.0
+121,122,Samford,6258.0
+122,123,DePaul,6070.0
+123,124,Northern Colorado,6213.0
+124,125,Loyola Chicago,
+125,126,South Alabama,6272.0
+126,127,New Mexico State,6199.0
+127,128,St. Thomas – Minnesota,
+128,129,North Dakota State,6208.0
+129,130,Tulane,6306.0
+130,131,Kennesaw State,6137.0
+131,132,Cal State Northridge,
+132,133,Duquesne,6075.0
+133,134,Belmont,6021.0
+134,135,Wofford,6348.0
+135,136,North Alabama,6205.0
+136,137,Charleston,6053.0
+137,138,Furman,6095.0
+138,139,Seattle,6267.0
+139,140,UC Riverside,6311.0
+140,141,Temple,6291.0
+141,142,Murray State,6186.0
+142,143,Illinois Chicago,
+143,144,UTEP,6323.0
+144,145,Kent State,6138.0
+145,146,Towson,6304.0
+146,147,East Carolina,6076.0
+147,148,Cornell,6059.0
+148,149,Nebraska Omaha,6226.0
+149,150,Eastern Kentucky,6079.0
+150,151,Wisconsin Milwaukee,
+151,152,North Carolina Greensboro,
+152,153,San Jose State,6262.0
+153,154,East Tennessee State,6077.0
+154,155,California Baptist,6037.0
+155,156,Miami (OH),
+156,157,Bryant,6030.0
+157,158,James Madison,6133.0
+158,159,Rhode Island,6244.0
+159,160,Western Kentucky,6342.0
+160,161,South Florida,6276.0
+161,162,Norfolk State,6204.0
+162,163,Robert Morris,6248.0
+163,164,Davidson,6065.0
+164,165,South Carolina State,
+165,166,UTSA,6325.0
+166,167,Virginia Tech,6332.0
+167,168,Montana,6181.0
+168,169,Loyola Marymount,6153.0
+169,170,Nicholls,
+170,171,Wyoming,6350.0
+171,172,Marshall,6161.0
+172,173,Central Connecticut,
+173,174,UCSB,6312.0
+174,175,Lamar,6142.0
+175,176,Ohio,6221.0
+176,177,Radford,6243.0
+177,178,Winthrop,6346.0
+178,179,Princeton,6239.0
+179,180,Miami (FL),
+180,181,Florida Gulf Coast,6090.0
+181,182,Rice,6245.0
+182,183,Montana State,6182.0
+183,184,Cleveland State,6050.0
+184,185,Texas A&M Corpus Christi,
+185,186,Jacksonville,6131.0
+186,187,Elon,6082.0
+187,188,Merrimack,6168.0
+188,189,Purdue Fort Wayne,
+189,190,Appalachian State,6010.0
+190,191,Drexel,6073.0
+191,192,Central Michigan,6043.0
+192,193,Seton Hall,6268.0
+193,194,Dartmouth,6064.0
+194,195,Southern Illinois,6278.0
+195,196,Sam Houston State,6257.0
+196,197,Valparaiso,6326.0
+197,198,Cal Poly,
+198,199,Indiana State,6125.0
+199,200,Portland State,6236.0
+200,201,Youngstown State,6353.0
+201,202,Southeast Missouri State,
+202,203,Massachusetts,6163.0
+203,204,La Salle,6140.0
+204,205,Southeastern Louisiana,
+205,206,Boston College,6025.0
+206,207,Texas State,6300.0
+207,208,Hampton,6108.0
+208,209,Longwood,6149.0
+209,210,Idaho State,6119.0
+210,211,Northeastern,6211.0
+211,212,Oakland,6220.0
+212,213,Southern,
+213,214,North Carolina Asheville,
+214,215,UT Rio Grande Valley,
+215,216,Delaware,6067.0
+216,217,Missouri State,6179.0
+217,218,William & Mary,6345.0
+218,219,Toledo,6303.0
+219,220,SIU Edwardsville,6270.0
+220,221,Maine,6157.0
+221,222,Hofstra,6113.0
+222,223,Quinnipiac,6242.0
+223,224,Texas Arlington,
+224,225,Bucknell,6031.0
+225,226,Pepperdine,6233.0
+226,227,Queens,
+227,228,Colgate,6052.0
+228,229,Missouri Kansas City,
+229,230,North Florida,
+230,231,Tulsa,6307.0
+231,232,Massachusetts Lowell,
+232,233,Arkansas Little Rock,
+233,234,Northwestern State,6218.0
+234,235,Evansville,6083.0
+235,236,Presbyterian,
+236,237,Abilene Christian,6001.0
+237,238,Mount St. Mary’s,6185.0
+238,239,American,6009.0
+239,240,Wright State,6349.0
+240,241,Fordham,6092.0
+241,242,Incarnate Word,6123.0
+242,243,Vermont,6329.0
+243,244,Brown,6029.0
+244,245,UC Davis,6309.0
+245,246,Northern Kentucky,6216.0
+246,247,Hawaii,
+247,248,Charlotte,6045.0
+248,249,Siena,6269.0
+249,250,Campbell,6038.0
+250,251,Manhattan,6158.0
+251,252,South Dakota,6274.0
+252,253,North Dakota,6207.0
+253,254,Tennessee State,6293.0
+254,255,Richmond,6246.0
+255,256,Florida International,
+256,257,Monmouth,
+257,258,Harvard,6110.0
+258,259,Northern Arizona,6212.0
+259,260,Jackson State,6130.0
+260,261,Gardner-Webb,6096.0
+261,262,Georgia Southern,6101.0
+262,263,Ball State,6019.0
+263,264,Pacific,6230.0
+264,265,Portland,6235.0
+265,266,Grambling State,6105.0
+266,267,Alabama State,6006.0
+267,268,Bethune-Cookman,6022.0
+268,269,Western Michigan,6343.0
+269,270,Marist,6159.0
+270,271,Eastern Washington,6081.0
+271,272,Stephen F. Austin,6286.0
+272,273,Navy,6188.0
+273,274,CSU Bakersfield,
+274,275,Eastern Michigan,6080.0
+275,276,Sacred Heart,6251.0
+276,277,Austin Peay,6018.0
+277,278,Iona,6126.0
+278,279,Albany,
+279,280,Fresno State,6094.0
+280,281,Mercer,6167.0
+281,282,Idaho,6118.0
+282,283,Tennessee Tech,6294.0
+283,284,Bowling Green,6027.0
+284,285,St. Peter’s,
+285,286,Georgia State,6102.0
+286,287,Columbia,6056.0
+287,288,Tennessee-Martin,6295.0
+288,289,Old Dominion,6225.0
+289,290,Lafayette,6141.0
+290,291,Houston Christian,
+291,292,Lehigh,6143.0
+292,293,San Diego,6259.0
+293,294,UMBC,6316.0
+294,295,Boston University,
+295,296,Texas Southern,6299.0
+296,297,Denver,6069.0
+297,298,Howard,6117.0
+298,299,Weber State,6338.0
+299,300,Tarleton State,
+300,301,Southern Miss,6279.0
+301,302,North Carolina Central,
+302,303,Pennsylvania,6232.0
+303,304,Charleston Southern,6044.0
+304,305,LIU Brooklyn,
+305,306,Eastern Illinois,6078.0
+306,307,Louisiana,6150.0
+307,308,Long Beach State,6147.0
+308,309,Delaware State,6068.0
+309,310,Rider,6247.0
+310,311,Southern Utah,6281.0
+311,312,Virginia Military,
+312,313,Air Force,6002.0
+313,314,Florida A&M,6088.0
+314,315,Holy Cross,6114.0
+315,316,Loyola (MD),
+316,317,Utah Tech,
+317,318,Southern Indiana,
+318,319,Farleigh Dickinson,
+319,320,Niagara,6201.0
+320,321,Stony Brook,
+321,322,Morehead State,6183.0
+322,323,North Carolina A&T,
+323,324,Coastal Carolina,6051.0
+324,325,Morgan State,6184.0
+325,326,Alcorn State,6008.0
+326,327,St. Francis (PA),6252.0
+327,327,St. Francis (PA),6252.0
+328,328,Binghamton,
+329,329,IU Indy,
+330,330,Lindenwood,
+331,331,Army,
+332,332,Stonehill,
+333,333,Oral Roberts,6227.0
+334,334,Fairfield,6084.0
+335,335,Western Illinois,6341.0
+336,336,Sacramento State,6250.0
+337,337,Wagner,6334.0
+338,338,East Texas A&M,
+339,339,Detroit,
+340,340,Louisiana Monroe,
+341,341,Green Bay,6107.0
+342,342,Northern Illinois,6214.0
+343,343,Buffalo,6032.0
+344,344,Bellarmine,
+345,345,Prairie View A&M,6237.0
+346,346,West Georgia,
+347,347,South Carolina Upstate,
+348,348,Mercyhurst,
+349,349,Central Arkansas,6040.0
+350,350,New Orleans,6200.0
+351,351,Le Moyne,
+352,352,Stetson,6287.0
+353,353,NJIT,
+354,354,Maryland Eastern Shore,
+355,355,Cal State Fullerton,
+356,356,Western Carolina,6340.0
+357,357,Citadel,
+358,358,Canisius,6039.0
+359,359,New Hampshire,6197.0
+360,360,Coppin State,6058.0
+361,361,Chicago State,6047.0
+362,362,Alabama A&M,6005.0
+363,363,Arkansas Pine Bluff,
+364,364,Mississippi Valley State,

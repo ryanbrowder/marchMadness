@@ -1,0 +1,365 @@
+﻿Rank,Team,Rating
+1,Florida (30-4),23.79
+2,Duke (31-3),21.45
+3,Auburn (28-5),21.32
+4,Houston (30-4),19.13
+5,Tennessee (27-7),19.1
+6,Alabama (25-8),18.64
+7,St. John’s (30-4),17.47
+8,Michigan State (27-6),16.75
+9,Gonzaga (25-8),16.44
+10,Iowa State (24-9),16.03
+11,Maryland (25-8),15.91
+12,Wisconsin (26-9),15.82
+13,Missouri (22-11),15.74
+14,Texas Tech (25-8),15.59
+15,Kentucky (22-11),15.53
+16,Texas A&M (22-10),14.71
+17,Arizona (22-12),14.52
+18,Clemson (27-6),14.44
+19,Kansas (21-12),13.89
+20,Purdue (22-11),13.66
+21,Marquette (23-10),13.62
+22,St. Mary’s (27-5),13.42
+23,Mississippi (22-11),13.34
+24,Michigan (25-9),12.97
+25,Illinois (21-12),12.88
+26,Connecticut (23-10),12.73
+27,Oregon (24-9),12.71
+28,Brigham Young (24-9),12.67
+29,Louisville (27-7),12.56
+30,UCLA (22-10),12.19
+31,Memphis (29-5),12.14
+32,Creighton (24-10),11.99
+33,New Mexico (25-7),11.92
+34,Mississippi State (21-12),11.75
+35,Baylor (18-14),11.74
+36,VCU (27-6),11.69
+37,Georgia (20-12),11.45
+38,Oklahoma (20-13),10.95
+39,Arkansas (20-13),10.94
+40,Xavier (21-11),10.87
+41,San Diego State (20-9),10.71
+42,North Carolina (22-13),10.62
+43,UC San Diego (28-4),10.56
+44,Ohio State (17-15),10.39
+45,Texas (19-15),10.21
+46,Boise State (23-10),10.07
+47,Vanderbilt (20-12),10.07
+48,Indiana (19-13),9.85
+49,Villanova (19-14),9.45
+50,Colorado State (25-9),9.37
+51,Utah State (25-7),9.32
+52,Nebraska (17-14),9.08
+53,Northwestern (17-16),9.06
+54,Drake (28-3),9.06
+55,West Virginia (19-13),8.87
+56,Penn State (16-15),8.7
+57,SMU (23-10),8.18
+58,Liberty (25-6),8.09
+59,McNeese State (25-6),8.07
+60,Cincinnati (18-15),7.92
+61,Kansas State (16-17),7.72
+62,Dayton (21-10),7.36
+63,USC (16-17),7.35
+64,Santa Clara (20-12),7.33
+65,South Carolina (12-20),7.25
+66,Pittsburgh (17-15),7.22
+67,UC Irvine (27-6),7.04
+68,Yale (21-7),6.91
+69,Rutgers (15-17),6.63
+70,North Texas (22-8),6.61
+71,San Francisco (23-9),6.6
+72,Iowa (17-16),6.48
+73,UCF (17-16),6.44
+74,St. Joseph’s (22-12),6.36
+75,Butler (14-19),6.1
+76,Arizona State (13-19),6.04
+77,Wake Forest (21-11),6.02
+78,Georgetown (17-15),5.85
+79,George Mason (25-8),5.8
+80,Providence (12-20),5.73
+81,LSU (14-18),5.72
+82,Nevada (17-16),5.67
+83,Arkansas State (23-10),5.55
+84,Colorado (14-20),5.44
+85,Minnesota (15-17),5.37
+86,Utah (16-16),5.15
+87,TCU (16-16),5
+88,Oregon State (19-12),4.98
+89,Grand Canyon (25-7),4.88
+90,UNLV (18-15),4.88
+91,Bradley (25-8),4.54
+92,High Point (27-5),4.53
+93,Stanford (20-13),4.32
+94,Georgia Tech (17-16),4.27
+95,Florida State (17-15),4.23
+96,Notre Dame (15-18),4.19
+97,UAB (21-12),4.15
+98,Akron (26-6),3.96
+99,Lipscomb (23-9),3.86
+100,Troy (21-10),3.74
+101,St. Bonaventure (21-11),3.62
+102,Saint Louis (17-14),3.38
+103,Wichita State (18-14),3.29
+104,North Carolina Wilmington (25-7),3.27
+105,Virginia (15-17),3.25
+106,Washington (12-18),3.24
+107,Oklahoma State (15-17),3.2
+108,Middle Tennessee (20-11),2.96
+109,North Carolina State (12-19),2.94
+110,California (14-19),2.78
+111,Northern Iowa (19-12),2.77
+112,Chattanooga (22-9),2.61
+113,George Washington (20-12),2.6
+114,Washington State (19-14),2.6
+115,Jacksonville State (19-12),2.59
+116,Utah Valley (23-8),2.54
+117,South Dakota State (17-12),2.53
+118,Louisiana Tech (17-12),2.46
+119,Syracuse (14-19),2.39
+120,Florida Atlantic (17-15),2.26
+121,Illinois State (18-14),2.22
+122,Samford (20-10),2.17
+123,DePaul (14-19),2.15
+124,Northern Colorado (22-9),2.09
+125,Loyola Chicago (21-11),2.03
+126,South Alabama (19-11),2.01
+127,New Mexico State (14-15),1.99
+128,St. Thomas – Minnesota (21-10),1.99
+129,North Dakota State (18-11),1.96
+130,Tulane (17-14),1.89
+131,Kennesaw State (16-14),1.84
+132,Cal State Northridge (20-10),1.71
+133,Duquesne (12-19),1.71
+134,Belmont (21-11),1.59
+135,Wofford (17-15),1.43
+136,North Alabama (22-10),1.37
+137,Charleston (23-9),1.34
+138,Furman (22-9),1.04
+139,Seattle (12-18),0.94
+140,UC Riverside (19-12),0.82
+141,Temple (16-15),0.8
+142,Murray State (15-17),0.75
+143,Illinois Chicago (15-14),0.63
+144,UTEP (15-15),0.54
+145,Kent State (20-11),0.53
+146,Towson (21-11),0.52
+147,East Carolina (17-14),0.5
+148,Cornell (16-11),0.46
+149,Nebraska Omaha (20-12),0.43
+150,Eastern Kentucky (16-14),0.3
+151,Wisconsin Milwaukee (19-11),0.25
+152,North Carolina Greensboro (17-12),0.22
+153,San Jose State (13-19),0.2
+154,East Tennessee State (17-13),0.17
+155,California Baptist (17-15),0.15
+156,Miami (OH) (23-9),0.15
+157,Bryant (21-11),0.13
+158,James Madison (18-12),0.13
+159,Rhode Island (17-13),0.11
+160,Western Kentucky (15-15),0.06
+161,South Florida (12-19),-0.03
+162,Norfolk State (21-10),-0.09
+163,Robert Morris (25-8),-0.12
+164,Davidson (16-16),-0.19
+165,South Carolina State (17-13),-0.2
+166,UTSA (10-19),-0.46
+167,Virginia Tech (13-19),-0.47
+168,Montana (22-9),-0.5
+169,Loyola Marymount (16-15),-0.51
+170,Nicholls (17-13),-0.52
+171,Wyoming (11-20),-0.57
+172,Marshall (18-13),-0.64
+173,Central Connecticut (23-7),-0.67
+174,UCSB (19-13),-0.73
+175,Lamar (17-13),-0.78
+176,Ohio (15-16),-0.89
+177,Radford (18-13),-0.94
+178,Winthrop (20-11),-0.96
+179,Princeton (17-11),-1.03
+180,Miami (FL) (7-24),-1.08
+181,Florida Gulf Coast (17-14),-1.08
+182,Rice (13-18),-1.09
+183,Montana State (14-18),-1.1
+184,Cleveland State (18-12),-1.14
+185,Texas A&M Corpus Christi (16-14),-1.18
+186,Jacksonville (17-13),-1.23
+187,Elon (15-15),-1.25
+188,Merrimack (18-15),-1.3
+189,Purdue Fort Wayne (17-13),-1.41
+190,Appalachian State (15-14),-1.56
+191,Drexel (17-15),-1.57
+192,Central Michigan (10-17),-1.61
+193,Seton Hall (7-25),-1.68
+194,Dartmouth (12-14),-1.69
+195,Southern Illinois (12-19),-1.74
+196,Sam Houston State (10-19),-1.83
+197,Valparaiso (13-19),-1.89
+198,Cal Poly (15-19),-1.95
+199,Indiana State (12-18),-2.12
+200,Portland State (16-13),-2.15
+201,Youngstown State (19-13),-2.18
+202,Southeast Missouri State (18-12),-2.25
+203,Massachusetts (11-20),-2.26
+204,La Salle (13-19),-2.26
+205,Southeastern Louisiana (16-14),-2.31
+206,Boston College (12-19),-2.36
+207,Texas State (14-16),-2.39
+208,Hampton (14-16),-2.45
+209,Longwood (15-14),-2.59
+210,Idaho State (12-15),-2.61
+211,Northeastern (17-15),-2.64
+212,Oakland (15-18),-2.78
+213,Southern (17-12),-2.85
+214,North Carolina Asheville (17-11),-2.87
+215,UT Rio Grande Valley (12-15),-2.92
+216,Delaware (14-20),-2.92
+217,Missouri State (7-23),-2.93
+218,William & Mary (15-15),-3.06
+219,Toledo (17-15),-3.08
+220,SIU Edwardsville (19-11),-3.09
+221,Maine (18-14),-3.13
+222,Hofstra (13-18),-3.14
+223,Quinnipiac (19-13),-3.17
+224,Texas Arlington (11-18),-3.43
+225,Bucknell (18-15),-3.49
+226,Pepperdine (12-22),-3.59
+227,Queens (17-14),-3.65
+228,Colgate (13-19),-3.68
+229,Missouri Kansas City (9-20),-3.71
+230,North Florida (13-17),-3.72
+231,Tulsa (11-20),-3.74
+232,Massachusetts Lowell (14-15),-3.74
+233,Arkansas Little Rock (17-14),-3.81
+234,Northwestern State (14-16),-3.88
+235,Evansville (10-21),-4
+236,Presbyterian (11-18),-4.05
+237,Abilene Christian (13-16),-4.05
+238,Mount St. Mary’s (21-12),-4.07
+239,American (20-12),-4.14
+240,Wright State (13-18),-4.16
+241,Fordham (11-21),-4.16
+242,Incarnate Word (13-16),-4.17
+243,Vermont (19-12),-4.24
+244,Brown (13-13),-4.27
+245,UC Davis (13-17),-4.29
+246,Northern Kentucky (15-16),-4.32
+247,Hawaii (13-16),-4.35
+248,Charlotte (10-22),-4.35
+249,Siena (14-18),-4.42
+250,Campbell (13-17),-4.42
+251,Manhattan (16-13),-4.45
+252,South Dakota (16-14),-4.5
+253,North Dakota (9-21),-4.54
+254,Tennessee State (14-16),-4.56
+255,Richmond (8-22),-4.6
+256,Florida International (8-23),-4.71
+257,Monmouth (13-20),-4.72
+258,Harvard (11-15),-4.73
+259,Northern Arizona (14-15),-4.89
+260,Jackson State (16-18),-5.05
+261,Gardner-Webb (11-20),-5.19
+262,Georgia Southern (16-16),-5.21
+263,Ball State (11-17),-5.32
+264,Pacific (7-24),-5.35
+265,Portland (10-20),-5.37
+266,Grambling State (9-22),-5.45
+267,Alabama State (18-15),-5.47
+268,Bethune-Cookman (17-16),-5.48
+269,Western Michigan (11-20),-5.5
+270,Marist (20-10),-5.54
+271,Eastern Washington (8-22),-5.54
+272,Stephen F. Austin (11-17),-5.71
+273,Navy (14-19),-5.74
+274,CSU Bakersfield (12-19),-5.8
+275,Eastern Michigan (15-16),-5.87
+276,Sacred Heart (14-18),-5.94
+277,Austin Peay (12-19),-5.99
+278,Iona (17-17),-6.04
+279,Albany (15-16),-6.08
+280,Fresno State (6-26),-6.13
+281,Mercer (12-19),-6.16
+282,Idaho (12-19),-6.22
+283,Tennessee Tech (13-17),-6.39
+284,Bowling Green (12-18),-6.49
+285,St. Peter’s (11-16),-6.53
+286,Georgia State (13-19),-6.59
+287,Columbia (10-15),-6.62
+288,Tennessee-Martin (11-19),-6.75
+289,Old Dominion (13-20),-6.94
+290,Lafayette (12-20),-6.97
+291,Houston Christian (10-20),-6.98
+292,Lehigh (9-19),-7.1
+293,San Diego (5-27),-7.18
+294,UMBC (10-19),-7.3
+295,Boston University (15-16),-7.33
+296,Texas Southern (12-17),-7.35
+297,Denver (8-21),-7.36
+298,Howard (10-18),-7.66
+299,Weber State (9-22),-7.67
+300,Tarleton State (9-20),-7.77
+301,Southern Miss (9-22),-7.81
+302,North Carolina Central (10-19),-7.83
+303,Pennsylvania (8-19),-7.84
+304,Charleston Southern (8-22),-7.94
+305,LIU Brooklyn (15-16),-7.99
+306,Eastern Illinois (9-19),-8.02
+307,Louisiana (11-21),-8.03
+308,Long Beach State (5-25),-8.14
+309,Delaware State (12-14),-8.19
+310,Rider (14-19),-8.24
+311,Southern Utah (9-19),-8.31
+312,Virginia Military (11-19),-8.39
+313,Air Force (4-28),-8.5
+314,Florida A&M (12-17),-8.59
+315,Holy Cross (11-19),-8.65
+316,Loyola (MD) (11-19),-8.67
+317,Utah Tech (5-26),-8.67
+318,Southern Indiana (8-20),-8.86
+319,Farleigh Dickinson (10-20),-8.92
+320,Niagara (10-20),-9.12
+321,Stony Brook (7-24),-9.15
+322,Morehead State (12-17),-9.19
+323,North Carolina A&T (6-25),-9.21
+324,Coastal Carolina (8-22),-9.24
+325,Morgan State (10-18),-9.29
+326,Alcorn State (11-20),-9.31
+327,St. Francis (PA) (13-17),-9.32
+328,Binghamton (12-17),-9.35
+329,IU Indy (7-22),-9.4
+330,Lindenwood (13-17),-9.43
+331,Army (14-15),-9.46
+332,Stonehill (13-17),-9.78
+333,Oral Roberts (4-22),-9.89
+334,Fairfield (11-20),-10.15
+335,Western Illinois (9-19),-10.27
+336,Sacramento State (4-25),-10.33
+337,Wagner (10-16),-10.42
+338,East Texas A&M (5-26),-10.52
+339,Detroit (7-24),-10.84
+340,Louisiana Monroe (5-25),-10.9
+341,Green Bay (4-27),-11.12
+342,Northern Illinois (3-25),-11.14
+343,Buffalo (7-22),-11.15
+344,Bellarmine (3-26),-11.28
+345,Prairie View A&M (4-27),-11.5
+346,West Georgia (5-25),-11.51
+347,South Carolina Upstate (3-26),-11.55
+348,Mercyhurst (12-16),-11.63
+349,Central Arkansas (7-24),-11.73
+350,New Orleans (4-27),-11.76
+351,Le Moyne (7-23),-12.51
+352,Stetson (6-24),-12.51
+353,NJIT (5-25),-12.61
+354,Maryland Eastern Shore (2-25),-12.79
+355,Cal State Fullerton (4-26),-13.2
+356,Western Carolina (5-22),-13.44
+357,Citadel (1-25),-14.36
+358,Canisius (3-28),-14.54
+359,New Hampshire (6-24),-14.75
+360,Coppin State (5-24),-15.26
+361,Chicago State (4-28),-15.28
+362,Alabama A&M (7-22),-15.51
+363,Arkansas Pine Bluff (4-25),-18.11
+364,Mississippi Valley State (1-28),-26.23

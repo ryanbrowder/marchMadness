@@ -1,0 +1,900 @@
+Year,Team,Index,PowerRank
+2016,North Carolina,211,1
+2016,Kansas,138,2
+2016,Virginia,356,3
+2016,Villanova,355,4
+2016,Michigan St,180,5
+2016,Oklahoma,230,6
+2016,West Virginia,365,7
+2016,Kentucky,142,8
+2016,Purdue,248,10
+2016,Iowa,132,11
+2016,Miami,177,12
+2016,Oregon,234,13
+2016,Duke,76,14
+2016,Xavier,379,15
+2016,Iowa St,133,16
+2016,Indiana,129,17
+2016,Arizona,11,18
+2016,Texas AM,313,19
+2016,Maryland,168,20
+2016,California,41,22
+2016,Seton Hall,277,23
+2016,Vanderbilt,353,24
+2016,Wichita St,370,25
+2016,Baylor,21,26
+2016,Gonzaga,108,27
+2016,Texas,312,28
+2016,Utah,346,29
+2016,Wisconsin,374,30
+2016,Cincinnati,54,31
+2016,VCU,350,33
+2016,Butler,35,34
+2016,Notre Dame,226,35
+2016,Connecticut,62,36
+2016,Syracuse,303,38
+2016,Pittsburgh,241,42
+2016,Providence,247,43
+2016,Texas Tech,317,46
+2016,USC,339,48
+2016,Dayton,68,49
+2016,St Josephs,264,50
+2016,Colorado,59,54
+2016,Ark LR,153,56
+2016,Oregon St,235,59
+2016,Tulsa,323,61
+2016,Michigan,179,63
+2016,Hawaii,115,66
+2016,Yale,380,67
+2016,NC Wilmington,337,74
+2016,South Dakota St,283,75
+2016,Northern Iowa,222,82
+2016,Temple,307,91
+2016,Fresno St,98,94
+2016,SF Austin,299,96
+2016,Chattanooga,51,98
+2016,Stony Brook,302,99
+2016,Iona,131,103
+2016,CSU Bakersfield,38,116
+2016,NC Ash,335,117
+2016,Green Bay,111,118
+2016,Middle Tennessee St,181,134
+2016,Weber St,363,136
+2016,Buffalo,34,149
+2016,Florida Gulf Coast,95,179
+2016,Southern,288,194
+2016,Austin Peay,18,243
+2016,Hampton,112,250
+2016,Fairleigh Dickinson,90,272
+2016,Holy Cross,118,293
+2017,Gonzaga,108,1
+2017,Villanova,355,2
+2017,West Virginia,365,3
+2017,North Carolina,211,4
+2017,Kansas,138,5
+2017,Kentucky,142,6
+2017,Duke,76,7
+2017,Louisville,159,8
+2017,Virginia,356,9
+2017,Florida,91,10
+2017,Baylor,21,11
+2017,Purdue,248,12
+2017,Iowa St,133,13
+2017,Wichita St,370,14
+2017,UCLA,331,15
+2017,Oregon,234,16
+2017,Florida St,96,17
+2017,Butler,35,18
+2017,SMU,260,19
+2017,Wisconsin,374,20
+2017,Arizona,11,21
+2017,Cincinnati,54,22
+2017,Notre Dame,226,23
+2017,Michigan,179,24
+2017,Oklahoma St,231,25
+2017,Creighton,65,26
+2017,St Marys,266,27
+2017,Marquette,166,28
+2017,Kansas St,139,29
+2017,Minnesota,183,30
+2017,Wake Forest,359,31
+2017,Vanderbilt,353,32
+2017,South Carolina,280,33
+2017,Miami,177,35
+2017,Virginia Tech,357,36
+2017,Dayton,68,37
+2017,Middle Tennessee St,181,38
+2017,Northwestern,224,39
+2017,Arkansas,13,40
+2017,Maryland,168,41
+2017,Michigan St,180,42
+2017,Seton Hall,277,44
+2017,Xavier,379,45
+2017,VCU,350,47
+2017,Rhode Island,253,48
+2017,Providence,247,51
+2017,NC Wilmington,337,53
+2017,Nevada,201,57
+2017,Eastern Tennessee,79,68
+2017,USC,339,71
+2017,Vermont,354,76
+2017,Princeton,246,80
+2017,Bucknell,33,81
+2017,New Mexico St,205,89
+2017,Florida Gulf Coast,95,97
+2017,Winthrop,373,114
+2017,Iona,131,123
+2017,Troy,321,125
+2017,Kent St,141,137
+2017,NC Central,213,138
+2017,Northern Kentucky,223,159
+2017,North Dakota,214,164
+2017,Jacksonville St,136,179
+2017,South Dakota St,283,196
+2017,Texas Southern,315,199
+2017,Mount St Marys,194,202
+2017,New Orleans,206,208
+2017,UC Davis,325,217
+2018,Villanova,355,1
+2018,Virginia,356,2
+2018,Duke,76,3
+2018,Cincinnati,54,4
+2018,Purdue,248,5
+2018,North Carolina,211,6
+2018,Michigan St,180,7
+2018,Gonzaga,108,8
+2018,Kansas,138,9
+2018,Michigan,179,10
+2018,West Virginia,365,11
+2018,Xavier,379,12
+2018,Texas Tech,317,13
+2018,Tennessee,308,14
+2018,Houston,119,15
+2018,Auburn,17,16
+2018,Wichita St,370,17
+2018,Clemson,55,18
+2018,Florida,91,19
+2018,Kentucky,142,20
+2018,Ohio St,229,21
+2018,TCU,304,22
+2018,Nevada,201,23
+2018,Arizona,11,24
+2018,Butler,35,25
+2018,Texas AM,313,26
+2018,Seton Hall,277,27
+2018,Creighton,65,28
+2018,Florida St,96,29
+2018,North Carolina St,196,30
+2018,Arizona St,12,31
+2018,Texas,312,35
+2018,Virginia Tech,357,36
+2018,Alabama,4,38
+2018,Miami,177,39
+2018,Arkansas,13,40
+2018,Rhode Island,253,41
+2018,Oklahoma,230,42
+2018,Loyola,160,43
+2018,Kansas St,139,45
+2018,Missouri,187,48
+2018,UCLA,331,49
+2018,San Diego St,271,53
+2018,Providence,247,54
+2018,New Mexico St,205,57
+2018,Syracuse,303,58
+2018,UNC Greensboro,336,62
+2018,Murray St,195,63
+2018,Davidson,67,67
+2018,St Bonaventure,294,71
+2018,Buffalo,34,73
+2018,Montana,190,81
+2018,South Dakota St,283,84
+2018,Bucknell,33,91
+2018,SF Austin,299,92
+2018,Marshall,167,97
+2018,Georgia St,106,103
+2018,Charleston,48,107
+2018,Wright St,377,126
+2018,Penn,238,127
+2018,Iona,131,131
+2018,Radford,252,158
+2018,Lipscomb,152,159
+2018,Cal St Fullerton,39,173
+2018,UMBC,332,207
+2018,Texas Southern,315,222
+2018,LIU Brooklyn,143,253
+2018,North Carolina Central,213,296
+2019,Duke,76,2
+2019,Gonzaga,108,3
+2019,Virginia,356,3
+2019,Michigan State,180,4
+2019,North Carolina,211,4
+2019,Kentucky,142,7
+2019,Michigan,179,7
+2019,Tennessee,308,8
+2019,Texas Tech,317,9
+2019,Purdue,248,11
+2019,Auburn,17,12
+2019,Virginia Tech,357,13
+2019,Florida State,96,14
+2019,Kansas,138,15
+2019,Wisconsin,374,15
+2019,Houston,119,16
+2019,Iowa State,133,17
+2019,Villanova,355,20
+2019,LSU,144,21
+2019,Buffalo,34,22
+2019,Kansas State,139,22
+2019,Louisville,159,22
+2019,Mississippi State,185,23
+2019,Nevada,201,24
+2019,Marquette,166,25
+2019,Cincinnati,54,27
+2019,Maryland,168,28
+2019,Florida,91,29
+2019,Wofford,376,29
+2019,Syracuse,303,35
+2019,Oklahoma,230,36
+2019,Oregon,234,36
+2019,St. John's,296,39
+2019,Iowa,132,40
+2019,Utah State,347,41
+2019,Ohio State,229,43
+2019,UCF,330,43
+2019,VCU,350,45
+2019,Washington,360,45
+2019,Baylor,21,46
+2019,Mississippi,184,47
+2019,Minnesota,183,48
+2019,Saint Louis,265,49
+2019,New Mexico State,205,50
+2019,Murray State,195,54
+2019,Arizona State,12,55
+2019,Belmont,23,55
+2019,Saint Mary's,266,69
+2019,Temple,307,71
+2019,Vermont,354,78
+2019,UC Irvine,326,79
+2019,Northern Kentucky,223,82
+2019,Liberty,150,89
+2019,Seton Hall,277,90
+2019,Yale,380,95
+2019,Northeastern,218,101
+2019,Old Dominion,232,101
+2019,Georgia State,106,104
+2019,Montana,190,120
+2019,Colgate,58,125
+2019,Bradley,30,156
+2019,Abilene Christian,1,159
+2021,Gonzaga,108,1
+2021,Baylor,21,2
+2021,Colgate,58,3
+2021,Michigan,179,4
+2021,Illinois,125,5
+2021,Houston,119,6
+2021,Iowa,132,7
+2021,Alabama,4,8
+2021,Ohio St,229,9
+2021,Colorado,59,10
+2021,USC,339,11
+2021,West Virginia,365,12
+2021,Kansas,138,13
+2021,Villanova,355,14
+2021,Oklahoma St,231,15
+2021,Creighton,65,16
+2021,Texas,312,17
+2021,St. Bonaventure,294,18
+2021,Loyola-Chicago,160,19
+2021,Purdue,248,20
+2021,Connecticut,62,21
+2021,Florida St,96,22
+2021,BYU,19,23
+2021,Texas Tech,317,24
+2021,Arkansas,13,25
+2021,Tennessee,308,26
+2021,Wisconsin,374,27
+2021,Oklahoma,230,28
+2021,San Diego St,271,29
+2021,Oregon,234,30
+2021,North Carolina,211,31
+2021,Virginia,356,32
+2021,LSU,144,34
+2021,Georgia Tech,107,35
+2021,Rutgers,258,36
+2021,VCU,350,37
+2021,Maryland,168,38
+2021,UCLA,331,39
+2021,Florida,91,40
+2021,Clemson,55,42
+2021,Missouri,187,43
+2021,Virginia Tech,357,48
+2021,Utah St,347,49
+2021,Winthrop,373,53
+2021,Georgetown,103,56
+2021,Michigan St,180,59
+2021,Syracuse,303,61
+2021,Wichita St,370,62
+2021,Abilene Christian,1,64
+2021,Drake,74,67
+2021,UC Santa Barbara,329,70
+2021,North Texas,217,74
+2021,Ohio,228,78
+2021,Oregon St,235,79
+2021,NC Greensboro,336,84
+2021,Eastern Washington,84,96
+2021,Liberty,150,99
+2021,Grand Canyon,110,105
+2021,Oral Roberts,233,130
+2021,Cleveland St,56,139
+2021,Morehead St,192,140
+2021,Drexel,75,147
+2021,Iona,131,153
+2021,Norfolk St,209,167
+2021,Hartford,113,168
+2021,Mount St. Mary's,194,175
+2021,Appalachian State,10,180
+2021,Texas Southern,315,232
+2022,Gonzaga,108,1
+2022,Arizona,11,2
+2022,Auburn,17,3
+2022,Kentucky,142,4
+2022,Kansas,138,5
+2022,TexasTech,317,6
+2022,Baylor,21,7
+2022,Houston,119,8
+2022,Duke,76,9
+2022,UCLA,331,10
+2022,Tennessee,308,11
+2022,Villanova,355,12
+2022,Purdue,248,13
+2022,Iowa,132,14
+2022,Arkansas,13,15
+2022,Connecticut,62,16
+2022,Illinois,125,17
+2022,Memphis,172,18
+2022,LSU,144,19
+2022,Texas,312,20
+2022,Alabama,4,21
+2022,SaintMarys,266,22
+2022,Wisconsin,374,23
+2022,MurrayState,195,24
+2022,VirginiaTech,357,25
+2022,OhioState,229,26
+2022,SanDiegoState,271,28
+2022,Providence,247,30
+2022,Davidson,67,31
+2022,NorthCarolina,211,32
+2022,TCU,304,33
+2022,SanFrancisco,272,34
+2022,MichiganState,180,35
+2022,LoyolaChicago,160,36
+2022,Marquette,166,37
+2022,SetonHall,277,38
+2022,Michigan,179,39
+2022,BoiseState,26,42
+2022,Indiana,129,43
+2022,UAB,324,44
+2022,IowaState,133,45
+2022,USC,339,48
+2022,ColoradoState,60,49
+2022,Creighton,65,50
+2022,Miami,177,53
+2022,NotreDame,226,54
+2022,NewMexicoState,205,60
+2022,Rutgers,258,65
+2022,Vermont,354,69
+2022,Chattanooga,51,70
+2022,Wyoming,378,72
+2022,SouthDakotaState,283,80
+2022,Richmond,255,84
+2022,Akron,3,111
+2022,Colgate,58,113
+2022,SaintPeters,267,118
+2022,Delaware,70,134
+2022,MontanaState,191,138
+2022,JacksonvilleState,136,139
+2022,CSFullerton,39,153
+2022,Longwood,155,155
+2022,Yale,380,159
+2022,NorfolkState,209,162
+2022,GeorgiaState,106,165
+2022,WrightState,377,173
+2022,TexasSouthern,315,178
+2022,Bryant,32,192
+2022,TexasA&MCC,314,239
+2023,Gonzaga,108,1
+2023,Arizona,11,2
+2023,Auburn,17,3
+2023,Kentucky,142,4
+2023,Kansas,138,5
+2023,UConn,62,5
+2023,Baylor,21,7
+2023,Houston,119,8
+2023,Duke,76,9
+2023,UCLA,331,10
+2023,Tennessee,308,11
+2023,Purdue,248,13
+2023,Iowa,132,14
+2023,Saint Mary's,266,14
+2023,Arkansas,13,15
+2023,Illinois,125,17
+2023,Memphis,172,18
+2023,West Virginia,365,19
+2023,San Diego State,271,19
+2023,Texas,312,20
+2023,Alabama,4,21
+2023,Iowa State,133,26
+2023,Texas A&M,313,27
+2023,Providence,247,30
+2023,TCU,304,33
+2023,Michigan State,180,35
+2023,Marquette,166,37
+2023,Penn State,239,40
+2023,Boise State,26,40
+2023,Indiana,129,43
+2023,USC,339,48
+2023,Creighton,65,50
+2023,NC State,196,50
+2023,Mississippi State,185,51
+2023,Miami,177,53
+2023,Xavier,379,56
+2023,Missouri,187,57
+2023,Kansas State,139,57
+2023,VCU,350,59
+2023,Utah State,347,64
+2023,Arizona State,12,66
+2023,Iona,131,68
+2023,Vermont,354,69
+2023,Virginia,356,71
+2023,Drake,74,72
+2023,Kent State,141,73
+2023,Maryland,168,75
+2023,Furman,99,87
+2023,Northwestern,224,90
+2023,Grand Canyon,110,95
+2023,Princeton,246,109
+2023,Louisiana,156,111
+2023,Colgate,58,113
+2023,Montana State,191,116
+2023,Charleston,48,128
+2023,Nevada,201,140
+2023,Kennesaw State,140,141
+2023,Florida Atlantic,93,142
+2023,UCSB,329,147
+2023,Northern Kentucky,223,156
+2023,NC Asheville,335,157
+2023,Oral Roberts,233,167
+2023,Pittsburgh,241,170
+2023,Texas A&M CC,314,204
+2023,Howard,121,231
+2023,Texas Southern,315,285
+2024,Connecticut,62,1
+2024,Houston,119,2
+2024,Purdue,248,3
+2024,Auburn,17,4
+2024,Tennessee,308,5
+2024,Iowa State,133,6
+2024,Arizona,11,7
+2024,North Carolina,211,8
+2024,Duke,76,9
+2024,Illinois,125,10
+2024,Creighton,65,11
+2024,Marquette,166,12
+2024,Baylor,21,13
+2024,Kentucky,142,14
+2024,Wisconsin,374,15
+2024,BYU,19,16
+2024,Alabama,4,17
+2024,New Mexico,204,19
+2024,Kansas,138,20
+2024,Florida,91,21
+2024,Michigan State,180,22
+2024,Gonzaga,108,23
+2024,San Diego St.,271,24
+2024,Mississippi State,185,25
+2024,Nebraska,199,26
+2024,Colorado,59,27
+2024,Clemson,55,28
+2024,Florida Atlantic,93,30
+2024,TCU,304,31
+2024,Colorado State,60,32
+2024,Texas A&M,313,33
+2024,Texas Tech,317,35
+2024,Dayton,68,37
+2024,Washington State,361,38
+2024,South Carolina,280,39
+2024,Northwestern,224,40
+2024,Texas,312,41
+2024,Nevada,201,42
+2024,St. Mary's,266,43
+2024,Drake,74,47
+2024,NC State,196,48
+2024,James Madison,137,51
+2024,Grand Canyon,110,52
+2024,Boise State,26,53
+2024,Oregon,234,56
+2024,Utah State,347,58
+2024,McNeese State,171,62
+2024,Virginia,356,73
+2024,Duquesne,77,87
+2024,Yale,380,97
+2024,Samford,269,99
+2024,UAB,324,101
+2024,Charleston,48,104
+2024,Vermont,354,107
+2024,Akron,3,115
+2024,Oakland,227,127
+2024,Western Kentucky,368,132
+2024,South Dakota State,283,136
+2024,Morehead State,192,139
+2024,Longwood,155,152
+2024,Colgate,58,153
+2024,Long Beach State,154,167
+2024,Stetson,300,203
+2024,Montana State,191,205
+2024,St. Peter's,267,211
+2024,Howard,121,265
+2024,Grambling,109,284
+2024,Wagner,358,297
+2025,Florida,91,1
+2025,Duke,76,2
+2025,Auburn,17,3
+2025,Houston,119,4
+2025,Tennessee,308,5
+2025,Alabama,4,6
+2025,St. Johns,296,7
+2025,Michigan State,180,8
+2025,Gonzaga,108,9
+2025,Iowa State,133,10
+2025,Maryland,168,11
+2025,Wisconsin,374,12
+2025,Missouri,187,13
+2025,Texas Tech,317,14
+2025,Kentucky,142,15
+2025,Texas A&M,313,16
+2025,Arizona,11,17
+2025,Clemson,55,18
+2025,Kansas,138,19
+2025,Purdue,248,20
+2025,Marquette,166,21
+2025,St. Mary's,266,22
+2025,Mississippi,184,23
+2025,Michigan,179,24
+2025,Illinois,125,25
+2025,Connecticut,62,26
+2025,Oregon,234,27
+2025,Brigham Young,19,28
+2025,Louisville,159,29
+2025,UCLA,331,30
+2025,Memphis,172,31
+2025,Creighton,65,32
+2025,New Mexico,204,33
+2025,Mississippi State,185,34
+2025,Baylor,21,35
+2025,VCU,350,36
+2025,Georgia,104,37
+2025,Oklahoma,230,38
+2025,Arkansas,13,39
+2025,Xavier,379,40
+2025,San Diego State,271,41
+2025,North Carolina,211,42
+2025,UC San Diego,328,43
+2025,Ohio State,229,44
+2025,Texas,312,45
+2025,Boise State,26,46
+2025,Vanderbilt,353,47
+2025,Indiana,129,48
+2025,Villanova,355,49
+2025,Colorado State,60,50
+2025,Utah State,347,51
+2025,Nebraska,199,52
+2025,Northwestern,224,53
+2025,Drake,74,54
+2025,West Virginia,365,55
+2025,Penn State,239,56
+2025,SMU,260,57
+2025,Liberty,150,58
+2025,McNeese State,171,59
+2025,Cincinnati,54,60
+2025,Kansas State,139,61
+2025,Dayton,68,62
+2025,USC,339,63
+2025,Santa Clara,274,64
+2025,South Carolina,280,65
+2025,Pittsburgh,241,66
+2025,UC Irvine,326,67
+2025,Yale,380,68
+2025,Rutgers,258,69
+2025,North Texas,217,70
+2025,San Francisco,272,71
+2025,Iowa,132,72
+2025,UCF,330,73
+2025,St. Joseph's,264,74
+2025,Butler,35,75
+2025,Arizona State,12,76
+2025,Wake Forest,359,77
+2025,Georgetown,103,78
+2025,George Mason,101,79
+2025,Providence,247,80
+2025,LSU,144,81
+2025,Nevada,201,82
+2025,Arkansas State,15,83
+2025,Colorado,59,84
+2025,Minnesota,183,85
+2025,Utah,346,86
+2025,TCU,304,87
+2025,Oregon State,235,88
+2025,Grand Canyon,110,89
+2025,UNLV,338,90
+2025,Bradley,30,91
+2025,High Point,116,92
+2025,Stanford,298,93
+2025,Georgia Tech,107,94
+2025,Florida State,96,95
+2025,Notre Dame,226,96
+2025,UAB,324,97
+2025,Akron,3,98
+2025,Lipscomb,152,99
+2025,Troy,321,100
+2025,St. Bonaventure,294,101
+2025,Saint Louis,265,102
+2025,Wichita State,370,103
+2025,North Carolina Wilmington,337,104
+2025,Virginia,356,105
+2025,Washington,360,106
+2025,Oklahoma State,231,107
+2025,Middle Tennessee,181,108
+2025,North Carolina State,196,109
+2025,California,41,110
+2025,Northern Iowa,222,111
+2025,Chattanooga,51,112
+2025,George Washington,102,113
+2025,Washington State,361,114
+2025,Jacksonville State,136,115
+2025,Utah Valley,349,116
+2025,South Dakota State,283,117
+2025,Louisiana Tech,158,118
+2025,Syracuse,303,119
+2025,Florida Atlantic,93,120
+2025,Illinois State,127,121
+2025,Samford,269,122
+2025,DePaul,69,123
+2025,Northern Colorado,220,124
+2025,Loyola Chicago,160,125
+2025,South Alabama,279,126
+2025,New Mexico State,205,127
+2025,St. Thomas - Minnesota,297,128
+2025,North Dakota State,215,129
+2025,Tulane,322,130
+2025,Kennesaw State,140,131
+2025,Cal State Northridge,40,132
+2025,Duquesne,77,133
+2025,Belmont,23,134
+2025,Wofford,376,135
+2025,North Alabama,210,136
+2025,Charleston,48,137
+2025,Furman,99,138
+2025,Seattle,276,139
+2025,UC Riverside,327,140
+2025,Temple,307,141
+2025,Murray State,195,142
+2025,Illinois Chicago,126,143
+2025,UTEP,344,144
+2025,Kent State,141,145
+2025,Towson,320,146
+2025,East Carolina,78,147
+2025,Cornell,64,148
+2025,Nebraska Omaha,200,149
+2025,Eastern Kentucky,82,150
+2025,Wisconsin Milwaukee,182,151
+2025,North Carolina Greensboro,336,152
+2025,San Jose State,273,153
+2025,East Tennessee State,79,154
+2025,California Baptist,36,155
+2025,Miami,177,156
+2025,Bryant,32,157
+2025,James Madison,137,158
+2025,Rhode Island,253,159
+2025,Western Kentucky,368,160
+2025,South Florida,284,161
+2025,Norfolk State,209,162
+2025,Robert Morris,257,163
+2025,Davidson,67,164
+2025,South Carolina State,281,165
+2025,UTSA,345,166
+2025,Virginia Tech,357,167
+2025,Montana,190,168
+2025,Loyola Marymount,162,169
+2025,Nicholls,208,170
+2025,Wyoming,378,171
+2025,Marshall,167,172
+2025,Central Connecticut,46,173
+2025,UCSB,329,174
+2025,Lamar,147,175
+2025,Ohio,228,176
+2025,Radford,252,177
+2025,Winthrop,373,178
+2025,Princeton,246,179
+2025,Florida Gulf Coast,95,181
+2025,Rice,254,182
+2025,Montana State,191,183
+2025,Cleveland State,56,184
+2025,Texas A&M Corpus Christi,314,185
+2025,Jacksonville,135,186
+2025,Elon,85,187
+2025,Merrimack,176,188
+2025,Purdue Fort Wayne,249,189
+2025,Appalachian State,10,190
+2025,Drexel,75,191
+2025,Central Michigan,47,192
+2025,Seton Hall,277,193
+2025,Dartmouth,66,194
+2025,Southern Illinois,289,195
+2025,Sam Houston State,268,196
+2025,Valparaiso,352,197
+2025,Cal Poly,37,198
+2025,Indiana State,130,199
+2025,Portland State,243,200
+2025,Youngstown State,381,201
+2025,Southeast Missouri State,286,202
+2025,Massachusetts,170,203
+2025,La Salle,145,204
+2025,Southeastern Louisiana,287,205
+2025,Boston College,27,206
+2025,Texas State,316,207
+2025,Hampton,112,208
+2025,Longwood,155,209
+2025,Idaho State,124,210
+2025,Northeastern,218,211
+2025,Oakland,227,212
+2025,Southern,288,213
+2025,North Carolina Asheville,335,214
+2025,UT Rio Grande Valley,343,215
+2025,Delaware,70,216
+2025,Missouri State,188,217
+2025,William & Mary,371,218
+2025,Toledo,319,219
+2025,SIU Edwardsville,259,220
+2025,Maine,163,221
+2025,Hofstra,117,222
+2025,Quinnipiac,251,223
+2025,Texas Arlington,342,224
+2025,Bucknell,33,225
+2025,Pepperdine,240,226
+2025,Queens,250,227
+2025,Colgate,58,228
+2025,Missouri Kansas City,333,229
+2025,North Florida,216,230
+2025,Tulsa,323,231
+2025,Massachusetts Lowell,334,232
+2025,Arkansas Little Rock,153,233
+2025,Northwestern State,225,234
+2025,Evansville,86,235
+2025,Presbyterian,245,236
+2025,Abilene Christian,1,237
+2025,Mount St. Mary's,194,238
+2025,American,9,239
+2025,Wright State,377,240
+2025,Fordham,97,241
+2025,Incarnate Word,128,242
+2025,Vermont,354,243
+2025,Brown,31,244
+2025,UC Davis,325,245
+2025,Northern Kentucky,223,246
+2025,Hawaii,115,247
+2025,Charlotte,50,248
+2025,Siena,278,249
+2025,Campbell,42,250
+2025,Manhattan,164,251
+2025,South Dakota,282,252
+2025,North Dakota,214,253
+2025,Tennessee State,310,254
+2025,Richmond,255,255
+2025,Florida International,88,256
+2025,Monmouth,189,257
+2025,Harvard,114,258
+2025,Northern Arizona,219,259
+2025,Jackson State,134,260
+2025,Gardner-Webb,100,261
+2025,Georgia Southern,105,262
+2025,Ball State,20,263
+2025,Pacific,237,264
+2025,Portland,242,265
+2025,Grambling State,109,266
+2025,Alabama State,6,267
+2025,Bethune-Cookman,24,268
+2025,Western Michigan,369,269
+2025,Marist,165,270
+2025,Eastern Washington,84,271
+2025,Stephen F. Austin,299,272
+2025,Navy,198,273
+2025,CSU Bakersfield,38,274
+2025,Eastern Michigan,83,275
+2025,Sacred Heart,262,276
+2025,Austin Peay,18,277
+2025,Iona,131,278
+2025,Albany,7,279
+2025,Fresno State,98,280
+2025,Mercer,173,281
+2025,Idaho,123,282
+2025,Tennessee Tech,311,283
+2025,Bowling Green,29,284
+2025,St. Peter's,267,285
+2025,Georgia State,106,286
+2025,Columbia,61,287
+2025,Tennessee-Martin,309,288
+2025,Old Dominion,232,289
+2025,Lafayette,146,290
+2025,Houston Christian,120,291
+2025,Lehigh,149,292
+2025,San Diego,270,293
+2025,UMBC,332,294
+2025,Boston University,28,295
+2025,Texas Southern,315,296
+2025,Denver,72,297
+2025,Howard,121,298
+2025,Weber State,363,299
+2025,Tarleton State,305,300
+2025,Southern Miss,292,301
+2025,North Carolina Central,213,302
+2025,Pennsylvania,238,303
+2025,Charleston Southern,49,304
+2025,LIU Brooklyn,143,305
+2025,Eastern Illinois,81,306
+2025,Louisiana,156,307
+2025,Long Beach State,154,308
+2025,Delaware State,71,309
+2025,Rider,256,310
+2025,Southern Utah,293,311
+2025,Virginia Military,351,312
+2025,Air Force,2,313
+2025,Florida A&M,92,314
+2025,Holy Cross,118,315
+2025,Loyola,160,316
+2025,Utah Tech,348,317
+2025,Southern Indiana,291,318
+2025,Farleigh Dickinson,90,319
+2025,Niagara,207,320
+2025,Stony Brook,302,321
+2025,Morehead State,192,322
+2025,North Carolina A&T,212,323
+2025,Coastal Carolina,57,324
+2025,Morgan State,193,325
+2025,Alcorn State,8,326
+2025,St. Francis,263,327
+2025,Binghamton,25,328
+2025,IU Indy,122,329
+2025,Lindenwood,151,330
+2025,Army,16,331
+2025,Stonehill,301,332
+2025,Oral Roberts,233,333
+2025,Fairfield,89,334
+2025,Western Illinois,367,335
+2025,Sacramento State,261,336
+2025,Wagner,358,337
+2025,East Texas A&M,80,338
+2025,Detroit,73,339
+2025,Louisiana Monroe,157,340
+2025,Green Bay,111,341
+2025,Northern Illinois,221,342
+2025,Buffalo,34,343
+2025,Bellarmine,22,344
+2025,Prairie View A&M,244,345
+2025,West Georgia,364,346
+2025,South Carolina Upstate,340,347
+2025,Mercyhurst,174,348
+2025,Central Arkansas,45,349
+2025,New Orleans,206,350
+2025,Le Moyne,148,351
+2025,Stetson,300,352
+2025,NJIT,197,353
+2025,Maryland Eastern Shore,169,354
+2025,Cal State Fullerton,39,355
+2025,Western Carolina,366,356
+2025,Citadel,318,357
+2025,Canisius,43,358
+2025,New Hampshire,202,359
+2025,Coppin State,63,360
+2025,Chicago State,52,361
+2025,Alabama A&M,5,362
+2025,Arkansas Pine Bluff,14,363
+2025,Mississippi Valley State,186,364

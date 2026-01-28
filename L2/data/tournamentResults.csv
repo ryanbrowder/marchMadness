@@ -1,0 +1,1260 @@
+Team,Index,tournamentSeed,tournamentOutcome,Year
+Kansas,138,1.0,CHAMPS,2008
+Memphis,172,1.0,Finals,2008
+UCLA,331,1.0,Final Four,2008
+Duke,76,2.0,R32,2008
+Wisconsin,374,3.0,Sweet Sixteen,2008
+North Carolina,211,1.0,Final Four,2008
+Georgetown,103,2.0,R32,2008
+Texas,312,2.0,Elite Eight,2008
+Louisville,159,3.0,Elite Eight,2008
+Tennessee,308,2.0,Sweet Sixteen,2008
+Stanford,298,3.0,Sweet Sixteen,2008
+Marquette,166,6.0,R32,2008
+Clemson,55,5.0,R64,2008
+Xavier,379,3.0,Elite Eight,2008
+Washington St.,361,4.0,Sweet Sixteen,2008
+Texas A&M,313,9.0,R32,2008
+Michigan St.,180,5.0,Sweet Sixteen,2008
+West Virginia,365,7.0,Sweet Sixteen,2008
+Drake,74,5.0,R64,2008
+Kansas St.,139,11.0,R32,2008
+Indiana,129,8.0,R64,2008
+Arizona,11,10.0,R64,2008
+Notre Dame,226,5.0,R32,2008
+Pittsburgh,241,4.0,R32,2008
+Connecticut,62,4.0,R64,2008
+Gonzaga,108,7.0,R64,2008
+USC,339,6.0,R64,2008
+Davidson,67,10.0,Elite Eight,2008
+Purdue,248,6.0,R32,2008
+Butler,35,7.0,R32,2008
+Arkansas,13,9.0,R32,2008
+BYU,19,8.0,R64,2008
+Mississippi St.,185,8.0,R32,2008
+Oklahoma,230,6.0,R32,2008
+Saint Mary's,266,10.0,R64,2008
+Baylor,21,11.0,R64,2008
+Oregon,234,9.0,R64,2008
+Miami FL,177,7.0,R32,2008
+UNLV,338,8.0,R32,2008
+Saint Joseph's,264,11.0,R64,2008
+Saint Joseph's,264,11.0,R64,2008
+Saint Joseph's,264,11.0,R64,2008
+Saint Joseph's,264,11.0,R64,2008
+Vanderbilt,353,4.0,R64,2008
+Western Kentucky,368,12.0,Sweet Sixteen,2008
+Kent St.,141,9.0,R64,2008
+Villanova,355,12.0,Sweet Sixteen,2008
+South Alabama,279,10.0,R64,2008
+Temple,307,12.0,R64,2008
+Kentucky,142,11.0,R64,2008
+Oral Roberts,233,13.0,R64,2008
+George Mason,101,12.0,R64,2008
+Winthrop,373,13.0,R64,2008
+Georgia,104,14.0,R64,2008
+Cal St. Fullerton,39,14.0,R64,2008
+Siena,278,13.0,R32,2008
+San Diego,270,13.0,R32,2008
+Cornell,64,14.0,R64,2008
+Boise St.,26,14.0,R64,2008
+Portland St.,243,16.0,R64,2008
+UMBC,332,15.0,R64,2008
+Belmont,23,15.0,R64,2008
+American,9,15.0,R64,2008
+Austin Peay,18,15.0,R64,2008
+Mount St. Mary's,194,16.0,R64,2008
+UT Arlington,342,16.0,R64,2008
+UT Arlington,342,16.0,R64,2008
+UT Arlington,342,16.0,R64,2008
+Mississippi Valley St.,186,16.0,R64,2008
+Coppin St.,63,16.0,R68,2008
+Memphis,172,2.0,Sweet Sixteen,2009
+Pittsburgh,241,1.0,Elite Eight,2009
+Connecticut,62,1.0,Final Four,2009
+North Carolina,211,1.0,CHAMPS,2009
+Louisville,159,1.0,Elite Eight,2009
+Gonzaga,108,4.0,Sweet Sixteen,2009
+Duke,76,2.0,Sweet Sixteen,2009
+UCLA,331,6.0,R32,2009
+West Virginia,365,6.0,R64,2009
+Missouri,187,3.0,Elite Eight,2009
+Kansas,138,3.0,Sweet Sixteen,2009
+Arizona St.,12,6.0,R32,2009
+Oklahoma,230,2.0,Elite Eight,2009
+Purdue,248,5.0,Sweet Sixteen,2009
+Michigan St.,180,2.0,Finals,2009
+Washington,360,4.0,R32,2009
+Syracuse,303,3.0,Sweet Sixteen,2009
+Villanova,355,3.0,Final Four,2009
+BYU,19,8.0,R64,2009
+Marquette,166,6.0,R32,2009
+Wake Forest,359,4.0,R64,2009
+Clemson,55,7.0,R64,2009
+Illinois,125,5.0,R64,2009
+Texas,312,7.0,R32,2009
+Xavier,379,4.0,Sweet Sixteen,2009
+USC,339,10.0,R32,2009
+Utah,346,5.0,R64,2009
+Oklahoma St.,231,8.0,R32,2009
+California,41,7.0,R64,2009
+Wisconsin,374,12.0,R32,2009
+Tennessee,308,9.0,R64,2009
+Ohio St.,229,8.0,R64,2009
+Minnesota,183,10.0,R64,2009
+Arizona,11,12.0,Sweet Sixteen,2009
+Butler,35,9.0,R64,2009
+LSU,144,8.0,R32,2009
+Florida St.,96,5.0,R64,2009
+Michigan,179,10.0,R32,2009
+Texas A&M,313,9.0,R32,2009
+Utah St.,347,11.0,R64,2009
+Temple,307,11.0,R64,2009
+Maryland,168,10.0,R32,2009
+VCU,350,11.0,R64,2009
+Boston College,27,7.0,R64,2009
+Mississippi St.,185,13.0,R64,2009
+Siena,278,9.0,R32,2009
+Cleveland St.,56,13.0,R32,2009
+Dayton,68,11.0,R32,2009
+North Dakota St.,215,14.0,R64,2009
+North Dakota St.,215,14.0,R64,2009
+North Dakota St.,215,14.0,R64,2009
+North Dakota St.,215,14.0,R64,2009
+Northern Iowa,222,12.0,R64,2009
+Akron,3,13.0,R64,2009
+Stephen F. Austin,299,14.0,R64,2009
+Western Kentucky,368,12.0,R32,2009
+Cornell,64,14.0,R64,2009
+Cal St. Northridge,40,15.0,R64,2009
+Portland St.,243,13.0,R64,2009
+East Tennessee St.,79,16.0,R64,2009
+East Tennessee St.,79,16.0,R64,2009
+East Tennessee St.,79,16.0,R64,2009
+East Tennessee St.,79,16.0,R64,2009
+American,9,14.0,R64,2009
+Robert Morris,257,15.0,R64,2009
+Morgan St.,193,15.0,R64,2009
+Binghamton,25,15.0,R64,2009
+Radford,252,16.0,R64,2009
+Morehead St.,192,16.0,R64,2009
+Alabama St.,6,16.0,R68,2009
+Chattanooga,51,16.0,R64,2009
+Kansas,138,1.0,R32,2010
+Duke,76,1.0,CHAMPS,2010
+Syracuse,303,1.0,Sweet Sixteen,2010
+Wisconsin,374,4.0,R32,2010
+Kentucky,142,1.0,Elite Eight,2010
+Kansas St.,139,2.0,Elite Eight,2010
+West Virginia,365,2.0,Final Four,2010
+Ohio St.,229,2.0,Sweet Sixteen,2010
+Purdue,248,4.0,Sweet Sixteen,2010
+BYU,19,7.0,R32,2010
+Villanova,355,2.0,R32,2010
+Baylor,21,3.0,Elite Eight,2010
+Georgetown,103,3.0,R64,2010
+California,41,8.0,R32,2010
+Texas,312,8.0,R64,2010
+Maryland,168,4.0,R32,2010
+Missouri,187,10.0,R32,2010
+Clemson,55,7.0,R64,2010
+Temple,307,5.0,R64,2010
+Minnesota,183,11.0,R64,2010
+Marquette,166,6.0,R64,2010
+Utah St.,347,12.0,R64,2010
+Texas A&M,313,5.0,R32,2010
+Michigan St.,180,5.0,Final Four,2010
+Xavier,379,6.0,Sweet Sixteen,2010
+Florida St.,96,9.0,R64,2010
+Butler,35,5.0,Finals,2010
+Georgia Tech,107,10.0,R32,2010
+Oklahoma St.,231,7.0,R64,2010
+UTEP,344,12.0,R64,2010
+Northern Iowa,222,9.0,Sweet Sixteen,2010
+Washington,360,11.0,Sweet Sixteen,2010
+Pittsburgh,241,3.0,R32,2010
+Old Dominion,232,11.0,R32,2010
+Tennessee,308,6.0,Elite Eight,2010
+Vanderbilt,353,4.0,R64,2010
+Notre Dame,226,6.0,R64,2010
+UNLV,338,8.0,R64,2010
+New Mexico,204,3.0,R32,2010
+Saint Mary's,266,10.0,Sweet Sixteen,2010
+Gonzaga,108,8.0,R32,2010
+Louisville,159,9.0,R64,2010
+Wake Forest,359,9.0,R32,2010
+Richmond,255,7.0,R64,2010
+San Diego St.,271,11.0,R64,2010
+Florida,91,10.0,R64,2010
+Siena,278,13.0,R64,2010
+Cornell,64,12.0,Sweet Sixteen,2010
+Murray St.,195,13.0,R32,2010
+Wofford,376,13.0,R64,2010
+Houston,119,13.0,R64,2010
+Sam Houston St.,268,14.0,R64,2010
+Ohio,228,14.0,R32,2010
+Montana,190,14.0,R64,2010
+New Mexico St.,205,12.0,R64,2010
+Oakland,227,14.0,R64,2010
+UC Santa Barbara,329,15.0,R64,2010
+Vermont,354,16.0,R64,2010
+East Tennessee St.,79,16.0,R64,2010
+East Tennessee St.,79,16.0,R64,2010
+East Tennessee St.,79,16.0,R64,2010
+East Tennessee St.,79,16.0,R64,2010
+Morgan St.,193,15.0,R64,2010
+North Texas,217,15.0,R64,2010
+Lehigh,149,16.0,R64,2010
+Robert Morris,257,15.0,R64,2010
+Winthrop,373,16.0,R68,2010
+Arkansas Pine Bluff,14,16.0,R64,2010
+Ohio St.,229,1.0,Sweet Sixteen,2011
+Kansas,138,1.0,Elite Eight,2011
+Duke,76,1.0,Sweet Sixteen,2011
+Texas,312,4.0,R32,2011
+Pittsburgh,241,1.0,R32,2011
+Kentucky,142,4.0,Final Four,2011
+Wisconsin,374,4.0,Sweet Sixteen,2011
+Purdue,248,3.0,R32,2011
+Notre Dame,226,2.0,R32,2011
+San Diego St.,271,2.0,Sweet Sixteen,2011
+North Carolina,211,2.0,Elite Eight,2011
+Louisville,159,4.0,R64,2011
+Illinois,125,9.0,R32,2011
+BYU,19,3.0,Sweet Sixteen,2011
+Syracuse,303,3.0,R32,2011
+Washington,360,7.0,R32,2011
+West Virginia,365,5.0,R32,2011
+Connecticut,62,3.0,CHAMPS,2011
+Florida,91,2.0,Elite Eight,2011
+UNLV,338,8.0,R64,2011
+Arizona,11,5.0,Elite Eight,2011
+Utah St.,347,12.0,R64,2011
+Cincinnati,54,6.0,R32,2011
+Kansas St.,139,5.0,R32,2011
+Villanova,355,9.0,R64,2011
+Georgetown,103,6.0,R64,2011
+Clemson,55,12.0,R64,2011
+Belmont,23,13.0,R64,2011
+Vanderbilt,353,5.0,R64,2011
+Marquette,166,11.0,Sweet Sixteen,2011
+St. John's,296,6.0,R64,2011
+St. John's,296,6.0,R64,2011
+St. John's,296,6.0,R64,2011
+St. John's,296,6.0,R64,2011
+Gonzaga,108,11.0,R32,2011
+Missouri,187,11.0,R64,2011
+George Mason,101,8.0,R32,2011
+Temple,307,7.0,R32,2011
+Michigan,179,8.0,R32,2011
+Tennessee,308,9.0,R64,2011
+Florida St.,96,10.0,Sweet Sixteen,2011
+Michigan St.,180,10.0,R64,2011
+Butler,35,8.0,Finals,2011
+Xavier,379,6.0,R64,2011
+USC,339,11.0,R68,2011
+Georgia,104,10.0,R64,2011
+Penn St.,239,10.0,R64,2011
+UCLA,331,7.0,R32,2011
+Richmond,255,12.0,Sweet Sixteen,2011
+Texas A&M,313,7.0,R64,2011
+Old Dominion,232,9.0,R64,2011
+UAB,324,12.0,R68,2011
+Oakland,227,13.0,R64,2011
+Princeton,246,13.0,R64,2011
+VCU,350,11.0,Final Four,2011
+Wofford,376,14.0,R64,2011
+Bucknell,33,14.0,R64,2011
+Memphis,172,12.0,R64,2011
+Indiana St.,130,14.0,R64,2011
+Morehead St.,192,13.0,R32,2011
+Northern Colorado,220,15.0,R64,2011
+Northern Colorado,220,15.0,R64,2011
+Northern Colorado,220,15.0,R64,2011
+Northern Colorado,220,15.0,R64,2011
+LIU,143,15.0,R64,2011
+UC Santa Barbara,329,15.0,R64,2011
+Akron,3,15.0,R64,2011
+Saint Peter's,267,14.0,R64,2011
+UNC Asheville,335,16.0,R64,2011
+Boston University,28,16.0,R64,2011
+UTSA,345,16.0,R64,2011
+Hampton,112,16.0,R64,2011
+Little Rock,153,16.0,R68,2011
+Alabama St.,6,16.0,R68,2011
+Kentucky,142,1.0,CHAMPS,2012
+Ohio St.,229,2.0,Final Four,2012
+Kansas,138,2.0,Finals,2012
+North Carolina,211,1.0,Elite Eight,2012
+Michigan St.,180,1.0,Sweet Sixteen,2012
+Missouri,187,2.0,R64,2012
+Syracuse,303,1.0,Elite Eight,2012
+Wisconsin,374,4.0,Sweet Sixteen,2012
+Wichita St.,370,5.0,R64,2012
+Saint Louis,265,9.0,R32,2012
+Saint Louis,265,9.0,R32,2012
+Saint Louis,265,9.0,R32,2012
+Saint Louis,265,9.0,R32,2012
+Indiana,129,4.0,Sweet Sixteen,2012
+Georgetown,103,3.0,R32,2012
+Duke,76,2.0,R64,2012
+Florida,91,7.0,Elite Eight,2012
+Vanderbilt,353,5.0,R32,2012
+Memphis,172,8.0,R64,2012
+Baylor,21,3.0,Elite Eight,2012
+New Mexico,204,5.0,R32,2012
+Louisville,159,4.0,Final Four,2012
+Marquette,166,3.0,Sweet Sixteen,2012
+Florida St.,96,3.0,R32,2012
+Michigan,179,4.0,R64,2012
+California,41,12.0,R68,2012
+Alabama,4,9.0,R64,2012
+Virginia,356,10.0,R64,2012
+UNLV,338,6.0,R64,2012
+Kansas St.,139,8.0,R32,2012
+Cincinnati,54,6.0,Sweet Sixteen,2012
+Temple,307,5.0,R64,2012
+Purdue,248,10.0,R32,2012
+Gonzaga,108,7.0,R32,2012
+Connecticut,62,9.0,R64,2012
+Belmont,23,14.0,R64,2012
+Iowa St.,133,8.0,R32,2012
+Creighton,65,8.0,R32,2012
+West Virginia,365,10.0,R64,2012
+Harvard,114,12.0,R64,2012
+Texas,312,11.0,R64,2012
+N.C. State,196,11.0,Sweet Sixteen,2012
+Saint Mary's,266,7.0,R64,2012
+VCU,350,12.0,R32,2012
+Murray St.,195,6.0,R32,2012
+BYU,19,14.0,R64,2012
+Long Beach St.,154,12.0,R64,2012
+Long Beach St.,154,12.0,R64,2012
+Long Beach St.,154,12.0,R64,2012
+Xavier,379,10.0,Sweet Sixteen,2012
+St. Bonaventure,294,14.0,R64,2012
+Notre Dame,226,7.0,R64,2012
+Davidson,67,13.0,R64,2012
+Southern Miss,292,9.0,R64,2012
+Ohio,228,13.0,Sweet Sixteen,2012
+South Florida,284,12.0,R32,2012
+Iona,131,14.0,R68,2012
+San Diego St.,271,6.0,R64,2012
+South Dakota St.,283,14.0,R64,2012
+South Dakota St.,283,14.0,R64,2012
+South Dakota St.,283,14.0,R64,2012
+South Dakota St.,283,14.0,R64,2012
+Colorado,59,11.0,R32,2012
+New Mexico St.,205,13.0,R64,2012
+Colorado St.,60,11.0,R64,2012
+Lehigh,149,15.0,R32,2012
+Montana,190,13.0,R64,2012
+Lamar,147,16.0,R68,2012
+Detroit Mercy,73,15.0,R64,2012
+Loyola MD,161,15.0,R64,2012
+UNC Asheville,335,16.0,R64,2012
+Vermont,354,16.0,R64,2012
+LIU,143,16.0,R64,2012
+Norfolk St.,209,15.0,R32,2012
+Western Kentucky,368,16.0,R64,2012
+Mississippi Valley St.,186,16.0,R68,2012
+Florida,91,3.0,Elite Eight,2013
+Indiana,129,1.0,Sweet Sixteen,2013
+Louisville,159,1.0,CHAMPS,2013
+Gonzaga,108,1.0,R32,2013
+Kansas,138,1.0,Sweet Sixteen,2013
+Duke,76,2.0,Elite Eight,2013
+Wisconsin,374,5.0,R64,2013
+Ohio St.,229,2.0,Elite Eight,2013
+Michigan,179,4.0,Finals,2013
+Syracuse,303,4.0,Final Four,2013
+Georgetown,103,2.0,R64,2013
+Pittsburgh,241,8.0,R64,2013
+Michigan St.,180,3.0,Sweet Sixteen,2013
+VCU,350,5.0,R32,2013
+Creighton,65,7.0,R32,2013
+Miami FL,177,2.0,Sweet Sixteen,2013
+Minnesota,183,11.0,R32,2013
+Arizona,11,6.0,Sweet Sixteen,2013
+Oklahoma St.,231,5.0,R64,2013
+Saint Louis,265,4.0,R32,2013
+Saint Louis,265,4.0,R32,2013
+Saint Louis,265,4.0,R32,2013
+Saint Louis,265,4.0,R32,2013
+Marquette,166,3.0,Elite Eight,2013
+Kansas St.,139,4.0,R64,2013
+Cincinnati,54,10.0,R64,2013
+Saint Mary's,266,11.0,R64,2013
+San Diego St.,271,7.0,R32,2013
+Notre Dame,226,7.0,R64,2013
+Missouri,187,9.0,R64,2013
+UNLV,338,5.0,R64,2013
+North Carolina,211,8.0,R32,2013
+Colorado St.,60,8.0,R32,2013
+Memphis,172,6.0,R32,2013
+N.C. State,196,8.0,R64,2013
+Wichita St.,370,9.0,Final Four,2013
+New Mexico,204,3.0,R64,2013
+Iowa St.,133,10.0,R32,2013
+Illinois,125,7.0,R32,2013
+Butler,35,6.0,R32,2013
+UCLA,331,6.0,R64,2013
+Oregon,234,12.0,Sweet Sixteen,2013
+Middle Tennessee,181,11.0,R68,2013
+Middle Tennessee,181,11.0,R68,2013
+Middle Tennessee,181,11.0,R68,2013
+Middle Tennessee,181,11.0,R68,2013
+Colorado,59,10.0,R64,2013
+Villanova,355,9.0,R64,2013
+Oklahoma,230,10.0,R64,2013
+La Salle,145,13.0,Sweet Sixteen,2013
+Belmont,23,11.0,R64,2013
+Boise St.,26,13.0,R68,2013
+Mississippi,184,12.0,R32,2013
+Bucknell,33,11.0,R64,2013
+Temple,307,9.0,R32,2013
+California,41,12.0,R32,2013
+Akron,3,12.0,R64,2013
+Davidson,67,14.0,R64,2013
+Valparaiso,352,14.0,R64,2013
+Iona,131,15.0,R64,2013
+New Mexico St.,205,13.0,R64,2013
+Harvard,114,14.0,R32,2013
+South Dakota St.,283,13.0,R64,2013
+South Dakota St.,283,13.0,R64,2013
+South Dakota St.,283,13.0,R64,2013
+South Dakota St.,283,13.0,R64,2013
+Pacific,237,15.0,R64,2013
+Florida Gulf Coast,95,15.0,Sweet Sixteen,2013
+Northwestern St.,225,14.0,R64,2013
+Albany,7,15.0,R64,2013
+Montana,190,13.0,R64,2013
+Western Kentucky,368,16.0,R64,2013
+Southern,288,16.0,R64,2013
+James Madison,137,16.0,R64,2013
+LIU,143,16.0,R68,2013
+North Carolina A&T,212,16.0,R64,2013
+Liberty,150,16.0,R68,2013
+Louisville,159,4.0,Sweet Sixteen,2014
+Arizona,11,1.0,Elite Eight,2014
+Florida,91,1.0,Final Four,2014
+Duke,76,3.0,R64,2014
+Virginia,356,1.0,Sweet Sixteen,2014
+Wisconsin,374,2.0,Final Four,2014
+Creighton,65,3.0,R32,2014
+Kansas,138,2.0,R32,2014
+Villanova,355,2.0,R32,2014
+Michigan,179,2.0,Elite Eight,2014
+Tennessee,308,11.0,Sweet Sixteen,2014
+Pittsburgh,241,9.0,R32,2014
+Michigan St.,180,4.0,Elite Eight,2014
+Ohio St.,229,6.0,R64,2014
+Wichita St.,370,1.0,R32,2014
+Iowa,132,11.0,R68,2014
+Syracuse,303,3.0,R32,2014
+Oklahoma St.,231,9.0,R64,2014
+UCLA,331,4.0,Sweet Sixteen,2014
+Gonzaga,108,8.0,R32,2014
+Kentucky,142,8.0,Finals,2014
+Iowa St.,133,3.0,Sweet Sixteen,2014
+VCU,350,5.0,R64,2014
+Connecticut,62,7.0,CHAMPS,2014
+San Diego St.,271,4.0,Sweet Sixteen,2014
+Cincinnati,54,5.0,R64,2014
+North Carolina,211,6.0,R32,2014
+Oklahoma,230,5.0,R64,2014
+New Mexico,204,7.0,R64,2014
+Harvard,114,12.0,R32,2014
+Saint Louis,265,5.0,R32,2014
+Saint Louis,265,5.0,R32,2014
+Saint Louis,265,5.0,R32,2014
+Saint Louis,265,5.0,R32,2014
+Baylor,21,6.0,Sweet Sixteen,2014
+Memphis,172,8.0,R32,2014
+Oregon,234,7.0,R32,2014
+Texas,312,7.0,R32,2014
+Kansas St.,139,9.0,R64,2014
+Saint Joseph's,264,10.0,R64,2014
+Saint Joseph's,264,10.0,R64,2014
+Saint Joseph's,264,10.0,R64,2014
+Saint Joseph's,264,10.0,R64,2014
+Stanford,298,10.0,Sweet Sixteen,2014
+Arizona St.,12,10.0,R64,2014
+George Washington,102,9.0,R64,2014
+George Washington,102,9.0,R64,2014
+George Washington,102,9.0,R64,2014
+George Washington,102,9.0,R64,2014
+Massachusetts,170,6.0,R64,2014
+BYU,19,10.0,R64,2014
+Providence,247,11.0,R64,2014
+Xavier,379,12.0,R68,2014
+Nebraska,199,11.0,R64,2014
+Colorado,59,8.0,R64,2014
+Dayton,68,11.0,Elite Eight,2014
+N.C. State,196,12.0,R64,2014
+Stephen F. Austin,299,12.0,R32,2014
+New Mexico St.,205,13.0,R64,2014
+North Dakota St.,215,12.0,R32,2014
+North Dakota St.,215,12.0,R32,2014
+North Dakota St.,215,12.0,R32,2014
+North Dakota St.,215,12.0,R32,2014
+Manhattan,164,13.0,R64,2014
+Tulsa,323,13.0,R64,2014
+Mercer,173,14.0,R32,2014
+North Carolina Central,213,14.0,R64,2014
+Louisiana,156,14.0,R64,2014
+American,9,15.0,R64,2014
+Delaware,70,13.0,R64,2014
+Eastern Kentucky,82,15.0,R64,2014
+Western Michigan,369,14.0,R64,2014
+Milwaukee,182,15.0,R64,2014
+Cal Poly,37,16.0,R64,2014
+Weber St.,363,16.0,R64,2014
+Albany,7,16.0,R64,2014
+Wofford,376,15.0,R64,2014
+Mount St. Mary's,194,16.0,R68,2014
+Coastal Carolina,57,16.0,R64,2014
+Texas Southern,315,16.0,R68,2014
+Kentucky,142,1.0,Final Four,2015
+Wisconsin,374,1.0,Finals,2015
+Virginia,356,2.0,R32,2015
+Duke,76,1.0,CHAMPS,2015
+Arizona,11,2.0,Elite Eight,2015
+Villanova,355,1.0,R32,2015
+Gonzaga,108,2.0,Elite Eight,2015
+Utah,346,5.0,Sweet Sixteen,2015
+North Carolina,211,4.0,Sweet Sixteen,2015
+Oklahoma,230,3.0,Sweet Sixteen,2015
+Baylor,21,3.0,R64,2015
+Notre Dame,226,3.0,Elite Eight,2015
+Louisville,159,4.0,Elite Eight,2015
+Kansas,138,2.0,R32,2015
+Wichita St.,370,7.0,Sweet Sixteen,2015
+Michigan St.,180,7.0,Final Four,2015
+Northern Iowa,222,5.0,R32,2015
+Ohio St.,229,10.0,R32,2015
+Iowa St.,133,3.0,R64,2015
+Iowa,132,7.0,R32,2015
+Texas,312,11.0,R64,2015
+Butler,35,6.0,R32,2015
+Georgetown,103,4.0,R32,2015
+Xavier,379,6.0,Sweet Sixteen,2015
+West Virginia,365,5.0,Sweet Sixteen,2015
+Providence,247,6.0,R64,2015
+San Diego St.,271,8.0,R32,2015
+BYU,19,11.0,R68,2015
+SMU,260,6.0,R64,2015
+Maryland,168,4.0,R32,2015
+Arkansas,13,5.0,R32,2015
+St. John's,296,9.0,R64,2015
+St. John's,296,9.0,R64,2015
+St. John's,296,9.0,R64,2015
+St. John's,296,9.0,R64,2015
+Davidson,67,10.0,R64,2015
+Purdue,248,9.0,R64,2015
+N.C. State,196,8.0,Sweet Sixteen,2015
+VCU,350,7.0,R64,2015
+Georgia,104,10.0,R64,2015
+Oklahoma St.,231,9.0,R64,2015
+Cincinnati,54,8.0,R32,2015
+Indiana,129,10.0,R64,2015
+LSU,144,9.0,R64,2015
+Mississippi,184,11.0,R64,2015
+UCLA,331,11.0,Sweet Sixteen,2015
+Oregon,234,8.0,R32,2015
+Boise St.,26,11.0,R68,2015
+Stephen F. Austin,299,12.0,R64,2015
+Dayton,68,11.0,R32,2015
+Buffalo,34,12.0,R64,2015
+Valparaiso,352,13.0,R64,2015
+Georgia St.,106,14.0,R32,2015
+Georgia St.,106,14.0,R32,2015
+Georgia St.,106,14.0,R32,2015
+UC Irvine,326,13.0,R64,2015
+Harvard,114,13.0,R64,2015
+New Mexico St.,205,15.0,R64,2015
+Northeastern,218,14.0,R64,2015
+Wofford,376,12.0,R64,2015
+Wyoming,378,12.0,R64,2015
+Eastern Washington,84,13.0,R64,2015
+Albany,7,14.0,R64,2015
+UAB,324,14.0,R32,2015
+Coastal Carolina,57,16.0,R64,2015
+Manhattan,164,16.0,R68,2015
+Belmont,23,15.0,R64,2015
+North Florida,216,16.0,R68,2015
+North Dakota St.,215,15.0,R64,2015
+North Dakota St.,215,15.0,R64,2015
+North Dakota St.,215,15.0,R64,2015
+North Dakota St.,215,15.0,R64,2015
+Lafayette,146,16.0,R64,2015
+Robert Morris,257,16.0,R64,2015
+Texas Southern,315,15.0,R64,2015
+Hampton,112,16.0,R64,2015
+Kansas,138,1.0,Elite Eight,2016
+Villanova,355,2.0,CHAMPS,2016
+Virginia,356,1.0,Elite Eight,2016
+West Virginia,365,3.0,R64,2016
+Michigan St.,180,2.0,R64,2016
+Kentucky,142,4.0,R32,2016
+North Carolina,211,1.0,Finals,2016
+Oklahoma,230,2.0,Final Four,2016
+Purdue,248,5.0,R64,2016
+Miami FL,177,3.0,Sweet Sixteen,2016
+Xavier,379,2.0,R32,2016
+Vanderbilt,353,11.0,R68,2016
+Wichita St.,370,11.0,R32,2016
+Duke,76,4.0,Sweet Sixteen,2016
+Texas A&M,313,3.0,Sweet Sixteen,2016
+Indiana,129,5.0,Sweet Sixteen,2016
+Iowa,132,7.0,R32,2016
+Iowa St.,133,4.0,Sweet Sixteen,2016
+Arizona,11,6.0,R64,2016
+Oregon,234,1.0,Elite Eight,2016
+Gonzaga,108,11.0,Sweet Sixteen,2016
+California,41,4.0,R64,2016
+Seton Hall,277,6.0,R64,2016
+VCU,350,10.0,R32,2016
+Maryland,168,5.0,Sweet Sixteen,2016
+Butler,35,9.0,R32,2016
+Baylor,21,5.0,R64,2016
+Utah,346,3.0,R32,2016
+Cincinnati,54,9.0,R64,2016
+Connecticut,62,9.0,R32,2016
+Pittsburgh,241,10.0,R64,2016
+Syracuse,303,10.0,Final Four,2016
+Texas,312,6.0,R64,2016
+USC,339,8.0,R64,2016
+Saint Joseph's,264,8.0,R32,2016
+Saint Joseph's,264,8.0,R32,2016
+Saint Joseph's,264,8.0,R32,2016
+Saint Joseph's,264,8.0,R32,2016
+Dayton,68,7.0,R64,2016
+Wisconsin,374,7.0,Sweet Sixteen,2016
+Michigan,179,11.0,R64,2016
+Providence,247,9.0,R32,2016
+Notre Dame,226,6.0,Elite Eight,2016
+Texas Tech,317,8.0,R64,2016
+Yale,380,12.0,R32,2016
+Colorado,59,8.0,R64,2016
+Hawaii,115,13.0,R32,2016
+Oregon St.,235,7.0,R64,2016
+Northern Iowa,222,11.0,R32,2016
+Little Rock,153,12.0,R32,2016
+Stephen F. Austin,299,14.0,R32,2016
+Tulsa,323,11.0,R68,2016
+South Dakota St.,283,12.0,R64,2016
+South Dakota St.,283,12.0,R64,2016
+South Dakota St.,283,12.0,R64,2016
+South Dakota St.,283,12.0,R64,2016
+Temple,307,10.0,R64,2016
+Cal St. Bakersfield,38,15.0,R64,2016
+UNC Wilmington,337,13.0,R64,2016
+Stony Brook,302,13.0,R64,2016
+Iona,131,13.0,R64,2016
+Chattanooga,51,12.0,R64,2016
+Fresno St.,98,14.0,R64,2016
+Middle Tennessee,181,15.0,R32,2016
+Middle Tennessee,181,15.0,R32,2016
+Middle Tennessee,181,15.0,R32,2016
+Middle Tennessee,181,15.0,R32,2016
+Weber St.,363,15.0,R64,2016
+Green Bay,111,14.0,R64,2016
+Buffalo,34,14.0,R64,2016
+UNC Asheville,335,15.0,R64,2016
+Florida Gulf Coast,95,16.0,R64,2016
+Southern,288,16.0,R68,2016
+Austin Peay,18,16.0,R64,2016
+Hampton,112,16.0,R64,2016
+Fairleigh Dickinson,90,16.0,R68,2016
+Holy Cross,118,16.0,R64,2016
+Gonzaga,108,1.0,Finals,2017
+Villanova,355,1.0,R32,2017
+Virginia,356,5.0,R32,2017
+North Carolina,211,1.0,CHAMPS,2017
+Kentucky,142,2.0,Elite Eight,2017
+Florida,91,4.0,Elite Eight,2017
+Louisville,159,2.0,R32,2017
+West Virginia,365,4.0,Sweet Sixteen,2017
+Duke,76,2.0,R32,2017
+Kansas,138,1.0,Elite Eight,2017
+Wichita St.,370,10.0,R32,2017
+SMU,260,6.0,R64,2017
+Purdue,248,4.0,Sweet Sixteen,2017
+Saint Mary's,266,7.0,R32,2017
+Cincinnati,54,6.0,R32,2017
+Baylor,21,3.0,Sweet Sixteen,2017
+Wisconsin,374,8.0,Sweet Sixteen,2017
+Notre Dame,226,5.0,R32,2017
+Oregon,234,3.0,Final Four,2017
+Michigan,179,7.0,Sweet Sixteen,2017
+Iowa St.,133,5.0,R32,2017
+Oklahoma St.,231,10.0,R64,2017
+Arizona,11,2.0,Sweet Sixteen,2017
+Florida St.,96,3.0,R32,2017
+UCLA,331,3.0,Sweet Sixteen,2017
+Creighton,65,6.0,R64,2017
+Butler,35,4.0,Sweet Sixteen,2017
+Miami FL,177,8.0,R64,2017
+Kansas St.,139,11.0,R64,2017
+Marquette,166,10.0,R64,2017
+Wake Forest,359,11.0,R68,2017
+South Carolina,280,7.0,Final Four,2017
+Vanderbilt,353,9.0,R64,2017
+Minnesota,183,5.0,R64,2017
+Xavier,379,11.0,Elite Eight,2017
+Northwestern,224,8.0,R32,2017
+Maryland,168,6.0,R64,2017
+Michigan St.,180,9.0,R32,2017
+Rhode Island,253,11.0,R32,2017
+Virginia Tech,357,9.0,R64,2017
+Middle Tennessee,181,12.0,R32,2017
+Middle Tennessee,181,12.0,R32,2017
+Middle Tennessee,181,12.0,R32,2017
+Middle Tennessee,181,12.0,R32,2017
+Dayton,68,7.0,R64,2017
+Arkansas,13,8.0,R32,2017
+Providence,247,11.0,R68,2017
+Seton Hall,277,9.0,R64,2017
+VCU,350,10.0,R64,2017
+Nevada,201,12.0,R64,2017
+UNC Wilmington,337,12.0,R64,2017
+Princeton,246,12.0,R64,2017
+USC,339,11.0,R32,2017
+Vermont,354,13.0,R64,2017
+East Tennessee St.,79,13.0,R64,2017
+East Tennessee St.,79,13.0,R64,2017
+East Tennessee St.,79,13.0,R64,2017
+East Tennessee St.,79,13.0,R64,2017
+Bucknell,33,13.0,R64,2017
+New Mexico St.,205,14.0,R64,2017
+Florida Gulf Coast,95,14.0,R64,2017
+Winthrop,373,13.0,R64,2017
+Iona,131,14.0,R64,2017
+Troy,321,15.0,R64,2017
+Kent St.,141,14.0,R64,2017
+Northern Kentucky,223,15.0,R64,2017
+North Carolina Central,213,16.0,R68,2017
+North Dakota,214,15.0,R64,2017
+Jacksonville St.,136,15.0,R64,2017
+New Orleans,206,16.0,R68,2017
+South Dakota St.,283,16.0,R64,2017
+South Dakota St.,283,16.0,R64,2017
+South Dakota St.,283,16.0,R64,2017
+South Dakota St.,283,16.0,R64,2017
+UC Davis,325,16.0,R64,2017
+Mount St. Mary's,194,16.0,R64,2017
+Texas Southern,315,16.0,R64,2017
+Virginia,356,1.0,R64,2018
+Villanova,355,1.0,CHAMPS,2018
+Duke,76,2.0,Elite Eight,2018
+Purdue,248,2.0,Sweet Sixteen,2018
+Cincinnati,54,2.0,R32,2018
+Michigan St.,180,3.0,R32,2018
+Kansas,138,1.0,Final Four,2018
+North Carolina,211,2.0,R32,2018
+West Virginia,365,5.0,Sweet Sixteen,2018
+Xavier,379,1.0,R32,2018
+Tennessee,308,3.0,R32,2018
+Gonzaga,108,4.0,Sweet Sixteen,2018
+Ohio St.,229,5.0,R32,2018
+Texas Tech,317,3.0,Elite Eight,2018
+Michigan,179,3.0,Finals,2018
+Florida,91,6.0,R32,2018
+Creighton,65,8.0,R64,2018
+Butler,35,10.0,R32,2018
+Auburn,17,4.0,R32,2018
+Houston,119,6.0,R32,2018
+Kentucky,142,5.0,Sweet Sixteen,2018
+Seton Hall,277,8.0,R32,2018
+Clemson,55,5.0,Sweet Sixteen,2018
+TCU,304,6.0,R64,2018
+Wichita St.,370,4.0,R64,2018
+Texas A&M,313,7.0,Sweet Sixteen,2018
+Miami FL,177,6.0,R64,2018
+Missouri,187,8.0,R64,2018
+Arizona,11,4.0,R64,2018
+Kansas St.,139,9.0,Elite Eight,2018
+Texas,312,10.0,R64,2018
+Oklahoma,230,10.0,R64,2018
+Arkansas,13,7.0,R64,2018
+Florida St.,96,9.0,Elite Eight,2018
+Nevada,201,7.0,Sweet Sixteen,2018
+Virginia Tech,357,8.0,R64,2018
+San Diego St.,271,11.0,R64,2018
+Arizona St.,12,11.0,R68,2018
+Rhode Island,253,7.0,R32,2018
+Syracuse,303,11.0,Sweet Sixteen,2018
+Davidson,67,12.0,R64,2018
+N.C. State,196,9.0,R64,2018
+New Mexico St.,205,12.0,R64,2018
+Alabama,4,9.0,R32,2018
+Providence,247,10.0,R64,2018
+Loyola Chicago,160,11.0,Final Four,2018
+UCLA,331,11.0,R68,2018
+South Dakota St.,283,12.0,R64,2018
+South Dakota St.,283,12.0,R64,2018
+South Dakota St.,283,12.0,R64,2018
+South Dakota St.,283,12.0,R64,2018
+Buffalo,34,13.0,R32,2018
+St. Bonaventure,294,11.0,R64,2018
+Murray St.,195,12.0,R64,2018
+Montana,190,14.0,R64,2018
+UNC Greensboro,336,13.0,R64,2018
+Georgia St.,106,15.0,R64,2018
+Georgia St.,106,15.0,R64,2018
+Georgia St.,106,15.0,R64,2018
+Stephen F. Austin,299,14.0,R64,2018
+Penn,238,16.0,R64,2018
+Bucknell,33,14.0,R64,2018
+Marshall,167,13.0,R32,2018
+Wright St.,377,14.0,R64,2018
+Charleston,48,13.0,R64,2018
+Iona,131,15.0,R64,2018
+Lipscomb,152,15.0,R64,2018
+Cal St. Fullerton,39,15.0,R64,2018
+Radford,252,16.0,R64,2018
+UMBC,332,16.0,R32,2018
+Texas Southern,315,16.0,R64,2018
+LIU,143,16.0,R68,2018
+North Carolina Central,213,16.0,R68,2018
+Virginia,356,1.0,CHAMPS,2019
+Gonzaga,108,1.0,Elite Eight,2019
+Duke,76,1.0,Elite Eight,2019
+Michigan,179,2.0,Sweet Sixteen,2019
+North Carolina,211,1.0,Sweet Sixteen,2019
+Michigan St.,180,2.0,Final Four,2019
+Tennessee,308,2.0,Sweet Sixteen,2019
+Texas Tech,317,3.0,Finals,2019
+Kentucky,142,2.0,Elite Eight,2019
+Purdue,248,3.0,Elite Eight,2019
+Houston,119,3.0,Sweet Sixteen,2019
+Virginia Tech,357,4.0,Sweet Sixteen,2019
+Auburn,17,5.0,Final Four,2019
+Iowa St.,133,6.0,R64,2019
+Wisconsin,374,5.0,R64,2019
+Kansas,138,4.0,R32,2019
+LSU,144,3.0,Sweet Sixteen,2019
+Louisville,159,7.0,R64,2019
+Kansas St.,139,4.0,R64,2019
+Florida St.,96,4.0,Sweet Sixteen,2019
+Mississippi St.,185,5.0,R64,2019
+Florida,91,10.0,R32,2019
+Maryland,168,6.0,R32,2019
+VCU,350,8.0,R64,2019
+Buffalo,34,6.0,R32,2019
+Cincinnati,54,7.0,R64,2019
+UCF,330,9.0,R32,2019
+Wofford,376,7.0,R32,2019
+Nevada,201,7.0,R64,2019
+Oklahoma,230,9.0,R32,2019
+Saint Mary's,266,11.0,R64,2019
+Marquette,166,5.0,R64,2019
+Mississippi,184,8.0,R64,2019
+Syracuse,303,8.0,R64,2019
+Villanova,355,6.0,R32,2019
+Utah St.,347,8.0,R64,2019
+Iowa,132,10.0,R32,2019
+Ohio St.,229,11.0,R32,2019
+Oregon,234,12.0,Sweet Sixteen,2019
+Baylor,21,9.0,R32,2019
+Washington,360,9.0,R32,2019
+Minnesota,183,10.0,R32,2019
+New Mexico St.,205,12.0,R64,2019
+Murray St.,195,12.0,R32,2019
+Temple,307,11.0,R68,2019
+Belmont,23,11.0,R64,2019
+Arizona St.,12,11.0,R64,2019
+Seton Hall,277,10.0,R64,2019
+St. John's,296,11.0,R68,2019
+St. John's,296,11.0,R68,2019
+St. John's,296,11.0,R68,2019
+St. John's,296,11.0,R68,2019
+Vermont,354,13.0,R64,2019
+Liberty,150,12.0,R32,2019
+UC Irvine,326,13.0,R32,2019
+Yale,380,14.0,R64,2019
+Northeastern,218,13.0,R64,2019
+Northern Kentucky,223,14.0,R64,2019
+Saint Louis,265,13.0,R64,2019
+Saint Louis,265,13.0,R64,2019
+Saint Louis,265,13.0,R64,2019
+Saint Louis,265,13.0,R64,2019
+Georgia St.,106,14.0,R64,2019
+Georgia St.,106,14.0,R64,2019
+Georgia St.,106,14.0,R64,2019
+Old Dominion,232,14.0,R64,2019
+Montana,190,15.0,R64,2019
+Colgate,58,15.0,R64,2019
+Abilene Christian,1,15.0,R64,2019
+Bradley,30,15.0,R64,2019
+Gardner Webb,100,16.0,R64,2019
+Gardner Webb,100,16.0,R64,2019
+Gardner Webb,100,16.0,R64,2019
+North Dakota St.,215,16.0,R64,2019
+North Dakota St.,215,16.0,R64,2019
+North Dakota St.,215,16.0,R64,2019
+North Dakota St.,215,16.0,R64,2019
+Prairie View A&M,244,16.0,R68,2019
+Iona,131,16.0,R64,2019
+Fairleigh Dickinson,90,16.0,R64,2019
+North Carolina Central,213,16.0,R68,2019
+Gonzaga,108,1.0,Finals,2021
+Houston,119,2.0,Final Four,2021
+Baylor,21,1.0,CHAMPS,2021
+Michigan,179,1.0,Elite Eight,2021
+Illinois,125,1.0,R32,2021
+Iowa,132,2.0,R32,2021
+Colorado,59,5.0,R32,2021
+USC,339,6.0,Elite Eight,2021
+Ohio St.,229,2.0,R64,2021
+Florida St.,96,4.0,Sweet Sixteen,2021
+Alabama,4,2.0,Sweet Sixteen,2021
+San Diego St.,271,6.0,R64,2021
+Loyola Chicago,160,8.0,Sweet Sixteen,2021
+Connecticut,62,7.0,R64,2021
+Wisconsin,374,9.0,R32,2021
+Tennessee,308,5.0,R64,2021
+Texas,312,3.0,R64,2021
+Virginia,356,4.0,R64,2021
+Texas Tech,317,6.0,R32,2021
+Villanova,355,5.0,Sweet Sixteen,2021
+Creighton,65,5.0,Sweet Sixteen,2021
+West Virginia,365,3.0,R32,2021
+Arkansas,13,3.0,Elite Eight,2021
+Kansas,138,3.0,R32,2021
+BYU,19,6.0,R64,2021
+Purdue,248,4.0,R64,2021
+St. Bonaventure,294,9.0,R64,2021
+LSU,144,8.0,R32,2021
+UCLA,331,11.0,Final Four,2021
+Oregon,234,7.0,Sweet Sixteen,2021
+Florida,91,7.0,R32,2021
+Oklahoma St.,231,4.0,R32,2021
+Georgia Tech,107,9.0,R64,2021
+North Carolina,211,8.0,R64,2021
+Missouri,187,9.0,R64,2021
+Oklahoma,230,8.0,R32,2021
+Utah St.,347,11.0,R64,2021
+VCU,350,10.0,R64,2021
+Maryland,168,10.0,R32,2021
+Clemson,55,7.0,R64,2021
+Rutgers,258,10.0,R32,2021
+Syracuse,303,11.0,Sweet Sixteen,2021
+Virginia Tech,357,10.0,R64,2021
+Colgate,58,14.0,R64,2021
+Georgetown,103,12.0,R64,2021
+UC Santa Barbara,329,12.0,R64,2021
+Michigan St.,180,11.0,R68,2021
+Drake,74,11.0,R64,2021
+Wichita St.,370,11.0,R68,2021
+Oregon St.,235,12.0,Elite Eight,2021
+Ohio,228,13.0,R32,2021
+North Texas,217,13.0,R32,2021
+Winthrop,373,12.0,R64,2021
+Abilene Christian,1,14.0,R32,2021
+Grand Canyon,110,15.0,R64,2021
+Eastern Washington,84,14.0,R64,2021
+Liberty,150,13.0,R64,2021
+UNC Greensboro,336,13.0,R64,2021
+Drexel,75,16.0,R64,2021
+Morehead St.,192,14.0,R64,2021
+Iona,131,15.0,R64,2021
+Oral Roberts,233,15.0,Sweet Sixteen,2021
+Cleveland St.,56,15.0,R64,2021
+Hartford,113,16.0,R64,2021
+Norfolk St.,209,16.0,R64,2021
+Mount St. Mary's,194,16.0,R68,2021
+Texas Southern,315,16.0,R64,2021
+Appalachian St.,10,16.0,R68,2021
+Gonzaga,108,1.0,Sweet Sixteen,2022
+Houston,119,5.0,Elite Eight,2022
+Baylor,21,1.0,R32,2022
+Kansas,138,1.0,CHAMPS,2022
+Arizona,11,1.0,Sweet Sixteen,2022
+Duke,76,2.0,Final Four,2022
+Texas Tech,317,3.0,Sweet Sixteen,2022
+Kentucky,142,2.0,R64,2022
+Purdue,248,3.0,Sweet Sixteen,2022
+Villanova,355,2.0,Final Four,2022
+Tennessee,308,3.0,R32,2022
+Auburn,17,2.0,R32,2022
+UCLA,331,4.0,Sweet Sixteen,2022
+Iowa,132,5.0,R64,2022
+Texas,312,6.0,R32,2022
+Illinois,125,4.0,R32,2022
+Virginia Tech,357,11.0,R64,2022
+LSU,144,6.0,R64,2022
+Saint Mary's,266,5.0,R32,2022
+Indiana,129,12.0,R64,2022
+Memphis,172,9.0,R32,2022
+Arkansas,13,4.0,Elite Eight,2022
+Connecticut,62,5.0,R64,2022
+San Francisco,272,10.0,R64,2022
+Alabama,4,6.0,R64,2022
+Michigan,179,11.0,Sweet Sixteen,2022
+North Carolina,211,8.0,Finals,2022
+Wisconsin,374,3.0,R32,2022
+San Diego St.,271,8.0,R64,2022
+Ohio St.,229,7.0,R32,2022
+Boise St.,26,8.0,R64,2022
+Iowa St.,133,11.0,Sweet Sixteen,2022
+Michigan St.,180,7.0,R32,2022
+Loyola Chicago,160,10.0,R64,2022
+TCU,304,9.0,R32,2022
+Murray St.,195,7.0,R32,2022
+Notre Dame,226,11.0,R32,2022
+Providence,247,4.0,Sweet Sixteen,2022
+Seton Hall,277,8.0,R64,2022
+Davidson,67,10.0,R64,2022
+Colorado St.,60,6.0,R64,2022
+USC,339,7.0,R64,2022
+Miami FL,177,10.0,Elite Eight,2022
+UAB,324,12.0,R64,2022
+Marquette,166,9.0,R64,2022
+Creighton,65,9.0,R32,2022
+Wyoming,378,12.0,R68,2022
+Vermont,354,13.0,R64,2022
+South Dakota St.,283,13.0,R64,2022
+South Dakota St.,283,13.0,R64,2022
+South Dakota St.,283,13.0,R64,2022
+South Dakota St.,283,13.0,R64,2022
+Chattanooga,51,13.0,R64,2022
+Rutgers,258,11.0,R68,2022
+New Mexico St.,205,12.0,R32,2022
+Richmond,255,12.0,R32,2022
+Saint Peter's,267,15.0,Elite Eight,2022
+Delaware,70,15.0,R64,2022
+Colgate,58,14.0,R64,2022
+Jacksonville St.,136,15.0,R64,2022
+Montana St.,191,14.0,R64,2022
+Akron,3,13.0,R64,2022
+Georgia St.,106,16.0,R64,2022
+Georgia St.,106,16.0,R64,2022
+Georgia St.,106,16.0,R64,2022
+Longwood,155,14.0,R64,2022
+Yale,380,14.0,R64,2022
+Cal St. Fullerton,39,15.0,R64,2022
+Bryant,32,16.0,R68,2022
+Texas Southern,315,16.0,R64,2022
+Norfolk St.,209,16.0,R64,2022
+Wright St.,377,16.0,R64,2022
+Texas A&M Corpus Chris,314,16.0,R68,2022
+Houston,119,1.0,Sweet Sixteen,2023
+Alabama,4,1.0,Sweet Sixteen,2023
+UCLA,331,2.0,Sweet Sixteen,2023
+Tennessee,308,4.0,Sweet Sixteen,2023
+Connecticut,62,4.0,CHAMPS,2023
+Purdue,248,1.0,R64,2023
+Arizona,11,2.0,R64,2023
+Saint Mary's,266,5.0,R32,2023
+Texas,312,2.0,Elite Eight,2023
+Gonzaga,108,3.0,Elite Eight,2023
+Marquette,166,2.0,R32,2023
+San Diego St.,271,5.0,Finals,2023
+Kansas,138,1.0,R32,2023
+Creighton,65,6.0,Elite Eight,2023
+Baylor,21,3.0,R32,2023
+Xavier,379,3.0,Sweet Sixteen,2023
+West Virginia,365,9.0,R64,2023
+Arkansas,13,8.0,Sweet Sixteen,2023
+Iowa St.,133,6.0,R64,2023
+Duke,76,5.0,R32,2023
+Texas A&M,313,7.0,R64,2023
+Memphis,172,8.0,R64,2023
+Auburn,17,9.0,R32,2023
+Kansas St.,139,3.0,Elite Eight,2023
+Florida Atlantic,93,9.0,Final Four,2023
+Florida Atlantic,93,9.0,Final Four,2023
+Florida Atlantic,93,9.0,Final Four,2023
+Florida Atlantic,93,9.0,Final Four,2023
+TCU,304,6.0,R32,2023
+Virginia,356,4.0,R64,2023
+Utah St.,347,10.0,R64,2023
+Michigan St.,180,7.0,Sweet Sixteen,2023
+Maryland,168,8.0,R32,2023
+Indiana,129,4.0,R32,2023
+Kentucky,142,6.0,R32,2023
+Boise St.,26,10.0,R64,2023
+Northwestern,224,7.0,R32,2023
+Iowa,132,8.0,R64,2023
+Miami FL,177,5.0,Final Four,2023
+Penn St.,239,10.0,R32,2023
+N.C. State,196,11.0,R64,2023
+Illinois,125,9.0,R64,2023
+USC,339,10.0,R64,2023
+Providence,247,11.0,R64,2023
+Missouri,187,7.0,R32,2023
+Mississippi St.,185,11.0,R68,2023
+Arizona St.,12,11.0,R64,2023
+Nevada,201,11.0,R68,2023
+Drake,74,12.0,R64,2023
+Iona,131,13.0,R64,2023
+Charleston,48,12.0,R64,2023
+VCU,350,12.0,R64,2023
+Kent St.,141,13.0,R64,2023
+Pittsburgh,241,11.0,R32,2023
+Oral Roberts,233,12.0,R64,2023
+Louisiana,156,13.0,R64,2023
+Furman,99,13.0,R32,2023
+Montana St.,191,14.0,R64,2023
+Vermont,354,15.0,R64,2023
+Colgate,58,15.0,R64,2023
+Princeton,246,15.0,Sweet Sixteen,2023
+Grand Canyon,110,14.0,R64,2023
+Kennesaw St.,140,14.0,R64,2023
+UC Santa Barbara,329,14.0,R64,2023
+Northern Kentucky,223,16.0,R64,2023
+UNC Asheville,335,15.0,R64,2023
+Texas A&M Corpus Chris,314,16.0,R64,2023
+Howard,121,16.0,R64,2023
+Southeast Missouri St.,286,16.0,R68,2023
+Texas Southern,315,16.0,R68,2023
+Fairleigh Dickinson,90,16.0,R32,2023
+Houston,119,1.0,Sweet Sixteen,2024
+Connecticut,62,1.0,CHAMPS,2024
+Purdue,248,1.0,Finals,2024
+Arizona,11,2.0,Sweet Sixteen,2024
+Auburn,17,4.0,R64,2024
+Iowa St.,133,2.0,Sweet Sixteen,2024
+Tennessee,308,2.0,Elite Eight,2024
+North Carolina,211,1.0,Sweet Sixteen,2024
+Marquette,166,2.0,Sweet Sixteen,2024
+Creighton,65,3.0,Sweet Sixteen,2024
+Duke,76,4.0,Elite Eight,2024
+Alabama,4,4.0,Final Four,2024
+Illinois,125,3.0,Elite Eight,2024
+Saint Mary's,266,5.0,R64,2024
+Gonzaga,108,5.0,Sweet Sixteen,2024
+BYU,19,6.0,R64,2024
+Kansas,138,4.0,R32,2024
+Baylor,21,3.0,R32,2024
+Michigan St.,180,9.0,R32,2024
+Wisconsin,374,5.0,R64,2024
+Florida,91,7.0,R64,2024
+Kentucky,142,3.0,R64,2024
+Texas,312,7.0,R32,2024
+New Mexico,204,11.0,R64,2024
+Nebraska,199,8.0,R64,2024
+Colorado,59,10.0,R32,2024
+Mississippi St.,185,8.0,R64,2024
+San Diego St.,271,5.0,Sweet Sixteen,2024
+Texas Tech,317,6.0,R64,2024
+Clemson,55,6.0,Elite Eight,2024
+Dayton,68,7.0,R32,2024
+TCU,304,9.0,R64,2024
+Northwestern,224,9.0,R32,2024
+Nevada,201,10.0,R64,2024
+Boise St.,26,10.0,R68,2024
+Washington St.,361,7.0,R32,2024
+Colorado St.,60,10.0,R64,2024
+Texas A&M,313,9.0,R32,2024
+South Carolina,280,6.0,R64,2024
+Florida Atlantic,93,8.0,R64,2024
+Florida Atlantic,93,8.0,R64,2024
+Florida Atlantic,93,8.0,R64,2024
+Florida Atlantic,93,8.0,R64,2024
+Virginia,356,10.0,R68,2024
+Drake,74,10.0,R64,2024
+Utah St.,347,8.0,R32,2024
+Oregon,234,11.0,R32,2024
+N.C. State,196,11.0,Final Four,2024
+Grand Canyon,110,12.0,R32,2024
+James Madison,137,12.0,R32,2024
+McNeese St.,171,12.0,R64,2024
+Yale,380,13.0,R32,2024
+Duquesne,77,11.0,R32,2024
+Samford,269,13.0,R64,2024
+Charleston,48,13.0,R64,2024
+Vermont,354,13.0,R64,2024
+UAB,324,12.0,R64,2024
+Akron,3,14.0,R64,2024
+Morehead St.,192,14.0,R64,2024
+Western Kentucky,368,15.0,R64,2024
+Oakland,227,14.0,R32,2024
+South Dakota St.,283,15.0,R64,2024
+South Dakota St.,283,15.0,R64,2024
+South Dakota St.,283,15.0,R64,2024
+South Dakota St.,283,15.0,R64,2024
+Colgate,58,14.0,R64,2024
+Longwood,155,16.0,R64,2024
+Long Beach St.,154,15.0,R64,2024
+Long Beach St.,154,15.0,R64,2024
+Long Beach St.,154,15.0,R64,2024
+Saint Peter's,267,15.0,R64,2024
+Montana St.,191,16.0,R68,2024
+Stetson,300,16.0,R64,2024
+Howard,121,16.0,R68,2024
+Grambling St.,109,16.0,R64,2024
+Wagner,358,16.0,R64,2024
+Houston,119,1.0,Finals,2025
+Duke,76,1.0,Final Four,2025
+Auburn,17,1.0,Final Four,2025
+Florida,91,1.0,CHAMPS,2025
+Alabama,4,2.0,Elite Eight,2025
+Tennessee,308,2.0,Elite Eight,2025
+Texas Tech,317,3.0,Elite Eight,2025
+Iowa St.,133,3.0,R32,2025
+Maryland,168,4.0,Sweet Sixteen,2025
+Arizona,11,4.0,Sweet Sixteen,2025
+Gonzaga,108,8.0,R32,2025
+Michigan St.,180,2.0,Elite Eight,2025
+Wisconsin,374,3.0,R32,2025
+Illinois,125,6.0,R32,2025
+Purdue,248,4.0,Sweet Sixteen,2025
+Kentucky,142,3.0,Sweet Sixteen,2025
+St. John's,296,2.0,R32,2025
+St. John's,296,2.0,R32,2025
+St. John's,296,2.0,R32,2025
+St. John's,296,2.0,R32,2025
+Kansas,138,7.0,R64,2025
+BYU,19,6.0,Sweet Sixteen,2025
+Missouri,187,6.0,R64,2025
+UCLA,331,7.0,R32,2025
+Louisville,159,8.0,R64,2025
+Michigan,179,5.0,Sweet Sixteen,2025
+Texas A&M,313,4.0,R32,2025
+Saint Mary's,266,7.0,R32,2025
+Clemson,55,5.0,R64,2025
+Marquette,166,7.0,R64,2025
+Baylor,21,9.0,R32,2025
+Mississippi,184,6.0,Sweet Sixteen,2025
+Mississippi St.,185,8.0,R64,2025
+Georgia,104,9.0,R64,2025
+VCU,350,11.0,R64,2025
+Oregon,234,5.0,R32,2025
+Creighton,65,9.0,R32,2025
+Connecticut,62,8.0,R32,2025
+North Carolina,211,11.0,R64,2025
+Xavier,379,11.0,R64,2025
+New Mexico,204,10.0,R32,2025
+Vanderbilt,353,10.0,R64,2025
+Texas,312,11.0,R68,2025
+Arkansas,13,10.0,Sweet Sixteen,2025
+Colorado St.,60,12.0,R32,2025
+Oklahoma,230,9.0,R64,2025
+Utah St.,347,10.0,R64,2025
+San Diego St.,271,11.0,R68,2025
+UC San Diego,328,12.0,R64,2025
+Drake,74,11.0,R32,2025
+Liberty,150,12.0,R64,2025
+McNeese St.,171,12.0,R32,2025
+Memphis,172,5.0,R64,2025
+Yale,380,13.0,R64,2025
+Grand Canyon,110,13.0,R64,2025
+High Point,116,13.0,R64,2025
+Lipscomb,152,14.0,R64,2025
+Akron,3,13.0,R64,2025
+Troy,321,14.0,R64,2025
+UNC Wilmington,337,14.0,R64,2025
+Nebraska Omaha,200,15.0,R64,2025
+Montana,190,14.0,R64,2025
+Wofford,376,15.0,R64,2025
+Bryant,32,15.0,R64,2025
+Robert Morris,257,15.0,R64,2025
+Norfolk St.,209,16.0,R64,2025
+SIU Edwardsville,259,16.0,R64,2025
+American,9,16.0,R68,2025
+Mount St. Mary's,194,16.0,R64,2025
+Alabama St.,6,16.0,R64,2025
+Saint Francis,263,16.0,R68,2025
