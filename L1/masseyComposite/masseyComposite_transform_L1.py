@@ -10,8 +10,8 @@ Output: ../../L2/data/masseyComposite/masseyComposite_analyze_L2.csv (historical
 Transformations:
 - Standardize team names via teamsIndex.csv
 - Convert year columns ('01 → 2001, etc.)
-- Reshape to long format (team_id, year, massey_rank)
-- Add massey_ prefix to ranking column
+- Reshape to long format
+- Join with teamsIndex to get Team and Index columns
 - Split into historical (analyze) and current (predict) datasets
 """
 
@@ -29,24 +29,63 @@ def load_teams_index():
     teams_df = pd.read_csv(teams_index_path)
     
     print(f"Loaded {len(teams_df)} teams from teamsIndex.csv")
+    print(f"Columns in teamsIndex: {teams_df.columns.tolist()}")
+    
     return teams_df
 
 def standardize_team_name(raw_name, teams_df):
     """
     Standardize a team name using the teams index.
-    Returns team_id if found, None otherwise.
+    Returns tuple of (Team, Index) if found, (None, None) otherwise.
+    
+    Tries multiple matching strategies including handling "St" abbreviations.
     """
     # Try exact match first
-    match = teams_df[teams_df['team_name'] == raw_name]
+    match = teams_df[teams_df['Team'] == raw_name]
     if not match.empty:
-        return match.iloc[0]['team_id']
+        return match.iloc[0]['Team'], match.iloc[0]['Index']
     
     # Try case-insensitive match
-    match = teams_df[teams_df['team_name'].str.lower() == raw_name.lower()]
+    match = teams_df[teams_df['Team'].str.lower() == raw_name.lower()]
     if not match.empty:
-        return match.iloc[0]['team_id']
+        return match.iloc[0]['Team'], match.iloc[0]['Index']
     
-    return None
+    # Try with "St" → "State" conversion
+    if ' St' in raw_name:
+        try_name = raw_name.replace(' St', ' State')
+        match = teams_df[teams_df['Team'].str.lower() == try_name.lower()]
+        if not match.empty:
+            return match.iloc[0]['Team'], match.iloc[0]['Index']
+    
+    # Try with "State" → "St" conversion
+    if ' State' in raw_name:
+        try_name = raw_name.replace(' State', ' St')
+        match = teams_df[teams_df['Team'].str.lower() == try_name.lower()]
+        if not match.empty:
+            return match.iloc[0]['Team'], match.iloc[0]['Index']
+    
+    # Try with "Univ" → "University" conversion
+    if ' Univ' in raw_name:
+        try_name = raw_name.replace(' Univ', ' University')
+        match = teams_df[teams_df['Team'].str.lower() == try_name.lower()]
+        if not match.empty:
+            return match.iloc[0]['Team'], match.iloc[0]['Index']
+    
+    # Try with "University" → "Univ" conversion
+    if ' University' in raw_name:
+        try_name = raw_name.replace(' University', ' Univ')
+        match = teams_df[teams_df['Team'].str.lower() == try_name.lower()]
+        if not match.empty:
+            return match.iloc[0]['Team'], match.iloc[0]['Index']
+    
+    # Try with "So" → "Southern" conversion
+    if ' So' in raw_name:
+        try_name = raw_name.replace(' So', ' Southern')
+        match = teams_df[teams_df['Team'].str.lower() == try_name.lower()]
+        if not match.empty:
+            return match.iloc[0]['Team'], match.iloc[0]['Index']
+    
+    return None, None
 
 def convert_year_column(year_str):
     """
@@ -73,7 +112,7 @@ def reshape_to_long_format(df_wide, teams_df):
         teams_df: Teams index for name standardization
     
     Returns:
-        DataFrame in long format with columns: team_id, year, massey_rank
+        DataFrame in long format with columns: Year, Team, Index, masseyComposite_Rank
     """
     # Get year columns (those starting with ')
     year_columns = [col for col in df_wide.columns if col.startswith("'")]
@@ -86,44 +125,54 @@ def reshape_to_long_format(df_wide, teams_df):
         id_vars=['Team'],
         value_vars=year_columns,
         var_name='year_str',
-        value_name='massey_rank'
+        value_name='masseyComposite_Rank'
     )
     
-    # Convert year strings to integers
-    df_long['year'] = df_long['year_str'].apply(convert_year_column)
+    # Rename Team to raw_team for clarity
+    df_long = df_long.rename(columns={'Team': 'raw_team'})
     
-    # Drop the year_str column (we have year now)
+    # Convert year strings to integers
+    df_long['Year'] = df_long['year_str'].apply(convert_year_column)
+    
+    # Drop the year_str column (we have Year now)
     df_long = df_long.drop(columns=['year_str'])
+    
+    # Drop rows where masseyComposite_Rank is None (team didn't exist that year)
+    df_long = df_long[df_long['masseyComposite_Rank'].notna()].copy()
+    
+    # Convert masseyComposite_Rank to integer
+    df_long['masseyComposite_Rank'] = df_long['masseyComposite_Rank'].astype(int)
     
     # Standardize team names
     print("\nStandardizing team names...")
-    df_long['team_id'] = df_long['Team'].apply(lambda x: standardize_team_name(x, teams_df))
+    standardized = df_long['raw_team'].apply(lambda x: standardize_team_name(x, teams_df))
+    df_long['Team'] = standardized.apply(lambda x: x[0])
+    df_long['Index'] = standardized.apply(lambda x: x[1])
     
     # Check for unmatched teams
-    unmatched = df_long[df_long['team_id'].isna()]['Team'].unique()
+    unmatched = df_long[df_long['Team'].isna()]['raw_team'].unique()
     if len(unmatched) > 0:
         print(f"\nWARNING: {len(unmatched)} teams could not be matched:")
-        for team in unmatched[:10]:  # Show first 10
+        for team in sorted(unmatched)[:20]:  # Show first 20, sorted
             print(f"  - {team}")
-        if len(unmatched) > 10:
-            print(f"  ... and {len(unmatched) - 10} more")
+        if len(unmatched) > 20:
+            print(f"  ... and {len(unmatched) - 20} more")
+        
+        print("\nTo fix: Add these team name variants to teamsIndex.csv")
     
     # Remove unmatched teams
-    matched_count = df_long['team_id'].notna().sum()
+    matched_count = df_long['Team'].notna().sum()
     total_count = len(df_long)
     match_rate = (matched_count / total_count) * 100
     print(f"\nMatch rate: {matched_count}/{total_count} ({match_rate:.1f}%)")
     
-    df_long = df_long[df_long['team_id'].notna()].copy()
+    df_long = df_long[df_long['Team'].notna()].copy()
     
-    # Reorder columns
-    df_long = df_long[['team_id', 'year', 'massey_rank']]
+    # Drop raw_team column
+    df_long = df_long.drop(columns=['raw_team'])
     
-    # Drop rows where massey_rank is None (team didn't exist that year)
-    df_long = df_long[df_long['massey_rank'].notna()].copy()
-    
-    # Convert massey_rank to integer
-    df_long['massey_rank'] = df_long['massey_rank'].astype(int)
+    # Reorder columns: Year, Team, Index, masseyComposite_Rank
+    df_long = df_long[['Year', 'Team', 'Index', 'masseyComposite_Rank']]
     
     return df_long
 
@@ -132,19 +181,19 @@ def split_analyze_predict(df_long):
     Split data into historical (analyze) and current season (predict).
     
     Args:
-        df_long: Long format DataFrame with team_id, year, massey_rank
+        df_long: Long format DataFrame
     
     Returns:
         Tuple of (analyze_df, predict_df)
     """
     # 2026 is current season (predict)
-    df_predict = df_long[df_long['year'] == 2026].copy()
+    df_predict = df_long[df_long['Year'] == 2026].copy()
     
     # All other years are historical (analyze)
-    df_analyze = df_long[df_long['year'] != 2026].copy()
+    df_analyze = df_long[df_long['Year'] != 2026].copy()
     
     print(f"\nSplit into:")
-    print(f"  Analyze (historical): {len(df_analyze)} records ({df_analyze['year'].min()}-{df_analyze['year'].max()})")
+    print(f"  Analyze (historical): {len(df_analyze)} records ({df_analyze['Year'].min()}-{df_analyze['Year'].max()})")
     print(f"  Predict (2026): {len(df_predict)} records")
     
     return df_analyze, df_predict
@@ -184,15 +233,15 @@ def main():
     df_analyze.to_csv(analyze_file, index=False)
     print(f"\nSaved analyze dataset: {analyze_file}")
     print(f"  Shape: {df_analyze.shape}")
-    print(f"  Years: {df_analyze['year'].min()}-{df_analyze['year'].max()}")
-    print(f"  Teams: {df_analyze['team_id'].nunique()}")
+    print(f"  Years: {df_analyze['Year'].min()}-{df_analyze['Year'].max()}")
+    print(f"  Teams: {df_analyze['Team'].nunique()}")
     
     # Save predict dataset
     predict_file = os.path.join(output_dir, 'masseyComposite_predict_L2.csv')
     df_predict.to_csv(predict_file, index=False)
     print(f"\nSaved predict dataset: {predict_file}")
     print(f"  Shape: {df_predict.shape}")
-    print(f"  Teams: {df_predict['team_id'].nunique()}")
+    print(f"  Teams: {df_predict['Team'].nunique()}")
     
     # Show sample data
     print("\n" + "=" * 60)
@@ -210,11 +259,11 @@ def main():
     print("Summary Statistics")
     print("=" * 60)
     print(f"\nAnalyze dataset:")
-    print(f"  Records per year: {df_analyze.groupby('year').size().mean():.0f} (avg)")
-    print(f"  Rank range: {df_analyze['massey_rank'].min()}-{df_analyze['massey_rank'].max()}")
+    print(f"  Records per year: {df_analyze.groupby('Year').size().mean():.0f} (avg)")
+    print(f"  Rank range: {df_analyze['masseyComposite_Rank'].min()}-{df_analyze['masseyComposite_Rank'].max()}")
     
     print(f"\nPredict dataset:")
-    print(f"  Rank range: {df_predict['massey_rank'].min()}-{df_predict['massey_rank'].max()}")
+    print(f"  Rank range: {df_predict['masseyComposite_Rank'].min()}-{df_predict['masseyComposite_Rank'].max()}")
     
     print("\n" + "=" * 60)
     print("Transform complete!")

@@ -23,6 +23,7 @@ Alcorn St.,8
 Alcorn State,8
 AMER,9
 American,9
+American Univ,9
 APP,10
 Appalachian St.,10
 Appalachian State,10
@@ -144,6 +145,8 @@ CHSO,49
 Charleston So,49
 Charleston So,49
 Charleston Southern,49
+Birmingham So,49
+Birmingham Southern,49
 CLT,50
 Charlotte,50
 Chattanooga,51
@@ -602,6 +605,7 @@ NEV,201
 Nevada,201
 New Hampshire,202
 UNH,202
+Morris Brown,202
 NHVN,203
 New Haven,203
 New Mexico,204
@@ -617,6 +621,7 @@ Niagara,207
 NICH,208
 Nicholls,208
 Nicholls St.,208
+Nicholls St,208
 NORF,209
 Norfolk St,209
 Norfolk St.,209
@@ -644,6 +649,7 @@ North Dakota St.,215
 North Dakota St.,215
 North Dakota St.,215
 North Dakota State,215
+N Dakota St,215
 North Florida,216
 UNF,216
 North Texas,217
@@ -776,6 +782,7 @@ Saint Francis (PA),263
 St. Francis,263
 St. Francis (PA),263
 St. Francis PA,263
+St Francis PA,263
 JOES,264
 Saint Joseph's,264
 Saint Joseph's,264
@@ -835,6 +842,7 @@ San Jose State,273
 SCU,274
 Santa Clara,274
 Savannah St.,275
+Savannah St,275
 SEA,276
 Seattle,276
 HALL,277
@@ -855,6 +863,7 @@ South Carolina St.,281
 South Carolina St.,281
 South Carolina St.,281
 South Carolina State,281
+S Carolina St,281
 SDAK,282
 South Dakota,282
 S Dakota St.,283
@@ -868,6 +877,7 @@ South Dakota St.,283
 South Dakota St.,283
 South Dakota State,283
 SouthDakotaState,283
+S Dakota St,283
 South Florida,284
 USF,284
 South Florida(H) 85 Florida Atlantic,285
@@ -877,6 +887,7 @@ SEMO,286
 Southeast Missouri,286
 Southeast Missouri St.,286
 Southeast Missouri State,286
+SE Missouri St,286
 SE Louisiana,287
 SE Louisiana,287
 SELA,287
@@ -902,6 +913,7 @@ UTU,293
 St Bonaventure,294
 St. Bonaventure,294
 St. Francis NY,295
+St Francis NY,295
 SJU,296
 St John's,296
 St John's,296
@@ -1121,6 +1133,8 @@ Wichita State,370
 W&M,371
 William & Mary,371
 Winston Salem St.,372
+W Salem St,372
+Winston Salem St,372
 WIN,373
 Winthrop,373
 WIS,374
@@ -1142,3 +1156,10 @@ Yale,380
 YSU,381
 Youngstown St.,381
 Youngstown State,381
+MS Valley St,540
+Mississippi Valley St,540
+Mississippi Valley State,540
+Mt St Mary's,548
+Mount St Mary's,548
+NE Omaha,594
+Nebraska Omaha,594
