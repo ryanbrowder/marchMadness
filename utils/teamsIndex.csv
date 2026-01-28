@@ -18,6 +18,7 @@ Alabama State,6
 Albany,7
 SUNY Albany,7
 UALB,7
+Albany (NY),7
 ALCN,8
 Alcorn St.,8
 Alcorn State,8
@@ -39,6 +40,7 @@ Ark Pine Bluff,14
 Ark Pine Bluff,14
 Arkansas Pine Bluff,14
 UAPB,14
+Arkansas-Pine Bluff,14
 ARST,15
 Arkansas St.,15
 Arkansas State,15
@@ -100,6 +102,7 @@ CS Bakersfield,38
 CSU Bakersfield,38
 CSUB,38
 Cal St. Bakersfield,38
+Cal State Bakersfield,38
 CS Fullerton,39
 CSFullerton,39
 CSU Fullerton,39
@@ -468,6 +471,7 @@ Loyola,160
 Loyola Chicago,160
 Loyola-Chicago,160
 LoyolaChicago,160
+Loyola (IL),160
 L-MD,161
 Loyola (MD),161
 Loyola MD,161
@@ -493,6 +497,8 @@ Maryland Eastern Shore,169
 UMES,169
 MASS,170
 Massachusetts,170
+Umass,170
+UMass,170
 MCN,171
 McNeese,171
 McNeese St.,171
@@ -554,6 +560,7 @@ Missouri,187
 MOST,188
 Missouri St.,188
 Missouri State,188
+Ole Miss,188
 MONM,189
 Monmouth,189
 Monmouth NJ,189
@@ -723,6 +730,7 @@ PEPP,240
 Pepperdine,240
 PITT,241
 Pittsburgh,241
+Pitt,241
 PORT,242
 Portland,242
 PRST,243
@@ -767,6 +775,7 @@ RUTG,258
 Rutgers,258
 SIU Edwardsville,259
 SIUE,259
+SIU-Edwardsville,259
 SMU,260
 CS Sacramento,261
 SAC,261
@@ -824,6 +833,7 @@ St. Peter’s,267
 SHSU,268
 Sam Houston St.,268
 Sam Houston State,268
+Sam Houston,268
 SAM,269
 Samford,269
 San Diego,270
@@ -924,6 +934,7 @@ St. John's,296
 St. John's,296
 St. Johns,296
 St. John’s,296
+St. John's (NY),296
 STMN,297
 St Thomas MN,297
 St Thomas MN,297
@@ -983,6 +994,7 @@ Texas A&M CC,314
 Texas A&M Corpus Chris,314
 Texas A&M Corpus Christi,314
 TexasA&MCC,314
+Texas A&M-Corpus Christi,314
 TX Southern,315
 TX Southern,315
 TXSO,315
@@ -1010,12 +1022,15 @@ Tulsa,323
 UAB,324
 UC Davis,325
 UCD,325
+UC-Davis,325
 UC Irvine,326
 UCI,326
+UC-Irvine,326
 UC Riverside,327
 UCR,327
 UC San Diego,328
 UCSD,328
+UC-San Diego,328
 UC Santa Barbara,329
 UCSB,329
 UCF,330
