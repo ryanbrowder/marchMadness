@@ -71,67 +71,138 @@ def scrape_espn_bpi_year(year):
             print(f"    Error: Expected 2 tables, found {len(tables)}")
             return pd.DataFrame()
         
-        # Table 1: Extract team names
+        # Extract team names and data together to ensure alignment
         team_table = tables[0]
-        team_rows = team_table.find_elements(By.CSS_SELECTOR, "tbody tr")
-        
-        teams = []
-        for row in team_rows:
-            try:
-                # Each row has 2 links: logo (no text), team name (has text)
-                team_links = row.find_elements(By.CSS_SELECTOR, "a[href*='/team/']")
-                team_name = None
-                for link in team_links:
-                    text = link.text.strip()
-                    if text:
-                        team_name = text
-                        break
-                if team_name and team_name != 'TEAM':
-                    teams.append(team_name)
-            except:
-                continue
-        
-        # Table 2: Extract data columns
-        # Column order: W-L (0), BPI (1), BPI RK (2), TREND (3), OFF (4), DEF (5), ...
         data_table = tables[1]
+        
+        team_rows = team_table.find_elements(By.CSS_SELECTOR, "tbody tr")
         data_rows = data_table.find_elements(By.CSS_SELECTOR, "tbody tr")
         
-        bpi_data = []
-        for row in data_rows:
+        print(f"    Found {len(team_rows)} team rows and {len(data_rows)} data rows")
+        
+        # Ensure tables have same number of rows
+        if len(team_rows) != len(data_rows):
+            print(f"    Warning: Row mismatch - using minimum length")
+        
+        # Process rows together to maintain alignment
+        data = []
+        skipped_teams = []
+        
+        for i in range(min(len(team_rows), len(data_rows))):
+            team_row = team_rows[i]
+            data_row = data_rows[i]
+            
             try:
-                cells = row.find_elements(By.TAG_NAME, "td")
+                # Extract team name
+                team_links = team_row.find_elements(By.CSS_SELECTOR, "a[href*='/team/']")
+                team_name = None
                 
-                if len(cells) >= 6:
-                    # Extract: BPI (score), BPI RK (rank), OFF, DEF
-                    bpi_score = cells[1].text.strip()
-                    bpi_rank = cells[2].text.strip()
-                    off = cells[4].text.strip()
-                    def_val = cells[5].text.strip()
+                # Try to get team name from links first
+                for link in team_links:
+                    text = link.text.strip()
+                    if text and text != 'TEAM':
+                        team_name = text
+                        break
+                
+                # Fallback: If no links found, try to get plain text from the row
+                # This handles defunct/dropped D1 teams that ESPN doesn't link
+                if not team_name:
+                    # Try to find any text in the row
+                    row_text = team_row.text.strip()
+                    if row_text:
+                        # The row text might contain other info, try to get just the team name
+                        # Typically the team name is in a span or div after the logo
+                        try:
+                            # Look for any span with class containing "AnchorLink" or similar
+                            spans = team_row.find_elements(By.TAG_NAME, "span")
+                            for span in spans:
+                                text = span.text.strip()
+                                # Skip conference names and other short codes
+                                if text and len(text) > 2 and text not in ['CAA', 'Pac-12', 'Big 12', 'SEC', 'ACC', 'Big Ten']:
+                                    team_name = text
+                                    break
+                        except:
+                            pass
                     
-                    try:
-                        bpi_data.append({
-                            'BPI': float(bpi_score),
-                            'BPI_Rk': int(bpi_rank),
-                            'Off': float(off),
-                            'Def': float(def_val)
-                        })
-                    except ValueError:
-                        continue
-            except:
+                    # Last resort: use the raw row text if we have it
+                    if not team_name and row_text:
+                        team_name = row_text
+                
+                if not team_name:
+                    # Debug: Try to get more info about this row
+                    debug_info = {
+                        'total_links': len(team_links),
+                        'all_links': [link.get_attribute('href') for link in team_links[:3]],  # First 3 hrefs
+                        'link_texts': [link.text.strip() for link in team_links[:3]],  # First 3 texts
+                        'row_text': team_row.text[:100] if team_row.text else 'EMPTY'  # First 100 chars
+                    }
+                    skipped_teams.append({
+                        'row': i+1, 
+                        'team': 'UNKNOWN', 
+                        'reason': f'No team name found. Links: {debug_info["total_links"]}, Texts: {debug_info["link_texts"]}, Row: {debug_info["row_text"][:50]}'
+                    })
+                    continue
+                
+                # Extract data columns
+                # Column order: W-L (0), BPI (1), BPI RK (2), TREND (3), OFF (4), DEF (5), ...
+                cells = data_row.find_elements(By.TAG_NAME, "td")
+                
+                if len(cells) < 6:
+                    skipped_teams.append({'row': i+1, 'team': team_name, 'reason': f'Only {len(cells)} cells (need 6+)'})
+                    continue
+                
+                # Extract: BPI (score), BPI RK (rank), OFF, DEF
+                bpi_score = cells[1].text.strip()
+                bpi_rank = cells[2].text.strip()
+                off = cells[4].text.strip()
+                def_val = cells[5].text.strip()
+                
+                # Parse values
+                try:
+                    data.append({
+                        'Team': team_name,
+                        'BPI': float(bpi_score),
+                        'BPI_Rk': int(bpi_rank),
+                        'Off': float(off),
+                        'Def': float(def_val)
+                    })
+                except ValueError as e:
+                    # Debug: Show the actual values that failed to parse
+                    skipped_teams.append({
+                        'row': i+1, 
+                        'team': team_name, 
+                        'reason': f'Parse error: BPI={bpi_score}, Rank={bpi_rank}, Off={off}, Def={def_val}'
+                    })
+                    continue
+                    
+            except Exception as e:
+                team_name = 'UNKNOWN'
+                try:
+                    # Try to get team name for better error reporting
+                    team_links = team_row.find_elements(By.CSS_SELECTOR, "a[href*='/team/']")
+                    for link in team_links:
+                        text = link.text.strip()
+                        if text and text != 'TEAM':
+                            team_name = text
+                            break
+                except:
+                    pass
+                skipped_teams.append({'row': i+1, 'team': team_name, 'reason': f'Extraction error: {str(e)}'})
                 continue
         
-        # Combine teams and data
-        if len(teams) != len(bpi_data):
-            min_len = min(len(teams), len(bpi_data))
-            teams = teams[:min_len]
-            bpi_data = bpi_data[:min_len]
+        if len(skipped_teams) > 0:
+            print(f"    Skipped {len(skipped_teams)} rows:")
+            for skip in skipped_teams:
+                print(f"      Row {skip['row']:3d}: {skip['team']:30s}")
+                print(f"               {skip['reason']}")
+        
+        print(f"    Successfully extracted {len(data)} teams")
         
         # Create DataFrame
-        if len(teams) == 0:
+        if len(data) == 0:
             return pd.DataFrame()
         
-        df = pd.DataFrame(bpi_data)
-        df.insert(0, 'Team', teams)
+        df = pd.DataFrame(data)
         df['Year'] = year
         
         # Reorder columns: Team, BPI, BPI_Rk, Off, Def, Year

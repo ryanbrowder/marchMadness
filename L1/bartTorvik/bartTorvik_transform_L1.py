@@ -107,6 +107,23 @@ def add_team_index(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
+def remove_duplicates(df: pd.DataFrame) -> pd.DataFrame:
+    """Remove duplicate rows based on Team and Year."""
+    df = df.copy()
+    
+    initial_count = len(df)
+    
+    # Drop duplicates keeping first occurrence
+    df = df.drop_duplicates(subset=['Team', 'Year'], keep='first')
+    
+    duplicates_removed = initial_count - len(df)
+    
+    if duplicates_removed > 0:
+        print(f"  ⚠ Removed {duplicates_removed} duplicate Team-Year combinations")
+    
+    return df
+
+
 def reorder_team_columns(df: pd.DataFrame) -> pd.DataFrame:
     """Reorder columns to place Index, tournamentSeed and tournamentOutcome after Team."""
     df = df.copy()
@@ -244,6 +261,7 @@ def clean_torvik_data(df: pd.DataFrame) -> pd.DataFrame:
     df = remove_header_rows(df)
     df = parse_team_column(df)
     df = add_team_index(df)
+    df = remove_duplicates(df)
     df = reorder_team_columns(df)
     df = split_record_column(df)
     df = reorder_wins_column(df)

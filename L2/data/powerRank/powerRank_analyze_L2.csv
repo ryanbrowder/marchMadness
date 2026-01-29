@@ -265,6 +265,12 @@ Year,Team,Index,PowerRank
 2019,Colgate,58,125
 2019,Bradley,30,156
 2019,Abilene Christian,1,159
+2019,Gardner Webb,100,175
+2019,North Dakota St.,215,223
+2019,Iona,131,234
+2019,Fairleigh Dickinson,90,269
+2019,Prairie View A&M,244,285
+2019,North Carolina Central,213,314
 2021,Gonzaga,108,1
 2021,Baylor,21,2
 2021,Colgate,58,3
@@ -466,7 +472,9 @@ Year,Team,Index,PowerRank
 2023,Pittsburgh,241,170
 2023,Texas A&M CC,314,204
 2023,Howard,121,231
+2023,Southeast Missouri St.,286,238
 2023,Texas Southern,315,285
+2023,Fairleigh Dickinson,90,286
 2024,Connecticut,62,1
 2024,Houston,119,2
 2024,Purdue,248,3

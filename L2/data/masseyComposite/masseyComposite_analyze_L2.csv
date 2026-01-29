@@ -140,7 +140,7 @@ Year,Team,Index,masseyComposite_Rank
 2001,Loyola MD,161,288
 2001,Loyola-Chicago,160,243
 2001,MD E Shore,169,262
-2001,MS Valley St,540,215
+2001,MS Valley St,186,215
 2001,MTSU,181,270
 2001,Maine,163,170
 2001,Manhattan,164,203
@@ -167,7 +167,7 @@ Year,Team,Index,masseyComposite_Rank
 2001,Montana St,191,150
 2001,Morehead St,192,214
 2001,Morgan State,193,303
-2001,Mt St Mary's,548,301
+2001,Mt St Mary's,194,301
 2001,Murray St,195,132
 2001,N Illinois,221,259
 2001,NC A&T,212,253
@@ -463,7 +463,7 @@ Year,Team,Index,masseyComposite_Rank
 2002,Loyola MD,161,317
 2002,Loyola-Chicago,160,105
 2002,MD E Shore,169,253
-2002,MS Valley St,540,283
+2002,MS Valley St,186,283
 2002,MTSU,181,229
 2002,Maine,163,285
 2002,Manhattan,164,83
@@ -491,7 +491,7 @@ Year,Team,Index,masseyComposite_Rank
 2002,Morehead St,192,198
 2002,Morgan State,193,320
 2002,Morris Brown,202,323
-2002,Mt St Mary's,548,325
+2002,Mt St Mary's,194,325
 2002,Murray St,195,187
 2002,N Illinois,221,223
 2002,NC A&T,212,306
@@ -790,7 +790,7 @@ Year,Team,Index,masseyComposite_Rank
 2003,Loyola MD,161,304
 2003,Loyola-Chicago,160,170
 2003,MD E Shore,169,319
-2003,MS Valley St,540,293
+2003,MS Valley St,186,293
 2003,MTSU,181,194
 2003,Maine,163,228
 2003,Manhattan,164,68
@@ -818,7 +818,7 @@ Year,Team,Index,masseyComposite_Rank
 2003,Morehead St,192,133
 2003,Morgan State,193,321
 2003,Morris Brown,202,324
-2003,Mt St Mary's,548,285
+2003,Mt St Mary's,194,285
 2003,Murray St,195,107
 2003,N Illinois,221,158
 2003,NC A&T,212,327
@@ -1117,7 +1117,7 @@ Year,Team,Index,masseyComposite_Rank
 2004,Loyola MD,161,325
 2004,Loyola-Chicago,160,208
 2004,MD E Shore,169,324
-2004,MS Valley St,540,175
+2004,MS Valley St,186,175
 2004,MTSU,181,166
 2004,Maine,163,222
 2004,Manhattan,164,54
@@ -1144,7 +1144,7 @@ Year,Team,Index,masseyComposite_Rank
 2004,Montana St,191,180
 2004,Morehead St,192,223
 2004,Morgan State,193,251
-2004,Mt St Mary's,548,294
+2004,Mt St Mary's,194,294
 2004,Murray St,195,50
 2004,N Illinois,221,232
 2004,NC A&T,212,326
@@ -1444,7 +1444,7 @@ Year,Team,Index,masseyComposite_Rank
 2005,Loyola MD,161,317
 2005,Loyola-Chicago,160,264
 2005,MD E Shore,169,328
-2005,MS Valley St,540,233
+2005,MS Valley St,186,233
 2005,MTSU,181,99
 2005,Maine,163,203
 2005,Manhattan,164,156
@@ -1471,7 +1471,7 @@ Year,Team,Index,masseyComposite_Rank
 2005,Montana St,191,216
 2005,Morehead St,192,262
 2005,Morgan State,193,302
-2005,Mt St Mary's,548,310
+2005,Mt St Mary's,194,310
 2005,Murray St,195,144
 2005,N Colorado,220,288
 2005,N Illinois,221,157
@@ -1774,7 +1774,7 @@ Year,Team,Index,masseyComposite_Rank
 2006,Loyola MD,161,130
 2006,Loyola-Chicago,160,135
 2006,MD E Shore,169,314
-2006,MS Valley St,540,299
+2006,MS Valley St,186,299
 2006,MTSU,181,150
 2006,Maine,163,303
 2006,Manhattan,164,76
@@ -1801,7 +1801,7 @@ Year,Team,Index,masseyComposite_Rank
 2006,Montana St,191,196
 2006,Morehead St,192,329
 2006,Morgan State,193,331
-2006,Mt St Mary's,548,260
+2006,Mt St Mary's,194,260
 2006,Murray St,195,110
 2006,N Colorado,220,321
 2006,N Dakota St,215,168
@@ -2107,7 +2107,7 @@ Year,Team,Index,masseyComposite_Rank
 2007,Loyola MD,161,179
 2007,Loyola-Chicago,160,118
 2007,MD E Shore,169,332
-2007,MS Valley St,540,268
+2007,MS Valley St,186,268
 2007,MTSU,181,154
 2007,Maine,163,273
 2007,Manhattan,164,236
@@ -2134,7 +2134,7 @@ Year,Team,Index,masseyComposite_Rank
 2007,Montana St,191,313
 2007,Morehead St,192,207
 2007,Morgan State,193,315
-2007,Mt St Mary's,548,283
+2007,Mt St Mary's,194,283
 2007,Murray St,195,247
 2007,N Colorado,220,324
 2007,N Dakota St,215,149
@@ -2445,7 +2445,7 @@ Year,Team,Index,masseyComposite_Rank
 2008,Loyola MD,161,196
 2008,Loyola-Chicago,160,262
 2008,MD E Shore,169,337
-2008,MS Valley St,540,325
+2008,MS Valley St,186,325
 2008,MTSU,181,198
 2008,Maine,163,324
 2008,Manhattan,164,230
@@ -2472,7 +2472,7 @@ Year,Team,Index,masseyComposite_Rank
 2008,Montana St,191,173
 2008,Morehead St,192,253
 2008,Morgan State,193,183
-2008,Mt St Mary's,548,222
+2008,Mt St Mary's,194,222
 2008,Murray St,195,197
 2008,N Colorado,220,220
 2008,N Dakota St,215,167
@@ -2788,7 +2788,7 @@ Year,Team,Index,masseyComposite_Rank
 2009,Loyola MD,161,190
 2009,Loyola-Chicago,160,157
 2009,MD E Shore,169,336
-2009,MS Valley St,540,339
+2009,MS Valley St,186,339
 2009,MTSU,181,121
 2009,Maine,163,272
 2009,Manhattan,164,200
@@ -2815,7 +2815,7 @@ Year,Team,Index,masseyComposite_Rank
 2009,Montana St,191,174
 2009,Morehead St,192,195
 2009,Morgan State,193,173
-2009,Mt St Mary's,548,156
+2009,Mt St Mary's,194,156
 2009,Murray St,195,177
 2009,N Colorado,220,257
 2009,N Dakota St,215,104
@@ -3135,7 +3135,7 @@ Year,Team,Index,masseyComposite_Rank
 2010,Loyola MD,161,203
 2010,Loyola-Chicago,160,135
 2010,MD E Shore,169,320
-2010,MS Valley St,540,335
+2010,MS Valley St,186,335
 2010,MTSU,181,231
 2010,Maine,163,179
 2010,Manhattan,164,223
@@ -3162,7 +3162,7 @@ Year,Team,Index,masseyComposite_Rank
 2010,Montana St,191,172
 2010,Morehead St,192,134
 2010,Morgan State,193,136
-2010,Mt St Mary's,548,234
+2010,Mt St Mary's,194,234
 2010,Murray St,195,68
 2010,N Colorado,220,91
 2010,N Dakota St,215,264
@@ -3482,7 +3482,7 @@ Year,Team,Index,masseyComposite_Rank
 2011,Loyola MD,161,204
 2011,Loyola-Chicago,160,140
 2011,MD E Shore,169,328
-2011,MS Valley St,540,295
+2011,MS Valley St,186,295
 2011,MTSU,181,223
 2011,Maine,163,176
 2011,Manhattan,164,318
@@ -3509,7 +3509,7 @@ Year,Team,Index,masseyComposite_Rank
 2011,Montana St,191,194
 2011,Morehead St,192,124
 2011,Morgan State,193,200
-2011,Mt St Mary's,548,283
+2011,Mt St Mary's,194,283
 2011,Murray St,195,114
 2011,N Colorado,220,145
 2011,N Dakota St,215,205
@@ -3826,7 +3826,7 @@ Year,Team,Index,masseyComposite_Rank
 2012,Loyola MD,161,120
 2012,Loyola-Chicago,160,280
 2012,MD E Shore,169,301
-2012,MS Valley St,540,239
+2012,MS Valley St,186,239
 2012,MTSU,181,37
 2012,Maine,163,229
 2012,Manhattan,164,138
@@ -3853,7 +3853,7 @@ Year,Team,Index,masseyComposite_Rank
 2012,Montana St,191,263
 2012,Morehead St,192,241
 2012,Morgan State,193,257
-2012,Mt St Mary's,548,313
+2012,Mt St Mary's,194,313
 2012,Murray St,195,16
 2012,N Colorado,220,240
 2012,N Dakota St,215,87
@@ -3861,7 +3861,7 @@ Year,Team,Index,masseyComposite_Rank
 2012,NC A&T,212,291
 2012,NC Central,213,248
 2012,NC State,196,54
-2012,NE Omaha,594,329
+2012,NE Omaha,200,329
 2012,NJIT,197,289
 2012,Navy,198,325
 2012,Nebraska,199,111
@@ -4171,7 +4171,7 @@ Year,Team,Index,masseyComposite_Rank
 2013,Loyola MD,161,123
 2013,Loyola-Chicago,160,152
 2013,MD E Shore,169,343
-2013,MS Valley St,540,336
+2013,MS Valley St,186,336
 2013,MTSU,181,44
 2013,Maine,163,283
 2013,Manhattan,164,255
@@ -4198,7 +4198,7 @@ Year,Team,Index,masseyComposite_Rank
 2013,Montana St,191,292
 2013,Morehead St,192,199
 2013,Morgan State,193,274
-2013,Mt St Mary's,548,251
+2013,Mt St Mary's,194,251
 2013,Murray St,195,94
 2013,N Colorado,220,290
 2013,N Dakota St,215,57
@@ -4207,7 +4207,7 @@ Year,Team,Index,masseyComposite_Rank
 2013,NC A&T,212,219
 2013,NC Central,213,151
 2013,NC State,196,17
-2013,NE Omaha,594,329
+2013,NE Omaha,200,329
 2013,NJIT,197,276
 2013,Navy,198,284
 2013,Nebraska,199,112
@@ -4522,7 +4522,7 @@ Year,Team,Index,masseyComposite_Rank
 2014,Loyola-Chicago,160,250
 2014,MA Lowell,334,319
 2014,MD E Shore,169,346
-2014,MS Valley St,540,344
+2014,MS Valley St,186,344
 2014,MTSU,181,130
 2014,Maine,163,340
 2014,Manhattan,164,78
@@ -4549,7 +4549,7 @@ Year,Team,Index,masseyComposite_Rank
 2014,Montana St,191,238
 2014,Morehead St,192,150
 2014,Morgan State,193,225
-2014,Mt St Mary's,548,247
+2014,Mt St Mary's,194,247
 2014,Murray St,195,199
 2014,N Colorado,220,142
 2014,N Dakota St,215,70
@@ -4558,7 +4558,7 @@ Year,Team,Index,masseyComposite_Rank
 2014,NC A&T,212,309
 2014,NC Central,213,144
 2014,NC State,196,84
-2014,NE Omaha,594,135
+2014,NE Omaha,200,135
 2014,NJIT,197,312
 2014,Navy,198,311
 2014,Nebraska,199,95
@@ -4873,7 +4873,7 @@ Year,Team,Index,masseyComposite_Rank
 2015,Loyola-Chicago,160,107
 2015,MA Lowell,334,267
 2015,MD E Shore,169,192
-2015,MS Valley St,540,348
+2015,MS Valley St,186,348
 2015,MTSU,181,161
 2015,Maine,163,347
 2015,Manhattan,164,216
@@ -4900,7 +4900,7 @@ Year,Team,Index,masseyComposite_Rank
 2015,Montana St,191,323
 2015,Morehead St,192,230
 2015,Morgan State,193,324
-2015,Mt St Mary's,548,217
+2015,Mt St Mary's,194,217
 2015,Murray St,195,72
 2015,N Colorado,220,220
 2015,N Dakota St,215,168
@@ -4909,7 +4909,7 @@ Year,Team,Index,masseyComposite_Rank
 2015,NC A&T,212,328
 2015,NC Central,213,100
 2015,NC State,196,34
-2015,NE Omaha,594,282
+2015,NE Omaha,200,282
 2015,NJIT,197,209
 2015,Navy,198,273
 2015,Nebraska,199,96
@@ -5224,7 +5224,7 @@ Year,Team,Index,masseyComposite_Rank
 2016,Loyola-Chicago,160,214
 2016,MA Lowell,334,315
 2016,MD E Shore,169,326
-2016,MS Valley St,540,346
+2016,MS Valley St,186,346
 2016,MTSU,181,106
 2016,Maine,163,313
 2016,Manhattan,164,251
@@ -5251,7 +5251,7 @@ Year,Team,Index,masseyComposite_Rank
 2016,Montana St,191,276
 2016,Morehead St,192,175
 2016,Morgan State,193,343
-2016,Mt St Mary's,548,260
+2016,Mt St Mary's,194,260
 2016,Murray St,195,183
 2016,N Colorado,220,319
 2016,N Dakota St,215,148
@@ -5260,7 +5260,7 @@ Year,Team,Index,masseyComposite_Rank
 2016,NC A&T,212,328
 2016,NC Central,213,311
 2016,NC State,196,95
-2016,NE Omaha,594,142
+2016,NE Omaha,200,142
 2016,NJIT,197,195
 2016,Navy,198,158
 2016,Nebraska,199,101
@@ -5575,7 +5575,7 @@ Year,Team,Index,masseyComposite_Rank
 2017,Loyola-Chicago,160,109
 2017,MA Lowell,334,262
 2017,MD E Shore,169,329
-2017,MS Valley St,540,346
+2017,MS Valley St,186,346
 2017,MTSU,181,46
 2017,Maine,163,324
 2017,Manhattan,164,248
@@ -5602,7 +5602,7 @@ Year,Team,Index,masseyComposite_Rank
 2017,Montana St,191,264
 2017,Morehead St,192,216
 2017,Morgan State,193,317
-2017,Mt St Mary's,548,224
+2017,Mt St Mary's,194,224
 2017,Murray St,195,179
 2017,N Colorado,220,259
 2017,N Dakota St,215,143
@@ -5611,7 +5611,7 @@ Year,Team,Index,masseyComposite_Rank
 2017,NC A&T,212,348
 2017,NC Central,213,172
 2017,NC State,196,66
-2017,NE Omaha,594,166
+2017,NE Omaha,200,166
 2017,NJIT,197,235
 2017,Navy,198,225
 2017,Nebraska,199,80
@@ -5926,7 +5926,7 @@ Year,Team,Index,masseyComposite_Rank
 2018,Loyola-Chicago,160,73
 2018,MA Lowell,334,312
 2018,MD E Shore,169,343
-2018,MS Valley St,540,350
+2018,MS Valley St,186,350
 2018,MTSU,181,51
 2018,Maine,163,336
 2018,Manhattan,164,205
@@ -5953,7 +5953,7 @@ Year,Team,Index,masseyComposite_Rank
 2018,Montana St,191,231
 2018,Morehead St,192,270
 2018,Morgan State,193,328
-2018,Mt St Mary's,548,277
+2018,Mt St Mary's,194,277
 2018,Murray St,195,80
 2018,N Colorado,220,159
 2018,N Dakota St,215,172
@@ -5962,7 +5962,7 @@ Year,Team,Index,masseyComposite_Rank
 2018,NC A&T,212,259
 2018,NC Central,213,275
 2018,NC State,196,61
-2018,NE Omaha,594,254
+2018,NE Omaha,200,254
 2018,NJIT,197,253
 2018,Navy,198,229
 2018,Nebraska,199,62
@@ -6278,7 +6278,7 @@ Year,Team,Index,masseyComposite_Rank
 2019,Loyola-Chicago,160,90
 2019,MA Lowell,334,216
 2019,MD E Shore,169,351
-2019,MS Valley St,540,348
+2019,MS Valley St,186,348
 2019,MTSU,181,284
 2019,Maine,163,328
 2019,Manhattan,164,337
@@ -6305,7 +6305,7 @@ Year,Team,Index,masseyComposite_Rank
 2019,Montana St,191,273
 2019,Morehead St,192,257
 2019,Morgan State,193,319
-2019,Mt St Mary's,548,324
+2019,Mt St Mary's,194,324
 2019,Murray St,195,52
 2019,N Colorado,220,192
 2019,N Dakota St,215,223
@@ -6314,7 +6314,7 @@ Year,Team,Index,masseyComposite_Rank
 2019,NC A&T,212,256
 2019,NC Central,213,314
 2019,NC State,196,33
-2019,NE Omaha,594,180
+2019,NE Omaha,200,180
 2019,NJIT,197,155
 2019,Navy,198,290
 2019,Nebraska,199,20
@@ -6631,7 +6631,7 @@ Year,Team,Index,masseyComposite_Rank
 2020,Loyola-Chicago,160,101
 2020,MA Lowell,334,269
 2020,MD E Shore,169,349
-2020,MS Valley St,540,350
+2020,MS Valley St,186,350
 2020,MTSU,181,320
 2020,Maine,163,329
 2020,Manhattan,164,223
@@ -6659,7 +6659,7 @@ Year,Team,Index,masseyComposite_Rank
 2020,Montana St,191,214
 2020,Morehead St,192,282
 2020,Morgan State,193,306
-2020,Mt St Mary's,548,284
+2020,Mt St Mary's,194,284
 2020,Murray St,195,155
 2020,N Colorado,220,122
 2020,N Dakota St,215,144
@@ -6668,7 +6668,7 @@ Year,Team,Index,masseyComposite_Rank
 2020,NC A&T,212,278
 2020,NC Central,213,293
 2020,NC State,196,45
-2020,NE Omaha,594,196
+2020,NE Omaha,200,196
 2020,NJIT,197,295
 2020,Navy,198,208
 2020,Nebraska,199,150
@@ -6978,7 +6978,7 @@ Year,Team,Index,masseyComposite_Rank
 2021,Loyola MD,161,248
 2021,Loyola-Chicago,160,55
 2021,MA Lowell,334,241
-2021,MS Valley St,540,347
+2021,MS Valley St,186,347
 2021,MTSU,181,296
 2021,Maine,163,316
 2021,Manhattan,164,290
@@ -7006,7 +7006,7 @@ Year,Team,Index,masseyComposite_Rank
 2021,Montana St,191,175
 2021,Morehead St,192,184
 2021,Morgan State,193,218
-2021,Mt St Mary's,548,213
+2021,Mt St Mary's,194,213
 2021,Murray St,195,192
 2021,N Colorado,220,223
 2021,N Dakota St,215,172
@@ -7015,7 +7015,7 @@ Year,Team,Index,masseyComposite_Rank
 2021,NC A&T,212,312
 2021,NC Central,213,210
 2021,NC State,196,71
-2021,NE Omaha,594,297
+2021,NE Omaha,200,297
 2021,NJIT,197,265
 2021,Navy,198,131
 2021,Nebraska,199,149
@@ -7332,7 +7332,7 @@ Year,Team,Index,masseyComposite_Rank
 2022,Loyola-Chicago,160,27
 2022,MA Lowell,334,251
 2022,MD E Shore,169,272
-2022,MS Valley St,540,356
+2022,MS Valley St,186,356
 2022,MTSU,181,133
 2022,Maine,163,354
 2022,Manhattan,164,206
@@ -7360,7 +7360,7 @@ Year,Team,Index,masseyComposite_Rank
 2022,Montana St,191,148
 2022,Morehead St,192,131
 2022,Morgan State,193,328
-2022,Mt St Mary's,548,297
+2022,Mt St Mary's,194,297
 2022,Murray St,195,37
 2022,N Colorado,220,197
 2022,N Dakota St,215,188
@@ -7369,7 +7369,7 @@ Year,Team,Index,masseyComposite_Rank
 2022,NC A&T,212,277
 2022,NC Central,213,308
 2022,NC State,196,113
-2022,NE Omaha,594,341
+2022,NE Omaha,200,341
 2022,NJIT,197,282
 2022,Navy,198,124
 2022,Nebraska,199,182
@@ -7692,7 +7692,7 @@ Year,Team,Index,masseyComposite_Rank
 2023,Loyola-Chicago,160,252
 2023,MA Lowell,334,144
 2023,MD E Shore,169,259
-2023,MS Valley St,540,356
+2023,MS Valley St,186,356
 2023,MTSU,181,130
 2023,Maine,163,312
 2023,Manhattan,164,325
@@ -7720,7 +7720,7 @@ Year,Team,Index,masseyComposite_Rank
 2023,Montana St,191,125
 2023,Morehead St,192,289
 2023,Morgan State,193,232
-2023,Mt St Mary's,548,294
+2023,Mt St Mary's,194,294
 2023,Murray St,195,171
 2023,N Colorado,220,263
 2023,N Dakota St,215,241
@@ -7729,7 +7729,7 @@ Year,Team,Index,masseyComposite_Rank
 2023,NC A&T,212,269
 2023,NC Central,213,219
 2023,NC State,196,28
-2023,NE Omaha,594,283
+2023,NE Omaha,200,283
 2023,NJIT,197,327
 2023,Navy,198,253
 2023,Nebraska,199,96
@@ -8055,7 +8055,7 @@ Year,Team,Index,masseyComposite_Rank
 2024,Loyola-Chicago,160,110
 2024,MA Lowell,334,123
 2024,MD E Shore,169,347
-2024,MS Valley St,540,362
+2024,MS Valley St,186,362
 2024,MTSU,181,301
 2024,Maine,163,237
 2024,Manhattan,164,337
@@ -8083,7 +8083,7 @@ Year,Team,Index,masseyComposite_Rank
 2024,Montana St,191,254
 2024,Morehead St,192,121
 2024,Morgan State,193,350
-2024,Mt St Mary's,548,256
+2024,Mt St Mary's,194,256
 2024,Murray St,195,168
 2024,N Colorado,220,189
 2024,N Dakota St,215,250
@@ -8092,7 +8092,7 @@ Year,Team,Index,masseyComposite_Rank
 2024,NC A&T,212,322
 2024,NC Central,213,241
 2024,NC State,196,68
-2024,NE Omaha,594,271
+2024,NE Omaha,200,271
 2024,NJIT,197,330
 2024,Navy,198,291
 2024,Nebraska,199,44
@@ -8417,7 +8417,7 @@ Year,Team,Index,masseyComposite_Rank
 2025,Loyola-Chicago,160,144
 2025,MA Lowell,334,178
 2025,MD E Shore,169,361
-2025,MS Valley St,540,364
+2025,MS Valley St,186,364
 2025,MTSU,181,92
 2025,Maine,163,204
 2025,Manhattan,164,272
@@ -8446,7 +8446,7 @@ Year,Team,Index,masseyComposite_Rank
 2025,Montana St,191,214
 2025,Morehead St,192,232
 2025,Morgan State,193,337
-2025,Mt St Mary's,548,236
+2025,Mt St Mary's,194,236
 2025,Murray St,195,138
 2025,N Colorado,220,133
 2025,N Dakota St,215,105
@@ -8455,7 +8455,7 @@ Year,Team,Index,masseyComposite_Rank
 2025,NC A&T,212,332
 2025,NC Central,213,304
 2025,NC State,196,112
-2025,NE Omaha,594,215
+2025,NE Omaha,200,215
 2025,NJIT,197,358
 2025,Navy,198,327
 2025,Nebraska,199,46

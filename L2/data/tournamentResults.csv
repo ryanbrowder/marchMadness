@@ -39,9 +39,6 @@ Oregon,234,9.0,R64,2008
 Miami FL,177,7.0,R32,2008
 UNLV,338,8.0,R32,2008
 Saint Joseph's,264,11.0,R64,2008
-Saint Joseph's,264,11.0,R64,2008
-Saint Joseph's,264,11.0,R64,2008
-Saint Joseph's,264,11.0,R64,2008
 Vanderbilt,353,4.0,R64,2008
 Western Kentucky,368,12.0,Sweet Sixteen,2008
 Kent St.,141,9.0,R64,2008
@@ -64,8 +61,6 @@ Belmont,23,15.0,R64,2008
 American,9,15.0,R64,2008
 Austin Peay,18,15.0,R64,2008
 Mount St. Mary's,194,16.0,R64,2008
-UT Arlington,342,16.0,R64,2008
-UT Arlington,342,16.0,R64,2008
 UT Arlington,342,16.0,R64,2008
 Mississippi Valley St.,186,16.0,R64,2008
 Coppin St.,63,16.0,R68,2008
@@ -118,9 +113,6 @@ Siena,278,9.0,R32,2009
 Cleveland St.,56,13.0,R32,2009
 Dayton,68,11.0,R32,2009
 North Dakota St.,215,14.0,R64,2009
-North Dakota St.,215,14.0,R64,2009
-North Dakota St.,215,14.0,R64,2009
-North Dakota St.,215,14.0,R64,2009
 Northern Iowa,222,12.0,R64,2009
 Akron,3,13.0,R64,2009
 Stephen F. Austin,299,14.0,R64,2009
@@ -128,9 +120,6 @@ Western Kentucky,368,12.0,R32,2009
 Cornell,64,14.0,R64,2009
 Cal St. Northridge,40,15.0,R64,2009
 Portland St.,243,13.0,R64,2009
-East Tennessee St.,79,16.0,R64,2009
-East Tennessee St.,79,16.0,R64,2009
-East Tennessee St.,79,16.0,R64,2009
 East Tennessee St.,79,16.0,R64,2009
 American,9,14.0,R64,2009
 Robert Morris,257,15.0,R64,2009
@@ -199,9 +188,6 @@ Oakland,227,14.0,R64,2010
 UC Santa Barbara,329,15.0,R64,2010
 Vermont,354,16.0,R64,2010
 East Tennessee St.,79,16.0,R64,2010
-East Tennessee St.,79,16.0,R64,2010
-East Tennessee St.,79,16.0,R64,2010
-East Tennessee St.,79,16.0,R64,2010
 Morgan St.,193,15.0,R64,2010
 North Texas,217,15.0,R64,2010
 Lehigh,149,16.0,R64,2010
@@ -239,9 +225,6 @@ Belmont,23,13.0,R64,2011
 Vanderbilt,353,5.0,R64,2011
 Marquette,166,11.0,Sweet Sixteen,2011
 St. John's,296,6.0,R64,2011
-St. John's,296,6.0,R64,2011
-St. John's,296,6.0,R64,2011
-St. John's,296,6.0,R64,2011
 Gonzaga,108,11.0,R32,2011
 Missouri,187,11.0,R64,2011
 George Mason,101,8.0,R32,2011
@@ -269,9 +252,6 @@ Memphis,172,12.0,R64,2011
 Indiana St.,130,14.0,R64,2011
 Morehead St.,192,13.0,R32,2011
 Northern Colorado,220,15.0,R64,2011
-Northern Colorado,220,15.0,R64,2011
-Northern Colorado,220,15.0,R64,2011
-Northern Colorado,220,15.0,R64,2011
 LIU,143,15.0,R64,2011
 UC Santa Barbara,329,15.0,R64,2011
 Akron,3,15.0,R64,2011
@@ -291,9 +271,6 @@ Missouri,187,2.0,R64,2012
 Syracuse,303,1.0,Elite Eight,2012
 Wisconsin,374,4.0,Sweet Sixteen,2012
 Wichita St.,370,5.0,R64,2012
-Saint Louis,265,9.0,R32,2012
-Saint Louis,265,9.0,R32,2012
-Saint Louis,265,9.0,R32,2012
 Saint Louis,265,9.0,R32,2012
 Indiana,129,4.0,Sweet Sixteen,2012
 Georgetown,103,3.0,R32,2012
@@ -329,8 +306,6 @@ VCU,350,12.0,R32,2012
 Murray St.,195,6.0,R32,2012
 BYU,19,14.0,R64,2012
 Long Beach St.,154,12.0,R64,2012
-Long Beach St.,154,12.0,R64,2012
-Long Beach St.,154,12.0,R64,2012
 Xavier,379,10.0,Sweet Sixteen,2012
 St. Bonaventure,294,14.0,R64,2012
 Notre Dame,226,7.0,R64,2012
@@ -340,9 +315,6 @@ Ohio,228,13.0,Sweet Sixteen,2012
 South Florida,284,12.0,R32,2012
 Iona,131,14.0,R68,2012
 San Diego St.,271,6.0,R64,2012
-South Dakota St.,283,14.0,R64,2012
-South Dakota St.,283,14.0,R64,2012
-South Dakota St.,283,14.0,R64,2012
 South Dakota St.,283,14.0,R64,2012
 Colorado,59,11.0,R32,2012
 New Mexico St.,205,13.0,R64,2012
@@ -378,9 +350,6 @@ Minnesota,183,11.0,R32,2013
 Arizona,11,6.0,Sweet Sixteen,2013
 Oklahoma St.,231,5.0,R64,2013
 Saint Louis,265,4.0,R32,2013
-Saint Louis,265,4.0,R32,2013
-Saint Louis,265,4.0,R32,2013
-Saint Louis,265,4.0,R32,2013
 Marquette,166,3.0,Elite Eight,2013
 Kansas St.,139,4.0,R64,2013
 Cincinnati,54,10.0,R64,2013
@@ -401,9 +370,6 @@ Butler,35,6.0,R32,2013
 UCLA,331,6.0,R64,2013
 Oregon,234,12.0,Sweet Sixteen,2013
 Middle Tennessee,181,11.0,R68,2013
-Middle Tennessee,181,11.0,R68,2013
-Middle Tennessee,181,11.0,R68,2013
-Middle Tennessee,181,11.0,R68,2013
 Colorado,59,10.0,R64,2013
 Villanova,355,9.0,R64,2013
 Oklahoma,230,10.0,R64,2013
@@ -420,9 +386,6 @@ Valparaiso,352,14.0,R64,2013
 Iona,131,15.0,R64,2013
 New Mexico St.,205,13.0,R64,2013
 Harvard,114,14.0,R32,2013
-South Dakota St.,283,13.0,R64,2013
-South Dakota St.,283,13.0,R64,2013
-South Dakota St.,283,13.0,R64,2013
 South Dakota St.,283,13.0,R64,2013
 Pacific,237,15.0,R64,2013
 Florida Gulf Coast,95,15.0,Sweet Sixteen,2013
@@ -466,23 +429,14 @@ Oklahoma,230,5.0,R64,2014
 New Mexico,204,7.0,R64,2014
 Harvard,114,12.0,R32,2014
 Saint Louis,265,5.0,R32,2014
-Saint Louis,265,5.0,R32,2014
-Saint Louis,265,5.0,R32,2014
-Saint Louis,265,5.0,R32,2014
 Baylor,21,6.0,Sweet Sixteen,2014
 Memphis,172,8.0,R32,2014
 Oregon,234,7.0,R32,2014
 Texas,312,7.0,R32,2014
 Kansas St.,139,9.0,R64,2014
 Saint Joseph's,264,10.0,R64,2014
-Saint Joseph's,264,10.0,R64,2014
-Saint Joseph's,264,10.0,R64,2014
-Saint Joseph's,264,10.0,R64,2014
 Stanford,298,10.0,Sweet Sixteen,2014
 Arizona St.,12,10.0,R64,2014
-George Washington,102,9.0,R64,2014
-George Washington,102,9.0,R64,2014
-George Washington,102,9.0,R64,2014
 George Washington,102,9.0,R64,2014
 Massachusetts,170,6.0,R64,2014
 BYU,19,10.0,R64,2014
@@ -494,9 +448,6 @@ Dayton,68,11.0,Elite Eight,2014
 N.C. State,196,12.0,R64,2014
 Stephen F. Austin,299,12.0,R32,2014
 New Mexico St.,205,13.0,R64,2014
-North Dakota St.,215,12.0,R32,2014
-North Dakota St.,215,12.0,R32,2014
-North Dakota St.,215,12.0,R32,2014
 North Dakota St.,215,12.0,R32,2014
 Manhattan,164,13.0,R64,2014
 Tulsa,323,13.0,R64,2014
@@ -547,9 +498,6 @@ SMU,260,6.0,R64,2015
 Maryland,168,4.0,R32,2015
 Arkansas,13,5.0,R32,2015
 St. John's,296,9.0,R64,2015
-St. John's,296,9.0,R64,2015
-St. John's,296,9.0,R64,2015
-St. John's,296,9.0,R64,2015
 Davidson,67,10.0,R64,2015
 Purdue,248,9.0,R64,2015
 N.C. State,196,8.0,Sweet Sixteen,2015
@@ -568,8 +516,6 @@ Dayton,68,11.0,R32,2015
 Buffalo,34,12.0,R64,2015
 Valparaiso,352,13.0,R64,2015
 Georgia St.,106,14.0,R32,2015
-Georgia St.,106,14.0,R32,2015
-Georgia St.,106,14.0,R32,2015
 UC Irvine,326,13.0,R64,2015
 Harvard,114,13.0,R64,2015
 New Mexico St.,205,15.0,R64,2015
@@ -583,9 +529,6 @@ Coastal Carolina,57,16.0,R64,2015
 Manhattan,164,16.0,R68,2015
 Belmont,23,15.0,R64,2015
 North Florida,216,16.0,R68,2015
-North Dakota St.,215,15.0,R64,2015
-North Dakota St.,215,15.0,R64,2015
-North Dakota St.,215,15.0,R64,2015
 North Dakota St.,215,15.0,R64,2015
 Lafayette,146,16.0,R64,2015
 Robert Morris,257,16.0,R64,2015
@@ -626,9 +569,6 @@ Syracuse,303,10.0,Final Four,2016
 Texas,312,6.0,R64,2016
 USC,339,8.0,R64,2016
 Saint Joseph's,264,8.0,R32,2016
-Saint Joseph's,264,8.0,R32,2016
-Saint Joseph's,264,8.0,R32,2016
-Saint Joseph's,264,8.0,R32,2016
 Dayton,68,7.0,R64,2016
 Wisconsin,374,7.0,Sweet Sixteen,2016
 Michigan,179,11.0,R64,2016
@@ -644,9 +584,6 @@ Little Rock,153,12.0,R32,2016
 Stephen F. Austin,299,14.0,R32,2016
 Tulsa,323,11.0,R68,2016
 South Dakota St.,283,12.0,R64,2016
-South Dakota St.,283,12.0,R64,2016
-South Dakota St.,283,12.0,R64,2016
-South Dakota St.,283,12.0,R64,2016
 Temple,307,10.0,R64,2016
 Cal St. Bakersfield,38,15.0,R64,2016
 UNC Wilmington,337,13.0,R64,2016
@@ -654,9 +591,6 @@ Stony Brook,302,13.0,R64,2016
 Iona,131,13.0,R64,2016
 Chattanooga,51,12.0,R64,2016
 Fresno St.,98,14.0,R64,2016
-Middle Tennessee,181,15.0,R32,2016
-Middle Tennessee,181,15.0,R32,2016
-Middle Tennessee,181,15.0,R32,2016
 Middle Tennessee,181,15.0,R32,2016
 Weber St.,363,15.0,R64,2016
 Green Bay,111,14.0,R64,2016
@@ -709,9 +643,6 @@ Michigan St.,180,9.0,R32,2017
 Rhode Island,253,11.0,R32,2017
 Virginia Tech,357,9.0,R64,2017
 Middle Tennessee,181,12.0,R32,2017
-Middle Tennessee,181,12.0,R32,2017
-Middle Tennessee,181,12.0,R32,2017
-Middle Tennessee,181,12.0,R32,2017
 Dayton,68,7.0,R64,2017
 Arkansas,13,8.0,R32,2017
 Providence,247,11.0,R68,2017
@@ -722,9 +653,6 @@ UNC Wilmington,337,12.0,R64,2017
 Princeton,246,12.0,R64,2017
 USC,339,11.0,R32,2017
 Vermont,354,13.0,R64,2017
-East Tennessee St.,79,13.0,R64,2017
-East Tennessee St.,79,13.0,R64,2017
-East Tennessee St.,79,13.0,R64,2017
 East Tennessee St.,79,13.0,R64,2017
 Bucknell,33,13.0,R64,2017
 New Mexico St.,205,14.0,R64,2017
@@ -738,9 +666,6 @@ North Carolina Central,213,16.0,R68,2017
 North Dakota,214,15.0,R64,2017
 Jacksonville St.,136,15.0,R64,2017
 New Orleans,206,16.0,R68,2017
-South Dakota St.,283,16.0,R64,2017
-South Dakota St.,283,16.0,R64,2017
-South Dakota St.,283,16.0,R64,2017
 South Dakota St.,283,16.0,R64,2017
 UC Davis,325,16.0,R64,2017
 Mount St. Mary's,194,16.0,R64,2017
@@ -793,16 +718,11 @@ Providence,247,10.0,R64,2018
 Loyola Chicago,160,11.0,Final Four,2018
 UCLA,331,11.0,R68,2018
 South Dakota St.,283,12.0,R64,2018
-South Dakota St.,283,12.0,R64,2018
-South Dakota St.,283,12.0,R64,2018
-South Dakota St.,283,12.0,R64,2018
 Buffalo,34,13.0,R32,2018
 St. Bonaventure,294,11.0,R64,2018
 Murray St.,195,12.0,R64,2018
 Montana,190,14.0,R64,2018
 UNC Greensboro,336,13.0,R64,2018
-Georgia St.,106,15.0,R64,2018
-Georgia St.,106,15.0,R64,2018
 Georgia St.,106,15.0,R64,2018
 Stephen F. Austin,299,14.0,R64,2018
 Penn,238,16.0,R64,2018
@@ -867,9 +787,6 @@ Belmont,23,11.0,R64,2019
 Arizona St.,12,11.0,R64,2019
 Seton Hall,277,10.0,R64,2019
 St. John's,296,11.0,R68,2019
-St. John's,296,11.0,R68,2019
-St. John's,296,11.0,R68,2019
-St. John's,296,11.0,R68,2019
 Vermont,354,13.0,R64,2019
 Liberty,150,12.0,R32,2019
 UC Irvine,326,13.0,R32,2019
@@ -877,11 +794,6 @@ Yale,380,14.0,R64,2019
 Northeastern,218,13.0,R64,2019
 Northern Kentucky,223,14.0,R64,2019
 Saint Louis,265,13.0,R64,2019
-Saint Louis,265,13.0,R64,2019
-Saint Louis,265,13.0,R64,2019
-Saint Louis,265,13.0,R64,2019
-Georgia St.,106,14.0,R64,2019
-Georgia St.,106,14.0,R64,2019
 Georgia St.,106,14.0,R64,2019
 Old Dominion,232,14.0,R64,2019
 Montana,190,15.0,R64,2019
@@ -889,11 +801,6 @@ Colgate,58,15.0,R64,2019
 Abilene Christian,1,15.0,R64,2019
 Bradley,30,15.0,R64,2019
 Gardner Webb,100,16.0,R64,2019
-Gardner Webb,100,16.0,R64,2019
-Gardner Webb,100,16.0,R64,2019
-North Dakota St.,215,16.0,R64,2019
-North Dakota St.,215,16.0,R64,2019
-North Dakota St.,215,16.0,R64,2019
 North Dakota St.,215,16.0,R64,2019
 Prairie View A&M,244,16.0,R68,2019
 Iona,131,16.0,R64,2019
@@ -1016,9 +923,6 @@ Creighton,65,9.0,R32,2022
 Wyoming,378,12.0,R68,2022
 Vermont,354,13.0,R64,2022
 South Dakota St.,283,13.0,R64,2022
-South Dakota St.,283,13.0,R64,2022
-South Dakota St.,283,13.0,R64,2022
-South Dakota St.,283,13.0,R64,2022
 Chattanooga,51,13.0,R64,2022
 Rutgers,258,11.0,R68,2022
 New Mexico St.,205,12.0,R32,2022
@@ -1029,8 +933,6 @@ Colgate,58,14.0,R64,2022
 Jacksonville St.,136,15.0,R64,2022
 Montana St.,191,14.0,R64,2022
 Akron,3,13.0,R64,2022
-Georgia St.,106,16.0,R64,2022
-Georgia St.,106,16.0,R64,2022
 Georgia St.,106,16.0,R64,2022
 Longwood,155,14.0,R64,2022
 Yale,380,14.0,R64,2022
@@ -1064,9 +966,6 @@ Texas A&M,313,7.0,R64,2023
 Memphis,172,8.0,R64,2023
 Auburn,17,9.0,R32,2023
 Kansas St.,139,3.0,Elite Eight,2023
-Florida Atlantic,93,9.0,Final Four,2023
-Florida Atlantic,93,9.0,Final Four,2023
-Florida Atlantic,93,9.0,Final Four,2023
 Florida Atlantic,93,9.0,Final Four,2023
 TCU,304,6.0,R32,2023
 Virginia,356,4.0,R64,2023
@@ -1151,9 +1050,6 @@ Colorado St.,60,10.0,R64,2024
 Texas A&M,313,9.0,R32,2024
 South Carolina,280,6.0,R64,2024
 Florida Atlantic,93,8.0,R64,2024
-Florida Atlantic,93,8.0,R64,2024
-Florida Atlantic,93,8.0,R64,2024
-Florida Atlantic,93,8.0,R64,2024
 Virginia,356,10.0,R68,2024
 Drake,74,10.0,R64,2024
 Utah St.,347,8.0,R32,2024
@@ -1173,13 +1069,8 @@ Morehead St.,192,14.0,R64,2024
 Western Kentucky,368,15.0,R64,2024
 Oakland,227,14.0,R32,2024
 South Dakota St.,283,15.0,R64,2024
-South Dakota St.,283,15.0,R64,2024
-South Dakota St.,283,15.0,R64,2024
-South Dakota St.,283,15.0,R64,2024
 Colgate,58,14.0,R64,2024
 Longwood,155,16.0,R64,2024
-Long Beach St.,154,15.0,R64,2024
-Long Beach St.,154,15.0,R64,2024
 Long Beach St.,154,15.0,R64,2024
 Saint Peter's,267,15.0,R64,2024
 Montana St.,191,16.0,R68,2024
@@ -1203,9 +1094,6 @@ Wisconsin,374,3.0,R32,2025
 Illinois,125,6.0,R32,2025
 Purdue,248,4.0,Sweet Sixteen,2025
 Kentucky,142,3.0,Sweet Sixteen,2025
-St. John's,296,2.0,R32,2025
-St. John's,296,2.0,R32,2025
-St. John's,296,2.0,R32,2025
 St. John's,296,2.0,R32,2025
 Kansas,138,7.0,R64,2025
 BYU,19,6.0,Sweet Sixteen,2025

@@ -123,6 +123,7 @@ Campbell,42
 CAN,43
 Canisius,43
 Centenary,44
+CENTELA,44
 CARK,45
 Cent Arkansas,45
 Cent Arkansas,45
@@ -339,6 +340,7 @@ WI Green Bay,111
 HAMP,112
 Hampton,112
 Hartford,113
+HART,113
 HARV,114
 Harvard,114
 HAW,115
@@ -555,6 +557,9 @@ MS Valley St.,186
 MVSU,186
 Mississippi Valley St.,186
 Mississippi Valley State,186
+MS Valley St,186
+Mississippi Valley St,186
+Mississippi Valley State,186
 MIZ,187
 Missouri,187
 MOST,188
@@ -583,6 +588,8 @@ MSM,194
 Mount St Marys,194
 Mount St. Mary's,194
 Mount St. Mary’s,194
+Mt St Mary's,194
+Mount St Mary's,194
 MUR,195
 Murray St,195
 Murray St.,195
@@ -607,7 +614,8 @@ Nebraska,199
 Nebraska Omaha,200
 OMA,200
 Omaha,200
-UNO,200
+NE Omaha,200
+Nebraska Omaha,200
 NEV,201
 Nevada,201
 New Hampshire,202
@@ -622,6 +630,7 @@ New Mexico St,205
 New Mexico St.,205
 New Mexico State,205
 NewMexicoState,205
+UNO,206
 New Orleans,206
 NIA,207
 Niagara,207
@@ -851,6 +860,7 @@ San Jose St.,273
 San Jose State,273
 SCU,274
 Santa Clara,274
+SAV,275
 Savannah St.,275
 Savannah St,275
 SEA,276
@@ -922,6 +932,7 @@ Southern Utah,293
 UTU,293
 St Bonaventure,294
 St. Bonaventure,294
+SBU,294
 St. Francis NY,295
 St Francis NY,295
 SJU,296
@@ -956,7 +967,6 @@ STET,300
 Stetson,300
 STO,301
 Stonehill,301
-SBU,302
 STBK,302
 Stony Brook,302
 SYR,303
@@ -1150,6 +1160,7 @@ William & Mary,371
 Winston Salem St.,372
 W Salem St,372
 Winston Salem St,372
+WSSU,372
 WIN,373
 Winthrop,373
 WIS,374
@@ -1171,10 +1182,3 @@ Yale,380
 YSU,381
 Youngstown St.,381
 Youngstown State,381
-MS Valley St,540
-Mississippi Valley St,540
-Mississippi Valley State,540
-Mt St Mary's,548
-Mount St Mary's,548
-NE Omaha,594
-Nebraska Omaha,594
