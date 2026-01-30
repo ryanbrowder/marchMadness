@@ -21,10 +21,10 @@ except ImportError:
 # Configuration
 DATA_DIR = Path('data')
 TRAINING_DIR = DATA_DIR / 'trainingData'
-OUTPUT_DIR = Path('outputs')
-OUTPUT_DIR.mkdir(exist_ok=True)
+OUTPUT_DIR = Path('outputs/01_feature_selection')
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-ELITE8_OUTCOMES = ['CHAMPS', 'Finals', 'Final Four', 'Elite 8']
+ELITE8_OUTCOMES = ['CHAMPS', 'Finals', 'Final Four', 'Elite Eight']  # Fixed: "Elite Eight" not "Elite 8"
 CORRELATION_THRESHOLD = 0.90  # Drop features with correlation above this
 VIF_THRESHOLD = 10  # Flag features with VIF above this
 
@@ -48,6 +48,14 @@ print(f"training_set_rich: {training_rich.shape[0]} rows, {training_rich.shape[1
 # Load tournament results
 tournament_results = pd.read_csv(DATA_DIR / 'tournamentResults.csv')
 print(f"tournamentResults: {tournament_results.shape[0]} rows")
+
+# DIAGNOSTIC: Verify Elite 8+ definition
+print("\nDIAGNOSTIC - Tournament outcome distribution:")
+outcome_counts = tournament_results['tournamentOutcome'].value_counts()
+print(outcome_counts.head(10))
+elite8_count = tournament_results['tournamentOutcome'].isin(ELITE8_OUTCOMES).sum()
+print(f"\nElite 8+ teams with current definition: {elite8_count}")
+print(f"Expected Elite 8+ teams (8 per year): ~{len(tournament_results) / 68 * 8:.0f}")
 
 # ============================================================================
 # JOIN AND CREATE LABELS
@@ -76,6 +84,18 @@ def prepare_training_data(training_df, tournament_df, dataset_name):
     elite8_pct = (elite8_count / len(merged)) * 100
     print(f"  Elite 8+ teams: {elite8_count} ({elite8_pct:.1f}%)")
     print(f"  Non-Elite 8 teams: {len(merged) - elite8_count} ({100-elite8_pct:.1f}%)")
+    
+    # Convert numeric columns - use 'coerce' to force conversion
+    # Keep Year, Team, Index as-is
+    print(f"  Converting columns to numeric types...")
+    for col in merged.columns:
+        if col not in ['Year', 'Team', 'Index', 'tournamentOutcome']:
+            # Try to convert, coercing errors to NaN
+            merged[col] = pd.to_numeric(merged[col], errors='coerce')
+    
+    # Report how many columns are now numeric
+    numeric_cols = merged.select_dtypes(include=[np.number]).columns.tolist()
+    print(f"  Numeric columns after conversion: {len(numeric_cols)}")
     
     # Reorder columns: Year, Team, Index first, then features, seed, label
     feature_cols = [col for col in merged.columns 
@@ -115,6 +135,10 @@ def analyze_feature_correlations(df, dataset_name):
     print(f"\n{dataset_name}:")
     print(f"  Total features: {len(feature_cols)}")
     print(f"  Numeric features for correlation: {len(feature_df.columns)}")
+    
+    if len(feature_df.columns) == 0:
+        print("  WARNING: No numeric features found! Skipping correlation analysis.")
+        return pd.DataFrame(), []
     
     # Calculate correlation matrix
     corr_matrix = feature_df.corr()
@@ -159,6 +183,9 @@ def analyze_feature_correlations(df, dataset_name):
     
     return corr_matrix, high_corr_pairs
 
+corr_long, pairs_long = analyze_feature_correlations(labeled_long, "long")
+corr_rich, pairs_rich = analyze_feature_correlations(labeled_rich, "rich")
+
 # ============================================================================
 # FEATURE-TO-LABEL CORRELATION
 # ============================================================================
@@ -174,6 +201,13 @@ def analyze_label_correlation(df, dataset_name):
     # Filter to numeric features only
     numeric_features = df[feature_cols].select_dtypes(include=[np.number]).columns.tolist()
     
+    print(f"\n{dataset_name}:")
+    print(f"  Numeric features analyzed: {len(numeric_features)}")
+    
+    if len(numeric_features) == 0:
+        print("  WARNING: No numeric features found! Skipping label correlation analysis.")
+        return pd.DataFrame()
+    
     # Calculate correlation with label
     label_corrs = []
     for col in numeric_features:
@@ -186,8 +220,6 @@ def analyze_label_correlation(df, dataset_name):
     
     label_corr_df = pd.DataFrame(label_corrs).sort_values('correlation', ascending=False)
     
-    print(f"\n{dataset_name}:")
-    print(f"  Numeric features analyzed: {len(numeric_features)}")
     print(f"  Top 15 features by correlation with elite8_flag:")
     print(label_corr_df.head(15).to_string(index=False))
     
@@ -197,6 +229,9 @@ def analyze_label_correlation(df, dataset_name):
     print(f"\n  Saved full ranking to {output_file}")
     
     return label_corr_df
+
+label_corr_long = analyze_label_correlation(labeled_long, "long")
+label_corr_rich = analyze_label_correlation(labeled_rich, "rich")
 
 # ============================================================================
 # VARIANCE INFLATION FACTOR (VIF) ANALYSIS
@@ -215,14 +250,19 @@ def calculate_vif(df, dataset_name):
     feature_cols = [col for col in df.columns 
                    if col not in ['Year', 'Team', 'Index', 'elite8_flag']]
     
-    feature_df = df[feature_cols].dropna()
+    # Select only numeric features
+    feature_df = df[feature_cols].select_dtypes(include=[np.number]).dropna()
     
     print(f"\n{dataset_name}:")
-    print(f"  Calculating VIF for {len(feature_cols)} features...")
+    print(f"  Calculating VIF for {len(feature_df.columns)} numeric features...")
+    
+    if len(feature_df.columns) == 0:
+        print("  WARNING: No numeric features found! Skipping VIF analysis.")
+        return pd.DataFrame()
     
     # Calculate VIF for each feature
     vif_data = []
-    for i, col in enumerate(feature_cols):
+    for i, col in enumerate(feature_df.columns):
         try:
             vif = variance_inflation_factor(feature_df.values, i)
             vif_data.append({
@@ -266,6 +306,11 @@ def recommend_feature_reduction(high_corr_pairs, label_corr_df, vif_df, dataset_
     """Recommend which features to drop based on correlation, VIF, and label correlation"""
     
     print(f"\n{dataset_name}:")
+    
+    # Check if we have valid data
+    if label_corr_df.empty:
+        print("  No numeric features found - cannot make recommendations")
+        return set()
     
     # Build drop recommendations
     features_to_drop = set()
@@ -313,6 +358,8 @@ def recommend_feature_reduction(high_corr_pairs, label_corr_df, vif_df, dataset_
         output_file = OUTPUT_DIR / f'drop_recommendations_{dataset_name}.csv'
         drop_df.to_csv(output_file, index=False)
         print(f"\n  Saved recommendations to {output_file}")
+    else:
+        print("\n  No features recommended for removal")
     
     # Features to keep
     all_features = set(label_corr_df['feature'].tolist())
@@ -320,7 +367,8 @@ def recommend_feature_reduction(high_corr_pairs, label_corr_df, vif_df, dataset_
     
     print(f"\n  Original features: {len(all_features)}")
     print(f"  After recommended drops: {len(features_to_keep)}")
-    print(f"  Reduction: {len(features_to_drop)} features ({len(features_to_drop)/len(all_features)*100:.1f}%)")
+    if len(all_features) > 0:
+        print(f"  Reduction: {len(features_to_drop)} features ({len(features_to_drop)/len(all_features)*100:.1f}%)")
     
     # Save reduced feature list
     keep_df = pd.DataFrame({'feature': sorted(features_to_keep)})
