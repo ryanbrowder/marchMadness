@@ -13,6 +13,7 @@ Alabama A&M,5
 Alabama A&M,5
 Alabama A&M,5
 ALST,6
+Alabama St,6
 Alabama St.,6
 Alabama State,6
 Albany,7
@@ -21,12 +22,14 @@ UALB,7
 Albany (NY),7
 ALCN,8
 Alcorn St.,8
+Alcorn St,8
 Alcorn State,8
 AMER,9
 American,9
 American Univ,9
 APP,10
 Appalachian St.,10
+Appalachian St,10
 Appalachian State,10
 ARIZ,11
 Arizona,11
@@ -43,6 +46,7 @@ UAPB,14
 Arkansas-Pine Bluff,14
 ARST,15
 Arkansas St.,15
+Arkansas St,15
 Arkansas State,15
 ARMY,16
 Army,16
@@ -56,6 +60,7 @@ BALL,20
 Ball St.,20
 Ball St.,20
 Ball St.,20
+Ball St,20
 Ball State,20
 BAY,21
 Baylor,21
@@ -70,6 +75,7 @@ BING,25
 Binghamton,25
 BOIS,26
 Boise St.,26
+Boise St,26
 Boise State,26
 BoiseState,26
 BC,27
@@ -1182,3 +1188,24 @@ Yale,380
 YSU,381
 Youngstown St.,381
 Youngstown State,381
+Chicago St,52
+Colorado St,60
+Coppin St,63
+Delaware St,71
+Idaho St,124
+Illinois St,127
+Indiana St,130
+Jackson St,134
+Long Beach St,154
+McNeese St,171
+Mississippi St,185
+Missouri St,188
+Morgan St,193
+Penn St,239
+Sam Houston St,268
+San Jose St,273
+Tarleton St,305
+Tennessee St,310
+Texas St,316
+Washington St,361
+Youngstown St,381

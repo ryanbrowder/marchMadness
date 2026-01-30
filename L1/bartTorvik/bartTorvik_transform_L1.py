@@ -237,10 +237,21 @@ def convert_data_types(df: pd.DataFrame) -> pd.DataFrame:
     """Convert columns to appropriate data types."""
     df = df.copy()
     
-    # Convert Year to integer
-    df['Year'] = df['Year'].astype(int)
+    # Columns that should remain as strings
+    string_cols = ['Team', 'tournamentOutcome', 'Conf']
     
-    # Add more type conversions here as needed
+    # Columns that should be integers
+    integer_cols = ['Year', 'Index', 'tournamentSeed', 'Rk', 'G', 'Wins_Overall']
+    
+    # Convert integer columns
+    for col in integer_cols:
+        if col in df.columns:
+            df[col] = pd.to_numeric(df[col], errors='coerce').astype('Int64')
+    
+    # Convert all other columns to float (except string columns)
+    for col in df.columns:
+        if col not in string_cols and col not in integer_cols:
+            df[col] = pd.to_numeric(df[col], errors='coerce')
     
     return df
 

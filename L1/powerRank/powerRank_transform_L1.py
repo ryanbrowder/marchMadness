@@ -122,6 +122,10 @@ def add_metadata_columns(df: pd.DataFrame) -> pd.DataFrame:
 def reorder_and_select_columns(df: pd.DataFrame) -> pd.DataFrame:
     """Select and reorder columns for final output"""
     
+    # Ensure numeric types
+    df['Index'] = pd.to_numeric(df['Index'], errors='coerce').astype('Int64')
+    df['PowerRank'] = pd.to_numeric(df['PowerRank'], errors='coerce')
+    
     final_columns = [
         'Year',
         'Team',
@@ -179,6 +183,10 @@ def transform_powerrank_data(input_path: str, output_path: str, lookup_path: str
     print(f"   Incomplete rows: {(~df['DataQuality']).sum()}")
     print(f"   Years covered: {df['Year'].min()} - {df['Year'].max()}")
     print(f"   Unique teams: {df['Index'].nunique()}")
+    print(f"\n   Data types:")
+    print(f"   - Year: {df['Year'].dtype}")
+    print(f"   - Index: {df['Index'].dtype}")
+    print(f"   - PowerRank: {df['PowerRank'].dtype}")
     
     # Final column selection and sorting
     print("\n6. Finalizing output...")

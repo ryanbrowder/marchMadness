@@ -87,6 +87,11 @@ def match_to_index(df, teams_index_df):
     df_final = df_matched[['Year', 'Team_Clean', 'Index', 'LRMCB']].copy()
     df_final.rename(columns={'Team_Clean': 'Team'}, inplace=True)
     
+    # Ensure all non-Team columns are numeric
+    df_final['Year'] = pd.to_numeric(df_final['Year'], errors='coerce').astype('Int64')
+    df_final['Index'] = pd.to_numeric(df_final['Index'], errors='coerce').astype('Int64')
+    df_final['LRMCB'] = pd.to_numeric(df_final['LRMCB'], errors='coerce')
+    
     return df_final
 
 def main():
@@ -142,6 +147,17 @@ def main():
     print(f"Total rows processed: {len(df_raw)}")
     print(f"Valid years (excl. 2020): {len(df_final)}")
     print(f"Match rate: {match_rate:.1f}%")
+    
+    # Data type validation
+    print("\nData Types:")
+    print(f"  Year: {df_final['Year'].dtype}")
+    print(f"  Team: {df_final['Team'].dtype}")
+    print(f"  Index: {df_final['Index'].dtype}")
+    print(f"  LRMCB: {df_final['LRMCB'].dtype}")
+    
+    # Preview
+    print("\nSample Output (first 3 rows):")
+    print(df_final.head(3).to_string(index=False))
     
     if match_rate < 100:
         print("\n⚠ WARNING: Not all teams matched to index!")

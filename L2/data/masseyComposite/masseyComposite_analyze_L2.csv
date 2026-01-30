@@ -3,25 +3,25 @@ Year,Team,Index,masseyComposite_Rank
 2001,Akron,3,182
 2001,Alabama,4,26
 2001,Alabama A&M,5,261
-2001,Alabama State,6,216
-2001,Alcorn State,8,246
+2001,Alabama St,6,216
+2001,Alcorn St,8,246
 2001,American Univ,9,251
-2001,Appalachian State,10,275
+2001,Appalachian St,10,275
 2001,Arizona,11,9
 2001,Arizona St,12,101
 2001,Ark Little Rock,153,134
 2001,Ark Pine Bluff,14,317
 2001,Arkansas,13,57
-2001,Arkansas State,15,148
+2001,Arkansas St,15,148
 2001,Army,16,315
 2001,Auburn,17,61
 2001,Austin Peay,18,104
 2001,BYU,19,56
-2001,Ball State,20,151
+2001,Ball St,20,151
 2001,Baylor,21,84
 2001,Belmont,23,240
 2001,Bethune-Cookman,24,292
-2001,Boise State,26,152
+2001,Boise St,26,152
 2001,Boston College,27,14
 2001,Boston Univ,28,208
 2001,Bowling Green,29,192
@@ -43,7 +43,7 @@ Year,Team,Index,masseyComposite_Rank
 2001,Charleston So,49,311
 2001,Charlotte,50,58
 2001,Chattanooga,51,117
-2001,Chicago State,52,286
+2001,Chicago St,52,286
 2001,Cincinnati,54,37
 2001,Citadel,318,218
 2001,Clemson,55,115
@@ -52,10 +52,10 @@ Year,Team,Index,masseyComposite_Rank
 2001,Col Charleston,48,51
 2001,Colgate,58,268
 2001,Colorado,59,55
-2001,Colorado State,60,99
+2001,Colorado St,60,99
 2001,Columbia,61,305
 2001,Connecticut,62,65
-2001,Coppin State,63,252
+2001,Coppin St,63,252
 2001,Cornell,64,293
 2001,Creighton,65,49
 2001,Dartmouth,66,280
@@ -63,7 +63,7 @@ Year,Team,Index,masseyComposite_Rank
 2001,Dayton,68,79
 2001,DePaul,69,108
 2001,Delaware,70,129
-2001,Delaware State,71,277
+2001,Delaware St,71,277
 2001,Denver,72,222
 2001,Detroit,73,89
 2001,Drake,74,154
@@ -109,15 +109,15 @@ Year,Team,Index,masseyComposite_Rank
 2001,IL Chicago,126,121
 2001,IUPUI,122,228
 2001,Idaho,123,299
-2001,Idaho State,124,196
+2001,Idaho St,124,196
 2001,Illinois,125,6
-2001,Illinois State,127,72
+2001,Illinois St,127,72
 2001,Indiana,129,45
-2001,Indiana State,130,83
+2001,Indiana St,130,83
 2001,Iona,131,122
 2001,Iowa,132,17
 2001,Iowa St,133,15
-2001,Jackson State,134,307
+2001,Jackson St,134,307
 2001,Jacksonville,135,209
 2001,Jacksonville St,136,257
 2001,James Madison,137,235
@@ -132,7 +132,7 @@ Year,Team,Index,masseyComposite_Rank
 2001,Lamar,147,283
 2001,Lehigh,149,260
 2001,Liberty,150,269
-2001,Long Beach State,154,168
+2001,Long Beach St,154,168
 2001,Louisiana,156,136
 2001,Louisiana Tech,158,162
 2001,Louisville,159,153
@@ -149,7 +149,7 @@ Year,Team,Index,masseyComposite_Rank
 2001,Marshall,167,96
 2001,Maryland,168,10
 2001,Massachusetts,170,97
-2001,McNeese State,171,147
+2001,McNeese St,171,147
 2001,Memphis,172,78
 2001,Mercer,173,232
 2001,Miami FL,177,93
@@ -158,15 +158,15 @@ Year,Team,Index,masseyComposite_Rank
 2001,Michigan St,180,3
 2001,Minnesota,183,29
 2001,Mississippi,184,18
-2001,Mississippi State,185,42
+2001,Mississippi St,185,42
 2001,Missouri,187,39
 2001,Missouri KC,333,202
-2001,Missouri State,188,142
+2001,Missouri St,188,142
 2001,Monmouth NJ,189,175
 2001,Montana,190,234
 2001,Montana St,191,150
 2001,Morehead St,192,214
-2001,Morgan State,193,303
+2001,Morgan St,193,303
 2001,Mt St Mary's,194,301
 2001,Murray St,195,132
 2001,N Illinois,221,259
@@ -201,7 +201,7 @@ Year,Team,Index,masseyComposite_Rank
 2001,Oregon St,235,143
 2001,Pacific,237,106
 2001,Penn,238,194
-2001,Penn State,239,44
+2001,Penn St,239,44
 2001,Pepperdine,240,54
 2001,Pittsburgh,241,81
 2001,Portland,242,207
@@ -226,12 +226,12 @@ Year,Team,Index,masseyComposite_Rank
 2001,SMU,260,43
 2001,SUNY Albany,7,310
 2001,Sacred Heart,262,314
-2001,Sam Houston State,268,172
+2001,Sam Houston St,268,172
 2001,Samford,269,167
 2001,San Diego,270,107
 2001,San Diego St,271,127
 2001,San Francisco,272,220
-2001,San Jose State,273,177
+2001,San Jose St,273,177
 2001,Santa Clara,274,116
 2001,Seton Hall,277,47
 2001,Siena,278,135
@@ -259,11 +259,11 @@ Year,Team,Index,masseyComposite_Rank
 2001,TX Southern,315,290
 2001,Temple,307,48
 2001,Tennessee,308,8
-2001,Tennessee State,310,266
+2001,Tennessee St,310,266
 2001,Tennessee Tech,311,114
 2001,Texas,312,19
 2001,Texas A&M,313,188
-2001,Texas State,316,255
+2001,Texas St,316,255
 2001,Texas Tech,317,155
 2001,Toledo,319,77
 2001,Towson,320,221
@@ -305,7 +305,7 @@ Year,Team,Index,masseyComposite_Rank
 2001,Wagner,358,197
 2001,Wake Forest,359,7
 2001,Washington,360,158
-2001,Washington State,361,169
+2001,Washington St,361,169
 2001,Weber St,363,160
 2001,West Virginia,365,98
 2001,Wichita St,370,173
@@ -317,32 +317,32 @@ Year,Team,Index,masseyComposite_Rank
 2001,Wyoming,378,62
 2001,Xavier,379,32
 2001,Yale,380,237
-2001,Youngstown State,381,164
+2001,Youngstown St,381,164
 2002,Air Force,2,220
 2002,Akron,3,273
 2002,Alabama,4,12
 2002,Alabama A&M,5,271
-2002,Alabama State,6,238
-2002,Alcorn State,8,214
+2002,Alabama St,6,238
+2002,Alcorn St,8,214
 2002,American Univ,9,218
-2002,Appalachian State,10,258
+2002,Appalachian St,10,258
 2002,Arizona,11,7
 2002,Arizona St,12,76
 2002,Ark Little Rock,153,94
 2002,Ark Pine Bluff,14,326
 2002,Arkansas,13,48
-2002,Arkansas State,15,170
+2002,Arkansas St,15,170
 2002,Army,16,287
 2002,Auburn,17,89
 2002,Austin Peay,18,181
 2002,BYU,19,38
-2002,Ball State,20,41
+2002,Ball St,20,41
 2002,Baylor,21,109
 2002,Belmont,23,192
 2002,Bethune-Cookman,24,276
 2002,Binghamton,25,302
 2002,Birmingham So,49,275
-2002,Boise State,26,189
+2002,Boise St,26,189
 2002,Boston College,27,64
 2002,Boston Univ,28,157
 2002,Bowling Green,29,45
@@ -364,7 +364,7 @@ Year,Team,Index,masseyComposite_Rank
 2002,Charleston So,49,288
 2002,Charlotte,50,44
 2002,Chattanooga,51,134
-2002,Chicago State,52,313
+2002,Chicago St,52,313
 2002,Cincinnati,54,2
 2002,Citadel,318,106
 2002,Clemson,55,103
@@ -373,10 +373,10 @@ Year,Team,Index,masseyComposite_Rank
 2002,Col Charleston,48,72
 2002,Colgate,58,236
 2002,Colorado,59,87
-2002,Colorado State,60,130
+2002,Colorado St,60,130
 2002,Columbia,61,216
 2002,Connecticut,62,25
-2002,Coppin State,63,316
+2002,Coppin St,63,316
 2002,Cornell,64,303
 2002,Creighton,65,78
 2002,Dartmouth,66,270
@@ -384,7 +384,7 @@ Year,Team,Index,masseyComposite_Rank
 2002,Dayton,68,36
 2002,DePaul,69,166
 2002,Delaware,70,141
-2002,Delaware State,71,261
+2002,Delaware St,71,261
 2002,Denver,72,268
 2002,Detroit,73,107
 2002,Drake,74,202
@@ -431,15 +431,15 @@ Year,Team,Index,masseyComposite_Rank
 2002,IL Chicago,126,144
 2002,IUPUI,122,174
 2002,Idaho,123,265
-2002,Idaho State,124,233
+2002,Idaho St,124,233
 2002,Illinois,125,10
-2002,Illinois State,127,162
+2002,Illinois St,127,162
 2002,Indiana,129,18
-2002,Indiana State,130,246
+2002,Indiana St,130,246
 2002,Iona,131,242
 2002,Iowa,132,39
 2002,Iowa St,133,145
-2002,Jackson State,134,292
+2002,Jackson St,134,292
 2002,Jacksonville,135,118
 2002,Jacksonville St,136,259
 2002,James Madison,137,180
@@ -455,7 +455,7 @@ Year,Team,Index,masseyComposite_Rank
 2002,Lehigh,149,294
 2002,Liberty,150,322
 2002,Lipscomb,152,311
-2002,Long Beach State,154,217
+2002,Long Beach St,154,217
 2002,Louisiana,156,132
 2002,Louisiana Tech,158,91
 2002,Louisville,159,69
@@ -472,7 +472,7 @@ Year,Team,Index,masseyComposite_Rank
 2002,Marshall,167,176
 2002,Maryland,168,8
 2002,Massachusetts,170,117
-2002,McNeese State,171,149
+2002,McNeese St,171,149
 2002,Memphis,172,33
 2002,Mercer,173,297
 2002,Miami FL,177,22
@@ -481,15 +481,15 @@ Year,Team,Index,masseyComposite_Rank
 2002,Michigan St,180,55
 2002,Minnesota,183,66
 2002,Mississippi,184,43
-2002,Mississippi State,185,34
+2002,Mississippi St,185,34
 2002,Missouri,187,42
 2002,Missouri KC,333,142
-2002,Missouri State,188,179
+2002,Missouri St,188,179
 2002,Monmouth NJ,189,213
 2002,Montana,190,175
 2002,Montana St,191,86
 2002,Morehead St,192,198
-2002,Morgan State,193,320
+2002,Morgan St,193,320
 2002,Morris Brown,202,323
 2002,Mt St Mary's,194,325
 2002,Murray St,195,187
@@ -526,7 +526,7 @@ Year,Team,Index,masseyComposite_Rank
 2002,PFW,249,305
 2002,Pacific,237,93
 2002,Penn,238,73
-2002,Penn State,239,219
+2002,Penn St,239,219
 2002,Pepperdine,240,49
 2002,Pittsburgh,241,29
 2002,Portland,242,257
@@ -551,12 +551,12 @@ Year,Team,Index,masseyComposite_Rank
 2002,SMU,260,88
 2002,SUNY Albany,7,310
 2002,Sacred Heart,262,296
-2002,Sam Houston State,268,178
+2002,Sam Houston St,268,178
 2002,Samford,269,125
 2002,San Diego,270,96
 2002,San Diego St,271,62
 2002,San Francisco,272,173
-2002,San Jose State,273,248
+2002,San Jose St,273,248
 2002,Santa Clara,274,188
 2002,Savannah St,275,321
 2002,Seton Hall,277,112
@@ -585,11 +585,11 @@ Year,Team,Index,masseyComposite_Rank
 2002,TX Southern,315,309
 2002,Temple,307,110
 2002,Tennessee,308,70
-2002,Tennessee State,310,279
+2002,Tennessee St,310,279
 2002,Tennessee Tech,311,80
 2002,Texas,312,14
 2002,Texas A&M,313,201
-2002,Texas State,316,284
+2002,Texas St,316,284
 2002,Texas Tech,317,24
 2002,Toledo,319,165
 2002,Towson,320,289
@@ -632,7 +632,7 @@ Year,Team,Index,masseyComposite_Rank
 2002,Wagner,358,151
 2002,Wake Forest,359,23
 2002,Washington,360,90
-2002,Washington State,361,195
+2002,Washington St,361,195
 2002,Weber St,363,120
 2002,West Virginia,365,167
 2002,Wichita St,370,114
@@ -644,32 +644,32 @@ Year,Team,Index,masseyComposite_Rank
 2002,Wyoming,378,74
 2002,Xavier,379,31
 2002,Yale,380,205
-2002,Youngstown State,381,299
+2002,Youngstown St,381,299
 2003,Air Force,2,144
 2003,Akron,3,192
 2003,Alabama,4,24
 2003,Alabama A&M,5,312
-2003,Alabama State,6,230
-2003,Alcorn State,8,297
+2003,Alabama St,6,230
+2003,Alcorn St,8,297
 2003,American Univ,9,235
-2003,Appalachian State,10,82
+2003,Appalachian St,10,82
 2003,Arizona,11,1
 2003,Arizona St,12,39
 2003,Ark Little Rock,153,154
 2003,Ark Pine Bluff,14,326
 2003,Arkansas,13,136
-2003,Arkansas State,15,212
+2003,Arkansas St,15,212
 2003,Army,16,317
 2003,Auburn,17,22
 2003,Austin Peay,18,156
 2003,BYU,19,27
-2003,Ball State,20,151
+2003,Ball St,20,151
 2003,Baylor,21,125
 2003,Belmont,23,149
 2003,Bethune-Cookman,24,314
 2003,Binghamton,25,202
 2003,Birmingham So,49,188
-2003,Boise State,26,160
+2003,Boise St,26,160
 2003,Boston College,27,77
 2003,Boston Univ,28,112
 2003,Bowling Green,29,118
@@ -691,7 +691,7 @@ Year,Team,Index,masseyComposite_Rank
 2003,Charleston So,49,190
 2003,Charlotte,50,92
 2003,Chattanooga,51,96
-2003,Chicago State,52,302
+2003,Chicago St,52,302
 2003,Cincinnati,54,20
 2003,Citadel,318,282
 2003,Clemson,55,50
@@ -700,10 +700,10 @@ Year,Team,Index,masseyComposite_Rank
 2003,Col Charleston,48,104
 2003,Colgate,58,270
 2003,Colorado,59,52
-2003,Colorado State,60,83
+2003,Colorado St,60,83
 2003,Columbia,61,320
 2003,Connecticut,62,34
-2003,Coppin State,63,290
+2003,Coppin St,63,290
 2003,Cornell,64,283
 2003,Creighton,65,6
 2003,Dartmouth,66,296
@@ -711,7 +711,7 @@ Year,Team,Index,masseyComposite_Rank
 2003,Dayton,68,37
 2003,DePaul,69,44
 2003,Delaware,70,121
-2003,Delaware State,71,263
+2003,Delaware St,71,263
 2003,Denver,72,108
 2003,Detroit,73,148
 2003,Drake,74,203
@@ -758,15 +758,15 @@ Year,Team,Index,masseyComposite_Rank
 2003,IL Chicago,126,64
 2003,IUPUI,122,200
 2003,Idaho,123,232
-2003,Idaho State,124,196
+2003,Idaho St,124,196
 2003,Illinois,125,18
-2003,Illinois State,127,261
+2003,Illinois St,127,261
 2003,Indiana,129,17
-2003,Indiana State,130,220
+2003,Indiana St,130,220
 2003,Iona,131,169
 2003,Iowa,132,42
 2003,Iowa St,133,81
-2003,Jackson State,134,269
+2003,Jackson St,134,269
 2003,Jacksonville,135,267
 2003,Jacksonville St,136,180
 2003,James Madison,137,222
@@ -782,7 +782,7 @@ Year,Team,Index,masseyComposite_Rank
 2003,Lehigh,149,191
 2003,Liberty,150,258
 2003,Lipscomb,152,315
-2003,Long Beach State,154,301
+2003,Long Beach St,154,301
 2003,Louisiana,156,88
 2003,Louisiana Tech,158,174
 2003,Louisville,159,4
@@ -799,7 +799,7 @@ Year,Team,Index,masseyComposite_Rank
 2003,Marshall,167,116
 2003,Maryland,168,15
 2003,Massachusetts,170,201
-2003,McNeese State,171,177
+2003,McNeese St,171,177
 2003,Memphis,172,49
 2003,Mercer,173,164
 2003,Miami FL,177,114
@@ -808,15 +808,15 @@ Year,Team,Index,masseyComposite_Rank
 2003,Michigan St,180,51
 2003,Minnesota,183,71
 2003,Mississippi,184,57
-2003,Mississippi State,185,28
+2003,Mississippi St,185,28
 2003,Missouri,187,25
 2003,Missouri KC,333,306
-2003,Missouri State,188,132
+2003,Missouri St,188,132
 2003,Monmouth NJ,189,253
 2003,Montana,190,181
 2003,Montana St,191,218
 2003,Morehead St,192,133
-2003,Morgan State,193,321
+2003,Morgan St,193,321
 2003,Morris Brown,202,324
 2003,Mt St Mary's,194,285
 2003,Murray St,195,107
@@ -853,7 +853,7 @@ Year,Team,Index,masseyComposite_Rank
 2003,PFW,249,277
 2003,Pacific,237,115
 2003,Penn,238,61
-2003,Penn State,239,193
+2003,Penn St,239,193
 2003,Pepperdine,240,130
 2003,Pittsburgh,241,2
 2003,Portland,242,210
@@ -878,12 +878,12 @@ Year,Team,Index,masseyComposite_Rank
 2003,SMU,260,146
 2003,SUNY Albany,7,295
 2003,Sacred Heart,262,298
-2003,Sam Houston State,268,165
+2003,Sam Houston St,268,165
 2003,Samford,269,223
 2003,San Diego,270,137
 2003,San Diego St,271,86
 2003,San Francisco,272,199
-2003,San Jose State,273,287
+2003,San Jose St,273,287
 2003,Santa Clara,274,163
 2003,Savannah St,275,325
 2003,Seton Hall,277,97
@@ -912,11 +912,11 @@ Year,Team,Index,masseyComposite_Rank
 2003,TX Southern,315,233
 2003,Temple,307,172
 2003,Tennessee,308,56
-2003,Tennessee State,310,322
+2003,Tennessee St,310,322
 2003,Tennessee Tech,311,145
 2003,Texas,312,9
 2003,Texas A&M,313,98
-2003,Texas State,316,161
+2003,Texas St,316,161
 2003,Texas Tech,317,32
 2003,Toledo,319,138
 2003,Towson,320,313
@@ -959,7 +959,7 @@ Year,Team,Index,masseyComposite_Rank
 2003,Wagner,358,173
 2003,Wake Forest,359,11
 2003,Washington,360,110
-2003,Washington State,361,198
+2003,Washington St,361,198
 2003,Weber St,363,95
 2003,West Virginia,365,106
 2003,Wichita St,370,129
@@ -971,32 +971,32 @@ Year,Team,Index,masseyComposite_Rank
 2003,Wyoming,378,58
 2003,Xavier,379,21
 2003,Yale,380,157
-2003,Youngstown State,381,254
+2003,Youngstown St,381,254
 2004,Air Force,2,51
 2004,Akron,3,134
 2004,Alabama,4,31
 2004,Alabama A&M,5,296
-2004,Alabama State,6,308
-2004,Alcorn State,8,315
+2004,Alabama St,6,308
+2004,Alcorn St,8,315
 2004,American Univ,9,216
-2004,Appalachian State,10,199
+2004,Appalachian St,10,199
 2004,Arizona,11,19
 2004,Arizona St,12,110
 2004,Ark Little Rock,153,178
 2004,Ark Pine Bluff,14,320
 2004,Arkansas,13,106
-2004,Arkansas State,15,133
+2004,Arkansas St,15,133
 2004,Army,16,321
 2004,Auburn,17,44
 2004,Austin Peay,18,130
 2004,BYU,19,36
-2004,Ball State,20,126
+2004,Ball St,20,126
 2004,Baylor,21,264
 2004,Belmont,23,69
 2004,Bethune-Cookman,24,309
 2004,Binghamton,25,250
 2004,Birmingham So,49,171
-2004,Boise State,26,95
+2004,Boise St,26,95
 2004,Boston College,27,40
 2004,Boston Univ,28,109
 2004,Bowling Green,29,213
@@ -1018,7 +1018,7 @@ Year,Team,Index,masseyComposite_Rank
 2004,Charleston So,49,318
 2004,Charlotte,50,38
 2004,Chattanooga,51,197
-2004,Chicago State,52,258
+2004,Chicago St,52,258
 2004,Cincinnati,54,5
 2004,Citadel,318,314
 2004,Clemson,55,86
@@ -1027,10 +1027,10 @@ Year,Team,Index,masseyComposite_Rank
 2004,Col Charleston,48,53
 2004,Colgate,58,241
 2004,Colorado,59,60
-2004,Colorado State,60,127
+2004,Colorado St,60,127
 2004,Columbia,61,293
 2004,Connecticut,62,7
-2004,Coppin State,63,266
+2004,Coppin St,63,266
 2004,Cornell,64,220
 2004,Creighton,65,26
 2004,Dartmouth,66,311
@@ -1038,7 +1038,7 @@ Year,Team,Index,masseyComposite_Rank
 2004,Dayton,68,49
 2004,DePaul,69,97
 2004,Delaware,70,160
-2004,Delaware State,71,212
+2004,Delaware St,71,212
 2004,Denver,72,149
 2004,Detroit,73,112
 2004,Drake,74,155
@@ -1085,15 +1085,15 @@ Year,Team,Index,masseyComposite_Rank
 2004,IL Chicago,126,121
 2004,IUPUI,122,122
 2004,Idaho,123,221
-2004,Idaho State,124,231
+2004,Idaho St,124,231
 2004,Illinois,125,37
-2004,Illinois State,127,188
+2004,Illinois St,127,188
 2004,Indiana,129,90
-2004,Indiana State,130,182
+2004,Indiana St,130,182
 2004,Iona,131,233
 2004,Iowa,132,64
 2004,Iowa St,133,46
-2004,Jackson State,134,247
+2004,Jackson St,134,247
 2004,Jacksonville,135,281
 2004,Jacksonville St,136,263
 2004,James Madison,137,256
@@ -1109,7 +1109,7 @@ Year,Team,Index,masseyComposite_Rank
 2004,Lehigh,149,237
 2004,Liberty,150,229
 2004,Lipscomb,152,295
-2004,Long Beach State,154,285
+2004,Long Beach St,154,285
 2004,Louisiana,156,92
 2004,Louisiana Tech,158,174
 2004,Louisville,159,3
@@ -1126,7 +1126,7 @@ Year,Team,Index,masseyComposite_Rank
 2004,Marshall,167,157
 2004,Maryland,168,27
 2004,Massachusetts,170,218
-2004,McNeese State,171,273
+2004,McNeese St,171,273
 2004,Memphis,172,39
 2004,Mercer,173,211
 2004,Miami FL,177,101
@@ -1135,15 +1135,15 @@ Year,Team,Index,masseyComposite_Rank
 2004,Michigan St,180,65
 2004,Minnesota,183,128
 2004,Mississippi,184,137
-2004,Mississippi State,185,14
+2004,Mississippi St,185,14
 2004,Missouri,187,71
 2004,Missouri KC,333,192
-2004,Missouri State,188,113
+2004,Missouri St,188,113
 2004,Monmouth NJ,189,115
 2004,Montana,190,225
 2004,Montana St,191,180
 2004,Morehead St,192,223
-2004,Morgan State,193,251
+2004,Morgan St,193,251
 2004,Mt St Mary's,194,294
 2004,Murray St,195,50
 2004,N Illinois,221,232
@@ -1179,7 +1179,7 @@ Year,Team,Index,masseyComposite_Rank
 2004,PFW,249,277
 2004,Pacific,237,124
 2004,Penn,238,73
-2004,Penn State,239,135
+2004,Penn St,239,135
 2004,Pepperdine,240,170
 2004,Pittsburgh,241,11
 2004,Portland,242,154
@@ -1204,12 +1204,12 @@ Year,Team,Index,masseyComposite_Rank
 2004,SMU,260,120
 2004,SUNY Albany,7,306
 2004,Sacred Heart,262,230
-2004,Sam Houston State,268,282
+2004,Sam Houston St,268,282
 2004,Samford,269,172
 2004,San Diego,270,283
 2004,San Diego St,271,84
 2004,San Francisco,272,159
-2004,San Jose State,273,243
+2004,San Jose St,273,243
 2004,Santa Clara,274,114
 2004,Savannah St,275,322
 2004,Seton Hall,277,34
@@ -1238,11 +1238,11 @@ Year,Team,Index,masseyComposite_Rank
 2004,TX Southern,315,269
 2004,Temple,307,117
 2004,Tennessee,308,42
-2004,Tennessee State,310,275
+2004,Tennessee St,310,275
 2004,Tennessee Tech,311,209
 2004,Texas,312,16
 2004,Texas A&M,313,205
-2004,Texas State,316,235
+2004,Texas St,316,235
 2004,Texas Tech,317,15
 2004,Toledo,319,72
 2004,Towson,320,291
@@ -1285,7 +1285,7 @@ Year,Team,Index,masseyComposite_Rank
 2004,Wagner,358,284
 2004,Wake Forest,359,12
 2004,Washington,360,142
-2004,Washington State,361,144
+2004,Washington St,361,144
 2004,Weber St,363,168
 2004,West Virginia,365,102
 2004,Wichita St,370,91
@@ -1297,32 +1297,32 @@ Year,Team,Index,masseyComposite_Rank
 2004,Wyoming,378,111
 2004,Xavier,379,67
 2004,Yale,380,224
-2004,Youngstown State,381,257
+2004,Youngstown St,381,257
 2005,Air Force,2,79
 2005,Akron,3,117
 2005,Alabama,4,19
 2005,Alabama A&M,5,289
-2005,Alabama State,6,278
-2005,Alcorn State,8,324
+2005,Alabama St,6,278
+2005,Alcorn St,8,324
 2005,American Univ,9,166
-2005,Appalachian State,10,228
+2005,Appalachian St,10,228
 2005,Arizona,11,10
 2005,Arizona St,12,33
 2005,Ark Little Rock,153,84
 2005,Ark Pine Bluff,14,321
 2005,Arkansas,13,45
-2005,Arkansas State,15,168
+2005,Arkansas St,15,168
 2005,Army,16,329
 2005,Auburn,17,114
 2005,Austin Peay,18,218
 2005,BYU,19,206
-2005,Ball State,20,122
+2005,Ball St,20,122
 2005,Baylor,21,198
 2005,Belmont,23,224
 2005,Bethune-Cookman,24,254
 2005,Binghamton,25,236
 2005,Birmingham So,49,183
-2005,Boise State,26,230
+2005,Boise St,26,230
 2005,Boston College,27,7
 2005,Boston Univ,28,69
 2005,Bowling Green,29,71
@@ -1344,7 +1344,7 @@ Year,Team,Index,masseyComposite_Rank
 2005,Charleston So,49,220
 2005,Charlotte,50,39
 2005,Chattanooga,51,101
-2005,Chicago State,52,263
+2005,Chicago St,52,263
 2005,Cincinnati,54,16
 2005,Citadel,318,201
 2005,Clemson,55,60
@@ -1353,10 +1353,10 @@ Year,Team,Index,masseyComposite_Rank
 2005,Col Charleston,48,139
 2005,Colgate,58,286
 2005,Colorado,59,91
-2005,Colorado State,60,140
+2005,Colorado St,60,140
 2005,Columbia,61,188
 2005,Connecticut,62,24
-2005,Coppin State,63,200
+2005,Coppin St,63,200
 2005,Cornell,64,276
 2005,Creighton,65,77
 2005,Dartmouth,66,304
@@ -1364,7 +1364,7 @@ Year,Team,Index,masseyComposite_Rank
 2005,Dayton,68,125
 2005,DePaul,69,52
 2005,Delaware,70,223
-2005,Delaware State,71,252
+2005,Delaware St,71,252
 2005,Denver,72,129
 2005,Detroit,73,169
 2005,Drake,74,164
@@ -1411,15 +1411,15 @@ Year,Team,Index,masseyComposite_Rank
 2005,IL Chicago,126,138
 2005,IUPUI,122,134
 2005,Idaho,123,248
-2005,Idaho State,124,293
+2005,Idaho St,124,293
 2005,Illinois,125,2
-2005,Illinois State,127,106
+2005,Illinois St,127,106
 2005,Indiana,129,92
-2005,Indiana State,130,182
+2005,Indiana St,130,182
 2005,Iona,131,240
 2005,Iowa,132,20
 2005,Iowa St,133,86
-2005,Jackson State,134,308
+2005,Jackson St,134,308
 2005,Jacksonville,135,275
 2005,Jacksonville St,136,312
 2005,James Madison,137,300
@@ -1435,7 +1435,7 @@ Year,Team,Index,masseyComposite_Rank
 2005,Lehigh,149,232
 2005,Liberty,150,271
 2005,Lipscomb,152,231
-2005,Long Beach State,154,282
+2005,Long Beach St,154,282
 2005,Longwood,155,327
 2005,Louisiana,156,120
 2005,Louisiana Tech,158,162
@@ -1453,7 +1453,7 @@ Year,Team,Index,masseyComposite_Rank
 2005,Marshall,167,235
 2005,Maryland,168,41
 2005,Massachusetts,170,87
-2005,McNeese State,171,244
+2005,McNeese St,171,244
 2005,Memphis,172,121
 2005,Mercer,173,149
 2005,Miami FL,177,49
@@ -1462,15 +1462,15 @@ Year,Team,Index,masseyComposite_Rank
 2005,Michigan St,180,23
 2005,Minnesota,183,47
 2005,Mississippi,184,100
-2005,Mississippi State,185,21
+2005,Mississippi St,185,21
 2005,Missouri,187,83
 2005,Missouri KC,333,176
-2005,Missouri State,188,105
+2005,Missouri St,188,105
 2005,Monmouth NJ,189,234
 2005,Montana,190,211
 2005,Montana St,191,216
 2005,Morehead St,192,262
-2005,Morgan State,193,302
+2005,Morgan St,193,302
 2005,Mt St Mary's,194,310
 2005,Murray St,195,144
 2005,N Colorado,220,288
@@ -1507,7 +1507,7 @@ Year,Team,Index,masseyComposite_Rank
 2005,PFW,249,303
 2005,Pacific,237,27
 2005,Penn,238,161
-2005,Penn State,239,205
+2005,Penn St,239,205
 2005,Pepperdine,240,98
 2005,Pittsburgh,241,35
 2005,Portland,242,94
@@ -1532,12 +1532,12 @@ Year,Team,Index,masseyComposite_Rank
 2005,SMU,260,109
 2005,SUNY Albany,7,199
 2005,Sacred Heart,262,326
-2005,Sam Houston State,268,197
+2005,Sam Houston St,268,197
 2005,Samford,269,180
 2005,San Diego,270,141
 2005,San Diego St,271,145
 2005,San Francisco,272,97
-2005,San Jose State,273,229
+2005,San Jose St,273,229
 2005,Santa Clara,274,152
 2005,Savannah St,275,330
 2005,Seton Hall,277,127
@@ -1566,11 +1566,11 @@ Year,Team,Index,masseyComposite_Rank
 2005,TX Southern,315,309
 2005,Temple,307,59
 2005,Tennessee,308,102
-2005,Tennessee State,310,177
+2005,Tennessee St,310,177
 2005,Tennessee Tech,311,189
 2005,Texas,312,18
 2005,Texas A&M,313,40
-2005,Texas State,316,243
+2005,Texas St,316,243
 2005,Texas Tech,317,29
 2005,Toledo,319,123
 2005,Towson,320,285
@@ -1615,7 +1615,7 @@ Year,Team,Index,masseyComposite_Rank
 2005,Wagner,358,319
 2005,Wake Forest,359,3
 2005,Washington,360,8
-2005,Washington State,361,78
+2005,Washington St,361,78
 2005,Weber St,363,291
 2005,West Virginia,365,57
 2005,Wichita St,370,34
@@ -1627,32 +1627,32 @@ Year,Team,Index,masseyComposite_Rank
 2005,Wyoming,378,115
 2005,Xavier,379,131
 2005,Yale,380,222
-2005,Youngstown State,381,325
+2005,Youngstown St,381,325
 2006,Air Force,2,38
 2006,Akron,3,60
 2006,Alabama,4,73
 2006,Alabama A&M,5,265
-2006,Alabama State,6,309
-2006,Alcorn State,8,310
+2006,Alabama St,6,309
+2006,Alcorn St,8,310
 2006,American Univ,9,254
-2006,Appalachian State,10,227
+2006,Appalachian St,10,227
 2006,Arizona,11,32
 2006,Arizona St,12,149
 2006,Ark Little Rock,153,164
 2006,Ark Pine Bluff,14,305
 2006,Arkansas,13,39
-2006,Arkansas State,15,217
+2006,Arkansas St,15,217
 2006,Army,16,325
 2006,Auburn,17,92
 2006,Austin Peay,18,154
 2006,BYU,19,107
-2006,Ball State,20,178
+2006,Ball St,20,178
 2006,Baylor,21,269
 2006,Belmont,23,200
 2006,Bethune-Cookman,24,278
 2006,Binghamton,25,241
 2006,Birmingham So,49,187
-2006,Boise State,26,153
+2006,Boise St,26,153
 2006,Boston College,27,31
 2006,Boston Univ,28,221
 2006,Bowling Green,29,229
@@ -1674,7 +1674,7 @@ Year,Team,Index,masseyComposite_Rank
 2006,Charleston So,49,267
 2006,Charlotte,50,89
 2006,Chattanooga,51,239
-2006,Chicago State,52,294
+2006,Chicago St,52,294
 2006,Cincinnati,54,19
 2006,Citadel,318,323
 2006,Clemson,55,45
@@ -1683,10 +1683,10 @@ Year,Team,Index,masseyComposite_Rank
 2006,Col Charleston,48,183
 2006,Colgate,58,287
 2006,Colorado,59,37
-2006,Colorado State,60,68
+2006,Colorado St,60,68
 2006,Columbia,61,263
 2006,Connecticut,62,8
-2006,Coppin State,63,226
+2006,Coppin St,63,226
 2006,Cornell,64,264
 2006,Creighton,65,30
 2006,Dartmouth,66,316
@@ -1694,7 +1694,7 @@ Year,Team,Index,masseyComposite_Rank
 2006,Dayton,68,139
 2006,DePaul,69,74
 2006,Delaware,70,268
-2006,Delaware State,71,171
+2006,Delaware St,71,171
 2006,Denver,72,156
 2006,Detroit,73,184
 2006,Drake,74,114
@@ -1741,15 +1741,15 @@ Year,Team,Index,masseyComposite_Rank
 2006,IL Chicago,126,142
 2006,IUPUI,122,170
 2006,Idaho,123,288
-2006,Idaho State,124,228
+2006,Idaho St,124,228
 2006,Illinois,125,5
-2006,Illinois State,127,158
+2006,Illinois St,127,158
 2006,Indiana,129,13
-2006,Indiana State,130,141
+2006,Indiana St,130,141
 2006,Iona,131,66
 2006,Iowa,132,16
 2006,Iowa St,133,49
-2006,Jackson State,134,253
+2006,Jackson St,134,253
 2006,Jacksonville,135,328
 2006,Jacksonville St,136,211
 2006,James Madison,137,280
@@ -1765,7 +1765,7 @@ Year,Team,Index,masseyComposite_Rank
 2006,Lehigh,149,212
 2006,Liberty,150,317
 2006,Lipscomb,152,206
-2006,Long Beach State,154,222
+2006,Long Beach St,154,222
 2006,Longwood,155,308
 2006,Louisiana,156,204
 2006,Louisiana Tech,158,104
@@ -1783,7 +1783,7 @@ Year,Team,Index,masseyComposite_Rank
 2006,Marshall,167,205
 2006,Maryland,168,26
 2006,Massachusetts,170,126
-2006,McNeese State,171,190
+2006,McNeese St,171,190
 2006,Memphis,172,4
 2006,Mercer,173,324
 2006,Miami FL,177,62
@@ -1792,15 +1792,15 @@ Year,Team,Index,masseyComposite_Rank
 2006,Michigan St,180,12
 2006,Minnesota,183,108
 2006,Mississippi,184,72
-2006,Mississippi State,185,87
+2006,Mississippi St,185,87
 2006,Missouri,187,78
 2006,Missouri KC,333,246
-2006,Missouri State,188,43
+2006,Missouri St,188,43
 2006,Monmouth NJ,189,210
 2006,Montana,190,75
 2006,Montana St,191,196
 2006,Morehead St,192,329
-2006,Morgan State,193,331
+2006,Morgan St,193,331
 2006,Mt St Mary's,194,260
 2006,Murray St,195,110
 2006,N Colorado,220,321
@@ -1838,7 +1838,7 @@ Year,Team,Index,masseyComposite_Rank
 2006,PFW,249,272
 2006,Pacific,237,122
 2006,Penn,238,95
-2006,Penn State,239,113
+2006,Penn St,239,113
 2006,Pepperdine,240,182
 2006,Pittsburgh,241,7
 2006,Portland,242,198
@@ -1864,12 +1864,12 @@ Year,Team,Index,masseyComposite_Rank
 2006,SMU,260,207
 2006,SUNY Albany,7,155
 2006,Sacred Heart,262,199
-2006,Sam Houston State,268,161
+2006,Sam Houston St,268,161
 2006,Samford,269,100
 2006,San Diego,270,119
 2006,San Diego St,271,99
 2006,San Francisco,272,194
-2006,San Jose State,273,225
+2006,San Jose St,273,225
 2006,Santa Clara,274,146
 2006,Savannah St,275,332
 2006,Seton Hall,277,93
@@ -1898,11 +1898,11 @@ Year,Team,Index,masseyComposite_Rank
 2006,TX Southern,315,322
 2006,Temple,307,71
 2006,Tennessee,308,22
-2006,Tennessee State,310,251
+2006,Tennessee St,310,251
 2006,Tennessee Tech,311,116
 2006,Texas,312,3
 2006,Texas A&M,313,69
-2006,Texas State,316,319
+2006,Texas St,316,319
 2006,Texas Tech,317,123
 2006,Toledo,319,143
 2006,Towson,320,192
@@ -1947,7 +1947,7 @@ Year,Team,Index,masseyComposite_Rank
 2006,Wagner,358,166
 2006,Wake Forest,359,47
 2006,Washington,360,17
-2006,Washington State,361,52
+2006,Washington St,361,52
 2006,Weber St,363,274
 2006,West Virginia,365,23
 2006,Wichita St,370,28
@@ -1959,31 +1959,31 @@ Year,Team,Index,masseyComposite_Rank
 2006,Wyoming,378,145
 2006,Xavier,379,18
 2006,Yale,380,188
-2006,Youngstown State,381,271
+2006,Youngstown St,381,271
 2007,Air Force,2,5
 2007,Akron,3,95
 2007,Alabama,4,18
 2007,Alabama A&M,5,323
-2007,Alabama State,6,309
-2007,Alcorn State,8,333
+2007,Alabama St,6,309
+2007,Alcorn St,8,333
 2007,American Univ,9,210
-2007,Appalachian State,10,75
+2007,Appalachian St,10,75
 2007,Arizona,11,8
 2007,Arizona St,12,216
 2007,Ark Little Rock,153,249
 2007,Ark Pine Bluff,14,314
 2007,Arkansas,13,31
-2007,Arkansas State,15,225
+2007,Arkansas St,15,225
 2007,Army,16,191
 2007,Auburn,17,102
 2007,Austin Peay,18,174
 2007,BYU,19,62
-2007,Ball State,20,250
+2007,Ball St,20,250
 2007,Baylor,21,90
 2007,Belmont,23,141
 2007,Bethune-Cookman,24,331
 2007,Binghamton,25,258
-2007,Boise State,26,106
+2007,Boise St,26,106
 2007,Boston College,27,37
 2007,Boston Univ,28,213
 2007,Bowling Green,29,185
@@ -2006,7 +2006,7 @@ Year,Team,Index,masseyComposite_Rank
 2007,Charleston So,49,321
 2007,Charlotte,50,144
 2007,Chattanooga,51,224
-2007,Chicago State,52,198
+2007,Chicago St,52,198
 2007,Cincinnati,54,130
 2007,Citadel,318,269
 2007,Clemson,55,7
@@ -2015,10 +2015,10 @@ Year,Team,Index,masseyComposite_Rank
 2007,Col Charleston,48,119
 2007,Colgate,58,289
 2007,Colorado,59,234
-2007,Colorado State,60,92
+2007,Colorado St,60,92
 2007,Columbia,61,186
 2007,Connecticut,62,48
-2007,Coppin State,63,293
+2007,Coppin St,63,293
 2007,Cornell,64,211
 2007,Creighton,65,44
 2007,Dartmouth,66,231
@@ -2026,7 +2026,7 @@ Year,Team,Index,masseyComposite_Rank
 2007,Dayton,68,76
 2007,DePaul,69,60
 2007,Delaware,70,286
-2007,Delaware State,71,162
+2007,Delaware St,71,162
 2007,Denver,72,328
 2007,Detroit,73,208
 2007,Drake,74,110
@@ -2073,15 +2073,15 @@ Year,Team,Index,masseyComposite_Rank
 2007,IL Chicago,126,135
 2007,IUPUI,122,230
 2007,Idaho,123,306
-2007,Idaho State,124,123
+2007,Idaho St,124,123
 2007,Illinois,125,49
-2007,Illinois State,127,122
+2007,Illinois St,127,122
 2007,Indiana,129,20
-2007,Indiana State,130,66
+2007,Indiana St,130,66
 2007,Iona,131,329
 2007,Iowa,132,96
 2007,Iowa St,133,98
-2007,Jackson State,134,166
+2007,Jackson St,134,166
 2007,Jacksonville,135,251
 2007,Jacksonville St,136,322
 2007,James Madison,137,308
@@ -2098,7 +2098,7 @@ Year,Team,Index,masseyComposite_Rank
 2007,Lehigh,149,241
 2007,Liberty,150,281
 2007,Lipscomb,152,168
-2007,Long Beach State,154,105
+2007,Long Beach St,154,105
 2007,Longwood,155,303
 2007,Louisiana,156,302
 2007,Louisiana Tech,158,254
@@ -2116,7 +2116,7 @@ Year,Team,Index,masseyComposite_Rank
 2007,Marshall,167,182
 2007,Maryland,168,24
 2007,Massachusetts,170,63
-2007,McNeese State,171,262
+2007,McNeese St,171,262
 2007,Memphis,172,15
 2007,Mercer,173,264
 2007,Miami FL,177,139
@@ -2125,15 +2125,15 @@ Year,Team,Index,masseyComposite_Rank
 2007,Michigan St,180,29
 2007,Minnesota,183,158
 2007,Mississippi,184,78
-2007,Mississippi State,185,68
+2007,Mississippi St,185,68
 2007,Missouri,187,73
 2007,Missouri KC,333,240
-2007,Missouri State,188,22
+2007,Missouri St,188,22
 2007,Monmouth NJ,189,226
 2007,Montana,190,206
 2007,Montana St,191,313
 2007,Morehead St,192,207
-2007,Morgan State,193,315
+2007,Morgan St,193,315
 2007,Mt St Mary's,194,283
 2007,Murray St,195,247
 2007,N Colorado,220,324
@@ -2173,7 +2173,7 @@ Year,Team,Index,masseyComposite_Rank
 2007,PFW,249,277
 2007,Pacific,237,220
 2007,Penn,238,100
-2007,Penn State,239,121
+2007,Penn St,239,121
 2007,Pepperdine,240,239
 2007,Pittsburgh,241,4
 2007,Portland,242,261
@@ -2199,12 +2199,12 @@ Year,Team,Index,masseyComposite_Rank
 2007,SMU,260,124
 2007,SUNY Albany,7,156
 2007,Sacred Heart,262,181
-2007,Sam Houston State,268,128
+2007,Sam Houston St,268,128
 2007,Samford,269,188
 2007,San Diego,270,132
 2007,San Diego St,271,91
 2007,San Francisco,272,183
-2007,San Jose State,273,260
+2007,San Jose St,273,260
 2007,Santa Clara,274,77
 2007,Savannah St,275,290
 2007,Seton Hall,277,108
@@ -2233,11 +2233,11 @@ Year,Team,Index,masseyComposite_Rank
 2007,TX Southern,315,253
 2007,Temple,307,152
 2007,Tennessee,308,27
-2007,Tennessee State,310,232
+2007,Tennessee St,310,232
 2007,Tennessee Tech,311,190
 2007,Texas,312,33
 2007,Texas A&M,313,13
-2007,Texas State,316,301
+2007,Texas St,316,301
 2007,Texas Tech,317,40
 2007,Toledo,319,129
 2007,Towson,320,171
@@ -2283,7 +2283,7 @@ Year,Team,Index,masseyComposite_Rank
 2007,Wagner,358,294
 2007,Wake Forest,359,114
 2007,Washington,360,71
-2007,Washington State,361,21
+2007,Washington St,361,21
 2007,Weber St,363,164
 2007,West Virginia,365,32
 2007,Wichita St,370,50
@@ -2295,31 +2295,31 @@ Year,Team,Index,masseyComposite_Rank
 2007,Wyoming,378,101
 2007,Xavier,379,54
 2007,Yale,380,222
-2007,Youngstown State,381,193
+2007,Youngstown St,381,193
 2008,Air Force,2,169
 2008,Akron,3,51
 2008,Alabama,4,112
 2008,Alabama A&M,5,332
-2008,Alabama State,6,243
-2008,Alcorn State,8,338
+2008,Alabama St,6,243
+2008,Alcorn St,8,338
 2008,American Univ,9,162
-2008,Appalachian State,10,101
+2008,Appalachian St,10,101
 2008,Arizona,11,24
 2008,Arizona St,12,39
 2008,Ark Little Rock,153,168
 2008,Ark Pine Bluff,14,301
 2008,Arkansas,13,50
-2008,Arkansas State,15,257
+2008,Arkansas St,15,257
 2008,Army,16,261
 2008,Auburn,17,110
 2008,Austin Peay,18,154
 2008,BYU,19,64
-2008,Ball State,20,263
+2008,Ball St,20,263
 2008,Baylor,21,27
 2008,Belmont,23,141
 2008,Bethune-Cookman,24,304
 2008,Binghamton,25,216
-2008,Boise State,26,113
+2008,Boise St,26,113
 2008,Boston College,27,69
 2008,Boston Univ,28,270
 2008,Bowling Green,29,188
@@ -2343,7 +2343,7 @@ Year,Team,Index,masseyComposite_Rank
 2008,Charleston So,49,317
 2008,Charlotte,50,87
 2008,Chattanooga,51,120
-2008,Chicago State,52,252
+2008,Chicago St,52,252
 2008,Cincinnati,54,98
 2008,Citadel,318,329
 2008,Clemson,55,22
@@ -2352,10 +2352,10 @@ Year,Team,Index,masseyComposite_Rank
 2008,Col Charleston,48,159
 2008,Colgate,58,212
 2008,Colorado,59,136
-2008,Colorado State,60,223
+2008,Colorado St,60,223
 2008,Columbia,61,231
 2008,Connecticut,62,36
-2008,Coppin State,63,319
+2008,Coppin St,63,319
 2008,Cornell,64,147
 2008,Creighton,65,42
 2008,Dartmouth,66,273
@@ -2363,7 +2363,7 @@ Year,Team,Index,masseyComposite_Rank
 2008,Dayton,68,25
 2008,DePaul,69,115
 2008,Delaware,70,163
-2008,Delaware State,71,234
+2008,Delaware St,71,234
 2008,Denver,72,208
 2008,Detroit,73,279
 2008,Drake,74,13
@@ -2411,15 +2411,15 @@ Year,Team,Index,masseyComposite_Rank
 2008,IL Chicago,126,138
 2008,IUPUI,122,99
 2008,Idaho,123,303
-2008,Idaho State,124,285
+2008,Idaho St,124,285
 2008,Illinois,125,95
-2008,Illinois State,127,41
+2008,Illinois St,127,41
 2008,Indiana,129,11
-2008,Indiana State,130,127
+2008,Indiana St,130,127
 2008,Iona,131,224
 2008,Iowa,132,148
 2008,Iowa St,133,103
-2008,Jackson State,134,308
+2008,Jackson St,134,308
 2008,Jacksonville,135,200
 2008,Jacksonville St,136,333
 2008,James Madison,137,161
@@ -2436,7 +2436,7 @@ Year,Team,Index,masseyComposite_Rank
 2008,Lehigh,149,256
 2008,Liberty,150,202
 2008,Lipscomb,152,227
-2008,Long Beach State,154,291
+2008,Long Beach St,154,291
 2008,Longwood,155,330
 2008,Louisiana,156,187
 2008,Louisiana Tech,158,327
@@ -2454,7 +2454,7 @@ Year,Team,Index,masseyComposite_Rank
 2008,Marshall,167,139
 2008,Maryland,168,66
 2008,Massachusetts,170,40
-2008,McNeese State,171,248
+2008,McNeese St,171,248
 2008,Memphis,172,2
 2008,Mercer,173,259
 2008,Miami FL,177,45
@@ -2463,15 +2463,15 @@ Year,Team,Index,masseyComposite_Rank
 2008,Michigan St,180,10
 2008,Minnesota,183,52
 2008,Mississippi,184,19
-2008,Mississippi State,185,47
+2008,Mississippi St,185,47
 2008,Missouri,187,57
 2008,Missouri KC,333,267
-2008,Missouri State,188,114
+2008,Missouri St,188,114
 2008,Monmouth NJ,189,312
 2008,Montana,190,233
 2008,Montana St,191,173
 2008,Morehead St,192,253
-2008,Morgan State,193,183
+2008,Morgan St,193,183
 2008,Mt St Mary's,194,222
 2008,Murray St,195,197
 2008,N Colorado,220,220
@@ -2512,7 +2512,7 @@ Year,Team,Index,masseyComposite_Rank
 2008,PFW,249,226
 2008,Pacific,237,121
 2008,Penn,238,310
-2008,Penn State,239,108
+2008,Penn St,239,108
 2008,Pepperdine,240,207
 2008,Pittsburgh,241,12
 2008,Portland,242,265
@@ -2540,12 +2540,12 @@ Year,Team,Index,masseyComposite_Rank
 2008,SMU,260,296
 2008,SUNY Albany,7,190
 2008,Sacred Heart,262,193
-2008,Sam Houston State,268,91
+2008,Sam Houston St,268,91
 2008,Samford,269,298
 2008,San Diego,270,165
 2008,San Diego St,271,63
 2008,San Francisco,272,258
-2008,San Jose State,273,180
+2008,San Jose St,273,180
 2008,Santa Clara,274,160
 2008,Savannah St,275,281
 2008,Seton Hall,277,83
@@ -2574,11 +2574,11 @@ Year,Team,Index,masseyComposite_Rank
 2008,TX Southern,315,320
 2008,Temple,307,79
 2008,Tennessee,308,4
-2008,Tennessee State,310,246
+2008,Tennessee St,310,246
 2008,Tennessee Tech,311,269
 2008,Texas,312,14
 2008,Texas A&M,313,28
-2008,Texas State,316,282
+2008,Texas St,316,282
 2008,Texas Tech,317,74
 2008,Toledo,319,195
 2008,Towson,320,247
@@ -2624,7 +2624,7 @@ Year,Team,Index,masseyComposite_Rank
 2008,Wagner,358,179
 2008,Wake Forest,359,75
 2008,Washington,360,78
-2008,Washington State,361,6
+2008,Washington St,361,6
 2008,Weber St,363,172
 2008,West Virginia,365,15
 2008,Wichita St,370,151
@@ -2636,31 +2636,31 @@ Year,Team,Index,masseyComposite_Rank
 2008,Wyoming,378,236
 2008,Xavier,379,16
 2008,Yale,380,185
-2008,Youngstown State,381,209
+2008,Youngstown St,381,209
 2009,Air Force,2,223
 2009,Akron,3,132
 2009,Alabama,4,109
 2009,Alabama A&M,5,338
-2009,Alabama State,6,215
-2009,Alcorn State,8,347
+2009,Alabama St,6,215
+2009,Alcorn St,8,347
 2009,American Univ,9,119
-2009,Appalachian State,10,266
+2009,Appalachian St,10,266
 2009,Arizona,11,64
 2009,Arizona St,12,16
 2009,Ark Little Rock,153,125
 2009,Ark Pine Bluff,14,307
 2009,Arkansas,13,63
-2009,Arkansas State,15,153
+2009,Arkansas St,15,153
 2009,Army,16,328
 2009,Auburn,17,87
 2009,Austin Peay,18,146
 2009,BYU,19,30
-2009,Ball State,20,208
+2009,Ball St,20,208
 2009,Baylor,21,29
 2009,Belmont,23,126
 2009,Bethune-Cookman,24,252
 2009,Binghamton,25,186
-2009,Boise State,26,102
+2009,Boise St,26,102
 2009,Boston College,27,65
 2009,Boston Univ,28,194
 2009,Bowling Green,29,181
@@ -2685,7 +2685,7 @@ Year,Team,Index,masseyComposite_Rank
 2009,Charleston So,49,312
 2009,Charlotte,50,179
 2009,Chattanooga,51,193
-2009,Chicago State,52,189
+2009,Chicago St,52,189
 2009,Cincinnati,54,73
 2009,Citadel,318,274
 2009,Clemson,55,8
@@ -2694,10 +2694,10 @@ Year,Team,Index,masseyComposite_Rank
 2009,Col Charleston,48,90
 2009,Colgate,58,308
 2009,Colorado,59,191
-2009,Colorado State,60,172
+2009,Colorado St,60,172
 2009,Columbia,61,300
 2009,Connecticut,62,4
-2009,Coppin State,63,301
+2009,Coppin St,63,301
 2009,Cornell,64,112
 2009,Creighton,65,74
 2009,Dartmouth,66,341
@@ -2705,7 +2705,7 @@ Year,Team,Index,masseyComposite_Rank
 2009,Dayton,68,44
 2009,DePaul,69,166
 2009,Delaware,70,220
-2009,Delaware State,71,317
+2009,Delaware St,71,317
 2009,Denver,72,255
 2009,Detroit,73,279
 2009,Drake,74,86
@@ -2754,15 +2754,15 @@ Year,Team,Index,masseyComposite_Rank
 2009,IL Chicago,126,128
 2009,IUPUI,122,233
 2009,Idaho,123,183
-2009,Idaho State,124,184
+2009,Idaho St,124,184
 2009,Illinois,125,17
-2009,Illinois State,127,49
+2009,Illinois St,127,49
 2009,Indiana,129,202
-2009,Indiana State,130,250
+2009,Indiana St,130,250
 2009,Iona,131,162
 2009,Iowa,132,84
 2009,Iowa St,133,100
-2009,Jackson State,134,276
+2009,Jackson St,134,276
 2009,Jacksonville,135,137
 2009,Jacksonville St,136,219
 2009,James Madison,137,134
@@ -2779,7 +2779,7 @@ Year,Team,Index,masseyComposite_Rank
 2009,Lehigh,149,192
 2009,Liberty,150,139
 2009,Lipscomb,152,284
-2009,Long Beach State,154,117
+2009,Long Beach St,154,117
 2009,Longwood,155,259
 2009,Louisiana,156,263
 2009,Louisiana Tech,158,204
@@ -2797,7 +2797,7 @@ Year,Team,Index,masseyComposite_Rank
 2009,Marshall,167,149
 2009,Maryland,168,52
 2009,Massachusetts,170,136
-2009,McNeese State,171,212
+2009,McNeese St,171,212
 2009,Memphis,172,13
 2009,Mercer,173,175
 2009,Miami FL,177,33
@@ -2806,15 +2806,15 @@ Year,Team,Index,masseyComposite_Rank
 2009,Michigan St,180,7
 2009,Minnesota,183,20
 2009,Mississippi,184,92
-2009,Mississippi State,185,66
+2009,Mississippi St,185,66
 2009,Missouri,187,23
 2009,Missouri KC,333,260
-2009,Missouri State,188,150
+2009,Missouri St,188,150
 2009,Monmouth NJ,189,320
 2009,Montana,190,224
 2009,Montana St,191,174
 2009,Morehead St,192,195
-2009,Morgan State,193,173
+2009,Morgan St,193,173
 2009,Mt St Mary's,194,156
 2009,Murray St,195,177
 2009,N Colorado,220,257
@@ -2856,7 +2856,7 @@ Year,Team,Index,masseyComposite_Rank
 2009,PFW,249,231
 2009,Pacific,237,131
 2009,Penn,238,242
-2009,Penn State,239,69
+2009,Penn St,239,69
 2009,Pepperdine,240,321
 2009,Pittsburgh,241,3
 2009,Portland,242,129
@@ -2885,12 +2885,12 @@ Year,Team,Index,masseyComposite_Rank
 2009,SMU,260,222
 2009,SUNY Albany,7,161
 2009,Sacred Heart,262,273
-2009,Sam Houston State,268,210
+2009,Sam Houston St,268,210
 2009,Samford,269,217
 2009,San Diego,270,113
 2009,San Diego St,271,54
 2009,San Francisco,272,187
-2009,San Jose State,273,185
+2009,San Jose St,273,185
 2009,Santa Clara,274,197
 2009,Savannah St,275,239
 2009,Seattle,276,269
@@ -2921,11 +2921,11 @@ Year,Team,Index,masseyComposite_Rank
 2009,TX Southern,315,331
 2009,Temple,307,68
 2009,Tennessee,308,41
-2009,Tennessee State,310,291
+2009,Tennessee St,310,291
 2009,Tennessee Tech,311,232
 2009,Texas,312,25
 2009,Texas A&M,313,48
-2009,Texas State,316,251
+2009,Texas St,316,251
 2009,Texas Tech,317,107
 2009,Toledo,319,302
 2009,Towson,320,237
@@ -2971,7 +2971,7 @@ Year,Team,Index,masseyComposite_Rank
 2009,Wagner,358,268
 2009,Wake Forest,359,2
 2009,Washington,360,34
-2009,Washington State,361,70
+2009,Washington St,361,70
 2009,Weber St,363,130
 2009,West Virginia,365,21
 2009,Wichita St,370,168
@@ -2983,31 +2983,31 @@ Year,Team,Index,masseyComposite_Rank
 2009,Wyoming,378,120
 2009,Xavier,379,9
 2009,Yale,380,261
-2009,Youngstown State,381,282
+2009,Youngstown St,381,282
 2010,Air Force,2,216
 2010,Akron,3,102
 2010,Alabama,4,79
 2010,Alabama A&M,5,344
-2010,Alabama State,6,319
-2010,Alcorn State,8,347
+2010,Alabama St,6,319
+2010,Alcorn St,8,347
 2010,American Univ,9,316
-2010,Appalachian State,10,161
+2010,Appalachian St,10,161
 2010,Arizona,11,85
 2010,Arizona St,12,39
 2010,Ark Little Rock,153,271
 2010,Ark Pine Bluff,14,259
 2010,Arkansas,13,145
-2010,Arkansas State,15,182
+2010,Arkansas St,15,182
 2010,Army,16,208
 2010,Auburn,17,148
 2010,Austin Peay,18,167
 2010,BYU,19,8
-2010,Ball State,20,246
+2010,Ball St,20,246
 2010,Baylor,21,21
 2010,Belmont,23,194
 2010,Bethune-Cookman,24,249
 2010,Binghamton,25,266
-2010,Boise State,26,200
+2010,Boise St,26,200
 2010,Boston College,27,99
 2010,Boston Univ,28,173
 2010,Bowling Green,29,170
@@ -3032,7 +3032,7 @@ Year,Team,Index,masseyComposite_Rank
 2010,Charleston So,49,244
 2010,Charlotte,50,80
 2010,Chattanooga,51,213
-2010,Chicago State,52,339
+2010,Chicago St,52,339
 2010,Cincinnati,54,54
 2010,Citadel,318,199
 2010,Clemson,55,16
@@ -3041,10 +3041,10 @@ Year,Team,Index,masseyComposite_Rank
 2010,Col Charleston,48,112
 2010,Colgate,58,292
 2010,Colorado,59,114
-2010,Colorado State,60,125
+2010,Colorado St,60,125
 2010,Columbia,61,268
 2010,Connecticut,62,36
-2010,Coppin State,63,310
+2010,Coppin St,63,310
 2010,Cornell,64,52
 2010,Creighton,65,120
 2010,Dartmouth,66,330
@@ -3052,7 +3052,7 @@ Year,Team,Index,masseyComposite_Rank
 2010,Dayton,68,42
 2010,DePaul,69,176
 2010,Delaware,70,241
-2010,Delaware State,71,265
+2010,Delaware St,71,265
 2010,Denver,72,162
 2010,Detroit,73,121
 2010,Drake,74,191
@@ -3101,15 +3101,15 @@ Year,Team,Index,masseyComposite_Rank
 2010,IL Chicago,126,256
 2010,IUPUI,122,126
 2010,Idaho,123,163
-2010,Idaho State,124,263
+2010,Idaho St,124,263
 2010,Illinois,125,63
-2010,Illinois State,127,98
+2010,Illinois St,127,98
 2010,Indiana,129,156
-2010,Indiana State,130,122
+2010,Indiana St,130,122
 2010,Iona,131,93
 2010,Iowa,132,171
 2010,Iowa St,133,72
-2010,Jackson State,134,293
+2010,Jackson St,134,293
 2010,Jacksonville,135,153
 2010,Jacksonville St,136,261
 2010,James Madison,137,225
@@ -3126,7 +3126,7 @@ Year,Team,Index,masseyComposite_Rank
 2010,Lehigh,149,215
 2010,Liberty,150,254
 2010,Lipscomb,152,201
-2010,Long Beach State,154,140
+2010,Long Beach St,154,140
 2010,Longwood,155,307
 2010,Louisiana,156,255
 2010,Louisiana Tech,158,45
@@ -3144,7 +3144,7 @@ Year,Team,Index,masseyComposite_Rank
 2010,Marshall,167,65
 2010,Maryland,168,47
 2010,Massachusetts,170,187
-2010,McNeese State,171,286
+2010,McNeese St,171,286
 2010,Memphis,172,56
 2010,Mercer,173,178
 2010,Miami FL,177,57
@@ -3153,15 +3153,15 @@ Year,Team,Index,masseyComposite_Rank
 2010,Michigan St,180,11
 2010,Minnesota,183,50
 2010,Mississippi,184,28
-2010,Mississippi State,185,32
+2010,Mississippi St,185,32
 2010,Missouri,187,24
 2010,Missouri KC,333,267
-2010,Missouri State,188,83
+2010,Missouri St,188,83
 2010,Monmouth NJ,189,257
 2010,Montana,190,117
 2010,Montana St,191,172
 2010,Morehead St,192,134
-2010,Morgan State,193,136
+2010,Morgan St,193,136
 2010,Mt St Mary's,194,234
 2010,Murray St,195,68
 2010,N Colorado,220,91
@@ -3203,7 +3203,7 @@ Year,Team,Index,masseyComposite_Rank
 2010,PFW,249,262
 2010,Pacific,237,105
 2010,Penn,238,329
-2010,Penn State,239,146
+2010,Penn St,239,146
 2010,Pepperdine,240,252
 2010,Pittsburgh,241,13
 2010,Portland,242,94
@@ -3232,12 +3232,12 @@ Year,Team,Index,masseyComposite_Rank
 2010,SMU,260,228
 2010,SUNY Albany,7,284
 2010,Sacred Heart,262,243
-2010,Sam Houston State,268,131
+2010,Sam Houston St,268,131
 2010,Samford,269,251
 2010,San Diego,270,192
 2010,San Diego St,271,74
 2010,San Francisco,272,232
-2010,San Jose State,273,180
+2010,San Jose St,273,180
 2010,Santa Clara,274,253
 2010,Savannah St,275,300
 2010,Seattle,276,217
@@ -3268,11 +3268,11 @@ Year,Team,Index,masseyComposite_Rank
 2010,TX Southern,315,237
 2010,Temple,307,18
 2010,Tennessee,308,9
-2010,Tennessee State,310,283
+2010,Tennessee St,310,283
 2010,Tennessee Tech,311,242
 2010,Texas,312,2
 2010,Texas A&M,313,43
-2010,Texas State,316,276
+2010,Texas St,316,276
 2010,Texas Tech,317,75
 2010,Toledo,319,328
 2010,Towson,320,273
@@ -3318,7 +3318,7 @@ Year,Team,Index,masseyComposite_Rank
 2010,Wagner,358,343
 2010,Wake Forest,359,26
 2010,Washington,360,61
-2010,Washington State,361,81
+2010,Washington St,361,81
 2010,Weber St,363,108
 2010,West Virginia,365,10
 2010,Wichita St,370,53
@@ -3330,31 +3330,31 @@ Year,Team,Index,masseyComposite_Rank
 2010,Wyoming,378,195
 2010,Xavier,379,25
 2010,Yale,380,294
-2010,Youngstown State,381,227
+2010,Youngstown St,381,227
 2011,Air Force,2,131
 2011,Akron,3,133
 2011,Alabama,4,100
 2011,Alabama A&M,5,307
-2011,Alabama State,6,320
-2011,Alcorn State,8,340
+2011,Alabama St,6,320
+2011,Alcorn St,8,340
 2011,American Univ,9,126
-2011,Appalachian State,10,217
+2011,Appalachian St,10,217
 2011,Arizona,11,22
 2011,Arizona St,12,122
 2011,Ark Little Rock,153,201
 2011,Ark Pine Bluff,14,338
 2011,Arkansas,13,89
-2011,Arkansas State,15,208
+2011,Arkansas St,15,208
 2011,Army,16,229
 2011,Auburn,17,266
 2011,Austin Peay,18,118
 2011,BYU,19,7
-2011,Ball State,20,106
+2011,Ball St,20,106
 2011,Baylor,21,67
 2011,Belmont,23,39
 2011,Bethune-Cookman,24,245
 2011,Binghamton,25,290
-2011,Boise State,26,125
+2011,Boise St,26,125
 2011,Boston College,27,41
 2011,Boston Univ,28,188
 2011,Bowling Green,29,242
@@ -3379,7 +3379,7 @@ Year,Team,Index,masseyComposite_Rank
 2011,Charleston So,49,195
 2011,Charlotte,50,153
 2011,Chattanooga,51,212
-2011,Chicago State,52,329
+2011,Chicago St,52,329
 2011,Cincinnati,54,25
 2011,Citadel,318,298
 2011,Clemson,55,53
@@ -3388,10 +3388,10 @@ Year,Team,Index,masseyComposite_Rank
 2011,Col Charleston,48,80
 2011,Colgate,58,335
 2011,Colorado,59,56
-2011,Colorado State,60,78
+2011,Colorado St,60,78
 2011,Columbia,61,184
 2011,Connecticut,62,11
-2011,Coppin State,63,288
+2011,Coppin St,63,288
 2011,Cornell,64,239
 2011,Creighton,65,105
 2011,Dartmouth,66,285
@@ -3399,7 +3399,7 @@ Year,Team,Index,masseyComposite_Rank
 2011,Dayton,68,75
 2011,DePaul,69,199
 2011,Delaware,70,181
-2011,Delaware State,71,248
+2011,Delaware St,71,248
 2011,Denver,72,213
 2011,Detroit,73,152
 2011,Drake,74,222
@@ -3448,15 +3448,15 @@ Year,Team,Index,masseyComposite_Rank
 2011,IL Chicago,126,272
 2011,IUPUI,122,130
 2011,Idaho,123,142
-2011,Idaho State,124,292
+2011,Idaho St,124,292
 2011,Illinois,125,28
-2011,Illinois State,127,214
+2011,Illinois St,127,214
 2011,Indiana,129,99
-2011,Indiana State,130,117
+2011,Indiana St,130,117
 2011,Iona,131,90
 2011,Iowa,132,137
 2011,Iowa St,133,52
-2011,Jackson State,134,227
+2011,Jackson St,134,227
 2011,Jacksonville,135,128
 2011,Jacksonville St,136,334
 2011,James Madison,137,65
@@ -3473,7 +3473,7 @@ Year,Team,Index,masseyComposite_Rank
 2011,Lehigh,149,191
 2011,Liberty,150,178
 2011,Lipscomb,152,163
-2011,Long Beach State,154,108
+2011,Long Beach St,154,108
 2011,Longwood,155,322
 2011,Louisiana,156,299
 2011,Louisiana Tech,158,256
@@ -3491,7 +3491,7 @@ Year,Team,Index,masseyComposite_Rank
 2011,Marshall,167,83
 2011,Maryland,168,50
 2011,Massachusetts,170,119
-2011,McNeese State,171,172
+2011,McNeese St,171,172
 2011,Memphis,172,77
 2011,Mercer,173,277
 2011,Miami FL,177,55
@@ -3500,15 +3500,15 @@ Year,Team,Index,masseyComposite_Rank
 2011,Michigan St,180,26
 2011,Minnesota,183,29
 2011,Mississippi,184,88
-2011,Mississippi State,185,148
+2011,Mississippi St,185,148
 2011,Missouri,187,23
 2011,Missouri KC,333,246
-2011,Missouri State,188,38
+2011,Missouri St,188,38
 2011,Monmouth NJ,189,287
 2011,Montana,190,109
 2011,Montana St,191,194
 2011,Morehead St,192,124
-2011,Morgan State,193,200
+2011,Morgan St,193,200
 2011,Mt St Mary's,194,283
 2011,Murray St,195,114
 2011,N Colorado,220,145
@@ -3549,7 +3549,7 @@ Year,Team,Index,masseyComposite_Rank
 2011,PFW,249,144
 2011,Pacific,237,139
 2011,Penn,238,210
-2011,Penn State,239,73
+2011,Penn St,239,73
 2011,Pepperdine,240,252
 2011,Pittsburgh,241,5
 2011,Portland,242,63
@@ -3578,12 +3578,12 @@ Year,Team,Index,masseyComposite_Rank
 2011,SMU,260,234
 2011,SUNY Albany,7,255
 2011,Sacred Heart,262,262
-2011,Sam Houston State,268,165
+2011,Sam Houston St,268,165
 2011,Samford,269,230
 2011,San Diego,270,324
 2011,San Diego St,271,6
 2011,San Francisco,272,171
-2011,San Jose State,273,206
+2011,San Jose St,273,206
 2011,Santa Clara,274,186
 2011,Savannah St,275,304
 2011,Seattle,276,286
@@ -3614,11 +3614,11 @@ Year,Team,Index,masseyComposite_Rank
 2011,TX Southern,315,225
 2011,Temple,307,30
 2011,Tennessee,308,45
-2011,Tennessee State,310,228
+2011,Tennessee St,310,228
 2011,Tennessee Tech,311,273
 2011,Texas,312,15
 2011,Texas A&M,313,12
-2011,Texas State,316,289
+2011,Texas St,316,289
 2011,Texas Tech,317,173
 2011,Toledo,319,325
 2011,Towson,320,269
@@ -3663,7 +3663,7 @@ Year,Team,Index,masseyComposite_Rank
 2011,Wagner,358,187
 2011,Wake Forest,359,231
 2011,Washington,360,13
-2011,Washington State,361,47
+2011,Washington St,361,47
 2011,Weber St,363,183
 2011,West Virginia,365,14
 2011,Wichita St,370,36
@@ -3675,31 +3675,31 @@ Year,Team,Index,masseyComposite_Rank
 2011,Wyoming,378,244
 2011,Xavier,379,59
 2011,Yale,380,168
-2011,Youngstown State,381,250
+2011,Youngstown St,381,250
 2012,Air Force,2,125
 2012,Akron,3,78
 2012,Alabama,4,19
 2012,Alabama A&M,5,339
-2012,Alabama State,6,298
-2012,Alcorn State,8,341
+2012,Alabama St,6,298
+2012,Alcorn St,8,341
 2012,American Univ,9,181
-2012,Appalachian State,10,237
+2012,Appalachian St,10,237
 2012,Arizona,11,60
 2012,Arizona St,12,189
 2012,Ark Little Rock,153,192
 2012,Ark Pine Bluff,14,335
 2012,Arkansas,13,67
-2012,Arkansas State,15,220
+2012,Arkansas St,15,220
 2012,Army,16,292
 2012,Auburn,17,140
 2012,Austin Peay,18,235
 2012,BYU,19,31
-2012,Ball State,20,167
+2012,Ball St,20,167
 2012,Baylor,21,2
 2012,Belmont,23,72
 2012,Bethune-Cookman,24,288
 2012,Binghamton,25,345
-2012,Boise State,26,134
+2012,Boise St,26,134
 2012,Boston College,27,216
 2012,Boston Univ,28,217
 2012,Bowling Green,29,171
@@ -3723,7 +3723,7 @@ Year,Team,Index,masseyComposite_Rank
 2012,Charleston So,49,166
 2012,Charlotte,50,104
 2012,Chattanooga,51,244
-2012,Chicago State,52,334
+2012,Chicago St,52,334
 2012,Cincinnati,54,55
 2012,Citadel,318,330
 2012,Clemson,55,131
@@ -3732,10 +3732,10 @@ Year,Team,Index,masseyComposite_Rank
 2012,Col Charleston,48,101
 2012,Colgate,58,306
 2012,Colorado,59,89
-2012,Colorado State,60,62
+2012,Colorado St,60,62
 2012,Columbia,61,177
 2012,Connecticut,62,17
-2012,Coppin State,63,256
+2012,Coppin St,63,256
 2012,Cornell,64,223
 2012,Creighton,65,11
 2012,Dartmouth,66,299
@@ -3743,7 +3743,7 @@ Year,Team,Index,masseyComposite_Rank
 2012,Dayton,68,48
 2012,DePaul,69,139
 2012,Delaware,70,210
-2012,Delaware State,71,314
+2012,Delaware St,71,314
 2012,Denver,72,59
 2012,Detroit,73,176
 2012,Drake,74,113
@@ -3792,15 +3792,15 @@ Year,Team,Index,masseyComposite_Rank
 2012,IL Chicago,126,269
 2012,IUPUI,122,221
 2012,Idaho,123,174
-2012,Idaho State,124,296
+2012,Idaho St,124,296
 2012,Illinois,125,24
-2012,Illinois State,127,100
+2012,Illinois St,127,100
 2012,Indiana,129,10
-2012,Indiana State,130,128
+2012,Indiana St,130,128
 2012,Iona,131,53
 2012,Iowa,132,93
 2012,Iowa St,133,52
-2012,Jackson State,134,324
+2012,Jackson St,134,324
 2012,Jacksonville,135,303
 2012,Jacksonville St,136,284
 2012,James Madison,137,238
@@ -3817,7 +3817,7 @@ Year,Team,Index,masseyComposite_Rank
 2012,Lehigh,149,98
 2012,Liberty,150,319
 2012,Lipscomb,152,202
-2012,Long Beach State,154,57
+2012,Long Beach St,154,57
 2012,Longwood,155,315
 2012,Louisiana,156,193
 2012,Louisiana Tech,158,249
@@ -3835,7 +3835,7 @@ Year,Team,Index,masseyComposite_Rank
 2012,Marshall,167,50
 2012,Maryland,168,96
 2012,Massachusetts,170,75
-2012,McNeese State,171,268
+2012,McNeese St,171,268
 2012,Memphis,172,33
 2012,Mercer,173,109
 2012,Miami FL,177,68
@@ -3844,15 +3844,15 @@ Year,Team,Index,masseyComposite_Rank
 2012,Michigan St,180,8
 2012,Minnesota,183,47
 2012,Mississippi,184,90
-2012,Mississippi State,185,34
+2012,Mississippi St,185,34
 2012,Missouri,187,6
 2012,Missouri KC,333,266
-2012,Missouri State,188,82
+2012,Missouri St,188,82
 2012,Monmouth NJ,189,322
 2012,Montana,190,135
 2012,Montana St,191,263
 2012,Morehead St,192,241
-2012,Morgan State,193,257
+2012,Morgan St,193,257
 2012,Mt St Mary's,194,313
 2012,Murray St,195,16
 2012,N Colorado,220,240
@@ -3894,7 +3894,7 @@ Year,Team,Index,masseyComposite_Rank
 2012,PFW,249,228
 2012,Pacific,237,275
 2012,Penn,238,157
-2012,Penn State,239,150
+2012,Penn St,239,150
 2012,Pepperdine,240,247
 2012,Pittsburgh,241,92
 2012,Portland,242,252
@@ -3923,12 +3923,12 @@ Year,Team,Index,masseyComposite_Rank
 2012,SMU,260,191
 2012,SUNY Albany,7,187
 2012,Sacred Heart,262,254
-2012,Sam Houston State,268,277
+2012,Sam Houston St,268,277
 2012,Samford,269,305
 2012,San Diego,270,259
 2012,San Diego St,271,32
 2012,San Francisco,272,163
-2012,San Jose State,273,267
+2012,San Jose St,273,267
 2012,Santa Clara,274,214
 2012,Savannah St,275,225
 2012,Seattle,276,294
@@ -3959,11 +3959,11 @@ Year,Team,Index,masseyComposite_Rank
 2012,TX Southern,315,250
 2012,Temple,307,49
 2012,Tennessee,308,127
-2012,Tennessee State,310,231
+2012,Tennessee St,310,231
 2012,Tennessee Tech,311,172
 2012,Texas,312,46
 2012,Texas A&M,313,133
-2012,Texas State,316,278
+2012,Texas St,316,278
 2012,Texas Tech,317,196
 2012,Toledo,319,258
 2012,Towson,320,343
@@ -4008,7 +4008,7 @@ Year,Team,Index,masseyComposite_Rank
 2012,Wagner,358,70
 2012,Wake Forest,359,141
 2012,Washington,360,83
-2012,Washington State,361,146
+2012,Washington St,361,146
 2012,Weber St,363,84
 2012,West Virginia,365,26
 2012,Wichita St,370,21
@@ -4020,31 +4020,31 @@ Year,Team,Index,masseyComposite_Rank
 2012,Wyoming,378,81
 2012,Xavier,379,51
 2012,Yale,380,143
-2012,Youngstown State,381,195
+2012,Youngstown St,381,195
 2013,Air Force,2,107
 2013,Akron,3,56
 2013,Alabama,4,71
 2013,Alabama A&M,5,325
-2013,Alabama State,6,331
-2013,Alcorn State,8,301
+2013,Alabama St,6,331
+2013,Alcorn St,8,301
 2013,American Univ,9,285
-2013,Appalachian State,10,267
+2013,Appalachian St,10,267
 2013,Arizona,11,6
 2013,Arizona St,12,60
 2013,Ark Little Rock,153,173
 2013,Ark Pine Bluff,14,281
 2013,Arkansas,13,67
-2013,Arkansas State,15,162
+2013,Arkansas St,15,162
 2013,Army,16,240
 2013,Auburn,17,172
 2013,Austin Peay,18,326
 2013,BYU,19,42
-2013,Ball State,20,241
+2013,Ball St,20,241
 2013,Baylor,21,38
 2013,Belmont,23,33
 2013,Bethune-Cookman,24,264
 2013,Binghamton,25,340
-2013,Boise State,26,52
+2013,Boise St,26,52
 2013,Boston College,27,125
 2013,Boston Univ,28,180
 2013,Bowling Green,29,246
@@ -4068,7 +4068,7 @@ Year,Team,Index,masseyComposite_Rank
 2013,Charleston So,49,157
 2013,Charlotte,50,65
 2013,Chattanooga,51,278
-2013,Chicago State,52,311
+2013,Chicago St,52,311
 2013,Cincinnati,54,14
 2013,Citadel,318,337
 2013,Clemson,55,90
@@ -4077,10 +4077,10 @@ Year,Team,Index,masseyComposite_Rank
 2013,Col Charleston,48,149
 2013,Colgate,58,277
 2013,Colorado,59,49
-2013,Colorado State,60,25
+2013,Colorado St,60,25
 2013,Columbia,61,178
 2013,Connecticut,62,40
-2013,Coppin State,63,305
+2013,Coppin St,63,305
 2013,Cornell,64,247
 2013,Creighton,65,11
 2013,Dartmouth,66,313
@@ -4088,7 +4088,7 @@ Year,Team,Index,masseyComposite_Rank
 2013,Dayton,68,77
 2013,DePaul,69,136
 2013,Delaware,70,179
-2013,Delaware State,71,286
+2013,Delaware St,71,286
 2013,Denver,72,80
 2013,Detroit,73,91
 2013,Drake,74,166
@@ -4137,15 +4137,15 @@ Year,Team,Index,masseyComposite_Rank
 2013,IL Chicago,126,150
 2013,IUPUI,122,314
 2013,Idaho,123,160
-2013,Idaho State,124,323
+2013,Idaho St,124,323
 2013,Illinois,125,45
-2013,Illinois State,127,103
+2013,Illinois St,127,103
 2013,Indiana,129,8
-2013,Indiana State,130,72
+2013,Indiana St,130,72
 2013,Iona,131,106
 2013,Iowa,132,43
 2013,Iowa St,133,39
-2013,Jackson State,134,341
+2013,Jackson St,134,341
 2013,Jacksonville,135,257
 2013,Jacksonville St,136,188
 2013,James Madison,137,213
@@ -4162,7 +4162,7 @@ Year,Team,Index,masseyComposite_Rank
 2013,Lehigh,149,70
 2013,Liberty,150,328
 2013,Lipscomb,152,270
-2013,Long Beach State,154,141
+2013,Long Beach St,154,141
 2013,Longwood,155,344
 2013,Louisiana,156,236
 2013,Louisiana Tech,158,68
@@ -4180,7 +4180,7 @@ Year,Team,Index,masseyComposite_Rank
 2013,Marshall,167,185
 2013,Maryland,168,51
 2013,Massachusetts,170,104
-2013,McNeese State,171,249
+2013,McNeese St,171,249
 2013,Memphis,172,32
 2013,Mercer,173,163
 2013,Miami FL,177,16
@@ -4189,15 +4189,15 @@ Year,Team,Index,masseyComposite_Rank
 2013,Michigan St,180,18
 2013,Minnesota,183,9
 2013,Mississippi,184,21
-2013,Mississippi State,185,218
+2013,Mississippi St,185,218
 2013,Missouri,187,28
 2013,Missouri KC,333,288
-2013,Missouri State,188,238
+2013,Missouri St,188,238
 2013,Monmouth NJ,189,275
 2013,Montana,190,137
 2013,Montana St,191,292
 2013,Morehead St,192,199
-2013,Morgan State,193,274
+2013,Morgan St,193,274
 2013,Mt St Mary's,194,251
 2013,Murray St,195,94
 2013,N Colorado,220,290
@@ -4241,7 +4241,7 @@ Year,Team,Index,masseyComposite_Rank
 2013,PFW,249,269
 2013,Pacific,237,117
 2013,Penn,238,304
-2013,Penn State,239,184
+2013,Penn St,239,184
 2013,Pepperdine,240,202
 2013,Pittsburgh,241,23
 2013,Portland,242,226
@@ -4270,12 +4270,12 @@ Year,Team,Index,masseyComposite_Rank
 2013,SMU,260,171
 2013,SUNY Albany,7,129
 2013,Sacred Heart,262,261
-2013,Sam Houston State,268,205
+2013,Sam Houston St,268,205
 2013,Samford,269,291
 2013,San Diego,270,175
 2013,San Diego St,271,34
 2013,San Francisco,272,177
-2013,San Jose State,273,210
+2013,San Jose St,273,210
 2013,Santa Clara,274,76
 2013,Savannah St,275,190
 2013,Seattle,276,228
@@ -4306,11 +4306,11 @@ Year,Team,Index,masseyComposite_Rank
 2013,TX Southern,315,239
 2013,Temple,307,55
 2013,Tennessee,308,85
-2013,Tennessee State,310,155
+2013,Tennessee St,310,155
 2013,Tennessee Tech,311,289
 2013,Texas,312,111
 2013,Texas A&M,313,61
-2013,Texas State,316,287
+2013,Texas St,316,287
 2013,Texas Tech,317,206
 2013,Toledo,319,194
 2013,Towson,320,182
@@ -4355,7 +4355,7 @@ Year,Team,Index,masseyComposite_Rank
 2013,Wagner,358,197
 2013,Wake Forest,359,132
 2013,Washington,360,64
-2013,Washington State,361,119
+2013,Washington St,361,119
 2013,Weber St,363,81
 2013,West Virginia,365,110
 2013,Wichita St,370,20
@@ -4367,32 +4367,32 @@ Year,Team,Index,masseyComposite_Rank
 2013,Wyoming,378,37
 2013,Xavier,379,73
 2013,Yale,380,244
-2013,Youngstown State,381,191
+2013,Youngstown St,381,191
 2014,Abilene Chr,1,333
 2014,Air Force,2,196
 2014,Akron,3,123
 2014,Alabama,4,94
 2014,Alabama A&M,5,317
-2014,Alabama State,6,265
-2014,Alcorn State,8,325
+2014,Alabama St,6,265
+2014,Alcorn St,8,325
 2014,American Univ,9,159
-2014,Appalachian State,10,334
+2014,Appalachian St,10,334
 2014,Arizona,11,1
 2014,Arizona St,12,47
 2014,Ark Little Rock,153,217
 2014,Ark Pine Bluff,14,316
 2014,Arkansas,13,42
-2014,Arkansas State,15,179
+2014,Arkansas St,15,179
 2014,Army,16,230
 2014,Auburn,17,140
 2014,Austin Peay,18,297
 2014,BYU,19,48
-2014,Ball State,20,314
+2014,Ball St,20,314
 2014,Baylor,21,37
 2014,Belmont,23,111
 2014,Bethune-Cookman,24,348
 2014,Binghamton,25,338
-2014,Boise State,26,57
+2014,Boise St,26,57
 2014,Boston College,27,174
 2014,Boston Univ,28,105
 2014,Bowling Green,29,193
@@ -4416,7 +4416,7 @@ Year,Team,Index,masseyComposite_Rank
 2014,Charleston So,49,219
 2014,Charlotte,50,106
 2014,Chattanooga,51,256
-2014,Chicago State,52,258
+2014,Chicago St,52,258
 2014,Cincinnati,54,21
 2014,Citadel,318,343
 2014,Clemson,55,51
@@ -4425,10 +4425,10 @@ Year,Team,Index,masseyComposite_Rank
 2014,Col Charleston,48,187
 2014,Colgate,58,211
 2014,Colorado,59,34
-2014,Colorado State,60,121
+2014,Colorado St,60,121
 2014,Columbia,61,114
 2014,Connecticut,62,30
-2014,Coppin State,63,278
+2014,Coppin St,63,278
 2014,Cornell,64,342
 2014,Creighton,65,11
 2014,Dartmouth,66,245
@@ -4436,7 +4436,7 @@ Year,Team,Index,masseyComposite_Rank
 2014,Dayton,68,54
 2014,DePaul,69,112
 2014,Delaware,70,100
-2014,Delaware State,71,318
+2014,Delaware St,71,318
 2014,Denver,72,154
 2014,Detroit,73,214
 2014,Drake,74,146
@@ -4486,16 +4486,16 @@ Year,Team,Index,masseyComposite_Rank
 2014,IL Chicago,126,284
 2014,IUPUI,122,321
 2014,Idaho,123,263
-2014,Idaho State,124,257
+2014,Idaho St,124,257
 2014,Illinois,125,63
-2014,Illinois State,127,125
+2014,Illinois St,127,125
 2014,Incarnate Word,128,259
 2014,Indiana,129,60
-2014,Indiana State,130,64
+2014,Indiana St,130,64
 2014,Iona,131,141
 2014,Iowa,132,9
 2014,Iowa St,133,13
-2014,Jackson State,134,280
+2014,Jackson St,134,280
 2014,Jacksonville,135,292
 2014,Jacksonville St,136,303
 2014,James Madison,137,272
@@ -4512,7 +4512,7 @@ Year,Team,Index,masseyComposite_Rank
 2014,Lehigh,149,223
 2014,Liberty,150,279
 2014,Lipscomb,152,290
-2014,Long Beach State,154,176
+2014,Long Beach St,154,176
 2014,Longwood,155,345
 2014,Louisiana,156,118
 2014,Louisiana Tech,158,45
@@ -4531,7 +4531,7 @@ Year,Team,Index,masseyComposite_Rank
 2014,Marshall,167,277
 2014,Maryland,168,65
 2014,Massachusetts,170,19
-2014,McNeese State,171,291
+2014,McNeese St,171,291
 2014,Memphis,172,32
 2014,Mercer,173,82
 2014,Miami FL,177,83
@@ -4540,15 +4540,15 @@ Year,Team,Index,masseyComposite_Rank
 2014,Michigan St,180,2
 2014,Minnesota,183,39
 2014,Mississippi,184,66
-2014,Mississippi State,185,148
+2014,Mississippi St,185,148
 2014,Missouri,187,44
 2014,Missouri KC,333,240
-2014,Missouri State,188,117
+2014,Missouri St,188,117
 2014,Monmouth NJ,189,226
 2014,Montana,190,232
 2014,Montana St,191,238
 2014,Morehead St,192,150
-2014,Morgan State,193,225
+2014,Morgan St,193,225
 2014,Mt St Mary's,194,247
 2014,Murray St,195,199
 2014,N Colorado,220,142
@@ -4592,7 +4592,7 @@ Year,Team,Index,masseyComposite_Rank
 2014,PFW,249,138
 2014,Pacific,237,113
 2014,Penn,238,270
-2014,Penn State,239,110
+2014,Penn St,239,110
 2014,Pepperdine,240,124
 2014,Pittsburgh,241,15
 2014,Portland,242,108
@@ -4621,12 +4621,12 @@ Year,Team,Index,masseyComposite_Rank
 2014,SMU,260,38
 2014,SUNY Albany,7,203
 2014,Sacred Heart,262,320
-2014,Sam Houston State,268,156
+2014,Sam Houston St,268,156
 2014,Samford,269,327
 2014,San Diego,270,167
 2014,San Diego St,271,16
 2014,San Francisco,272,116
-2014,San Jose State,273,266
+2014,San Jose St,273,266
 2014,Santa Clara,274,177
 2014,Savannah St,275,293
 2014,Seattle,276,224
@@ -4657,11 +4657,11 @@ Year,Team,Index,masseyComposite_Rank
 2014,TX Southern,315,276
 2014,Temple,307,163
 2014,Tennessee,308,43
-2014,Tennessee State,310,332
+2014,Tennessee St,310,332
 2014,Tennessee Tech,311,248
 2014,Texas,312,40
 2014,Texas A&M,313,88
-2014,Texas State,316,286
+2014,Texas St,316,286
 2014,Texas Tech,317,91
 2014,Toledo,319,58
 2014,Towson,320,126
@@ -4706,7 +4706,7 @@ Year,Team,Index,masseyComposite_Rank
 2014,Wagner,358,215
 2014,Wake Forest,359,76
 2014,Washington,360,96
-2014,Washington State,361,147
+2014,Washington St,361,147
 2014,Weber St,363,192
 2014,West Virginia,365,79
 2014,Wichita St,370,8
@@ -4718,32 +4718,32 @@ Year,Team,Index,masseyComposite_Rank
 2014,Wyoming,378,98
 2014,Xavier,379,29
 2014,Yale,380,207
-2014,Youngstown State,381,153
+2014,Youngstown St,381,153
 2015,Abilene Chr,1,288
 2015,Air Force,2,221
 2015,Akron,3,110
 2015,Alabama,4,50
 2015,Alabama A&M,5,329
-2015,Alabama State,6,247
-2015,Alcorn State,8,344
+2015,Alabama St,6,247
+2015,Alcorn St,8,344
 2015,American Univ,9,152
-2015,Appalachian State,10,291
+2015,Appalachian St,10,291
 2015,Arizona,11,7
 2015,Arizona St,12,91
 2015,Ark Little Rock,153,272
 2015,Ark Pine Bluff,14,331
 2015,Arkansas,13,30
-2015,Arkansas State,15,258
+2015,Arkansas St,15,258
 2015,Army,16,200
 2015,Auburn,17,122
 2015,Austin Peay,18,313
 2015,BYU,19,43
-2015,Ball State,20,187
+2015,Ball St,20,187
 2015,Baylor,21,20
 2015,Belmont,23,140
 2015,Bethune-Cookman,24,333
 2015,Binghamton,25,343
-2015,Boise State,26,78
+2015,Boise St,26,78
 2015,Boston College,27,118
 2015,Boston Univ,28,223
 2015,Bowling Green,29,86
@@ -4767,7 +4767,7 @@ Year,Team,Index,masseyComposite_Rank
 2015,Charleston So,49,210
 2015,Charlotte,50,135
 2015,Chattanooga,51,154
-2015,Chicago State,52,335
+2015,Chicago St,52,335
 2015,Cincinnati,54,40
 2015,Citadel,318,309
 2015,Clemson,55,87
@@ -4776,10 +4776,10 @@ Year,Team,Index,masseyComposite_Rank
 2015,Col Charleston,48,245
 2015,Colgate,58,203
 2015,Colorado,59,80
-2015,Colorado State,60,44
+2015,Colorado St,60,44
 2015,Columbia,61,129
 2015,Connecticut,62,62
-2015,Coppin State,63,342
+2015,Coppin St,63,342
 2015,Cornell,64,213
 2015,Creighton,65,121
 2015,Dartmouth,66,207
@@ -4787,7 +4787,7 @@ Year,Team,Index,masseyComposite_Rank
 2015,Dayton,68,25
 2015,DePaul,69,137
 2015,Delaware,70,315
-2015,Delaware State,71,266
+2015,Delaware St,71,266
 2015,Denver,72,208
 2015,Detroit,73,177
 2015,Drake,74,293
@@ -4837,16 +4837,16 @@ Year,Team,Index,masseyComposite_Rank
 2015,IL Chicago,126,303
 2015,IUPUI,122,255
 2015,Idaho,123,238
-2015,Idaho State,124,326
+2015,Idaho St,124,326
 2015,Illinois,125,54
-2015,Illinois State,127,89
+2015,Illinois St,127,89
 2015,Incarnate Word,128,174
 2015,Indiana,129,38
-2015,Indiana State,130,194
+2015,Indiana St,130,194
 2015,Iona,131,88
 2015,Iowa,132,28
 2015,Iowa St,133,14
-2015,Jackson State,134,320
+2015,Jackson St,134,320
 2015,Jacksonville,135,339
 2015,Jacksonville St,136,314
 2015,James Madison,137,159
@@ -4863,7 +4863,7 @@ Year,Team,Index,masseyComposite_Rank
 2015,Lehigh,149,219
 2015,Liberty,150,338
 2015,Lipscomb,152,251
-2015,Long Beach State,154,113
+2015,Long Beach St,154,113
 2015,Longwood,155,322
 2015,Louisiana,156,179
 2015,Louisiana Tech,158,77
@@ -4882,7 +4882,7 @@ Year,Team,Index,masseyComposite_Rank
 2015,Marshall,167,304
 2015,Maryland,168,13
 2015,Massachusetts,170,95
-2015,McNeese State,171,281
+2015,McNeese St,171,281
 2015,Memphis,172,69
 2015,Mercer,173,176
 2015,Miami FL,177,42
@@ -4891,15 +4891,15 @@ Year,Team,Index,masseyComposite_Rank
 2015,Michigan St,180,23
 2015,Minnesota,183,56
 2015,Mississippi,184,47
-2015,Mississippi State,185,197
+2015,Mississippi St,185,197
 2015,Missouri,187,155
 2015,Missouri KC,333,310
-2015,Missouri State,188,201
+2015,Missouri St,188,201
 2015,Monmouth NJ,189,190
 2015,Montana,190,202
 2015,Montana St,191,323
 2015,Morehead St,192,230
-2015,Morgan State,193,324
+2015,Morgan St,193,324
 2015,Mt St Mary's,194,217
 2015,Murray St,195,72
 2015,N Colorado,220,220
@@ -4943,7 +4943,7 @@ Year,Team,Index,masseyComposite_Rank
 2015,PFW,249,268
 2015,Pacific,237,204
 2015,Penn,238,271
-2015,Penn State,239,108
+2015,Penn St,239,108
 2015,Pepperdine,240,99
 2015,Pittsburgh,241,76
 2015,Portland,242,141
@@ -4972,12 +4972,12 @@ Year,Team,Index,masseyComposite_Rank
 2015,SMU,260,26
 2015,SUNY Albany,7,170
 2015,Sacred Heart,262,270
-2015,Sam Houston State,268,97
+2015,Sam Houston St,268,97
 2015,Samford,269,311
 2015,San Diego,270,149
 2015,San Diego St,271,35
 2015,San Francisco,272,158
-2015,San Jose State,273,345
+2015,San Jose St,273,345
 2015,Santa Clara,274,184
 2015,Savannah St,275,330
 2015,Seattle,276,233
@@ -5008,11 +5008,11 @@ Year,Team,Index,masseyComposite_Rank
 2015,TX Southern,315,172
 2015,Temple,307,85
 2015,Tennessee,308,64
-2015,Tennessee State,310,334
+2015,Tennessee St,310,334
 2015,Tennessee Tech,311,222
 2015,Texas,312,18
 2015,Texas A&M,313,58
-2015,Texas State,316,188
+2015,Texas St,316,188
 2015,Texas Tech,317,145
 2015,Toledo,319,104
 2015,Towson,320,285
@@ -5057,7 +5057,7 @@ Year,Team,Index,masseyComposite_Rank
 2015,Wagner,358,300
 2015,Wake Forest,359,116
 2015,Washington,360,51
-2015,Washington State,361,143
+2015,Washington St,361,143
 2015,Weber St,363,225
 2015,West Virginia,365,17
 2015,Wichita St,370,16
@@ -5069,32 +5069,32 @@ Year,Team,Index,masseyComposite_Rank
 2015,Wyoming,378,67
 2015,Xavier,379,33
 2015,Yale,380,101
-2015,Youngstown State,381,277
+2015,Youngstown St,381,277
 2016,Abilene Chr,1,329
 2016,Air Force,2,226
 2016,Akron,3,96
 2016,Alabama,4,71
 2016,Alabama A&M,5,283
-2016,Alabama State,6,312
-2016,Alcorn State,8,340
+2016,Alabama St,6,312
+2016,Alcorn St,8,340
 2016,American Univ,9,349
-2016,Appalachian State,10,270
+2016,Appalachian St,10,270
 2016,Arizona,11,15
 2016,Arizona St,12,61
 2016,Ark Little Rock,153,51
 2016,Ark Pine Bluff,14,333
 2016,Arkansas,13,66
-2016,Arkansas State,15,230
+2016,Arkansas St,15,230
 2016,Army,16,180
 2016,Auburn,17,118
 2016,Austin Peay,18,242
 2016,BYU,19,62
-2016,Ball State,20,154
+2016,Ball St,20,154
 2016,Baylor,21,21
 2016,Belmont,23,103
 2016,Bethune-Cookman,24,327
 2016,Binghamton,25,337
-2016,Boise State,26,64
+2016,Boise St,26,64
 2016,Boston College,27,205
 2016,Boston Univ,28,237
 2016,Bowling Green,29,170
@@ -5118,7 +5118,7 @@ Year,Team,Index,masseyComposite_Rank
 2016,Charleston So,49,264
 2016,Charlotte,50,243
 2016,Chattanooga,51,72
-2016,Chicago State,52,336
+2016,Chicago St,52,336
 2016,Cincinnati,54,38
 2016,Citadel,318,300
 2016,Clemson,55,54
@@ -5127,10 +5127,10 @@ Year,Team,Index,masseyComposite_Rank
 2016,Col Charleston,48,121
 2016,Colgate,58,227
 2016,Colorado,59,36
-2016,Colorado State,60,171
+2016,Colorado St,60,171
 2016,Columbia,61,155
 2016,Connecticut,62,43
-2016,Coppin State,63,330
+2016,Coppin St,63,330
 2016,Cornell,64,218
 2016,Creighton,65,53
 2016,Dartmouth,66,246
@@ -5138,7 +5138,7 @@ Year,Team,Index,masseyComposite_Rank
 2016,Dayton,68,28
 2016,DePaul,69,172
 2016,Delaware,70,275
-2016,Delaware State,71,350
+2016,Delaware St,71,350
 2016,Denver,72,210
 2016,Detroit,73,179
 2016,Drake,74,249
@@ -5188,16 +5188,16 @@ Year,Team,Index,masseyComposite_Rank
 2016,IL Chicago,126,345
 2016,IUPUI,122,206
 2016,Idaho,123,194
-2016,Idaho State,124,306
+2016,Idaho St,124,306
 2016,Illinois,125,107
-2016,Illinois State,127,178
+2016,Illinois St,127,178
 2016,Incarnate Word,128,225
 2016,Indiana,129,22
-2016,Indiana State,130,125
+2016,Indiana St,130,125
 2016,Iona,131,167
 2016,Iowa,132,7
 2016,Iowa St,133,19
-2016,Jackson State,134,244
+2016,Jackson St,134,244
 2016,Jacksonville,135,281
 2016,Jacksonville St,136,305
 2016,James Madison,137,86
@@ -5214,7 +5214,7 @@ Year,Team,Index,masseyComposite_Rank
 2016,Lehigh,149,266
 2016,Liberty,150,331
 2016,Lipscomb,152,296
-2016,Long Beach State,154,139
+2016,Long Beach St,154,139
 2016,Longwood,155,309
 2016,Louisiana,156,176
 2016,Louisiana Tech,158,135
@@ -5233,7 +5233,7 @@ Year,Team,Index,masseyComposite_Rank
 2016,Marshall,167,157
 2016,Maryland,168,12
 2016,Massachusetts,170,174
-2016,McNeese State,171,317
+2016,McNeese St,171,317
 2016,Memphis,172,76
 2016,Mercer,173,119
 2016,Miami FL,177,16
@@ -5242,15 +5242,15 @@ Year,Team,Index,masseyComposite_Rank
 2016,Michigan St,180,9
 2016,Minnesota,183,191
 2016,Mississippi,184,94
-2016,Mississippi State,185,147
+2016,Mississippi St,185,147
 2016,Missouri,187,151
 2016,Missouri KC,333,234
-2016,Missouri State,188,213
+2016,Missouri St,188,213
 2016,Monmouth NJ,189,50
 2016,Montana,190,161
 2016,Montana St,191,276
 2016,Morehead St,192,175
-2016,Morgan State,193,343
+2016,Morgan St,193,343
 2016,Mt St Mary's,194,260
 2016,Murray St,195,183
 2016,N Colorado,220,319
@@ -5294,7 +5294,7 @@ Year,Team,Index,masseyComposite_Rank
 2016,PFW,249,116
 2016,Pacific,237,255
 2016,Penn,238,259
-2016,Penn State,239,111
+2016,Penn St,239,111
 2016,Pepperdine,240,127
 2016,Pittsburgh,241,18
 2016,Portland,242,204
@@ -5323,12 +5323,12 @@ Year,Team,Index,masseyComposite_Rank
 2016,SMU,260,8
 2016,SUNY Albany,7,132
 2016,Sacred Heart,262,341
-2016,Sam Houston State,268,231
+2016,Sam Houston St,268,231
 2016,Samford,269,188
 2016,San Diego,270,274
 2016,San Diego St,271,77
 2016,San Francisco,272,215
-2016,San Jose State,273,289
+2016,San Jose St,273,289
 2016,Santa Clara,274,232
 2016,Savannah St,275,324
 2016,Seattle,276,298
@@ -5359,11 +5359,11 @@ Year,Team,Index,masseyComposite_Rank
 2016,TX Southern,315,222
 2016,Temple,307,100
 2016,Tennessee,308,88
-2016,Tennessee State,310,181
+2016,Tennessee St,310,181
 2016,Tennessee Tech,311,162
 2016,Texas,312,42
 2016,Texas A&M,313,10
-2016,Texas State,316,235
+2016,Texas St,316,235
 2016,Texas Tech,317,44
 2016,Toledo,319,136
 2016,Towson,320,168
@@ -5408,7 +5408,7 @@ Year,Team,Index,masseyComposite_Rank
 2016,Wagner,358,219
 2016,Wake Forest,359,99
 2016,Washington,360,68
-2016,Washington State,361,129
+2016,Washington St,361,129
 2016,Weber St,363,114
 2016,West Virginia,365,5
 2016,Wichita St,370,34
@@ -5420,32 +5420,32 @@ Year,Team,Index,masseyComposite_Rank
 2016,Wyoming,378,177
 2016,Xavier,379,4
 2016,Yale,380,97
-2016,Youngstown State,381,262
+2016,Youngstown St,381,262
 2017,Abilene Chr,1,306
 2017,Air Force,2,207
 2017,Akron,3,75
 2017,Alabama,4,68
 2017,Alabama A&M,5,351
-2017,Alabama State,6,345
-2017,Alcorn State,8,330
+2017,Alabama St,6,345
+2017,Alcorn St,8,330
 2017,American Univ,9,302
-2017,Appalachian State,10,253
+2017,Appalachian St,10,253
 2017,Arizona,11,16
 2017,Arizona St,12,120
 2017,Ark Little Rock,153,199
 2017,Ark Pine Bluff,14,343
 2017,Arkansas,13,40
-2017,Arkansas State,15,106
+2017,Arkansas St,15,106
 2017,Army,16,219
 2017,Auburn,17,86
 2017,Austin Peay,18,297
 2017,BYU,19,67
-2017,Ball State,20,180
+2017,Ball St,20,180
 2017,Baylor,21,5
 2017,Belmont,23,103
 2017,Bethune-Cookman,24,350
 2017,Binghamton,25,291
-2017,Boise State,26,83
+2017,Boise St,26,83
 2017,Boston College,27,150
 2017,Boston Univ,28,146
 2017,Bowling Green,29,244
@@ -5469,7 +5469,7 @@ Year,Team,Index,masseyComposite_Rank
 2017,Charleston So,49,315
 2017,Charlotte,50,218
 2017,Chattanooga,51,65
-2017,Chicago State,52,316
+2017,Chicago St,52,316
 2017,Cincinnati,54,20
 2017,Citadel,318,273
 2017,Clemson,55,31
@@ -5478,10 +5478,10 @@ Year,Team,Index,masseyComposite_Rank
 2017,Col Charleston,48,78
 2017,Colgate,58,310
 2017,Colorado,59,92
-2017,Colorado State,60,132
+2017,Colorado St,60,132
 2017,Columbia,61,215
 2017,Connecticut,62,125
-2017,Coppin State,63,342
+2017,Coppin St,63,342
 2017,Cornell,64,294
 2017,Creighton,65,10
 2017,Dartmouth,66,314
@@ -5489,7 +5489,7 @@ Year,Team,Index,masseyComposite_Rank
 2017,Dayton,68,36
 2017,DePaul,69,188
 2017,Delaware,70,282
-2017,Delaware State,71,333
+2017,Delaware St,71,333
 2017,Denver,72,154
 2017,Detroit,73,300
 2017,Drake,74,267
@@ -5539,16 +5539,16 @@ Year,Team,Index,masseyComposite_Rank
 2017,IL Chicago,126,209
 2017,IUPUI,122,206
 2017,Idaho,123,265
-2017,Idaho State,124,335
+2017,Idaho St,124,335
 2017,Illinois,125,58
-2017,Illinois State,127,43
+2017,Illinois St,127,43
 2017,Incarnate Word,128,305
 2017,Indiana,129,32
-2017,Indiana State,130,196
+2017,Indiana St,130,196
 2017,Iona,131,138
 2017,Iowa,132,85
 2017,Iowa St,133,30
-2017,Jackson State,134,318
+2017,Jackson St,134,318
 2017,Jacksonville,135,239
 2017,Jacksonville St,136,181
 2017,James Madison,137,241
@@ -5565,7 +5565,7 @@ Year,Team,Index,masseyComposite_Rank
 2017,Lehigh,149,108
 2017,Liberty,150,231
 2017,Lipscomb,152,210
-2017,Long Beach State,154,256
+2017,Long Beach St,154,256
 2017,Longwood,155,331
 2017,Louisiana,156,110
 2017,Louisiana Tech,158,112
@@ -5584,7 +5584,7 @@ Year,Team,Index,masseyComposite_Rank
 2017,Marshall,167,124
 2017,Maryland,168,29
 2017,Massachusetts,170,101
-2017,McNeese State,171,309
+2017,McNeese St,171,309
 2017,Memphis,172,71
 2017,Mercer,173,187
 2017,Miami FL,177,33
@@ -5593,15 +5593,15 @@ Year,Team,Index,masseyComposite_Rank
 2017,Michigan St,180,44
 2017,Minnesota,183,25
 2017,Mississippi,184,82
-2017,Mississippi State,185,76
+2017,Mississippi St,185,76
 2017,Missouri,187,214
 2017,Missouri KC,333,237
-2017,Missouri State,188,128
+2017,Missouri St,188,128
 2017,Monmouth NJ,189,87
 2017,Montana,190,153
 2017,Montana St,191,264
 2017,Morehead St,192,216
-2017,Morgan State,193,317
+2017,Morgan St,193,317
 2017,Mt St Mary's,194,224
 2017,Murray St,195,179
 2017,N Colorado,220,259
@@ -5645,7 +5645,7 @@ Year,Team,Index,masseyComposite_Rank
 2017,PFW,249,107
 2017,Pacific,237,227
 2017,Penn,238,182
-2017,Penn State,239,69
+2017,Penn St,239,69
 2017,Pepperdine,240,289
 2017,Pittsburgh,241,51
 2017,Portland,242,203
@@ -5674,12 +5674,12 @@ Year,Team,Index,masseyComposite_Rank
 2017,SMU,260,27
 2017,SUNY Albany,7,174
 2017,Sacred Heart,262,296
-2017,Sam Houston State,268,186
+2017,Sam Houston St,268,186
 2017,Samford,269,139
 2017,San Diego,270,200
 2017,San Diego St,271,91
 2017,San Francisco,272,114
-2017,San Jose State,273,189
+2017,San Jose St,273,189
 2017,Santa Clara,274,162
 2017,Savannah St,275,337
 2017,Seattle,276,279
@@ -5710,11 +5710,11 @@ Year,Team,Index,masseyComposite_Rank
 2017,TX Southern,315,161
 2017,Temple,307,93
 2017,Tennessee,308,62
-2017,Tennessee State,310,130
+2017,Tennessee St,310,130
 2017,Tennessee Tech,311,292
 2017,Texas,312,100
 2017,Texas A&M,313,74
-2017,Texas State,316,234
+2017,Texas St,316,234
 2017,Texas Tech,317,38
 2017,Toledo,319,148
 2017,Towson,320,147
@@ -5759,7 +5759,7 @@ Year,Team,Index,masseyComposite_Rank
 2017,Wagner,358,250
 2017,Wake Forest,359,47
 2017,Washington,360,140
-2017,Washington State,361,178
+2017,Washington St,361,178
 2017,Weber St,363,151
 2017,West Virginia,365,6
 2017,Wichita St,370,35
@@ -5771,32 +5771,32 @@ Year,Team,Index,masseyComposite_Rank
 2017,Wyoming,378,133
 2017,Xavier,379,23
 2017,Yale,380,115
-2017,Youngstown State,381,283
+2017,Youngstown St,381,283
 2018,Abilene Chr,1,220
 2018,Air Force,2,243
 2018,Akron,3,221
 2018,Alabama,4,45
 2018,Alabama A&M,5,349
-2018,Alabama State,6,344
-2018,Alcorn State,8,342
+2018,Alabama St,6,344
+2018,Alcorn St,8,342
 2018,American Univ,9,323
-2018,Appalachian State,10,236
+2018,Appalachian St,10,236
 2018,Arizona,11,18
 2018,Arizona St,12,29
 2018,Ark Little Rock,153,288
 2018,Ark Pine Bluff,14,324
 2018,Arkansas,13,35
-2018,Arkansas State,15,280
+2018,Arkansas St,15,280
 2018,Army,16,188
 2018,Auburn,17,13
 2018,Austin Peay,18,199
 2018,BYU,19,53
-2018,Ball State,20,151
+2018,Ball St,20,151
 2018,Baylor,21,48
 2018,Belmont,23,85
 2018,Bethune-Cookman,24,287
 2018,Binghamton,25,279
-2018,Boise State,26,44
+2018,Boise St,26,44
 2018,Boston College,27,66
 2018,Boston Univ,28,215
 2018,Bowling Green,29,203
@@ -5820,7 +5820,7 @@ Year,Team,Index,masseyComposite_Rank
 2018,Charleston So,49,306
 2018,Charlotte,50,300
 2018,Chattanooga,51,297
-2018,Chicago State,52,348
+2018,Chicago St,52,348
 2018,Cincinnati,54,10
 2018,Citadel,318,330
 2018,Clemson,55,12
@@ -5829,10 +5829,10 @@ Year,Team,Index,masseyComposite_Rank
 2018,Col Charleston,48,140
 2018,Colgate,58,226
 2018,Colorado,59,95
-2018,Colorado State,60,177
+2018,Colorado St,60,177
 2018,Columbia,61,261
 2018,Connecticut,62,125
-2018,Coppin State,63,347
+2018,Coppin St,63,347
 2018,Cornell,64,278
 2018,Creighton,65,24
 2018,Dartmouth,66,313
@@ -5840,7 +5840,7 @@ Year,Team,Index,masseyComposite_Rank
 2018,Dayton,68,131
 2018,DePaul,69,141
 2018,Delaware,70,237
-2018,Delaware State,71,351
+2018,Delaware St,71,351
 2018,Denver,72,258
 2018,Detroit,73,305
 2018,Drake,74,157
@@ -5890,16 +5890,16 @@ Year,Team,Index,masseyComposite_Rank
 2018,IL Chicago,126,239
 2018,IUPUI,122,294
 2018,Idaho,123,147
-2018,Idaho State,124,248
+2018,Idaho St,124,248
 2018,Illinois,125,116
-2018,Illinois State,127,158
+2018,Illinois St,127,158
 2018,Incarnate Word,128,335
 2018,Indiana,129,92
-2018,Indiana State,130,149
+2018,Indiana St,130,149
 2018,Iona,131,123
 2018,Iowa,132,114
 2018,Iowa St,133,79
-2018,Jackson State,134,317
+2018,Jackson St,134,317
 2018,Jacksonville,135,310
 2018,Jacksonville St,136,150
 2018,James Madison,137,255
@@ -5916,7 +5916,7 @@ Year,Team,Index,masseyComposite_Rank
 2018,Lehigh,149,256
 2018,Liberty,150,208
 2018,Lipscomb,152,171
-2018,Long Beach State,154,198
+2018,Long Beach St,154,198
 2018,Longwood,155,339
 2018,Louisiana,156,55
 2018,Louisiana Tech,158,155
@@ -5935,7 +5935,7 @@ Year,Team,Index,masseyComposite_Rank
 2018,Marshall,167,108
 2018,Maryland,168,42
 2018,Massachusetts,170,176
-2018,McNeese State,171,292
+2018,McNeese St,171,292
 2018,Memphis,172,121
 2018,Mercer,173,161
 2018,Miami FL,177,31
@@ -5944,15 +5944,15 @@ Year,Team,Index,masseyComposite_Rank
 2018,Michigan St,180,7
 2018,Minnesota,183,68
 2018,Mississippi,184,83
-2018,Mississippi State,185,69
+2018,Mississippi St,185,69
 2018,Missouri,187,38
 2018,Missouri KC,333,289
-2018,Missouri State,188,86
+2018,Missouri St,188,86
 2018,Monmouth NJ,189,197
 2018,Montana,190,96
 2018,Montana St,191,231
 2018,Morehead St,192,270
-2018,Morgan State,193,328
+2018,Morgan St,193,328
 2018,Mt St Mary's,194,277
 2018,Murray St,195,80
 2018,N Colorado,220,159
@@ -5996,7 +5996,7 @@ Year,Team,Index,masseyComposite_Rank
 2018,PFW,249,181
 2018,Pacific,237,168
 2018,Penn,238,152
-2018,Penn State,239,75
+2018,Penn St,239,75
 2018,Pepperdine,240,308
 2018,Pittsburgh,241,185
 2018,Portland,242,260
@@ -6025,12 +6025,12 @@ Year,Team,Index,masseyComposite_Rank
 2018,SMU,260,41
 2018,SUNY Albany,7,143
 2018,Sacred Heart,262,321
-2018,Sam Houston State,268,224
+2018,Sam Houston St,268,224
 2018,Samford,269,273
 2018,San Diego,270,129
 2018,San Diego St,271,76
 2018,San Francisco,272,164
-2018,San Jose State,273,316
+2018,San Jose St,273,316
 2018,Santa Clara,274,262
 2018,Savannah St,275,295
 2018,Seattle,276,184
@@ -6061,11 +6061,11 @@ Year,Team,Index,masseyComposite_Rank
 2018,TX Southern,315,241
 2018,Temple,307,81
 2018,Tennessee,308,16
-2018,Tennessee State,310,235
+2018,Tennessee St,310,235
 2018,Tennessee Tech,311,202
 2018,Texas,312,40
 2018,Texas A&M,313,33
-2018,Texas State,316,209
+2018,Texas St,316,209
 2018,Texas Tech,317,14
 2018,Toledo,319,100
 2018,Towson,320,117
@@ -6110,7 +6110,7 @@ Year,Team,Index,masseyComposite_Rank
 2018,Wagner,358,178
 2018,Wake Forest,359,103
 2018,Washington,360,78
-2018,Washington State,361,154
+2018,Washington St,361,154
 2018,Weber St,363,173
 2018,West Virginia,365,8
 2018,Wichita St,370,21
@@ -6122,32 +6122,32 @@ Year,Team,Index,masseyComposite_Rank
 2018,Wyoming,378,102
 2018,Xavier,379,9
 2018,Yale,380,204
-2018,Youngstown State,381,315
+2018,Youngstown St,381,315
 2019,Abilene Chr,1,161
 2019,Air Force,2,226
 2019,Akron,3,148
 2019,Alabama,4,48
 2019,Alabama A&M,5,350
-2019,Alabama State,6,308
-2019,Alcorn State,8,347
+2019,Alabama St,6,308
+2019,Alcorn St,8,347
 2019,American Univ,9,221
-2019,Appalachian State,10,264
+2019,Appalachian St,10,264
 2019,Arizona,11,45
 2019,Arizona St,12,51
 2019,Ark Little Rock,153,231
 2019,Ark Pine Bluff,14,320
 2019,Arkansas,13,69
-2019,Arkansas State,15,232
+2019,Arkansas St,15,232
 2019,Army,16,239
 2019,Auburn,17,18
 2019,Austin Peay,18,138
 2019,BYU,19,110
-2019,Ball State,20,89
+2019,Ball St,20,89
 2019,Baylor,21,55
 2019,Belmont,23,81
 2019,Bethune-Cookman,24,315
 2019,Binghamton,25,335
-2019,Boise State,26,144
+2019,Boise St,26,144
 2019,Boston College,27,101
 2019,Boston Univ,28,237
 2019,Bowling Green,29,114
@@ -6172,7 +6172,7 @@ Year,Team,Index,masseyComposite_Rank
 2019,Charleston So,49,270
 2019,Charlotte,50,251
 2019,Chattanooga,51,242
-2019,Chicago State,52,349
+2019,Chicago St,52,349
 2019,Cincinnati,54,30
 2019,Citadel,318,219
 2019,Clemson,55,49
@@ -6181,10 +6181,10 @@ Year,Team,Index,masseyComposite_Rank
 2019,Col Charleston,48,116
 2019,Colgate,58,159
 2019,Colorado,59,106
-2019,Colorado State,60,212
+2019,Colorado St,60,212
 2019,Columbia,61,272
 2019,Connecticut,62,94
-2019,Coppin State,63,345
+2019,Coppin St,63,345
 2019,Cornell,64,224
 2019,Creighton,65,58
 2019,Dartmouth,66,191
@@ -6192,7 +6192,7 @@ Year,Team,Index,masseyComposite_Rank
 2019,Dayton,68,67
 2019,DePaul,69,97
 2019,Delaware,70,203
-2019,Delaware State,71,353
+2019,Delaware St,71,353
 2019,Denver,72,302
 2019,Detroit,73,197
 2019,Drake,74,99
@@ -6242,16 +6242,16 @@ Year,Team,Index,masseyComposite_Rank
 2019,IL Chicago,126,214
 2019,IUPUI,122,187
 2019,Idaho,123,336
-2019,Idaho State,124,253
+2019,Idaho St,124,253
 2019,Illinois,125,122
-2019,Illinois State,127,163
+2019,Illinois St,127,163
 2019,Incarnate Word,128,340
 2019,Indiana,129,36
-2019,Indiana State,130,169
+2019,Indiana St,130,169
 2019,Iona,131,234
 2019,Iowa,132,23
 2019,Iowa St,133,19
-2019,Jackson State,134,333
+2019,Jackson St,134,333
 2019,Jacksonville,135,286
 2019,Jacksonville St,136,120
 2019,James Madison,137,262
@@ -6268,7 +6268,7 @@ Year,Team,Index,masseyComposite_Rank
 2019,Lehigh,149,147
 2019,Liberty,150,82
 2019,Lipscomb,152,53
-2019,Long Beach State,154,196
+2019,Long Beach St,154,196
 2019,Longwood,155,240
 2019,Louisiana,156,157
 2019,Louisiana Tech,158,142
@@ -6287,7 +6287,7 @@ Year,Team,Index,masseyComposite_Rank
 2019,Marshall,167,115
 2019,Maryland,168,10
 2019,Massachusetts,170,182
-2019,McNeese State,171,321
+2019,McNeese St,171,321
 2019,Memphis,172,68
 2019,Mercer,173,193
 2019,Miami FL,177,88
@@ -6296,15 +6296,15 @@ Year,Team,Index,masseyComposite_Rank
 2019,Michigan St,180,3
 2019,Minnesota,183,56
 2019,Mississippi,184,29
-2019,Mississippi State,185,25
+2019,Mississippi St,185,25
 2019,Missouri,187,75
 2019,Missouri KC,333,255
-2019,Missouri State,188,209
+2019,Missouri St,188,209
 2019,Monmouth NJ,189,283
 2019,Montana,190,128
 2019,Montana St,191,273
 2019,Morehead St,192,257
-2019,Morgan State,193,319
+2019,Morgan St,193,319
 2019,Mt St Mary's,194,324
 2019,Murray St,195,52
 2019,N Colorado,220,192
@@ -6349,7 +6349,7 @@ Year,Team,Index,masseyComposite_Rank
 2019,PFW,249,199
 2019,Pacific,237,178
 2019,Penn,238,113
-2019,Penn State,239,83
+2019,Penn St,239,83
 2019,Pepperdine,240,185
 2019,Pittsburgh,241,65
 2019,Portland,242,313
@@ -6378,12 +6378,12 @@ Year,Team,Index,masseyComposite_Rank
 2019,SMU,260,118
 2019,SUNY Albany,7,311
 2019,Sacred Heart,262,248
-2019,Sam Houston State,268,194
+2019,Sam Houston St,268,194
 2019,Samford,269,166
 2019,San Diego,270,107
 2019,San Diego St,271,145
 2019,San Francisco,272,44
-2019,San Jose State,273,334
+2019,San Jose St,273,334
 2019,Santa Clara,274,181
 2019,Savannah St,275,344
 2019,Seattle,276,171
@@ -6414,11 +6414,11 @@ Year,Team,Index,masseyComposite_Rank
 2019,TX Southern,315,222
 2019,Temple,307,61
 2019,Tennessee,308,4
-2019,Tennessee State,310,318
+2019,Tennessee St,310,318
 2019,Tennessee Tech,311,329
 2019,Texas,312,34
 2019,Texas A&M,313,134
-2019,Texas State,316,95
+2019,Texas St,316,95
 2019,Texas Tech,317,13
 2019,Toledo,319,60
 2019,Towson,320,300
@@ -6463,7 +6463,7 @@ Year,Team,Index,masseyComposite_Rank
 2019,Wagner,358,243
 2019,Wake Forest,359,150
 2019,Washington,360,40
-2019,Washington State,361,201
+2019,Washington St,361,201
 2019,Weber St,363,158
 2019,West Virginia,365,84
 2019,Wichita St,370,119
@@ -6475,32 +6475,32 @@ Year,Team,Index,masseyComposite_Rank
 2019,Wyoming,378,317
 2019,Xavier,379,76
 2019,Yale,380,86
-2019,Youngstown State,381,298
+2019,Youngstown St,381,298
 2020,Abilene Chr,1,201
 2020,Air Force,2,179
 2020,Akron,3,72
 2020,Alabama,4,48
 2020,Alabama A&M,5,335
-2020,Alabama State,6,338
-2020,Alcorn State,8,291
+2020,Alabama St,6,338
+2020,Alcorn St,8,291
 2020,American Univ,9,234
-2020,Appalachian State,10,203
+2020,Appalachian St,10,203
 2020,Arizona,11,15
 2020,Arizona St,12,66
 2020,Ark Little Rock,153,130
 2020,Ark Pine Bluff,14,342
 2020,Arkansas,13,25
-2020,Arkansas State,15,186
+2020,Arkansas St,15,186
 2020,Army,16,304
 2020,Auburn,17,16
 2020,Austin Peay,18,167
 2020,BYU,19,36
-2020,Ball State,20,116
+2020,Ball St,20,116
 2020,Baylor,21,2
 2020,Belmont,23,106
 2020,Bethune-Cookman,24,292
 2020,Binghamton,25,333
-2020,Boise State,26,108
+2020,Boise St,26,108
 2020,Boston College,27,162
 2020,Boston Univ,28,187
 2020,Bowling Green,29,142
@@ -6525,7 +6525,7 @@ Year,Team,Index,masseyComposite_Rank
 2020,Charleston So,49,274
 2020,Charlotte,50,164
 2020,Chattanooga,51,158
-2020,Chicago State,52,353
+2020,Chicago St,52,353
 2020,Cincinnati,54,58
 2020,Citadel,318,302
 2020,Clemson,55,76
@@ -6534,10 +6534,10 @@ Year,Team,Index,masseyComposite_Rank
 2020,Col Charleston,48,125
 2020,Colgate,58,121
 2020,Colorado,59,19
-2020,Colorado State,60,88
+2020,Colorado St,60,88
 2020,Columbia,61,270
 2020,Connecticut,62,86
-2020,Coppin State,63,326
+2020,Coppin St,63,326
 2020,Cornell,64,317
 2020,Creighton,65,34
 2020,Dartmouth,66,230
@@ -6545,7 +6545,7 @@ Year,Team,Index,masseyComposite_Rank
 2020,Dayton,68,6
 2020,DePaul,69,55
 2020,Delaware,70,182
-2020,Delaware State,71,348
+2020,Delaware St,71,348
 2020,Denver,72,327
 2020,Detroit,73,294
 2020,Drake,74,146
@@ -6595,16 +6595,16 @@ Year,Team,Index,masseyComposite_Rank
 2020,IL Chicago,126,257
 2020,IUPUI,122,332
 2020,Idaho,123,316
-2020,Idaho State,124,277
+2020,Idaho St,124,277
 2020,Illinois,125,38
-2020,Illinois State,127,227
+2020,Illinois St,127,227
 2020,Incarnate Word,128,346
 2020,Indiana,129,37
-2020,Indiana State,130,113
+2020,Indiana St,130,113
 2020,Iona,131,285
 2020,Iowa,132,18
 2020,Iowa St,133,82
-2020,Jackson State,134,331
+2020,Jackson St,134,331
 2020,Jacksonville,135,260
 2020,Jacksonville St,136,252
 2020,James Madison,137,259
@@ -6621,7 +6621,7 @@ Year,Team,Index,masseyComposite_Rank
 2020,Lehigh,149,287
 2020,Liberty,150,50
 2020,Lipscomb,152,283
-2020,Long Beach State,154,299
+2020,Long Beach St,154,299
 2020,Longwood,155,336
 2020,Louisiana,156,264
 2020,Louisiana Tech,158,93
@@ -6640,7 +6640,7 @@ Year,Team,Index,masseyComposite_Rank
 2020,Marshall,167,177
 2020,Maryland,168,13
 2020,Massachusetts,170,197
-2020,McNeese State,171,250
+2020,McNeese St,171,250
 2020,Memphis,172,26
 2020,Mercer,173,261
 2020,Merrimack,176,242
@@ -6650,15 +6650,15 @@ Year,Team,Index,masseyComposite_Rank
 2020,Michigan St,180,9
 2020,Minnesota,183,42
 2020,Mississippi,184,117
-2020,Mississippi State,185,49
+2020,Mississippi St,185,49
 2020,Missouri,187,84
 2020,Missouri KC,333,246
-2020,Missouri State,188,168
+2020,Missouri St,188,168
 2020,Monmouth NJ,189,193
 2020,Montana,190,149
 2020,Montana St,191,214
 2020,Morehead St,192,282
-2020,Morgan State,193,306
+2020,Morgan St,193,306
 2020,Mt St Mary's,194,284
 2020,Murray St,195,155
 2020,N Colorado,220,122
@@ -6703,7 +6703,7 @@ Year,Team,Index,masseyComposite_Rank
 2020,PFW,249,268
 2020,Pacific,237,128
 2020,Penn,238,173
-2020,Penn State,239,35
+2020,Penn St,239,35
 2020,Pepperdine,240,160
 2020,Pittsburgh,241,71
 2020,Portland,242,253
@@ -6732,12 +6732,12 @@ Year,Team,Index,masseyComposite_Rank
 2020,SMU,260,70
 2020,SUNY Albany,7,228
 2020,Sacred Heart,262,209
-2020,Sam Houston State,268,181
+2020,Sam Houston St,268,181
 2020,Samford,269,290
 2020,San Diego,270,211
 2020,San Diego St,271,5
 2020,San Francisco,272,87
-2020,San Jose State,273,255
+2020,San Jose St,273,255
 2020,Santa Clara,274,107
 2020,Seattle,276,226
 2020,Seton Hall,277,11
@@ -6767,11 +6767,11 @@ Year,Team,Index,masseyComposite_Rank
 2020,TX Southern,315,236
 2020,Temple,307,80
 2020,Tennessee,308,60
-2020,Tennessee State,310,216
+2020,Tennessee St,310,216
 2020,Tennessee Tech,311,341
 2020,Texas,312,56
 2020,Texas A&M,313,154
-2020,Texas State,316,131
+2020,Texas St,316,131
 2020,Texas Tech,317,29
 2020,Toledo,319,138
 2020,Towson,320,176
@@ -6816,7 +6816,7 @@ Year,Team,Index,masseyComposite_Rank
 2020,Wagner,358,324
 2020,Wake Forest,359,110
 2020,Washington,360,47
-2020,Washington State,361,112
+2020,Washington St,361,112
 2020,Weber St,363,281
 2020,West Virginia,365,8
 2020,Wichita St,370,28
@@ -6828,32 +6828,32 @@ Year,Team,Index,masseyComposite_Rank
 2020,Wyoming,378,296
 2020,Xavier,379,59
 2020,Yale,380,62
-2020,Youngstown State,381,225
+2020,Youngstown St,381,225
 2021,Abilene Chr,1,99
 2021,Air Force,2,224
 2021,Akron,3,137
 2021,Alabama,4,10
 2021,Alabama A&M,5,233
-2021,Alabama State,6,342
-2021,Alcorn State,8,333
+2021,Alabama St,6,342
+2021,Alcorn St,8,333
 2021,American Univ,9,229
-2021,Appalachian State,10,179
+2021,Appalachian St,10,179
 2021,Arizona,11,35
 2021,Arizona St,12,109
 2021,Ark Little Rock,153,165
 2021,Ark Pine Bluff,14,332
 2021,Arkansas,13,39
-2021,Arkansas State,15,303
+2021,Arkansas St,15,303
 2021,Army,16,133
 2021,Auburn,17,75
 2021,Austin Peay,18,195
 2021,BYU,19,33
-2021,Ball State,20,146
+2021,Ball St,20,146
 2021,Baylor,21,2
 2021,Bellarmine,22,231
 2021,Belmont,23,89
 2021,Binghamton,25,339
-2021,Boise State,26,31
+2021,Boise St,26,31
 2021,Boston College,27,139
 2021,Boston Univ,28,279
 2021,Bowling Green,29,96
@@ -6877,7 +6877,7 @@ Year,Team,Index,masseyComposite_Rank
 2021,Charleston So,49,341
 2021,Charlotte,50,150
 2021,Chattanooga,51,145
-2021,Chicago State,52,346
+2021,Chicago St,52,346
 2021,Cincinnati,54,102
 2021,Citadel,318,206
 2021,Clemson,55,25
@@ -6886,15 +6886,15 @@ Year,Team,Index,masseyComposite_Rank
 2021,Col Charleston,48,219
 2021,Colgate,58,60
 2021,Colorado,59,11
-2021,Colorado State,60,62
+2021,Colorado St,60,62
 2021,Connecticut,62,23
-2021,Coppin State,63,318
+2021,Coppin St,63,318
 2021,Creighton,65,16
 2021,Davidson,67,73
 2021,Dayton,68,79
 2021,DePaul,69,125
 2021,Delaware,70,262
-2021,Delaware State,71,344
+2021,Delaware St,71,344
 2021,Denver,72,340
 2021,Detroit,73,250
 2021,Drake,74,30
@@ -6943,16 +6943,16 @@ Year,Team,Index,masseyComposite_Rank
 2021,IL Chicago,126,190
 2021,IUPUI,122,285
 2021,Idaho,123,343
-2021,Idaho State,124,252
+2021,Idaho St,124,252
 2021,Illinois,125,13
-2021,Illinois State,127,272
+2021,Illinois St,127,272
 2021,Incarnate Word,128,325
 2021,Indiana,129,42
-2021,Indiana State,130,134
+2021,Indiana St,130,134
 2021,Iona,131,187
 2021,Iowa,132,3
 2021,Iowa St,133,156
-2021,Jackson State,134,317
+2021,Jackson St,134,317
 2021,Jacksonville,135,274
 2021,Jacksonville St,136,186
 2021,James Madison,137,193
@@ -6969,7 +6969,7 @@ Year,Team,Index,masseyComposite_Rank
 2021,Lehigh,149,299
 2021,Liberty,150,101
 2021,Lipscomb,152,212
-2021,Long Beach State,154,276
+2021,Long Beach St,154,276
 2021,Longwood,155,301
 2021,Louisiana,156,169
 2021,Louisiana Tech,158,103
@@ -6987,7 +6987,7 @@ Year,Team,Index,masseyComposite_Rank
 2021,Marshall,167,81
 2021,Maryland,168,47
 2021,Massachusetts,170,106
-2021,McNeese State,171,336
+2021,McNeese St,171,336
 2021,Memphis,172,87
 2021,Mercer,173,128
 2021,Merrimack,176,302
@@ -6997,15 +6997,15 @@ Year,Team,Index,masseyComposite_Rank
 2021,Michigan St,180,52
 2021,Minnesota,183,20
 2021,Mississippi,184,83
-2021,Mississippi State,185,67
+2021,Mississippi St,185,67
 2021,Missouri,187,24
 2021,Missouri KC,333,255
-2021,Missouri State,188,84
+2021,Missouri St,188,84
 2021,Monmouth NJ,189,147
 2021,Montana,190,196
 2021,Montana St,191,175
 2021,Morehead St,192,184
-2021,Morgan State,193,218
+2021,Morgan St,193,218
 2021,Mt St Mary's,194,213
 2021,Murray St,195,192
 2021,N Colorado,220,223
@@ -7049,7 +7049,7 @@ Year,Team,Index,masseyComposite_Rank
 2021,Oregon St,235,158
 2021,PFW,249,189
 2021,Pacific,237,78
-2021,Penn State,239,54
+2021,Penn St,239,54
 2021,Pepperdine,240,159
 2021,Pittsburgh,241,58
 2021,Portland,242,294
@@ -7077,12 +7077,12 @@ Year,Team,Index,masseyComposite_Rank
 2021,SMU,260,50
 2021,SUNY Albany,7,220
 2021,Sacred Heart,262,258
-2021,Sam Houston State,268,148
+2021,Sam Houston St,268,148
 2021,Samford,269,243
 2021,San Diego,270,269
 2021,San Diego St,271,40
 2021,San Francisco,272,92
-2021,San Jose State,273,338
+2021,San Jose St,273,338
 2021,Santa Clara,274,122
 2021,Seattle,276,251
 2021,Seton Hall,277,43
@@ -7110,14 +7110,14 @@ Year,Team,Index,masseyComposite_Rank
 2021,TCU,304,88
 2021,TN Martin,309,337
 2021,TX Southern,315,268
-2021,Tarleton State,305,322
+2021,Tarleton St,305,322
 2021,Temple,307,115
 2021,Tennessee,308,6
-2021,Tennessee State,310,307
+2021,Tennessee St,310,307
 2021,Tennessee Tech,311,319
 2021,Texas,312,8
 2021,Texas A&M,313,111
-2021,Texas State,316,143
+2021,Texas St,316,143
 2021,Texas Tech,317,19
 2021,Toledo,319,68
 2021,Towson,320,273
@@ -7164,7 +7164,7 @@ Year,Team,Index,masseyComposite_Rank
 2021,Wagner,358,270
 2021,Wake Forest,359,144
 2021,Washington,360,200
-2021,Washington State,361,113
+2021,Washington St,361,113
 2021,Weber St,363,170
 2021,West Virginia,365,21
 2021,Wichita St,370,49
@@ -7175,33 +7175,33 @@ Year,Team,Index,masseyComposite_Rank
 2021,Wright St,377,85
 2021,Wyoming,378,207
 2021,Xavier,379,37
-2021,Youngstown State,381,286
+2021,Youngstown St,381,286
 2022,Abilene Chr,1,130
 2022,Air Force,2,236
 2022,Akron,3,146
 2022,Alabama,4,18
 2022,Alabama A&M,5,330
-2022,Alabama State,6,318
-2022,Alcorn State,8,257
+2022,Alabama St,6,318
+2022,Alcorn St,8,257
 2022,American Univ,9,332
-2022,Appalachian State,10,165
+2022,Appalachian St,10,165
 2022,Arizona,11,2
 2022,Arizona St,12,142
 2022,Ark Little Rock,153,291
 2022,Ark Pine Bluff,14,353
 2022,Arkansas,13,40
-2022,Arkansas State,15,161
+2022,Arkansas St,15,161
 2022,Army,16,260
 2022,Auburn,17,3
 2022,Austin Peay,18,312
 2022,BYU,19,30
-2022,Ball State,20,261
+2022,Ball St,20,261
 2022,Baylor,21,4
 2022,Bellarmine,22,199
 2022,Belmont,23,46
 2022,Bethune-Cookman,24,335
 2022,Binghamton,25,295
-2022,Boise State,26,45
+2022,Boise St,26,45
 2022,Boston College,27,155
 2022,Boston Univ,28,209
 2022,Bowling Green,29,196
@@ -7226,7 +7226,7 @@ Year,Team,Index,masseyComposite_Rank
 2022,Charleston So,49,350
 2022,Charlotte,50,144
 2022,Chattanooga,51,65
-2022,Chicago State,52,329
+2022,Chicago St,52,329
 2022,Cincinnati,54,66
 2022,Citadel,318,263
 2022,Clemson,55,78
@@ -7235,10 +7235,10 @@ Year,Team,Index,masseyComposite_Rank
 2022,Col Charleston,48,137
 2022,Colgate,58,183
 2022,Colorado,59,72
-2022,Colorado State,60,28
+2022,Colorado St,60,28
 2022,Columbia,61,345
 2022,Connecticut,62,22
-2022,Coppin State,63,303
+2022,Coppin St,63,303
 2022,Cornell,64,204
 2022,Creighton,65,54
 2022,Dartmouth,66,266
@@ -7246,7 +7246,7 @@ Year,Team,Index,masseyComposite_Rank
 2022,Dayton,68,85
 2022,DePaul,69,95
 2022,Delaware,70,134
-2022,Delaware State,71,358
+2022,Delaware St,71,358
 2022,Denver,72,319
 2022,Detroit,73,234
 2022,Drake,74,104
@@ -7296,16 +7296,16 @@ Year,Team,Index,masseyComposite_Rank
 2022,IL Chicago,126,265
 2022,IUPUI,122,357
 2022,Idaho,123,340
-2022,Idaho State,124,346
+2022,Idaho St,124,346
 2022,Illinois,125,12
-2022,Illinois State,127,202
+2022,Illinois St,127,202
 2022,Incarnate Word,128,348
 2022,Indiana,129,32
-2022,Indiana State,130,180
+2022,Indiana St,130,180
 2022,Iona,131,53
 2022,Iowa,132,25
 2022,Iowa St,133,20
-2022,Jackson State,134,286
+2022,Jackson St,134,286
 2022,Jacksonville,135,187
 2022,Jacksonville St,136,135
 2022,James Madison,137,125
@@ -7322,7 +7322,7 @@ Year,Team,Index,masseyComposite_Rank
 2022,Lehigh,149,326
 2022,Liberty,150,118
 2022,Lipscomb,152,276
-2022,Long Beach State,154,249
+2022,Long Beach St,154,249
 2022,Longwood,155,189
 2022,Louisiana,156,168
 2022,Louisiana Tech,158,76
@@ -7341,7 +7341,7 @@ Year,Team,Index,masseyComposite_Rank
 2022,Marshall,167,230
 2022,Maryland,168,93
 2022,Massachusetts,170,173
-2022,McNeese State,171,300
+2022,McNeese St,171,300
 2022,Memphis,172,55
 2022,Mercer,173,178
 2022,Merrimack,176,285
@@ -7351,15 +7351,15 @@ Year,Team,Index,masseyComposite_Rank
 2022,Michigan St,180,16
 2022,Minnesota,183,67
 2022,Mississippi,184,101
-2022,Mississippi State,185,42
+2022,Mississippi St,185,42
 2022,Missouri,187,174
 2022,Missouri KC,333,238
-2022,Missouri State,188,94
+2022,Missouri St,188,94
 2022,Monmouth NJ,189,107
 2022,Montana,190,175
 2022,Montana St,191,148
 2022,Morehead St,192,131
-2022,Morgan State,193,328
+2022,Morgan St,193,328
 2022,Mt St Mary's,194,297
 2022,Murray St,195,37
 2022,N Colorado,220,197
@@ -7404,7 +7404,7 @@ Year,Team,Index,masseyComposite_Rank
 2022,PFW,249,262
 2022,Pacific,237,292
 2022,Penn,238,235
-2022,Penn State,239,75
+2022,Penn St,239,75
 2022,Pepperdine,240,268
 2022,Pittsburgh,241,160
 2022,Portland,242,232
@@ -7433,12 +7433,12 @@ Year,Team,Index,masseyComposite_Rank
 2022,SMU,260,62
 2022,SUNY Albany,7,287
 2022,Sacred Heart,262,299
-2022,Sam Houston State,268,224
+2022,Sam Houston St,268,224
 2022,Samford,269,212
 2022,San Diego,270,171
 2022,San Diego St,271,36
 2022,San Francisco,272,35
-2022,San Jose State,273,244
+2022,San Jose St,273,244
 2022,Santa Clara,274,92
 2022,Seattle,276,149
 2022,Seton Hall,277,31
@@ -7467,14 +7467,14 @@ Year,Team,Index,masseyComposite_Rank
 2022,TCU,304,47
 2022,TN Martin,309,298
 2022,TX Southern,315,200
-2022,Tarleton State,305,211
+2022,Tarleton St,305,211
 2022,Temple,307,108
 2022,Tennessee,308,19
-2022,Tennessee State,310,315
+2022,Tennessee St,310,315
 2022,Tennessee Tech,311,275
 2022,Texas,312,23
 2022,Texas A&M,313,50
-2022,Texas State,316,127
+2022,Texas St,316,127
 2022,Texas Tech,317,17
 2022,Toledo,319,81
 2022,Towson,320,99
@@ -7521,7 +7521,7 @@ Year,Team,Index,masseyComposite_Rank
 2022,Wagner,358,103
 2022,Wake Forest,359,51
 2022,Washington,360,132
-2022,Washington State,361,70
+2022,Washington St,361,70
 2022,Weber St,363,147
 2022,West Virginia,365,33
 2022,Wichita St,370,97
@@ -7533,33 +7533,33 @@ Year,Team,Index,masseyComposite_Rank
 2022,Wyoming,378,43
 2022,Xavier,379,15
 2022,Yale,380,159
-2022,Youngstown State,381,247
+2022,Youngstown St,381,247
 2023,Abilene Chr,1,237
 2023,Air Force,2,145
 2023,Akron,3,121
 2023,Alabama,4,2
 2023,Alabama A&M,5,337
-2023,Alabama State,6,348
-2023,Alcorn State,8,257
+2023,Alabama St,6,348
+2023,Alcorn St,8,257
 2023,American Univ,9,190
-2023,Appalachian State,10,188
+2023,Appalachian St,10,188
 2023,Arizona,11,13
 2023,Arizona St,12,37
 2023,Ark Little Rock,153,349
 2023,Ark Pine Bluff,14,330
 2023,Arkansas,13,21
-2023,Arkansas State,15,310
+2023,Arkansas St,15,310
 2023,Army,16,225
 2023,Auburn,17,17
 2023,Austin Peay,18,276
 2023,BYU,19,86
-2023,Ball State,20,123
+2023,Ball St,20,123
 2023,Baylor,21,18
 2023,Bellarmine,22,247
 2023,Belmont,23,124
 2023,Bethune-Cookman,24,350
 2023,Binghamton,25,318
-2023,Boise State,26,29
+2023,Boise St,26,29
 2023,Boston College,27,187
 2023,Boston Univ,28,251
 2023,Bowling Green,29,256
@@ -7584,7 +7584,7 @@ Year,Team,Index,masseyComposite_Rank
 2023,Charleston So,49,273
 2023,Charlotte,50,95
 2023,Chattanooga,51,142
-2023,Chicago State,52,322
+2023,Chicago St,52,322
 2023,Cincinnati,54,75
 2023,Citadel,318,307
 2023,Clemson,55,35
@@ -7593,10 +7593,10 @@ Year,Team,Index,masseyComposite_Rank
 2023,Col Charleston,48,45
 2023,Colgate,58,132
 2023,Colorado,59,60
-2023,Colorado State,60,110
+2023,Colorado St,60,110
 2023,Columbia,61,346
 2023,Connecticut,62,8
-2023,Coppin State,63,313
+2023,Coppin St,63,313
 2023,Cornell,64,99
 2023,Creighton,65,31
 2023,Dartmouth,66,299
@@ -7604,7 +7604,7 @@ Year,Team,Index,masseyComposite_Rank
 2023,Dayton,68,65
 2023,DePaul,69,149
 2023,Delaware,70,195
-2023,Delaware State,71,360
+2023,Delaware St,71,360
 2023,Denver,72,282
 2023,Detroit,73,228
 2023,Drake,74,85
@@ -7655,16 +7655,16 @@ Year,Team,Index,masseyComposite_Rank
 2023,IL Chicago,126,262
 2023,IUPUI,122,362
 2023,Idaho,123,320
-2023,Idaho State,124,288
+2023,Idaho St,124,288
 2023,Illinois,125,22
-2023,Illinois State,127,239
+2023,Illinois St,127,239
 2023,Incarnate Word,128,352
 2023,Indiana,129,38
-2023,Indiana State,130,115
+2023,Indiana St,130,115
 2023,Iona,131,79
 2023,Iowa,132,32
 2023,Iowa St,133,11
-2023,Jackson State,134,317
+2023,Jackson St,134,317
 2023,Jacksonville,135,173
 2023,Jacksonville St,136,303
 2023,James Madison,137,108
@@ -7682,7 +7682,7 @@ Year,Team,Index,masseyComposite_Rank
 2023,Liberty,150,83
 2023,Lindenwood,151,335
 2023,Lipscomb,152,203
-2023,Long Beach State,154,199
+2023,Long Beach St,154,199
 2023,Longwood,155,148
 2023,Louisiana,156,103
 2023,Louisiana Tech,158,151
@@ -7701,7 +7701,7 @@ Year,Team,Index,masseyComposite_Rank
 2023,Marshall,167,71
 2023,Maryland,168,50
 2023,Massachusetts,170,129
-2023,McNeese State,171,331
+2023,McNeese St,171,331
 2023,Memphis,172,36
 2023,Mercer,173,250
 2023,Merrimack,176,341
@@ -7711,15 +7711,15 @@ Year,Team,Index,masseyComposite_Rank
 2023,Michigan St,180,40
 2023,Minnesota,183,172
 2023,Mississippi,184,104
-2023,Mississippi State,185,56
+2023,Mississippi St,185,56
 2023,Missouri,187,47
 2023,Missouri KC,333,243
-2023,Missouri State,188,138
+2023,Missouri St,188,138
 2023,Monmouth NJ,189,355
 2023,Montana,190,179
 2023,Montana St,191,125
 2023,Morehead St,192,289
-2023,Morgan State,193,232
+2023,Morgan St,193,232
 2023,Mt St Mary's,194,294
 2023,Murray St,195,171
 2023,N Colorado,220,263
@@ -7764,7 +7764,7 @@ Year,Team,Index,masseyComposite_Rank
 2023,PFW,249,157
 2023,Pacific,237,229
 2023,Penn,238,177
-2023,Penn State,239,44
+2023,Penn St,239,44
 2023,Pepperdine,240,191
 2023,Pittsburgh,241,59
 2023,Portland,242,182
@@ -7794,12 +7794,12 @@ Year,Team,Index,masseyComposite_Rank
 2023,SMU,260,180
 2023,SUNY Albany,7,332
 2023,Sacred Heart,262,319
-2023,Sam Houston State,268,76
+2023,Sam Houston St,268,76
 2023,Samford,269,164
 2023,San Diego,270,216
 2023,San Diego St,271,25
 2023,San Francisco,272,118
-2023,San Jose State,273,120
+2023,San Jose St,273,120
 2023,Santa Clara,274,69
 2023,Seattle,276,109
 2023,Seton Hall,277,67
@@ -7830,14 +7830,14 @@ Year,Team,Index,masseyComposite_Rank
 2023,TCU,304,19
 2023,TN Martin,309,274
 2023,TX Southern,315,324
-2023,Tarleton State,305,167
+2023,Tarleton St,305,167
 2023,Temple,307,128
 2023,Tennessee,308,6
-2023,Tennessee State,310,315
+2023,Tennessee St,310,315
 2023,Tennessee Tech,311,297
 2023,Texas,312,9
 2023,Texas A&M,313,54
-2023,Texas State,316,211
+2023,Texas St,316,211
 2023,Texas Tech,317,68
 2023,Toledo,319,107
 2023,Towson,320,158
@@ -7884,7 +7884,7 @@ Year,Team,Index,masseyComposite_Rank
 2023,Wagner,358,298
 2023,Wake Forest,359,64
 2023,Washington,360,102
-2023,Washington State,361,81
+2023,Washington St,361,81
 2023,Weber St,363,235
 2023,West Virginia,365,41
 2023,Wichita St,370,133
@@ -7896,33 +7896,33 @@ Year,Team,Index,masseyComposite_Rank
 2023,Wyoming,378,202
 2023,Xavier,379,10
 2023,Yale,380,117
-2023,Youngstown State,381,122
+2023,Youngstown St,381,122
 2024,Abilene Chr,1,234
 2024,Air Force,2,239
 2024,Akron,3,84
 2024,Alabama,4,11
 2024,Alabama A&M,5,351
-2024,Alabama State,6,273
-2024,Alcorn State,8,335
+2024,Alabama St,6,273
+2024,Alcorn St,8,335
 2024,American Univ,9,263
-2024,Appalachian State,10,79
+2024,Appalachian St,10,79
 2024,Arizona,11,5
 2024,Arizona St,12,87
 2024,Ark Little Rock,153,277
 2024,Ark Pine Bluff,14,336
 2024,Arkansas,13,100
-2024,Arkansas State,15,200
+2024,Arkansas St,15,200
 2024,Army,16,343
 2024,Auburn,17,7
 2024,Austin Peay,18,223
 2024,BYU,19,12
-2024,Ball State,20,266
+2024,Ball St,20,266
 2024,Baylor,21,17
 2024,Bellarmine,22,327
 2024,Belmont,23,140
 2024,Bethune-Cookman,24,317
 2024,Binghamton,25,293
-2024,Boise State,26,53
+2024,Boise St,26,53
 2024,Boston College,27,85
 2024,Boston Univ,28,308
 2024,Bowling Green,29,169
@@ -7947,7 +7947,7 @@ Year,Team,Index,masseyComposite_Rank
 2024,Charleston So,49,323
 2024,Charlotte,50,104
 2024,Chattanooga,51,165
-2024,Chicago State,52,279
+2024,Chicago St,52,279
 2024,Cincinnati,54,35
 2024,Citadel,318,267
 2024,Clemson,55,29
@@ -7956,10 +7956,10 @@ Year,Team,Index,masseyComposite_Rank
 2024,Col Charleston,48,116
 2024,Colgate,58,151
 2024,Colorado,59,31
-2024,Colorado State,60,26
+2024,Colorado St,60,26
 2024,Columbia,61,221
 2024,Connecticut,62,6
-2024,Coppin State,63,359
+2024,Coppin St,63,359
 2024,Cornell,64,96
 2024,Creighton,65,16
 2024,Dartmouth,66,333
@@ -7967,7 +7967,7 @@ Year,Team,Index,masseyComposite_Rank
 2024,Dayton,68,15
 2024,DePaul,69,282
 2024,Delaware,70,148
-2024,Delaware State,71,297
+2024,Delaware St,71,297
 2024,Denver,72,195
 2024,Detroit,73,361
 2024,Drake,74,41
@@ -8017,16 +8017,16 @@ Year,Team,Index,masseyComposite_Rank
 2024,IL Chicago,126,210
 2024,IUPUI,122,358
 2024,Idaho,123,306
-2024,Idaho State,124,305
+2024,Idaho St,124,305
 2024,Illinois,125,9
-2024,Illinois State,127,218
+2024,Illinois St,127,218
 2024,Incarnate Word,128,339
 2024,Indiana,129,81
-2024,Indiana State,130,32
+2024,Indiana St,130,32
 2024,Iona,131,190
 2024,Iowa,132,57
 2024,Iowa St,133,19
-2024,Jackson State,134,247
+2024,Jackson St,134,247
 2024,Jacksonville,135,280
 2024,Jacksonville St,136,196
 2024,James Madison,137,66
@@ -8045,7 +8045,7 @@ Year,Team,Index,masseyComposite_Rank
 2024,Liberty,150,108
 2024,Lindenwood,151,348
 2024,Lipscomb,152,153
-2024,Long Beach State,154,160
+2024,Long Beach St,154,160
 2024,Longwood,155,167
 2024,Louisiana,156,139
 2024,Louisiana Tech,158,98
@@ -8064,7 +8064,7 @@ Year,Team,Index,masseyComposite_Rank
 2024,Marshall,167,219
 2024,Maryland,168,82
 2024,Massachusetts,170,90
-2024,McNeese State,171,78
+2024,McNeese St,171,78
 2024,Memphis,172,38
 2024,Mercer,173,262
 2024,Merrimack,176,231
@@ -8074,15 +8074,15 @@ Year,Team,Index,masseyComposite_Rank
 2024,Michigan St,180,28
 2024,Minnesota,183,95
 2024,Mississippi,184,49
-2024,Mississippi State,185,34
+2024,Mississippi St,185,34
 2024,Missouri,187,124
 2024,Missouri KC,333,292
-2024,Missouri State,188,157
+2024,Missouri St,188,157
 2024,Monmouth NJ,189,170
 2024,Montana,190,127
 2024,Montana St,191,254
 2024,Morehead St,192,121
-2024,Morgan State,193,350
+2024,Morgan St,193,350
 2024,Mt St Mary's,194,256
 2024,Murray St,195,168
 2024,N Colorado,220,189
@@ -8127,7 +8127,7 @@ Year,Team,Index,masseyComposite_Rank
 2024,PFW,249,174
 2024,Pacific,237,344
 2024,Penn,238,191
-2024,Penn State,239,117
+2024,Penn St,239,117
 2024,Pepperdine,240,230
 2024,Pittsburgh,241,75
 2024,Portland,242,288
@@ -8157,12 +8157,12 @@ Year,Team,Index,masseyComposite_Rank
 2024,SMU,260,46
 2024,SUNY Albany,7,235
 2024,Sacred Heart,262,286
-2024,Sam Houston State,268,194
+2024,Sam Houston St,268,194
 2024,Samford,269,69
 2024,San Diego,270,240
 2024,San Diego St,271,23
 2024,San Francisco,272,72
-2024,San Jose State,273,192
+2024,San Jose St,273,192
 2024,Santa Clara,274,105
 2024,Seattle,276,130
 2024,Seton Hall,277,54
@@ -8192,14 +8192,14 @@ Year,Team,Index,masseyComposite_Rank
 2024,TCU,304,30
 2024,TN Martin,309,261
 2024,TX Southern,315,295
-2024,Tarleton State,305,152
+2024,Tarleton St,305,152
 2024,Temple,307,224
 2024,Tennessee,308,3
-2024,Tennessee State,310,248
+2024,Tennessee St,310,248
 2024,Tennessee Tech,311,329
 2024,Texas,312,52
 2024,Texas A&M,313,45
-2024,Texas State,316,255
+2024,Texas St,316,255
 2024,Texas Tech,317,27
 2024,Toledo,319,138
 2024,Towson,320,144
@@ -8246,7 +8246,7 @@ Year,Team,Index,masseyComposite_Rank
 2024,Wagner,358,284
 2024,Wake Forest,359,39
 2024,Washington,360,74
-2024,Washington State,361,64
+2024,Washington St,361,64
 2024,Weber St,363,126
 2024,West Virginia,365,133
 2024,Wichita St,370,149
@@ -8258,33 +8258,33 @@ Year,Team,Index,masseyComposite_Rank
 2024,Wyoming,378,164
 2024,Xavier,379,48
 2024,Yale,380,102
-2024,Youngstown State,381,137
+2024,Youngstown St,381,137
 2025,Abilene Chr,1,258
 2025,Air Force,2,312
 2025,Akron,3,111
 2025,Alabama,4,3
 2025,Alabama A&M,5,357
-2025,Alabama State,6,290
-2025,Alcorn State,8,341
+2025,Alabama St,6,290
+2025,Alcorn St,8,341
 2025,American Univ,9,233
-2025,Appalachian State,10,136
+2025,Appalachian St,10,136
 2025,Arizona,11,21
 2025,Arizona St,12,63
 2025,Ark Little Rock,153,212
 2025,Ark Pine Bluff,14,363
 2025,Arkansas,13,60
-2025,Arkansas State,15,86
+2025,Arkansas St,15,86
 2025,Army,16,266
 2025,Auburn,17,1
 2025,Austin Peay,18,292
 2025,BYU,19,55
-2025,Ball State,20,269
+2025,Ball St,20,269
 2025,Baylor,21,31
 2025,Bellarmine,22,360
 2025,Belmont,23,110
 2025,Bethune-Cookman,24,244
 2025,Binghamton,25,321
-2025,Boise State,26,61
+2025,Boise St,26,61
 2025,Boston College,27,199
 2025,Boston Univ,28,281
 2025,Bowling Green,29,295
@@ -8309,7 +8309,7 @@ Year,Team,Index,masseyComposite_Rank
 2025,Charleston So,49,289
 2025,Charlotte,50,253
 2025,Chattanooga,51,158
-2025,Chicago State,52,353
+2025,Chicago St,52,353
 2025,Cincinnati,54,49
 2025,Citadel,318,355
 2025,Clemson,55,27
@@ -8318,10 +8318,10 @@ Year,Team,Index,masseyComposite_Rank
 2025,Col Charleston,48,100
 2025,Colgate,58,229
 2025,Colorado,59,90
-2025,Colorado State,60,82
+2025,Colorado St,60,82
 2025,Columbia,61,176
 2025,Connecticut,62,32
-2025,Coppin State,63,362
+2025,Coppin St,63,362
 2025,Cornell,64,141
 2025,Creighton,65,38
 2025,Dartmouth,66,274
@@ -8329,7 +8329,7 @@ Year,Team,Index,masseyComposite_Rank
 2025,Dayton,68,75
 2025,DePaul,69,116
 2025,Delaware,70,209
-2025,Delaware State,71,300
+2025,Delaware St,71,300
 2025,Denver,72,338
 2025,Detroit,73,320
 2025,Drake,74,53
@@ -8379,16 +8379,16 @@ Year,Team,Index,masseyComposite_Rank
 2025,IL Chicago,126,114
 2025,IUPUI,122,331
 2025,Idaho,123,246
-2025,Idaho State,124,218
+2025,Idaho St,124,218
 2025,Illinois,125,12
-2025,Illinois State,127,143
+2025,Illinois St,127,143
 2025,Incarnate Word,128,283
 2025,Indiana,129,48
-2025,Indiana State,130,219
+2025,Indiana St,130,219
 2025,Iona,131,278
 2025,Iowa,132,50
 2025,Iowa St,133,4
-2025,Jackson State,134,276
+2025,Jackson St,134,276
 2025,Jacksonville,135,163
 2025,Jacksonville St,136,153
 2025,James Madison,137,156
@@ -8407,7 +8407,7 @@ Year,Team,Index,masseyComposite_Rank
 2025,Liberty,150,84
 2025,Lindenwood,151,324
 2025,Lipscomb,152,89
-2025,Long Beach State,154,296
+2025,Long Beach St,154,296
 2025,Longwood,155,175
 2025,Louisiana,156,316
 2025,Louisiana Tech,158,124
@@ -8426,7 +8426,7 @@ Year,Team,Index,masseyComposite_Rank
 2025,Marshall,167,193
 2025,Maryland,168,30
 2025,Massachusetts,170,207
-2025,McNeese State,171,76
+2025,McNeese St,171,76
 2025,Memphis,172,29
 2025,Mercer,173,243
 2025,Mercyhurst,174,342
@@ -8437,15 +8437,15 @@ Year,Team,Index,masseyComposite_Rank
 2025,Michigan St,180,9
 2025,Minnesota,183,102
 2025,Mississippi,184,14
-2025,Mississippi State,185,15
+2025,Mississippi St,185,15
 2025,Missouri,187,23
 2025,Missouri KC,333,237
-2025,Missouri State,188,259
+2025,Missouri St,188,259
 2025,Monmouth NJ,189,291
 2025,Montana,190,200
 2025,Montana St,191,214
 2025,Morehead St,192,232
-2025,Morgan State,193,337
+2025,Morgan St,193,337
 2025,Mt St Mary's,194,236
 2025,Murray St,195,138
 2025,N Colorado,220,133
@@ -8490,7 +8490,7 @@ Year,Team,Index,masseyComposite_Rank
 2025,PFW,249,126
 2025,Pacific,237,303
 2025,Penn,238,318
-2025,Penn State,239,52
+2025,Penn St,239,52
 2025,Pepperdine,240,222
 2025,Pittsburgh,241,37
 2025,Portland,242,311
@@ -8520,12 +8520,12 @@ Year,Team,Index,masseyComposite_Rank
 2025,SMU,260,40
 2025,SUNY Albany,7,261
 2025,Sacred Heart,262,299
-2025,Sam Houston State,268,208
+2025,Sam Houston St,268,208
 2025,Samford,269,98
 2025,San Diego,270,306
 2025,San Diego St,271,45
 2025,San Francisco,272,66
-2025,San Jose State,273,186
+2025,San Jose St,273,186
 2025,Santa Clara,274,65
 2025,Seattle,276,171
 2025,Seton Hall,277,195
@@ -8555,14 +8555,14 @@ Year,Team,Index,masseyComposite_Rank
 2025,TCU,304,73
 2025,TN Martin,309,271
 2025,TX Southern,315,317
-2025,Tarleton State,305,270
+2025,Tarleton St,305,270
 2025,Temple,307,101
 2025,Tennessee,308,5
-2025,Tennessee State,310,308
+2025,Tennessee St,310,308
 2025,Tennessee Tech,311,294
 2025,Texas,312,47
 2025,Texas A&M,313,18
-2025,Texas State,316,173
+2025,Texas St,316,173
 2025,Texas Tech,317,22
 2025,Toledo,319,164
 2025,Towson,320,182
@@ -8609,7 +8609,7 @@ Year,Team,Index,masseyComposite_Rank
 2025,Wagner,358,326
 2025,Wake Forest,359,59
 2025,Washington,360,91
-2025,Washington State,361,72
+2025,Washington St,361,72
 2025,Weber St,363,256
 2025,West Georgia,364,351
 2025,West Virginia,365,26
@@ -8622,4 +8622,4 @@ Year,Team,Index,masseyComposite_Rank
 2025,Wyoming,378,189
 2025,Xavier,379,51
 2025,Yale,380,93
-2025,Youngstown State,381,202
+2025,Youngstown St,381,202

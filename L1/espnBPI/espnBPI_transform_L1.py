@@ -102,6 +102,14 @@ def transform_espn_bpi(df, teams_index, dataset_name):
         'Def': 'BPI_Def'
     })
     
+    # Ensure all columns are numeric except Team
+    df['Year'] = pd.to_numeric(df['Year'], errors='coerce').astype('Int64')
+    df['Index'] = pd.to_numeric(df['Index'], errors='coerce').astype('Int64')
+    df['BPI'] = pd.to_numeric(df['BPI'], errors='coerce')
+    df['BPI_Rank'] = pd.to_numeric(df['BPI_Rank'], errors='coerce').astype('Int64')
+    df['BPI_Off'] = pd.to_numeric(df['BPI_Off'], errors='coerce')
+    df['BPI_Def'] = pd.to_numeric(df['BPI_Def'], errors='coerce')
+    
     # Reorder columns: Year, Team, Index, BPI, BPI_Rank, BPI_Off, BPI_Def
     df = df[['Year', 'Team', 'Index', 'BPI', 'BPI_Rank', 'BPI_Off', 'BPI_Def']]
     

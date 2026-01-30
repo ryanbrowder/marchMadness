@@ -4,27 +4,27 @@ Year,Team,Index,masseyComposite_Rank
 2026,Akron,3,71
 2026,Alabama,4,17
 2026,Alabama A&M,5,297
-2026,Alabama State,6,312
-2026,Alcorn State,8,346
+2026,Alabama St,6,312
+2026,Alcorn St,8,346
 2026,American Univ,9,214
-2026,Appalachian State,10,217
+2026,Appalachian St,10,217
 2026,Arizona,11,1
 2026,Arizona St,12,79
 2026,Ark Little Rock,153,284
 2026,Ark Pine Bluff,14,300
 2026,Arkansas,13,22
-2026,Arkansas State,15,141
+2026,Arkansas St,15,141
 2026,Army,16,337
 2026,Auburn,17,36
 2026,Austin Peay,18,167
 2026,BYU,19,12
-2026,Ball State,20,320
+2026,Ball St,20,320
 2026,Baylor,21,46
 2026,Bellarmine,22,301
 2026,Belmont,23,67
 2026,Bethune-Cookman,24,262
 2026,Binghamton,25,362
-2026,Boise State,26,76
+2026,Boise St,26,76
 2026,Boston College,27,170
 2026,Boston Univ,28,307
 2026,Bowling Green,29,125
@@ -49,7 +49,7 @@ Year,Team,Index,masseyComposite_Rank
 2026,Charleston So,49,242
 2026,Charlotte,50,181
 2026,Chattanooga,51,264
-2026,Chicago State,52,356
+2026,Chicago St,52,356
 2026,Cincinnati,54,62
 2026,Citadel,318,355
 2026,Clemson,55,21
@@ -58,10 +58,10 @@ Year,Team,Index,masseyComposite_Rank
 2026,Col Charleston,48,168
 2026,Colgate,58,196
 2026,Colorado,59,75
-2026,Colorado State,60,93
+2026,Colorado St,60,93
 2026,Columbia,61,162
 2026,Connecticut,62,6
-2026,Coppin State,63,364
+2026,Coppin St,63,364
 2026,Cornell,64,219
 2026,Creighton,65,53
 2026,Dartmouth,66,231
@@ -69,7 +69,7 @@ Year,Team,Index,masseyComposite_Rank
 2026,Dayton,68,66
 2026,DePaul,69,99
 2026,Delaware,70,305
-2026,Delaware State,71,361
+2026,Delaware St,71,361
 2026,Denver,72,252
 2026,Detroit,73,271
 2026,Drake,74,185
@@ -119,16 +119,16 @@ Year,Team,Index,masseyComposite_Rank
 2026,IL Chicago,126,179
 2026,IUPUI,122,340
 2026,Idaho,123,178
-2026,Idaho State,124,212
+2026,Idaho St,124,212
 2026,Illinois,125,10
-2026,Illinois State,127,94
+2026,Illinois St,127,94
 2026,Incarnate Word,128,218
 2026,Indiana,129,44
-2026,Indiana State,130,206
+2026,Indiana St,130,206
 2026,Iona,131,197
 2026,Iowa,132,25
 2026,Iowa St,133,11
-2026,Jackson State,134,328
+2026,Jackson St,134,328
 2026,Jacksonville,135,275
 2026,Jacksonville St,136,229
 2026,James Madison,137,238
@@ -147,7 +147,7 @@ Year,Team,Index,masseyComposite_Rank
 2026,Liberty,150,84
 2026,Lindenwood,151,241
 2026,Lipscomb,152,150
-2026,Long Beach State,154,244
+2026,Long Beach St,154,244
 2026,Longwood,155,290
 2026,Louisiana,156,325
 2026,Louisiana Tech,158,234
@@ -166,7 +166,7 @@ Year,Team,Index,masseyComposite_Rank
 2026,Marshall,167,156
 2026,Maryland,168,122
 2026,Massachusetts,170,184
-2026,McNeese State,171,73
+2026,McNeese St,171,73
 2026,Memphis,172,96
 2026,Mercer,173,138
 2026,Mercyhurst,174,315
@@ -177,15 +177,15 @@ Year,Team,Index,masseyComposite_Rank
 2026,Michigan St,180,9
 2026,Minnesota,183,89
 2026,Mississippi,184,72
-2026,Mississippi State,185,85
+2026,Mississippi St,185,85
 2026,Missouri,187,51
 2026,Missouri KC,333,351
-2026,Missouri State,188,203
+2026,Missouri St,188,203
 2026,Monmouth NJ,189,226
 2026,Montana,190,191
 2026,Montana St,191,161
 2026,Morehead St,192,282
-2026,Morgan State,193,358
+2026,Morgan St,193,358
 2026,Mt St Mary's,194,291
 2026,Murray St,195,70
 2026,N Colorado,220,183
@@ -231,7 +231,7 @@ Year,Team,Index,masseyComposite_Rank
 2026,PFW,249,189
 2026,Pacific,237,127
 2026,Penn,238,180
-2026,Penn State,239,117
+2026,Penn St,239,117
 2026,Pepperdine,240,279
 2026,Pittsburgh,241,111
 2026,Portland,242,204
@@ -261,12 +261,12 @@ Year,Team,Index,masseyComposite_Rank
 2026,SMU,260,30
 2026,SUNY Albany,7,314
 2026,Sacred Heart,262,298
-2026,Sam Houston State,268,119
+2026,Sam Houston St,268,119
 2026,Samford,269,253
 2026,San Diego,270,222
 2026,San Diego St,271,42
 2026,San Francisco,272,105
-2026,San Jose State,273,235
+2026,San Jose St,273,235
 2026,Santa Clara,274,43
 2026,Seattle,276,113
 2026,Seton Hall,277,45
@@ -296,14 +296,14 @@ Year,Team,Index,masseyComposite_Rank
 2026,TCU,304,57
 2026,TN Martin,309,163
 2026,TX Southern,315,344
-2026,Tarleton State,305,176
+2026,Tarleton St,305,176
 2026,Temple,307,147
 2026,Tennessee,308,27
-2026,Tennessee State,310,216
+2026,Tennessee St,310,216
 2026,Tennessee Tech,311,335
 2026,Texas,312,50
 2026,Texas A&M,313,37
-2026,Texas State,316,251
+2026,Texas St,316,251
 2026,Texas Tech,317,16
 2026,Toledo,319,159
 2026,Towson,320,173
@@ -350,7 +350,7 @@ Year,Team,Index,masseyComposite_Rank
 2026,Wagner,358,338
 2026,Wake Forest,359,63
 2026,Washington,360,60
-2026,Washington State,361,151
+2026,Washington St,361,151
 2026,Weber St,363,200
 2026,West Georgia,364,295
 2026,West Virginia,365,61
@@ -363,4 +363,4 @@ Year,Team,Index,masseyComposite_Rank
 2026,Wyoming,378,102
 2026,Xavier,379,83
 2026,Yale,380,78
-2026,Youngstown State,381,247
+2026,Youngstown St,381,247

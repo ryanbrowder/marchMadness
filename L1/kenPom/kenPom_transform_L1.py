@@ -112,6 +112,15 @@ def prefix_columns(df):
     return df.rename(columns=rename_map)
 
 
+def convert_to_numeric(df):
+    """Convert all columns to numeric except Team"""
+    for col in df.columns:
+        if col != 'Team':
+            df[col] = pd.to_numeric(df[col], errors='coerce')
+    
+    return df
+
+
 def transform_data():
     """Main transformation function"""
     print("="*60)
@@ -152,6 +161,11 @@ def transform_data():
     print("Adding 'kenpom_' prefix...")
     df = prefix_columns(df)
     print(f"  ✓ Prefixed columns (sample): {', '.join([c for c in df.columns if c.startswith('kenpom_')][:3])}...")
+    
+    # Convert to numeric
+    print("Converting columns to numeric (except Team)...")
+    df = convert_to_numeric(df)
+    print(f"  ✓ Converted {len([c for c in df.columns if c != 'Team'])} columns to numeric")
     
     # Split into predict (2026) and analyze (historical)
     print(f"Splitting data: {CURRENT_YEAR} -> predict, rest -> analyze...")
