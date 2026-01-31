@@ -3,7 +3,8 @@ create_predict_set_L2.py
 
 Purpose: Join clean L2 prediction sources to create prediction dataset
 - Uses *_predict_L2.csv files (current season 2025 data)
-- Joins all 6 sources: bartTorvik, kenPom, espnBPI, masseyComposite, LRMCB, powerRank
+- Joins all available sources (bartTorvik, kenPom, espnBPI, masseyComposite required)
+- Optional sources: LRMCB, powerRank (skipped if files don't exist)
 - No tournament filtering (prediction is pre-tournament)
 - Outputs to L3/data/predictionData/
 
@@ -29,7 +30,10 @@ INPUTS = {
     'powerRank': 'data/powerRank/powerRank_predict_L2.csv'
 }
 
-# All sources (prediction uses all 6)
+# Optional sources (skip if file doesn't exist)
+OPTIONAL_SOURCES = ['LRMCB', 'powerRank']
+
+# All sources (will be filtered to available sources at runtime)
 ALL_SOURCES = ['bartTorvik', 'kenPom', 'espnBPI', 'masseyComposite', 'LRMCB', 'powerRank']
 
 # Output path (relative to script location in L2/)
@@ -40,11 +44,16 @@ OUTPUT_FILE = 'predict_set_2025.csv'
 # MAIN EXECUTION
 # ============================================================================
 
-def validate_file_exists(filepath):
-    """Check if input file exists, raise error if not"""
+def validate_file_exists(filepath, optional=False):
+    """Check if input file exists, raise error if not (unless optional)"""
     if not os.path.exists(filepath):
-        raise FileNotFoundError(f"Required input file not found: {filepath}")
+        if optional:
+            print(f"⊘ Skipped (optional): {filepath}")
+            return False
+        else:
+            raise FileNotFoundError(f"Required input file not found: {filepath}")
     print(f"✓ Found: {filepath}")
+    return True
 
 def load_source(filepath, source_name):
     """Load a source CSV and report basic stats"""
@@ -81,28 +90,35 @@ def main():
     
     # Validate inputs exist
     print("\n[1/5] Validating input files...")
+    available_sources = []
     for source, path in INPUTS.items():
-        validate_file_exists(path)
+        is_optional = source in OPTIONAL_SOURCES
+        if validate_file_exists(path, optional=is_optional):
+            available_sources.append(source)
+    
+    print(f"\n  Available sources: {len(available_sources)}/{len(INPUTS)}")
+    print(f"  Using: {', '.join(available_sources)}")
     
     # Load sources
     print("\n[2/5] Loading source data...")
     sources = {}
-    for name, path in INPUTS.items():
-        sources[name] = load_source(path, name)
+    for name in available_sources:
+        sources[name] = load_source(INPUTS[name], name)
     
     bart = sources['bartTorvik']
     
     # ========================================================================
-    # CREATE PREDICTION SET (all 6 sources)
+    # CREATE PREDICTION SET (available sources)
     # ========================================================================
-    print("\n[3/5] Creating prediction set (6 sources)...")
+    print(f"\n[3/5] Creating prediction set ({len(available_sources)} sources)...")
     print("-" * 80)
     
     df = bart.copy()
     print(f"  Starting with bartTorvik: {len(df):,} rows")
     
-    # Join all sources
-    for source_name in ALL_SOURCES[1:]:  # Skip bartTorvik (already loaded)
+    # Join all available sources (skip bartTorvik - already loaded)
+    sources_to_join = [s for s in available_sources if s != 'bartTorvik']
+    for source_name in sources_to_join:
         df = df.merge(
             sources[source_name],
             on=['Year', 'Index'],
@@ -154,7 +170,7 @@ def main():
     print("\n" + "="*80)
     print("SUMMARY")
     print("="*80)
-    print(f"Sources joined: {', '.join(ALL_SOURCES)}")
+    print(f"Sources joined: {', '.join(available_sources)}")
     print(f"Output file: {output_path}")
     print(f"Total teams: {len(df):,}")
     if 'Year' in df.columns:

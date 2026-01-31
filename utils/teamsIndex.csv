@@ -164,6 +164,7 @@ UTC,51
 CHST,52
 Chicago St.,52
 Chicago State,52
+Chicago St,52
 Chicago St.(A) 284 Mercyhurst,53
 CIN,54
 Cincinnati,54
@@ -185,6 +186,7 @@ CSU,60
 Colorado St.,60
 Colorado State,60
 ColoradoState,60
+Colorado St,60
 COLU,61
 Columbia,61
 CONN,62
@@ -193,6 +195,7 @@ UConn,62
 COPP,63
 Coppin St.,63
 Coppin State,63
+Coppin St,63
 COR,64
 Cornell,64
 CREI,65
@@ -212,6 +215,7 @@ Delaware St.,71
 Delaware St.,71
 Delaware St.,71
 Delaware State,71
+Delaware St,71
 DEN,72
 Denver,72
 DETM,73
@@ -227,7 +231,6 @@ DUQ,77
 Duquesne,77
 ECU,78
 East Carolina,78
-ETAM,79
 ETSU,79
 ETSU,79
 ETSU,79
@@ -237,6 +240,7 @@ East Tennessee St.,79
 East Tennessee St.,79
 East Tennessee State,79
 Eastern Tennessee,79
+ETAM,80
 East Texas A&M,80
 Texas A&M Commerce,80
 E Illinois,81
@@ -374,6 +378,7 @@ Idaho,123
 IDST,124
 Idaho St.,124
 Idaho State,124
+Idaho St,124
 ILL,125
 Illinois,125
 IL Chicago,126
@@ -383,6 +388,7 @@ UIC,126
 ILST,127
 Illinois St.,127
 Illinois State,127
+Illinois St,127
 Incarnate Word,128
 UIW,128
 IU,129
@@ -390,6 +396,7 @@ Indiana,129
 INST,130
 Indiana St.,130
 Indiana State,130
+Indiana St,130
 IONA,131
 Iona,131
 IOWA,132
@@ -402,6 +409,7 @@ IowaState,133
 JKST,134
 Jackson St.,134
 Jackson State,134
+Jackson St,134
 JAX,135
 Jacksonville,135
 JXST,136
@@ -463,6 +471,7 @@ Long Beach St.,154
 Long Beach St.,154
 Long Beach St.,154
 Long Beach State,154
+Long Beach St,154
 LONG,155
 Longwood,155
 Louisiana,156
@@ -511,6 +520,7 @@ MCN,171
 McNeese,171
 McNeese St.,171
 McNeese State,171
+McNeese St,171
 MEM,172
 Memphis,172
 MER,173
@@ -558,6 +568,7 @@ Mississippi,184
 MSST,185
 Mississippi St.,185
 Mississippi State,185
+Mississippi St,185
 MS Valley St.,186
 MS Valley St.,186
 MVSU,186
@@ -572,6 +583,7 @@ MOST,188
 Missouri St.,188
 Missouri State,188
 Ole Miss,188
+Missouri St,188
 MONM,189
 Monmouth,189
 Monmouth NJ,189
@@ -590,6 +602,7 @@ Morehead State,192
 MORG,193
 Morgan St.,193
 Morgan State,193
+Morgan St,193
 MSM,194
 Mount St Marys,194
 Mount St. Mary's,194
@@ -741,6 +754,7 @@ Pennsylvania,238
 PSU,239
 Penn St.,239
 Penn State,239
+Penn St,239
 PEPP,240
 Pepperdine,240
 PITT,241
@@ -849,6 +863,7 @@ SHSU,268
 Sam Houston St.,268
 Sam Houston State,268
 Sam Houston,268
+Sam Houston St,268
 SAM,269
 Samford,269
 San Diego,270
@@ -864,6 +879,7 @@ SanFrancisco,272
 SJSU,273
 San Jose St.,273
 San Jose State,273
+San Jose St,273
 SCU,274
 Santa Clara,274
 SAV,275
@@ -935,7 +951,6 @@ Southern Miss,292
 USM,292
 SUU,293
 Southern Utah,293
-UTU,293
 St Bonaventure,294
 St. Bonaventure,294
 SBU,294
@@ -983,6 +998,7 @@ Tarleton St.,305
 Tarleton St.,305
 Tarleton St.,305
 Tarleton State,305
+Tarleton St,305
 Team,306
 TEM,307
 Temple,307
@@ -996,6 +1012,7 @@ UTM,309
 TNST,310
 Tennessee St.,310
 Tennessee State,310
+Tennessee St,310
 TNTC,311
 Tennessee Tech,311
 TEX,312
@@ -1019,6 +1036,7 @@ TexasSouthern,315
 TXST,316
 Texas St.,316
 Texas State,316
+Texas St,316
 TTU,317
 Texas Tech,317
 TexasTech,317
@@ -1102,6 +1120,7 @@ USU,347
 Utah St,347
 Utah St.,347
 Utah State,347
+UTU,348
 Dixie St.,348
 Utah Tech,348
 UVU,349
@@ -1132,6 +1151,7 @@ Washington,360
 WSU,361
 Washington St.,361
 Washington State,361
+Washington St,361
 Washington(H) 72 Oregon,362
 WEB,363
 Weber St,363
@@ -1188,24 +1208,4 @@ Yale,380
 YSU,381
 Youngstown St.,381
 Youngstown State,381
-Chicago St,52
-Colorado St,60
-Coppin St,63
-Delaware St,71
-Idaho St,124
-Illinois St,127
-Indiana St,130
-Jackson St,134
-Long Beach St,154
-McNeese St,171
-Mississippi St,185
-Missouri St,188
-Morgan St,193
-Penn St,239
-Sam Houston St,268
-San Jose St,273
-Tarleton St,305
-Tennessee St,310
-Texas St,316
-Washington St,361
 Youngstown St,381

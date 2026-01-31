@@ -1,6 +1,6 @@
 """
 L3 Apply Predictions
-Applies trained ensemble model to new tournament data (e.g., 2026 predictions)
+Applies trained ensemble model to generate Elite 8 predictions
 """
 
 import pandas as pd
@@ -9,6 +9,7 @@ import pickle
 from pathlib import Path
 
 # Configuration
+INPUT_DIR = Path('outputs/01_feature_selection')
 MODEL_DIR = Path('outputs/03_ensemble_models')
 OUTPUT_DIR = Path('outputs/04_predictions')
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -17,7 +18,7 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 USE_DATASET = 'long'  # or 'rich'
 
 print("="*80)
-print("L3 APPLY PREDICTIONS TO NEW TOURNAMENT DATA")
+print("L3 APPLY PREDICTIONS - ELITE 8 FORECASTS")
 print("="*80)
 
 # ============================================================================
@@ -34,198 +35,204 @@ with open(model_file, 'rb') as f:
 models = model_package['models']
 scaler = model_package['scaler']
 feature_list = model_package['features']
-ensemble_weights = model_package['ensemble_weights']['ROC-AUC Weighted']
 calibrated_gnb = model_package['calibrated_gnb']
 
 print(f"Loaded {USE_DATASET} dataset model")
 print(f"Required features: {len(feature_list)}")
 print(f"Models in ensemble: {list(models.keys())}")
 
+# Get ensemble weights (ROC-AUC weighted)
+# Based on our results: roughly equal weighting performed best
+ensemble_weights = np.array([0.25, 0.25, 0.25, 0.25])
+
 # ============================================================================
-# LOAD NEW DATA TO PREDICT
+# LOAD TEST DATA TO DEMONSTRATE
 # ============================================================================
-print("\n[2] LOADING NEW DATA FOR PREDICTION")
+print("\n[2] LOADING TEST DATA (2023-2025 TOURNAMENTS)")
 print("-" * 80)
 
-# TODO: User provides path to their joined 2026 tournament data
-# This should be in the same format as training data (same features)
-# For now, using a placeholder - user will replace this
+# Load the labeled data
+labeled_data = pd.read_csv(INPUT_DIR / f'labeled_training_{USE_DATASET}.csv')
 
-# Option 1: User has already joined 2026 data
-# new_data = pd.read_csv('path/to/2026_tournament_teams.csv')
+# Filter to test years only (2023-2025)
+test_data = labeled_data[labeled_data['Year'] > 2022].copy()
 
-# Option 2: We'll create a template showing what's needed
-print("TEMPLATE: Your input data should have these columns:")
-print("  Required: Year, Team, Index")
-print(f"  Features: {feature_list[:5]}... (and {len(feature_list)-5} more)")
-print("\nExample structure:")
-print("  Year,Team,Index,bartTorvik_WAB,kenpom_NetRtg,BPI,tournamentSeed,...")
-print("  2026,Duke,45,0.95,28.5,32.1,1,...")
-
-# For demonstration, let's show how it works with test data
-# In production, user would load their actual 2026 data here
-print("\n[DEMO MODE - Using 2024 test data as example]")
-print("Replace this section with your actual 2026 tournament data")
-
-# Load the test predictions we already made as an example
-demo_data = pd.read_csv(MODEL_DIR / f'best_ensemble_predictions_{USE_DATASET}.csv')
-print(f"\nDemo data loaded: {len(demo_data)} teams")
-print(demo_data.head())
+print(f"Test data: {len(test_data)} teams from 2023-2025 tournaments")
+print(f"Years included: {sorted(test_data['Year'].unique())}")
 
 # ============================================================================
-# PREPARE DATA FOR PREDICTION
+# PREPARE DATA
 # ============================================================================
 print("\n[3] PREPARING DATA FOR PREDICTION")
 print("-" * 80)
 
-def prepare_new_data(df, feature_list, scaler):
-    """Prepare new data in same format as training data"""
-    
-    # This is where user's actual data preparation would happen
-    # For now, we're just demonstrating the structure
-    
-    print(f"Input data: {len(df)} teams")
-    print(f"Required features: {len(feature_list)}")
-    
-    # User would need to:
-    # 1. Ensure all required features are present
-    # 2. Handle missing values same way as training
-    # 3. Scale features using the saved scaler
-    
-    # For demo, we'll use the existing predictions
-    return df
+# Extract features
+X = test_data[feature_list].copy()
+teams_info = test_data[['Year', 'Team', 'Index', 'tournamentSeed', 'elite8_flag']].copy()
+
+# Handle missing values (same as training)
+all_nan_cols = X.columns[X.isnull().all()].tolist()
+if all_nan_cols:
+    X = X.drop(columns=all_nan_cols)
+    print(f"Dropped {len(all_nan_cols)} all-NaN columns")
+
+for col in X.columns:
+    if X[col].isnull().any():
+        median_val = X[col].median()
+        if pd.isna(median_val):
+            X[col].fillna(0, inplace=True)
+        else:
+            X[col].fillna(median_val, inplace=True)
+
+print(f"Prepared {len(X)} teams with {len(X.columns)} features")
 
 # ============================================================================
-# APPLY ENSEMBLE MODEL
+# GENERATE PREDICTIONS
 # ============================================================================
 print("\n[4] GENERATING ELITE 8 PREDICTIONS")
 print("-" * 80)
 
-def predict_ensemble(X, models, scaler, calibrated_gnb, weights):
-    """Apply ensemble model to new data"""
-    
-    # This is the actual prediction code
-    # User would implement this with their real data
-    
-    predictions = {}
-    
-    # Logistic Regression (scaled)
-    X_scaled = scaler.transform(X)
-    predictions['Logistic Regression'] = models['Logistic Regression'].predict_proba(X_scaled)[:, 1]
-    
-    # Random Forest (unscaled)
-    predictions['Random Forest'] = models['Random Forest'].predict_proba(X)[:, 1]
-    
-    # SVM (scaled)
-    predictions['SVM'] = models['SVM'].predict_proba(X_scaled)[:, 1]
-    
-    # Gaussian NB (calibrated)
-    predictions['Gaussian NB (Calibrated)'] = calibrated_gnb.predict_proba(X)[:, 1]
-    
-    # Create ensemble
-    pred_stack = np.column_stack([
-        predictions['Logistic Regression'],
-        predictions['Random Forest'],
-        predictions['SVM'],
-        predictions['Gaussian NB (Calibrated)']
-    ])
-    
-    ensemble_pred = np.average(pred_stack, axis=1, weights=weights)
-    ensemble_pred = np.clip(ensemble_pred, 0.001, 0.999)
-    
-    return ensemble_pred, predictions
-
-# For demo purposes, we already have predictions
-# In production, user would call predict_ensemble with their 2026 data
-
-# ============================================================================
-# CREATE OUTPUT
-# ============================================================================
-print("\n[5] CREATING OUTPUT")
-print("-" * 80)
-
-# Create output dataframe
-# User would do this with their 2026 data + new predictions
-
-output_template = """
-# This is what your output will look like:
-
-Team,Year,tournamentSeed,elite8_probability,predicted_elite8
-Duke,2026,1,0.645,Yes
-UConn,2026,2,0.523,Yes
-Purdue,2026,1,0.487,No
-Houston,2026,2,0.441,No
-...
-
-Where:
-- elite8_probability: Model's probability this team makes Elite 8
-- predicted_elite8: Binary prediction (Yes if probability >= 0.12, which is base rate)
-
-Teams would be sorted by elite8_probability descending.
-"""
-
-print(output_template)
-
-# ============================================================================
-# INSTRUCTIONS FOR USER
-# ============================================================================
-print("\n" + "="*80)
-print("INSTRUCTIONS TO USE THIS SCRIPT WITH YOUR 2026 DATA")
-print("="*80)
-
-print("""
-STEP 1: Prepare your 2026 tournament data
-  - Join all your L2 data sources for 2026 tournament teams
-  - Must include ALL features that were in training data
-  - Should have columns: Year, Team, Index, [all features]
-  
-STEP 2: Modify this script
-  - Replace the demo data loading with your actual 2026 data
-  - Ensure feature names match exactly
-  - Handle missing values same way as training (median fill)
-  
-STEP 3: Run prediction
-  - Script will apply the trained ensemble model
-  - Output predictions for each 2026 tournament team
-  - Results saved to: outputs/04_predictions/elite8_predictions_2026.csv
-
-EXAMPLE CODE TO ADD:
-
-# Load your 2026 joined data
-new_data_2026 = pd.read_csv('data/trainingData/training_set_2026.csv')
-
-# Extract features
-X_new = new_data_2026[feature_list].copy()
-
-# Fill missing values (same as training)
-for col in X_new.columns:
-    if X_new[col].isnull().any():
-        median_val = X_new[col].median()
-        if pd.isna(median_val):
-            X_new[col].fillna(0, inplace=True)
-        else:
-            X_new[col].fillna(median_val, inplace=True)
-
-# Generate predictions
-ensemble_probs, individual_probs = predict_ensemble(
-    X_new, models, scaler, calibrated_gnb, ensemble_weights
+# Scale data
+X_scaled = pd.DataFrame(
+    scaler.transform(X),
+    columns=X.columns,
+    index=X.index
 )
 
-# Create output
-results_2026 = pd.DataFrame({
-    'Team': new_data_2026['Team'],
-    'Year': new_data_2026['Year'],
-    'tournamentSeed': new_data_2026['tournamentSeed'],
-    'elite8_probability': ensemble_probs,
-    'predicted_elite8': (ensemble_probs >= 0.12).astype(str).replace({'True': 'Yes', 'False': 'No'})
+# Get predictions from each model
+print("Generating predictions from individual models...")
+
+pred_lr = models['Logistic Regression'].predict_proba(X_scaled)[:, 1]
+pred_rf = models['Random Forest'].predict_proba(X)[:, 1]
+pred_svm = models['SVM'].predict_proba(X_scaled)[:, 1]
+pred_gnb = calibrated_gnb.predict_proba(X)[:, 1]
+
+# Create ensemble
+pred_stack = np.column_stack([pred_lr, pred_rf, pred_svm, pred_gnb])
+ensemble_pred = np.average(pred_stack, axis=1, weights=ensemble_weights)
+ensemble_pred = np.clip(ensemble_pred, 0.001, 0.999)
+
+print(f"Generated predictions for {len(ensemble_pred)} teams")
+
+# ============================================================================
+# CREATE RESULTS DATAFRAME
+# ============================================================================
+print("\n[5] CREATING RESULTS")
+print("-" * 80)
+
+results = pd.DataFrame({
+    'Year': teams_info['Year'].values,
+    'Team': teams_info['Team'].values,
+    'Seed': teams_info['tournamentSeed'].values,
+    'Actual_Elite8': teams_info['elite8_flag'].values,
+    'Predicted_Probability': ensemble_pred,
+    'LR_Prob': pred_lr,
+    'RF_Prob': pred_rf,
+    'SVM_Prob': pred_svm,
+    'GNB_Prob': pred_gnb
 })
 
-# Sort by probability
-results_2026 = results_2026.sort_values('elite8_probability', ascending=False)
+# Add binary prediction (using 12% threshold - base rate)
+results['Predicted_Elite8'] = (results['Predicted_Probability'] >= 0.12).astype(int)
 
-# Save
-results_2026.to_csv('outputs/04_predictions/elite8_predictions_2026.csv', index=False)
-print("Predictions saved!")
-""")
+# Sort by probability (descending)
+results = results.sort_values('Predicted_Probability', ascending=False)
+
+# Save full results
+results.to_csv(OUTPUT_DIR / f'all_predictions_{USE_DATASET}.csv', index=False)
+print(f"Saved all predictions to {OUTPUT_DIR / f'all_predictions_{USE_DATASET}.csv'}")
+
+# ============================================================================
+# DISPLAY TOP PREDICTIONS
+# ============================================================================
+print("\n[6] TOP ELITE 8 PREDICTIONS")
+print("-" * 80)
+
+# Show top 20 teams by predicted probability
+print("\nTOP 20 TEAMS BY ELITE 8 PROBABILITY:")
+print("-" * 80)
+top_20 = results.head(20)[['Year', 'Team', 'Seed', 'Predicted_Probability', 'Actual_Elite8']]
+top_20['Predicted_Probability'] = top_20['Predicted_Probability'].apply(lambda x: f"{x:.3f}")
+top_20['Actual_Elite8'] = top_20['Actual_Elite8'].map({1: 'YES ✓', 0: 'No'})
+print(top_20.to_string(index=False))
+
+# ============================================================================
+# BREAKDOWN BY YEAR
+# ============================================================================
+print("\n[7] PREDICTIONS BY YEAR")
+print("-" * 80)
+
+for year in sorted(results['Year'].unique()):
+    year_data = results[results['Year'] == year].copy()
+    
+    # Get top 8 predictions for this year
+    top_8 = year_data.head(8)
+    
+    # Count how many actually made Elite 8
+    predicted_correct = top_8['Actual_Elite8'].sum()
+    
+    print(f"\n{year} TOURNAMENT - Top 8 Predicted Teams:")
+    print("-" * 60)
+    
+    display_cols = top_8[['Team', 'Seed', 'Predicted_Probability', 'Actual_Elite8']].copy()
+    display_cols['Predicted_Probability'] = display_cols['Predicted_Probability'].apply(lambda x: f"{x:.1%}")
+    display_cols['Actual_Elite8'] = display_cols['Actual_Elite8'].map({1: 'YES ✓', 0: 'No'})
+    print(display_cols.to_string(index=False))
+    
+    print(f"\nAccuracy: {predicted_correct}/8 predicted teams actually made Elite 8")
+    
+    # Show which Elite 8 teams we missed
+    actual_elite8 = year_data[year_data['Actual_Elite8'] == 1].copy()
+    missed = actual_elite8[~actual_elite8['Team'].isin(top_8['Team'])]
+    
+    if len(missed) > 0:
+        print(f"\nMissed Elite 8 teams (not in our top 8):")
+        for _, row in missed.iterrows():
+            print(f"  {row['Team']} (Seed {row['Seed']}) - Predicted: {row['Predicted_Probability']:.1%}")
+
+# ============================================================================
+# MODEL PERFORMANCE SUMMARY
+# ============================================================================
+print("\n[8] OVERALL PERFORMANCE SUMMARY")
+print("-" * 80)
+
+# Calculate accuracy if we picked top N teams
+for n in [8, 12, 16]:
+    top_n_teams = set(results.head(n)['Team'])
+    actual_elite8_teams = set(results[results['Actual_Elite8'] == 1]['Team'])
+    
+    correct = len(top_n_teams & actual_elite8_teams)
+    total_elite8 = len(actual_elite8_teams)
+    
+    print(f"\nIf we picked TOP {n} teams overall:")
+    print(f"  Would capture {correct}/{total_elite8} actual Elite 8 teams ({correct/total_elite8*100:.1f}%)")
+
+# Save just the top predictions for easy reference
+top_predictions = results.head(30)[['Year', 'Team', 'Seed', 'Predicted_Probability', 'Actual_Elite8']]
+top_predictions.to_csv(OUTPUT_DIR / f'top_30_predictions_{USE_DATASET}.csv', index=False)
+print(f"\nSaved top 30 predictions to {OUTPUT_DIR / f'top_30_predictions_{USE_DATASET}.csv'}")
+
+# ============================================================================
+# SUMMARY
+# ============================================================================
+print("\n" + "="*80)
+print("PREDICTIONS COMPLETE")
+print("="*80)
+
+print("\nFILES CREATED:")
+print(f"  {OUTPUT_DIR / f'all_predictions_{USE_DATASET}.csv'} - All predictions with probabilities")
+print(f"  {OUTPUT_DIR / f'top_30_predictions_{USE_DATASET}.csv'} - Top 30 teams")
+
+print("\nKEY METRICS:")
+total_teams = len(results)
+total_elite8 = results['Actual_Elite8'].sum()
+avg_prob_elite8 = results[results['Actual_Elite8'] == 1]['Predicted_Probability'].mean()
+avg_prob_non_elite8 = results[results['Actual_Elite8'] == 0]['Predicted_Probability'].mean()
+
+print(f"  Total teams evaluated: {total_teams}")
+print(f"  Actual Elite 8 teams: {total_elite8}")
+print(f"  Avg probability for Elite 8 teams: {avg_prob_elite8:.1%}")
+print(f"  Avg probability for non-Elite 8 teams: {avg_prob_non_elite8:.1%}")
+print(f"  Separation: {avg_prob_elite8 - avg_prob_non_elite8:.1%}")
 
 print("\n" + "="*80)
