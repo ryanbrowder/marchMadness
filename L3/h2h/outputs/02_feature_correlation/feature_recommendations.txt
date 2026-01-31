@@ -1,0 +1,83 @@
+================================================================================
+FEATURE SELECTION RECOMMENDATIONS
+================================================================================
+
+1. KEEP - Strong predictive features (|r| >= 0.20): 19 features
+
+   pct_diff_kenpom_Rk: r = -0.539
+   pct_diff_BPI_Rank: r = -0.488
+   pct_diff_bartTorvik_Rk: r = -0.447
+   pct_diff_kenpom_NetRtg: r = 0.437
+   pct_diff_kenpom_ORtg_Rank: r = -0.409
+   pct_diff_kenpom_ORtg: r = 0.404
+   pct_diff_BPI: r = 0.402
+   pct_diff_masseyComposite_Rank: r = -0.402
+   pct_diff_kenpom_DRtg_Rank: r = -0.398
+   pct_diff_kenpom_SOS_NetRtg_Rank: r = -0.396
+   pct_diff_kenpom_DRtg: r = -0.391
+   pct_diff_kenpom_SOS_DRtg: r = -0.388
+   pct_diff_kenpom_SOS_ORtg: r = 0.385
+   pct_diff_bartTorvik_Barthag: r = 0.370
+   pct_diff_kenpom_SOS_DRtg_Rank: r = -0.367
+   ... and 4 more
+
+2. CONSIDER - Moderate predictive features (0.10 <= |r| < 0.20): 9 features
+   These may add value in ensemble models
+
+3. DROP - Weak predictive features (|r| < 0.05): 12 features
+   These add noise without signal:
+
+   pct_diff_BPI_Def: r = 0.044
+   pct_diff_bartTorvik_TORD: r = 0.039
+   pct_diff_kenpom_NCSOS_NetRtg: r = 0.035
+   pct_diff_kenpom_Luck_Rank: r = 0.024
+   pct_diff_bartTorvik_DRB: r = -0.023
+   pct_diff_bartTorvik_WAB: r = -0.022
+   pct_diff_bartTorvik_3PRD: r = -0.021
+   pct_diff_bartTorvik_Adj T.: r = 0.020
+   pct_diff_bartTorvik_3PR: r = -0.014
+   pct_diff_kenpom_Luck: r = -0.007
+   ... and 2 more
+
+4. RESOLVE MULTICOLLINEARITY - 25 severe redundancies (|r| >= 0.85)
+   For each pair, keep the feature with higher target correlation:
+
+   pct_diff_bartTorvik_Adj T. <-> pct_diff_kenpom_AdjT (r = 0.992)
+      KEEP: pct_diff_bartTorvik_Adj T., DROP: pct_diff_kenpom_AdjT
+
+   pct_diff_bartTorvik_AdjOE <-> pct_diff_kenpom_ORtg (r = 0.983)
+      KEEP: pct_diff_kenpom_ORtg, DROP: pct_diff_bartTorvik_AdjOE
+
+   pct_diff_bartTorvik_AdjDE <-> pct_diff_kenpom_DRtg (r = 0.976)
+      KEEP: pct_diff_kenpom_DRtg, DROP: pct_diff_bartTorvik_AdjDE
+
+   pct_diff_kenpom_NetRtg <-> pct_diff_BPI (r = 0.976)
+      KEEP: pct_diff_kenpom_NetRtg, DROP: pct_diff_BPI
+
+   pct_diff_bartTorvik_Barthag <-> pct_diff_kenpom_NetRtg (r = 0.976)
+      KEEP: pct_diff_kenpom_NetRtg, DROP: pct_diff_bartTorvik_Barthag
+
+   pct_diff_kenpom_Rk <-> pct_diff_BPI_Rank (r = 0.967)
+      KEEP: pct_diff_kenpom_Rk, DROP: pct_diff_BPI_Rank
+
+   pct_diff_bartTorvik_Rk <-> pct_diff_kenpom_Rk (r = 0.964)
+      KEEP: pct_diff_kenpom_Rk, DROP: pct_diff_bartTorvik_Rk
+
+   pct_diff_bartTorvik_Rk <-> pct_diff_BPI_Rank (r = 0.958)
+      KEEP: pct_diff_BPI_Rank, DROP: pct_diff_bartTorvik_Rk
+
+   pct_diff_bartTorvik_Barthag <-> pct_diff_BPI (r = 0.948)
+      KEEP: pct_diff_BPI, DROP: pct_diff_bartTorvik_Barthag
+
+   pct_diff_kenpom_DRtg <-> pct_diff_kenpom_DRtg_Rank (r = 0.943)
+      KEEP: pct_diff_kenpom_DRtg_Rank, DROP: pct_diff_kenpom_DRtg
+
+   ... and 15 more pairs to resolve
+
+================================================================================
+SUMMARY
+================================================================================
+Total features analyzed: 45
+Recommended to KEEP: 19
+Recommended to CONSIDER: 9
+Recommended to DROP: 12

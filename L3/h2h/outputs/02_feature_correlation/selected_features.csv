@@ -1,0 +1,46 @@
+feature,correlation,abs_correlation,status,reason
+pct_diff_BPI_Rank,-0.4877138954905397,0.4877138954905397,DROP,Redundant with stronger feature
+pct_diff_bartTorvik_Rk,-0.4473311995013942,0.4473311995013942,DROP,Redundant with stronger feature
+pct_diff_kenpom_ORtg,0.4038637942672937,0.4038637942672937,DROP,Redundant with stronger feature
+pct_diff_BPI,0.4024964563309322,0.4024964563309322,DROP,Redundant with stronger feature
+pct_diff_masseyComposite_Rank,-0.4016505142337001,0.4016505142337001,DROP,Redundant with stronger feature
+pct_diff_kenpom_DRtg,-0.3914306994743008,0.3914306994743008,DROP,Redundant with stronger feature
+pct_diff_kenpom_SOS_ORtg,0.3847252104762516,0.3847252104762516,DROP,Redundant with stronger feature
+pct_diff_bartTorvik_Barthag,0.3698059315900268,0.3698059315900268,DROP,Redundant with stronger feature
+pct_diff_kenpom_SOS_DRtg_Rank,-0.3669977568305336,0.3669977568305336,DROP,Redundant with stronger feature
+pct_diff_kenpom_SOS_ORtg_Rank,-0.3668526824321756,0.3668526824321756,DROP,Redundant with stronger feature
+pct_diff_bartTorvik_AdjOE,0.3662192996030137,0.3662192996030137,DROP,Redundant with stronger feature
+pct_diff_bartTorvik_AdjDE,-0.32840026297732,0.32840026297732,DROP,Redundant with stronger feature
+pct_diff_bartTorvik_2P%D,-0.1420894577040704,0.1420894577040704,DROP,Redundant with stronger feature
+pct_diff_bartTorvik_EFG%,0.1306821974800728,0.1306821974800728,DROP,Redundant with stronger feature
+pct_diff_kenpom_AdjT,0.0046966904368558,0.0046966904368558,DROP,Redundant with stronger feature
+pct_diff_kenpom_AdjT_Rank,-0.0012935720232772,0.0012935720232772,DROP,Redundant with stronger feature
+pct_diff_kenpom_Rk,-0.539011641408508,0.539011641408508,KEEP,Selected
+pct_diff_kenpom_NetRtg,0.436895277897506,0.436895277897506,KEEP,Selected
+pct_diff_kenpom_ORtg_Rank,-0.4085628371557978,0.4085628371557978,KEEP,Selected
+pct_diff_kenpom_DRtg_Rank,-0.3979280218584582,0.3979280218584582,KEEP,Selected
+pct_diff_kenpom_SOS_NetRtg_Rank,-0.3958245695146051,0.3958245695146051,KEEP,Selected
+pct_diff_kenpom_SOS_DRtg,-0.3879406499413338,0.3879406499413338,KEEP,Selected
+pct_diff_bartTorvik_Wins_Overall,0.3018512606175759,0.3018512606175759,KEEP,Selected
+pct_diff_bartTorvik_G,0.1745225310494101,0.1745225310494101,KEEP,Selected
+pct_diff_bartTorvik_ORB,0.1738729280221712,0.1738729280221712,KEEP,Selected
+pct_diff_bartTorvik_EFGD%,-0.1696889344396435,0.1696889344396435,KEEP,Selected
+pct_diff_kenpom_SOS_NetRtg,0.1559346948497512,0.1559346948497512,KEEP,Selected
+pct_diff_bartTorvik_TOR,-0.1492998486713795,0.1492998486713795,KEEP,Selected
+pct_diff_bartTorvik_2P%,0.1326743971779073,0.1326743971779073,KEEP,Selected
+pct_diff_bartTorvik_3P%D,-0.1170168313980231,0.1170168313980231,KEEP,Selected
+pct_diff_bartTorvik_FTRD,-0.0910600071480731,0.0910600071480731,KEEP,Selected
+pct_diff_kenpom_NCSOS_NetRtg_Rank,-0.0665193840368693,0.0665193840368693,KEEP,Selected
+pct_diff_bartTorvik_3P%,0.0649241658205979,0.0649241658205979,KEEP,Selected
+pct_diff_bartTorvik_FTR,-0.0572973989394795,0.0572973989394795,KEEP,Selected
+pct_diff_BPI_Off,0.0572613974233769,0.0572613974233769,KEEP,Selected
+pct_diff_BPI_Def,0.0439432829029852,0.0439432829029852,KEEP,Selected
+pct_diff_bartTorvik_TORD,0.0389694102584898,0.0389694102584898,KEEP,Selected
+pct_diff_kenpom_NCSOS_NetRtg,0.0349110807824465,0.0349110807824465,KEEP,Selected
+pct_diff_kenpom_Luck_Rank,0.0237446479827962,0.0237446479827962,KEEP,Selected
+pct_diff_bartTorvik_DRB,-0.0225126152868951,0.0225126152868951,KEEP,Selected
+pct_diff_bartTorvik_WAB,-0.022143924767132,0.022143924767132,KEEP,Selected
+pct_diff_bartTorvik_3PRD,-0.0211492328505125,0.0211492328505125,KEEP,Selected
+pct_diff_bartTorvik_Adj T.,0.0201940077339992,0.0201940077339992,KEEP,Selected
+pct_diff_bartTorvik_3PR,-0.0137138739471427,0.0137138739471427,KEEP,Selected
+pct_diff_kenpom_Luck,-0.007121747310955,0.007121747310955,KEEP,Selected

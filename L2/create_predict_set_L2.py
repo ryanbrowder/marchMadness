@@ -38,7 +38,7 @@ ALL_SOURCES = ['bartTorvik', 'kenPom', 'espnBPI', 'masseyComposite', 'LRMCB', 'p
 
 # Output path (relative to script location in L2/)
 OUTPUT_DIR = '../L3/data/predictionData'
-OUTPUT_FILE = 'predict_set_2025.csv'
+OUTPUT_FILE = 'predict_set_2026.csv'
 
 # ============================================================================
 # MAIN EXECUTION

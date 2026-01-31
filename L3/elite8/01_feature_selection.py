@@ -19,7 +19,7 @@ except ImportError:
     print("Warning: statsmodels not available. VIF analysis will be skipped.")
 
 # Configuration
-DATA_DIR = Path('data')
+DATA_DIR = Path('../data')
 TRAINING_DIR = DATA_DIR / 'trainingData'
 OUTPUT_DIR = Path('outputs/01_feature_selection')
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)

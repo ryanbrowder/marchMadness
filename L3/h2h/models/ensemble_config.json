@@ -1,0 +1,61 @@
+{
+  "weights": {
+    "Gradient Boosting": 0.35,
+    "SVM": 0.3,
+    "Random Forest": 0.11666666666666665,
+    "Neural Network": 0.11666666666666665,
+    "Gaussian Naive Bayes": 0.11666666666666665
+  },
+  "models": [
+    "Random Forest",
+    "Gradient Boosting",
+    "Neural Network",
+    "Gaussian Naive Bayes",
+    "SVM"
+  ],
+  "feature_columns": [
+    "pct_diff_kenpom_Rk",
+    "pct_diff_kenpom_NetRtg",
+    "pct_diff_kenpom_ORtg_Rank",
+    "pct_diff_kenpom_DRtg_Rank",
+    "pct_diff_kenpom_SOS_NetRtg_Rank",
+    "pct_diff_kenpom_SOS_DRtg",
+    "pct_diff_bartTorvik_Wins_Overall",
+    "pct_diff_bartTorvik_G",
+    "pct_diff_bartTorvik_ORB",
+    "pct_diff_bartTorvik_EFGD%",
+    "pct_diff_kenpom_SOS_NetRtg",
+    "pct_diff_bartTorvik_TOR",
+    "pct_diff_bartTorvik_2P%",
+    "pct_diff_bartTorvik_3P%D",
+    "pct_diff_bartTorvik_FTRD",
+    "pct_diff_kenpom_NCSOS_NetRtg_Rank",
+    "pct_diff_bartTorvik_3P%",
+    "pct_diff_bartTorvik_FTR",
+    "pct_diff_BPI_Off",
+    "pct_diff_BPI_Def",
+    "pct_diff_bartTorvik_TORD",
+    "pct_diff_kenpom_NCSOS_NetRtg",
+    "pct_diff_kenpom_Luck_Rank",
+    "pct_diff_bartTorvik_DRB",
+    "pct_diff_bartTorvik_WAB",
+    "pct_diff_bartTorvik_3PRD",
+    "pct_diff_bartTorvik_Adj T.",
+    "pct_diff_bartTorvik_3PR",
+    "pct_diff_kenpom_Luck"
+  ],
+  "train_years": [
+    2008,
+    2024
+  ],
+  "validation_year": 2025,
+  "random_seed": 42,
+  "fallback_weights": {
+    "exclude_gaussian_naive_bayes": {
+      "Gradient Boosting": 0.4,
+      "SVM": 0.3,
+      "Random Forest": 0.15,
+      "Neural Network": 0.15
+    }
+  }
+}
