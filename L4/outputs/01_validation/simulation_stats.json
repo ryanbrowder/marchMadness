@@ -1,9 +1,17 @@
 {
   "n_simulations": 5000,
-  "total_matchups": 280000,
-  "unique_matchups": 224,
-  "gnb_exclusions": 211,
-  "gnb_exclusion_rate": 0.942,
+  "n_traced": 5,
+  "total_matchups": 315000,
+  "unique_matchups": 1295,
+  "gnb_exclusions": 1226,
+  "gnb_exclusion_rate": 0.9467,
   "teams_tracked": 64,
-  "teams_reaching_e8": 64
+  "teams_reaching_e8": 64,
+  "top_5_champions": {
+    "Texas Tech": 0.1656,
+    "Nebraska": 0.1414,
+    "Purdue": 0.1018,
+    "Iowa St.": 0.096,
+    "Illinois": 0.0634
+  }
 }

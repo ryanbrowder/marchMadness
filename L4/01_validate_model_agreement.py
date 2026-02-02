@@ -29,7 +29,7 @@ from scipy.stats import pearsonr, spearmanr
 from sklearn.metrics import mean_squared_error
 import matplotlib.pyplot as plt
 import seaborn as sns
-from tqdm import tqdm
+import sys
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -326,9 +326,9 @@ def predict_h2h_matchup(team1, team2, prediction_df, h2h):
 # TOURNAMENT SIMULATION
 # ============================================================================
 
-def simulate_tournament(bracket, prediction_df, h2h, n_sims=5000):
+def simulate_tournament(bracket, prediction_df, h2h, n_sims=5000, n_trace=5):
     """
-    Monte Carlo simulation with matchup caching.
+    Monte Carlo simulation with matchup caching and trace logging.
 
     H2H prediction is deterministic for any (team1, team2) pair.
     Only the coin flip (np.random.random() < p) is stochastic.
@@ -340,8 +340,17 @@ def simulate_tournament(bracket, prediction_df, h2h, n_sims=5000):
       Teams that reach S16 = Elite 8 qualifiers.
       Consecutive-winner pairing preserves bracket structure because
       matchup_pairs order encodes it: (1v16,8v9) → R32 game, etc.
+
+    Args:
+        n_trace: number of simulations to log game-by-game (for diagnostics)
+
+    Returns:
+        elite8_probs: {team: P(Elite8)}
+        stats: simulation summary metrics
+        cache: {(t1,t2): p} — all unique matchup predictions
+        traces: list of game-level dicts for first n_trace sims
     """
-    print(f"Running {n_sims} tournament simulations...")
+    print(f"Running {n_sims} tournament simulations (tracing first {n_trace})...")
 
     # Validate source columns exist
     missing = [c for c in h2h['source_columns'] if c not in prediction_df.columns]
@@ -352,18 +361,24 @@ def simulate_tournament(bracket, prediction_df, h2h, n_sims=5000):
     else:
         print(f"  ✓ All {len(h2h['source_columns'])} source columns present")
 
-    # Initialize Elite 8 counters for bracket teams only
-    elite8_counts = {}
+    # Initialize counters for bracket teams only
+    elite8_counts      = {}
+    final_four_counts  = {}
+    champion_counts    = {}
     for matchups in bracket.values():
         for t1, t2 in matchups:
             elite8_counts.setdefault(t1, 0)
             elite8_counts.setdefault(t2, 0)
+            final_four_counts.setdefault(t1, 0)
+            final_four_counts.setdefault(t2, 0)
+            champion_counts.setdefault(t1, 0)
+            champion_counts.setdefault(t2, 0)
 
     # Matchup cache: (t1, t2) → p(t1 wins)
-    # Deterministic prediction, only coin flip varies per sim
     cache = {}
     gnb_exclusion_count = 0
     total_matchups      = 0
+    traces              = []   # game-level log for first n_trace sims
 
     def get_prob(t1, t2):
         """Cached matchup probability."""
@@ -375,23 +390,39 @@ def simulate_tournament(bracket, prediction_df, h2h, n_sims=5000):
 
         p, info = predict_h2h_matchup(t1, t2, prediction_df, h2h)
         cache[(t1, t2)]  = p
-        cache[(t2, t1)]  = 1.0 - p   # symmetric
+        cache[(t2, t1)]  = 1.0 - p
 
         if 'GNB' in info.get('excluded', []):
             gnb_exclusion_count += 1
 
         return p
 
-    for _ in tqdm(range(n_sims), desc="Simulations"):
+    for sim_idx in range(n_sims):
+        if sim_idx % 1000 == 0:
+            print(f"    [{sim_idx:>5}/{n_sims}] ...", flush=True)
+        log_this_sim = (sim_idx < n_trace)
+
         # --- R64 ---
         r64_winners = {}
         for region, matchups in bracket.items():
             r64_winners[region] = []
             for t1, t2 in matchups:
                 p = get_prob(t1, t2)
-                r64_winners[region].append(t1 if np.random.random() < p else t2)
+                winner = t1 if np.random.random() < p else t2
+                r64_winners[region].append(winner)
 
-        # --- R32: consecutive R64 winners paired by bracket position ---
+                if log_this_sim:
+                    traces.append({
+                        'sim':    sim_idx + 1,
+                        'region': region,
+                        'round':  'R64',
+                        'team1':  t1,
+                        'team2':  t2,
+                        'p_team1': round(p, 4),
+                        'winner': winner
+                    })
+
+        # --- R32 ---
         r32_winners = {}
         for region, winners in r64_winners.items():
             r32_winners[region] = []
@@ -399,29 +430,139 @@ def simulate_tournament(bracket, prediction_df, h2h, n_sims=5000):
                 if i + 1 < len(winners):
                     t1, t2 = winners[i], winners[i+1]
                     p = get_prob(t1, t2)
-                    r32_winners[region].append(t1 if np.random.random() < p else t2)
+                    winner = t1 if np.random.random() < p else t2
+                    r32_winners[region].append(winner)
 
-        # --- S16: consecutive R32 winners → both reach Elite 8 ---
+                    if log_this_sim:
+                        traces.append({
+                            'sim':    sim_idx + 1,
+                            'region': region,
+                            'round':  'R32',
+                            'team1':  t1,
+                            'team2':  t2,
+                            'p_team1': round(p, 4),
+                            'winner': winner
+                        })
+
+        # --- S16: 2 games per region. WINNERS are the Elite 8. ---
+        s16_winners = {}   # region → [winner1, winner2]
         for region, winners in r32_winners.items():
+            s16_winners[region] = []
             for i in range(0, len(winners), 2):
                 if i + 1 < len(winners):
                     t1, t2 = winners[i], winners[i+1]
                     p = get_prob(t1, t2)
-                    # Both S16 participants are Elite 8 qualifiers
-                    elite8_counts[t1] += 1
-                    elite8_counts[t2] += 1
+                    winner = t1 if np.random.random() < p else t2
+                    s16_winners[region].append(winner)
+                    elite8_counts[winner] += 1   # S16 winner = Elite 8
+
+                    if log_this_sim:
+                        traces.append({
+                            'sim':    sim_idx + 1,
+                            'region': region,
+                            'round':  'S16',
+                            'team1':  t1,
+                            'team2':  t2,
+                            'p_team1': round(p, 4),
+                            'winner': winner,
+                            'note':   'winner makes Elite 8'
+                        })
+
+        # --- Elite 8: 1 game per region (2 S16 winners). Winner → Final Four. ---
+        e8_winners = {}    # region → FF representative
+        for region, winners in s16_winners.items():
+            if len(winners) == 2:
+                t1, t2 = winners[0], winners[1]
+                p = get_prob(t1, t2)
+                winner = t1 if np.random.random() < p else t2
+                e8_winners[region] = winner
+                final_four_counts[winner] += 1
+
+                if log_this_sim:
+                    traces.append({
+                        'sim':    sim_idx + 1,
+                        'region': region,
+                        'round':  'E8',
+                        'team1':  t1,
+                        'team2':  t2,
+                        'p_team1': round(p, 4),
+                        'winner': winner,
+                        'note':   'winner makes Final Four'
+                    })
+
+        # --- Final Four: 2 semifinal games. Standard bracket pairings. ---
+        # East vs South, West vs Midwest (standard NCAA FF bracket)
+        ff_matchups = [('East', 'South'), ('West', 'Midwest')]
+        ff_winners = []
+        for r1, r2 in ff_matchups:
+            if r1 in e8_winners and r2 in e8_winners:
+                t1, t2 = e8_winners[r1], e8_winners[r2]
+                p = get_prob(t1, t2)
+                winner = t1 if np.random.random() < p else t2
+                ff_winners.append(winner)
+
+                if log_this_sim:
+                    traces.append({
+                        'sim':    sim_idx + 1,
+                        'region': f'{r1} vs {r2}',
+                        'round':  'FF',
+                        'team1':  t1,
+                        'team2':  t2,
+                        'p_team1': round(p, 4),
+                        'winner': winner,
+                        'note':   'Final Four semifinal'
+                    })
+
+        # --- Championship ---
+        champion = None
+        if len(ff_winners) == 2:
+            t1, t2 = ff_winners[0], ff_winners[1]
+            p = get_prob(t1, t2)
+            champion = t1 if np.random.random() < p else t2
+            champion_counts[champion] += 1
+
+            if log_this_sim:
+                traces.append({
+                    'sim':    sim_idx + 1,
+                    'region': 'Championship',
+                    'round':  'Championship',
+                    'team1':  t1,
+                    'team2':  t2,
+                    'p_team1': round(p, 4),
+                    'winner': champion,
+                    'note':   'CHAMPION'
+                })
+
+        # --- Per-sim summary row (only for traced sims) ---
+        if log_this_sim:
+            e8_list  = [t for region in s16_winners for t in s16_winners[region]]
+            ff_list  = [e8_winners[r] for r in ['East', 'South', 'West', 'Midwest'] if r in e8_winners]
+            traces.append({
+                'sim':     sim_idx + 1,
+                'region':  '---',
+                'round':   'SUMMARY',
+                'team1':   'E8: ' + ', '.join(e8_list),
+                'team2':   'FF: ' + ', '.join(ff_list),
+                'p_team1': '---',
+                'winner':  champion or '?',
+                'note':    'CHAMPION: ' + (champion or '?')
+            })
 
     # Convert to probabilities
-    elite8_probs = {team: count / n_sims for team, count in elite8_counts.items()}
+    elite8_probs      = {team: count / n_sims for team, count in elite8_counts.items()}
+    final_four_probs  = {team: count / n_sims for team, count in final_four_counts.items()}
+    champion_probs    = {team: count / n_sims for team, count in champion_counts.items()}
 
     stats = {
         'n_simulations':     n_sims,
+        'n_traced':          n_trace,
         'total_matchups':    total_matchups,
         'unique_matchups':   len(cache) // 2,
         'gnb_exclusions':    gnb_exclusion_count,
         'gnb_exclusion_rate': round(gnb_exclusion_count / max(len(cache) // 2, 1), 4),
         'teams_tracked':     len(elite8_counts),
-        'teams_reaching_e8': sum(1 for c in elite8_counts.values() if c > 0)
+        'teams_reaching_e8': sum(1 for c in elite8_counts.values() if c > 0),
+        'top_5_champions':   {t: round(p, 4) for t, p in sorted(champion_probs.items(), key=lambda x: -x[1])[:5]}
     }
 
     print(f"  ✓ Complete")
@@ -429,8 +570,10 @@ def simulate_tournament(bracket, prediction_df, h2h, n_sims=5000):
           f"(cached across {total_matchups:,} total)")
     print(f"    - GNB exclusion rate: {stats['gnb_exclusion_rate']:.1%}")
     print(f"    - Teams reaching Elite 8 at least once: {stats['teams_reaching_e8']}")
+    print(f"    - Trace records logged: {len(traces)}")
+    print(f"    - Top 5 champions: {stats['top_5_champions']}")
 
-    return elite8_probs, stats
+    return elite8_probs, final_four_probs, champion_probs, stats, cache, traces
 
 
 # ============================================================================
@@ -717,7 +860,7 @@ def main():
     print("STEP 4: H2H tournament simulation")
     print("-" * 70)
 
-    elite8_simulated, sim_stats = simulate_tournament(
+    elite8_simulated, ff_probs, champ_probs, sim_stats, matchup_cache, traces = simulate_tournament(
         bracket, prediction_df, h2h, n_sims=N_SIMULATIONS
     )
     print()
@@ -747,6 +890,34 @@ def main():
     with open(OUTPUT_DIR / 'simulation_stats.json', 'w') as f:
         json.dump(sim_stats, f, indent=2)
     print(f"  ✓ simulation_stats.json")
+
+    # Matchup probability matrix — all unique matchups predicted by H2H
+    # One row per unique pair (deduplicated: only A→B, not both A→B and B→A)
+    matchup_rows = []
+    seen = set()
+    for (t1, t2), p in sorted(matchup_cache.items(), key=lambda x: -x[1]):
+        pair = tuple(sorted([t1, t2]))
+        if pair in seen:
+            continue
+        seen.add(pair)
+        # Convention: higher-prob team is "favored"
+        if p >= 0.5:
+            matchup_rows.append({'favored': t1, 'underdog': t2, 'p_favored': round(p, 4)})
+        else:
+            matchup_rows.append({'favored': t2, 'underdog': t1, 'p_favored': round(1-p, 4)})
+
+    matchup_df = pd.DataFrame(matchup_rows).sort_values('p_favored', ascending=False)
+    matchup_df.to_csv(OUTPUT_DIR / 'matchup_probabilities.csv', index=False)
+    print(f"  ✓ matchup_probabilities.csv ({len(matchup_df)} unique matchups)")
+
+    # Sample bracket traces — game-by-game decisions for first N sims
+    if traces:
+        traces_df = pd.DataFrame(traces)
+        traces_df.to_csv(OUTPUT_DIR / 'sample_bracket_traces.csv', index=False)
+        print(f"  ✓ sample_bracket_traces.csv ({len(traces_df)} game records, "
+              f"{sim_stats['n_traced']} sims)")
+    else:
+        print(f"  ℹ No traces captured")
 
     create_visualizations(analysis_df, summary, sim_stats)
     print()
@@ -799,6 +970,67 @@ def main():
         print(f"  {row['Team']:<18} {int(row['Seed']):<5} {row['P_Elite8_Direct']:>6.1%}   "
               f"{row['P_Elite8_Simulated']:>6.1%}     {row['P_Elite8_Ensemble']:>6.1%}")
     print()
+
+    # Top Final Four candidates
+    print("=" * 70)
+    print("                 TOP 8 FINAL FOUR CANDIDATES")
+    print("=" * 70)
+    print()
+    print(f"  {'Team':<18} {'P(Elite 8)':<11} {'P(Final 4)'}")
+    print(f"  {'-'*18} {'-'*11} {'-'*10}")
+    ff_sorted = sorted(ff_probs.items(), key=lambda x: -x[1])[:8]
+    for team, p_ff in ff_sorted:
+        p_e8 = elite8_simulated.get(team, 0)
+        print(f"  {team:<18} {p_e8:>8.1%}    {p_ff:>8.1%}")
+    print()
+
+    # Top Champion candidates
+    print("=" * 70)
+    print("                  TOP 8 CHAMPION CANDIDATES")
+    print("=" * 70)
+    print()
+    print(f"  {'Team':<18} {'P(Elite 8)':<11} {'P(Final 4)':<11} {'P(Champion)'}")
+    print(f"  {'-'*18} {'-'*11} {'-'*11} {'-'*11}")
+    champ_sorted = sorted(champ_probs.items(), key=lambda x: -x[1])[:8]
+    for team, p_ch in champ_sorted:
+        p_e8 = elite8_simulated.get(team, 0)
+        p_ff = ff_probs.get(team, 0)
+        print(f"  {team:<18} {p_e8:>8.1%}    {p_ff:>8.1%}    {p_ch:>8.1%}")
+    print()
+
+    # Sample bracket trace — sim 1, printed as a readable bracket
+    print("=" * 70)
+    print("              SAMPLE BRACKET TRACE (Sim 1)")
+    print("=" * 70)
+    print()
+    if traces:
+        sim1 = [t for t in traces if t['sim'] == 1]
+        for rnd in ['R64', 'R32', 'S16', 'E8', 'FF', 'Championship']:
+            rnd_games = [t for t in sim1 if t['round'] == rnd]
+            if not rnd_games:
+                continue
+            print(f"  {rnd}")
+            print(f"  {'-'*60}")
+            for g in rnd_games:
+                p = g['p_team1']
+                if isinstance(p, (int, float)):
+                    loser = g['team2'] if g['winner'] == g['team1'] else g['team1']
+                    p_winner = p if g['winner'] == g['team1'] else round(1-p, 4)
+                    print(f"    {g['winner']:<22} def. {loser:<22} ({p_winner:.0%})")
+                    if g.get('note'):
+                        print(f"      → {g['note']}")
+            print()
+        # Summary row
+        summary_row = [t for t in sim1 if t['round'] == 'SUMMARY']
+        if summary_row:
+            s = summary_row[0]
+            print(f"  {s['team1']}")
+            print(f"  {s['team2']}")
+            print(f"  🏆 {s['note']}")
+            print()
+    else:
+        print("  (no traces captured)")
+        print()
 
     # Next steps
     print("=" * 70)
