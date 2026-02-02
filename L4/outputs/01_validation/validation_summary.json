@@ -1,0 +1,17 @@
+{
+  "n_teams": 64,
+  "pearson_correlation": 0.6001580907509224,
+  "pearson_p_value": 1.592131813093023e-07,
+  "spearman_correlation": 0.5761446886446885,
+  "spearman_p_value": 6.308684058208537e-07,
+  "rmse": 0.16931373922398602,
+  "mae": 0.13174393098092652,
+  "max_absolute_difference": 0.45197423692569805,
+  "median_absolute_difference": 0.10413715326124015,
+  "teams_with_significant_disagreement": 20,
+  "pct_teams_with_disagreement": 0.3125,
+  "integration_strategy": "LOW_AGREEMENT",
+  "recommendation": "Low agreement (r=0.600). Investigate before blending. Consider using H2H for bracket simulation and Elite 8 for Calcutta value separately \u2014 they may be capturing different things.",
+  "suggested_weight_h2h": 0.5,
+  "suggested_weight_elite8": 0.5
+}

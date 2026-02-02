@@ -47,17 +47,41 @@ warnings.filterwarnings('ignore')
 # Configuration
 # ============================================================================
 
+# MODE: 'validation' or 'production'
+# - validation: Train 2008-2024, test 2025, find best ensemble strategy
+# - production: Train 2008-2025 (all data), use winning strategy from validation
+MODE = 'validation'  # Switch to 'production' after validation analysis
+
 # Input paths
 TRAINING_MATCHUPS_PATH = 'outputs/01_build_training_matchups/training_matchups.csv'
 SELECTED_FEATURES_PATH = 'outputs/02_feature_correlation/selected_features.csv'
 
-# Output directories
-MODELS_DIR = 'models'
-OUTPUT_DIR = 'outputs/03_train_models'
+# Output directories (with mode suffix)
+MODELS_DIR = f'models{("_" + MODE) if MODE == "validation" else ""}'
+OUTPUT_DIR = f'outputs/03_train_models{("_" + MODE) if MODE == "validation" else ""}'
 
-# Temporal validation split
-TRAIN_YEARS = (2008, 2024)
-VALIDATION_YEAR = 2025
+# Temporal validation split based on MODE
+if MODE == 'validation':
+    TRAIN_YEARS = (2008, 2024)
+    VALIDATION_YEAR = 2025
+    PRODUCTION_STRATEGY = None  # Will be determined from validation
+    print("\n" + "="*80)
+    print("H2H TRAINING - VALIDATION MODE")
+    print("="*80)
+    print(f"Train: {TRAIN_YEARS[0]}-{TRAIN_YEARS[1]} | Validate: {VALIDATION_YEAR}")
+    print("Experimenting with ensemble strategies to find best approach")
+    print("="*80)
+else:  # production
+    TRAIN_YEARS = (2008, 2025)
+    VALIDATION_YEAR = None  # No validation set in production
+    # Set this based on your validation results
+    PRODUCTION_STRATEGY = 'Emphasize Top 2'  # Update after running validation
+    print("\n" + "="*80)
+    print("H2H TRAINING - PRODUCTION MODE")
+    print("="*80)
+    print(f"Train: {TRAIN_YEARS[0]}-{TRAIN_YEARS[1]} (all available data)")
+    print(f"Using strategy from validation: {PRODUCTION_STRATEGY}")
+    print("="*80)
 
 # Random seed for reproducibility
 RANDOM_SEED = 42
@@ -97,43 +121,69 @@ def load_data():
 
 def prepare_train_validation_split(df, feature_cols):
     """
-    Split data temporally: train on 2008-2024, validate on 2025.
+    Split data temporally based on MODE.
+    - Validation mode: train on 2008-2024, validate on 2025
+    - Production mode: train on all data (2008-2025), no validation set
     """
     print("\n" + "="*80)
     print("TEMPORAL TRAIN/VALIDATION SPLIT")
     print("="*80)
     
-    # Split by year
-    train_df = df[(df['Year'] >= TRAIN_YEARS[0]) & (df['Year'] <= TRAIN_YEARS[1])].copy()
-    val_df = df[df['Year'] == VALIDATION_YEAR].copy()
+    if MODE == 'validation':
+        # Split by year
+        train_df = df[(df['Year'] >= TRAIN_YEARS[0]) & (df['Year'] <= TRAIN_YEARS[1])].copy()
+        val_df = df[df['Year'] == VALIDATION_YEAR].copy()
+        
+        print(f"\nTraining set: {TRAIN_YEARS[0]}-{TRAIN_YEARS[1]}")
+        print(f"  Games: {len(train_df)}")
+        print(f"  Years: {train_df['Year'].nunique()}")
+        
+        print(f"\nValidation set: {VALIDATION_YEAR}")
+        print(f"  Games: {len(val_df)}")
+        
+        # Prepare X and y
+        X_train = train_df[feature_cols].values
+        y_train = train_df['TeamA_Won'].values
+        
+        X_val = val_df[feature_cols].values
+        y_val = val_df['TeamA_Won'].values
+        
+        print(f"\nFeature matrix shapes:")
+        print(f"  X_train: {X_train.shape}")
+        print(f"  X_val: {X_val.shape}")
+        
+        print(f"\nTarget distribution:")
+        print(f"  Train - TeamA wins: {y_train.sum()} ({y_train.mean()*100:.1f}%)")
+        print(f"  Val   - TeamA wins: {y_val.sum()} ({y_val.mean()*100:.1f}%)")
+        
+        return X_train, X_val, y_train, y_val, train_df, val_df
     
-    print(f"\nTraining set: {TRAIN_YEARS[0]}-{TRAIN_YEARS[1]}")
-    print(f"  Games: {len(train_df)}")
-    print(f"  Years: {train_df['Year'].nunique()}")
-    
-    print(f"\nValidation set: {VALIDATION_YEAR}")
-    print(f"  Games: {len(val_df)}")
-    
-    # Prepare X and y
-    X_train = train_df[feature_cols].values
-    y_train = train_df['TeamA_Won'].values
-    
-    X_val = val_df[feature_cols].values
-    y_val = val_df['TeamA_Won'].values
-    
-    print(f"\nFeature matrix shapes:")
-    print(f"  X_train: {X_train.shape}")
-    print(f"  X_val: {X_val.shape}")
-    
-    print(f"\nTarget distribution:")
-    print(f"  Train - TeamA wins: {y_train.sum()} ({y_train.mean()*100:.1f}%)")
-    print(f"  Val   - TeamA wins: {y_val.sum()} ({y_val.mean()*100:.1f}%)")
-    
-    return X_train, X_val, y_train, y_val, train_df, val_df
+    else:  # production mode
+        # Use all available data for training
+        train_df = df[(df['Year'] >= TRAIN_YEARS[0]) & (df['Year'] <= TRAIN_YEARS[1])].copy()
+        
+        print(f"\nProduction training set: {TRAIN_YEARS[0]}-{TRAIN_YEARS[1]}")
+        print(f"  Games: {len(train_df)}")
+        print(f"  Years: {train_df['Year'].nunique()}")
+        print(f"\n⚠ No validation set - using all data for training")
+        
+        # Prepare X and y
+        X_train = train_df[feature_cols].values
+        y_train = train_df['TeamA_Won'].values
+        
+        print(f"\nFeature matrix shapes:")
+        print(f"  X_train: {X_train.shape}")
+        
+        print(f"\nTarget distribution:")
+        print(f"  Train - TeamA wins: {y_train.sum()} ({y_train.mean()*100:.1f}%)")
+        
+        # Return None for validation sets
+        return X_train, None, y_train, None, train_df, None
 
 def scale_features(X_train, X_val):
     """
     Scale features using StandardScaler fit on training data.
+    In production mode, X_val will be None.
     """
     print("\n" + "="*80)
     print("FEATURE SCALING")
@@ -141,7 +191,11 @@ def scale_features(X_train, X_val):
     
     scaler = StandardScaler()
     X_train_scaled = scaler.fit_transform(X_train)
-    X_val_scaled = scaler.transform(X_val)
+    
+    if X_val is not None:
+        X_val_scaled = scaler.transform(X_val)
+    else:
+        X_val_scaled = None
     
     print(f"\n✓ Features scaled using StandardScaler")
     print(f"  Mean: {scaler.mean_[:5]}... (first 5)")
@@ -568,7 +622,9 @@ def save_models(models_dict, scaler, ensemble_weights, feature_cols, fallback_we
         'models': list(models_dict.keys()),
         'feature_columns': feature_cols,
         'train_years': TRAIN_YEARS,
-        'validation_year': VALIDATION_YEAR,
+        'validation_year': VALIDATION_YEAR if MODE == 'validation' else None,
+        'mode': MODE,
+        'strategy': PRODUCTION_STRATEGY if MODE == 'production' else 'optimized_from_validation',
         'random_seed': RANDOM_SEED
     }
     
@@ -732,98 +788,181 @@ def main():
     print("MODEL EVALUATION")
     print("="*80)
     
-    metrics_list = []
-    model_predictions = {}
-    individual_aucs = {}
-    
-    for name, model in models.items():
-        # Use scaled features for NN, NB, SVM
-        if name in ['Neural Network', 'Gaussian Naive Bayes', 'SVM']:
-            X_eval = X_val_scaled
-        else:
-            X_eval = X_val
+    if MODE == 'validation':
+        # Full evaluation with validation set
+        metrics_list = []
+        model_predictions = {}
+        individual_aucs = {}
         
-        metrics, y_pred_proba = evaluate_model(model, X_eval, y_val, name)
-        metrics_list.append(metrics)
-        model_predictions[name] = y_pred_proba
-        individual_aucs[name] = metrics['roc_auc']
+        for name, model in models.items():
+            # Use scaled features for NN, NB, SVM
+            if name in ['Neural Network', 'Gaussian Naive Bayes', 'SVM']:
+                X_eval = X_val_scaled
+            else:
+                X_eval = X_val
+            
+            metrics, y_pred_proba = evaluate_model(model, X_eval, y_val, name)
+            metrics_list.append(metrics)
+            model_predictions[name] = y_pred_proba
+            individual_aucs[name] = metrics['roc_auc']
+    else:
+        # Production mode - no validation metrics
+        print(f"\n⚠ Production mode - skipping validation evaluation")
+        print(f"  Using all data for training")
+        metrics_list = []
+        individual_aucs = {}
     
-    # Optimize ensemble
-    # For ensemble, need to re-predict with appropriate feature versions
-    ensemble_models = {}
-    for name, model in models.items():
-        ensemble_models[name] = model
-    
-    # Get predictions for ensemble optimization
-    ensemble_preds = {}
-    for name, model in ensemble_models.items():
-        if name in ['Neural Network', 'Gaussian Naive Bayes', 'SVM']:
-            X_eval = X_val_scaled
-        else:
-            X_eval = X_val
-        ensemble_preds[name] = model.predict_proba(X_eval)[:, 1]
-    
-    # Create temporary models dict for ensemble optimization
-    temp_models = {}
-    for name in ensemble_models.keys():
-        # Create wrapper that returns correct predictions
-        class PredWrapper:
-            def __init__(self, preds):
-                self.preds = preds
-            def predict_proba(self, X):
-                return np.column_stack([1 - self.preds, self.preds])
-        temp_models[name] = PredWrapper(ensemble_preds[name])
-    
-    ensemble_weights, ensemble_roc_auc, ensemble_results = optimize_ensemble_weights(
-        temp_models, X_val, y_val, individual_aucs
-    )
-    
-    # Calculate full ensemble metrics
-    ensemble_pred = sum(ensemble_preds[name] * ensemble_weights[name] for name in ensemble_weights.keys())
-    ensemble_metrics = {
-        'model': 'Ensemble',
-        'roc_auc': roc_auc_score(y_val, ensemble_pred),
-        'log_loss': log_loss(y_val, ensemble_pred),
-        'brier_score': brier_score_loss(y_val, ensemble_pred),
-        'accuracy': ((ensemble_pred >= 0.5) == y_val).mean()
-    }
-    
-    print(f"\n" + "="*80)
-    print("ENSEMBLE PERFORMANCE")
-    print("="*80)
-    print(f"  ROC-AUC: {ensemble_metrics['roc_auc']:.4f}")
-    print(f"  Log Loss: {ensemble_metrics['log_loss']:.4f}")
-    print(f"  Brier Score: {ensemble_metrics['brier_score']:.4f}")
-    print(f"  Accuracy: {ensemble_metrics['accuracy']:.4f}")
-    
-    # Identify problematic models and compute fallback weights
-    model_issues, fallback_models = identify_problematic_models(temp_models, X_val, y_val)
-    
-    # Compute fallback weights for each problematic model
-    fallback_weights = {}
-    if fallback_models:
-        print(f"\n{'='*80}")
-        print("COMPUTING FALLBACK WEIGHTS")
-        print(f"{'='*80}")
+    # Optimize ensemble (validation) or apply production strategy
+    if MODE == 'validation':
+        # For ensemble, need to re-predict with appropriate feature versions
+        ensemble_models = {}
+        for name, model in models.items():
+            ensemble_models[name] = model
         
-        for exclude_model in fallback_models:
-            fallback_key = f"exclude_{exclude_model.lower().replace(' ', '_')}"
-            fallback_weights[fallback_key] = optimize_fallback_weights(
-                temp_models, X_val, y_val, exclude_model, individual_aucs
-            )
+        # Get predictions for ensemble optimization
+        ensemble_preds = {}
+        for name, model in ensemble_models.items():
+            if name in ['Neural Network', 'Gaussian Naive Bayes', 'SVM']:
+                X_eval = X_val_scaled
+            else:
+                X_eval = X_val
+            ensemble_preds[name] = model.predict_proba(X_eval)[:, 1]
+        
+        # Create temporary models dict for ensemble optimization
+        temp_models = {}
+        for name in ensemble_models.keys():
+            # Create wrapper that returns correct predictions
+            class PredWrapper:
+                def __init__(self, preds):
+                    self.preds = preds
+                def predict_proba(self, X):
+                    return np.column_stack([1 - self.preds, self.preds])
+            temp_models[name] = PredWrapper(ensemble_preds[name])
+        
+        ensemble_weights, ensemble_roc_auc, ensemble_results = optimize_ensemble_weights(
+            temp_models, X_val, y_val, individual_aucs
+        )
+        
+        # Calculate full ensemble metrics
+        ensemble_pred = sum(ensemble_preds[name] * ensemble_weights[name] for name in ensemble_weights.keys())
+        ensemble_metrics = {
+            'model': 'Ensemble',
+            'roc_auc': roc_auc_score(y_val, ensemble_pred),
+            'log_loss': log_loss(y_val, ensemble_pred),
+            'brier_score': brier_score_loss(y_val, ensemble_pred),
+            'accuracy': ((ensemble_pred >= 0.5) == y_val).mean()
+        }
+        
+        print(f"\n" + "="*80)
+        print("ENSEMBLE PERFORMANCE")
+        print("="*80)
+        print(f"  ROC-AUC: {ensemble_metrics['roc_auc']:.4f}")
+        print(f"  Log Loss: {ensemble_metrics['log_loss']:.4f}")
+        print(f"  Brier Score: {ensemble_metrics['brier_score']:.4f}")
+        print(f"  Accuracy: {ensemble_metrics['accuracy']:.4f}")
+        
+        # Identify problematic models and compute fallback weights
+        model_issues, fallback_models = identify_problematic_models(temp_models, X_val, y_val)
+        
+        # Compute fallback weights for each problematic model
+        fallback_weights = {}
+        if fallback_models:
+            print(f"\n{'='*80}")
+            print("COMPUTING FALLBACK WEIGHTS")
+            print(f"{'='*80}")
+            
+            for exclude_model in fallback_models:
+                fallback_key = f"exclude_{exclude_model.lower().replace(' ', '_')}"
+                fallback_weights[fallback_key] = optimize_fallback_weights(
+                    temp_models, X_val, y_val, exclude_model, individual_aucs
+                )
+    
+    else:  # production mode
+        # Apply production strategy from validation
+        print(f"\n" + "="*80)
+        print("APPLYING PRODUCTION STRATEGY")
+        print("="*80)
+        print(f"\nStrategy: {PRODUCTION_STRATEGY}")
+        print(f"  (Determined from validation mode)")
+        
+        # Define strategy weights based on validation winner
+        model_names = list(models.keys())
+        
+        if PRODUCTION_STRATEGY == 'Uniform':
+            ensemble_weights = {name: 1.0/len(model_names) for name in model_names}
+        
+        elif PRODUCTION_STRATEGY == 'Performance-weighted':
+            # Can't use validation AUCs - use uniform as fallback
+            print(f"\n⚠ Cannot use performance weighting without validation set")
+            print(f"  Falling back to uniform weights")
+            ensemble_weights = {name: 1.0/len(model_names) for name in model_names}
+        
+        elif PRODUCTION_STRATEGY == 'Emphasize Top 2':
+            # Assume same order as validation (GB, RF, NN, SVM, GNB)
+            ensemble_weights = {
+                'Gradient Boosting': 0.35,
+                'Random Forest': 0.30,
+                'Neural Network': 0.117,
+                'SVM': 0.117,
+                'Gaussian Naive Bayes': 0.117
+            }
+        
+        elif PRODUCTION_STRATEGY == 'De-emphasize Worst':
+            # Assume GNB is worst based on validation
+            ensemble_weights = {
+                'Gradient Boosting': 0.2375,
+                'Random Forest': 0.2375,
+                'Neural Network': 0.2375,
+                'SVM': 0.2375,
+                'Gaussian Naive Bayes': 0.05
+            }
+        
+        elif PRODUCTION_STRATEGY == 'Squared Performance':
+            # Approximate based on validation results
+            ensemble_weights = {
+                'Gradient Boosting': 0.38,
+                'Random Forest': 0.29,
+                'Neural Network': 0.16,
+                'SVM': 0.12,
+                'Gaussian Naive Bayes': 0.05
+            }
+        
+        else:
+            # Default to uniform
+            print(f"\n⚠ Unknown strategy: {PRODUCTION_STRATEGY}")
+            print(f"  Falling back to uniform weights")
+            ensemble_weights = {name: 1.0/len(model_names) for name in model_names}
+        
+        print(f"\nProduction ensemble weights:")
+        for name, weight in sorted(ensemble_weights.items(), key=lambda x: x[1], reverse=True):
+            print(f"  {name}: {weight:.3f}")
+        
+        ensemble_metrics = None
+        ensemble_results = []
+        fallback_weights = {}  # Skip fallback computation in production
     
     # Save models and results
     save_models(models, scaler, ensemble_weights, feature_cols, fallback_weights)
-    save_performance_report(metrics_list, ensemble_metrics, feature_cols, ensemble_results)
-    create_performance_visualizations(metrics_list, ensemble_metrics)
     
-    print("\n" + "="*80)
-    print("✓ MODEL TRAINING COMPLETE")
-    print("="*80)
-    print(f"\nModels saved to: {MODELS_DIR}/")
-    print(f"Results saved to: {OUTPUT_DIR}/")
-    print(f"\nBest model: {max(metrics_list + [ensemble_metrics], key=lambda x: x['roc_auc'])['model']}")
-    print(f"Best ROC-AUC: {max(m['roc_auc'] for m in metrics_list + [ensemble_metrics]):.4f}")
+    if MODE == 'validation':
+        save_performance_report(metrics_list, ensemble_metrics, feature_cols, ensemble_results)
+        create_performance_visualizations(metrics_list, ensemble_metrics)
+        
+        print("\n" + "="*80)
+        print("✓ MODEL TRAINING COMPLETE (VALIDATION)")
+        print("="*80)
+        print(f"\nModels saved to: {MODELS_DIR}/")
+        print(f"Results saved to: {OUTPUT_DIR}/")
+        print(f"\nBest model: {max(metrics_list + [ensemble_metrics], key=lambda x: x['roc_auc'])['model']}")
+        print(f"Best ROC-AUC: {max(m['roc_auc'] for m in metrics_list + [ensemble_metrics]):.4f}")
+        print(f"\n⚠ NEXT STEP: Update PRODUCTION_STRATEGY in config and run in production mode")
+    else:
+        print("\n" + "="*80)
+        print("✓ MODEL TRAINING COMPLETE (PRODUCTION)")
+        print("="*80)
+        print(f"\nModels saved to: {MODELS_DIR}/")
+        print(f"Strategy used: {PRODUCTION_STRATEGY}")
+        print(f"\n✓ Ready for 2026 predictions")
 
 if __name__ == "__main__":
     main()
