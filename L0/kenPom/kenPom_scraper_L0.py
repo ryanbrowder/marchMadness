@@ -1,7 +1,7 @@
 """
 KenPom Data Scraper - L0 (Ingestion Layer)
 Scrapes raw data from kenpom.com for years 2008-2026
-Outputs: ../../L1/data/kenPom/kenpom_raw.csv with data exactly as scraped
+Outputs: ../../L1/data/kenPom/kenPom_raw_L1.csv with data exactly as scraped
 Note: Run from L0/kenPom/ directory
 """
 
@@ -20,6 +20,9 @@ END_YEAR = 2026
 BASE_URL = "https://kenpom.com/index.php?y={year}"
 OUTPUT_DIR = "../../L1/data/kenPom"
 OUTPUT_FILE = f"{OUTPUT_DIR}/kenPom_raw_L1.csv"
+
+# Set to False to see browser for debugging timeout issues
+HEADLESS = False
 
 # Column names based on table structure
 COLUMNS = [
@@ -47,10 +50,11 @@ COLUMNS = [
 ]
 
 
-def setup_driver():
+def setup_driver(headless=True):
     """Initialize Chrome driver with options"""
     options = webdriver.ChromeOptions()
-    options.add_argument('--headless')  # Run in background
+    if headless:
+        options.add_argument('--headless')  # Run in background
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
     options.add_argument('--disable-blink-features=AutomationControlled')
@@ -63,13 +67,15 @@ def setup_driver():
     return driver
 
 
-def scrape_year(driver, year):
+def scrape_year(driver, year, retry=0, max_retries=2):
     """
     Scrape KenPom data for a specific year
     
     Args:
         driver: Selenium WebDriver instance
         year: Year to scrape (2008-2026)
+        retry: Current retry attempt
+        max_retries: Maximum number of retries
     
     Returns:
         List of dictionaries containing team data
@@ -80,11 +86,14 @@ def scrape_year(driver, year):
     try:
         driver.get(url)
         
-        # Wait for table to load
-        wait = WebDriverWait(driver, 10)
+        # Wait for table to load with increased timeout
+        wait = WebDriverWait(driver, 30)  # Increased from 10 to 30 seconds
         table = wait.until(
             EC.presence_of_element_located((By.CSS_SELECTOR, "table.ratings-table, table"))
         )
+        
+        # Additional wait for table to fully populate
+        time.sleep(2)
         
         # Find all rows in the table (handles multiple tbody elements or mixed headers)
         rows = table.find_elements(By.TAG_NAME, 'tr')
@@ -127,12 +136,27 @@ def scrape_year(driver, year):
             
             year_data.append(row_data)
         
-        print(f"✓ ({len(year_data)} teams)")
-        return year_data
+        if len(year_data) > 0:
+            print(f"✓ ({len(year_data)} teams)")
+            return year_data
+        else:
+            # No data found, retry
+            if retry < max_retries:
+                print(f"⟳ (no data, retry {retry + 1}/{max_retries})")
+                time.sleep(3)
+                return scrape_year(driver, year, retry + 1, max_retries)
+            else:
+                print(f"✗ (no data after {max_retries} retries)")
+                return []
         
     except TimeoutException:
-        print(f"✗ (timeout)")
-        return []
+        if retry < max_retries:
+            print(f"⟳ (timeout, retry {retry + 1}/{max_retries})")
+            time.sleep(3)
+            return scrape_year(driver, year, retry + 1, max_retries)
+        else:
+            print(f"✗ (timeout after {max_retries} retries)")
+            return []
     except Exception as e:
         print(f"✗ (error: {str(e)})")
         return []
@@ -146,7 +170,7 @@ def main():
     print("="*60)
     
     # Initialize driver
-    driver = setup_driver()
+    driver = setup_driver(headless=HEADLESS)
     
     all_data = []
     
@@ -157,7 +181,7 @@ def main():
             all_data.extend(year_data)
             
             # Be respectful with rate limiting
-            time.sleep(1)
+            time.sleep(2)  # Increased from 1 to 2 seconds
         
         # Convert to DataFrame and save
         if all_data:
