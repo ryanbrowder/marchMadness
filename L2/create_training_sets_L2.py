@@ -150,6 +150,22 @@ def main():
     df_long = df_long.drop(columns=TOURNAMENT_COLS)
     print(f"  Final feature count: {len(df_long.columns)}")
     
+    # Invert rank columns (lower rank = better → higher value = better)
+    print(f"\n  Inverting rank columns for pct_diff compatibility...")
+    rank_cols = [c for c in df_long.columns if 'Rank' in c or c.endswith('_Rk')]
+    
+    if rank_cols:
+        print(f"    Found {len(rank_cols)} rank columns to invert:")
+        for col in rank_cols:
+            if col in df_long.columns and df_long[col].notna().any():
+                max_rank = df_long[col].max()
+                min_rank = df_long[col].min()
+                df_long[col] = max_rank - df_long[col]
+                print(f"      {col}: inverted (range now 0-{max_rank - min_rank:.0f})")
+        print(f"    ✓ Rank inversion complete for LONG view")
+    else:
+        print(f"    No rank columns found to invert")
+    
     # ========================================================================
     # CREATE RICH VIEW (2016+, 6 sources)
     # ========================================================================
@@ -191,6 +207,22 @@ def main():
     # Drop tournament metadata
     df_rich = df_rich.drop(columns=TOURNAMENT_COLS)
     print(f"  Final feature count: {len(df_rich.columns)}")
+    
+    # Invert rank columns (lower rank = better → higher value = better)
+    print(f"\n  Inverting rank columns for pct_diff compatibility...")
+    rank_cols = [c for c in df_rich.columns if 'Rank' in c or c.endswith('_Rk')]
+    
+    if rank_cols:
+        print(f"    Found {len(rank_cols)} rank columns to invert:")
+        for col in rank_cols:
+            if col in df_rich.columns and df_rich[col].notna().any():
+                max_rank = df_rich[col].max()
+                min_rank = df_rich[col].min()
+                df_rich[col] = max_rank - df_rich[col]
+                print(f"      {col}: inverted (range now 0-{max_rank - min_rank:.0f})")
+        print(f"    ✓ Rank inversion complete for RICH view")
+    else:
+        print(f"    No rank columns found to invert")
     
     # ========================================================================
     # VALIDATE AND WRITE OUTPUTS

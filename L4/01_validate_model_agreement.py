@@ -822,6 +822,19 @@ def main():
 
     print(f"\n✓ All inputs loaded\n")
 
+    # After: prediction_df = load_prediction_data()
+    print("\n=== H2H SOURCE COLUMN DIAGNOSTICS ===")
+    print(f"Source columns needed: {h2h['source_columns'][:5]}...")  # first 5
+    sample_teams = ['Michigan', 'High Point', 'Connecticut', 'Arizona']
+    for team in sample_teams:
+        if team in prediction_df['Team'].values:
+            row = prediction_df[prediction_df['Team']==team]
+            vals = row[h2h['source_columns'][:5]].values[0]  # first 5 source cols
+            print(f"{team:15} | {vals}")
+        else:
+            print(f"{team:15} | NOT FOUND")
+    print()
+
     # ================================================================
     # STEP 2: Bracket
     # ================================================================
@@ -830,6 +843,12 @@ def main():
 
     bracket, bracket_df = construct_bracket(prediction_df)
     print()
+
+    # Add this right after bracket construction (line ~813)
+    print("\nBRACKET TEAMS:")
+    print(sorted(bracket_df['Team'].unique())[:10])
+    print("\nPREDICTION DATA TEAMS:")  
+    print(sorted(prediction_df['Team'].unique())[:10])
 
     # ================================================================
     # STEP 3: Elite 8 direct predictions (from L3 CSV)

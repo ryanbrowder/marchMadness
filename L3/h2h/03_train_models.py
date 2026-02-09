@@ -50,7 +50,7 @@ warnings.filterwarnings('ignore')
 # MODE: 'validation' or 'production'
 # - validation: Train 2008-2024, test 2025, find best ensemble strategy
 # - production: Train 2008-2025 (all data), use winning strategy from validation
-MODE = 'validation'  # Switch to 'production' after validation analysis
+MODE = 'production'  # Switch to 'production' after validation analysis
 
 # Input paths
 TRAINING_MATCHUPS_PATH = 'outputs/01_build_training_matchups/training_matchups.csv'

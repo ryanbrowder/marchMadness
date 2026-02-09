@@ -1,31 +1,29 @@
-Features used for model training (29 total):
+Features used for model training (27 total):
 
-1. pct_diff_kenpom_Rk
-2. pct_diff_kenpom_NetRtg
-3. pct_diff_kenpom_ORtg_Rank
-4. pct_diff_kenpom_DRtg_Rank
-5. pct_diff_kenpom_SOS_NetRtg_Rank
-6. pct_diff_kenpom_SOS_DRtg
-7. pct_diff_bartTorvik_Wins_Overall
-8. pct_diff_bartTorvik_G
-9. pct_diff_bartTorvik_ORB
-10. pct_diff_bartTorvik_EFGD%
-11. pct_diff_kenpom_SOS_NetRtg
-12. pct_diff_bartTorvik_TOR
-13. pct_diff_bartTorvik_2P%
-14. pct_diff_bartTorvik_3P%D
-15. pct_diff_bartTorvik_FTRD
-16. pct_diff_kenpom_NCSOS_NetRtg_Rank
-17. pct_diff_bartTorvik_3P%
-18. pct_diff_bartTorvik_FTR
-19. pct_diff_BPI_Off
-20. pct_diff_BPI_Def
-21. pct_diff_bartTorvik_TORD
-22. pct_diff_kenpom_NCSOS_NetRtg
-23. pct_diff_kenpom_Luck_Rank
-24. pct_diff_bartTorvik_DRB
-25. pct_diff_bartTorvik_WAB
-26. pct_diff_bartTorvik_3PRD
-27. pct_diff_bartTorvik_Adj T.
-28. pct_diff_bartTorvik_3PR
-29. pct_diff_kenpom_Luck
+1. pct_diff_kenpom_NetRtg
+2. pct_diff_kenpom_ORtg
+3. pct_diff_kenpom_DRtg
+4. pct_diff_kenpom_SOS_DRtg
+5. pct_diff_bartTorvik_Wins_Overall
+6. pct_diff_bartTorvik_G
+7. pct_diff_bartTorvik_ORB
+8. pct_diff_bartTorvik_EFGD%
+9. pct_diff_kenpom_SOS_NetRtg
+10. pct_diff_bartTorvik_TOR
+11. pct_diff_bartTorvik_2P%
+12. pct_diff_bartTorvik_3P%D
+13. pct_diff_bartTorvik_FTRD
+14. pct_diff_bartTorvik_3P%
+15. pct_diff_bartTorvik_FTR
+16. pct_diff_BPI_Off
+17. pct_diff_kenpom_NCSOS_NetRtg_Rank
+18. pct_diff_kenpom_Luck_Rank
+19. pct_diff_BPI_Def
+20. pct_diff_bartTorvik_TORD
+21. pct_diff_kenpom_NCSOS_NetRtg
+22. pct_diff_bartTorvik_DRB
+23. pct_diff_bartTorvik_WAB
+24. pct_diff_bartTorvik_3PRD
+25. pct_diff_bartTorvik_Adj T.
+26. pct_diff_bartTorvik_3PR
+27. pct_diff_kenpom_Luck

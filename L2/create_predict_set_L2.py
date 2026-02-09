@@ -2,10 +2,10 @@
 create_predict_set_L2.py
 
 Purpose: Join clean L2 prediction sources to create prediction dataset
-- Uses *_predict_L2.csv files (current season 2025 data)
+- Uses *_predict_L2.csv files (current season 2026 data)
 - Joins all available sources (bartTorvik, kenPom, espnBPI, masseyComposite required)
 - Optional sources: LRMCB, powerRank (skipped if files don't exist)
-- Adds ESPN bracketology projected seeds (tournamentSeed column)
+- Adds ESPN bracketology data (tournamentSeed, tournamentRegion)
 - No tournament filtering (prediction is pre-tournament)
 - Outputs to L3/data/predictionData/
 
@@ -148,10 +148,11 @@ def main():
     # ========================================================================
     print(f"\n  Adding ESPN bracketology data...")
     
-    # Drop any existing tournamentSeed column to avoid merge conflicts
-    if 'tournamentSeed' in df.columns:
-        print(f"    Dropping existing tournamentSeed column from data sources")
-        df = df.drop(columns=['tournamentSeed'])
+    # Drop any existing tournamentSeed/tournamentRegion columns to avoid merge conflicts
+    cols_to_drop = [col for col in ['tournamentSeed', 'tournamentRegion'] if col in df.columns]
+    if cols_to_drop:
+        print(f"    Dropping existing columns: {', '.join(cols_to_drop)}")
+        df = df.drop(columns=cols_to_drop)
     
     if os.path.exists(BRACKETOLOGY_PATH):
         # Read with utf-8-sig to handle BOM if present
@@ -159,24 +160,46 @@ def main():
         print(f"    Loaded: {len(bracket)} projected tournament teams")
         
         # Rename columns to match our schema
-        bracket = bracket.rename(columns={'Team Index': 'Index', 'Seed': 'tournamentSeed'})
+        bracket = bracket.rename(columns={
+            'Team Index': 'Index', 
+            'Seed': 'tournamentSeed',
+            'Region': 'tournamentRegion'
+        })
         
-        # Keep only Index and tournamentSeed for the join
-        bracket = bracket[['Index', 'tournamentSeed']]
+        # Keep Index, tournamentSeed, and tournamentRegion for the join
+        bracket = bracket[['Index', 'tournamentSeed', 'tournamentRegion']]
         
-        # Left join to add tournamentSeed (null for non-tournament teams)
+        # Left join to add tournament data (null for non-tournament teams)
         df = df.merge(bracket, on='Index', how='left')
         
         teams_with_seeds = df['tournamentSeed'].notna().sum()
-        print(f"    ✓ Added tournamentSeed column from ESPN bracketology")
+        print(f"    ✓ Added tournamentSeed and tournamentRegion columns from ESPN bracketology")
         print(f"    {teams_with_seeds} teams projected to make tournament")
-        print(f"    {len(df) - teams_with_seeds} teams not projected (tournamentSeed = null)")
+        print(f"    {len(df) - teams_with_seeds} teams not projected (tournamentSeed/Region = null)")
     else:
         print(f"    ⊘ Bracketology file not found: {BRACKETOLOGY_PATH}")
-        print(f"    Continuing without tournamentSeed column")
+        print(f"    Continuing without tournamentSeed/tournamentRegion columns")
     
     print(f"\n  Final feature count: {len(df.columns)}")
     print(f"  Final team count: {len(df):,}")
+    
+    # ========================================================================
+    # INVERT RANK COLUMNS (lower rank = better → higher value = better)
+    # ========================================================================
+    print(f"\n  Inverting rank columns for pct_diff compatibility...")
+    rank_cols = [c for c in df.columns if 'Rank' in c or c.endswith('_Rk')]
+    
+    if rank_cols:
+        print(f"    Found {len(rank_cols)} rank columns to invert:")
+        for col in rank_cols:
+            if col in df.columns and df[col].notna().any():
+                max_rank = df[col].max()
+                min_rank = df[col].min()
+                df[col] = max_rank - df[col]
+                print(f"      {col}: inverted (was {min_rank:.0f}-{max_rank:.0f}, now {0:.0f}-{max_rank - min_rank:.0f})")
+        print(f"    ✓ Rank inversion complete (higher values now = better teams)")
+    else:
+        print(f"    No rank columns found to invert")
     
     # ========================================================================
     # VALIDATE AND WRITE OUTPUT
@@ -195,6 +218,9 @@ def main():
     if 'tournamentSeed' in df.columns:
         teams_with_seeds = df['tournamentSeed'].notna().sum()
         print(f"  ✓ tournamentSeed column: {teams_with_seeds} teams with projected seeds")
+        if 'tournamentRegion' in df.columns:
+            regions = df[df['tournamentRegion'].notna()]['tournamentRegion'].unique()
+            print(f"  ✓ tournamentRegion column: {len(regions)} regions ({', '.join(sorted(regions))})")
     
     # Create output directory if needed
     print(f"\n[5/5] Writing output...")
@@ -220,6 +246,9 @@ def main():
     if 'tournamentSeed' in df.columns:
         teams_with_seeds = df['tournamentSeed'].notna().sum()
         print(f"Projected tournament teams: {teams_with_seeds}")
+        if 'tournamentRegion' in df.columns:
+            regions = df[df['tournamentRegion'].notna()]['tournamentRegion'].unique()
+            print(f"Tournament regions: {', '.join(sorted(regions))}")
     print("="*80)
 
 if __name__ == "__main__":

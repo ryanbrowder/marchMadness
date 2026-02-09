@@ -2,16 +2,16 @@
   "n_simulations": 5000,
   "n_traced": 5,
   "total_matchups": 315000,
-  "unique_matchups": 1312,
-  "gnb_exclusions": 1263,
-  "gnb_exclusion_rate": 0.9627,
+  "unique_matchups": 1033,
+  "gnb_exclusions": 1014,
+  "gnb_exclusion_rate": 0.9816,
   "teams_tracked": 64,
   "teams_reaching_e8": 64,
   "top_5_champions": {
-    "Purdue": 0.2304,
-    "Connecticut": 0.1172,
-    "Houston": 0.0758,
-    "Vanderbilt": 0.0612,
-    "Texas Tech": 0.0592
+    "Purdue": 0.3798,
+    "Connecticut": 0.1206,
+    "Vanderbilt": 0.0916,
+    "Gonzaga": 0.0578,
+    "Ohio St.": 0.0478
   }
 }
