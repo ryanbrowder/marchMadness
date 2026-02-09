@@ -1,0 +1,88 @@
+======================================================================
+  OPTIMAL BRACKET: Elite 8 Focus (optimize through Sweet 16)
+======================================================================
+
+🏆 CHAMPION: Purdue (45.2%)
+
+R64
+----------------------------------------------------------------------
+  Michigan                  def. LIU                       (72%)
+  Clemson                   def. Utah St.                  (18%)
+  Florida                   def. Villanova                 (23%)
+  Kansas                    def. High Point                (46%)
+  USC                       def. Seton Hall                (24%)
+  Alabama                   def. Siena                     (83%)
+  N.C. State                def. SMU                       (85%)
+  BYU                       def. North Dakota St.          (81%)
+  Iowa St.                  def. Norfolk St.               (83%)
+  Georgia                   def. Miami FL                  (16%)
+  Texas Tech                def. Utah Valley               (62%)
+  North Carolina            def. UNC Wilmington            (81%)
+  Auburn                    def. Yale                      (41%)
+  Vanderbilt                def. Northern Colorado         (87%)
+  Iowa                      def. Ohio St.                  (23%)
+  Purdue                    def. Colgate                   (79%)
+  Duke                      def. Youngstown St.            (81%)
+  Kentucky                  def. UCLA                      (88%)
+  St. John's                def. Belmont                   (36%)
+  Illinois                  def. East Tennessee St.        (90%)
+  Virginia                  def. Saint Louis               (17%)
+  Houston                   def. Hawaii                    (77%)
+  Nebraska                  def. Oklahoma St.              (34%)
+  Gonzaga                   def. Stephen F. Austin         (61%)
+  Arizona                   def. Vermont                   (81%)
+  Wisconsin                 def. Indiana                   (81%)
+  Tennessee                 def. Tulsa                     (37%)
+  Louisville                def. Liberty                   (42%)
+  Arkansas                  def. Akron                     (50%)
+  Michigan St.              def. Arkansas St.              (84%)
+  Saint Mary's              def. Baylor                    (25%)
+  Connecticut               def. Lipscomb                  (76%)
+
+R32
+----------------------------------------------------------------------
+  Michigan                  def. Clemson                   (39%)
+  Kansas                    def. Florida                   (85%)
+  Alabama                   def. USC                       (89%)
+  BYU                       def. N.C. State                (82%)
+  Iowa St.                  def. Georgia                   (33%)
+  North Carolina            def. Texas Tech                (78%)
+  Vanderbilt                def. Auburn                    (87%)
+  Purdue                    def. Iowa                      (86%)
+  Kentucky                  def. Duke                      (69%)
+  Illinois                  def. St. John's                (89%)
+  Houston                   def. Virginia                  (89%)
+  Gonzaga                   def. Nebraska                  (83%)
+  Wisconsin                 def. Arizona                   (64%)
+  Louisville                def. Tennessee                 (87%)
+  Michigan St.              def. Arkansas                  (84%)
+  Connecticut               def. Saint Mary's              (91%)
+
+S16
+----------------------------------------------------------------------
+  Kansas                    def. Michigan                  (78%)
+  BYU                       def. Alabama                   (81%)
+  North Carolina            def. Iowa St.                  (66%)
+  Purdue                    def. Vanderbilt                (86%)
+  Illinois                  def. Kentucky                  (89%)
+  Gonzaga                   def. Houston                   (80%)
+  Louisville                def. Wisconsin                 (87%)
+  Connecticut               def. Michigan St.              (88%)
+
+E8
+----------------------------------------------------------------------
+  BYU                       def. Kansas                    (74%)
+  Purdue                    def. North Carolina            (90%)
+  Gonzaga                   def. Illinois                  (82%)
+  Connecticut               def. Louisville                (88%)
+
+FF
+----------------------------------------------------------------------
+  Gonzaga                   def. BYU                       (87%)
+  Purdue                    def. Connecticut               (80%)
+
+Championship
+----------------------------------------------------------------------
+  Purdue                    def. Gonzaga                   (84%)
+
+======================================================================
