@@ -1,321 +1,321 @@
 sim,region,round,team1,team2,p_team1,winner,note
-1,East,R64,Michigan,Tennessee Martin,0.4752,Michigan,
-1,East,R64,N.C. State,UCF,0.2765,UCF,
-1,East,R64,St. John's,Liberty,0.5195,Liberty,
-1,East,R64,BYU,Stephen F. Austin,0.5756,Stephen F. Austin,
-1,East,R64,Tennessee,Ohio St.,0.394,Tennessee,
-1,East,R64,Houston,UNC Wilmington,0.6756,Houston,
-1,East,R64,Saint Louis,Wisconsin,0.2026,Saint Louis,
-1,East,R64,Michigan St.,Navy,0.5042,Navy,
-1,Midwest,R64,Connecticut,Bethune Cookman,0.5571,Bethune Cookman,
-1,Midwest,R64,Iowa,Georgia,0.3221,Georgia,
-1,Midwest,R64,Virginia,Tulsa,0.4164,Virginia,
-1,Midwest,R64,Texas Tech,North Dakota St.,0.7756,North Dakota St.,
-1,Midwest,R64,North Carolina,Indiana,0.2348,Indiana,
-1,Midwest,R64,Florida,Portland St.,0.5254,Florida,
-1,Midwest,R64,Villanova,San Diego St.,0.3082,Villanova,
-1,Midwest,R64,Nebraska,Austin Peay,0.5849,Nebraska,
-1,South,R64,Duke,Vermont,0.5223,Duke,
-1,South,R64,Kentucky,Saint Mary's,0.3389,Saint Mary's,
-1,South,R64,Alabama,Yale,0.467,Alabama,
-1,South,R64,Kansas,Troy,0.6218,Kansas,
-1,South,R64,Clemson,New Mexico,0.3075,New Mexico,
-1,South,R64,Gonzaga,Winthrop,0.5887,Gonzaga,
-1,South,R64,Auburn,UCLA,0.4363,Auburn,
-1,South,R64,Iowa St.,Wright St.,0.6922,Iowa St.,
-1,West,R64,Arizona,Merrimack,0.358,Merrimack,
-1,West,R64,Texas A&M,Utah St.,0.2034,Utah St.,
-1,West,R64,Arkansas,Belmont,0.6507,Arkansas,
-1,West,R64,Vanderbilt,UC Irvine,0.7445,Vanderbilt,
-1,West,R64,Louisville,Texas,0.3449,Texas,
-1,West,R64,Purdue,East Tennessee St.,0.8044,Purdue,
-1,West,R64,SMU,Miami FL,0.3443,Miami FL,
-1,West,R64,Illinois,UT Arlington,0.4943,Illinois,
-1,East,R32,Michigan,UCF,0.4451,Michigan,
-1,East,R32,Liberty,Stephen F. Austin,0.3411,Stephen F. Austin,
-1,East,R32,Tennessee,Houston,0.1242,Houston,
-1,East,R32,Saint Louis,Navy,0.5224,Navy,
-1,Midwest,R32,Bethune Cookman,Georgia,0.1443,Georgia,
-1,Midwest,R32,Virginia,North Dakota St.,0.4843,Virginia,
-1,Midwest,R32,Indiana,Florida,0.1443,Florida,
-1,Midwest,R32,Villanova,Nebraska,0.1821,Nebraska,
-1,South,R32,Duke,Saint Mary's,0.5534,Duke,
-1,South,R32,Alabama,Kansas,0.2924,Kansas,
-1,South,R32,New Mexico,Gonzaga,0.0684,New Mexico,
-1,South,R32,Auburn,Iowa St.,0.2342,Iowa St.,
-1,West,R32,Merrimack,Utah St.,0.0798,Utah St.,
-1,West,R32,Arkansas,Vanderbilt,0.1714,Vanderbilt,
-1,West,R32,Texas,Purdue,0.0618,Purdue,
-1,West,R32,Miami FL,Illinois,0.1078,Illinois,
-1,East,S16,Michigan,Stephen F. Austin,0.5012,Stephen F. Austin,winner makes Elite 8
-1,East,S16,Houston,Navy,0.5468,Houston,winner makes Elite 8
-1,Midwest,S16,Georgia,Virginia,0.1526,Virginia,winner makes Elite 8
-1,Midwest,S16,Florida,Nebraska,0.3396,Nebraska,winner makes Elite 8
-1,South,S16,Duke,Kansas,0.4382,Kansas,winner makes Elite 8
-1,South,S16,New Mexico,Iowa St.,0.0797,Iowa St.,winner makes Elite 8
-1,West,S16,Utah St.,Vanderbilt,0.1228,Vanderbilt,winner makes Elite 8
-1,West,S16,Purdue,Illinois,0.2901,Illinois,winner makes Elite 8
-1,East,E8,Stephen F. Austin,Houston,0.0409,Houston,winner makes Final Four
-1,Midwest,E8,Virginia,Nebraska,0.1088,Nebraska,winner makes Final Four
-1,South,E8,Kansas,Iowa St.,0.1838,Kansas,winner makes Final Four
-1,West,E8,Vanderbilt,Illinois,0.2586,Illinois,winner makes Final Four
-1,East vs South,FF,Houston,Kansas,0.4359,Houston,Final Four semifinal
-1,West vs Midwest,FF,Illinois,Nebraska,0.3018,Illinois,Final Four semifinal
-1,Championship,Championship,Houston,Illinois,0.2876,Illinois,CHAMPION
-1,---,SUMMARY,"E8: Stephen F. Austin, Houston, Virginia, Nebraska, Kansas, Iowa St., Vanderbilt, Illinois","FF: Houston, Kansas, Illinois, Nebraska",---,Illinois,CHAMPION: Illinois
-2,East,R64,Michigan,Tennessee Martin,0.4752,Michigan,
-2,East,R64,N.C. State,UCF,0.2765,UCF,
-2,East,R64,St. John's,Liberty,0.5195,Liberty,
-2,East,R64,BYU,Stephen F. Austin,0.5756,BYU,
-2,East,R64,Tennessee,Ohio St.,0.394,Ohio St.,
-2,East,R64,Houston,UNC Wilmington,0.6756,Houston,
-2,East,R64,Saint Louis,Wisconsin,0.2026,Wisconsin,
-2,East,R64,Michigan St.,Navy,0.5042,Navy,
-2,Midwest,R64,Connecticut,Bethune Cookman,0.5571,Connecticut,
-2,Midwest,R64,Iowa,Georgia,0.3221,Iowa,
-2,Midwest,R64,Virginia,Tulsa,0.4164,Tulsa,
-2,Midwest,R64,Texas Tech,North Dakota St.,0.7756,Texas Tech,
-2,Midwest,R64,North Carolina,Indiana,0.2348,Indiana,
-2,Midwest,R64,Florida,Portland St.,0.5254,Portland St.,
-2,Midwest,R64,Villanova,San Diego St.,0.3082,Villanova,
-2,Midwest,R64,Nebraska,Austin Peay,0.5849,Nebraska,
-2,South,R64,Duke,Vermont,0.5223,Duke,
-2,South,R64,Kentucky,Saint Mary's,0.3389,Saint Mary's,
-2,South,R64,Alabama,Yale,0.467,Yale,
-2,South,R64,Kansas,Troy,0.6218,Kansas,
-2,South,R64,Clemson,New Mexico,0.3075,Clemson,
-2,South,R64,Gonzaga,Winthrop,0.5887,Gonzaga,
-2,South,R64,Auburn,UCLA,0.4363,Auburn,
-2,South,R64,Iowa St.,Wright St.,0.6922,Wright St.,
-2,West,R64,Arizona,Merrimack,0.358,Merrimack,
-2,West,R64,Texas A&M,Utah St.,0.2034,Utah St.,
-2,West,R64,Arkansas,Belmont,0.6507,Arkansas,
-2,West,R64,Vanderbilt,UC Irvine,0.7445,Vanderbilt,
-2,West,R64,Louisville,Texas,0.3449,Texas,
-2,West,R64,Purdue,East Tennessee St.,0.8044,Purdue,
-2,West,R64,SMU,Miami FL,0.3443,Miami FL,
-2,West,R64,Illinois,UT Arlington,0.4943,UT Arlington,
-2,East,R32,Michigan,UCF,0.4451,UCF,
-2,East,R32,Liberty,BYU,0.1418,BYU,
-2,East,R32,Ohio St.,Houston,0.0979,Houston,
-2,East,R32,Wisconsin,Navy,0.7502,Wisconsin,
-2,Midwest,R32,Connecticut,Iowa,0.4976,Connecticut,
-2,Midwest,R32,Tulsa,Texas Tech,0.0686,Tulsa,
-2,Midwest,R32,Indiana,Portland St.,0.4969,Portland St.,
-2,Midwest,R32,Villanova,Nebraska,0.1821,Nebraska,
-2,South,R32,Duke,Saint Mary's,0.5534,Duke,
-2,South,R32,Yale,Kansas,0.1625,Kansas,
-2,South,R32,Clemson,Gonzaga,0.097,Gonzaga,
-2,South,R32,Auburn,Wright St.,0.7049,Auburn,
-2,West,R32,Merrimack,Utah St.,0.0798,Utah St.,
-2,West,R32,Arkansas,Vanderbilt,0.1714,Vanderbilt,
-2,West,R32,Texas,Purdue,0.0618,Purdue,
-2,West,R32,Miami FL,UT Arlington,0.3793,Miami FL,
-2,East,S16,UCF,BYU,0.2214,UCF,winner makes Elite 8
-2,East,S16,Houston,Wisconsin,0.4363,Wisconsin,winner makes Elite 8
-2,Midwest,S16,Connecticut,Tulsa,0.513,Tulsa,winner makes Elite 8
-2,Midwest,S16,Portland St.,Nebraska,0.067,Nebraska,winner makes Elite 8
-2,South,S16,Duke,Kansas,0.4382,Kansas,winner makes Elite 8
-2,South,S16,Gonzaga,Auburn,0.433,Auburn,winner makes Elite 8
-2,West,S16,Utah St.,Vanderbilt,0.1228,Vanderbilt,winner makes Elite 8
-2,West,S16,Purdue,Miami FL,0.6097,Miami FL,winner makes Elite 8
-2,East,E8,UCF,Wisconsin,0.387,Wisconsin,winner makes Final Four
-2,Midwest,E8,Tulsa,Nebraska,0.0689,Nebraska,winner makes Final Four
-2,South,E8,Kansas,Auburn,0.2716,Auburn,winner makes Final Four
-2,West,E8,Vanderbilt,Miami FL,0.5504,Vanderbilt,winner makes Final Four
-2,East vs South,FF,Wisconsin,Auburn,0.178,Wisconsin,Final Four semifinal
-2,West vs Midwest,FF,Vanderbilt,Nebraska,0.279,Vanderbilt,Final Four semifinal
-2,Championship,Championship,Wisconsin,Vanderbilt,0.0882,Vanderbilt,CHAMPION
-2,---,SUMMARY,"E8: UCF, Wisconsin, Tulsa, Nebraska, Kansas, Auburn, Vanderbilt, Miami FL","FF: Wisconsin, Auburn, Vanderbilt, Nebraska",---,Vanderbilt,CHAMPION: Vanderbilt
-3,East,R64,Michigan,Tennessee Martin,0.4752,Tennessee Martin,
-3,East,R64,N.C. State,UCF,0.2765,UCF,
-3,East,R64,St. John's,Liberty,0.5195,St. John's,
-3,East,R64,BYU,Stephen F. Austin,0.5756,BYU,
-3,East,R64,Tennessee,Ohio St.,0.394,Ohio St.,
-3,East,R64,Houston,UNC Wilmington,0.6756,Houston,
-3,East,R64,Saint Louis,Wisconsin,0.2026,Saint Louis,
-3,East,R64,Michigan St.,Navy,0.5042,Michigan St.,
-3,Midwest,R64,Connecticut,Bethune Cookman,0.5571,Bethune Cookman,
-3,Midwest,R64,Iowa,Georgia,0.3221,Georgia,
-3,Midwest,R64,Virginia,Tulsa,0.4164,Tulsa,
-3,Midwest,R64,Texas Tech,North Dakota St.,0.7756,Texas Tech,
-3,Midwest,R64,North Carolina,Indiana,0.2348,Indiana,
-3,Midwest,R64,Florida,Portland St.,0.5254,Portland St.,
-3,Midwest,R64,Villanova,San Diego St.,0.3082,San Diego St.,
-3,Midwest,R64,Nebraska,Austin Peay,0.5849,Nebraska,
-3,South,R64,Duke,Vermont,0.5223,Duke,
-3,South,R64,Kentucky,Saint Mary's,0.3389,Kentucky,
-3,South,R64,Alabama,Yale,0.467,Alabama,
-3,South,R64,Kansas,Troy,0.6218,Kansas,
-3,South,R64,Clemson,New Mexico,0.3075,New Mexico,
-3,South,R64,Gonzaga,Winthrop,0.5887,Gonzaga,
-3,South,R64,Auburn,UCLA,0.4363,Auburn,
-3,South,R64,Iowa St.,Wright St.,0.6922,Iowa St.,
-3,West,R64,Arizona,Merrimack,0.358,Merrimack,
-3,West,R64,Texas A&M,Utah St.,0.2034,Utah St.,
-3,West,R64,Arkansas,Belmont,0.6507,Arkansas,
-3,West,R64,Vanderbilt,UC Irvine,0.7445,Vanderbilt,
-3,West,R64,Louisville,Texas,0.3449,Texas,
-3,West,R64,Purdue,East Tennessee St.,0.8044,Purdue,
-3,West,R64,SMU,Miami FL,0.3443,Miami FL,
-3,West,R64,Illinois,UT Arlington,0.4943,UT Arlington,
-3,East,R32,Tennessee Martin,UCF,0.0546,UCF,
-3,East,R32,St. John's,BYU,0.1957,BYU,
-3,East,R32,Ohio St.,Houston,0.0979,Houston,
-3,East,R32,Saint Louis,Michigan St.,0.0898,Michigan St.,
-3,Midwest,R32,Bethune Cookman,Georgia,0.1443,Georgia,
-3,Midwest,R32,Tulsa,Texas Tech,0.0686,Texas Tech,
-3,Midwest,R32,Indiana,Portland St.,0.4969,Indiana,
-3,Midwest,R32,San Diego St.,Nebraska,0.1567,Nebraska,
-3,South,R32,Duke,Kentucky,0.4614,Duke,
-3,South,R32,Alabama,Kansas,0.2924,Alabama,
-3,South,R32,New Mexico,Gonzaga,0.0684,New Mexico,
-3,South,R32,Auburn,Iowa St.,0.2342,Iowa St.,
-3,West,R32,Merrimack,Utah St.,0.0798,Utah St.,
-3,West,R32,Arkansas,Vanderbilt,0.1714,Arkansas,
-3,West,R32,Texas,Purdue,0.0618,Purdue,
-3,West,R32,Miami FL,UT Arlington,0.3793,Miami FL,
-3,East,S16,UCF,BYU,0.2214,BYU,winner makes Elite 8
-3,East,S16,Houston,Michigan St.,0.2541,Houston,winner makes Elite 8
-3,Midwest,S16,Georgia,Texas Tech,0.0737,Texas Tech,winner makes Elite 8
-3,Midwest,S16,Indiana,Nebraska,0.1145,Nebraska,winner makes Elite 8
-3,South,S16,Duke,Alabama,0.3918,Alabama,winner makes Elite 8
-3,South,S16,New Mexico,Iowa St.,0.0797,Iowa St.,winner makes Elite 8
-3,West,S16,Utah St.,Arkansas,0.1988,Arkansas,winner makes Elite 8
-3,West,S16,Purdue,Miami FL,0.6097,Purdue,winner makes Elite 8
-3,East,E8,BYU,Houston,0.1446,Houston,winner makes Final Four
-3,Midwest,E8,Texas Tech,Nebraska,0.3528,Nebraska,winner makes Final Four
-3,South,E8,Alabama,Iowa St.,0.2486,Iowa St.,winner makes Final Four
-3,West,E8,Arkansas,Purdue,0.1029,Purdue,winner makes Final Four
-3,East vs South,FF,Houston,Iowa St.,0.2539,Iowa St.,Final Four semifinal
-3,West vs Midwest,FF,Purdue,Nebraska,0.4035,Nebraska,Final Four semifinal
-3,Championship,Championship,Iowa St.,Nebraska,0.2928,Nebraska,CHAMPION
-3,---,SUMMARY,"E8: BYU, Houston, Texas Tech, Nebraska, Alabama, Iowa St., Arkansas, Purdue","FF: Houston, Iowa St., Purdue, Nebraska",---,Nebraska,CHAMPION: Nebraska
-4,East,R64,Michigan,Tennessee Martin,0.4752,Michigan,
-4,East,R64,N.C. State,UCF,0.2765,N.C. State,
-4,East,R64,St. John's,Liberty,0.5195,Liberty,
-4,East,R64,BYU,Stephen F. Austin,0.5756,Stephen F. Austin,
-4,East,R64,Tennessee,Ohio St.,0.394,Ohio St.,
-4,East,R64,Houston,UNC Wilmington,0.6756,Houston,
-4,East,R64,Saint Louis,Wisconsin,0.2026,Wisconsin,
-4,East,R64,Michigan St.,Navy,0.5042,Navy,
-4,Midwest,R64,Connecticut,Bethune Cookman,0.5571,Bethune Cookman,
-4,Midwest,R64,Iowa,Georgia,0.3221,Georgia,
-4,Midwest,R64,Virginia,Tulsa,0.4164,Tulsa,
-4,Midwest,R64,Texas Tech,North Dakota St.,0.7756,Texas Tech,
-4,Midwest,R64,North Carolina,Indiana,0.2348,North Carolina,
-4,Midwest,R64,Florida,Portland St.,0.5254,Florida,
-4,Midwest,R64,Villanova,San Diego St.,0.3082,San Diego St.,
-4,Midwest,R64,Nebraska,Austin Peay,0.5849,Austin Peay,
-4,South,R64,Duke,Vermont,0.5223,Duke,
-4,South,R64,Kentucky,Saint Mary's,0.3389,Kentucky,
-4,South,R64,Alabama,Yale,0.467,Yale,
-4,South,R64,Kansas,Troy,0.6218,Kansas,
-4,South,R64,Clemson,New Mexico,0.3075,Clemson,
-4,South,R64,Gonzaga,Winthrop,0.5887,Gonzaga,
-4,South,R64,Auburn,UCLA,0.4363,UCLA,
-4,South,R64,Iowa St.,Wright St.,0.6922,Iowa St.,
-4,West,R64,Arizona,Merrimack,0.358,Arizona,
-4,West,R64,Texas A&M,Utah St.,0.2034,Utah St.,
-4,West,R64,Arkansas,Belmont,0.6507,Arkansas,
-4,West,R64,Vanderbilt,UC Irvine,0.7445,Vanderbilt,
-4,West,R64,Louisville,Texas,0.3449,Texas,
-4,West,R64,Purdue,East Tennessee St.,0.8044,Purdue,
-4,West,R64,SMU,Miami FL,0.3443,Miami FL,
-4,West,R64,Illinois,UT Arlington,0.4943,UT Arlington,
-4,East,R32,Michigan,N.C. State,0.5114,N.C. State,
-4,East,R32,Liberty,Stephen F. Austin,0.3411,Liberty,
-4,East,R32,Ohio St.,Houston,0.0979,Houston,
-4,East,R32,Wisconsin,Navy,0.7502,Wisconsin,
-4,Midwest,R32,Bethune Cookman,Georgia,0.1443,Georgia,
-4,Midwest,R32,Tulsa,Texas Tech,0.0686,Texas Tech,
-4,Midwest,R32,North Carolina,Florida,0.121,Florida,
-4,Midwest,R32,San Diego St.,Austin Peay,0.5617,Austin Peay,
-4,South,R32,Duke,Kentucky,0.4614,Kentucky,
-4,South,R32,Yale,Kansas,0.1625,Kansas,
-4,South,R32,Clemson,Gonzaga,0.097,Gonzaga,
-4,South,R32,UCLA,Iowa St.,0.0813,Iowa St.,
-4,West,R32,Arizona,Utah St.,0.4398,Utah St.,
-4,West,R32,Arkansas,Vanderbilt,0.1714,Vanderbilt,
-4,West,R32,Texas,Purdue,0.0618,Purdue,
-4,West,R32,Miami FL,UT Arlington,0.3793,Miami FL,
-4,East,S16,N.C. State,Liberty,0.537,N.C. State,winner makes Elite 8
-4,East,S16,Houston,Wisconsin,0.4363,Wisconsin,winner makes Elite 8
-4,Midwest,S16,Georgia,Texas Tech,0.0737,Texas Tech,winner makes Elite 8
-4,Midwest,S16,Florida,Austin Peay,0.4543,Austin Peay,winner makes Elite 8
-4,South,S16,Kentucky,Kansas,0.1672,Kansas,winner makes Elite 8
-4,South,S16,Gonzaga,Iowa St.,0.2962,Iowa St.,winner makes Elite 8
-4,West,S16,Utah St.,Vanderbilt,0.1228,Vanderbilt,winner makes Elite 8
-4,West,S16,Purdue,Miami FL,0.6097,Purdue,winner makes Elite 8
-4,East,E8,N.C. State,Wisconsin,0.2845,Wisconsin,winner makes Final Four
-4,Midwest,E8,Texas Tech,Austin Peay,0.6286,Texas Tech,winner makes Final Four
-4,South,E8,Kansas,Iowa St.,0.1838,Iowa St.,winner makes Final Four
-4,West,E8,Vanderbilt,Purdue,0.1657,Purdue,winner makes Final Four
-4,East vs South,FF,Wisconsin,Iowa St.,0.1329,Iowa St.,Final Four semifinal
-4,West vs Midwest,FF,Purdue,Texas Tech,0.2615,Texas Tech,Final Four semifinal
-4,Championship,Championship,Iowa St.,Texas Tech,0.2511,Texas Tech,CHAMPION
-4,---,SUMMARY,"E8: N.C. State, Wisconsin, Texas Tech, Austin Peay, Kansas, Iowa St., Vanderbilt, Purdue","FF: Wisconsin, Iowa St., Purdue, Texas Tech",---,Texas Tech,CHAMPION: Texas Tech
-5,East,R64,Michigan,Tennessee Martin,0.4752,Tennessee Martin,
-5,East,R64,N.C. State,UCF,0.2765,UCF,
-5,East,R64,St. John's,Liberty,0.5195,St. John's,
-5,East,R64,BYU,Stephen F. Austin,0.5756,BYU,
-5,East,R64,Tennessee,Ohio St.,0.394,Ohio St.,
-5,East,R64,Houston,UNC Wilmington,0.6756,UNC Wilmington,
-5,East,R64,Saint Louis,Wisconsin,0.2026,Wisconsin,
-5,East,R64,Michigan St.,Navy,0.5042,Michigan St.,
-5,Midwest,R64,Connecticut,Bethune Cookman,0.5571,Bethune Cookman,
-5,Midwest,R64,Iowa,Georgia,0.3221,Georgia,
-5,Midwest,R64,Virginia,Tulsa,0.4164,Virginia,
-5,Midwest,R64,Texas Tech,North Dakota St.,0.7756,Texas Tech,
-5,Midwest,R64,North Carolina,Indiana,0.2348,Indiana,
-5,Midwest,R64,Florida,Portland St.,0.5254,Portland St.,
-5,Midwest,R64,Villanova,San Diego St.,0.3082,San Diego St.,
-5,Midwest,R64,Nebraska,Austin Peay,0.5849,Austin Peay,
-5,South,R64,Duke,Vermont,0.5223,Duke,
-5,South,R64,Kentucky,Saint Mary's,0.3389,Kentucky,
-5,South,R64,Alabama,Yale,0.467,Yale,
-5,South,R64,Kansas,Troy,0.6218,Troy,
-5,South,R64,Clemson,New Mexico,0.3075,New Mexico,
-5,South,R64,Gonzaga,Winthrop,0.5887,Winthrop,
-5,South,R64,Auburn,UCLA,0.4363,UCLA,
-5,South,R64,Iowa St.,Wright St.,0.6922,Iowa St.,
-5,West,R64,Arizona,Merrimack,0.358,Merrimack,
-5,West,R64,Texas A&M,Utah St.,0.2034,Utah St.,
-5,West,R64,Arkansas,Belmont,0.6507,Belmont,
-5,West,R64,Vanderbilt,UC Irvine,0.7445,UC Irvine,
-5,West,R64,Louisville,Texas,0.3449,Texas,
-5,West,R64,Purdue,East Tennessee St.,0.8044,Purdue,
-5,West,R64,SMU,Miami FL,0.3443,Miami FL,
-5,West,R64,Illinois,UT Arlington,0.4943,Illinois,
-5,East,R32,Tennessee Martin,UCF,0.0546,UCF,
-5,East,R32,St. John's,BYU,0.1957,St. John's,
-5,East,R32,Ohio St.,UNC Wilmington,0.642,Ohio St.,
-5,East,R32,Wisconsin,Michigan St.,0.1563,Michigan St.,
-5,Midwest,R32,Bethune Cookman,Georgia,0.1443,Georgia,
-5,Midwest,R32,Virginia,Texas Tech,0.1066,Texas Tech,
-5,Midwest,R32,Indiana,Portland St.,0.4969,Indiana,
-5,Midwest,R32,San Diego St.,Austin Peay,0.5617,San Diego St.,
-5,South,R32,Duke,Kentucky,0.4614,Kentucky,
-5,South,R32,Yale,Troy,0.5487,Yale,
-5,South,R32,New Mexico,Winthrop,0.4226,New Mexico,
-5,South,R32,UCLA,Iowa St.,0.0813,Iowa St.,
-5,West,R32,Merrimack,Utah St.,0.0798,Utah St.,
-5,West,R32,Belmont,UC Irvine,0.3788,Belmont,
-5,West,R32,Texas,Purdue,0.0618,Purdue,
-5,West,R32,Miami FL,Illinois,0.1078,Miami FL,
-5,East,S16,UCF,St. John's,0.2971,UCF,winner makes Elite 8
-5,East,S16,Ohio St.,Michigan St.,0.1201,Michigan St.,winner makes Elite 8
-5,Midwest,S16,Georgia,Texas Tech,0.0737,Texas Tech,winner makes Elite 8
-5,Midwest,S16,Indiana,San Diego St.,0.1698,San Diego St.,winner makes Elite 8
-5,South,S16,Kentucky,Yale,0.3612,Yale,winner makes Elite 8
-5,South,S16,New Mexico,Iowa St.,0.0797,Iowa St.,winner makes Elite 8
-5,West,S16,Utah St.,Belmont,0.5733,Utah St.,winner makes Elite 8
-5,West,S16,Purdue,Miami FL,0.6097,Purdue,winner makes Elite 8
-5,East,E8,UCF,Michigan St.,0.224,Michigan St.,winner makes Final Four
-5,Midwest,E8,Texas Tech,San Diego St.,0.5816,Texas Tech,winner makes Final Four
-5,South,E8,Yale,Iowa St.,0.1239,Iowa St.,winner makes Final Four
-5,West,E8,Utah St.,Purdue,0.0788,Utah St.,winner makes Final Four
-5,East vs South,FF,Michigan St.,Iowa St.,0.2809,Michigan St.,Final Four semifinal
-5,West vs Midwest,FF,Utah St.,Texas Tech,0.1174,Texas Tech,Final Four semifinal
-5,Championship,Championship,Michigan St.,Texas Tech,0.2159,Texas Tech,CHAMPION
-5,---,SUMMARY,"E8: UCF, Michigan St., Texas Tech, San Diego St., Yale, Iowa St., Utah St., Purdue","FF: Michigan St., Iowa St., Utah St., Texas Tech",---,Texas Tech,CHAMPION: Texas Tech
+1,East,R64,Michigan,LIU,0.4634,Michigan,
+1,East,R64,Clemson,Utah St.,0.18,Utah St.,
+1,East,R64,Florida,Villanova,0.4088,Villanova,
+1,East,R64,Kansas,High Point,0.4904,High Point,
+1,East,R64,USC,Seton Hall,0.3255,USC,
+1,East,R64,Alabama,Siena,0.653,Alabama,
+1,East,R64,SMU,N.C. State,0.2153,SMU,
+1,East,R64,BYU,North Dakota St.,0.4926,North Dakota St.,
+1,Midwest,R64,Iowa St.,Norfolk St.,0.5722,Norfolk St.,
+1,Midwest,R64,Georgia,Miami FL,0.1871,Miami FL,
+1,Midwest,R64,Texas Tech,Utah Valley,0.6902,Texas Tech,
+1,Midwest,R64,North Carolina,UNC Wilmington,0.6334,UNC Wilmington,
+1,Midwest,R64,Auburn,Yale,0.5405,Yale,
+1,Midwest,R64,Vanderbilt,Northern Colorado,0.6175,Vanderbilt,
+1,Midwest,R64,Iowa,Ohio St.,0.4349,Iowa,
+1,Midwest,R64,Purdue,Colgate,0.5188,Purdue,
+1,South,R64,Duke,Youngstown St.,0.5443,Duke,
+1,South,R64,UCLA,Kentucky,0.1453,Kentucky,
+1,South,R64,St. John's,Belmont,0.6798,St. John's,
+1,South,R64,Illinois,East Tennessee St.,0.6344,Illinois,
+1,South,R64,Virginia,Saint Louis,0.3122,Saint Louis,
+1,South,R64,Houston,Hawaii,0.6928,Houston,
+1,South,R64,Nebraska,Oklahoma St.,0.3795,Nebraska,
+1,South,R64,Gonzaga,Stephen F. Austin,0.5599,Gonzaga,
+1,West,R64,Arizona,Vermont,0.5836,Arizona,
+1,West,R64,Indiana,Wisconsin,0.2259,Wisconsin,
+1,West,R64,Tennessee,Tulsa,0.4904,Tennessee,
+1,West,R64,Louisville,Liberty,0.4285,Liberty,
+1,West,R64,Arkansas,Akron,0.6757,Arkansas,
+1,West,R64,Michigan St.,Arkansas St.,0.5405,Michigan St.,
+1,West,R64,Saint Mary's,Baylor,0.2481,Baylor,
+1,West,R64,Connecticut,Lipscomb,0.5576,Connecticut,
+1,East,R32,Michigan,Utah St.,0.4596,Michigan,
+1,East,R32,Villanova,High Point,0.5737,High Point,
+1,East,R32,USC,Alabama,0.1275,Alabama,
+1,East,R32,SMU,North Dakota St.,0.4964,North Dakota St.,
+1,Midwest,R32,Norfolk St.,Miami FL,0.0971,Miami FL,
+1,Midwest,R32,Texas Tech,UNC Wilmington,0.7358,Texas Tech,
+1,Midwest,R32,Yale,Vanderbilt,0.1164,Vanderbilt,
+1,Midwest,R32,Iowa,Purdue,0.1535,Purdue,
+1,South,R32,Duke,Kentucky,0.4118,Duke,
+1,South,R32,St. John's,Illinois,0.1415,Illinois,
+1,South,R32,Saint Louis,Houston,0.0692,Saint Louis,
+1,South,R32,Nebraska,Gonzaga,0.2183,Gonzaga,
+1,West,R32,Arizona,Wisconsin,0.4933,Arizona,
+1,West,R32,Tennessee,Liberty,0.4406,Liberty,
+1,West,R32,Arkansas,Michigan St.,0.2397,Michigan St.,
+1,West,R32,Baylor,Connecticut,0.1091,Connecticut,
+1,East,S16,Michigan,High Point,0.495,High Point,winner makes Elite 8
+1,East,S16,Alabama,North Dakota St.,0.589,Alabama,winner makes Elite 8
+1,Midwest,S16,Miami FL,Texas Tech,0.0879,Texas Tech,winner makes Elite 8
+1,Midwest,S16,Vanderbilt,Purdue,0.1495,Purdue,winner makes Elite 8
+1,South,S16,Duke,Illinois,0.3418,Illinois,winner makes Elite 8
+1,South,S16,Saint Louis,Gonzaga,0.0837,Gonzaga,winner makes Elite 8
+1,West,S16,Arizona,Liberty,0.5123,Liberty,winner makes Elite 8
+1,West,S16,Michigan St.,Connecticut,0.1374,Connecticut,winner makes Elite 8
+1,East,E8,High Point,Alabama,0.0726,Alabama,winner makes Final Four
+1,Midwest,E8,Texas Tech,Purdue,0.1656,Purdue,winner makes Final Four
+1,South,E8,Illinois,Gonzaga,0.3188,Illinois,winner makes Final Four
+1,West,E8,Liberty,Connecticut,0.1407,Connecticut,winner makes Final Four
+1,East vs South,FF,Alabama,Illinois,0.2277,Illinois,Final Four semifinal
+1,West vs Midwest,FF,Connecticut,Purdue,0.2584,Purdue,Final Four semifinal
+1,Championship,Championship,Illinois,Purdue,0.2227,Purdue,CHAMPION
+1,---,SUMMARY,"E8: High Point, Alabama, Texas Tech, Purdue, Illinois, Gonzaga, Liberty, Connecticut","FF: Alabama, Illinois, Connecticut, Purdue",---,Purdue,CHAMPION: Purdue
+2,East,R64,Michigan,LIU,0.4634,Michigan,
+2,East,R64,Clemson,Utah St.,0.18,Utah St.,
+2,East,R64,Florida,Villanova,0.4088,Villanova,
+2,East,R64,Kansas,High Point,0.4904,Kansas,
+2,East,R64,USC,Seton Hall,0.3255,Seton Hall,
+2,East,R64,Alabama,Siena,0.653,Alabama,
+2,East,R64,SMU,N.C. State,0.2153,N.C. State,
+2,East,R64,BYU,North Dakota St.,0.4926,North Dakota St.,
+2,Midwest,R64,Iowa St.,Norfolk St.,0.5722,Iowa St.,
+2,Midwest,R64,Georgia,Miami FL,0.1871,Georgia,
+2,Midwest,R64,Texas Tech,Utah Valley,0.6902,Utah Valley,
+2,Midwest,R64,North Carolina,UNC Wilmington,0.6334,UNC Wilmington,
+2,Midwest,R64,Auburn,Yale,0.5405,Yale,
+2,Midwest,R64,Vanderbilt,Northern Colorado,0.6175,Northern Colorado,
+2,Midwest,R64,Iowa,Ohio St.,0.4349,Iowa,
+2,Midwest,R64,Purdue,Colgate,0.5188,Purdue,
+2,South,R64,Duke,Youngstown St.,0.5443,Duke,
+2,South,R64,UCLA,Kentucky,0.1453,Kentucky,
+2,South,R64,St. John's,Belmont,0.6798,St. John's,
+2,South,R64,Illinois,East Tennessee St.,0.6344,Illinois,
+2,South,R64,Virginia,Saint Louis,0.3122,Virginia,
+2,South,R64,Houston,Hawaii,0.6928,Houston,
+2,South,R64,Nebraska,Oklahoma St.,0.3795,Nebraska,
+2,South,R64,Gonzaga,Stephen F. Austin,0.5599,Stephen F. Austin,
+2,West,R64,Arizona,Vermont,0.5836,Vermont,
+2,West,R64,Indiana,Wisconsin,0.2259,Wisconsin,
+2,West,R64,Tennessee,Tulsa,0.4904,Tennessee,
+2,West,R64,Louisville,Liberty,0.4285,Louisville,
+2,West,R64,Arkansas,Akron,0.6757,Akron,
+2,West,R64,Michigan St.,Arkansas St.,0.5405,Arkansas St.,
+2,West,R64,Saint Mary's,Baylor,0.2481,Baylor,
+2,West,R64,Connecticut,Lipscomb,0.5576,Lipscomb,
+2,East,R32,Michigan,Utah St.,0.4596,Utah St.,
+2,East,R32,Villanova,Kansas,0.1958,Kansas,
+2,East,R32,Seton Hall,Alabama,0.1164,Alabama,
+2,East,R32,N.C. State,North Dakota St.,0.7075,N.C. State,
+2,Midwest,R32,Iowa St.,Georgia,0.5155,Iowa St.,
+2,Midwest,R32,Utah Valley,UNC Wilmington,0.4376,Utah Valley,
+2,Midwest,R32,Yale,Northern Colorado,0.5579,Northern Colorado,
+2,Midwest,R32,Iowa,Purdue,0.1535,Purdue,
+2,South,R32,Duke,Kentucky,0.4118,Kentucky,
+2,South,R32,St. John's,Illinois,0.1415,Illinois,
+2,South,R32,Virginia,Houston,0.0785,Houston,
+2,South,R32,Nebraska,Stephen F. Austin,0.7181,Nebraska,
+2,West,R32,Vermont,Wisconsin,0.0739,Wisconsin,
+2,West,R32,Tennessee,Louisville,0.2619,Tennessee,
+2,West,R32,Akron,Arkansas St.,0.4045,Akron,
+2,West,R32,Baylor,Lipscomb,0.426,Baylor,
+2,East,S16,Utah St.,Kansas,0.246,Utah St.,winner makes Elite 8
+2,East,S16,Alabama,N.C. State,0.3296,N.C. State,winner makes Elite 8
+2,Midwest,S16,Iowa St.,Utah Valley,0.7322,Utah Valley,winner makes Elite 8
+2,Midwest,S16,Northern Colorado,Purdue,0.0581,Purdue,winner makes Elite 8
+2,South,S16,Kentucky,Illinois,0.1552,Illinois,winner makes Elite 8
+2,South,S16,Houston,Nebraska,0.3298,Nebraska,winner makes Elite 8
+2,West,S16,Wisconsin,Tennessee,0.1637,Tennessee,winner makes Elite 8
+2,West,S16,Akron,Baylor,0.2269,Baylor,winner makes Elite 8
+2,East,E8,Utah St.,N.C. State,0.2681,N.C. State,winner makes Final Four
+2,Midwest,E8,Utah Valley,Purdue,0.0568,Purdue,winner makes Final Four
+2,South,E8,Illinois,Nebraska,0.3504,Nebraska,winner makes Final Four
+2,West,E8,Tennessee,Baylor,0.3863,Tennessee,winner makes Final Four
+2,East vs South,FF,N.C. State,Nebraska,0.1923,N.C. State,Final Four semifinal
+2,West vs Midwest,FF,Tennessee,Purdue,0.1168,Purdue,Final Four semifinal
+2,Championship,Championship,N.C. State,Purdue,0.1261,Purdue,CHAMPION
+2,---,SUMMARY,"E8: Utah St., N.C. State, Utah Valley, Purdue, Illinois, Nebraska, Tennessee, Baylor","FF: N.C. State, Nebraska, Tennessee, Purdue",---,Purdue,CHAMPION: Purdue
+3,East,R64,Michigan,LIU,0.4634,LIU,
+3,East,R64,Clemson,Utah St.,0.18,Utah St.,
+3,East,R64,Florida,Villanova,0.4088,Florida,
+3,East,R64,Kansas,High Point,0.4904,High Point,
+3,East,R64,USC,Seton Hall,0.3255,Seton Hall,
+3,East,R64,Alabama,Siena,0.653,Alabama,
+3,East,R64,SMU,N.C. State,0.2153,SMU,
+3,East,R64,BYU,North Dakota St.,0.4926,BYU,
+3,Midwest,R64,Iowa St.,Norfolk St.,0.5722,Norfolk St.,
+3,Midwest,R64,Georgia,Miami FL,0.1871,Miami FL,
+3,Midwest,R64,Texas Tech,Utah Valley,0.6902,Texas Tech,
+3,Midwest,R64,North Carolina,UNC Wilmington,0.6334,UNC Wilmington,
+3,Midwest,R64,Auburn,Yale,0.5405,Auburn,
+3,Midwest,R64,Vanderbilt,Northern Colorado,0.6175,Northern Colorado,
+3,Midwest,R64,Iowa,Ohio St.,0.4349,Ohio St.,
+3,Midwest,R64,Purdue,Colgate,0.5188,Purdue,
+3,South,R64,Duke,Youngstown St.,0.5443,Duke,
+3,South,R64,UCLA,Kentucky,0.1453,Kentucky,
+3,South,R64,St. John's,Belmont,0.6798,St. John's,
+3,South,R64,Illinois,East Tennessee St.,0.6344,Illinois,
+3,South,R64,Virginia,Saint Louis,0.3122,Saint Louis,
+3,South,R64,Houston,Hawaii,0.6928,Houston,
+3,South,R64,Nebraska,Oklahoma St.,0.3795,Nebraska,
+3,South,R64,Gonzaga,Stephen F. Austin,0.5599,Gonzaga,
+3,West,R64,Arizona,Vermont,0.5836,Vermont,
+3,West,R64,Indiana,Wisconsin,0.2259,Wisconsin,
+3,West,R64,Tennessee,Tulsa,0.4904,Tennessee,
+3,West,R64,Louisville,Liberty,0.4285,Liberty,
+3,West,R64,Arkansas,Akron,0.6757,Akron,
+3,West,R64,Michigan St.,Arkansas St.,0.5405,Michigan St.,
+3,West,R64,Saint Mary's,Baylor,0.2481,Baylor,
+3,West,R64,Connecticut,Lipscomb,0.5576,Lipscomb,
+3,East,R32,LIU,Utah St.,0.1052,Utah St.,
+3,East,R32,Florida,High Point,0.5415,High Point,
+3,East,R32,Seton Hall,Alabama,0.1164,Alabama,
+3,East,R32,SMU,BYU,0.2217,BYU,
+3,Midwest,R32,Norfolk St.,Miami FL,0.0971,Miami FL,
+3,Midwest,R32,Texas Tech,UNC Wilmington,0.7358,Texas Tech,
+3,Midwest,R32,Auburn,Northern Colorado,0.6958,Auburn,
+3,Midwest,R32,Ohio St.,Purdue,0.073,Purdue,
+3,South,R32,Duke,Kentucky,0.4118,Duke,
+3,South,R32,St. John's,Illinois,0.1415,Illinois,
+3,South,R32,Saint Louis,Houston,0.0692,Saint Louis,
+3,South,R32,Nebraska,Gonzaga,0.2183,Gonzaga,
+3,West,R32,Vermont,Wisconsin,0.0739,Wisconsin,
+3,West,R32,Tennessee,Liberty,0.4406,Tennessee,
+3,West,R32,Akron,Michigan St.,0.1137,Michigan St.,
+3,West,R32,Baylor,Lipscomb,0.426,Baylor,
+3,East,S16,Utah St.,High Point,0.5261,High Point,winner makes Elite 8
+3,East,S16,Alabama,BYU,0.3395,Alabama,winner makes Elite 8
+3,Midwest,S16,Miami FL,Texas Tech,0.0879,Texas Tech,winner makes Elite 8
+3,Midwest,S16,Auburn,Purdue,0.1676,Purdue,winner makes Elite 8
+3,South,S16,Duke,Illinois,0.3418,Illinois,winner makes Elite 8
+3,South,S16,Saint Louis,Gonzaga,0.0837,Gonzaga,winner makes Elite 8
+3,West,S16,Wisconsin,Tennessee,0.1637,Tennessee,winner makes Elite 8
+3,West,S16,Michigan St.,Baylor,0.386,Michigan St.,winner makes Elite 8
+3,East,E8,High Point,Alabama,0.0726,Alabama,winner makes Final Four
+3,Midwest,E8,Texas Tech,Purdue,0.1656,Purdue,winner makes Final Four
+3,South,E8,Illinois,Gonzaga,0.3188,Illinois,winner makes Final Four
+3,West,E8,Tennessee,Michigan St.,0.1835,Michigan St.,winner makes Final Four
+3,East vs South,FF,Alabama,Illinois,0.2277,Illinois,Final Four semifinal
+3,West vs Midwest,FF,Michigan St.,Purdue,0.1563,Purdue,Final Four semifinal
+3,Championship,Championship,Illinois,Purdue,0.2227,Purdue,CHAMPION
+3,---,SUMMARY,"E8: High Point, Alabama, Texas Tech, Purdue, Illinois, Gonzaga, Tennessee, Michigan St.","FF: Alabama, Illinois, Michigan St., Purdue",---,Purdue,CHAMPION: Purdue
+4,East,R64,Michigan,LIU,0.4634,Michigan,
+4,East,R64,Clemson,Utah St.,0.18,Clemson,
+4,East,R64,Florida,Villanova,0.4088,Villanova,
+4,East,R64,Kansas,High Point,0.4904,High Point,
+4,East,R64,USC,Seton Hall,0.3255,Seton Hall,
+4,East,R64,Alabama,Siena,0.653,Alabama,
+4,East,R64,SMU,N.C. State,0.2153,N.C. State,
+4,East,R64,BYU,North Dakota St.,0.4926,North Dakota St.,
+4,Midwest,R64,Iowa St.,Norfolk St.,0.5722,Norfolk St.,
+4,Midwest,R64,Georgia,Miami FL,0.1871,Miami FL,
+4,Midwest,R64,Texas Tech,Utah Valley,0.6902,Utah Valley,
+4,Midwest,R64,North Carolina,UNC Wilmington,0.6334,UNC Wilmington,
+4,Midwest,R64,Auburn,Yale,0.5405,Auburn,
+4,Midwest,R64,Vanderbilt,Northern Colorado,0.6175,Vanderbilt,
+4,Midwest,R64,Iowa,Ohio St.,0.4349,Ohio St.,
+4,Midwest,R64,Purdue,Colgate,0.5188,Colgate,
+4,South,R64,Duke,Youngstown St.,0.5443,Duke,
+4,South,R64,UCLA,Kentucky,0.1453,UCLA,
+4,South,R64,St. John's,Belmont,0.6798,St. John's,
+4,South,R64,Illinois,East Tennessee St.,0.6344,Illinois,
+4,South,R64,Virginia,Saint Louis,0.3122,Virginia,
+4,South,R64,Houston,Hawaii,0.6928,Houston,
+4,South,R64,Nebraska,Oklahoma St.,0.3795,Oklahoma St.,
+4,South,R64,Gonzaga,Stephen F. Austin,0.5599,Stephen F. Austin,
+4,West,R64,Arizona,Vermont,0.5836,Arizona,
+4,West,R64,Indiana,Wisconsin,0.2259,Wisconsin,
+4,West,R64,Tennessee,Tulsa,0.4904,Tennessee,
+4,West,R64,Louisville,Liberty,0.4285,Louisville,
+4,West,R64,Arkansas,Akron,0.6757,Akron,
+4,West,R64,Michigan St.,Arkansas St.,0.5405,Arkansas St.,
+4,West,R64,Saint Mary's,Baylor,0.2481,Baylor,
+4,West,R64,Connecticut,Lipscomb,0.5576,Lipscomb,
+4,East,R32,Michigan,Clemson,0.4659,Clemson,
+4,East,R32,Villanova,High Point,0.5737,Villanova,
+4,East,R32,Seton Hall,Alabama,0.1164,Alabama,
+4,East,R32,N.C. State,North Dakota St.,0.7075,N.C. State,
+4,Midwest,R32,Norfolk St.,Miami FL,0.0971,Miami FL,
+4,Midwest,R32,Utah Valley,UNC Wilmington,0.4376,UNC Wilmington,
+4,Midwest,R32,Auburn,Vanderbilt,0.2684,Vanderbilt,
+4,Midwest,R32,Ohio St.,Colgate,0.4487,Colgate,
+4,South,R32,Duke,UCLA,0.4901,UCLA,
+4,South,R32,St. John's,Illinois,0.1415,Illinois,
+4,South,R32,Virginia,Houston,0.0785,Houston,
+4,South,R32,Oklahoma St.,Stephen F. Austin,0.5064,Stephen F. Austin,
+4,West,R32,Arizona,Wisconsin,0.4933,Arizona,
+4,West,R32,Tennessee,Louisville,0.2619,Tennessee,
+4,West,R32,Akron,Arkansas St.,0.4045,Arkansas St.,
+4,West,R32,Baylor,Lipscomb,0.426,Baylor,
+4,East,S16,Clemson,Villanova,0.2168,Clemson,winner makes Elite 8
+4,East,S16,Alabama,N.C. State,0.3296,N.C. State,winner makes Elite 8
+4,Midwest,S16,Miami FL,UNC Wilmington,0.6225,Miami FL,winner makes Elite 8
+4,Midwest,S16,Vanderbilt,Colgate,0.5392,Colgate,winner makes Elite 8
+4,South,S16,UCLA,Illinois,0.1103,Illinois,winner makes Elite 8
+4,South,S16,Houston,Stephen F. Austin,0.7349,Stephen F. Austin,winner makes Elite 8
+4,West,S16,Arizona,Tennessee,0.4654,Arizona,winner makes Elite 8
+4,West,S16,Arkansas St.,Baylor,0.1104,Arkansas St.,winner makes Elite 8
+4,East,E8,Clemson,N.C. State,0.2041,N.C. State,winner makes Final Four
+4,Midwest,E8,Miami FL,Colgate,0.4664,Miami FL,winner makes Final Four
+4,South,E8,Illinois,Stephen F. Austin,0.5462,Stephen F. Austin,winner makes Final Four
+4,West,E8,Arizona,Arkansas St.,0.6008,Arkansas St.,winner makes Final Four
+4,East vs South,FF,N.C. State,Stephen F. Austin,0.5826,Stephen F. Austin,Final Four semifinal
+4,West vs Midwest,FF,Arkansas St.,Miami FL,0.1361,Miami FL,Final Four semifinal
+4,Championship,Championship,Stephen F. Austin,Miami FL,0.1149,Miami FL,CHAMPION
+4,---,SUMMARY,"E8: Clemson, N.C. State, Miami FL, Colgate, Illinois, Stephen F. Austin, Arizona, Arkansas St.","FF: N.C. State, Stephen F. Austin, Arkansas St., Miami FL",---,Miami FL,CHAMPION: Miami FL
+5,East,R64,Michigan,LIU,0.4634,LIU,
+5,East,R64,Clemson,Utah St.,0.18,Utah St.,
+5,East,R64,Florida,Villanova,0.4088,Florida,
+5,East,R64,Kansas,High Point,0.4904,High Point,
+5,East,R64,USC,Seton Hall,0.3255,Seton Hall,
+5,East,R64,Alabama,Siena,0.653,Siena,
+5,East,R64,SMU,N.C. State,0.2153,N.C. State,
+5,East,R64,BYU,North Dakota St.,0.4926,BYU,
+5,Midwest,R64,Iowa St.,Norfolk St.,0.5722,Norfolk St.,
+5,Midwest,R64,Georgia,Miami FL,0.1871,Miami FL,
+5,Midwest,R64,Texas Tech,Utah Valley,0.6902,Texas Tech,
+5,Midwest,R64,North Carolina,UNC Wilmington,0.6334,North Carolina,
+5,Midwest,R64,Auburn,Yale,0.5405,Yale,
+5,Midwest,R64,Vanderbilt,Northern Colorado,0.6175,Northern Colorado,
+5,Midwest,R64,Iowa,Ohio St.,0.4349,Ohio St.,
+5,Midwest,R64,Purdue,Colgate,0.5188,Colgate,
+5,South,R64,Duke,Youngstown St.,0.5443,Duke,
+5,South,R64,UCLA,Kentucky,0.1453,Kentucky,
+5,South,R64,St. John's,Belmont,0.6798,Belmont,
+5,South,R64,Illinois,East Tennessee St.,0.6344,East Tennessee St.,
+5,South,R64,Virginia,Saint Louis,0.3122,Saint Louis,
+5,South,R64,Houston,Hawaii,0.6928,Hawaii,
+5,South,R64,Nebraska,Oklahoma St.,0.3795,Oklahoma St.,
+5,South,R64,Gonzaga,Stephen F. Austin,0.5599,Gonzaga,
+5,West,R64,Arizona,Vermont,0.5836,Vermont,
+5,West,R64,Indiana,Wisconsin,0.2259,Wisconsin,
+5,West,R64,Tennessee,Tulsa,0.4904,Tulsa,
+5,West,R64,Louisville,Liberty,0.4285,Liberty,
+5,West,R64,Arkansas,Akron,0.6757,Akron,
+5,West,R64,Michigan St.,Arkansas St.,0.5405,Michigan St.,
+5,West,R64,Saint Mary's,Baylor,0.2481,Baylor,
+5,West,R64,Connecticut,Lipscomb,0.5576,Connecticut,
+5,East,R32,LIU,Utah St.,0.1052,Utah St.,
+5,East,R32,Florida,High Point,0.5415,Florida,
+5,East,R32,Seton Hall,Siena,0.5545,Seton Hall,
+5,East,R32,N.C. State,BYU,0.2601,BYU,
+5,Midwest,R32,Norfolk St.,Miami FL,0.0971,Miami FL,
+5,Midwest,R32,Texas Tech,North Carolina,0.4427,North Carolina,
+5,Midwest,R32,Yale,Northern Colorado,0.5579,Yale,
+5,Midwest,R32,Ohio St.,Colgate,0.4487,Ohio St.,
+5,South,R32,Duke,Kentucky,0.4118,Kentucky,
+5,South,R32,Belmont,East Tennessee St.,0.4351,Belmont,
+5,South,R32,Saint Louis,Hawaii,0.525,Saint Louis,
+5,South,R32,Oklahoma St.,Gonzaga,0.1223,Gonzaga,
+5,West,R32,Vermont,Wisconsin,0.0739,Wisconsin,
+5,West,R32,Tulsa,Liberty,0.2235,Tulsa,
+5,West,R32,Akron,Michigan St.,0.1137,Michigan St.,
+5,West,R32,Baylor,Connecticut,0.1091,Baylor,
+5,East,S16,Utah St.,Florida,0.2114,Utah St.,winner makes Elite 8
+5,East,S16,Seton Hall,BYU,0.134,BYU,winner makes Elite 8
+5,Midwest,S16,Miami FL,North Carolina,0.167,North Carolina,winner makes Elite 8
+5,Midwest,S16,Yale,Ohio St.,0.1835,Ohio St.,winner makes Elite 8
+5,South,S16,Kentucky,Belmont,0.6018,Belmont,winner makes Elite 8
+5,South,S16,Saint Louis,Gonzaga,0.0837,Gonzaga,winner makes Elite 8
+5,West,S16,Wisconsin,Tulsa,0.4136,Tulsa,winner makes Elite 8
+5,West,S16,Michigan St.,Baylor,0.386,Michigan St.,winner makes Elite 8
+5,East,E8,Utah St.,BYU,0.2726,BYU,winner makes Final Four
+5,Midwest,E8,North Carolina,Ohio St.,0.2283,Ohio St.,winner makes Final Four
+5,South,E8,Belmont,Gonzaga,0.0745,Gonzaga,winner makes Final Four
+5,West,E8,Tulsa,Michigan St.,0.1227,Tulsa,winner makes Final Four
+5,East vs South,FF,BYU,Gonzaga,0.1679,BYU,Final Four semifinal
+5,West vs Midwest,FF,Tulsa,Ohio St.,0.1322,Ohio St.,Final Four semifinal
+5,Championship,Championship,BYU,Ohio St.,0.3912,Ohio St.,CHAMPION
+5,---,SUMMARY,"E8: Utah St., BYU, North Carolina, Ohio St., Belmont, Gonzaga, Tulsa, Michigan St.","FF: BYU, Gonzaga, Tulsa, Ohio St.",---,Ohio St.,CHAMPION: Ohio St.

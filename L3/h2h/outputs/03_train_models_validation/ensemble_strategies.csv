@@ -1,6 +1,6 @@
 strategy,roc_auc,log_loss,brier_score,weights
-Uniform,0.9372093023255813,0.3963287956804276,0.12310103838909467,"{'Random Forest': 0.2, 'Gradient Boosting': 0.2, 'Neural Network': 0.2, 'Gaussian Naive Bayes': 0.2, 'SVM': 0.2}"
+Uniform,0.9372093023255813,0.3963287956804276,0.12310103838909468,"{'Random Forest': 0.2, 'Gradient Boosting': 0.2, 'Neural Network': 0.2, 'Gaussian Naive Bayes': 0.2, 'SVM': 0.2}"
 Performance-weighted,0.9372093023255813,0.39436591295072904,0.12227050353467617,"{'Random Forest': np.float64(0.20015220700152211), 'Gradient Boosting': np.float64(0.20573313039066465), 'Neural Network': np.float64(0.19710806697108071), 'Gaussian Naive Bayes': np.float64(0.19558599695586), 'SVM': np.float64(0.20142059868087267)}"
 Emphasize Top 2,0.9453488372093023,0.3601080548185053,0.10818543080630841,"{'Gradient Boosting': 0.35, 'SVM': 0.3, 'Random Forest': 0.11666666666666665, 'Neural Network': 0.11666666666666665, 'Gaussian Naive Bayes': 0.11666666666666665}"
-De-emphasize Worst,0.9372093023255813,0.34882152681359285,0.10645634420621047,"{'Random Forest': 0.2375, 'Gradient Boosting': 0.2375, 'Neural Network': 0.2375, 'Gaussian Naive Bayes': 0.05, 'SVM': 0.2375}"
+De-emphasize Worst,0.9372093023255813,0.34882152681359285,0.10645634420621046,"{'Random Forest': 0.2375, 'Gradient Boosting': 0.2375, 'Neural Network': 0.2375, 'Gaussian Naive Bayes': 0.05, 'SVM': 0.2375}"
 Squared Performance,0.936046511627907,0.39242823376363084,0.12145580485449148,"{'Random Forest': np.float64(0.2002416972460539), 'Gradient Boosting': np.float64(0.2115642192863723), 'Neural Network': np.float64(0.19419701445680201), 'Gaussian Naive Bayes': np.float64(0.19120941261843616), 'SVM': np.float64(0.2027876563923357)}"

@@ -5,6 +5,7 @@ Purpose: Join clean L2 prediction sources to create prediction dataset
 - Uses *_predict_L2.csv files (current season 2025 data)
 - Joins all available sources (bartTorvik, kenPom, espnBPI, masseyComposite required)
 - Optional sources: LRMCB, powerRank (skipped if files don't exist)
+- Adds ESPN bracketology projected seeds (tournamentSeed column)
 - No tournament filtering (prediction is pre-tournament)
 - Outputs to L3/data/predictionData/
 
@@ -29,6 +30,9 @@ INPUTS = {
     'LRMCB': 'data/LRMCB/LRMCB_predict_L2.csv',
     'powerRank': 'data/powerRank/powerRank_predict_L2.csv'
 }
+
+# Bracketology input (ESPN projected tournament seeds)
+BRACKETOLOGY_PATH = '../L1/data/bracketology/espn_bracketology_2026.csv'
 
 # Optional sources (skip if file doesn't exist)
 OPTIONAL_SOURCES = ['LRMCB', 'powerRank']
@@ -139,6 +143,38 @@ def main():
     else:
         print(f"  ✓ No duplicates found")
     
+    # ========================================================================
+    # ADD BRACKETOLOGY DATA (projected tournament seeds)
+    # ========================================================================
+    print(f"\n  Adding ESPN bracketology data...")
+    
+    # Drop any existing tournamentSeed column to avoid merge conflicts
+    if 'tournamentSeed' in df.columns:
+        print(f"    Dropping existing tournamentSeed column from data sources")
+        df = df.drop(columns=['tournamentSeed'])
+    
+    if os.path.exists(BRACKETOLOGY_PATH):
+        # Read with utf-8-sig to handle BOM if present
+        bracket = pd.read_csv(BRACKETOLOGY_PATH, encoding='utf-8-sig')
+        print(f"    Loaded: {len(bracket)} projected tournament teams")
+        
+        # Rename columns to match our schema
+        bracket = bracket.rename(columns={'Team Index': 'Index', 'Seed': 'tournamentSeed'})
+        
+        # Keep only Index and tournamentSeed for the join
+        bracket = bracket[['Index', 'tournamentSeed']]
+        
+        # Left join to add tournamentSeed (null for non-tournament teams)
+        df = df.merge(bracket, on='Index', how='left')
+        
+        teams_with_seeds = df['tournamentSeed'].notna().sum()
+        print(f"    ✓ Added tournamentSeed column from ESPN bracketology")
+        print(f"    {teams_with_seeds} teams projected to make tournament")
+        print(f"    {len(df) - teams_with_seeds} teams not projected (tournamentSeed = null)")
+    else:
+        print(f"    ⊘ Bracketology file not found: {BRACKETOLOGY_PATH}")
+        print(f"    Continuing without tournamentSeed column")
+    
     print(f"\n  Final feature count: {len(df.columns)}")
     print(f"  Final team count: {len(df):,}")
     
@@ -154,6 +190,11 @@ def main():
         print(null_counts[null_counts > 0])
     else:
         print(f"  ✓ No nulls in key columns")
+    
+    # Report tournamentSeed column if present
+    if 'tournamentSeed' in df.columns:
+        teams_with_seeds = df['tournamentSeed'].notna().sum()
+        print(f"  ✓ tournamentSeed column: {teams_with_seeds} teams with projected seeds")
     
     # Create output directory if needed
     print(f"\n[5/5] Writing output...")
@@ -176,6 +217,9 @@ def main():
     if 'Year' in df.columns:
         print(f"Year: {df['Year'].unique()[0]}")
     print(f"Feature columns: {len(df.columns)}")
+    if 'tournamentSeed' in df.columns:
+        teams_with_seeds = df['tournamentSeed'].notna().sum()
+        print(f"Projected tournament teams: {teams_with_seeds}")
     print("="*80)
 
 if __name__ == "__main__":

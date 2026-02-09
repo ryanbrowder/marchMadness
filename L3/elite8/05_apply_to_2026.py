@@ -131,51 +131,129 @@ for dataset in ['long', 'rich']:
     print(f"  Strategy: {best_strategy}")
     print(f"  Weights: {dict(zip(['LR', 'RF', 'SVM', 'GNB'], np.round(best_weights, 3)))}")
     
-    # Prepare features
-    available_features = [f for f in feature_list if f in data_2026.columns]
-    missing_features = [f for f in feature_list if f not in data_2026.columns]
+    # Prepare features - TRY TO USE SCALER'S FEATURE NAMES IF AVAILABLE
+    try:
+        scaler_features = scaler.feature_names_in_
+        print(f"  Using scaler's feature list: {len(scaler_features)} features")
+        actual_features = scaler_features
+    except AttributeError:
+        print(f"  Using model package feature list: {len(feature_list)} features")
+        actual_features = feature_list
     
-    print(f"  Available features: {len(available_features)}/{len(feature_list)}")
+    available_features = [f for f in actual_features if f in data_2026.columns]
+    missing_features = [f for f in actual_features if f not in data_2026.columns]
+    
+    print(f"  Available: {len(available_features)}/{len(actual_features)}")
     
     if missing_features:
-        print(f"  Missing {len(missing_features)} features (will fill with 0)")
+        print(f"  Missing {len(missing_features)} features (will fill with 0):")
+        for feat in missing_features[:5]:  # Show first 5
+            print(f"    - {feat}")
+        if len(missing_features) > 5:
+            print(f"    ... and {len(missing_features) - 5} more")
     
-    # Extract features
+    # Extract features - USE EXACT FEATURE ORDER FROM SCALER/MODEL
     X = pd.DataFrame(index=data_2026.index)
-    for feat in feature_list:
+    for feat in actual_features:
         if feat in data_2026.columns:
-            X[feat] = data_2026[feat]
+            X[feat] = data_2026[feat].copy()
         else:
             X[feat] = 0.0
     
-    # Drop all-NaN columns
+    print(f"  Extracted features shape: {X.shape}")
+    
+    # Replace infinite values FIRST
+    inf_count = np.isinf(X.values).sum()
+    if inf_count > 0:
+        print(f"  Replacing {inf_count} infinite values with NaN")
+        X = X.replace([np.inf, -np.inf], np.nan)
+    
+    # Check for all-NaN columns
     all_nan_cols = X.columns[X.isnull().all()].tolist()
     if all_nan_cols:
+        print(f"  WARNING: {len(all_nan_cols)} columns are entirely NaN:")
+        for col in all_nan_cols:
+            print(f"    - {col}")
+        print(f"  Dropping these columns")
         X = X.drop(columns=all_nan_cols)
     
     # Fill remaining NaNs
-    for col in X.columns:
-        if X[col].isnull().any():
-            median_val = X[col].median()
-            if pd.isna(median_val):
-                X[col].fillna(0, inplace=True)
-            else:
-                X[col].fillna(median_val, inplace=True)
+    nan_cols_before = X.columns[X.isnull().any()].tolist()
+    if nan_cols_before:
+        print(f"  Filling NaNs in {len(nan_cols_before)} columns")
+        for col in X.columns:
+            if X[col].isnull().any():
+                median_val = X[col].median()
+                if pd.isna(median_val):
+                    X[col] = X[col].fillna(0)
+                else:
+                    X[col] = X[col].fillna(median_val)
     
-    print(f"  Final features: {X.shape[1]} columns")
+    # Final verification BEFORE scaling
+    if X.isnull().any().any():
+        print("  ⚠️ ERROR: NaNs still present before scaling!")
+        nan_cols = X.columns[X.isnull().any()].tolist()
+        print(f"  Columns with NaNs: {nan_cols}")
+        for col in nan_cols:
+            print(f"    {col}: {X[col].isnull().sum()} NaNs")
+        # Force fill
+        X = X.fillna(0)
+        print("  Forced all remaining NaNs to 0")
+    
+    print(f"  Pre-scale: {X.shape[1]} columns, {X.shape[0]} rows, no NaNs ✓")
+    
+    # Verify feature count matches scaler
+    try:
+        expected_features = scaler.n_features_in_
+        if X.shape[1] != expected_features:
+            print(f"  ❌ FEATURE MISMATCH: Scaler expects {expected_features}, got {X.shape[1]}")
+            print(f"  This may cause errors!")
+    except AttributeError:
+        pass
     
     # Scale features
-    X_scaled = pd.DataFrame(
-        scaler.transform(X),
-        columns=X.columns,
-        index=X.index
-    )
+    try:
+        X_scaled_array = scaler.transform(X)
+        X_scaled = pd.DataFrame(
+            X_scaled_array,
+            columns=X.columns,
+            index=X.index
+        )
+    except Exception as e:
+        print(f"  ❌ ERROR during scaling: {e}")
+        print(f"  Attempting to diagnose...")
+        print(f"  X shape: {X.shape}")
+        print(f"  X dtypes: {X.dtypes.value_counts()}")
+        raise
+    
+    # Check for NaNs AFTER scaling
+    if X_scaled.isnull().any().any():
+        print("  ⚠️ ERROR: NaNs introduced during scaling!")
+        nan_cols_scaled = X_scaled.columns[X_scaled.isnull().any()].tolist()
+        print(f"  Columns with NaNs after scaling: {nan_cols_scaled}")
+        for col in nan_cols_scaled:
+            nan_count = X_scaled[col].isnull().sum()
+            print(f"    {col}: {nan_count} NaNs")
+            # Show pre-scale values
+            if col in X.columns:
+                print(f"      Pre-scale: min={X[col].min():.3f}, max={X[col].max():.3f}")
+        # Force fill
+        X_scaled = X_scaled.fillna(0)
+        print("  Fixed by filling with 0")
+    
+    print(f"  Post-scale: {X_scaled.shape[1]} columns, no NaNs ✓")
     
     # Get predictions from each model
-    pred_lr = models['Logistic Regression'].predict_proba(X_scaled)[:, 1]
-    pred_rf = models['Random Forest'].predict_proba(X)[:, 1]
-    pred_svm = models['SVM'].predict_proba(X_scaled)[:, 1]
-    pred_gnb = calibrated_gnb.predict_proba(X)[:, 1]
+    try:
+        pred_lr = models['Logistic Regression'].predict_proba(X_scaled)[:, 1]
+        pred_rf = models['Random Forest'].predict_proba(X)[:, 1]
+        pred_svm = models['SVM'].predict_proba(X_scaled)[:, 1]
+        pred_gnb = calibrated_gnb.predict_proba(X)[:, 1]
+    except Exception as e:
+        print(f"  ❌ ERROR during prediction: {e}")
+        print(f"  X_scaled has NaNs: {X_scaled.isnull().any().any()}")
+        print(f"  X has NaNs: {X.isnull().any().any()}")
+        raise
     
     # Create ensemble using OPTIMAL WEIGHTS from model package
     pred_stack = np.column_stack([pred_lr, pred_rf, pred_svm, pred_gnb])
@@ -190,7 +268,7 @@ for dataset in ['long', 'rich']:
         'gnb': pred_gnb
     }
     
-    print(f"  Generated predictions for {len(ensemble_pred)} teams")
+    print(f"  ✓ Generated predictions for {len(ensemble_pred)} teams")
 
 # ============================================================================
 # CREATE COMPARISON RESULTS
@@ -325,7 +403,6 @@ print(f"Average difference between models: {results['Difference'].mean():.1%}")
 print(f"Max difference between models: {results['Difference'].max():.1%}")
 
 # Tier breakdown
-# Tier breakdown
 def get_tier(prob):
     if prob >= 0.60:
         return "Elite (60%+)"
@@ -346,11 +423,11 @@ tier_summary = results.groupby('Avg_Tier').size().reindex([
     "Moderate (30-45%)",
     "Long Shot (15-30%)",
     "Very Unlikely (<15%)"
-], fill_value=0)  # ✅ Use fill_value=0 instead of default NaN
+], fill_value=0)
 
 print("\nTeams by probability tier (using average):")
 for tier, count in tier_summary.items():
-    print(f"  {tier:25s} {int(count):3d} teams")  # ✅ Convert to int
+    print(f"  {tier:25s} {int(count):3d} teams")
 
 # Show correlation between models
 correlation = results['Long_Probability'].corr(results['Rich_Probability'])
@@ -364,10 +441,9 @@ print("2026 PREDICTIONS COMPLETE")
 print("="*80)
 
 print("\nMODEL INFO:")
-print("  ✓ Using PRODUCTION models (trained on ≤2024 data)")
-print("  ✓ Calibrated on 2025 tournament")
+print("  ✓ Using PRODUCTION models (trained on ≤2025 data)")
 print("  ✓ Using optimal ensemble weights from validation")
-print("  ✓ Expected performance: ~0.87-0.88 ROC-AUC")
+print("  ✓ Expected performance: ~0.87-0.90 ROC-AUC (based on backtesting)")
 
 print("\nOUTPUT FILES:")
 print(f"  {OUTPUT_DIR / 'elite8_predictions_2026_comparison.csv'} - Side-by-side comparison")
@@ -386,8 +462,9 @@ else:
 print("\nNEXT STEPS:")
 print("  1. Review consensus top picks - do they pass the eye test?")
 print("  2. Investigate any major disagreements between models")
-print("  3. Wait for actual tournament seeding (mid-March)")
-print("  4. Re-run with real seeds for final predictions")
-print("  5. Use probabilities for bracket/pool strategy")
+print("  3. Run 06_tournament_type_indicator.py to estimate chalk vs chaos")
+print("  4. Wait for actual tournament seeding (Selection Sunday)")
+print("  5. Re-run with real seeds for final predictions")
+print("  6. Use probabilities for bracket/pool strategy")
 
 print("\n" + "="*80)
