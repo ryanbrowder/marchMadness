@@ -6,11 +6,13 @@ Purpose: Join clean L2 prediction sources to create prediction dataset
 - Joins all available sources (bartTorvik, kenPom, espnBPI, masseyComposite required)
 - Optional sources: LRMCB, powerRank (skipped if files don't exist)
 - Adds ESPN bracketology data (tournamentSeed, tournamentRegion)
+- Adds Vegas odds (elite8_prob, final4_prob, champ_prob from DraftKings)
 - No tournament filtering (prediction is pre-tournament)
 - Outputs to L3/data/predictionData/
 
 Author: Ryan Browder
 Created: 2025-01-30
+Updated: 2025-02-09 (added Vegas odds integration)
 """
 
 import pandas as pd
@@ -33,6 +35,9 @@ INPUTS = {
 
 # Bracketology input (ESPN projected tournament seeds)
 BRACKETOLOGY_PATH = '../L1/data/bracketology/espn_bracketology_2026.csv'
+
+# Vegas odds input (DraftKings Elite 8 probabilities)
+VEGAS_ODDS_PATH = 'data/vegasOdds/vegasOdds_analyze_L2.csv'
 
 # Optional sources (skip if file doesn't exist)
 OPTIONAL_SOURCES = ['LRMCB', 'powerRank']
@@ -180,6 +185,30 @@ def main():
         print(f"    ⊘ Bracketology file not found: {BRACKETOLOGY_PATH}")
         print(f"    Continuing without tournamentSeed/tournamentRegion columns")
     
+    # ========================================================================
+    # ADD VEGAS ODDS (Elite 8 probabilities from DraftKings)
+    # ========================================================================
+    print(f"\n  Adding Vegas odds data...")
+    
+    if os.path.exists(VEGAS_ODDS_PATH):
+        vegas = pd.read_csv(VEGAS_ODDS_PATH)
+        print(f"    Loaded: {len(vegas)} teams with Vegas odds")
+        
+        # Select columns for join (teamIndex maps to Index)
+        vegas_cols = ['teamIndex', 'vegas_elite8_prob', 'vegas_final4_prob', 'vegas_champ_prob']
+        vegas = vegas[vegas_cols].rename(columns={'teamIndex': 'Index'})
+        
+        # Left join to add Vegas odds (null for teams without odds)
+        df = df.merge(vegas, on='Index', how='left')
+        
+        teams_with_odds = df['vegas_elite8_prob'].notna().sum()
+        print(f"    ✓ Added vegas_elite8_prob, vegas_final4_prob, vegas_champ_prob columns")
+        print(f"    {teams_with_odds} teams have Vegas odds")
+        print(f"    {len(df) - teams_with_odds} teams without odds (will use model-only predictions)")
+    else:
+        print(f"    ⊘ Vegas odds file not found: {VEGAS_ODDS_PATH}")
+        print(f"    Continuing without Vegas odds (model-only predictions)")
+    
     print(f"\n  Final feature count: {len(df.columns)}")
     print(f"  Final team count: {len(df):,}")
     
@@ -222,6 +251,11 @@ def main():
             regions = df[df['tournamentRegion'].notna()]['tournamentRegion'].unique()
             print(f"  ✓ tournamentRegion column: {len(regions)} regions ({', '.join(sorted(regions))})")
     
+    # Report Vegas odds coverage if present
+    if 'vegas_elite8_prob' in df.columns:
+        teams_with_vegas = df['vegas_elite8_prob'].notna().sum()
+        print(f"  ✓ Vegas odds columns: {teams_with_vegas} teams with DraftKings probabilities")
+    
     # Create output directory if needed
     print(f"\n[5/5] Writing output...")
     os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -249,6 +283,9 @@ def main():
         if 'tournamentRegion' in df.columns:
             regions = df[df['tournamentRegion'].notna()]['tournamentRegion'].unique()
             print(f"Tournament regions: {', '.join(sorted(regions))}")
+    if 'vegas_elite8_prob' in df.columns:
+        teams_with_vegas = df['vegas_elite8_prob'].notna().sum()
+        print(f"Teams with Vegas odds: {teams_with_vegas}")
     print("="*80)
 
 if __name__ == "__main__":

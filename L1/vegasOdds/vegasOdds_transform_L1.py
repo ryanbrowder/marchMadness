@@ -14,8 +14,11 @@ Transformations:
     1. Parse alternating line format (team, odds, team, odds...)
     2. Standardize team names via teamsIndex
     3. Convert American odds → probabilities
-    4. Remove vig (normalize probabilities to sum to 1.0)
-    5. Derive Elite 8 probabilities using seed-based multipliers
+    4. Remove vig:
+       - Championship: normalize to 1.0 (one winner)
+       - Final Four: normalize to 4.0 (four teams make it)
+    5. Derive Elite 8 probabilities from Final Four odds using seed-based multipliers
+       (more stable than deriving from Championship odds)
 """
 
 import pandas as pd
@@ -49,25 +52,25 @@ SEED_E8_RATES = {
     16: 0.003,  # 16-seeds reach E8 ~0.3% of time
 }
 
-# Historical Championship rates by seed
-# These represent P(win championship | seed) from historical data
-SEED_CHAMP_RATES = {
-    1: 0.250,   # 1-seeds win ~25% of time
-    2: 0.120,   # 2-seeds win ~12% of time
-    3: 0.065,   # 3-seeds win ~6.5% of time
-    4: 0.030,   # 4-seeds win ~3% of time
-    5: 0.015,   # 5-seeds win ~1.5% of time
-    6: 0.008,   # 6-seeds win ~0.8% of time
-    7: 0.005,   # 7-seeds win ~0.5% of time
-    8: 0.003,   # 8-seeds win ~0.3% of time
-    9: 0.002,   # 9-seeds win ~0.2% of time
-    10: 0.001,  # 10+ seeds win ~0.1% or less
-    11: 0.001,
-    12: 0.001,
-    13: 0.0005,
-    14: 0.0003,
-    15: 0.0002,
-    16: 0.0001,
+# Historical Final Four rates by seed (calculated from tournament history)
+# These represent P(reach Final Four | seed) from historical data
+SEED_F4_RATES = {
+    1: 0.545,   # 1-seeds reach F4 ~54.5% of time
+    2: 0.312,   # 2-seeds reach F4 ~31.2% of time
+    3: 0.198,   # 3-seeds reach F4 ~19.8% of time
+    4: 0.125,   # 4-seeds reach F4 ~12.5% of time
+    5: 0.075,   # 5-seeds reach F4 ~7.5% of time
+    6: 0.050,   # 6-seeds reach F4 ~5% of time
+    7: 0.035,   # 7-seeds reach F4 ~3.5% of time
+    8: 0.025,   # 8-seeds reach F4 ~2.5% of time
+    9: 0.015,   # 9-seeds reach F4 ~1.5% of time
+    10: 0.010,  # 10-seeds reach F4 ~1% of time
+    11: 0.008,  # 11-seeds reach F4 ~0.8% of time
+    12: 0.006,  # 12-seeds reach F4 ~0.6% of time
+    13: 0.003,  # 13-seeds reach F4 ~0.3% of time
+    14: 0.002,  # 14-seeds reach F4 ~0.2% of time
+    15: 0.001,  # 15-seeds reach F4 ~0.1% of time
+    16: 0.0005, # 16-seeds reach F4 ~0.05% of time
 }
 
 
@@ -134,30 +137,36 @@ def american_to_prob(odds):
         return 100 / (odds + 100)
 
 
-def remove_vig(probs):
+def remove_vig(probs, target_sum=1.0):
     """
-    Remove bookmaker vig (overround) by normalizing probabilities to sum to 1.0.
+    Remove bookmaker vig (overround) by normalizing probabilities.
     
-    Bookmakers set odds so probabilities sum > 1.0 (their profit margin).
+    Bookmakers set odds so probabilities sum > target (their profit margin).
     We normalize to get "fair" implied probabilities.
+    
+    Args:
+        probs: Series of probabilities
+        target_sum: What probabilities should sum to after normalization
+                   - 1.0 for championship (one winner)
+                   - 4.0 for Final Four (four teams make it)
     """
     total = probs.sum()
     if total == 0:
         return probs
-    return probs / total
+    return (probs / total) * target_sum
 
 
-def estimate_seed_from_champ_prob(champ_prob):
+def estimate_seed_from_final4_prob(final4_prob):
     """
-    Estimate likely seed based on championship probability.
-    Uses historical seed championship rates to find closest match.
+    Estimate likely seed based on Final Four probability.
+    Uses historical seed Final Four rates to find closest match.
     """
-    # Find seed with closest championship probability
+    # Find seed with closest Final Four probability
     min_diff = float('inf')
     best_seed = 8
     
-    for seed, rate in SEED_CHAMP_RATES.items():
-        diff = abs(rate - champ_prob)
+    for seed, rate in SEED_F4_RATES.items():
+        diff = abs(rate - final4_prob)
         if diff < min_diff:
             min_diff = diff
             best_seed = seed
@@ -165,24 +174,26 @@ def estimate_seed_from_champ_prob(champ_prob):
     return best_seed
 
 
-def derive_elite8_prob(champ_prob, estimated_seed):
+def derive_elite8_prob(final4_prob, estimated_seed):
     """
-    Derive Elite 8 probability from Championship probability.
+    Derive Elite 8 probability from Final Four probability.
     
-    Uses historical ratios: P(E8) / P(Champ) varies by seed.
-    For example: 1-seeds reach E8 70% of time but only win 25% of time,
-    so multiplier is 70/25 = 2.8x
+    Uses historical ratios: P(E8) / P(F4) varies by seed.
+    This is more stable than deriving from Championship odds (fewer rounds to traverse).
+    
+    For example: 1-seeds reach E8 70% of time and F4 54% of time,
+    so multiplier is 70/54 = 1.30x
     """
-    champ_rate = SEED_CHAMP_RATES.get(estimated_seed, 0.001)
-    e8_rate = SEED_E8_RATES.get(estimated_seed, 0.01)
+    f4_rate = SEED_F4_RATES.get(estimated_seed, 0.01)
+    e8_rate = SEED_E8_RATES.get(estimated_seed, 0.02)
     
-    if champ_rate > 0:
-        multiplier = e8_rate / champ_rate
+    if f4_rate > 0:
+        multiplier = e8_rate / f4_rate
     else:
-        multiplier = 3.0  # Default fallback
+        multiplier = 1.5  # Default fallback
     
     # Apply multiplier but cap at 95% (even 1-seeds aren't guaranteed)
-    e8_prob = min(champ_prob * multiplier, 0.95)
+    e8_prob = min(final4_prob * multiplier, 0.95)
     
     return e8_prob
 
@@ -286,25 +297,25 @@ def main():
     
     # Remove vig (normalize probabilities)
     print("Removing vig (normalizing probabilities)...")
-    merged_df['champ_prob_adjusted'] = remove_vig(merged_df['champ_prob_raw'])
-    merged_df['final4_prob_adjusted'] = remove_vig(merged_df['final4_prob_raw'])
+    merged_df['champ_prob_adjusted'] = remove_vig(merged_df['champ_prob_raw'], target_sum=1.0)
+    merged_df['final4_prob_adjusted'] = remove_vig(merged_df['final4_prob_raw'], target_sum=4.0)
     
     # Validate vig removal
     champ_sum = merged_df['champ_prob_adjusted'].sum()
     final4_sum = merged_df['final4_prob_adjusted'].sum()
     print(f"  Championship probs sum: {champ_sum:.4f} (should be ~1.0)")
-    print(f"  Final Four probs sum: {final4_sum:.4f} (should be ~1.0)")
+    print(f"  Final Four probs sum: {final4_sum:.4f} (should be ~4.0)")
     
     if not (0.99 <= champ_sum <= 1.01):
         print(f"  WARNING: Championship probabilities sum to {champ_sum}, not ~1.0")
-    if not (0.99 <= final4_sum <= 1.01):
-        print(f"  WARNING: Final Four probabilities sum to {final4_sum}, not ~1.0")
+    if not (3.95 <= final4_sum <= 4.05):
+        print(f"  WARNING: Final Four probabilities sum to {final4_sum}, not ~4.0")
     
     # Derive Elite 8 probabilities
     print("\nDeriving Elite 8 probabilities...")
-    merged_df['estimated_seed'] = merged_df['champ_prob_adjusted'].apply(estimate_seed_from_champ_prob)
+    merged_df['estimated_seed'] = merged_df['final4_prob_adjusted'].apply(estimate_seed_from_final4_prob)
     merged_df['elite8_prob'] = merged_df.apply(
-        lambda row: derive_elite8_prob(row['champ_prob_adjusted'], row['estimated_seed']),
+        lambda row: derive_elite8_prob(row['final4_prob_adjusted'], row['estimated_seed']),
         axis=1
     )
     
