@@ -1,0 +1,252 @@
+Year,Player,Team,Seed,Bid,Points
+2025,Ryan,BYU,6,27,0
+2025,Ryan,Arkansas,10,12,17
+2025,Ryan,Louisville,8,0,0
+2025,Ryan,Baylor,9,0,3
+2025,Ryan,Arizona,4,4,6
+2025,Ryan,UCLA,7,0,2
+2025,Ryan,Texas A&M,4,0,2
+2025,Ryan,New Mexico,10,0,5
+2025,Ryan,Xavier,11,0,0
+2025,Travis,Robert Morris,15,3,0
+2025,Travis,Clemson,5,10,0
+2025,Travis,Wofford,15,3,0
+2025,Travis,Drake,11,11,7
+2025,Travis,Yale,13,8,0
+2025,Travis,Florida,1,53,42
+2025,Travis,Michigan,5,12,7
+2025,JT,Auburn,1,40,12
+2025,JT,Bryant,15,2,0
+2025,JT,Iowa State,3,14,2
+2025,JT,Gonzaga,8,18,2
+2025,JT,Kansas,7,10,0
+2025,JT,Illinois,6,9,2
+2025,Justin,Oregon,5,7,2
+2025,Justin,Texas,0,9,0
+2025,Justin,McNeese State,12,6,9
+2025,Justin,Vanderbilt,10,8,0
+2025,Justin,Marquette,7,8,0
+2025,Justin,Utah State,10,7,0
+2025,Justin,Memphis,5,7,0
+2025,Justin,Creighton,9,9,3
+2025,Justin,Purdue,4,7,6
+2025,Justin,UConn,8,7,2
+2025,Justin,Oklahoma,9,7,0
+2025,Justin,Georgia,9,7,0
+2025,Justin,Mississippi St,8,7,0
+2025,Stoner,High Point,13,5,0
+2025,Stoner,Duke,1,49,20
+2025,Stoner,Grand Canyon,13,3,0
+2025,Stoner,Wisconsin,3,17,2
+2025,Stoner,Colorado State,12,14,9
+2025,Stoner,Montana,14,3,0
+2025,Nick,Missouri,6,4,0
+2025,Nick,St. John's,2,22,2
+2025,Nick,Michigan State,2,23,12
+2025,Nick,Alabama,2,37,12
+2025,Nick,Liberty,12,10,0
+2025,Nick,Maryland,4,16,6
+2025,Ben,Tennessee,2,32,12
+2025,Ben,VCU,11,12,0
+2025,Ben,Omaha,15,3,0
+2025,Ben,Mississippi,6,0,9
+2025,Ben,Texas Tech,3,30,12
+2025,Ben,Troy,14,3,0
+2025,Ben,Saint Mary's,7,8,2
+2025,Ben,NC Wilmington,14,7,0
+2025,Sam,North Carolina,11,11,1
+2025,Sam,Houston,1,39,30
+2025,Sam,UC San Diego,12,10,0
+2025,Sam,Kentucky,3,17,6
+2025,Sam,Maryland,4,16,6
+2025,Sam,Akron,13,7,0
+2024,Ryan,St. Mary's,5,9,0
+2024,Ryan,Colorado,10,5,6
+2024,Ryan,Arizona,2,43,6
+2024,Ryan,New Mexico,11,15,0
+2024,Ryan,Duke,4,19,15
+2024,Ryan,Samford,13,2,0
+2024,Ryan,Texas Tech,6,7,0
+2024,Travis,South Dakota State,15,2,0
+2024,Travis,Michigan State,9,9,3
+2024,Travis,Long Beach State,15,2,0
+2024,Travis,Oregon,11,11,7
+2024,Travis,St. Peter's,15,2,0
+2024,Travis,Tennessee,2,25,12
+2024,Travis,Western Kentucky,15,2,0
+2024,Travis,Auburn,4,15,0
+2024,Travis,Mississippi State,8,3,0
+2024,Travis,Illinois,3,8,13
+2024,Travis,Texas A&M,9,3,2
+2024,Travis,Alabama,4,3,21
+2024,Travis,Washington State,7,3,2
+2024,Travis,Northwestern,9,2,3
+2024,Travis,Texas,7,1,2
+2024,Travis,San Diego St.,5,1,6
+2024,Travis,Clemson,6,1,17
+2024,Travis,South Carolina,6,1,0
+2024,Travis,Akron,14,1,0
+2024,Travis,Colgate,14,1,0
+2024,Travis,Yale,13,1,11
+2024,Travis,Oakland,14,1,13
+2024,Travis,Montana State,0,1,0
+2024,Travis,Longwood,16,1,0
+2024,JT,Grand Canyon,12,4,9
+2024,JT,Iowa State,2,24,6
+2024,JT,Boise State,0,4,0
+2024,JT,McNeese State,12,6,0
+2024,JT,Nebraska,8,5,0
+2024,JT,Wisconsin,5,10,0
+2024,JT,Samford,13,3,0
+2024,JT,North Carolina,1,42,6
+2024,JT,Duquesne,11,2,7
+2024,Justin,Connecticut,1,55,42
+2024,Justin,Purdue,1,42,30
+2024,Justin,Morehead State,14,3,0
+2024,Stoner,BYU,6,7,0
+2024,Stoner,Creighton,3,22,6
+2024,Stoner,Drake,10,10,0
+2024,Stoner,Virginia,0,3,0
+2024,Stoner,Gonzaga,5,13,7
+2024,Stoner,NC State,11,4,41
+2024,Stoner,Wagner,16,1,1
+2024,Stoner,Marquette,2,22,6
+2024,Stoner,UAB,12,2,0
+2024,Stoner,Baylor,3,7,2
+2024,Stoner,Florida,7,5,0
+2024,Stoner,Colorado State,10,1,1
+2024,Stoner,TCU,9,1,0
+2024,Stoner,Utah State,8,2,2
+2024,Stoner,Howard,0,1,0
+2024,Nick,James Madison,12,7,9
+2024,Nick,Florida Atlantic,8,4,0
+2024,Nick,Dayton,7,7,2
+2024,Nick,Kansas,4,7,2
+2024,Nick,Charleston,13,7,0
+2024,Nick,Houston,1,47,6
+2024,Nick,Kentucky,3,12,0
+2024,Nick,Nevada,10,6,0
+2024,Nick,Vermont,13,3,0
+2023,Ryan,Houston,1,43,6
+2023,Ryan,Penn State,10,4,5
+2023,Ryan,UCLA,2,22,6
+2023,Ryan,Kent State,13,3,0
+2023,Ryan,Tennessee,4,11,6
+2023,Ryan,Boise State,10,17,0
+2023,Ben,Purdue,1,19,0
+2023,Ben,NC Asheville,15,1,0
+2023,Ben,UCSB,14,3,0
+2023,Ben,Colgate,15,1,0
+2023,Ben,Louisiana,13,3,0
+2023,Ben,Xavier,3,12,6
+2023,Ben,Arizona,2,41,0
+2023,Ben,Furman,13,2,11
+2023,Ben,Princeton,15,1,27
+2023,Ben,Virginia,4,11,0
+2023,Ben,Nevada,0,6,0
+2023,JT,Saint Mary's,5,5,2
+2023,JT,Kansas State,3,8,12
+2023,JT,Drake,12,12,0
+2023,JT,Mississippi State,0,2,0
+2023,JT,Gonzaga,3,31,13
+2023,JT,Florida Atlantic,9,7,32
+2023,JT,VCU,12,7,0
+2023,JT,USC,10,8,0
+2023,JT,Arizona State,11,4,1
+2023,JT,Providence,11,7,0
+2023,JT,Montana State,14,1,0
+2023,JT,Kennesaw State,14,8,0
+2023,Justin,Oral Roberts,12,4,0
+2023,Justin,Arkansas,8,5,13
+2023,Justin,San Diego State,5,13,34
+2023,Justin,Indiana,4,18,2
+2023,Justin,Michigan State,7,9,11
+2023,Justin,Texas A&M,7,10,0
+2023,Justin,Northwestern,7,4,2
+2023,Justin,Auburn,9,6,3
+2023,Justin,Iona,13,3,0
+2023,Justin,Missouri,7,5,2
+2023,Justin,Maryland,8,6,2
+2023,Justin,NC State,11,6,0
+2023,Justin,West Virginia,9,11,0
+2023,Stoner,Duke,5,19,2
+2023,Stoner,Marquette,2,26,2
+2023,Stoner,Creighton,6,17,15
+2023,Stoner,UConn,4,23,43
+2023,Stoner,Grand Canyon,14,2,0
+2023,Stoner,Pittsburgh,11,4,8
+2023,Stoner,Utah State,10,9,0
+2023,Sam,Kansas,1,41,2
+2023,Sam,Charleston,12,5,0
+2023,Sam,Texas,2,35,12
+2023,Sam,Memphis,8,10,0
+2023,Sam,Iowa,8,9,0
+2023,Luke,TCU,6,6,2
+2023,Luke,Alabama,1,42,6
+2023,Luke,Illinois,9,3,0
+2023,Luke,Iowa State,6,6,0
+2023,Luke,Vermont,15,1,0
+2023,Luke,Kentucky,6,18,2
+2023,Luke,Miami,5,10,28
+2023,Luke,Baylor,3,14,2
+2022,Ryan,Tennessee,3,25,2
+2022,Ryan,Texas Tech,3,22,6
+2022,Ryan,Indiana,12,8,1
+2022,Ryan,Michigan,11,9,19
+2022,Ryan,Montana State,14,2,0
+2022,Ryan,San Francisco,10,3,0
+2022,Ryan,Notre Dame,11,3,8
+2022,Ryan,San Diego State,8,2,0
+2022,Ryan,South Dakota State,13,2,0
+2022,Ryan,TCU,9,2,3
+2022,Ryan,UAB,12,1,0
+2022,Ryan,UCLA,4,11,6
+2022,Ryan,Virginia Tech,11,10,0
+2022,Ben,Yale,14,2,0
+2022,Ben,Kansas,1,37,42
+2022,Ben,Iowa State,11,6,19
+2022,Ben,Providence,4,10,6
+2022,Ben,Baylor,1,30,2
+2022,Ben,Delaware,15,1,0
+2022,Ben,Longwood,14,2,0
+2022,Ben,Rutgers,0,5,0
+2022,Ben,Davidson,10,7,0
+2022,JT,Wisconsin,3,18,2
+2022,JT,Boise State,8,5,0
+2022,JT,Creighton,9,4,3
+2022,JT,Loyola Chicago,10,8,0
+2022,JT,Kentucky,2,49,0
+2022,JT,Marquette,9,5,0
+2022,JT,CS Fullerton,15,2,0
+2022,JT,Ohio State,7,9,2
+2022,Justin,Purdue,3,23,6
+2022,Justin,Houston,5,24,17
+2022,Justin,Alabama,6,6,0
+2022,Justin,Auburn,2,25,2
+2022,Justin,Jacksonville State,15,1,0
+2022,Justin,Saint Mary's,5,7,2
+2022,Justin,Texas,6,4,2
+2022,Justin,USC,7,1,0
+2022,Justin,Vermont,13,1,0
+2022,Stoner,Akron,13,3,0
+2022,Stoner,Chattanooga,13,4,0
+2022,Stoner,Murray State,7,6,2
+2022,Stoner,Richmond,12,5,9
+2022,Stoner,Duke,2,23,20
+2022,Stoner,LSU,6,25,0
+2022,Stoner,North Carolina,8,9,47
+2022,Stoner,Villanova,2,19,20
+2022,Stoner,Seton Hall,8,4,0
+2022,Stoner,New Mexico State,12,2,9
+2022,Travis,Memphis,9,9,3
+2022,Travis,Arizona,1,49,6
+2022,Travis,Iowa,5,20,0
+2022,Travis,Arkansas,4,18,15
+2022,Travis,Colgate,14,4,0
+2022,Sam,Illinois,4,12,2
+2022,Sam,Colorado State,6,7,0
+2022,Sam,Connecticut,5,11,0
+2022,Sam,Michigan State,7,6,2
+2022,Sam,Gonzaga,1,59,6
+2022,Sam,Miami,10,4,24
+2022,Sam,St. Peter's,15,1,45

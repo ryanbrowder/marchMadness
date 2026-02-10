@@ -1,0 +1,26 @@
+Team,Seed,E_Points_Blended,Expected_Market_Price,Fair_Value,Value_Rating,Allocated_Bid,Strategy
+Stephen F. Austin,15,11.24,1.75,14.71,6.423,6,Patient Accumulator
+Saint Louis,11,10.1,7.19,13.22,1.405,6,Patient Accumulator
+Lipscomb,15,10.04,1.75,13.14,5.737,6,Patient Accumulator
+Colgate,15,9.71,1.75,12.71,5.549,6,Patient Accumulator
+Seton Hall,11,9.7,7.19,12.7,1.349,5,Patient Accumulator
+North Dakota St.,15,9.65,1.75,12.63,5.514,5,Patient Accumulator
+Yale,11,9.18,7.19,12.02,1.277,5,Patient Accumulator
+Akron,11,8.92,7.19,11.68,1.241,5,Patient Accumulator
+Villanova,12,8.67,6.44,11.35,1.346,5,Patient Accumulator
+N.C. State,10,8.59,6.81,11.25,1.261,4,Patient Accumulator
+Liberty,13,8.05,3.53,10.54,2.28,4,Patient Accumulator
+Ohio St.,10,7.99,6.81,10.46,1.173,4,Patient Accumulator
+Baylor,10,7.17,6.81,9.39,1.053,4,Patient Accumulator
+Kentucky,9,7.11,5.31,9.31,1.339,4,Patient Accumulator
+Belmont,12,7.02,6.44,9.19,1.09,4,Patient Accumulator
+Tulsa,12,7.01,6.44,9.18,1.089,4,Patient Accumulator
+Utah St.,9,7.01,5.31,9.18,1.32,3,Patient Accumulator
+Oklahoma St.,10,7.0,6.81,9.16,1.028,3,Patient Accumulator
+Wisconsin,9,6.86,5.31,8.98,1.292,3,Patient Accumulator
+Miami FL,9,6.77,5.31,8.86,1.275,3,Patient Accumulator
+High Point,13,6.72,3.53,8.8,1.904,3,Patient Accumulator
+Indiana,8,6.36,6.0,8.33,1.06,2,Patient Accumulator
+Clemson,8,6.31,6.0,8.26,1.052,2,Patient Accumulator
+Georgia,8,6.21,6.0,8.13,1.035,2,Patient Accumulator
+Utah Valley,12,6.1,6.44,7.99,0.947,2,Patient Accumulator

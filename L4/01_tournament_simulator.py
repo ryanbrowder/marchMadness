@@ -1,26 +1,24 @@
 """
-L4.02 - Bracket Simulator & Optimizer
+L4.01 - Tournament Simulator (Validation + Optimization)
 
-Takes validated H2H model and generates optimal tournament brackets.
+Unified script for model validation and bracket optimization.
 
-Features:
-  - Monte Carlo simulation (50K runs, configurable)
-  - Round-by-round probability tracking for all teams
-  - Multiple optimization strategies (chalk, EV, Elite8-focus)
-  - Bracket export in CSV and readable text formats
-  - Convergence diagnostics
+MODES:
+  Validation (--validate):
+    - Quick 5K simulation
+    - Correlation analysis (Elite 8 direct vs simulated)
+    - Disagreement breakdown and visualizations
+    - Use during development to verify models
 
-Inputs (same as L4.01):
-  - Elite 8 predictions (L3 output CSV)
-  - H2H models and config
-  - predict_set_2026.csv (features)
-  - Bracket from tournamentSeed assignments
+  Production (default):
+    - Full 50K simulation with convergence
+    - Multiple optimization strategies
+    - Optimal bracket generation
+    - Use on Selection Sunday for pool submissions
 
-Outputs:
-  - round_probabilities.csv — P(reach round) for all teams, all rounds
-  - optimal_bracket_[strategy].csv — optimal picks per strategy
-  - bracket_trace_[strategy].txt — readable bracket format
-  - simulation_summary.json — convergence, champion odds, diagnostics
+USAGE:
+  python 01_tournament_simulator.py --validate   # Run validation
+  python 01_tournament_simulator.py              # Generate brackets
 """
 
 import pandas as pd
@@ -29,6 +27,11 @@ import pickle
 import json
 from pathlib import Path
 from collections import defaultdict
+from scipy.stats import pearsonr, spearmanr
+from sklearn.metrics import mean_squared_error
+import matplotlib.pyplot as plt
+import seaborn as sns
+import argparse
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -42,15 +45,20 @@ H2H_MODEL_DIR            = Path("../L3/h2h/models")
 PREDICTION_DATA_PATH     = Path("../L3/data/predictionData/predict_set_2026.csv")
 
 # L4 output
-OUTPUT_DIR = Path("outputs/02_bracket_simulator")
+OUTPUT_DIR = Path("outputs/01_tournament_simulator")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 # Simulation parameters
-N_SIMULATIONS      = 50000
-CONVERGENCE_CHECK  = 10000  # Check convergence every N sims
-CONVERGENCE_THRESH = 0.001  # Stop if champion probs change < 0.1%
-RANDOM_SEED        = 42
-np.random.seed(RANDOM_SEED)
+N_SIMS_VALIDATE   = 5000
+N_SIMS_PRODUCTION = 50000
+CONVERGENCE_CHECK = 10000
+CONVERGENCE_THRESH = 0.001
+RANDOM_SEED = 42
+
+# Validation thresholds
+HIGH_AGREEMENT_THRESHOLD = 0.85
+MODERATE_AGREEMENT_THRESHOLD = 0.70
+DISAGREEMENT_THRESHOLD = 0.15
 
 # Scoring rules (ESPN standard)
 SCORING = {
@@ -62,7 +70,7 @@ SCORING = {
     'Championship': 320
 }
 
-# Config name → short key mapping
+# Model config
 NAME_TO_KEY = {
     'Gradient Boosting':    'GB',
     'SVM':                  'SVM',
@@ -80,7 +88,7 @@ H2H_MODEL_FILES = {
 }
 
 # ============================================================================
-# LOADING (reused from L4.01)
+# LOADING
 # ============================================================================
 
 def load_elite8_predictions():
@@ -128,10 +136,7 @@ def load_prediction_data():
 
 
 def construct_bracket(prediction_df):
-    """
-    Build tournament bracket from tournamentSeed.
-    Returns: bracket dict, bracket_df
-    """
+    """Build tournament bracket from tournamentSeed."""
     df = prediction_df.copy()
     df = df[(df['tournamentSeed'] >= 1) & (df['tournamentSeed'] <= 16)].copy()
 
@@ -172,7 +177,7 @@ def construct_bracket(prediction_df):
 
 
 # ============================================================================
-# H2H PREDICTION (reused from L4.01)
+# H2H PREDICTION
 # ============================================================================
 
 def compute_h2h_features(team1, team2, prediction_df, source_columns):
@@ -238,22 +243,28 @@ def predict_h2h_matchup(team1, team2, prediction_df, h2h):
 
 
 # ============================================================================
-# ENHANCED SIMULATION (tracks all rounds)
+# SIMULATION ENGINE
 # ============================================================================
 
-def simulate_tournament_full(bracket, prediction_df, h2h, n_sims=50000, 
-                             convergence_check=10000, convergence_thresh=0.001):
+def simulate_tournament(bracket, prediction_df, h2h, n_sims=50000, 
+                       convergence_check=10000, convergence_thresh=0.001,
+                       n_trace=5):
     """
-    Monte Carlo simulation with full round tracking and convergence checking.
+    Monte Carlo simulation with full round tracking.
+    
+    Args:
+        n_trace: Number of sample sims to log for trace export (0 = none)
     
     Returns:
         round_probs: {team: {round: probability}}
         champion_probs: {team: probability}
-        convergence_history: list of champion prob snapshots
+        stats: simulation summary
         cache: matchup probability cache
+        traces: list of sample simulation game logs (if n_trace > 0)
     """
     print(f"Running {n_sims:,} tournament simulations...")
-    print(f"  Convergence: check every {convergence_check:,}, threshold {convergence_thresh:.3f}")
+    if convergence_check:
+        print(f"  Convergence: check every {convergence_check:,}, threshold {convergence_thresh:.3f}")
 
     # Validate source columns
     missing = [c for c in h2h['source_columns'] if c not in prediction_df.columns]
@@ -265,16 +276,16 @@ def simulate_tournament_full(bracket, prediction_df, h2h, n_sims=50000,
         print(f"  ✓ All {len(h2h['source_columns'])} source columns present")
 
     # Initialize trackers
-    round_counts = defaultdict(lambda: defaultdict(int))  # {team: {round: count}}
+    round_counts = defaultdict(lambda: defaultdict(int))
     
-    # Matchup cache
     cache = {}
     total_matchups = 0
     gnb_exclusion_count = 0
     
-    # Convergence tracking
     convergence_history = []
     last_champion_probs = None
+    
+    traces = []  # For sample bracket traces
 
     def get_prob(t1, t2):
         """Cached matchup probability."""
@@ -297,8 +308,8 @@ def simulate_tournament_full(bracket, prediction_df, h2h, n_sims=50000,
         if sim_idx % 5000 == 0:
             print(f"    [{sim_idx:>6}/{n_sims}] ...", flush=True)
 
-        # Track teams that reach each round in this simulation
-        sim_rounds = defaultdict(set)  # {round: set of teams}
+        log_this_sim = (sim_idx < n_trace)
+        sim_rounds = defaultdict(set)
 
         # --- R64 ---
         r64_winners = {}
@@ -311,6 +322,17 @@ def simulate_tournament_full(bracket, prediction_df, h2h, n_sims=50000,
                 p = get_prob(t1, t2)
                 winner = t1 if np.random.random() < p else t2
                 r64_winners[region].append(winner)
+
+                if log_this_sim:
+                    traces.append({
+                        'sim': sim_idx + 1,
+                        'region': region,
+                        'round': 'R64',
+                        'team1': t1,
+                        'team2': t2,
+                        'p_team1': round(p, 4),
+                        'winner': winner
+                    })
 
         # --- R32 ---
         r32_winners = {}
@@ -326,7 +348,18 @@ def simulate_tournament_full(bracket, prediction_df, h2h, n_sims=50000,
                     winner = t1 if np.random.random() < p else t2
                     r32_winners[region].append(winner)
 
-        # --- S16 (2 games per region) ---
+                    if log_this_sim:
+                        traces.append({
+                            'sim': sim_idx + 1,
+                            'region': region,
+                            'round': 'R32',
+                            'team1': t1,
+                            'team2': t2,
+                            'p_team1': round(p, 4),
+                            'winner': winner
+                        })
+
+        # --- S16 ---
         s16_winners = {}
         for region, winners in r32_winners.items():
             s16_winners[region] = []
@@ -340,7 +373,19 @@ def simulate_tournament_full(bracket, prediction_df, h2h, n_sims=50000,
                     winner = t1 if np.random.random() < p else t2
                     s16_winners[region].append(winner)
 
-        # --- Elite 8 (1 game per region) ---
+                    if log_this_sim:
+                        traces.append({
+                            'sim': sim_idx + 1,
+                            'region': region,
+                            'round': 'S16',
+                            'team1': t1,
+                            'team2': t2,
+                            'p_team1': round(p, 4),
+                            'winner': winner,
+                            'note': 'winner makes Elite 8'
+                        })
+
+        # --- Elite 8 ---
         e8_winners = {}
         for region, winners in s16_winners.items():
             if len(winners) == 2:
@@ -352,7 +397,19 @@ def simulate_tournament_full(bracket, prediction_df, h2h, n_sims=50000,
                 winner = t1 if np.random.random() < p else t2
                 e8_winners[region] = winner
 
-        # --- Final Four (2 semifinal games) ---
+                if log_this_sim:
+                    traces.append({
+                        'sim': sim_idx + 1,
+                        'region': region,
+                        'round': 'E8',
+                        'team1': t1,
+                        'team2': t2,
+                        'p_team1': round(p, 4),
+                        'winner': winner,
+                        'note': 'winner makes Final Four'
+                    })
+
+        # --- Final Four ---
         ff_matchups = [('East', 'South'), ('West', 'Midwest')]
         ff_winners = []
         for r1, r2 in ff_matchups:
@@ -365,6 +422,18 @@ def simulate_tournament_full(bracket, prediction_df, h2h, n_sims=50000,
                 winner = t1 if np.random.random() < p else t2
                 ff_winners.append(winner)
 
+                if log_this_sim:
+                    traces.append({
+                        'sim': sim_idx + 1,
+                        'region': f'{r1} vs {r2}',
+                        'round': 'FF',
+                        'team1': t1,
+                        'team2': t2,
+                        'p_team1': round(p, 4),
+                        'winner': winner,
+                        'note': 'Final Four semifinal'
+                    })
+
         # --- Championship ---
         champion = None
         if len(ff_winners) == 2:
@@ -375,13 +444,40 @@ def simulate_tournament_full(bracket, prediction_df, h2h, n_sims=50000,
             p = get_prob(t1, t2)
             champion = t1 if np.random.random() < p else t2
 
+            if log_this_sim:
+                traces.append({
+                    'sim': sim_idx + 1,
+                    'region': 'Championship',
+                    'round': 'Championship',
+                    'team1': t1,
+                    'team2': t2,
+                    'p_team1': round(p, 4),
+                    'winner': champion,
+                    'note': 'CHAMPION'
+                })
+
+        # Per-sim summary
+        if log_this_sim:
+            e8_list = [t for region in s16_winners for t in s16_winners[region]]
+            ff_list = [e8_winners[r] for r in ['East', 'South', 'West', 'Midwest'] if r in e8_winners]
+            traces.append({
+                'sim': sim_idx + 1,
+                'region': '---',
+                'round': 'SUMMARY',
+                'team1': 'E8: ' + ', '.join(e8_list),
+                'team2': 'FF: ' + ', '.join(ff_list),
+                'p_team1': '---',
+                'winner': champion or '?',
+                'note': 'CHAMPION: ' + (champion or '?')
+            })
+
         # Update round counts
         for round_name, teams in sim_rounds.items():
             for team in teams:
                 round_counts[team][round_name] += 1
 
         # Convergence check
-        if (sim_idx + 1) % convergence_check == 0:
+        if convergence_check and (sim_idx + 1) % convergence_check == 0:
             current_champion_probs = {
                 team: round_counts[team].get('Championship', 0) / (sim_idx + 1)
                 for team in round_counts
@@ -392,23 +488,20 @@ def simulate_tournament_full(bracket, prediction_df, h2h, n_sims=50000,
             })
             
             if last_champion_probs is not None:
-                # Check if top 5 champion probs have converged
-                top_teams = sorted(current_champion_probs.items(), 
-                                 key=lambda x: -x[1])[:5]
+                top_teams = sorted(current_champion_probs.items(), key=lambda x: -x[1])[:5]
                 max_change = max(
                     abs(current_champion_probs.get(t, 0) - last_champion_probs.get(t, 0))
                     for t, _ in top_teams
                 )
                 
                 if max_change < convergence_thresh:
-                    print(f"\n  ✓ Converged at {sim_idx + 1:,} sims "
-                          f"(max change: {max_change:.4f})")
-                    n_sims = sim_idx + 1  # Update actual sim count
+                    print(f"\n  ✓ Converged at {sim_idx + 1:,} sims (max change: {max_change:.4f})")
+                    n_sims = sim_idx + 1
                     break
             
             last_champion_probs = current_champion_probs.copy()
 
-    # Convert counts to probabilities
+    # Convert to probabilities
     round_probs = {}
     for team, rounds in round_counts.items():
         round_probs[team] = {
@@ -422,146 +515,309 @@ def simulate_tournament_full(bracket, prediction_df, h2h, n_sims=50000,
     }
 
     stats = {
-        'n_simulations':     n_sims,
-        'total_matchups':    total_matchups,
-        'unique_matchups':   len(cache) // 2,
-        'gnb_exclusions':    gnb_exclusion_count,
+        'n_simulations': n_sims,
+        'total_matchups': total_matchups,
+        'unique_matchups': len(cache) // 2,
+        'gnb_exclusions': gnb_exclusion_count,
         'gnb_exclusion_rate': round(gnb_exclusion_count / max(len(cache) // 2, 1), 4),
-        'converged':         n_sims < N_SIMULATIONS,
-        'convergence_history': convergence_history
+        'converged': convergence_check and n_sims < N_SIMS_PRODUCTION,
+        'convergence_history': convergence_history,
+        'top_5_champions': {t: round(p, 4) for t, p in sorted(champion_probs.items(), key=lambda x: -x[1])[:5]}
     }
 
     print(f"  ✓ Complete")
     print(f"    - Total sims: {n_sims:,}")
     print(f"    - Unique matchups: {stats['unique_matchups']:,}")
     print(f"    - GNB exclusion rate: {stats['gnb_exclusion_rate']:.1%}")
+    if n_trace > 0:
+        print(f"    - Trace records logged: {len(traces)}")
     
     top_champs = sorted(champion_probs.items(), key=lambda x: -x[1])[:5]
     print(f"    - Top 5 champions:")
     for team, prob in top_champs:
         print(f"        {team}: {prob:.1%}")
 
-    return round_probs, champion_probs, stats, cache
+    return round_probs, champion_probs, stats, cache, traces
 
 
 # ============================================================================
-# OPTIMIZATION STRATEGIES
+# VALIDATION MODE
+# ============================================================================
+
+def analyze_agreement(elite8_direct, elite8_simulated):
+    """Compare Elite 8 direct vs simulated probabilities."""
+    df = elite8_direct.copy()
+    df['P_Elite8_Simulated'] = df['Team'].map(elite8_simulated)
+    df = df.dropna(subset=['P_Elite8_Direct', 'P_Elite8_Simulated'])
+
+    pearson_corr, pearson_p = pearsonr(df['P_Elite8_Direct'], df['P_Elite8_Simulated'])
+    spearman_corr, spearman_p = spearmanr(df['P_Elite8_Direct'], df['P_Elite8_Simulated'])
+
+    rmse = np.sqrt(mean_squared_error(df['P_Elite8_Direct'], df['P_Elite8_Simulated']))
+    mae = np.mean(np.abs(df['P_Elite8_Direct'] - df['P_Elite8_Simulated']))
+
+    df['Abs_Difference'] = np.abs(df['P_Elite8_Direct'] - df['P_Elite8_Simulated'])
+    df['Direct_Higher'] = df['P_Elite8_Direct'] > df['P_Elite8_Simulated']
+    df['Significant_Disagreement'] = df['Abs_Difference'] > DISAGREEMENT_THRESHOLD
+
+    df['P_Elite8_Ensemble'] = (df['P_Elite8_Direct'] + df['P_Elite8_Simulated']) / 2
+
+    if pearson_corr >= HIGH_AGREEMENT_THRESHOLD:
+        strategy = "HIGH_AGREEMENT"
+        recommendation = f"Models agree strongly (r={pearson_corr:.3f}). H2H simulation is primary."
+        w_h2h, w_e8 = 0.70, 0.30
+    elif pearson_corr >= MODERATE_AGREEMENT_THRESHOLD:
+        strategy = "MODERATE_AGREEMENT"
+        recommendation = f"Moderate agreement (r={pearson_corr:.3f}). Blend 60% H2H + 40% Elite8."
+        w_h2h, w_e8 = 0.60, 0.40
+    else:
+        strategy = "LOW_AGREEMENT"
+        recommendation = f"Low agreement (r={pearson_corr:.3f}). Use H2H for brackets, Elite 8 for Calcutta separately."
+        w_h2h, w_e8 = 0.50, 0.50
+
+    summary = {
+        'n_teams': len(df),
+        'pearson_correlation': float(pearson_corr),
+        'pearson_p_value': float(pearson_p),
+        'spearman_correlation': float(spearman_corr),
+        'spearman_p_value': float(spearman_p),
+        'rmse': float(rmse),
+        'mae': float(mae),
+        'max_absolute_difference': float(df['Abs_Difference'].max()),
+        'median_absolute_difference': float(df['Abs_Difference'].median()),
+        'teams_with_significant_disagreement': int(df['Significant_Disagreement'].sum()),
+        'pct_teams_with_disagreement': float(df['Significant_Disagreement'].mean()),
+        'integration_strategy': strategy,
+        'recommendation': recommendation,
+        'suggested_weight_h2h': w_h2h,
+        'suggested_weight_elite8': w_e8
+    }
+
+    df['Avg_Probability'] = (df['P_Elite8_Direct'] + df['P_Elite8_Simulated']) / 2
+    df = df.sort_values('Avg_Probability', ascending=False).reset_index(drop=True)
+
+    return df, summary
+
+
+def create_validation_visualizations(analysis_df, summary, sim_stats):
+    """Create validation diagnostic plots."""
+    print("Creating validation visualizations...")
+    sns.set_style("whitegrid")
+
+    # Scatter + disagreement histogram
+    fig, axes = plt.subplots(1, 2, figsize=(14, 6))
+
+    colors = ['red' if x else 'steelblue' for x in analysis_df['Significant_Disagreement']]
+    axes[0].scatter(analysis_df['P_Elite8_Direct'], analysis_df['P_Elite8_Simulated'],
+                    c=colors, alpha=0.7, s=60, edgecolors='black', linewidth=0.5)
+    axes[0].plot([0, 1], [0, 1], 'k--', linewidth=1.5, alpha=0.5, label='Perfect agreement')
+    axes[0].set_xlabel('Elite 8 Model (Direct)', fontsize=11, fontweight='bold')
+    axes[0].set_ylabel('H2H Model (Simulated)', fontsize=11, fontweight='bold')
+    axes[0].set_title(f'Model Agreement\nr = {summary["pearson_correlation"]:.3f}', fontsize=12, fontweight='bold')
+    axes[0].legend()
+    axes[0].grid(True, alpha=0.3)
+
+    for _, row in analysis_df.nlargest(5, 'Abs_Difference').iterrows():
+        axes[0].annotate(row['Team'], (row['P_Elite8_Direct'], row['P_Elite8_Simulated']),
+                        fontsize=7, fontweight='bold',
+                        bbox=dict(boxstyle='round,pad=0.2', facecolor='yellow', alpha=0.6))
+
+    axes[1].hist(analysis_df['Abs_Difference'], bins=25, edgecolor='black', alpha=0.7, color='steelblue')
+    axes[1].axvline(DISAGREEMENT_THRESHOLD, color='red', linestyle='--', linewidth=2,
+                   label=f'Threshold ({DISAGREEMENT_THRESHOLD:.0%})')
+    axes[1].set_xlabel('Absolute Difference', fontsize=11, fontweight='bold')
+    axes[1].set_ylabel('Frequency', fontsize=11, fontweight='bold')
+    axes[1].set_title(f'Disagreement Distribution\nMAE={summary["mae"]:.3f}', fontsize=12, fontweight='bold')
+    axes[1].legend()
+
+    plt.tight_layout()
+    plt.savefig(OUTPUT_DIR / 'validation_model_agreement.png', dpi=300, bbox_inches='tight')
+    print(f"  ✓ validation_model_agreement.png")
+    plt.close()
+
+    # Top 20 comparison
+    top20 = analysis_df.head(20)
+    fig, ax = plt.subplots(figsize=(14, 7))
+    x = np.arange(len(top20))
+    w = 0.35
+
+    ax.bar(x - w/2, top20['P_Elite8_Direct'], w, label='Elite 8 (Direct)', alpha=0.8, color='steelblue', edgecolor='black')
+    ax.bar(x + w/2, top20['P_Elite8_Simulated'], w, label='H2H (Simulated)', alpha=0.8, color='coral', edgecolor='black')
+
+    ax.set_xlabel('Team', fontsize=11, fontweight='bold')
+    ax.set_ylabel('P(Elite 8)', fontsize=11, fontweight='bold')
+    ax.set_title('Top 20 Elite 8 Candidates', fontsize=13, fontweight='bold')
+    ax.set_xticks(x)
+    ax.set_xticklabels(top20['Team'], rotation=45, ha='right', fontsize=9)
+    ax.legend(fontsize=10)
+    ax.grid(True, alpha=0.3, axis='y')
+
+    plt.tight_layout()
+    plt.savefig(OUTPUT_DIR / 'validation_top_teams.png', dpi=300, bbox_inches='tight')
+    print(f"  ✓ validation_top_teams.png")
+    plt.close()
+
+
+def run_validation_mode(bracket, bracket_df, prediction_df, elite8_df, h2h):
+    """Run validation analysis."""
+    print()
+    print("=" * 70)
+    print("                    VALIDATION MODE")
+    print("=" * 70)
+    print()
+
+    # Quick simulation
+    print("Running validation simulation...")
+    print("-" * 70)
+    
+    round_probs, champion_probs, sim_stats, cache, traces = simulate_tournament(
+        bracket, prediction_df, h2h,
+        n_sims=N_SIMS_VALIDATE,
+        convergence_check=None,  # No convergence in validation mode
+        n_trace=5
+    )
+    print()
+
+    # Elite 8 comparison
+    print("Analyzing model agreement...")
+    print("-" * 70)
+    
+    tournament_teams = set(bracket_df['Team'])
+    elite8_direct = (
+        elite8_df[elite8_df['Team'].isin(tournament_teams)]
+        [['Team', 'Elite8_Probability']]
+        .rename(columns={'Elite8_Probability': 'P_Elite8_Direct'})
+        .merge(bracket_df[['Team', 'tournamentSeed', 'Region']], on='Team')
+        .rename(columns={'tournamentSeed': 'Seed'})
+    )
+
+    elite8_simulated = {team: round_probs[team].get('E8', 0) for team in round_probs}
+    
+    analysis_df, summary = analyze_agreement(elite8_direct, elite8_simulated)
+    
+    print(f"  ✓ Pearson r={summary['pearson_correlation']:.4f}")
+    print(f"  ✓ Strategy: {summary['integration_strategy']}")
+    print(f"  ✓ Disagreements: {summary['teams_with_significant_disagreement']} teams")
+    print()
+
+    # Save outputs
+    print("Saving validation outputs...")
+    print("-" * 70)
+    
+    analysis_df.to_csv(OUTPUT_DIR / 'validation_disagreement_analysis.csv', index=False)
+    print(f"  ✓ validation_disagreement_analysis.csv")
+    
+    with open(OUTPUT_DIR / 'validation_summary.json', 'w') as f:
+        json.dump(summary, f, indent=2)
+    print(f"  ✓ validation_summary.json")
+    
+    with open(OUTPUT_DIR / 'validation_simulation_stats.json', 'w') as f:
+        json.dump(sim_stats, f, indent=2)
+    print(f"  ✓ validation_simulation_stats.json")
+    
+    if traces:
+        traces_df = pd.DataFrame(traces)
+        traces_df.to_csv(OUTPUT_DIR / 'validation_sample_traces.csv', index=False)
+        print(f"  ✓ validation_sample_traces.csv")
+    
+    create_validation_visualizations(analysis_df, summary, sim_stats)
+    print()
+
+    # Print summary
+    print("=" * 70)
+    print("                    VALIDATION SUMMARY")
+    print("=" * 70)
+    print()
+    print(f"  Correlation:   Pearson  {summary['pearson_correlation']:>6.4f}  (p={summary['pearson_p_value']:.2e})")
+    print(f"                 Spearman {summary['spearman_correlation']:>6.4f}  (p={summary['spearman_p_value']:.2e})")
+    print(f"  Error:         MAE      {summary['mae']:>6.4f}")
+    print(f"                 RMSE     {summary['rmse']:>6.4f}")
+    print(f"                 Max Δ    {summary['max_absolute_difference']:>6.4f}")
+    print(f"  Disagreements: {summary['teams_with_significant_disagreement']} teams "
+          f"({summary['pct_teams_with_disagreement']:.0%})")
+    print()
+    print(f"  Strategy: {summary['integration_strategy']}")
+    print(f"  → {summary['recommendation']}")
+    print()
+
+    print("  TOP 10 DISAGREEMENTS")
+    print("  " + "-" * 66)
+    print(f"  {'Team':<18} {'Direct':<9} {'Simulated':<10} {'Δ':<8} {'Direction'}")
+    print("  " + "-" * 66)
+    for _, row in analysis_df.nlargest(10, 'Abs_Difference').iterrows():
+        direction = "E8 ↑" if row['Direct_Higher'] else "H2H ↑"
+        print(f"  {row['Team']:<18} {row['P_Elite8_Direct']:>6.1%}   "
+              f"{row['P_Elite8_Simulated']:>6.1%}     {row['Abs_Difference']:>5.1%}   {direction}")
+    print()
+    print("=" * 70)
+
+
+# ============================================================================
+# PRODUCTION MODE - OPTIMIZATION
 # ============================================================================
 
 def optimize_chalk(bracket, round_probs):
-    """
-    Chalk strategy: always pick the team with higher probability.
-    Simple but effective baseline.
-    """
+    """Chalk strategy: always pick favorite."""
     picks = {}
-    
-    # For each matchup, pick higher probability team
     for region, matchups in bracket.items():
         for t1, t2 in matchups:
-            # Use R32 probability as tiebreaker (who's more likely to advance)
             p1 = round_probs.get(t1, {}).get('R32', 0)
             p2 = round_probs.get(t2, {}).get('R32', 0)
-            
             winner = t1 if p1 >= p2 else t2
             picks[(t1, t2)] = winner
-    
     return picks, "Chalk (always pick favorite)"
 
 
 def optimize_expected_value(bracket, round_probs, bracket_df, scoring=SCORING):
-    """
-    Expected Value strategy: maximize expected points given scoring rules.
-    
-    For each game, calculate:
-      EV(pick team1) = P(team1 wins) * points_if_correct
-      EV(pick team2) = P(team2 wins) * points_if_correct
-    
-    Pick whichever has higher EV.
-    """
+    """Expected Value strategy: maximize expected points."""
     picks = {}
-    
     for region, matchups in bracket.items():
         for t1, t2 in matchups:
-            # Get probabilities of advancing to next round
             p1_r32 = round_probs.get(t1, {}).get('R32', 0)
             p2_r32 = round_probs.get(t2, {}).get('R32', 0)
-            
-            # EV for picking each team (R64 round)
             ev1 = p1_r32 * scoring['R64']
             ev2 = p2_r32 * scoring['R64']
-            
             winner = t1 if ev1 >= ev2 else t2
             picks[(t1, t2)] = winner
-    
     return picks, "Expected Value (maximize expected points)"
 
 
 def optimize_elite8_focus(bracket, round_probs, elite8_probs_df):
-    """
-    Elite 8 Focus: optimize through Sweet 16, then pick chalk.
-    
-    Uses Elite 8 direct probabilities for early rounds where they're most
-    reliable, then switches to H2H simulation probabilities for later rounds.
-    """
+    """Elite 8 Focus: optimize through Sweet 16 using direct probabilities."""
     picks = {}
-    
-    # Create lookup for Elite 8 probs
-    e8_lookup = dict(zip(elite8_probs_df['Team'], 
-                        elite8_probs_df['Elite8_Probability']))
+    e8_lookup = dict(zip(elite8_probs_df['Team'], elite8_probs_df['Elite8_Probability']))
     
     for region, matchups in bracket.items():
         for t1, t2 in matchups:
-            # Use Elite 8 direct probability as decision metric
             e8_prob1 = e8_lookup.get(t1, 0)
             e8_prob2 = e8_lookup.get(t2, 0)
-            
             winner = t1 if e8_prob1 >= e8_prob2 else t2
             picks[(t1, t2)] = winner
     
     return picks, "Elite 8 Focus (optimize through Sweet 16)"
 
 
-# ============================================================================
-# BRACKET SIMULATION (apply picks to get full bracket)
-# ============================================================================
-
 def simulate_bracket_from_picks(bracket, picks, round_probs, cache):
-    """
-    Given R64 picks, simulate the rest of the bracket using probabilities.
-    Returns full bracket path to championship.
-    """
-    result = {
-        'R64': {},
-        'R32': {},
-        'S16': {},
-        'E8': {},
-        'FF': {},
-        'Championship': None
-    }
+    """Given R64 picks, simulate rest of bracket using probabilities."""
+    result = {'R64': {}, 'R32': {}, 'S16': {}, 'E8': {}, 'FF': {}, 'Championship': None}
     
-    # R64: use provided picks
+    # R64
     r64_winners = {}
     for region, matchups in bracket.items():
         r64_winners[region] = []
         result['R64'][region] = []
         
         for t1, t2 in matchups:
-            winner = picks.get((t1, t2), t1)  # Default to t1 if no pick
+            winner = picks.get((t1, t2), t1)
             r64_winners[region].append(winner)
             
-            # Get probability for this pick
             p = cache.get((t1, t2), 0.5)
             if winner == t2:
                 p = 1.0 - p
             
-            result['R64'][region].append({
-                'team1': t1,
-                'team2': t2,
-                'winner': winner,
-                'prob': p
-            })
+            result['R64'][region].append({'team1': t1, 'team2': t2, 'winner': winner, 'prob': p})
     
-    # R32: pick higher probability from remaining teams
+    # R32
     r32_winners = {}
     for region, winners in r64_winners.items():
         r32_winners[region] = []
@@ -570,8 +826,6 @@ def simulate_bracket_from_picks(bracket, picks, round_probs, cache):
         for i in range(0, len(winners), 2):
             if i + 1 < len(winners):
                 t1, t2 = winners[i], winners[i+1]
-                
-                # Pick team with higher S16 probability
                 p1 = round_probs.get(t1, {}).get('S16', 0)
                 p2 = round_probs.get(t2, {}).get('S16', 0)
                 winner = t1 if p1 >= p2 else t2
@@ -580,13 +834,7 @@ def simulate_bracket_from_picks(bracket, picks, round_probs, cache):
                 p = cache.get((t1, t2), 0.5)
                 if winner == t2:
                     p = 1.0 - p
-                
-                result['R32'][region].append({
-                    'team1': t1,
-                    'team2': t2,
-                    'winner': winner,
-                    'prob': p
-                })
+                result['R32'][region].append({'team1': t1, 'team2': t2, 'winner': winner, 'prob': p})
     
     # S16
     s16_winners = {}
@@ -597,7 +845,6 @@ def simulate_bracket_from_picks(bracket, picks, round_probs, cache):
         for i in range(0, len(winners), 2):
             if i + 1 < len(winners):
                 t1, t2 = winners[i], winners[i+1]
-                
                 p1 = round_probs.get(t1, {}).get('E8', 0)
                 p2 = round_probs.get(t2, {}).get('E8', 0)
                 winner = t1 if p1 >= p2 else t2
@@ -606,20 +853,13 @@ def simulate_bracket_from_picks(bracket, picks, round_probs, cache):
                 p = cache.get((t1, t2), 0.5)
                 if winner == t2:
                     p = 1.0 - p
-                
-                result['S16'][region].append({
-                    'team1': t1,
-                    'team2': t2,
-                    'winner': winner,
-                    'prob': p
-                })
+                result['S16'][region].append({'team1': t1, 'team2': t2, 'winner': winner, 'prob': p})
     
     # E8
     e8_winners = {}
     for region, winners in s16_winners.items():
         if len(winners) == 2:
             t1, t2 = winners[0], winners[1]
-            
             p1 = round_probs.get(t1, {}).get('FF', 0)
             p2 = round_probs.get(t2, {}).get('FF', 0)
             winner = t1 if p1 >= p2 else t2
@@ -628,13 +868,7 @@ def simulate_bracket_from_picks(bracket, picks, round_probs, cache):
             p = cache.get((t1, t2), 0.5)
             if winner == t2:
                 p = 1.0 - p
-            
-            result['E8'][region] = {
-                'team1': t1,
-                'team2': t2,
-                'winner': winner,
-                'prob': p
-            }
+            result['E8'][region] = {'team1': t1, 'team2': t2, 'winner': winner, 'prob': p}
     
     # FF
     ff_matchups = [('East', 'South'), ('West', 'Midwest')]
@@ -644,7 +878,6 @@ def simulate_bracket_from_picks(bracket, picks, round_probs, cache):
     for r1, r2 in ff_matchups:
         if r1 in e8_winners and r2 in e8_winners:
             t1, t2 = e8_winners[r1], e8_winners[r2]
-            
             p1 = round_probs.get(t1, {}).get('Championship', 0)
             p2 = round_probs.get(t2, {}).get('Championship', 0)
             winner = t1 if p1 >= p2 else t2
@@ -653,20 +886,11 @@ def simulate_bracket_from_picks(bracket, picks, round_probs, cache):
             p = cache.get((t1, t2), 0.5)
             if winner == t2:
                 p = 1.0 - p
-            
-            matchup_name = f"{r1} vs {r2}"
-            result['FF'][matchup_name] = {
-                'team1': t1,
-                'team2': t2,
-                'winner': winner,
-                'prob': p
-            }
+            result['FF'][f"{r1} vs {r2}"] = {'team1': t1, 'team2': t2, 'winner': winner, 'prob': p}
     
     # Championship
     if len(ff_winners) == 2:
         t1, t2 = ff_winners[0], ff_winners[1]
-        
-        # Pick higher champion probability
         p1 = round_probs.get(t1, {}).get('Championship', 0)
         p2 = round_probs.get(t2, {}).get('Championship', 0)
         winner = t1 if p1 >= p2 else t2
@@ -674,31 +898,18 @@ def simulate_bracket_from_picks(bracket, picks, round_probs, cache):
         p = cache.get((t1, t2), 0.5)
         if winner == t2:
             p = 1.0 - p
-        
-        result['Championship'] = {
-            'team1': t1,
-            'team2': t2,
-            'winner': winner,
-            'prob': p
-        }
+        result['Championship'] = {'team1': t1, 'team2': t2, 'winner': winner, 'prob': p}
     
     return result
 
 
-# ============================================================================
-# EXPORTS
-# ============================================================================
-
 def export_round_probabilities(round_probs, bracket_df):
     """Export round probability table."""
     rows = []
-    
     rounds = ['R64', 'R32', 'S16', 'E8', 'FF', 'Championship']
     
     for team in round_probs:
         row = {'Team': team}
-        
-        # Add seed and region if available
         team_info = bracket_df[bracket_df['Team'] == team]
         if len(team_info) > 0:
             row['Seed'] = int(team_info.iloc[0]['tournamentSeed'])
@@ -707,17 +918,13 @@ def export_round_probabilities(round_probs, bracket_df):
             row['Seed'] = None
             row['Region'] = None
         
-        # Add probabilities for each round
         for round_name in rounds:
             row[f'P_{round_name}'] = round_probs[team].get(round_name, 0)
         
         rows.append(row)
     
     df = pd.DataFrame(rows)
-    
-    # Sort by championship probability
     df = df.sort_values('P_Championship', ascending=False)
-    
     return df
 
 
@@ -738,7 +945,7 @@ def export_bracket_csv(bracket_result, strategy_name):
                             'Winner': game['winner'],
                             'Probability': round(game['prob'], 4)
                         })
-                elif isinstance(games, dict):  # E8 is dict not list
+                elif isinstance(games, dict):
                     rows.append({
                         'Round': round_name,
                         'Region': region,
@@ -748,7 +955,6 @@ def export_bracket_csv(bracket_result, strategy_name):
                         'Probability': round(games['prob'], 4)
                     })
     
-    # FF
     if 'FF' in bracket_result:
         for matchup_name, game in bracket_result['FF'].items():
             rows.append({
@@ -760,7 +966,6 @@ def export_bracket_csv(bracket_result, strategy_name):
                 'Probability': round(game['prob'], 4)
             })
     
-    # Championship
     if bracket_result.get('Championship'):
         game = bracket_result['Championship']
         rows.append({
@@ -773,30 +978,25 @@ def export_bracket_csv(bracket_result, strategy_name):
         })
     
     df = pd.DataFrame(rows)
-    
-    filename = f"optimal_bracket_{strategy_name.lower().replace(' ', '_')}.csv"
+    filename = f"bracket_{strategy_name.lower().replace(' ', '_')}.csv"
     filepath = OUTPUT_DIR / filename
     df.to_csv(filepath, index=False)
-    
     return filepath
 
 
 def export_bracket_text(bracket_result, strategy_name, champion_prob):
     """Export human-readable bracket trace."""
     lines = []
-    
     lines.append("=" * 70)
     lines.append(f"  OPTIMAL BRACKET: {strategy_name}")
     lines.append("=" * 70)
     lines.append("")
     
-    # Champion
     if bracket_result.get('Championship'):
         champ = bracket_result['Championship']['winner']
         lines.append(f"🏆 CHAMPION: {champ} ({champion_prob:.1%})")
         lines.append("")
     
-    # Round by round
     for round_name in ['R64', 'R32', 'S16', 'E8', 'FF', 'Championship']:
         if round_name not in bracket_result:
             continue
@@ -806,101 +1006,57 @@ def export_bracket_text(bracket_result, strategy_name, champion_prob):
         
         if round_name == 'Championship':
             game = bracket_result['Championship']
-            lines.append(f"  {game['winner']:<25} def. {game['team2'] if game['winner'] == game['team1'] else game['team1']:<25} ({game['prob']:.0%})")
+            loser = game['team2'] if game['winner'] == game['team1'] else game['team1']
+            lines.append(f"  {game['winner']:<25} def. {loser:<25} ({game['prob']:.0%})")
         elif round_name == 'FF':
             for matchup_name, game in bracket_result['FF'].items():
                 loser = game['team2'] if game['winner'] == game['team1'] else game['team1']
                 lines.append(f"  {game['winner']:<25} def. {loser:<25} ({game['prob']:.0%})")
         else:
-            # R64, R32, S16, E8
             for region in ['East', 'Midwest', 'South', 'West']:
                 if region not in bracket_result[round_name]:
                     continue
-                
                 games = bracket_result[round_name][region]
-                if isinstance(games, dict):  # E8
+                if isinstance(games, dict):
                     games = [games]
-                
                 for game in games:
                     loser = game['team2'] if game['winner'] == game['team1'] else game['team1']
                     lines.append(f"  {game['winner']:<25} def. {loser:<25} ({game['prob']:.0%})")
-        
         lines.append("")
     
     lines.append("=" * 70)
     
     text = "\n".join(lines)
-    
-    filename = f"bracket_trace_{strategy_name.lower().replace(' ', '_')}.txt"
+    filename = f"bracket_{strategy_name.lower().replace(' ', '_')}.txt"
     filepath = OUTPUT_DIR / filename
-    
     with open(filepath, 'w') as f:
         f.write(text)
-    
     return filepath
 
 
-# ============================================================================
-# MAIN
-# ============================================================================
-
-def main():
+def run_production_mode(bracket, bracket_df, prediction_df, elite8_df, h2h):
+    """Run bracket optimization."""
     print()
     print("=" * 70)
-    print("           L4.02 — BRACKET SIMULATOR & OPTIMIZER")
+    print("                    PRODUCTION MODE")
     print("=" * 70)
     print()
 
-    # ================================================================
-    # STEP 1: Load
-    # ================================================================
-    print("STEP 1: Loading data and models")
-    print("-" * 70)
-
-    print("Loading Elite 8 predictions...")
-    elite8_df = load_elite8_predictions()
-    print(f"  ✓ {len(elite8_df)} teams")
-
-    print("Loading H2H models and config...")
-    h2h = load_h2h()
-    print(f"  ✓ {len(h2h['models'])} models, {len(h2h['feature_columns'])} features")
-
-    print("Loading prediction data...")
-    prediction_df = load_prediction_data()
-    print(f"  ✓ {len(prediction_df)} teams, {len(prediction_df.columns)} columns")
-    
-    print()
-
-    # ================================================================
-    # STEP 2: Construct bracket
-    # ================================================================
-    print("STEP 2: Constructing tournament bracket")
+    # Full simulation
+    print("Running Monte Carlo simulation...")
     print("-" * 70)
     
-    bracket, bracket_df = construct_bracket(prediction_df)
-    
-    print(f"  ✓ {len(bracket_df)} tournament teams")
-    print(f"  ✓ {len(bracket)} regions, {sum(len(m) for m in bracket.values())} R64 matchups")
-    print()
-
-    # ================================================================
-    # STEP 3: Monte Carlo simulation
-    # ================================================================
-    print("STEP 3: Monte Carlo tournament simulation")
-    print("-" * 70)
-    
-    round_probs, champion_probs, sim_stats, cache = simulate_tournament_full(
-        bracket, prediction_df, h2h, 
-        n_sims=N_SIMULATIONS,
+    round_probs, champion_probs, sim_stats, cache, _ = simulate_tournament(
+        bracket, prediction_df, h2h,
+        n_sims=N_SIMS_PRODUCTION,
         convergence_check=CONVERGENCE_CHECK,
-        convergence_thresh=CONVERGENCE_THRESH
+        convergence_thresh=CONVERGENCE_THRESH,
+        n_trace=0  # No traces in production mode
     )
     print()
 
-    # ================================================================
-    # STEP 4: Generate optimal brackets (multiple strategies)
-    # ================================================================
-    print("STEP 4: Generating optimal brackets")
+    # Generate optimal brackets
+    print("Generating optimal brackets...")
     print("-" * 70)
     
     strategies = [
@@ -921,9 +1077,7 @@ def main():
         elif strat_key == 'elite8_focus':
             picks, desc = optimizer_func(bracket, round_probs, elite8_df)
         
-        # Simulate full bracket from R64 picks
         bracket_result = simulate_bracket_from_picks(bracket, picks, round_probs, cache)
-        
         champion = bracket_result['Championship']['winner'] if bracket_result.get('Championship') else None
         champ_prob = champion_probs.get(champion, 0) if champion else 0
         
@@ -934,36 +1088,26 @@ def main():
             'champion_prob': champ_prob
         }
         
-        print(f"    Strategy: {desc}")
         print(f"    Champion: {champion} ({champ_prob:.1%})")
     
     print()
 
-    # ================================================================
-    # STEP 5: Export outputs
-    # ================================================================
-    print("STEP 5: Exporting outputs")
+    # Export outputs
+    print("Exporting outputs...")
     print("-" * 70)
     
-    # Round probabilities
     round_probs_df = export_round_probabilities(round_probs, bracket_df)
     round_probs_path = OUTPUT_DIR / 'round_probabilities.csv'
     round_probs_df.to_csv(round_probs_path, index=False)
     print(f"  ✓ round_probabilities.csv ({len(round_probs_df)} teams)")
     
-    # Optimal brackets (one per strategy)
     for strat_key, bracket_data in brackets.items():
         csv_path = export_bracket_csv(bracket_data['result'], strat_key)
         print(f"  ✓ {csv_path.name}")
         
-        txt_path = export_bracket_text(
-            bracket_data['result'], 
-            bracket_data['description'],
-            bracket_data['champion_prob']
-        )
+        txt_path = export_bracket_text(bracket_data['result'], bracket_data['description'], bracket_data['champion_prob'])
         print(f"  ✓ {txt_path.name}")
     
-    # Simulation summary
     summary = {
         'simulation': {
             'n_sims': sim_stats['n_simulations'],
@@ -973,8 +1117,7 @@ def main():
         },
         'top_10_champions': {
             team: round(prob, 4)
-            for team, prob in sorted(champion_probs.items(), 
-                                   key=lambda x: -x[1])[:10]
+            for team, prob in sorted(champion_probs.items(), key=lambda x: -x[1])[:10]
         },
         'strategies': {
             strat_key: {
@@ -992,9 +1135,7 @@ def main():
     print(f"  ✓ simulation_summary.json")
     print()
 
-    # ================================================================
-    # RESULTS SUMMARY
-    # ================================================================
+    # Print summary
     print("=" * 70)
     print("                    SIMULATION SUMMARY")
     print("=" * 70)
@@ -1006,7 +1147,7 @@ def main():
     
     print("  TOP 10 CHAMPIONSHIP PROBABILITIES")
     print("  " + "-" * 66)
-    print(f"  {'Team':<25} {'Probability':<15} {'P(Elite 8)':<15}")
+    print(f"  {'Team':<25} {'P(Champion)':<15} {'P(Elite 8)':<15}")
     print("  " + "-" * 66)
     
     for team, prob in sorted(champion_probs.items(), key=lambda x: -x[1])[:10]:
@@ -1025,7 +1166,57 @@ def main():
         print()
     
     print("=" * 70)
-    print(f"\nOutputs saved to: {OUTPUT_DIR}/")
+
+
+# ============================================================================
+# MAIN
+# ============================================================================
+
+def main():
+    parser = argparse.ArgumentParser(description='Tournament Simulator (Validation + Optimization)')
+    parser.add_argument('--validate', action='store_true',
+                       help='Run validation mode (5K sims, correlation analysis)')
+    args = parser.parse_args()
+
+    print()
+    print("=" * 70)
+    print("           L4.01 — TOURNAMENT SIMULATOR")
+    print("=" * 70)
+    print()
+
+    # Load data
+    print("Loading data and models...")
+    print("-" * 70)
+    
+    print("  Elite 8 predictions...")
+    elite8_df = load_elite8_predictions()
+    print(f"    ✓ {len(elite8_df)} teams")
+    
+    print("  H2H models and config...")
+    h2h = load_h2h()
+    print(f"    ✓ {len(h2h['models'])} models, {len(h2h['feature_columns'])} features")
+    
+    print("  Prediction data...")
+    prediction_df = load_prediction_data()
+    print(f"    ✓ {len(prediction_df)} teams, {len(prediction_df.columns)} columns")
+    print()
+
+    # Construct bracket
+    print("Constructing tournament bracket...")
+    print("-" * 70)
+    
+    bracket, bracket_df = construct_bracket(prediction_df)
+    print(f"  ✓ {len(bracket_df)} tournament teams")
+    print(f"  ✓ {len(bracket)} regions, {sum(len(m) for m in bracket.values())} R64 matchups")
+
+    # Run appropriate mode
+    if args.validate:
+        run_validation_mode(bracket, bracket_df, prediction_df, elite8_df, h2h)
+    else:
+        run_production_mode(bracket, bracket_df, prediction_df, elite8_df, h2h)
+    
+    print()
+    print(f"Outputs saved to: {OUTPUT_DIR}/")
     print("=" * 70)
 
 
