@@ -20,6 +20,11 @@ import os
 from pathlib import Path
 
 # ============================================================================
+# FEATURE TOGGLES
+# ============================================================================
+INCLUDE_VEGAS_ODDS = False  # Set to False to disable Vegas odds integration
+
+# ============================================================================
 # CONFIGURATION
 # ============================================================================
 
@@ -188,26 +193,30 @@ def main():
     # ========================================================================
     # ADD VEGAS ODDS (Elite 8 probabilities from DraftKings)
     # ========================================================================
-    print(f"\n  Adding Vegas odds data...")
-    
-    if os.path.exists(VEGAS_ODDS_PATH):
-        vegas = pd.read_csv(VEGAS_ODDS_PATH)
-        print(f"    Loaded: {len(vegas)} teams with Vegas odds")
+    if INCLUDE_VEGAS_ODDS:
+        print(f"\n  Adding Vegas odds data...")
         
-        # Select columns for join (teamIndex maps to Index)
-        vegas_cols = ['teamIndex', 'vegas_elite8_prob', 'vegas_final4_prob', 'vegas_champ_prob']
-        vegas = vegas[vegas_cols].rename(columns={'teamIndex': 'Index'})
-        
-        # Left join to add Vegas odds (null for teams without odds)
-        df = df.merge(vegas, on='Index', how='left')
-        
-        teams_with_odds = df['vegas_elite8_prob'].notna().sum()
-        print(f"    ✓ Added vegas_elite8_prob, vegas_final4_prob, vegas_champ_prob columns")
-        print(f"    {teams_with_odds} teams have Vegas odds")
-        print(f"    {len(df) - teams_with_odds} teams without odds (will use model-only predictions)")
+        if os.path.exists(VEGAS_ODDS_PATH):
+            vegas = pd.read_csv(VEGAS_ODDS_PATH)
+            print(f"    Loaded: {len(vegas)} teams with Vegas odds")
+            
+            # Select columns for join (teamIndex maps to Index)
+            vegas_cols = ['teamIndex', 'vegas_elite8_prob', 'vegas_final4_prob', 'vegas_champ_prob']
+            vegas = vegas[vegas_cols].rename(columns={'teamIndex': 'Index'})
+            
+            # Left join to add Vegas odds (null for teams without odds)
+            df = df.merge(vegas, on='Index', how='left')
+            
+            teams_with_odds = df['vegas_elite8_prob'].notna().sum()
+            print(f"    ✓ Added vegas_elite8_prob, vegas_final4_prob, vegas_champ_prob columns")
+            print(f"    {teams_with_odds} teams have Vegas odds")
+            print(f"    {len(df) - teams_with_odds} teams without odds (will use model-only predictions)")
+        else:
+            print(f"    ⊘ Vegas odds file not found: {VEGAS_ODDS_PATH}")
+            print(f"    Continuing without Vegas odds (model-only predictions)")
     else:
-        print(f"    ⊘ Vegas odds file not found: {VEGAS_ODDS_PATH}")
-        print(f"    Continuing without Vegas odds (model-only predictions)")
+        print(f"\n  ⊘ Vegas odds integration DISABLED (INCLUDE_VEGAS_ODDS = False)")
+        print(f"    Running in model-only mode")
     
     print(f"\n  Final feature count: {len(df.columns)}")
     print(f"  Final team count: {len(df):,}")
