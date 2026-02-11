@@ -2,36 +2,36 @@
   "simulation": {
     "n_sims": 50000,
     "converged": false,
-    "unique_matchups": 1450,
-    "gnb_exclusion_rate": 0.9772
+    "unique_matchups": 1437,
+    "gnb_exclusion_rate": 0.9847
   },
   "top_10_champions": {
-    "Purdue": 0.4474,
-    "Gonzaga": 0.3097,
-    "Houston": 0.1803,
-    "Illinois": 0.1516,
-    "Connecticut": 0.1387,
-    "Vanderbilt": 0.1158,
-    "Nebraska": 0.0802,
-    "Ohio St.": 0.0713,
-    "BYU": 0.0622,
-    "North Carolina": 0.0548
+    "Connecticut": 0.4662,
+    "Gonzaga": 0.3989,
+    "Alabama": 0.1526,
+    "Purdue": 0.1324,
+    "Louisville": 0.0957,
+    "Michigan St.": 0.0741,
+    "North Carolina": 0.0683,
+    "Nebraska": 0.0683,
+    "BYU": 0.0649,
+    "Oklahoma St.": 0.0418
   },
   "strategies": {
     "chalk": {
       "description": "Chalk (always pick favorite)",
-      "champion": "Purdue",
-      "champion_probability": 0.4474
+      "champion": "Connecticut",
+      "champion_probability": 0.4662
     },
     "expected_value": {
       "description": "Expected Value (maximize expected points)",
-      "champion": "Purdue",
-      "champion_probability": 0.4474
+      "champion": "Connecticut",
+      "champion_probability": 0.4662
     },
     "elite8_focus": {
       "description": "Elite 8 Focus (optimize through Sweet 16)",
-      "champion": "Purdue",
-      "champion_probability": 0.4474
+      "champion": "Connecticut",
+      "champion_probability": 0.4662
     }
   }
 }

@@ -1,9 +1,9 @@
 Team,Seed,E_Points_Blended,Expected_Market_Price,Fair_Value,Value_Rating,Allocated_Bid,Strategy
-Stephen F. Austin,15,11.24,1.75,14.71,6.423,18,Value Hunter
-LIU,16,5.95,1.0,7.79,5.95,9,Value Hunter
-Lipscomb,15,10.04,1.75,13.14,5.737,16,Value Hunter
-Youngstown St.,16,5.63,1.0,7.37,5.63,9,Value Hunter
-Vermont,16,5.62,1.0,7.36,5.62,9,Value Hunter
-Norfolk St.,16,5.56,1.0,7.28,5.56,9,Value Hunter
-Colgate,15,9.71,1.75,12.71,5.549,15,Value Hunter
-North Dakota St.,15,9.65,1.75,12.63,5.514,15,Value Hunter
+Stephen F. Austin,15,10.37,1.75,13.6,5.926,17,Value Hunter
+North Dakota St.,15,10.16,1.75,13.32,5.806,16,Value Hunter
+LIU,16,5.74,1.0,7.53,5.74,9,Value Hunter
+Vermont,16,5.68,1.0,7.45,5.68,9,Value Hunter
+Youngstown St.,16,5.61,1.0,7.36,5.61,9,Value Hunter
+Norfolk St.,16,5.59,1.0,7.33,5.59,9,Value Hunter
+Colgate,15,9.66,1.75,12.67,5.52,16,Value Hunter
+Lipscomb,15,9.34,1.75,12.25,5.337,15,Value Hunter
