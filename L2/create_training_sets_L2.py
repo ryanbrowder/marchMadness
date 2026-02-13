@@ -166,6 +166,22 @@ def main():
     else:
         print(f"    No rank columns found to invert")
     
+    # Normalize ranks to standard 0-364 scale
+    print(f"\n  Normalizing ranks to standard 0-364 scale...")
+    STANDARD_MAX_RANK = 364  # Modern D1 basketball field size
+    
+    if rank_cols:
+        print(f"    Normalizing {len(rank_cols)} rank columns to 0-364 scale:")
+        for col in rank_cols:
+            if col in df_long.columns and df_long[col].notna().any():
+                current_max = df_long[col].max()
+                if current_max > 0:
+                    df_long[col] = (df_long[col] / current_max) * STANDARD_MAX_RANK
+                    print(f"      {col}: normalized (max was {current_max:.0f}, now {STANDARD_MAX_RANK})")
+        print(f"    ✓ Rank normalization complete for LONG view (all ranks now on 0-364 scale)")
+    else:
+        print(f"    No rank columns to normalize")
+    
     # ========================================================================
     # CREATE RICH VIEW (2016+, 6 sources)
     # ========================================================================
@@ -223,6 +239,22 @@ def main():
         print(f"    ✓ Rank inversion complete for RICH view")
     else:
         print(f"    No rank columns found to invert")
+    
+    # Normalize ranks to standard 0-364 scale
+    print(f"\n  Normalizing ranks to standard 0-364 scale...")
+    STANDARD_MAX_RANK = 364  # Modern D1 basketball field size
+    
+    if rank_cols:
+        print(f"    Normalizing {len(rank_cols)} rank columns to 0-364 scale:")
+        for col in rank_cols:
+            if col in df_rich.columns and df_rich[col].notna().any():
+                current_max = df_rich[col].max()
+                if current_max > 0:
+                    df_rich[col] = (df_rich[col] / current_max) * STANDARD_MAX_RANK
+                    print(f"      {col}: normalized (max was {current_max:.0f}, now {STANDARD_MAX_RANK})")
+        print(f"    ✓ Rank normalization complete for RICH view (all ranks now on 0-364 scale)")
+    else:
+        print(f"    No rank columns to normalize")
     
     # ========================================================================
     # VALIDATE AND WRITE OUTPUTS

@@ -2,7 +2,7 @@
   OPTIMAL BRACKET: Expected Value (maximize expected points)
 ======================================================================
 
-🏆 CHAMPION: Connecticut (38.8%)
+🏆 CHAMPION: Connecticut (39.4%)
 
 R64
 ----------------------------------------------------------------------
@@ -28,7 +28,7 @@ R64
   Louisville                def. UNC Wilmington            (74%)
   Saint Louis               def. Virginia                  (74%)
   Michigan St.              def. Northern Colorado         (73%)
-  Baylor                    def. Nebraska                  (50%)
+  Nebraska                  def. Baylor                    (50%)
   Connecticut               def. Stephen F. Austin         (71%)
   Arizona                   def. LIU                       (90%)
   Kentucky                  def. UCLA                      (88%)
@@ -52,7 +52,7 @@ R32
   Duke                      def. Miami FL                  (81%)
   Louisville                def. Texas Tech                (78%)
   Michigan St.              def. Saint Louis               (82%)
-  Connecticut               def. Baylor                    (90%)
+  Connecticut               def. Nebraska                  (87%)
   Arizona                   def. Kentucky                  (59%)
   Villanova                 def. High Point                (82%)
   Houston                   def. Arkansas                  (88%)

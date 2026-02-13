@@ -240,6 +240,24 @@ def main():
         print(f"    No rank columns found to invert")
     
     # ========================================================================
+    # NORMALIZE RANKS TO STANDARD 0-364 SCALE
+    # ========================================================================
+    print(f"\n  Normalizing ranks to standard 0-364 scale...")
+    STANDARD_MAX_RANK = 364  # Modern D1 basketball field size
+    
+    if rank_cols:
+        print(f"    Normalizing {len(rank_cols)} rank columns to 0-364 scale:")
+        for col in rank_cols:
+            if col in df.columns and df[col].notna().any():
+                current_max = df[col].max()
+                if current_max > 0:
+                    df[col] = (df[col] / current_max) * STANDARD_MAX_RANK
+                    print(f"      {col}: normalized (max was {current_max:.0f}, now {STANDARD_MAX_RANK})")
+        print(f"    ✓ Rank normalization complete (all ranks now on 0-364 scale)")
+    else:
+        print(f"    No rank columns to normalize")
+    
+    # ========================================================================
     # VALIDATE AND WRITE OUTPUT
     # ========================================================================
     print("\n[4/5] Validating output...")
