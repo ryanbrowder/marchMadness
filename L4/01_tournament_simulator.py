@@ -191,8 +191,11 @@ def compute_h2h_features(team1, team2, prediction_df, source_columns):
     t1_vals = t1_row[source_columns].values[0].astype(float)
     t2_vals = t2_row[source_columns].values[0].astype(float)
 
-    denom = np.abs(t1_vals) + np.abs(t2_vals)
-    diffs = np.where(denom == 0, 0.0, (t1_vals - t2_vals) / denom)
+    # OLD (WRONG): denom = np.abs(t1_vals) + np.abs(t2_vals)
+    # NEW (MATCHES TRAINING): denom = (np.abs(t1_vals) + np.abs(t2_vals)) / 2.0
+    
+    avg = (np.abs(t1_vals) + np.abs(t2_vals)) / 2.0
+    diffs = np.where(avg == 0, 0.0, (t1_vals - t2_vals) / avg)
 
     return diffs
 
