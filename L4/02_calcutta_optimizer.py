@@ -71,6 +71,14 @@ ROUND_MAP = {
 BUDGET = 100
 N_ENTRANTS_TYPICAL = 7  # Typical pool size
 
+# Model blending weight (adjust to control historical vs model influence)
+# 0.0 = 100% historical baseline (ignore model)
+# 0.3 = 30% model, 70% historical (default conservative)
+# 0.5 = 50/50 balanced
+# 0.7 = 70% model, 30% historical (trust the model)
+# 1.0 = 100% model (no historical anchor)
+MODEL_WEIGHT = 0.7  # ADJUST THIS VALUE (0.0 to 1.0)
+
 # Strategy definitions
 STRATEGIES = {
     'value_hunter': {
@@ -204,10 +212,23 @@ def calculate_upset_bonuses(results_df):
 def calculate_expected_points_historical(seed_perf_df, upset_bonuses):
     """
     Calculate E[points] for each seed using historical performance.
-    
-    E[points] = Σ(P(reach round) × round_points × (1 + avg_upset_bonus))
+    Uses round-by-round upset bonus calculation.
     """
-    print("Calculating expected points by seed (historical baseline)...")
+    print("Calculating expected points by seed (historical baseline with round-by-round upset bonuses)...")
+    
+    # R64 bracket structure
+    R64_MATCHUPS = {1: 16, 2: 15, 3: 14, 4: 13, 5: 12, 6: 11, 7: 10, 8: 9,
+                    16: 1, 15: 2, 14: 3, 13: 4, 12: 5, 11: 6, 10: 7, 9: 8}
+    
+    # Expected opponent seeds for later rounds
+    EXPECTED_OPPONENT_SEED = {
+        'R64': R64_MATCHUPS,
+        'R32': 8.0,
+        'S16': 4.5,
+        'E8': 3.0,
+        'FF': 2.0,
+        'Championship': 1.5
+    }
     
     rows = []
     
@@ -223,17 +244,44 @@ def calculate_expected_points_historical(seed_perf_df, upset_bonuses):
         base_points += row['P_FF'] * SCORING['FF']
         base_points += row['P_Championship'] * SCORING['Championship']
         
-        # Add expected upset bonuses (higher seeds more likely to upset)
-        avg_bonus = upset_bonuses.get(seed, 0)
-        upset_multiplier = 1.0 + (avg_bonus * 0.1)  # Conservative estimate
+        # Calculate round-by-round upset bonuses
+        upset_bonus_total = 0.0
         
-        expected_points = base_points * upset_multiplier
+        # Winning a round means reaching the NEXT round
+        # R64 win = reach R32, R32 win = reach S16, etc.
+        round_sequence = [
+            ('R64', row['P_R32'], 1.0),           # Win R64 → reach R32
+            ('R32', row['P_S16'], row['P_R32']),  # Win R32 → reach S16  
+            ('S16', row['P_E8'], row['P_S16']),   # Win S16 → reach E8
+            ('E8', row['P_FF'], row['P_E8']),     # Win E8 → reach FF
+            ('FF', row['P_Championship'], row['P_FF'])  # Win FF → reach Championship
+        ]
+        
+        for round_name, round_prob, prev_round_prob in round_sequence:
+            if round_prob == 0 or prev_round_prob == 0:
+                continue
+            
+            # P(win this round | reached this round)
+            p_win_round = round_prob / prev_round_prob
+            
+            # Expected opponent seed
+            if round_name == 'R64':
+                expected_opp = EXPECTED_OPPONENT_SEED['R64'].get(seed, seed)
+            else:
+                expected_opp = EXPECTED_OPPONENT_SEED[round_name]
+            
+            # Upset bonus only if underdog (higher seed number)
+            if seed > expected_opp:
+                seed_diff = seed - expected_opp
+                upset_bonus_total += p_win_round * seed_diff
+        
+        expected_points = base_points + upset_bonus_total
         
         rows.append({
             'Seed': seed,
             'E_Points_Historical': round(expected_points, 2),
             'Base_Points': round(base_points, 2),
-            'Upset_Multiplier': round(upset_multiplier, 3)
+            'Upset_Bonus': round(upset_bonus_total, 2)
         })
     
     df = pd.DataFrame(rows)
@@ -329,17 +377,32 @@ def load_2026_predictions():
 def calculate_2026_expected_points(round_probs_df, upset_bonuses):
     """
     Calculate E[points] for 2026 tournament teams.
-    Uses L4.01 model predictions + historical upset bonus estimates.
+    Uses L4.01 model predictions + round-by-round upset bonus calculation.
     """
-    print("Calculating 2026 expected points...")
+    print("Calculating 2026 expected points with round-by-round upset bonuses...")
+    
+    # R64 bracket structure (known matchups)
+    R64_MATCHUPS = {1: 16, 2: 15, 3: 14, 4: 13, 5: 12, 6: 11, 7: 10, 8: 9,
+                    16: 1, 15: 2, 14: 3, 13: 4, 12: 5, 11: 6, 10: 7, 9: 8}
+    
+    # Expected average opponent seed for later rounds (based on historical data)
+    # These represent "typical team that reaches this round"
+    EXPECTED_OPPONENT_SEED = {
+        'R64': R64_MATCHUPS,  # Known from bracket
+        'R32': 8.0,   # Average R32 team is ~8-9 seed
+        'S16': 4.5,   # Average S16 team is ~4-5 seed
+        'E8': 3.0,    # Average E8 team is ~2-3 seed
+        'FF': 2.0,    # Average FF team is ~1-2 seed
+        'Championship': 1.5  # Average championship participant is ~1-2 seed
+    }
     
     rows = []
     
     for _, row in round_probs_df.iterrows():
         team = row['Team']
-        seed = row['Seed']
+        seed = int(row['Seed'])
         
-        # Base points from round probabilities
+        # Base points from round probabilities (no upset bonuses)
         base_points = 0
         base_points += row['P_R64'] * SCORING['R64']
         base_points += row['P_R32'] * SCORING['R32']
@@ -348,17 +411,45 @@ def calculate_2026_expected_points(round_probs_df, upset_bonuses):
         base_points += row['P_FF'] * SCORING['FF']
         base_points += row['P_Championship'] * SCORING['Championship']
         
-        # Add upset bonus expectation
-        avg_bonus = upset_bonuses.get(int(seed), 0)
-        upset_multiplier = 1.0 + (avg_bonus * 0.1)
+        # Calculate round-by-round upset bonuses
+        upset_bonus_total = 0.0
         
-        expected_points = base_points * upset_multiplier
+        # Winning a round means reaching the NEXT round
+        round_sequence = [
+            ('R64', row['P_R32'], 1.0),           # Win R64 → reach R32
+            ('R32', row['P_S16'], row['P_R32']),  # Win R32 → reach S16  
+            ('S16', row['P_E8'], row['P_S16']),   # Win S16 → reach E8
+            ('E8', row['P_FF'], row['P_E8']),     # Win E8 → reach FF
+            ('FF', row['P_Championship'], row['P_FF'])  # Win FF → reach Championship
+        ]
+        
+        for round_name, round_prob, prev_round_prob in round_sequence:
+            if round_prob == 0 or prev_round_prob == 0:
+                continue
+            
+            # P(win this round | reached this round)
+            p_win_round = round_prob / prev_round_prob
+            
+            # Expected opponent seed
+            if round_name == 'R64':
+                expected_opp = EXPECTED_OPPONENT_SEED['R64'].get(seed, seed)
+            else:
+                expected_opp = EXPECTED_OPPONENT_SEED[round_name]
+            
+            # Upset bonus only if underdog (higher seed number)
+            if seed > expected_opp:
+                seed_diff = seed - expected_opp
+                upset_bonus_total += p_win_round * seed_diff
+        
+        expected_points = base_points + upset_bonus_total
         
         rows.append({
             'Team': team,
-            'Seed': int(seed),
+            'Seed': seed,
             'Region': row.get('Region', ''),
             'E_Points_Model': round(expected_points, 2),
+            'Base_Points': round(base_points, 2),
+            'Upset_Bonus': round(upset_bonus_total, 2),
             'P_R64': round(row['P_R64'], 4),
             'P_R32': round(row['P_R32'], 4),
             'P_S16': round(row['P_S16'], 4),
@@ -373,10 +464,13 @@ def calculate_2026_expected_points(round_probs_df, upset_bonuses):
 
 def blend_historical_and_model(historical_seed_df, model_2026_df):
     """
-    Blend historical baseline (70%) with 2026 model (30%).
+    Blend historical baseline with 2026 model predictions.
     Historical provides long-term baseline, model adjusts for 2026 specifics.
+    Blend weight controlled by MODEL_WEIGHT parameter.
     """
-    print("Blending historical baseline with 2026 model predictions...")
+    historical_weight = 1.0 - MODEL_WEIGHT
+    
+    print(f"Blending historical baseline ({historical_weight:.0%}) with 2026 model ({MODEL_WEIGHT:.0%})...")
     
     # Merge on seed
     merged = model_2026_df.merge(
@@ -385,10 +479,10 @@ def blend_historical_and_model(historical_seed_df, model_2026_df):
         how='left'
     )
     
-    # Blend: 70% historical, 30% model
+    # Blend: (1-MODEL_WEIGHT) × historical + MODEL_WEIGHT × model
     merged['E_Points_Blended'] = (
-        0.7 * merged['E_Points_Historical'] + 
-        0.3 * merged['E_Points_Model']
+        historical_weight * merged['E_Points_Historical'] + 
+        MODEL_WEIGHT * merged['E_Points_Model']
     ).round(2)
     
     return merged

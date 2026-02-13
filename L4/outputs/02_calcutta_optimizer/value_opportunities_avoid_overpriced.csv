@@ -1,11 +1,11 @@
 Team,Seed,E_Points_Blended,Expected_Market_Price,Value_Rating
-Arizona,1,13.26,42.94,0.309
-Iowa St.,1,13.3,42.94,0.31
-Michigan,1,13.42,42.94,0.313
-Duke,1,13.54,42.94,0.315
-BYU,2,13.9,29.25,0.475
-Purdue,2,14.48,29.25,0.495
-Gonzaga,2,15.35,29.25,0.525
-Connecticut,2,15.98,29.25,0.546
-Michigan St.,3,9.6,17.5,0.549
-Houston,3,10.11,17.5,0.578
+Iowa St.,1,11.82,42.94,0.275
+Michigan,1,12.98,42.94,0.302
+Arizona,1,13.31,42.94,0.31
+Duke,1,14.13,42.94,0.329
+BYU,2,15.04,29.25,0.514
+Michigan St.,3,10.82,17.5,0.618
+Connecticut,2,19.28,29.25,0.659
+Gonzaga,2,19.68,29.25,0.673
+Purdue,2,20.19,29.25,0.69
+Houston,3,12.26,17.5,0.701

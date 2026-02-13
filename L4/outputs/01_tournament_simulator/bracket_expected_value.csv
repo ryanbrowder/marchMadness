@@ -21,7 +21,7 @@ R64,South,Texas Tech,Tulsa,Texas Tech,0.6179
 R64,South,Louisville,UNC Wilmington,Louisville,0.736
 R64,South,Virginia,Saint Louis,Saint Louis,0.7383
 R64,South,Michigan St.,Northern Colorado,Michigan St.,0.7266
-R64,South,Nebraska,Baylor,Nebraska,0.5016
+R64,South,Nebraska,Baylor,Baylor,0.4984
 R64,South,Connecticut,Stephen F. Austin,Connecticut,0.7106
 R64,West,Arizona,LIU,Arizona,0.9044
 R64,West,UCLA,Kentucky,Kentucky,0.8833
@@ -42,7 +42,7 @@ R32,Midwest,Oklahoma St.,Gonzaga,Gonzaga,0.8963
 R32,South,Duke,Miami FL,Duke,0.807
 R32,South,Texas Tech,Louisville,Louisville,0.7794
 R32,South,Saint Louis,Michigan St.,Michigan St.,0.8233
-R32,South,Nebraska,Connecticut,Connecticut,0.8694
+R32,South,Baylor,Connecticut,Connecticut,0.8973
 R32,West,Arizona,Kentucky,Arizona,0.5919
 R32,West,Villanova,High Point,Villanova,0.8215
 R32,West,Arkansas,Houston,Houston,0.8831
