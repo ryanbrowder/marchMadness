@@ -58,7 +58,13 @@ def parse_team_column(df: pd.DataFrame) -> pd.DataFrame:
         if pd.isna(team_string) or team_string == '':
             return team_string, None, None
         
-        # First, remove game info: (H) or (A) and everything after it
+        # First, remove matchup preview data: "vs." and everything after it
+        # "Louisvillevs. 48 Baylor" becomes "Louisville"
+        # "Ohio St.vs. 17 Virginia" becomes "Ohio St."
+        if 'vs.' in team_string:
+            team_string = team_string.split('vs.')[0].strip()
+        
+        # Second, remove game info: (H) or (A) and everything after it
         # "Michigan(H) 13 Nebraska" becomes "Michigan"
         team_string = re.sub(r'\(H\).*$', '', team_string)
         team_string = re.sub(r'\(A\).*$', '', team_string)
@@ -268,11 +274,21 @@ def clean_torvik_data(df: pd.DataFrame) -> pd.DataFrame:
     """
     df = df.copy()
     
+    print(f"  Start: {len(df)} rows")
+    
     # Apply cleaning steps in order
     df = remove_header_rows(df)
+    print(f"  After remove_header_rows: {len(df)} rows")
+    
     df = parse_team_column(df)
+    print(f"  After parse_team_column: {len(df)} rows")
+    
     df = add_team_index(df)
+    print(f"  After add_team_index: {len(df)} rows")
+    
     df = remove_duplicates(df)
+    print(f"  After remove_duplicates: {len(df)} rows")
+    
     df = reorder_team_columns(df)
     df = split_record_column(df)
     df = reorder_wins_column(df)

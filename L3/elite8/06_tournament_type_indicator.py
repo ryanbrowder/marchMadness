@@ -1,22 +1,24 @@
 """
 L3 Tournament Type Indicator
-Analyzes prediction distribution to estimate if 2026 will be chalk vs chaos
-Uses patterns from historical backtesting to create predictive signals
+Configure via config.py: USE_SEEDS = True/False
 """
 
 import pandas as pd
 import numpy as np
 from pathlib import Path
 
+# Import configuration
+import config
+
 # Configuration
-PREDICTIONS_FILE = Path('outputs/05_2026_predictions/elite8_predictions_2026_comparison.csv')
-BACKTEST_FILE = Path('outputs/04_backtest/backtest_summary.csv')
-OUTPUT_DIR = Path('outputs/06_tournament_indicator')
+PREDICTIONS_FILE = config.OUTPUT_05 / 'elite8_predictions_2026_comparison.csv'
+BACKTEST_FILE = config.OUTPUT_04 / 'backtest_summary.csv'
+OUTPUT_DIR = config.OUTPUT_06
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 print("="*80)
 print("2026 TOURNAMENT TYPE INDICATOR")
-print("Analyzing prediction distribution to estimate chalk vs chaos")
+config.print_config()
 print("="*80)
 
 # ============================================================================

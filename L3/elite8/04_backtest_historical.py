@@ -1,12 +1,10 @@
 """
 L3 Historical Backtesting
-Walk-forward validation: For each year, train on all prior years and test on that year
-Shows model performance across different tournament types (chalk vs chaos)
+Configure via config.py: USE_SEEDS = True/False
 """
 
 import pandas as pd
 import numpy as np
-import pickle
 from pathlib import Path
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
@@ -18,16 +16,20 @@ from sklearn.preprocessing import StandardScaler
 import warnings
 warnings.filterwarnings('ignore')
 
+# Import configuration
+import config
+
 # Configuration
-INPUT_DIR = Path('outputs/01_feature_selection')
-OUTPUT_DIR = Path('outputs/04_backtest')
+INPUT_DIR = config.OUTPUT_01
+OUTPUT_DIR = config.OUTPUT_04
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-RANDOM_STATE = 42
+RANDOM_STATE = config.RANDOM_STATE
 BACKTEST_YEARS = range(2015, 2026)  # 2015-2025 (11 years, excluding 2020)
 
 print("="*80)
 print("HISTORICAL BACKTESTING - WALK-FORWARD VALIDATION")
+config.print_config()
 print("For each year: train on all prior years, test on that year")
 print("="*80)
 

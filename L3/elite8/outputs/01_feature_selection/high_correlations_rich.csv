@@ -49,7 +49,7 @@ bartTorvik_Rk,BPI,0.9220711126356887
 kenpom_NetRtg,PowerRank,0.9177503079624771
 bartTorvik_AdjDE,kenpom_DRtg_Rank,0.9156589549116414
 kenpom_DRtg,BPI_Def,0.9129671927588608
-bartTorvik_WAB,tournamentSeed,0.9103323457116429
+tournamentSeed,bartTorvik_WAB,0.9103323457116429
 kenpom_SOS_NetRtg,kenpom_SOS_DRtg,0.9082925863555701
 kenpom_NetRtg,LRMCB,0.9075835604418725
 kenpom_NetRtg,masseyComposite_Rank,0.9066914635595786
@@ -59,5 +59,5 @@ bartTorvik_AdjDE,BPI_Def,0.904761758973429
 kenpom_ORtg,kenpom_ORtg_Rank,0.9020679751638521
 kenpom_ORtg_Rank,BPI_Off,0.9014161050874413
 kenpom_DRtg_Rank,BPI_Def,0.9008604143613961
-BPI,tournamentSeed,0.9003165072196966
-kenpom_NetRtg,tournamentSeed,0.9001840421994124
+tournamentSeed,BPI,0.9003165072196966
+tournamentSeed,kenpom_NetRtg,0.9001840421994124

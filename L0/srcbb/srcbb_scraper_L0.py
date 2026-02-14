@@ -1,16 +1,7 @@
 #!/usr/bin/env python3
 """
-NCAA Tournament Historical Game Scraper
-Scrapes tournament games from Sports-Reference.com for years 2008-2025
-
-Requirements:
-    pip install selenium pandas
-
-Usage:
-    python scrape_tournament_games.py
-    
-Output:
-    ../../L1/data/srcbb/srcbb_transform_L1.csv
+NCAA Tournament Historical Game Scraper - Robust Version
+Handles errors gracefully and continues scraping other years
 """
 
 import time
@@ -20,7 +11,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import json
+from selenium.common.exceptions import TimeoutException, NoSuchElementException
 import logging
 from pathlib import Path
 
@@ -40,6 +31,7 @@ class TournamentScraper:
         self.end_year = end_year
         self.base_url = "https://www.sports-reference.com/cbb/postseason/men/{year}-ncaa.html"
         self.all_games = []
+        self.failed_years = []
         
         # Setup Chrome options
         chrome_options = Options()
@@ -49,10 +41,12 @@ class TournamentScraper:
         chrome_options.add_argument('--disable-dev-shm-usage')
         chrome_options.add_argument('--disable-gpu')
         chrome_options.add_argument('--window-size=1920,1080')
+        # Add user agent to avoid detection
+        chrome_options.add_argument('user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36')
         
         self.driver = webdriver.Chrome(options=chrome_options)
         
-        # JavaScript scraper that runs in the browser
+        # JavaScript scraper
         self.scraper_js = """
         function scrapeTournamentGames(year) {
             const games = [];
@@ -93,7 +87,6 @@ class TournamentScraper:
                             
                             if (teamDivs.length < 2) return;
                             
-                            // Parse Team A
                             const teamADiv = teamDivs[0];
                             const seedASpan = teamADiv.querySelector('span');
                             const seedA = seedASpan ? seedASpan.textContent.trim() : '';
@@ -101,7 +94,6 @@ class TournamentScraper:
                             const teamA = teamALinks[0] ? teamALinks[0].textContent.trim() : '';
                             const scoreA = teamALinks[1] ? teamALinks[1].textContent.trim() : '';
                             
-                            // Parse Team B
                             const teamBDiv = teamDivs[1];
                             const seedBSpan = teamBDiv.querySelector('span');
                             const seedB = seedBSpan ? seedBSpan.textContent.trim() : '';
@@ -109,7 +101,6 @@ class TournamentScraper:
                             const teamB = teamBLinks[0] ? teamBLinks[0].textContent.trim() : '';
                             const scoreB = teamBLinks[1] ? teamBLinks[1].textContent.trim() : '';
                             
-                            // Determine winner
                             let winner = '';
                             if (teamADiv.classList.contains('winner')) {
                                 winner = teamA;
@@ -117,7 +108,6 @@ class TournamentScraper:
                                 winner = teamB;
                             }
                             
-                            // Get location
                             let location = '';
                             const directSpans = Array.from(gameDiv.children).filter(child => child.tagName === 'SPAN');
                             if (directSpans.length > 0) {
@@ -162,13 +152,33 @@ class TournamentScraper:
             # Navigate to the page
             self.driver.get(url)
             
-            # Wait for the bracket to load
-            WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located((By.ID, "bracket"))
-            )
+            # Wait longer for bracket to load (up to 15 seconds)
+            try:
+                WebDriverWait(self.driver, 15).until(
+                    EC.presence_of_element_located((By.ID, "bracket"))
+                )
+            except TimeoutException:
+                logger.warning(f"  ⚠ Timeout waiting for bracket on {year} page")
+                logger.info(f"  Checking if page exists...")
+                
+                # Check if we got a 404 or similar
+                page_source = self.driver.page_source
+                if "404" in page_source or "not found" in page_source.lower():
+                    logger.error(f"  ✗ Page not found for {year}")
+                    return []
+                
+                # Try waiting a bit more
+                logger.info(f"  Waiting additional 5 seconds...")
+                time.sleep(5)
+                
+                # Try finding bracket again
+                brackets = self.driver.find_elements(By.ID, "bracket")
+                if not brackets:
+                    logger.error(f"  ✗ No bracket found for {year}")
+                    return []
             
-            # Give the page a moment to fully render
-            time.sleep(2)
+            # Give page time to fully render
+            time.sleep(3)
             
             # Execute the scraper JavaScript
             games = self.driver.execute_script(self.scraper_js, year)
@@ -180,8 +190,13 @@ class TournamentScraper:
                 logger.warning(f"  ⚠ No games found for {year}")
                 return []
                 
+        except TimeoutException as e:
+            logger.error(f"  ✗ Timeout error for {year}: {e}")
+            self.failed_years.append(year)
+            return []
         except Exception as e:
             logger.error(f"  ✗ Error scraping {year}: {e}")
+            self.failed_years.append(year)
             return []
     
     def scrape_all_years(self):
@@ -195,11 +210,13 @@ class TournamentScraper:
             self.all_games.extend(year_games)
             
             # Be polite to the server
-            time.sleep(1)
+            time.sleep(2)
         
         logger.info(f"\n{'='*60}")
         logger.info(f"Scraping complete!")
         logger.info(f"Total games collected: {len(self.all_games)}")
+        if self.failed_years:
+            logger.warning(f"Failed years: {self.failed_years}")
         logger.info(f"{'='*60}\n")
     
     def save_to_csv(self, output_path='../../L1/data/srcbb/srcbb_transform_L1.csv'):
@@ -214,7 +231,7 @@ class TournamentScraper:
         
         df = pd.DataFrame(self.all_games)
         
-        # Reorder columns for clarity
+        # Reorder columns
         column_order = [
             'Year', 'Region', 'Round', 
             'TeamA', 'SeedA', 'ScoreA',
@@ -227,7 +244,7 @@ class TournamentScraper:
         df.to_csv(output_file, index=False)
         logger.info(f"✓ Data saved to {output_file}")
         
-        # Print summary statistics
+        # Print summary
         self._print_summary(df)
     
     def _print_summary(self, df):
@@ -242,15 +259,9 @@ class TournamentScraper:
         for year, count in year_counts.items():
             logger.info(f"  {year}: {count} games")
         
-        logger.info(f"\nGames by round:")
-        round_counts = df['Round'].value_counts()
-        for round_name, count in round_counts.items():
-            logger.info(f"  {round_name}: {count} games")
-        
-        logger.info(f"\nGames by region:")
-        region_counts = df['Region'].value_counts()
-        for region, count in region_counts.items():
-            logger.info(f"  {region}: {count} games")
+        if self.failed_years:
+            logger.warning(f"\n⚠ Failed to scrape: {self.failed_years}")
+            logger.warning(f"  These years may not exist or have different page structure")
         
         logger.info("="*60 + "\n")
     
@@ -261,23 +272,18 @@ class TournamentScraper:
 
 def main():
     """Main execution function"""
-    # Configuration
     START_YEAR = 2008
     END_YEAR = 2025
     OUTPUT_FILE = '../../L1/data/srcbb/srcbb_transform_L1.csv'
     
-    # Initialize scraper
     scraper = TournamentScraper(
         start_year=START_YEAR, 
         end_year=END_YEAR,
-        headless=True  # Set to False to watch the scraper work
+        headless=True
     )
     
     try:
-        # Run the scraper
         scraper.scrape_all_years()
-        
-        # Save results
         scraper.save_to_csv(OUTPUT_FILE)
         
     except KeyboardInterrupt:
@@ -287,7 +293,6 @@ def main():
         logger.error(f"\n\nUnexpected error: {e}")
         
     finally:
-        # Always close the browser
         scraper.close()
         logger.info("Browser closed")
 

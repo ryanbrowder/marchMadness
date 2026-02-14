@@ -45,8 +45,6 @@ Year,Team,Index,LRMCB
 2016,Purdue,248,9
 2016,Seton Hall,277,28
 2016,SF Austin,299,80
-2016,SF Austin,299,80
-2016,SF Austin,299,80
 2016,South Dakota St,283,66
 2016,Southern,288,186
 2016,St Josephs,264,46
@@ -186,8 +184,6 @@ Year,Team,Index,LRMCB
 2018,San Diego St,271,44
 2018,Seton Hall,277,30
 2018,SF Austin,299,95
-2018,SF Austin,299,95
-2018,SF Austin,299,95
 2018,South Dakota St,283,79
 2018,St Bonaventure,294,72
 2018,Syracuse,303,54
@@ -221,8 +217,6 @@ Year,Team,Index,LRMCB
 2019,Florida,91,29
 2019,Florida State,96,17
 2019,Gardner Webb,100,175
-2019,Gardner Webb,100,175
-2019,Gardner Webb,100,175
 2019,Georgia State,106,105
 2019,Gonzaga,108,1
 2019,Houston,119,16
@@ -249,9 +243,6 @@ Year,Team,Index,LRMCB
 2019,North Carolina,211,5
 2019,North Carolina Central,213,314
 2019,North Dakota St.,215,223
-2019,North Dakota St.,215,223
-2019,North Dakota St.,215,223
-2019,North Dakota St.,215,223
 2019,Northeastern,218,84
 2019,Northern Kentucky,223,68
 2019,Ohio State,229,45
@@ -261,14 +252,8 @@ Year,Team,Index,LRMCB
 2019,Prairie View A&M,244,285
 2019,Purdue,248,10
 2019,Saint Louis,265,53
-2019,Saint Louis,265,53
-2019,Saint Louis,265,53
-2019,Saint Louis,265,53
 2019,Saint Mary's,266,76
 2019,Seton Hall,277,77
-2019,St. John's,296,39
-2019,St. John's,296,39
-2019,St. John's,296,39
 2019,St. John's,296,39
 2019,Syracuse,303,38
 2019,Temple,307,81
@@ -432,9 +417,6 @@ Year,Team,Index,LRMCB
 2023,Furman,99,67
 2023,Creighton,65,52
 2023,NC State,196,50
-2023,NC State,196,50
-2023,NC State,196,50
-2023,NC State,196,50
 2023,Baylor,21,7
 2023,UCSB,329,125
 2023,Missouri,187,138
@@ -444,9 +426,6 @@ Year,Team,Index,LRMCB
 2023,Purdue,248,14
 2023,Texas Southern,315,285
 2023,Memphis,172,23
-2023,Florida Atlantic,93,63
-2023,Florida Atlantic,93,63
-2023,Florida Atlantic,93,63
 2023,Florida Atlantic,93,63
 2023,Duke,76,11
 2023,Oral Roberts,233,100
@@ -499,9 +478,6 @@ Year,Team,Index,LRMCB
 2024,Connecticut,62,3
 2024,Stetson,300,228
 2024,Florida Atlantic,93,46
-2024,Florida Atlantic,93,46
-2024,Florida Atlantic,93,46
-2024,Florida Atlantic,93,46
 2024,Northwestern,224,36
 2024,San Diego St.,271,40
 2024,UAB,324,104
@@ -525,9 +501,6 @@ Year,Team,Index,LRMCB
 2024,Vermont,354,122
 2024,Texas Tech,317,30
 2024,NC State,196,45
-2024,NC State,196,45
-2024,NC State,196,45
-2024,NC State,196,45
 2024,Kentucky,142,16
 2024,Oakland,227,129
 2024,Florida,91,22
@@ -540,9 +513,6 @@ Year,Team,Index,LRMCB
 2024,Wagner,358,311
 2024,Mississippi State,185,33
 2024,Michigan State,180,15
-2024,St. Mary's,266,32
-2024,St. Mary's,266,32
-2024,St. Mary's,266,32
 2024,St. Mary's,266,32
 2024,Grand Canyon,110,77
 2024,Alabama,4,12
@@ -582,8 +552,6 @@ Year,Team,Index,LRMCB
 2025,Alabama,4,7
 2025,Iowa St.,133,8
 2025,St John's,296,9
-2025,St John's,296,9
-2025,St John's,296,9
 2025,Texas Tech,317,10
 2025,Maryland,168,11
 2025,Wisconsin,374,12
@@ -598,8 +566,6 @@ Year,Team,Index,LRMCB
 2025,BYU,19,21
 2025,Illinois,125,22
 2025,Texas A&M,313,23
-2025,St Mary's CA,266,24
-2025,St Mary's CA,266,24
 2025,St Mary's CA,266,24
 2025,Louisville,159,25
 2025,Michigan,179,26
@@ -642,8 +608,6 @@ Year,Team,Index,LRMCB
 2025,Penn St.,239,63
 2025,Nebraska,199,64
 2025,St Joseph's PA,264,65
-2025,St Joseph's PA,264,65
-2025,St Joseph's PA,264,65
 2025,USC,339,66
 2025,Yale,380,67
 2025,UCF,330,68
@@ -683,35 +647,19 @@ Year,Team,Index,LRMCB
 2025,St Bonaventure,294,102
 2025,Northern Iowa,222,103
 2025,N Colorado,220,104
-2025,N Colorado,220,104
-2025,N Colorado,220,104
 2025,Utah Valley,349,105
-2025,St Thomas MN,297,106
-2025,St Thomas MN,297,106
 2025,St Thomas MN,297,106
 2025,Chattanooga,51,107
 2025,California,41,108
 2025,Virginia,356,109
 2025,S Dakota St.,283,110
-2025,S Dakota St.,283,110
-2025,S Dakota St.,283,110
 2025,Oklahoma St.,231,111
 2025,G Washington,102,112
-2025,G Washington,102,112
-2025,G Washington,102,112
-2025,FL Atlantic,93,113
-2025,FL Atlantic,93,113
 2025,FL Atlantic,93,113
 2025,St Louis,265,114
-2025,St Louis,265,114
-2025,St Louis,265,114
-2025,MTSU,181,115
-2025,MTSU,181,115
 2025,MTSU,181,115
 2025,Washington St.,361,116
 2025,North Alabama,210,117
-2025,NC St.ate,196,118
-2025,NC St.ate,196,118
 2025,NC St.ate,196,118
 2025,Illinois St.,127,119
 2025,Syracuse,303,120
@@ -721,16 +669,10 @@ Year,Team,Index,LRMCB
 2025,Samford,269,124
 2025,Jacksonville St.,136,125
 2025,CS Northridge,40,126
-2025,CS Northridge,40,126
-2025,CS Northridge,40,126
 2025,Bryant,32,127
-2025,Kent,141,128
-2025,Kent,141,128
 2025,Kent,141,128
 2025,Belmont,23,129
 2025,Loyola-Chicago,160,130
-2025,N Dakota St.,215,131
-2025,N Dakota St.,215,131
 2025,N Dakota St.,215,131
 2025,Murray St.,195,132
 2025,Robert Morris,257,133
@@ -740,25 +682,18 @@ Year,Team,Index,LRMCB
 2025,Norfolk State,209,137
 2025,Duquesne,77,138
 2025,WI Milwaukee,182,139
-2025,WI Milwaukee,182,139
-2025,WI Milwaukee,182,139
 2025,Tulane,322,140
 2025,Towson,320,141
 2025,South Alabama,279,142
 2025,UC Riverside,327,143
 2025,Louisiana Tech,158,144
 2025,Col Charleston,48,145
-2025,Col Charleston,48,145
 2025,Furman,99,146
-2025,Kennesaw,140,147
-2025,Kennesaw,140,147
 2025,Kennesaw,140,147
 2025,Miami OH,178,148
 2025,Cal Baptist,36,149
 2025,New Mexico St.,205,150
 2025,Virginia Tech,357,151
-2025,ETSU,79,152
-2025,ETSU,79,152
 2025,ETSU,79,152
 2025,Montana,190,153
 2025,Davidson,67,154
@@ -767,10 +702,6 @@ Year,Team,Index,LRMCB
 2025,Rhode Island,253,157
 2025,James Madison,137,158
 2025,S Carolina St.,281,159
-2025,S Carolina St.,281,159
-2025,S Carolina St.,281,159
-2025,Central Conn,46,160
-2025,Central Conn,46,160
 2025,Central Conn,46,160
 2025,Marshall,167,161
 2025,Merrimack,176,162
@@ -778,35 +709,26 @@ Year,Team,Index,LRMCB
 2025,Cornell,64,164
 2025,Montana St.,191,165
 2025,FGCU,95,166
-2025,FGCU,95,166
 2025,Drexel,75,167
 2025,Winthrop,373,168
-2025,E Kentucky,82,169
 2025,E Kentucky,82,169
 2025,UTEP,344,170
 2025,Oakland,227,171
 2025,Cal Poly,37,172
 2025,Cleveland St.,56,173
 2025,WKU,368,174
-2025,WKU,368,174
-2025,TAM C. Christi,314,175
 2025,TAM C. Christi,314,175
 2025,Ohio,228,176
 2025,Radford,252,177
 2025,IL Chicago,126,178
-2025,IL Chicago,126,178
-2025,PFW,249,179
 2025,PFW,249,179
 2025,East Carolina,78,180
-2025,Loy Marymount,162,181
 2025,Loy Marymount,162,181
 2025,Bucknell,33,182
 2025,Elon,85,183
 2025,SE Missouri St.,286,184
-2025,SE Missouri St.,286,184
 2025,Jacksonville,135,185
 2025,Youngstown St.,381,186
-2025,UT San Antonio,345,187
 2025,UT San Antonio,345,187
 2025,Quinnipiac,251,188
 2025,Delaware,70,189
@@ -820,14 +742,12 @@ Year,Team,Index,LRMCB
 2025,Northeastern,218,197
 2025,Maine,163,198
 2025,S Illinois,289,199
-2025,S Illinois,289,199
 2025,Hofstra,117,200
 2025,Portland St.,243,201
 2025,Massachusetts,170,202
 2025,Valparaiso,352,203
 2025,La Salle,145,204
 2025,Texas St.,316,205
-2025,Ark Little Rock,153,206
 2025,Ark Little Rock,153,206
 2025,SIUE,259,207
 2025,Sam Houston St.,268,208
@@ -838,14 +758,11 @@ Year,Team,Index,LRMCB
 2025,Hampton,112,213
 2025,Longwood,155,214
 2025,N Kentucky,223,215
-2025,N Kentucky,223,215
 2025,Wyoming,378,216
 2025,Colgate,58,217
 2025,Tennessee St.,310,218
 2025,Indiana St.,130,219
 2025,Queens NC,250,220
-2025,Queens NC,250,220
-2025,Southern Univ,288,221
 2025,Southern Univ,288,221
 2025,UNC Asheville,335,222
 2025,Jackson St.,134,223
@@ -853,9 +770,7 @@ Year,Team,Index,LRMCB
 2025,Mount St. Mary's,194,225
 2025,William & Mary,371,226
 2025,C Michigan,47,227
-2025,C Michigan,47,227
 2025,Idaho St.,124,228
-2025,SE Louisiana,287,229
 2025,SE Louisiana,287,229
 2025,Siena,278,230
 2025,Alabama St.,6,231
@@ -863,32 +778,23 @@ Year,Team,Index,LRMCB
 2025,Pepperdine,240,233
 2025,American,9,234
 2025,Monmouth NJ,189,235
-2025,Monmouth NJ,189,235
 2025,Campbell,42,236
-2025,Missouri KC,333,237
 2025,Missouri KC,333,237
 2025,Bethune-Cookman,24,238
 2025,Dartmouth,66,239
-2025,Northwestern LA,225,240
 2025,Northwestern LA,225,240
 2025,Seton Hall,277,241
 2025,Vermont,354,242
 2025,Iona,131,243
 2025,Ga Southern,105,244
-2025,Ga Southern,105,244
 2025,Presbyterian,245,245
 2025,Richmond,255,246
 2025,Manhattan,164,247
 2025,UT Arlington,342,248
-2025,UT Arlington,342,248
-2025,UT Arlington,342,248
-2025,MA Lowell,334,249
 2025,MA Lowell,334,249
 2025,Navy,198,250
 2025,Sacred Heart,262,251
 2025,Charlotte,50,252
-2025,Gardner Webb,100,253
-2025,Gardner Webb,100,253
 2025,Gardner Webb,100,253
 2025,North Florida,216,254
 2025,South Dakota,282,255
@@ -904,34 +810,23 @@ Year,Team,Index,LRMCB
 2025,SUNY Albany,7,265
 2025,Lafayette,146,266
 2025,W Michigan,369,267
-2025,W Michigan,369,267
 2025,Hawaii,115,268
 2025,Idaho,123,269
 2025,Marist,165,270
 2025,TN Martin,309,271
-2025,TN Martin,309,271
-2025,Georgia St.,106,272
-2025,Georgia St.,106,272
 2025,Georgia St.,106,272
 2025,Brown,31,273
 2025,E Washington,84,274
-2025,E Washington,84,274
-2025,Florida Intl,88,275
 2025,Florida Intl,88,275
 2025,E Michigan,83,276
-2025,E Michigan,83,276
-2025,CS Bakersfield,38,277
 2025,CS Bakersfield,38,277
 2025,Pacific,237,278
 2025,LIU Brooklyn,143,279
 2025,Bowling Green,29,280
 2025,Austin Peay,18,281
 2025,Ball St.,20,282
-2025,Ball St.,20,282
-2025,Ball St.,20,282
 2025,Fresno St.,98,283
 2025,Mercer,173,284
-2025,TX Southern,315,285
 2025,TX Southern,315,285
 2025,Tennessee Tech,311,286
 2025,Harvard,114,287
@@ -939,23 +834,16 @@ Year,Team,Index,LRMCB
 2025,Rider,256,289
 2025,Weber St.,363,290
 2025,Boston Univ,28,291
-2025,Boston Univ,28,291
-2025,Houston Chr,120,292
 2025,Houston Chr,120,292
 2025,San Diego,270,293
-2025,St Peter's,267,294
 2025,St Peter's,267,294
 2025,Southern Miss,292,295
 2025,Portland,242,296
 2025,Lehigh,149,297
 2025,Denver,72,298
 2025,SF Austin,299,299
-2025,SF Austin,299,299
-2025,SF Austin,299,299
-2025,Charleston So,49,300
 2025,Charleston So,49,300
 2025,Louisiana,156,301
-2025,F Dickinson,90,302
 2025,F Dickinson,90,302
 2025,Howard,121,303
 2025,Alcorn St.,8,304
@@ -970,25 +858,15 @@ Year,Team,Index,LRMCB
 2025,Florida A&M,92,313
 2025,NC A&T,212,314
 2025,E Illinois,81,315
-2025,E Illinois,81,315
-2025,Long Beach St.,154,316
-2025,Long Beach St.,154,316
 2025,Long Beach St.,154,316
 2025,Tarleton St.,305,317
-2025,Tarleton St.,305,317
-2025,Tarleton St.,305,317
-2025,Delaware St.,71,318
-2025,Delaware St.,71,318
 2025,Delaware St.,71,318
 2025,Stonehill,301,319
 2025,Stony Brook,302,320
 2025,IUPUI,122,321
 2025,Morehead St.,192,322
 2025,Coastal Car,57,323
-2025,Coastal Car,57,323
 2025,Columbia,61,324
-2025,Southern Indiana,291,325
-2025,Southern Indiana,291,325
 2025,Southern Indiana,291,325
 2025,Penn,238,326
 2025,VMI,351,327
@@ -1000,19 +878,14 @@ Year,Team,Index,LRMCB
 2025,Morgan St.,193,333
 2025,Detroit,73,334
 2025,WI Green Bay,111,335
-2025,WI Green Bay,111,335
 2025,Oral Roberts,233,336
 2025,Mercyhurst,174,337
 2025,CS Sacramento,261,338
 2025,Cent Arkansas,45,339
-2025,Cent Arkansas,45,339
 2025,Bellarmine,22,340
 2025,Prairie View,244,341
 2025,West Georgia,364,342
-2025,West Georgia,364,342
-2025,West Georgia,364,342
 2025,Wagner,358,343
-2025,W Illinois,367,344
 2025,W Illinois,367,344
 2025,Le Moyne,148,345
 2025,Buffalo,34,346
@@ -1027,14 +900,9 @@ Year,Team,Index,LRMCB
 2025,CS Fullerton,39,355
 2025,W Carolina,366,356
 2025,Alabama A&M,5,357
-2025,Alabama A&M,5,357
-2025,Alabama A&M,5,357
-2025,MD E Shore,169,358
 2025,MD E Shore,169,358
 2025,New Hampshire,202,359
 2025,Coppin St.,63,360
 2025,Citadel,318,361
 2025,Ark Pine Bluff,14,362
-2025,Ark Pine Bluff,14,362
-2025,MS Valley St.,186,363
 2025,MS Valley St.,186,363

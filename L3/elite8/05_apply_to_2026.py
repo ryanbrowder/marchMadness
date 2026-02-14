@@ -1,8 +1,6 @@
 """
 L3 Apply Model to 2026 Tournament
-Generates Elite 8 predictions for the upcoming 2026 tournament
-Compares predictions from both 'long' and 'rich' models
-Uses optimal weights from production ensemble models
+Configure via config.py: USE_SEEDS = True/False
 """
 
 import pandas as pd
@@ -10,16 +8,18 @@ import numpy as np
 import pickle
 from pathlib import Path
 
+# Import configuration
+import config
+
 # Configuration
-INPUT_FILE = Path('../data/predictionData/predict_set_2026.csv')
-MODEL_DIR = Path('outputs/03_ensemble_models')
-OUTPUT_DIR = Path('outputs/05_2026_predictions')
+INPUT_FILE = config.PREDICT_DATA_FILE
+MODEL_DIR = config.OUTPUT_03
+OUTPUT_DIR = config.OUTPUT_05
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 print("="*80)
 print("2026 TOURNAMENT - ELITE 8 PREDICTIONS")
-print("Comparing LONG vs RICH model predictions")
-print("Using PRODUCTION models with optimal ensemble weights")
+config.print_config()
 print("="*80)
 
 # ============================================================================

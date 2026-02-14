@@ -72,8 +72,8 @@ def clean_powerrank_data(df: pd.DataFrame) -> pd.DataFrame:
     # Strip whitespace from team names
     df['Team'] = df['Team'].str.strip()
     
-    # Convert PowerRank to float (handles both integers and decimals)
-    df['PowerRank'] = pd.to_numeric(df['PowerRank'], errors='coerce')
+    # Convert PowerRank to float64 (preserves decimals from 2019 data)
+    df['PowerRank'] = pd.to_numeric(df['PowerRank'], errors='coerce').astype('float64')
     
     # Convert Year to integer
     df['Year'] = pd.to_numeric(df['Year'], errors='coerce').astype('Int64')
@@ -122,9 +122,8 @@ def add_metadata_columns(df: pd.DataFrame) -> pd.DataFrame:
 def reorder_and_select_columns(df: pd.DataFrame) -> pd.DataFrame:
     """Select and reorder columns for final output"""
     
-    # Ensure numeric types
+    # Ensure Index is Int64 (PowerRank already converted to float64 earlier)
     df['Index'] = pd.to_numeric(df['Index'], errors='coerce').astype('Int64')
-    df['PowerRank'] = pd.to_numeric(df['PowerRank'], errors='coerce')
     
     final_columns = [
         'Year',

@@ -10,8 +10,6 @@ ALA,4
 Alabama,4
 AAMU,5
 Alabama A&M,5
-Alabama A&M,5
-Alabama A&M,5
 ALST,6
 Alabama St,6
 Alabama St.,6
@@ -40,7 +38,6 @@ Arizona State,12
 ARK,13
 Arkansas,13
 Ark Pine Bluff,14
-Ark Pine Bluff,14
 Arkansas Pine Bluff,14
 UAPB,14
 Arkansas-Pine Bluff,14
@@ -58,12 +55,11 @@ BYU,19
 Brigham Young,19
 BALL,20
 Ball St.,20
-Ball St.,20
-Ball St.,20
 Ball St,20
 Ball State,20
 BAY,21
 Baylor,21
+Baylorvs. 14 Louisville,21
 BELL,22
 Bellarmine,22
 BEL,23
@@ -81,7 +77,6 @@ BoiseState,26
 BC,27
 Boston College,27
 BU,28
-Boston Univ,28
 Boston Univ,28
 Boston University,28
 BGSU,29
@@ -104,7 +99,6 @@ California Baptist,36
 CP,37
 Cal Poly,37
 CS Bakersfield,38
-CS Bakersfield,38
 CSU Bakersfield,38
 CSUB,38
 Cal St. Bakersfield,38
@@ -116,8 +110,6 @@ CSUF,39
 Cal St Fullerton,39
 Cal St. Fullerton,39
 Cal State Fullerton,39
-CS Northridge,40
-CS Northridge,40
 CS Northridge,40
 CSUN,40
 Cal St. Northridge,40
@@ -132,27 +124,18 @@ Centenary,44
 CENTELA,44
 CARK,45
 Cent Arkansas,45
-Cent Arkansas,45
 Central Arkansas,45
 CCSU,46
 Central Conn,46
-Central Conn,46
-Central Conn,46
 Central Connecticut,46
-Central Connecticut,46
-Central Connecticut,46
-Central Connecticut,46
-C Michigan,47
 C Michigan,47
 CMU,47
 Central Michigan,47
 COFC,48
 Charleston,48
 Col Charleston,48
-Col Charleston,48
 College of Charleston,48
 CHSO,49
-Charleston So,49
 Charleston So,49
 Charleston Southern,49
 Birmingham So,49
@@ -175,7 +158,6 @@ Cleveland St,56
 Cleveland St.,56
 Cleveland State,56
 CCU,57
-Coastal Car,57
 Coastal Car,57
 Coastal Carolina,57
 COLG,58
@@ -212,8 +194,6 @@ DEL,70
 Delaware,70
 DSU,71
 Delaware St.,71
-Delaware St.,71
-Delaware St.,71
 Delaware State,71
 Delaware St,71
 DEN,72
@@ -232,11 +212,6 @@ Duquesne,77
 ECU,78
 East Carolina,78
 ETSU,79
-ETSU,79
-ETSU,79
-East Tennessee St.,79
-East Tennessee St.,79
-East Tennessee St.,79
 East Tennessee St.,79
 East Tennessee State,79
 Eastern Tennessee,79
@@ -244,18 +219,14 @@ ETAM,80
 East Texas A&M,80
 Texas A&M Commerce,80
 E Illinois,81
-E Illinois,81
 EIU,81
 Eastern Illinois,81
-E Kentucky,82
 E Kentucky,82
 EKU,82
 Eastern Kentucky,82
 E Michigan,83
-E Michigan,83
 EMU,83
 Eastern Michigan,83
-E Washington,84
 E Washington,84
 EWU,84
 Eastern Washington,84
@@ -267,10 +238,8 @@ Evansville(H) 158 Southern Illinois,87
 FIU,88
 Florida International,88
 Florida Intl,88
-Florida Intl,88
 FAIR,89
 Fairfield,89
-F Dickinson,90
 F Dickinson,90
 FDU,90
 Fairleigh Dickinson,90
@@ -281,14 +250,8 @@ FAMU,92
 Florida A&M,92
 FAU,93
 FL Atlantic,93
-FL Atlantic,93
-FL Atlantic,93
-Florida Atlantic,93
-Florida Atlantic,93
-Florida Atlantic,93
 Florida Atlantic,93
 Florida Atlantic(A) 69 South Florida,94
-FGCU,95
 FGCU,95
 Florida Gulf Coast,95
 FSU,96
@@ -305,18 +268,11 @@ FUR,99
 Furman,99
 GWEB,100
 Gardner Webb,100
-Gardner Webb,100
-Gardner Webb,100
 Gardner-Webb,100
 GMU,101
 George Mason,101
 G Washington,102
-G Washington,102
-G Washington,102
 GW,102
-George Washington,102
-George Washington,102
-George Washington,102
 George Washington,102
 GTWN,103
 Georgetown,103
@@ -324,12 +280,9 @@ Georgia,104
 UGA,104
 GASO,105
 Ga Southern,105
-Ga Southern,105
 Georgia Southern,105
 GAST,106
 Georgia St,106
-Georgia St.,106
-Georgia St.,106
 Georgia St.,106
 Georgia State,106
 GeorgiaState,106
@@ -345,7 +298,6 @@ GCU,110
 Grand Canyon,110
 GB,111
 Green Bay,111
-WI Green Bay,111
 WI Green Bay,111
 HAMP,112
 Hampton,112
@@ -366,7 +318,6 @@ Houston,119
 HCU,120
 Houston Baptist,120
 Houston Chr,120
-Houston Chr,120
 Houston Christian,120
 HOW,121
 Howard,121
@@ -381,7 +332,6 @@ Idaho State,124
 Idaho St,124
 ILL,125
 Illinois,125
-IL Chicago,126
 IL Chicago,126
 Illinois Chicago,126
 UIC,126
@@ -427,13 +377,9 @@ Kansas St.,139
 Kansas State,139
 KENN,140
 Kennesaw,140
-Kennesaw,140
-Kennesaw,140
 Kennesaw St.,140
 Kennesaw State,140
 KENT,141
-Kent,141
-Kent,141
 Kent,141
 Kent St,141
 Kent St.,141
@@ -462,13 +408,10 @@ LIP,152
 Lipscomb,152
 Ark LR,153
 Ark Little Rock,153
-Ark Little Rock,153
 Arkansas Little Rock,153
 LR,153
 Little Rock,153
 LBSU,154
-Long Beach St.,154
-Long Beach St.,154
 Long Beach St.,154
 Long Beach State,154
 Long Beach St,154
@@ -483,6 +426,7 @@ LT,158
 Louisiana Tech,158
 LOU,159
 Louisville,159
+Louisvillevs. 48 Baylor,159
 LUC,160
 Loyola,160
 Loyola Chicago,160
@@ -493,7 +437,6 @@ L-MD,161
 Loyola (MD),161
 Loyola MD,161
 LMU,162
-Loy Marymount,162
 Loy Marymount,162
 Loyola Marymount,162
 ME,163
@@ -508,7 +451,6 @@ MRSH,167
 Marshall,167
 MD,168
 Maryland,168
-MD E Shore,169
 MD E Shore,169
 Maryland Eastern Shore,169
 UMES,169
@@ -545,21 +487,11 @@ Michigan St.,180
 Michigan State,180
 MichiganState,180
 MTSU,181
-MTSU,181
-MTSU,181
-Middle Tennessee,181
-Middle Tennessee,181
-Middle Tennessee,181
 Middle Tennessee,181
 Middle Tennessee St,181
 MILW,182
 Milwaukee,182
 WI Milwaukee,182
-WI Milwaukee,182
-WI Milwaukee,182
-Wisconsin Milwaukee,182
-Wisconsin Milwaukee,182
-Wisconsin Milwaukee,182
 Wisconsin Milwaukee,182
 MINN,183
 Minnesota,183
@@ -571,13 +503,11 @@ Mississippi St.,185
 Mississippi State,185
 Mississippi St,185
 MS Valley St.,186
-MS Valley St.,186
 MVSU,186
 Mississippi Valley St.,186
 Mississippi Valley State,186
 MS Valley St,186
 Mississippi Valley St,186
-Mississippi Valley State,186
 MIZ,187
 Missouri,187
 MOST,188
@@ -586,7 +516,6 @@ Missouri State,188
 Missouri St,188
 MONM,189
 Monmouth,189
-Monmouth NJ,189
 Monmouth NJ,189
 MONT,190
 Montana,190
@@ -616,11 +545,6 @@ Murray State,195
 MurrayState,195
 N.C. State,196
 NC St.ate,196
-NC St.ate,196
-NC St.ate,196
-NC State,196
-NC State,196
-NC State,196
 NC State,196
 NCSU,196
 North Carolina St,196
@@ -634,7 +558,6 @@ Nebraska Omaha,200
 OMA,200
 Omaha,200
 NE Omaha,200
-Nebraska Omaha,200
 NEV,201
 Nevada,201
 New Hampshire,202
@@ -676,12 +599,7 @@ North Carolina Central,213
 North Dakota,214
 UND,214
 N Dakota St.,215
-N Dakota St.,215
-N Dakota St.,215
 NDSU,215
-North Dakota St.,215
-North Dakota St.,215
-North Dakota St.,215
 North Dakota St.,215
 North Dakota State,215
 N Dakota St,215
@@ -694,11 +612,6 @@ Northeastern,218
 NAU,219
 Northern Arizona,219
 N Colorado,220
-N Colorado,220
-N Colorado,220
-Northern Colorado,220
-Northern Colorado,220
-Northern Colorado,220
 Northern Colorado,220
 UNCO,220
 N Illinois,221
@@ -707,13 +620,11 @@ Northern Illinois,221
 Northern Iowa,222
 UNI,222
 N Kentucky,223
-N Kentucky,223
 NKU,223
 Northern Kentucky,223
 NU,224
 Northwestern,224
 NWST,225
-Northwestern LA,225
 Northwestern LA,225
 Northwestern St.,225
 Northwestern State,225
@@ -780,11 +691,9 @@ Purdue,248
 Fort Wayne,249
 IPFW,249
 PFW,249
-PFW,249
 Purdue Fort Wayne,249
 QUC,250
 Queens,250
-Queens NC,250
 Queens NC,250
 QUIN,251
 Quinnipiac,251
@@ -815,47 +724,29 @@ Sacred Heart,262
 SFPA,263
 Saint Francis,263
 Saint Francis (PA),263
-Saint Francis (PA),263
-Saint Francis (PA),263
 St. Francis,263
 St. Francis (PA),263
 St. Francis PA,263
 St Francis PA,263
 JOES,264
 Saint Joseph's,264
-Saint Joseph's,264
-Saint Joseph's,264
-Saint Joseph's,264
-St Joseph's PA,264
-St Joseph's PA,264
 St Joseph's PA,264
 St Josephs,264
 St. Joseph's,264
 St. Joseph’s,264
 SLU,265
 Saint Louis,265
-Saint Louis,265
-Saint Louis,265
-Saint Louis,265
-St Louis,265
-St Louis,265
 St Louis,265
 SMC,266
 Saint Mary's,266
 SaintMarys,266
 St Mary's CA,266
-St Mary's CA,266
-St Mary's CA,266
 St Marys,266
-St. Mary's,266
-St. Mary's,266
-St. Mary's,266
 St. Mary's,266
 St. Mary’s,266
 SPU,267
 Saint Peter's,267
 SaintPeters,267
-St Peter's,267
 St Peter's,267
 St. Peter's,267
 St. Peter’s,267
@@ -897,25 +788,15 @@ USA,279
 SC,280
 South Carolina,280
 S Carolina St.,281
-S Carolina St.,281
-S Carolina St.,281
 SCST,281
-South Carolina St.,281
-South Carolina St.,281
-South Carolina St.,281
 South Carolina St.,281
 South Carolina State,281
 S Carolina St,281
 SDAK,282
 South Dakota,282
 S Dakota St.,283
-S Dakota St.,283
-S Dakota St.,283
 SDST,283
 South Dakota St,283
-South Dakota St.,283
-South Dakota St.,283
-South Dakota St.,283
 South Dakota St.,283
 South Dakota State,283
 SouthDakotaState,283
@@ -924,27 +805,21 @@ South Florida,284
 USF,284
 South Florida(H) 85 Florida Atlantic,285
 SE Missouri St.,286
-SE Missouri St.,286
 SEMO,286
 Southeast Missouri,286
 Southeast Missouri St.,286
 Southeast Missouri State,286
 SE Missouri St,286
 SE Louisiana,287
-SE Louisiana,287
 SELA,287
 Southeastern Louisiana,287
 SOU,288
 Southern,288
 Southern Univ,288
-Southern Univ,288
-S Illinois,289
 S Illinois,289
 SIU,289
 Southern Illinois,289
 Southern Illinois(A) 283 Evansville,290
-Southern Indiana,291
-Southern Indiana,291
 Southern Indiana,291
 USI,291
 Southern Miss,292
@@ -958,29 +833,17 @@ St. Francis NY,295
 St Francis NY,295
 SJU,296
 St John's,296
-St John's,296
-St John's,296
-St. John's,296
-St. John's,296
-St. John's,296
 St. John's,296
 St. Johns,296
 St. John’s,296
 St. John's (NY),296
 STMN,297
 St Thomas MN,297
-St Thomas MN,297
-St Thomas MN,297
-St. Thomas,297
-St. Thomas,297
-St. Thomas,297
 St. Thomas,297
 St. Thomas - Minnesota,297
 St. Thomas – Minnesota,297
 STAN,298
 Stanford,298
-SF Austin,299
-SF Austin,299
 SF Austin,299
 SFA,299
 Stephen F. Austin,299
@@ -995,8 +858,6 @@ Syracuse,303
 TCU,304
 TAR,305
 Tarleton St.,305
-Tarleton St.,305
-Tarleton St.,305
 Tarleton State,305
 Tarleton St,305
 Team,306
@@ -1004,7 +865,6 @@ TEM,307
 Temple,307
 TENN,308
 Tennessee,308
-TN Martin,309
 TN Martin,309
 Tennessee Martin,309
 Tennessee-Martin,309
@@ -1022,13 +882,11 @@ Texas A&M,313
 Texas AM,313
 AMCC,314
 TAM C. Christi,314
-TAM C. Christi,314
 Texas A&M CC,314
 Texas A&M Corpus Chris,314
 Texas A&M Corpus Christi,314
 TexasA&MCC,314
 Texas A&M-Corpus Christi,314
-TX Southern,315
 TX Southern,315
 TXSO,315
 Texas Southern,315
@@ -1073,10 +931,8 @@ UMBC,332
 KC,333
 Kansas City,333
 Missouri KC,333
-Missouri KC,333
 Missouri Kansas City,333
 UMKC,333
-MA Lowell,334
 MA Lowell,334
 Massachusetts Lowell,334
 UML,334
@@ -1103,15 +959,12 @@ USC Upstate,340
 USC(A) 32 Wisconsin,341
 Texas Arlington,342
 UT Arlington,342
-UT Arlington,342
-UT Arlington,342
 UTA,342
 RGV,343
 Texas Pan American,343
 UT Rio Grande Valley,343
 UTRGV,343
 UTEP,344
-UT San Antonio,345
 UT San Antonio,345
 UTSA,345
 UTAH,346
@@ -1159,21 +1012,16 @@ Weber St.,363
 Weber State,363
 WGA,364
 West Georgia,364
-West Georgia,364
-West Georgia,364
 WVU,365
 West Virginia,365
 W Carolina,366
 WCU,366
 Western Carolina,366
 W Illinois,367
-W Illinois,367
 WIU,367
 Western Illinois,367
 WKU,368
-WKU,368
 Western Kentucky,368
-W Michigan,369
 W Michigan,369
 WMU,369
 Western Michigan,369

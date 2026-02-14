@@ -1,66 +1,55 @@
 """
 L3 Ensemble Models Pipeline
-Combines individual models into ensembles with probability calibration.
-ALIGNED with H2H modeling approach: Train through 2024, validate on 2025
+Configure via config.py: USE_SEEDS = True/False
 """
 
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-from pathlib import Path
+import pickle
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
 from sklearn.naive_bayes import GaussianNB
 from sklearn.calibration import CalibratedClassifierCV
-from sklearn.metrics import (
-    accuracy_score, precision_score, recall_score, f1_score,
-    roc_auc_score, log_loss, brier_score_loss
-)
 from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import StratifiedKFold
-from scipy.optimize import minimize
-import pickle
+from sklearn.metrics import roc_auc_score, log_loss, brier_score_loss
 import warnings
 warnings.filterwarnings('ignore')
 
+# Import configuration
+import config
+
 # Configuration
-INPUT_DIR = Path('outputs/01_feature_selection')
-OUTPUT_DIR = Path('outputs/03_ensemble_models')
+#MODE = 'validation'  # 'validation' or 'production'
+MODE = 'production'  # 'validation' or 'production'
+INPUT_DIR = config.OUTPUT_01
+OUTPUT_DIR = config.OUTPUT_03
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-RANDOM_STATE = 42
+RANDOM_STATE = config.RANDOM_STATE
 
-# ============================================================================
-# MODE SELECTION - ALIGNED WITH H2H APPROACH
-# ============================================================================
-MODE = 'production'  # 'validation' or 'production'
-
+# Validation and production year splits
 if MODE == 'validation':
-    # Validation: Train through 2024, test on 2025 (matches H2H)
     TRAIN_YEARS = (2008, 2024)
     TEST_YEAR = 2025
-    OUTPUT_SUFFIX = '_validation'
-    print("="*80)
-    print("L3 ENSEMBLE MODELS PIPELINE - VALIDATION MODE")
-    print(f"Train: {TRAIN_YEARS[0]}-{TRAIN_YEARS[1]} | Test: {TEST_YEAR}")
-    print("Aligned with H2H modeling approach")
-    print("="*80)
-else:  # production
-    # Production: Use all available data including 2025
+elif MODE == 'production':
     TRAIN_YEARS = (2008, 2025)
     TEST_YEAR = None
-    OUTPUT_SUFFIX = '_production'
-    PRODUCTION_BEST_STRATEGY = 'ROC-AUC Weighted'  # From validation
-    print("="*80)
+
+print("="*80)
+if MODE == 'validation':
+    print("L3 ENSEMBLE MODELS PIPELINE - VALIDATION MODE")
+    print(f"Train: {TRAIN_YEARS[0]}-{TRAIN_YEARS[1]} | Test: {TEST_YEAR}")
+elif MODE == 'production':
     print("L3 ENSEMBLE MODELS PIPELINE - PRODUCTION MODE")
     print(f"Train: {TRAIN_YEARS[0]}-{TRAIN_YEARS[1]}")
-    print(f"Using strategy from validation: {PRODUCTION_BEST_STRATEGY}")
-    print("="*80)
+
+config.print_config()
+print("Aligned with H2H modeling approach")
+print("="*80)
 
 # ============================================================================
-# LOAD DATA
+# [1] LOAD DATA
 # ============================================================================
 print("\n[1] LOADING DATA")
 print("-" * 80)
@@ -68,561 +57,498 @@ print("-" * 80)
 labeled_long = pd.read_csv(INPUT_DIR / 'labeled_training_long.csv')
 labeled_rich = pd.read_csv(INPUT_DIR / 'labeled_training_rich.csv')
 
+print(f"Loaded data - Long: {labeled_long.shape[0]} rows, Rich: {labeled_rich.shape[0]} rows")
+
 features_long = pd.read_csv(INPUT_DIR / 'reduced_features_long.csv')['feature'].tolist()
 features_rich = pd.read_csv(INPUT_DIR / 'reduced_features_rich.csv')['feature'].tolist()
 
-print(f"Loaded data - Long: {labeled_long.shape[0]} rows, Rich: {labeled_rich.shape[0]} rows")
+# Verify seed configuration
+if not config.USE_SEEDS:
+    if 'tournamentSeed' in features_long or 'tournamentSeed' in features_rich:
+        print("\n⚠️ ERROR: tournamentSeed found in features but USE_SEEDS=False")
+        exit(1)
+    print("✓ Confirmed: tournamentSeed excluded from features")
+else:
+    print("✓ Using tournamentSeed as feature")
 
-def prepare_data(df, feature_list):
-    """Prepare features with train/test split (aligned with H2H)"""
+# Split data
+datasets = {}
+for name, df, features in [('long', labeled_long, features_long), ('rich', labeled_rich, features_rich)]:
+    train_mask = (df['Year'] >= TRAIN_YEARS[0]) & (df['Year'] <= TRAIN_YEARS[1])
     
-    # Extract features and label
-    X = df[feature_list].copy()
-    y = df['elite8_flag'].copy()
-    years = df['Year'].copy()
-    teams = df['Team'].copy()
+    df_train = df[train_mask].copy()
     
-    # Drop entirely NaN columns
-    all_nan_cols = X.columns[X.isnull().all()].tolist()
-    if all_nan_cols:
-        X = X.drop(columns=all_nan_cols)
+    print(f"\n{name} dataset split:")
+    print(f"  Train: {len(df_train)} samples ({TRAIN_YEARS[0]}-{TRAIN_YEARS[1]})")
+    print(f"  Train Elite 8+: {df_train['elite8_flag'].sum()} ({df_train['elite8_flag'].mean():.1%})")
     
-    # Fill remaining NaNs
-    for col in X.columns:
-        if X[col].isnull().any():
-            median_val = X[col].median()
-            if pd.isna(median_val):
-                X[col].fillna(0, inplace=True)
-            else:
-                X[col].fillna(median_val, inplace=True)
-    
-    # Train/test split based on mode
     if MODE == 'validation':
-        train_mask = (years >= TRAIN_YEARS[0]) & (years <= TRAIN_YEARS[1])
-        test_mask = years == TEST_YEAR
-    else:  # production
-        train_mask = (years >= TRAIN_YEARS[0]) & (years <= TRAIN_YEARS[1])
-        test_mask = None
+        test_mask = df['Year'] == TEST_YEAR
+        df_test = df[test_mask].copy()
+        print(f"  Test: {len(df_test)} samples (Year {TEST_YEAR})")
+        print(f"  Test Elite 8+: {df_test['elite8_flag'].sum()} ({df_test['elite8_flag'].mean():.1%})")
+    else:
+        df_test = None
     
-    X_train = X[train_mask].copy()
-    y_train = y[train_mask].copy()
-    years_train = years[train_mask]
-    
-    # Standardize
-    scaler = StandardScaler()
-    X_train_scaled = pd.DataFrame(
-        scaler.fit_transform(X_train), 
-        columns=X_train.columns, 
-        index=X_train.index
-    )
-    
-    result = {
-        'X_train': X_train, 
-        'X_train_scaled': X_train_scaled,
-        'y_train': y_train,
-        'years_train': years_train,
-        'scaler': scaler
+    datasets[name] = {
+        'train': df_train,
+        'test': df_test,
+        'features': features
     }
-    
-    # Add test set in validation mode
-    if MODE == 'validation':
-        X_test = X[test_mask].copy()
-        y_test = y[test_mask].copy()
-        years_test = years[test_mask]
-        teams_test = teams[test_mask]
-        
-        X_test_scaled = pd.DataFrame(
-            scaler.transform(X_test), 
-            columns=X_test.columns, 
-            index=X_test.index
-        )
-        
-        result.update({
-            'X_test': X_test, 
-            'X_test_scaled': X_test_scaled,
-            'y_test': y_test,
-            'years_test': years_test, 
-            'teams_test': teams_test
-        })
-    
-    return result
-
-data_long = prepare_data(labeled_long, features_long)
-data_rich = prepare_data(labeled_rich, features_rich)
-
-print(f"\nLong dataset split:")
-print(f"  Train: {len(data_long['y_train'])} samples ({data_long['years_train'].min()}-{data_long['years_train'].max()})")
-print(f"  Train Elite 8+: {data_long['y_train'].sum()} ({data_long['y_train'].mean()*100:.1f}%)")
-if MODE == 'validation':
-    print(f"  Test: {len(data_long['y_test'])} samples (Year {TEST_YEAR})")
-    print(f"  Test Elite 8+: {data_long['y_test'].sum()} ({data_long['y_test'].mean()*100:.1f}%)")
 
 # ============================================================================
-# TRAIN BASE MODELS
+# [2] TRAINING BASE MODELS
 # ============================================================================
 print("\n[2] TRAINING BASE MODELS")
 print("-" * 80)
 
-def train_base_models(data, dataset_name):
-    """Train the 4 best models from exploratory phase"""
+trained_models = {}
+
+for dataset_name in ['long', 'rich']:
+    dataset = datasets[dataset_name]
+    df_train = dataset['train']
+    feature_list = dataset['features']
     
+    # Drop all-NaN columns
+    X_train = df_train[feature_list].copy()
+    all_nan_cols = X_train.columns[X_train.isnull().all()].tolist()
+    if all_nan_cols:
+        print(f"\n{dataset_name}:")
+        print(f"  Dropping columns that are entirely NaN: {all_nan_cols}")
+        X_train = X_train.drop(columns=all_nan_cols)
+        feature_list = [f for f in feature_list if f not in all_nan_cols]
+    
+    # Fill remaining NaNs
+    for col in X_train.columns:
+        if X_train[col].isnull().any():
+            median_val = X_train[col].median()
+            if pd.isna(median_val):
+                X_train[col] = X_train[col].fillna(0)
+            else:
+                X_train[col] = X_train[col].fillna(median_val)
+    
+    y_train = df_train['elite8_flag'].copy()
+    
+    # Train models
     models = {}
-    predictions = {}
     
-    # Logistic Regression (scaled)
-    print(f"\n{dataset_name} - Training Logistic Regression...")
+    # Logistic Regression (needs scaling)
+    print(f"\n{dataset_name.upper()} - Training Logistic Regression...")
+    scaler = StandardScaler()
+    X_train_scaled = pd.DataFrame(
+        scaler.fit_transform(X_train),
+        columns=X_train.columns,
+        index=X_train.index
+    )
     lr = LogisticRegression(random_state=RANDOM_STATE, max_iter=1000, class_weight='balanced')
-    lr.fit(data['X_train_scaled'], data['y_train'])
+    lr.fit(X_train_scaled, y_train)
     models['Logistic Regression'] = lr
     
-    preds = {'train': lr.predict_proba(data['X_train_scaled'])[:, 1]}
-    if MODE == 'validation':
-        preds['test'] = lr.predict_proba(data['X_test_scaled'])[:, 1]
-    predictions['Logistic Regression'] = preds
-    
-    # Random Forest (unscaled)
-    print(f"{dataset_name} - Training Random Forest...")
+    # Random Forest (no scaling needed)
+    print(f"{dataset_name.upper()} - Training Random Forest...")
     rf = RandomForestClassifier(
-        n_estimators=100, max_depth=10, min_samples_split=20, min_samples_leaf=10,
-        random_state=RANDOM_STATE, class_weight='balanced', n_jobs=-1
+        n_estimators=100,
+        max_depth=10,
+        min_samples_split=20,
+        min_samples_leaf=10,
+        random_state=RANDOM_STATE,
+        class_weight='balanced',
+        n_jobs=-1
     )
-    rf.fit(data['X_train'], data['y_train'])
+    rf.fit(X_train, y_train)
     models['Random Forest'] = rf
     
-    preds = {'train': rf.predict_proba(data['X_train'])[:, 1]}
-    if MODE == 'validation':
-        preds['test'] = rf.predict_proba(data['X_test'])[:, 1]
-    predictions['Random Forest'] = preds
-    
-    # SVM (scaled)
-    print(f"{dataset_name} - Training SVM...")
+    # SVM (needs scaling)
+    print(f"{dataset_name.upper()} - Training SVM...")
     svm = SVC(kernel='rbf', C=1.0, class_weight='balanced', probability=True, random_state=RANDOM_STATE)
-    svm.fit(data['X_train_scaled'], data['y_train'])
+    svm.fit(X_train_scaled, y_train)
     models['SVM'] = svm
     
-    preds = {'train': svm.predict_proba(data['X_train_scaled'])[:, 1]}
-    if MODE == 'validation':
-        preds['test'] = svm.predict_proba(data['X_test_scaled'])[:, 1]
-    predictions['SVM'] = preds
-    
-    # Gaussian Naive Bayes (unscaled)
-    print(f"{dataset_name} - Training Gaussian Naive Bayes...")
+    # Gaussian Naive Bayes (no scaling)
+    print(f"{dataset_name.upper()} - Training Gaussian Naive Bayes...")
     gnb = GaussianNB()
-    gnb.fit(data['X_train'], data['y_train'])
+    gnb.fit(X_train, y_train)
     models['Gaussian NB'] = gnb
     
-    preds = {'train': gnb.predict_proba(data['X_train'])[:, 1]}
-    if MODE == 'validation':
-        preds['test'] = gnb.predict_proba(data['X_test'])[:, 1]
-    predictions['Gaussian NB'] = preds
-    
-    return models, predictions
-
-models_long, preds_long = train_base_models(data_long, "LONG")
-models_rich, preds_rich = train_base_models(data_rich, "RICH")
+    trained_models[dataset_name] = {
+        'models': models,
+        'scaler': scaler,
+        'features': feature_list,
+        'X_train': X_train,
+        'X_train_scaled': X_train_scaled,
+        'y_train': y_train
+    }
 
 # ============================================================================
-# CALIBRATE GAUSSIAN NAIVE BAYES (Using Cross-Validation)
+# [3] CALIBRATING GAUSSIAN NAIVE BAYES
 # ============================================================================
 print("\n[3] CALIBRATING GAUSSIAN NAIVE BAYES")
 print("-" * 80)
 
-def calibrate_model_cv(model, X_train, y_train, X_test, dataset_name, model_name):
-    """Apply Platt scaling using cross-validation on training data"""
+for dataset_name in ['long', 'rich']:
+    print(f"\n{dataset_name.upper()} - Calibrating Gaussian NB with CV...")
     
-    print(f"\n{dataset_name} - Calibrating {model_name} with CV...")
+    X_train = trained_models[dataset_name]['X_train']
+    y_train = trained_models[dataset_name]['y_train']
     
-    # Use 5-fold stratified CV for calibration
-    calibrated = CalibratedClassifierCV(
-        model, 
-        method='sigmoid', 
-        cv=5  # 5-fold cross-validation
-    )
-    calibrated.fit(X_train, y_train)
+    gnb = GaussianNB()
+    gnb_calibrated = CalibratedClassifierCV(gnb, method='sigmoid', cv=5)
+    gnb_calibrated.fit(X_train, y_train)
     
-    result = {}
-    if MODE == 'validation':
-        result['test'] = calibrated.predict_proba(X_test)[:, 1]
-    
-    return calibrated, result
-
-gnb_long_cal, gnb_long_cal_preds = calibrate_model_cv(
-    models_long['Gaussian NB'], 
-    data_long['X_train'],
-    data_long['y_train'],
-    data_long['X_test'] if MODE == 'validation' else None,
-    "LONG", 
-    "Gaussian NB"
-)
-
-gnb_rich_cal, gnb_rich_cal_preds = calibrate_model_cv(
-    models_rich['Gaussian NB'],
-    data_rich['X_train'],
-    data_rich['y_train'],
-    data_rich['X_test'] if MODE == 'validation' else None,
-    "RICH",
-    "Gaussian NB"
-)
-
-# Add calibrated predictions
-preds_long['Gaussian NB (Calibrated)'] = gnb_long_cal_preds
-preds_rich['Gaussian NB (Calibrated)'] = gnb_rich_cal_preds
+    trained_models[dataset_name]['calibrated_gnb'] = gnb_calibrated
 
 # ============================================================================
-# VALIDATION MODE: EVALUATE AND SELECT BEST STRATEGY
+# [4] EVALUATE ON TEST SET (VALIDATION MODE ONLY)
 # ============================================================================
 if MODE == 'validation':
     print("\n[4] EVALUATING INDIVIDUAL MODELS ON TEST SET")
     print("-" * 80)
     
-    def evaluate_predictions(y_true, y_pred_proba, model_name):
-        """Calculate metrics for probability predictions"""
+    for dataset_name in ['long', 'rich']:
+        dataset = datasets[dataset_name]
+        df_test = dataset['test']
+        feature_list = trained_models[dataset_name]['features']
+        models = trained_models[dataset_name]['models']
+        scaler = trained_models[dataset_name]['scaler']
+        gnb_cal = trained_models[dataset_name]['calibrated_gnb']
         
-        y_pred = (y_pred_proba >= 0.5).astype(int)
+        # Prepare test data
+        X_test = df_test[feature_list].copy()
         
-        return {
-            'model': model_name,
-            'accuracy': accuracy_score(y_true, y_pred),
-            'precision': precision_score(y_true, y_pred, zero_division=0),
-            'recall': recall_score(y_true, y_pred, zero_division=0),
-            'f1': f1_score(y_true, y_pred, zero_division=0),
-            'roc_auc': roc_auc_score(y_true, y_pred_proba),
-            'log_loss': log_loss(y_true, y_pred_proba),
-            'brier_score': brier_score_loss(y_true, y_pred_proba)
-        }
-    
-    def evaluate_all_models(predictions, y_test, dataset_name):
-        """Evaluate all model predictions on test set"""
+        # Drop same columns as training
+        all_nan_cols = X_test.columns[X_test.isnull().all()].tolist()
+        if all_nan_cols:
+            X_test = X_test.drop(columns=all_nan_cols)
         
+        # Fill NaNs
+        for col in X_test.columns:
+            if X_test[col].isnull().any():
+                median_val = X_test[col].median()
+                if pd.isna(median_val):
+                    X_test[col] = X_test[col].fillna(0)
+                else:
+                    X_test[col] = X_test[col].fillna(median_val)
+        
+        y_test = df_test['elite8_flag'].copy()
+        
+        # Scale test data
+        X_test_scaled = pd.DataFrame(
+            scaler.transform(X_test),
+            columns=X_test.columns,
+            index=X_test.index
+        )
+        
+        # Evaluate each model
         results = []
-        for model_name, pred_dict in predictions.items():
-            if 'test' in pred_dict:
-                metrics = evaluate_predictions(y_test, pred_dict['test'], model_name)
-                metrics['dataset'] = dataset_name
-                results.append(metrics)
         
-        return pd.DataFrame(results)
-    
-    individual_results_long = evaluate_all_models(preds_long, data_long['y_test'], 'long')
-    individual_results_rich = evaluate_all_models(preds_rich, data_rich['y_test'], 'rich')
-    
-    print(f"\nLONG Dataset - Individual Model Performance (Year {TEST_YEAR}):")
-    print(individual_results_long[['model', 'roc_auc', 'log_loss', 'brier_score']].to_string(index=False))
-    
-    print(f"\nRICH Dataset - Individual Model Performance (Year {TEST_YEAR}):")
-    print(individual_results_rich[['model', 'roc_auc', 'log_loss', 'brier_score']].to_string(index=False))
-    
-    # ========================================================================
-    # ENSEMBLE STRATEGIES - VALIDATION MODE
-    # ========================================================================
+        for model_name, model in models.items():
+            if model_name in ['Logistic Regression', 'SVM']:
+                y_pred_proba = model.predict_proba(X_test_scaled)[:, 1]
+            else:
+                y_pred_proba = model.predict_proba(X_test)[:, 1]
+            
+            roc_auc = roc_auc_score(y_test, y_pred_proba)
+            logloss = log_loss(y_test, y_pred_proba)
+            brier = brier_score_loss(y_test, y_pred_proba)
+            
+            results.append({
+                'model': model_name,
+                'roc_auc': roc_auc,
+                'log_loss': logloss,
+                'brier_score': brier
+            })
+        
+        # Evaluate calibrated GNB
+        y_pred_proba = gnb_cal.predict_proba(X_test)[:, 1]
+        roc_auc = roc_auc_score(y_test, y_pred_proba)
+        logloss = log_loss(y_test, y_pred_proba)
+        brier = brier_score_loss(y_test, y_pred_proba)
+        
+        results.append({
+            'model': 'Gaussian NB (Calibrated)',
+            'roc_auc': roc_auc,
+            'log_loss': logloss,
+            'brier_score': brier
+        })
+        
+        results_df = pd.DataFrame(results)
+        print(f"\n{dataset_name.upper()} Dataset - Individual Model Performance (Year {TEST_YEAR}):")
+        print(results_df.to_string(index=False))
+        
+        # Save
+        results_df.to_csv(OUTPUT_DIR / f'individual_model_performance_{dataset_name}_validation.csv', index=False)
+
+# ============================================================================
+# [5] CREATE ENSEMBLES WITH DIFFERENT WEIGHTING STRATEGIES
+# ============================================================================
+if MODE == 'validation':
     print("\n[5] CREATING ENSEMBLES WITH DIFFERENT WEIGHTING STRATEGIES")
     print("-" * 80)
     
-    def create_ensemble(predictions, weights, model_names):
-        """Create weighted ensemble from model predictions"""
-        
-        pred_stack = np.column_stack([predictions[name] for name in model_names])
-        ensemble_pred = np.average(pred_stack, axis=1, weights=weights)
-        ensemble_pred = np.clip(ensemble_pred, 0.001, 0.999)
-        
-        return ensemble_pred
+    ensemble_results = {}
     
-    def test_ensemble_strategies(predictions, y_test, individual_results, dataset_name):
-        """Test different ensemble weighting strategies"""
+    for dataset_name in ['long', 'rich']:
+        dataset = datasets[dataset_name]
+        df_test = dataset['test']
+        feature_list = trained_models[dataset_name]['features']
+        models = trained_models[dataset_name]['models']
+        scaler = trained_models[dataset_name]['scaler']
+        gnb_cal = trained_models[dataset_name]['calibrated_gnb']
         
-        model_names = ['Logistic Regression', 'Random Forest', 'SVM', 'Gaussian NB (Calibrated)']
+        # Prepare test data
+        X_test = df_test[feature_list].copy()
+        all_nan_cols = X_test.columns[X_test.isnull().all()].tolist()
+        if all_nan_cols:
+            X_test = X_test.drop(columns=all_nan_cols)
         
-        strategies = {}
+        for col in X_test.columns:
+            if X_test[col].isnull().any():
+                median_val = X_test[col].median()
+                if pd.isna(median_val):
+                    X_test[col] = X_test[col].fillna(0)
+                else:
+                    X_test[col] = X_test[col].fillna(median_val)
         
-        # Strategy 1: Equal weighting
+        y_test = df_test['elite8_flag'].copy()
+        X_test_scaled = pd.DataFrame(scaler.transform(X_test), columns=X_test.columns, index=X_test.index)
+        
+        # Get predictions from each model
+        pred_lr = models['Logistic Regression'].predict_proba(X_test_scaled)[:, 1]
+        pred_rf = models['Random Forest'].predict_proba(X_test)[:, 1]
+        pred_svm = models['SVM'].predict_proba(X_test_scaled)[:, 1]
+        pred_gnb = gnb_cal.predict_proba(X_test)[:, 1]
+        
+        # Calculate individual model ROC-AUCs and log losses
+        roc_lr = roc_auc_score(y_test, pred_lr)
+        roc_rf = roc_auc_score(y_test, pred_rf)
+        roc_svm = roc_auc_score(y_test, pred_svm)
+        roc_gnb = roc_auc_score(y_test, pred_gnb)
+        
+        loss_lr = log_loss(y_test, pred_lr)
+        loss_rf = log_loss(y_test, pred_rf)
+        loss_svm = log_loss(y_test, pred_svm)
+        loss_gnb = log_loss(y_test, pred_gnb)
+        
+        # Strategy 1: Equal Weight
         print(f"\n{dataset_name} - Testing Equal Weight strategy...")
-        strategies['Equal Weight'] = {
-            'weights': np.array([0.25, 0.25, 0.25, 0.25]),
-            'description': 'All models weighted equally'
-        }
+        weights_equal = np.array([0.25, 0.25, 0.25, 0.25])
         
-        # Strategy 2: ROC-AUC weighted
+        # Strategy 2: ROC-AUC Weighted
         print(f"{dataset_name} - Testing ROC-AUC Weighted strategy...")
-        roc_aucs = []
-        for name in model_names:
-            roc = individual_results[individual_results['model'] == name]['roc_auc'].values[0]
-            roc_aucs.append(roc)
+        roc_scores = np.array([roc_lr, roc_rf, roc_svm, roc_gnb])
+        weights_roc = roc_scores / roc_scores.sum()
         
-        roc_aucs = np.array(roc_aucs)
-        strategies['ROC-AUC Weighted'] = {
-            'weights': roc_aucs / roc_aucs.sum(),
-            'description': 'Weighted by ROC-AUC performance'
-        }
-        
-        # Strategy 3: Inverse log-loss weighted
+        # Strategy 3: Inverse Log-Loss Weighted
         print(f"{dataset_name} - Testing Inverse Log-Loss Weighted strategy...")
-        log_losses = []
-        for name in model_names:
-            ll = individual_results[individual_results['model'] == name]['log_loss'].values[0]
-            log_losses.append(ll)
+        inv_losses = 1 / np.array([loss_lr, loss_rf, loss_svm, loss_gnb])
+        weights_loss = inv_losses / inv_losses.sum()
         
-        log_losses = np.array(log_losses)
-        inv_log_loss = 1 / log_losses
-        strategies['Inverse Log-Loss Weighted'] = {
-            'weights': inv_log_loss / inv_log_loss.sum(),
-            'description': 'Weighted by inverse of log loss'
+        # Test each strategy
+        strategies = {
+            'Equal Weight': weights_equal,
+            'ROC-AUC Weighted': weights_roc,
+            'Inverse Log-Loss Weighted': weights_loss
         }
         
-        # Evaluate each strategy on TEST set
-        results = []
-        for strategy_name, strategy_info in strategies.items():
-            weights = strategy_info['weights']
-            
-            # Get test predictions
-            predictions_test = {name: predictions[name]['test'] for name in model_names}
-            
-            # Create ensemble
-            ensemble_pred = create_ensemble(predictions_test, weights, model_names)
-            
-            # Evaluate
-            metrics = evaluate_predictions(y_test, ensemble_pred, strategy_name)
-            metrics['dataset'] = dataset_name
-            metrics['weights'] = str(dict(zip(model_names, weights)))
-            metrics['description'] = strategy_info['description']
-            results.append(metrics)
+        ensemble_performance = []
         
-        return pd.DataFrame(results), strategies
-    
-    ensemble_results_long, strategies_long = test_ensemble_strategies(
-        preds_long, data_long['y_test'], individual_results_long, 'long'
-    )
-    
-    ensemble_results_rich, strategies_rich = test_ensemble_strategies(
-        preds_rich, data_rich['y_test'], individual_results_rich, 'rich'
-    )
-    
-    print(f"\nLONG Dataset - Ensemble Performance (Year {TEST_YEAR}):")
-    print(ensemble_results_long[['model', 'roc_auc', 'log_loss', 'brier_score']].to_string(index=False))
-    
-    print(f"\nRICH Dataset - Ensemble Performance (Year {TEST_YEAR}):")
-    print(ensemble_results_rich[['model', 'roc_auc', 'log_loss', 'brier_score']].to_string(index=False))
-
-# ============================================================================
-# PRODUCTION MODE: USE BEST STRATEGY FROM VALIDATION
-# ============================================================================
-else:  # production
-    print("\n[4] PRODUCTION MODE - USING VALIDATED BEST STRATEGY")
-    print("-" * 80)
-    print(f"Strategy: {PRODUCTION_BEST_STRATEGY}")
-    print("(No evaluation - no held-out test data)")
-    
-    def get_production_weights(strategy_name):
-        """Get weights for production mode based on strategy name"""
+        for strategy_name, weights in strategies.items():
+            pred_stack = np.column_stack([pred_lr, pred_rf, pred_svm, pred_gnb])
+            ensemble_pred = np.average(pred_stack, axis=1, weights=weights)
+            ensemble_pred = np.clip(ensemble_pred, 0.001, 0.999)
+            
+            roc_auc = roc_auc_score(y_test, ensemble_pred)
+            logloss = log_loss(y_test, ensemble_pred)
+            brier = brier_score_loss(y_test, ensemble_pred)
+            
+            ensemble_performance.append({
+                'model': strategy_name,
+                'roc_auc': roc_auc,
+                'log_loss': logloss,
+                'brier_score': brier
+            })
         
-        if strategy_name == 'Equal Weight':
-            return np.array([0.25, 0.25, 0.25, 0.25])
-        elif strategy_name == 'ROC-AUC Weighted':
-            # Approximate weights from validation
-            return np.array([0.24, 0.24, 0.23, 0.29])
-        elif strategy_name == 'Inverse Log-Loss Weighted':
-            return np.array([0.23, 0.25, 0.30, 0.22])
-        else:
-            return np.array([0.25, 0.25, 0.25, 0.25])
-    
-    strategies_long = {
-        PRODUCTION_BEST_STRATEGY: {
-            'weights': get_production_weights(PRODUCTION_BEST_STRATEGY),
-            'description': 'Best strategy from validation mode'
+        ensemble_df = pd.DataFrame(ensemble_performance)
+        print(f"\n{dataset_name.upper()} Dataset - Ensemble Performance (Year {TEST_YEAR}):")
+        print(ensemble_df.to_string(index=False))
+        
+        # Save ensemble results
+        ensemble_df.to_csv(OUTPUT_DIR / f'ensemble_performance_{dataset_name}_validation.csv', index=False)
+        
+        # Store results
+        ensemble_results[dataset_name] = {
+            'strategies': strategies,
+            'performance': ensemble_df,
+            'predictions': {
+                'lr': pred_lr,
+                'rf': pred_rf,
+                'svm': pred_svm,
+                'gnb': pred_gnb
+            }
         }
-    }
-    
-    strategies_rich = {
-        PRODUCTION_BEST_STRATEGY: {
-            'weights': get_production_weights(PRODUCTION_BEST_STRATEGY),
-            'description': 'Best strategy from validation mode'
-        }
-    }
-    
-    individual_results_long = None
-    individual_results_rich = None
-    ensemble_results_long = None
-    ensemble_results_rich = None
 
 # ============================================================================
-# SAVE RESULTS (VALIDATION ONLY)
+# [6] SAVE RESULTS
 # ============================================================================
-if MODE == 'validation':
-    print("\n[6] SAVING RESULTS")
-    print("-" * 80)
-    
-    all_individual = pd.concat([individual_results_long, individual_results_rich], ignore_index=True)
-    all_ensemble = pd.concat([ensemble_results_long, ensemble_results_rich], ignore_index=True)
-    
-    all_individual.to_csv(OUTPUT_DIR / f'individual_model_performance{OUTPUT_SUFFIX}.csv', index=False)
-    all_ensemble.to_csv(OUTPUT_DIR / f'ensemble_performance{OUTPUT_SUFFIX}.csv', index=False)
-    
-    print(f"Saved results with suffix: {OUTPUT_SUFFIX}")
-
-# ============================================================================
-# SAVE TRAINED MODELS WITH BEST WEIGHTS
-# ============================================================================
-section_num = 7 if MODE == 'validation' else 5
-print(f"\n[{section_num}] SAVING TRAINED MODELS WITH OPTIMAL WEIGHTS")
+print("\n[6] SAVING RESULTS")
 print("-" * 80)
 
-def save_model_package(models, scaler, features, calibrated_gnb, strategies, dataset_name):
-    """Save models with best ensemble weights"""
-    
+if MODE == 'validation':
+    print(f"Saved results with suffix: _validation")
+
+# ============================================================================
+# [7] SAVE TRAINED MODELS WITH OPTIMAL WEIGHTS
+# ============================================================================
+print("\n[7] SAVING TRAINED MODELS WITH OPTIMAL WEIGHTS")
+print("-" * 80)
+
+for dataset_name in ['long', 'rich']:
+    # Determine best strategy
     if MODE == 'validation':
-        # Find best by ROC-AUC
-        ensemble_results = ensemble_results_long if dataset_name == 'long' else ensemble_results_rich
-        best_idx = ensemble_results['roc_auc'].idxmax()
-        best_strategy_name = ensemble_results.loc[best_idx, 'model']
-        best_roc_auc = ensemble_results.loc[best_idx, 'roc_auc']
+        perf_df = ensemble_results[dataset_name]['performance']
+        best_strategy = perf_df.loc[perf_df['roc_auc'].idxmax(), 'model']
+        best_roc = perf_df.loc[perf_df['roc_auc'].idxmax(), 'roc_auc']
+        best_weights = ensemble_results[dataset_name]['strategies'][best_strategy]
         
-        print(f"\n{dataset_name.upper()} - Best strategy: {best_strategy_name}")
-        print(f"  ROC-AUC: {best_roc_auc:.4f}")
+        print(f"\n{dataset_name.upper()} - Best strategy: {best_strategy}")
+        print(f"  ROC-AUC: {best_roc:.4f}")
+        print(f"  Weights: {dict(zip(['LR', 'RF', 'SVM', 'GNB'], best_weights))}")
     else:
-        best_strategy_name = PRODUCTION_BEST_STRATEGY
-        print(f"\n{dataset_name.upper()} - Using strategy: {best_strategy_name}")
+        # In production mode, use ROC-AUC Weighted (validated best)
+        best_strategy = 'ROC-AUC Weighted'
+        # Use approximate weights from validation
+        best_weights = np.array([0.24, 0.24, 0.23, 0.29])
+        print(f"\n{dataset_name.upper()} - Using strategy: {best_strategy}")
         print(f"  (Based on validation results)")
+        print(f"  Weights: {dict(zip(['LR', 'RF', 'SVM', 'GNB'], best_weights))}")
     
-    best_weights = strategies[best_strategy_name]['weights']
-    print(f"  Weights: {dict(zip(['LR', 'RF', 'SVM', 'GNB'], np.round(best_weights, 3)))}")
-    
+    # Save model package
     model_package = {
-        'models': models,
-        'scaler': scaler,
-        'features': features,
-        'calibrated_gnb': calibrated_gnb,
-        'ensemble_strategies': strategies,
-        'best_strategy': best_strategy_name,
-        'best_weights': best_weights,
-        'model_names': ['Logistic Regression', 'Random Forest', 'SVM', 'Gaussian NB (Calibrated)'],
-        'mode': MODE,
-        'train_years': f'{TRAIN_YEARS[0]}-{TRAIN_YEARS[1]}'
+        'models': trained_models[dataset_name]['models'],
+        'scaler': trained_models[dataset_name]['scaler'],
+        'calibrated_gnb': trained_models[dataset_name]['calibrated_gnb'],
+        'features': trained_models[dataset_name]['features'],
+        'best_strategy': best_strategy,
+        'best_weights': best_weights
     }
     
-    output_file = OUTPUT_DIR / f'trained_ensemble_{dataset_name}{OUTPUT_SUFFIX}.pkl'
+    suffix = '_validation' if MODE == 'validation' else '_production'
+    output_file = OUTPUT_DIR / f'trained_ensemble_{dataset_name}{suffix}.pkl'
+    
     with open(output_file, 'wb') as f:
         pickle.dump(model_package, f)
     
     print(f"  Saved to: {output_file}")
-    
-    return best_strategy_name, best_weights
 
-best_long_strategy, best_long_weights = save_model_package(
-    models_long, data_long['scaler'], [col for col in data_long['X_train'].columns],
-    gnb_long_cal, strategies_long, 'long'
-)
-
-best_rich_strategy, best_rich_weights = save_model_package(
-    models_rich, data_rich['scaler'], [col for col in data_rich['X_train'].columns],
-    gnb_rich_cal, strategies_rich, 'rich'
-)
-
-# Save predictions in validation mode
+# Save predictions if validation mode
 if MODE == 'validation':
-    for dataset_name, data, predictions, best_weights, best_strategy in [
-        ('long', data_long, preds_long, best_long_weights, best_long_strategy),
-        ('rich', data_rich, preds_rich, best_rich_weights, best_rich_strategy)
-    ]:
-        model_names = ['Logistic Regression', 'Random Forest', 'SVM', 'Gaussian NB (Calibrated)']
-        predictions_test = {name: predictions[name]['test'] for name in model_names}
+    for dataset_name in ['long', 'rich']:
+        dataset = datasets[dataset_name]
+        df_test = dataset['test']
         
-        def create_ensemble(predictions, weights, model_names):
-            pred_stack = np.column_stack([predictions[name] for name in model_names])
-            ensemble_pred = np.average(pred_stack, axis=1, weights=weights)
-            return np.clip(ensemble_pred, 0.001, 0.999)
+        perf_df = ensemble_results[dataset_name]['performance']
+        best_strategy = perf_df.loc[perf_df['roc_auc'].idxmax(), 'model']
+        best_weights = ensemble_results[dataset_name]['strategies'][best_strategy]
         
-        best_ensemble_pred = create_ensemble(predictions_test, best_weights, model_names)
+        preds = ensemble_results[dataset_name]['predictions']
+        pred_stack = np.column_stack([preds['lr'], preds['rf'], preds['svm'], preds['gnb']])
+        ensemble_pred = np.average(pred_stack, axis=1, weights=best_weights)
         
         pred_df = pd.DataFrame({
-            'Team': data['teams_test'].values,
-            'Year': data['years_test'].values,
-            'actual': data['y_test'].values,
-            'ensemble_probability': best_ensemble_pred,
-            'ensemble_strategy': best_strategy
-        })
+            'Team': df_test['Team'].values,
+            'Year': df_test['Year'].values,
+            'Actual': df_test['elite8_flag'].values,
+            'Predicted_Probability': ensemble_pred,
+            'LR': preds['lr'],
+            'RF': preds['rf'],
+            'SVM': preds['svm'],
+            'GNB': preds['gnb']
+        }).sort_values('Predicted_Probability', ascending=False)
         
-        output_file = OUTPUT_DIR / f'best_ensemble_predictions_{dataset_name}{OUTPUT_SUFFIX}.csv'
-        pred_df.to_csv(output_file, index=False)
-        print(f"\nSaved {dataset_name} predictions: {output_file.name}")
+        pred_df.to_csv(OUTPUT_DIR / f'best_ensemble_predictions_{dataset_name}_validation.csv', index=False)
+        print(f"\nSaved {dataset_name} predictions: best_ensemble_predictions_{dataset_name}_validation.csv")
 
 # ============================================================================
-# VISUALIZATIONS (VALIDATION ONLY)
+# [8] CREATING VISUALIZATIONS
 # ============================================================================
 if MODE == 'validation':
-    section_num = 8
-    print(f"\n[{section_num}] CREATING VISUALIZATIONS")
+    print("\n[8] CREATING VISUALIZATIONS")
     print("-" * 80)
     
-    fig, axes = plt.subplots(1, 2, figsize=(14, 6))
+    import matplotlib.pyplot as plt
     
-    for idx, (dataset, individual, ensemble) in enumerate([
-        ('Long', individual_results_long, ensemble_results_long),
-        ('Rich', individual_results_rich, ensemble_results_rich)
-    ]):
+    fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+    
+    for idx, dataset_name in enumerate(['long', 'rich']):
+        perf_df = ensemble_results[dataset_name]['performance']
+        
         ax = axes[idx]
+        x = range(len(perf_df))
+        width = 0.35
         
-        individual_copy = individual.copy()
-        ensemble_copy = ensemble.copy()
-        individual_copy['type'] = 'Individual'
-        ensemble_copy['type'] = 'Ensemble'
-        combined = pd.concat([individual_copy, ensemble_copy])
+        ax.bar([i - width/2 for i in x], perf_df['roc_auc'], width, label='ROC-AUC', alpha=0.8)
+        ax.bar([i + width/2 for i in x], 1 - perf_df['log_loss'], width, label='1 - Log Loss', alpha=0.8)
         
-        x = range(len(combined))
-        colors = ['skyblue' if t == 'Individual' else 'coral' for t in combined['type']]
-        
-        ax.barh(x, combined['roc_auc'], color=colors)
-        ax.set_yticks(x)
-        ax.set_yticklabels(combined['model'], fontsize=9)
-        ax.set_xlabel('ROC-AUC')
-        ax.set_title(f'{dataset} Dataset - {TEST_YEAR} Validation')
-        ax.axvline(x=0.85, color='red', linestyle='--', alpha=0.5, label='0.85 threshold')
+        ax.set_xlabel('Ensemble Strategy')
+        ax.set_ylabel('Score')
+        ax.set_title(f'{dataset_name.upper()} - Ensemble Performance')
+        ax.set_xticks(x)
+        ax.set_xticklabels(perf_df['model'], rotation=15, ha='right')
         ax.legend()
-        ax.grid(axis='x', alpha=0.3)
+        ax.grid(True, alpha=0.3)
     
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / f'model_ensemble_comparison{OUTPUT_SUFFIX}.png', dpi=150, bbox_inches='tight')
-    plt.close()
-    print(f"Saved visualization: model_ensemble_comparison{OUTPUT_SUFFIX}.png")
+    plt.savefig(OUTPUT_DIR / 'model_ensemble_comparison_validation.png', dpi=300, bbox_inches='tight')
+    print("Saved visualization: model_ensemble_comparison_validation.png")
 
 # ============================================================================
-# SUMMARY
+# FINAL SUMMARY
 # ============================================================================
 print("\n" + "="*80)
-print(f"ENSEMBLE MODELS COMPLETE - {MODE.upper()} MODE")
+if MODE == 'validation':
+    print("ENSEMBLE MODELS COMPLETE - VALIDATION MODE")
+else:
+    print("ENSEMBLE MODELS COMPLETE - PRODUCTION MODE")
 print("="*80)
 
 if MODE == 'validation':
-    print(f"\nVALIDATION RESULTS ({TEST_YEAR} Tournament):")
-    print("\nBEST ENSEMBLE BY DATASET:")
-    for dataset_name, ensemble_results in [('LONG', ensemble_results_long), ('RICH', ensemble_results_rich)]:
-        best_idx = ensemble_results['roc_auc'].idxmax()
-        best = ensemble_results.loc[best_idx]
-        print(f"\n{dataset_name}:")
-        print(f"  Strategy: {best['model']}")
-        print(f"  ROC-AUC: {best['roc_auc']:.3f}")
-        print(f"  Log Loss: {best['log_loss']:.3f}")
-        print(f"  Brier Score: {best['brier_score']:.3f}")
+    print("\nVALIDATION RESULTS (2025 Tournament):\n")
+    print("BEST ENSEMBLE BY DATASET:\n")
+    
+    for dataset_name in ['long', 'rich']:
+        perf_df = ensemble_results[dataset_name]['performance']
+        best_idx = perf_df['roc_auc'].idxmax()
+        best_row = perf_df.iloc[best_idx]
+        
+        print(f"{dataset_name.upper()}:")
+        print(f"  Strategy: {best_row['model']}")
+        print(f"  ROC-AUC: {best_row['roc_auc']:.3f}")
+        print(f"  Log Loss: {best_row['log_loss']:.3f}")
+        print(f"  Brier Score: {best_row['brier_score']:.3f}\n")
     
     print("\nNEXT STEP:")
-    print(f"  → Switch MODE to 'production' and re-run for final 2026+ model")
+    print("  → Switch MODE to 'production' and re-run for final 2026+ model")
 else:
     print("\nPRODUCTION MODEL CREATED:")
-    print(f"  ✓ Trained on {TRAIN_YEARS[0]}-{TRAIN_YEARS[1]} data")
-    print(f"  ✓ Using {PRODUCTION_BEST_STRATEGY} strategy from validation")
-    print(f"  ✓ Ready for 2026+ predictions")
+    print("  ✓ Trained on 2008-2025 data")
+    print("  ✓ Using ROC-AUC Weighted strategy from validation")
+    print("  ✓ Ready for 2026+ predictions")
 
 print("\nALIGNMENT:")
-print(f"  ✓ Consistent with H2H modeling approach")
-print(f"  ✓ Train/test split matches across all models")
+print("  ✓ Consistent with H2H modeling approach")
+print("  ✓ Train/test split matches across all models")
 
 print("\nOUTPUTS GENERATED:")
+suffix = '_validation' if MODE == 'validation' else '_production'
 if MODE == 'validation':
-    print(f"  {OUTPUT_DIR}/individual_model_performance{OUTPUT_SUFFIX}.csv")
-    print(f"  {OUTPUT_DIR}/ensemble_performance{OUTPUT_SUFFIX}.csv")
-    print(f"  {OUTPUT_DIR}/best_ensemble_predictions_long{OUTPUT_SUFFIX}.csv")
-    print(f"  {OUTPUT_DIR}/best_ensemble_predictions_rich{OUTPUT_SUFFIX}.csv")
-    print(f"  {OUTPUT_DIR}/model_ensemble_comparison{OUTPUT_SUFFIX}.png")
+    print(f"  {OUTPUT_DIR}/individual_model_performance{suffix}.csv")
+    print(f"  {OUTPUT_DIR}/ensemble_performance{suffix}.csv")
+    print(f"  {OUTPUT_DIR}/best_ensemble_predictions_long{suffix}.csv")
+    print(f"  {OUTPUT_DIR}/best_ensemble_predictions_rich{suffix}.csv")
+    print(f"  {OUTPUT_DIR}/model_ensemble_comparison{suffix}.png")
 
-print(f"  {OUTPUT_DIR}/trained_ensemble_long{OUTPUT_SUFFIX}.pkl")
-print(f"  {OUTPUT_DIR}/trained_ensemble_rich{OUTPUT_SUFFIX}.pkl")
+print(f"  {OUTPUT_DIR}/trained_ensemble_long{suffix}.pkl")
+print(f"  {OUTPUT_DIR}/trained_ensemble_rich{suffix}.pkl")
 
-print("\n" + "="*80)
+if not config.USE_SEEDS:
+    print("\n⚠️  NOTE: Models trained WITHOUT tournamentSeed (pure metrics)")

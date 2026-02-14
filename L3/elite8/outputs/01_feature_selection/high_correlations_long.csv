@@ -31,7 +31,7 @@ kenpom_Rk,BPI,0.9214498588918768
 kenpom_SOS_NetRtg,kenpom_SOS_ORtg,0.9213846762069793
 bartTorvik_Rk,BPI,0.919793789172041
 bartTorvik_WAB,BPI,0.9193377412664919
-bartTorvik_WAB,tournamentSeed,0.9132167205274988
+tournamentSeed,bartTorvik_WAB,0.9132167205274988
 kenpom_ORtg,kenpom_ORtg_Rank,0.9104215008658987
 bartTorvik_AdjDE,kenpom_DRtg_Rank,0.9071452952230333
 kenpom_NetRtg,masseyComposite_Rank,0.904444664299884

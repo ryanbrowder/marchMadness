@@ -2,7 +2,7 @@
   OPTIMAL BRACKET: Expected Value (maximize expected points)
 ======================================================================
 
-🏆 CHAMPION: Gonzaga (39.8%)
+🏆 CHAMPION: Gonzaga (39.7%)
 
 R64
 ----------------------------------------------------------------------

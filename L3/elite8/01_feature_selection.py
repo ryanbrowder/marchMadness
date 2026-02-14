@@ -1,388 +1,314 @@
 """
 L3 Feature Selection Pipeline
-Joins training datasets with tournament results, creates Elite 8 label, 
-and performs feature selection through correlation and VIF analysis.
+Configure via config.py: USE_SEEDS = True/False
 """
 
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-from pathlib import Path
+from scipy.stats import pearsonr
+from statsmodels.stats.outliers_influence import variance_inflation_factor
+import warnings
+warnings.filterwarnings('ignore')
 
-# Optional import for VIF analysis
-try:
-    from statsmodels.stats.outliers_influence import variance_inflation_factor
-    HAS_STATSMODELS = True
-except ImportError:
-    HAS_STATSMODELS = False
-    print("Warning: statsmodels not available. VIF analysis will be skipped.")
+# Import configuration
+import config
 
 # Configuration
-DATA_DIR = Path('../data')
-TRAINING_DIR = DATA_DIR / 'trainingData'
-OUTPUT_DIR = Path('outputs/01_feature_selection')
+INPUT_DIR = config.RESULTS_DIR
+OUTPUT_DIR = config.OUTPUT_01
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-ELITE8_OUTCOMES = ['CHAMPS', 'Finals', 'Final Four', 'Elite Eight']  # Fixed: "Elite Eight" not "Elite 8"
-CORRELATION_THRESHOLD = 0.90  # Drop features with correlation above this
-VIF_THRESHOLD = 10  # Flag features with VIF above this
+CORRELATION_THRESHOLD = config.CORRELATION_THRESHOLD
 
 print("="*80)
 print("L3 FEATURE SELECTION PIPELINE")
-print("="*80)
+config.print_config()
 
 # ============================================================================
-# LOAD DATA
+# [1] LOAD DATA
 # ============================================================================
 print("\n[1] LOADING DATA")
 print("-" * 80)
 
-# Load training datasets
-training_long = pd.read_csv(TRAINING_DIR / 'training_set_long.csv')
-training_rich = pd.read_csv(TRAINING_DIR / 'training_set_rich.csv')
+training_set_long = pd.read_csv(INPUT_DIR / 'training_set_long.csv')
+training_set_rich = pd.read_csv(INPUT_DIR / 'training_set_rich.csv')
+tournament_results = pd.read_csv(config.TOURNAMENT_RESULTS_FILE)
 
-print(f"training_set_long: {training_long.shape[0]} rows, {training_long.shape[1]} columns")
-print(f"training_set_rich: {training_rich.shape[0]} rows, {training_rich.shape[1]} columns")
-
-# Load tournament results
-tournament_results = pd.read_csv(DATA_DIR / 'tournamentResults.csv')
+print(f"training_set_long: {training_set_long.shape[0]} rows, {training_set_long.shape[1]} columns")
+print(f"training_set_rich: {training_set_rich.shape[0]} rows, {training_set_rich.shape[1]} columns")
 print(f"tournamentResults: {tournament_results.shape[0]} rows")
 
-# DIAGNOSTIC: Verify Elite 8+ definition
 print("\nDIAGNOSTIC - Tournament outcome distribution:")
-outcome_counts = tournament_results['tournamentOutcome'].value_counts()
-print(outcome_counts.head(10))
-elite8_count = tournament_results['tournamentOutcome'].isin(ELITE8_OUTCOMES).sum()
-print(f"\nElite 8+ teams with current definition: {elite8_count}")
-print(f"Expected Elite 8+ teams (8 per year): ~{len(tournament_results) / 68 * 8:.0f}")
+print(tournament_results['tournamentOutcome'].value_counts())
+
+elite8_outcomes = ['Elite Eight', 'Final Four', 'Finals', 'CHAMPS']
+total_elite8 = tournament_results['tournamentOutcome'].isin(elite8_outcomes).sum()
+print(f"\nElite 8+ teams with current definition: {total_elite8}")
+
+years_in_data = tournament_results['Year'].nunique()
+expected_elite8 = years_in_data * 8
+print(f"Expected Elite 8+ teams (8 per year): ~{expected_elite8}")
 
 # ============================================================================
-# JOIN AND CREATE LABELS
+# [2] JOIN DATA AND CREATE LABELS
 # ============================================================================
 print("\n[2] JOINING DATA AND CREATING LABELS")
 print("-" * 80)
 
-def prepare_training_data(training_df, tournament_df, dataset_name):
-    """Join training data with tournament results and create Elite 8 label"""
-    
-    # Join on Year + Index (Team already exists in training_df)
-    merged = training_df.merge(
-        tournament_df[['Year', 'Index', 'tournamentSeed', 'tournamentOutcome']],
+datasets = {
+    'long': training_set_long,
+    'rich': training_set_rich
+}
+
+labeled_datasets = {}
+EXCLUDE_COLS = config.get_excluded_columns()
+
+print(f"\nColumns excluded from features: {EXCLUDE_COLS}")
+
+for name, df in datasets.items():
+    # Join with tournament results
+    df_labeled = df.merge(
+        tournament_results[['Year', 'Index', 'tournamentOutcome']],
         on=['Year', 'Index'],
-        how='inner'
+        how='left'
     )
     
-    print(f"\n{dataset_name}:")
-    print(f"  After join: {merged.shape[0]} rows")
+    # Create Elite 8 flag
+    df_labeled['elite8_flag'] = df_labeled['tournamentOutcome'].isin(elite8_outcomes).astype(int)
     
-    # Create Elite 8 binary label
-    merged['elite8_flag'] = merged['tournamentOutcome'].isin(ELITE8_OUTCOMES).astype(int)
+    print(f"\ntraining_set_{name}:")
+    print(f"  After join: {len(df_labeled)} rows")
+    print(f"  Elite 8+ teams: {df_labeled['elite8_flag'].sum()} ({df_labeled['elite8_flag'].mean():.1%})")
+    print(f"  Non-Elite 8 teams: {(df_labeled['elite8_flag']==0).sum()} ({(df_labeled['elite8_flag']==0).mean():.1%})")
     
-    # Report label distribution
-    elite8_count = merged['elite8_flag'].sum()
-    elite8_pct = (elite8_count / len(merged)) * 100
-    print(f"  Elite 8+ teams: {elite8_count} ({elite8_pct:.1f}%)")
-    print(f"  Non-Elite 8 teams: {len(merged) - elite8_count} ({100-elite8_pct:.1f}%)")
-    
-    # Convert numeric columns - use 'coerce' to force conversion
-    # Keep Year, Team, Index as-is
+    # Convert to numeric
     print(f"  Converting columns to numeric types...")
-    for col in merged.columns:
-        if col not in ['Year', 'Team', 'Index', 'tournamentOutcome']:
-            # Try to convert, coercing errors to NaN
-            merged[col] = pd.to_numeric(merged[col], errors='coerce')
+    for col in df_labeled.columns:
+        if col not in EXCLUDE_COLS:
+            df_labeled[col] = pd.to_numeric(df_labeled[col], errors='coerce')
     
-    # Report how many columns are now numeric
-    numeric_cols = merged.select_dtypes(include=[np.number]).columns.tolist()
+    numeric_cols = df_labeled.select_dtypes(include=[np.number]).columns
     print(f"  Numeric columns after conversion: {len(numeric_cols)}")
     
-    # Reorder columns: Year, Team, Index first, then features, seed, label
-    feature_cols = [col for col in merged.columns 
-                   if col not in ['Year', 'Team', 'Index', 'tournamentSeed', 
-                                  'tournamentOutcome', 'elite8_flag']]
+    labeled_datasets[name] = df_labeled
     
-    final_cols = ['Year', 'Team', 'Index'] + feature_cols + ['tournamentSeed', 'elite8_flag']
-    merged = merged[final_cols]
-    
-    return merged
+    # Save labeled dataset
+    output_file = OUTPUT_DIR / f'labeled_training_{name}.csv'
+    df_labeled.to_csv(output_file, index=False)
 
-# Prepare both datasets
-labeled_long = prepare_training_data(training_long, tournament_results, "training_set_long")
-labeled_rich = prepare_training_data(training_rich, tournament_results, "training_set_rich")
-
-# Save labeled datasets
-labeled_long.to_csv(OUTPUT_DIR / 'labeled_training_long.csv', index=False)
-labeled_rich.to_csv(OUTPUT_DIR / 'labeled_training_rich.csv', index=False)
 print(f"\nSaved labeled datasets to {OUTPUT_DIR}/")
 
 # ============================================================================
-# FEATURE-TO-FEATURE CORRELATION ANALYSIS
+# [3] FEATURE-TO-FEATURE CORRELATION ANALYSIS
 # ============================================================================
 print("\n[3] FEATURE-TO-FEATURE CORRELATION ANALYSIS")
 print("-" * 80)
 
-def analyze_feature_correlations(df, dataset_name):
-    """Identify highly correlated feature pairs"""
+for name, df in labeled_datasets.items():
+    print(f"\n{name}:")
     
-    # Get feature columns only (exclude Year, Team, Index, label)
-    feature_cols = [col for col in df.columns 
-                   if col not in ['Year', 'Team', 'Index', 'elite8_flag']]
+    # Get numeric features (using config exclusion list)
+    feature_cols = [col for col in df.select_dtypes(include=[np.number]).columns 
+                   if col not in EXCLUDE_COLS]
     
-    # Select only numeric features for correlation analysis
-    feature_df = df[feature_cols].select_dtypes(include=[np.number])
-    
-    print(f"\n{dataset_name}:")
     print(f"  Total features: {len(feature_cols)}")
-    print(f"  Numeric features for correlation: {len(feature_df.columns)}")
+    print(f"  Numeric features for correlation: {len(feature_cols)}")
     
-    if len(feature_df.columns) == 0:
-        print("  WARNING: No numeric features found! Skipping correlation analysis.")
-        return pd.DataFrame(), []
+    # Correlation matrix
+    corr_matrix = df[feature_cols].corr()
     
-    # Calculate correlation matrix
-    corr_matrix = feature_df.corr()
-    
-    # Find pairs with correlation above threshold
+    # Find high correlations
     high_corr_pairs = []
     for i in range(len(corr_matrix.columns)):
         for j in range(i+1, len(corr_matrix.columns)):
-            corr_value = abs(corr_matrix.iloc[i, j])
-            if corr_value > CORRELATION_THRESHOLD:
+            corr_val = abs(corr_matrix.iloc[i, j])
+            if corr_val > CORRELATION_THRESHOLD and not np.isnan(corr_val):
                 high_corr_pairs.append({
                     'feature1': corr_matrix.columns[i],
                     'feature2': corr_matrix.columns[j],
-                    'correlation': corr_value
+                    'correlation': corr_val
                 })
     
-    print(f"  High correlation pairs (>{CORRELATION_THRESHOLD}): {len(high_corr_pairs)}")
+    high_corr_df = pd.DataFrame(high_corr_pairs).sort_values('correlation', ascending=False)
+    print(f"  High correlation pairs (>{CORRELATION_THRESHOLD}): {len(high_corr_df)}")
     
-    if high_corr_pairs:
-        high_corr_df = pd.DataFrame(high_corr_pairs).sort_values('correlation', ascending=False)
-        print("\n  Top 10 highly correlated pairs:")
+    if len(high_corr_df) > 0:
+        print(f"\n  Top 10 highly correlated pairs:")
         print(high_corr_df.head(10).to_string(index=False))
-        
-        # Save full list
-        output_file = OUTPUT_DIR / f'high_correlations_{dataset_name}.csv'
-        high_corr_df.to_csv(output_file, index=False)
-        print(f"\n  Saved full list to {output_file}")
     
-    # Generate correlation heatmap (for smaller feature sets only)
-    if len(feature_df.columns) <= 30:
-        plt.figure(figsize=(12, 10))
-        sns.heatmap(corr_matrix, cmap='coolwarm', center=0, 
-                   square=True, linewidths=0.5, cbar_kws={"shrink": 0.8})
-        plt.title(f'Feature Correlation Matrix - {dataset_name}')
-        plt.tight_layout()
-        heatmap_file = OUTPUT_DIR / f'correlation_heatmap_{dataset_name}.png'
-        plt.savefig(heatmap_file, dpi=150)
-        plt.close()
-        print(f"  Saved heatmap to {heatmap_file}")
-    else:
-        print(f"  (Heatmap skipped - too many features for visualization)")
-    
-    return corr_matrix, high_corr_pairs
-
-corr_long, pairs_long = analyze_feature_correlations(labeled_long, "long")
-corr_rich, pairs_rich = analyze_feature_correlations(labeled_rich, "rich")
+    # Save full list
+    high_corr_df.to_csv(OUTPUT_DIR / f'high_correlations_{name}.csv', index=False)
+    print(f"  Saved full list to {OUTPUT_DIR}/high_correlations_{name}.csv")
+    print(f"  (Heatmap skipped - too many features for visualization)")
 
 # ============================================================================
-# FEATURE-TO-LABEL CORRELATION
+# [4] FEATURE-TO-LABEL CORRELATION
 # ============================================================================
 print("\n[4] FEATURE-TO-LABEL CORRELATION")
 print("-" * 80)
 
-def analyze_label_correlation(df, dataset_name):
-    """Rank features by correlation with Elite 8 label"""
+for name, df in labeled_datasets.items():
+    print(f"\n{name}:")
     
-    feature_cols = [col for col in df.columns 
-                   if col not in ['Year', 'Team', 'Index', 'elite8_flag']]
+    # Get numeric features (using config exclusion list)
+    numeric_features = [col for col in df.select_dtypes(include=[np.number]).columns 
+                       if col not in EXCLUDE_COLS]
     
-    # Filter to numeric features only
-    numeric_features = df[feature_cols].select_dtypes(include=[np.number]).columns.tolist()
-    
-    print(f"\n{dataset_name}:")
     print(f"  Numeric features analyzed: {len(numeric_features)}")
     
-    if len(numeric_features) == 0:
-        print("  WARNING: No numeric features found! Skipping label correlation analysis.")
-        return pd.DataFrame()
+    # Calculate correlations with elite8_flag
+    correlations = []
+    for feature in numeric_features:
+        valid_mask = df[[feature, 'elite8_flag']].notna().all(axis=1)
+        if valid_mask.sum() > 10:
+            corr, _ = pearsonr(df.loc[valid_mask, feature], df.loc[valid_mask, 'elite8_flag'])
+            correlations.append({
+                'feature': feature,
+                'correlation': abs(corr),
+                'correlation_raw': corr
+            })
     
-    # Calculate correlation with label
-    label_corrs = []
-    for col in numeric_features:
-        corr = df[col].corr(df['elite8_flag'])
-        label_corrs.append({
-            'feature': col,
-            'correlation': abs(corr),
-            'correlation_raw': corr
-        })
-    
-    label_corr_df = pd.DataFrame(label_corrs).sort_values('correlation', ascending=False)
+    corr_df = pd.DataFrame(correlations).sort_values('correlation', ascending=False)
     
     print(f"  Top 15 features by correlation with elite8_flag:")
-    print(label_corr_df.head(15).to_string(index=False))
+    print(corr_df.head(15).to_string(index=False))
     
-    # Save full ranking
-    output_file = OUTPUT_DIR / f'label_correlations_{dataset_name}.csv'
-    label_corr_df.to_csv(output_file, index=False)
-    print(f"\n  Saved full ranking to {output_file}")
-    
-    return label_corr_df
-
-label_corr_long = analyze_label_correlation(labeled_long, "long")
-label_corr_rich = analyze_label_correlation(labeled_rich, "rich")
+    # Save
+    corr_df.to_csv(OUTPUT_DIR / f'label_correlations_{name}.csv', index=False)
+    print(f"  Saved full ranking to {OUTPUT_DIR}/label_correlations_{name}.csv")
 
 # ============================================================================
-# VARIANCE INFLATION FACTOR (VIF) ANALYSIS
+# [5] VARIANCE INFLATION FACTOR (VIF) ANALYSIS
 # ============================================================================
 print("\n[5] VARIANCE INFLATION FACTOR (VIF) ANALYSIS")
 print("-" * 80)
 
-def calculate_vif(df, dataset_name):
-    """Calculate VIF for each feature to detect multicollinearity"""
+for name, df in labeled_datasets.items():
+    print(f"\n{name}:")
     
-    if not HAS_STATSMODELS:
-        print(f"\n{dataset_name}:")
-        print(f"  VIF analysis skipped (statsmodels not available)")
-        return pd.DataFrame()
+    # Get numeric features (using config exclusion list)
+    feature_cols = [col for col in df.select_dtypes(include=[np.number]).columns 
+                   if col not in EXCLUDE_COLS]
     
-    feature_cols = [col for col in df.columns 
-                   if col not in ['Year', 'Team', 'Index', 'elite8_flag']]
+    print(f"  Calculating VIF for {len(feature_cols)} numeric features...")
     
-    # Select only numeric features
-    feature_df = df[feature_cols].select_dtypes(include=[np.number]).dropna()
-    
-    print(f"\n{dataset_name}:")
-    print(f"  Calculating VIF for {len(feature_df.columns)} numeric features...")
-    
-    if len(feature_df.columns) == 0:
-        print("  WARNING: No numeric features found! Skipping VIF analysis.")
-        return pd.DataFrame()
-    
-    # Calculate VIF for each feature
+    # Calculate VIF
     vif_data = []
-    for i, col in enumerate(feature_df.columns):
+    for i, feature in enumerate(feature_cols):
         try:
-            vif = variance_inflation_factor(feature_df.values, i)
+            X = df[feature_cols].fillna(0)
+            vif = variance_inflation_factor(X.values, i)
             vif_data.append({
-                'feature': col,
+                'feature': feature,
                 'VIF': vif
             })
         except Exception as e:
-            print(f"  Warning: Could not calculate VIF for {col}: {e}")
-            vif_data.append({
-                'feature': col,
-                'VIF': np.nan
-            })
+            print(f"  Warning: Could not calculate VIF for {feature}: {e}")
     
-    vif_df = pd.DataFrame(vif_data).sort_values('VIF', ascending=False)
-    
-    # Flag high VIF features
-    high_vif = vif_df[vif_df['VIF'] > VIF_THRESHOLD]
-    print(f"  Features with VIF > {VIF_THRESHOLD}: {len(high_vif)}")
-    
-    if len(high_vif) > 0:
-        print("\n  Top 15 features by VIF:")
-        print(vif_df.head(15).to_string(index=False))
-    
-    # Save full VIF results
-    output_file = OUTPUT_DIR / f'vif_analysis_{dataset_name}.csv'
-    vif_df.to_csv(output_file, index=False)
-    print(f"\n  Saved full VIF analysis to {output_file}")
-    
-    return vif_df
-
-vif_long = calculate_vif(labeled_long, "long")
-vif_rich = calculate_vif(labeled_rich, "rich")
+    if vif_data:
+        vif_df = pd.DataFrame(vif_data).sort_values('VIF', ascending=False)
+        high_vif = vif_df[vif_df['VIF'] > 10]
+        print(f"  Features with VIF > 10: {len(high_vif)}")
+        
+        vif_df.to_csv(OUTPUT_DIR / f'vif_analysis_{name}.csv', index=False)
+        print(f"\n  Saved full VIF analysis to {OUTPUT_DIR}/vif_analysis_{name}.csv")
 
 # ============================================================================
-# FEATURE SELECTION RECOMMENDATIONS
+# [6] FEATURE SELECTION RECOMMENDATIONS
 # ============================================================================
 print("\n[6] FEATURE SELECTION RECOMMENDATIONS")
 print("-" * 80)
 
-def recommend_feature_reduction(high_corr_pairs, label_corr_df, vif_df, dataset_name):
-    """Recommend which features to drop based on correlation, VIF, and label correlation"""
+for name, df in labeled_datasets.items():
+    print(f"\n{name}:")
     
-    print(f"\n{dataset_name}:")
+    # Get features (using config exclusion list)
+    feature_cols = [col for col in df.select_dtypes(include=[np.number]).columns 
+                   if col not in EXCLUDE_COLS]
     
-    # Check if we have valid data
-    if label_corr_df.empty:
-        print("  No numeric features found - cannot make recommendations")
-        return set()
+    # Load high correlations
+    high_corr_df = pd.read_csv(OUTPUT_DIR / f'high_correlations_{name}.csv')
     
-    # Build drop recommendations
+    # Greedy feature selection
     features_to_drop = set()
-    drop_reasons = {}
+    drop_reasons = []
     
-    # From high correlation pairs, drop the one with lower label correlation
-    for pair in high_corr_pairs:
-        feat1, feat2 = pair['feature1'], pair['feature2']
+    # Load label correlations for comparison
+    label_corr = pd.read_csv(OUTPUT_DIR / f'label_correlations_{name}.csv')
+    
+    for _, row in high_corr_df.iterrows():
+        feat1, feat2, corr = row['feature1'], row['feature2'], row['correlation']
         
-        # Get label correlations
-        corr1 = label_corr_df[label_corr_df['feature'] == feat1]['correlation'].values[0]
-        corr2 = label_corr_df[label_corr_df['feature'] == feat2]['correlation'].values[0]
+        if feat1 in features_to_drop or feat2 in features_to_drop:
+            continue
         
-        # Drop the one with lower label correlation
-        to_drop = feat1 if corr1 < corr2 else feat2
-        features_to_drop.add(to_drop)
+        corr1 = label_corr[label_corr['feature'] == feat1]['correlation'].values
+        corr2 = label_corr[label_corr['feature'] == feat2]['correlation'].values
         
-        reason = f"Correlated with {feat2 if to_drop == feat1 else feat1} (r={pair['correlation']:.3f})"
-        drop_reasons[to_drop] = drop_reasons.get(to_drop, []) + [reason]
+        if len(corr1) > 0 and len(corr2) > 0:
+            if corr1[0] >= corr2[0]:
+                features_to_drop.add(feat2)
+                reason = f"Correlated with {feat1} (r={corr:.3f})"
+            else:
+                features_to_drop.add(feat1)
+                reason = f"Correlated with {feat2} (r={corr:.3f})"
+            
+            drop_reasons.append({
+                'feature': feat2 if corr1[0] >= corr2[0] else feat1,
+                'reason': reason
+            })
     
-    # Flag features with very high VIF (but don't auto-drop without correlation check)
-    high_vif_features = []
-    if not vif_df.empty:
-        high_vif_features = vif_df[vif_df['VIF'] > VIF_THRESHOLD * 2]['feature'].tolist()
+    # Consolidate reasons
+    consolidated_reasons = {}
+    for item in drop_reasons:
+        feat = item['feature']
+        if feat not in consolidated_reasons:
+            consolidated_reasons[feat] = []
+        consolidated_reasons[feat].append(item['reason'])
     
-    print(f"  Recommended drops from correlation analysis: {len(features_to_drop)}")
-    if HAS_STATSMODELS:
-        print(f"  High VIF features (review manually): {len(high_vif_features)}")
-    
-    # Create recommendations dataframe
-    drop_list = []
-    for feat in features_to_drop:
-        reasons = "; ".join(drop_reasons.get(feat, []))
-        drop_list.append({
+    drop_recommendations = []
+    for feat, reasons in consolidated_reasons.items():
+        drop_recommendations.append({
             'feature': feat,
-            'reason': reasons
+            'reason': '; '.join(reasons)
         })
     
-    if drop_list:
-        drop_df = pd.DataFrame(drop_list)
-        print("\n  Features recommended for removal:")
-        print(drop_df.to_string(index=False))
-        
-        # Save recommendations
-        output_file = OUTPUT_DIR / f'drop_recommendations_{dataset_name}.csv'
-        drop_df.to_csv(output_file, index=False)
-        print(f"\n  Saved recommendations to {output_file}")
-    else:
-        print("\n  No features recommended for removal")
+    drop_df = pd.DataFrame(drop_recommendations)
     
-    # Features to keep
-    all_features = set(label_corr_df['feature'].tolist())
-    features_to_keep = all_features - features_to_drop
+    print(f"  Recommended drops from correlation analysis: {len(drop_df)}")
     
-    print(f"\n  Original features: {len(all_features)}")
+    # Load VIF
+    try:
+        vif_df = pd.read_csv(OUTPUT_DIR / f'vif_analysis_{name}.csv')
+        high_vif = vif_df[vif_df['VIF'] > 10]['feature'].tolist()
+        print(f"  High VIF features (review manually): {len(high_vif)}")
+    except:
+        high_vif = []
+    
+    print(f"\n  Features recommended for removal:")
+    print(drop_df.to_string(index=False))
+    
+    drop_df.to_csv(OUTPUT_DIR / f'drop_recommendations_{name}.csv', index=False)
+    
+    # Create reduced feature list
+    features_to_keep = [f for f in feature_cols if f not in features_to_drop]
+    
+    # CRITICAL: Force keep tournamentSeed if USE_SEEDS = True
+    if config.USE_SEEDS and 'tournamentSeed' in feature_cols and 'tournamentSeed' not in features_to_keep:
+        features_to_keep.append('tournamentSeed')
+        print(f"\n  ⚠️  tournamentSeed was auto-dropped but manually restored (bracket-aware model)")
+        print(f"  Reason: tournamentSeed is essential for bracket-conditional predictions")
+    
+    reduced_features_df = pd.DataFrame({'feature': features_to_keep})
+    reduced_features_df.to_csv(OUTPUT_DIR / f'reduced_features_{name}.csv', index=False)
+    
+    print(f"\n  Original features: {len(feature_cols)}")
     print(f"  After recommended drops: {len(features_to_keep)}")
-    if len(all_features) > 0:
-        print(f"  Reduction: {len(features_to_drop)} features ({len(features_to_drop)/len(all_features)*100:.1f}%)")
-    
-    # Save reduced feature list
-    keep_df = pd.DataFrame({'feature': sorted(features_to_keep)})
-    output_file = OUTPUT_DIR / f'reduced_features_{dataset_name}.csv'
-    keep_df.to_csv(output_file, index=False)
-    print(f"  Saved reduced feature list to {output_file}")
-    
-    return features_to_keep
-
-keep_long = recommend_feature_reduction(pairs_long, label_corr_long, vif_long, "long")
-keep_rich = recommend_feature_reduction(pairs_rich, label_corr_rich, vif_rich, "rich")
+    print(f"  Reduction: {len(features_to_drop)} features ({len(features_to_drop)/len(feature_cols):.1%})")
+    print(f"  Saved reduced feature list to {OUTPUT_DIR}/reduced_features_{name}.csv")
 
 # ============================================================================
-# SUMMARY
+# FINAL SUMMARY
 # ============================================================================
 print("\n" + "="*80)
 print("FEATURE SELECTION COMPLETE")
@@ -397,8 +323,17 @@ print(f"  {OUTPUT_DIR}/vif_analysis_*.csv - Variance inflation factors")
 print(f"  {OUTPUT_DIR}/drop_recommendations_*.csv - Recommended features to drop")
 print(f"  {OUTPUT_DIR}/reduced_features_*.csv - Recommended features to keep")
 
+if not config.USE_SEEDS:
+    print("\n⚠️  NOTE: tournamentSeed EXCLUDED from features (pure metrics model)")
+    print("This creates a model based on team strength metrics only")
+else:
+    print("\n✓ tournamentSeed INCLUDED in features (bracket-aware model)")
+    print("This model incorporates expected seeding information")
+    print("tournamentSeed will be protected from automatic removal due to correlation")
+
 print("\nNEXT STEPS:")
 print("  1. Review correlation heatmaps and drop recommendations")
 print("  2. Decide which features to keep for modeling")
 print("  3. Proceed to 02_exploratory_models.py")
+
 print("\n" + "="*80)

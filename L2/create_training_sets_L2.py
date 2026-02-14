@@ -43,7 +43,7 @@ OUTPUT_FILES = {
 }
 
 # Columns to drop (tournament metadata - not features)
-TOURNAMENT_COLS = ['tournamentSeed', 'tournamentOutcome']
+TOURNAMENT_COLS = ['tournamentOutcome']
 
 # ============================================================================
 # MAIN EXECUTION
