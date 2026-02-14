@@ -1,4 +1,4 @@
-Strategy,N_Teams,Total_Bid,Expected_Points,Pts_Per_Dollar,Avg_Value_Rating
-Value Hunter,8,100,77.36,0.774,6.984
-Patient Accumulator,25,100,318.09,3.181,3.121
-Hybrid,20,100,269.47,2.695,2.866
+Strategy,N_Teams,Max_Bid,Expected_Spend,Expected_Points,Pts_Per_Dollar,Avg_Value_Rating
+Conservative,6,100,10,65.53,6.553,7.111
+Balanced,8,100,12,73.93,6.161,6.383
+Aggressive,10,100,23,99.97,4.347,5.589

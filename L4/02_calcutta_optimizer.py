@@ -77,30 +77,30 @@ N_ENTRANTS_TYPICAL = 7  # Typical pool size
 # 0.5 = 50/50 balanced
 # 0.7 = 70% model, 30% historical (trust the model)
 # 1.0 = 100% model (no historical anchor)
-MODEL_WEIGHT = 0.7  # ADJUST THIS VALUE (0.0 to 1.0)
+MODEL_WEIGHT = 0.5  # ADJUST THIS VALUE (0.0 to 1.0)
 
 # Strategy definitions
 STRATEGIES = {
-    'value_hunter': {
-        'name': 'Value Hunter',
-        'description': 'Target 5-8 high-value teams, concentrated portfolio',
-        'target_teams': (5, 8),
-        'early_budget': 0.8,  # Spend 80% early
-        'value_threshold': 1.2  # Only bid on teams with E[pts]/price > 1.2
+    'conservative': {
+        'name': 'Conservative',
+        'description': 'Focus on 5-6 best value picks, quality over quantity',
+        'target_teams': (5, 6),
+        'early_budget': 0.7,  # Willing to pay up for best values
+        'value_threshold': 2.0  # Only top tier values
     },
-    'patient_accumulator': {
-        'name': 'Patient Accumulator',
-        'description': 'Wait for late auction, accumulate 20-25 cheap teams',
-        'target_teams': (20, 25),
-        'early_budget': 0.3,  # Spend only 30% early
-        'value_threshold': 0.8  # Accept lower value for volume
+    'balanced': {
+        'name': 'Balanced',
+        'description': 'Historical norm: 7-8 teams, mix of value + opportunistic',
+        'target_teams': (7, 8),
+        'early_budget': 0.5,  # Split budget evenly
+        'value_threshold': 1.5  # Good values
     },
-    'hybrid': {
-        'name': 'Hybrid',
-        'description': 'Balance 3-4 early targets with 15-20 late volume picks',
-        'target_teams': (15, 20),
-        'early_budget': 0.5,  # 50/50 split
-        'value_threshold': 1.0  # Market value
+    'aggressive': {
+        'name': 'Aggressive',
+        'description': 'Push beyond norm: 9-10 teams if opportunities exist',
+        'target_teams': (9, 10),
+        'early_budget': 0.4,  # More budget for late accumulation
+        'value_threshold': 1.2  # Broader value range
     }
 }
 
@@ -528,14 +528,16 @@ def estimate_market_prices(team_valuations_df, auction_market_df):
 # PORTFOLIO OPTIMIZATION
 # ============================================================================
 
-def generate_value_hunter_portfolio(valuations_df, budget=BUDGET):
+def generate_conservative_portfolio(valuations_df, budget=BUDGET):
     """
-    Value Hunter: Target 5-8 teams with best value ratings.
-    Concentrated bet on high-value picks.
+    Conservative: Target 5-6 teams with best value ratings.
+    Willing to pay up for quality - maintains 2x value threshold.
+    Allocates full $100 max bid budget, expects to spend ~$18-20.
+    Historical analysis: 61% of buyers take 5-8 teams.
     """
-    config = STRATEGIES['value_hunter']
+    config = STRATEGIES['conservative']
     
-    # Filter to teams with value > threshold
+    # Filter to teams with value > threshold (only top tier)
     candidates = valuations_df[
         valuations_df['Value_Rating'] >= config['value_threshold']
     ].copy()
@@ -543,26 +545,45 @@ def generate_value_hunter_portfolio(valuations_df, budget=BUDGET):
     # Sort by value rating
     candidates = candidates.sort_values('Value_Rating', ascending=False)
     
-    # Target 5-8 teams
-    target_n = config['target_teams'][1]  # 8 teams
-    
-    # Allocate budget proportionally to E[points]
+    # Target 6 teams
+    target_n = config['target_teams'][1]
     top_teams = candidates.head(target_n).copy()
     
-    total_exp_points = top_teams['E_Points_Blended'].sum()
-    top_teams['Allocated_Bid'] = (
-        (top_teams['E_Points_Blended'] / total_exp_points) * budget
-    ).round(0).astype(int)
+    # Calculate max bid for each team (maintain 2x value: E_Points/Bid >= 2.0)
+    top_teams['Max_Bid_Ceiling'] = (top_teams['E_Points_Blended'] / 2.0).round(0).astype(int)
+    top_teams['Max_Bid_Ceiling'] = top_teams['Max_Bid_Ceiling'].clip(lower=1)
     
-    # Adjust for rounding
-    diff = budget - top_teams['Allocated_Bid'].sum()
+    # Allocate $100 max bid budget proportionally to max bid ceilings
+    total_ceiling = top_teams['Max_Bid_Ceiling'].sum()
+    
+    if total_ceiling >= budget:
+        # We have budget constraints - allocate proportionally
+        top_teams['Max_Bid'] = (
+            (top_teams['Max_Bid_Ceiling'] / total_ceiling) * budget
+        ).round(0).astype(int)
+    else:
+        # We can afford max bids - allocate remaining budget proportionally
+        remaining = budget - total_ceiling
+        top_teams['Max_Bid'] = top_teams['Max_Bid_Ceiling'] + (
+            (top_teams['Max_Bid_Ceiling'] / total_ceiling) * remaining
+        ).round(0).astype(int)
+    
+    # Ensure minimum $1 bid
+    top_teams['Max_Bid'] = top_teams['Max_Bid'].clip(lower=1)
+    
+    # Adjust for rounding to hit exactly $100
+    diff = budget - top_teams['Max_Bid'].sum()
     if diff != 0:
-        # Add/subtract from highest value team
-        top_teams.loc[top_teams.index[0], 'Allocated_Bid'] += diff
+        idx = top_teams['Max_Bid'].idxmax() if diff > 0 else top_teams['Max_Bid'].idxmin()
+        top_teams.loc[idx, 'Max_Bid'] += diff
+    
+    # Expected win price: willing to pay 1.3x market price to secure values
+    top_teams['Expected_Win_Price'] = (top_teams['Expected_Market_Price'] * 1.3).round(0).astype(int)
+    top_teams['Expected_Win_Price'] = top_teams['Expected_Win_Price'].clip(lower=1)
     
     portfolio = top_teams[[
         'Team', 'Seed', 'E_Points_Blended', 'Expected_Market_Price',
-        'Fair_Value', 'Value_Rating', 'Allocated_Bid'
+        'Fair_Value', 'Value_Rating', 'Max_Bid', 'Expected_Win_Price'
     ]].copy()
     
     portfolio['Strategy'] = config['name']
@@ -570,45 +591,62 @@ def generate_value_hunter_portfolio(valuations_df, budget=BUDGET):
     return portfolio
 
 
-def generate_patient_accumulator_portfolio(valuations_df, budget=BUDGET):
+def generate_balanced_portfolio(valuations_df, budget=BUDGET):
     """
-    Patient Accumulator: Wait for late auction, grab 20-25 teams at $1-5.
-    Focus on seeds 8-15 with upset potential.
+    Balanced: 7-8 teams - the historical norm.
+    Mix of securing values + hunting bargains - maintains 1.5x value threshold.
+    Allocates full $100 max bid budget, expects to spend ~$12-15.
+    Historical analysis: This is what most people do (50th-75th percentile).
     """
-    config = STRATEGIES['patient_accumulator']
+    config = STRATEGIES['balanced']
     
-    # Filter to mid/low seeds (likely leftovers)
+    # Get best value candidates
     candidates = valuations_df[
-        (valuations_df['Seed'] >= 8) & 
-        (valuations_df['Expected_Market_Price'] <= 10)
+        valuations_df['Value_Rating'] >= config['value_threshold']
     ].copy()
     
-    # Sort by E[points] (want best teams in leftover tier)
-    candidates = candidates.sort_values('E_Points_Blended', ascending=False)
+    # Sort by value rating
+    candidates = candidates.sort_values('Value_Rating', ascending=False)
     
-    # Target 20-25 teams
-    target_n = config['target_teams'][1]  # 25 teams
-    
-    # Allocate small bids ($1-5 range)
+    # Target 8 teams
+    target_n = config['target_teams'][1]
     top_teams = candidates.head(target_n).copy()
     
-    # Distribute budget: most to best teams, but keep all bids low
-    weights = np.linspace(1.5, 0.5, len(top_teams))  # Decreasing weights
-    weights = weights / weights.sum()
+    # Calculate max bid for each team (maintain 1.5x value: E_Points/Bid >= 1.5)
+    top_teams['Max_Bid_Ceiling'] = (top_teams['E_Points_Blended'] / 1.5).round(0).astype(int)
+    top_teams['Max_Bid_Ceiling'] = top_teams['Max_Bid_Ceiling'].clip(lower=1)
     
-    top_teams['Allocated_Bid'] = (weights * budget).round(0).astype(int)
+    # Allocate $100 max bid budget proportionally to max bid ceilings
+    total_ceiling = top_teams['Max_Bid_Ceiling'].sum()
     
-    # Ensure no bid > $10 (stay patient)
-    top_teams['Allocated_Bid'] = top_teams['Allocated_Bid'].clip(upper=10)
+    if total_ceiling >= budget:
+        # We have budget constraints - allocate proportionally
+        top_teams['Max_Bid'] = (
+            (top_teams['Max_Bid_Ceiling'] / total_ceiling) * budget
+        ).round(0).astype(int)
+    else:
+        # We can afford max bids - allocate remaining budget proportionally
+        remaining = budget - total_ceiling
+        top_teams['Max_Bid'] = top_teams['Max_Bid_Ceiling'] + (
+            (top_teams['Max_Bid_Ceiling'] / total_ceiling) * remaining
+        ).round(0).astype(int)
     
-    # Adjust for budget constraint
-    diff = budget - top_teams['Allocated_Bid'].sum()
+    # Ensure minimum $1 bid
+    top_teams['Max_Bid'] = top_teams['Max_Bid'].clip(lower=1)
+    
+    # Adjust for rounding to hit exactly $100
+    diff = budget - top_teams['Max_Bid'].sum()
     if diff != 0:
-        top_teams.loc[top_teams.index[0], 'Allocated_Bid'] += diff
+        idx = top_teams['Max_Bid'].idxmax() if diff > 0 else top_teams['Max_Bid'].idxmin()
+        top_teams.loc[idx, 'Max_Bid'] += diff
+    
+    # Expected win price: willing to pay 1.2x market price (balanced)
+    top_teams['Expected_Win_Price'] = (top_teams['Expected_Market_Price'] * 1.2).round(0).astype(int)
+    top_teams['Expected_Win_Price'] = top_teams['Expected_Win_Price'].clip(lower=1)
     
     portfolio = top_teams[[
         'Team', 'Seed', 'E_Points_Blended', 'Expected_Market_Price',
-        'Fair_Value', 'Value_Rating', 'Allocated_Bid'
+        'Fair_Value', 'Value_Rating', 'Max_Bid', 'Expected_Win_Price'
     ]].copy()
     
     portfolio['Strategy'] = config['name']
@@ -616,55 +654,63 @@ def generate_patient_accumulator_portfolio(valuations_df, budget=BUDGET):
     return portfolio
 
 
-def generate_hybrid_portfolio(valuations_df, budget=BUDGET):
+def generate_aggressive_portfolio(valuations_df, budget=BUDGET):
     """
-    Hybrid: 3-4 early value targets + 15-20 late accumulation picks.
-    Balance concentrated value with volume upside.
+    Aggressive: 9-10 teams - pushing beyond the norm.
+    Spread budget to accumulate volume - maintains 1.2x value threshold.
+    Allocates full $100 max bid budget, expects to spend ~$10-12.
+    Historical analysis: Only 23% of buyers reach 10+ teams.
+    This is the edge - don't force it if opportunities don't exist.
     """
-    config = STRATEGIES['hybrid']
+    config = STRATEGIES['aggressive']
     
-    early_budget = budget * config['early_budget']  # $50
-    late_budget = budget - early_budget  # $50
-    
-    # EARLY: Top value picks (seeds 1-7)
-    early_candidates = valuations_df[
-        (valuations_df['Seed'] <= 7) &
-        (valuations_df['Value_Rating'] >= 1.0)
+    # Get best value candidates
+    candidates = valuations_df[
+        valuations_df['Value_Rating'] >= config['value_threshold']
     ].copy()
     
-    early_candidates = early_candidates.sort_values('Value_Rating', ascending=False)
-    early_picks = early_candidates.head(4).copy()
+    # Sort by value rating
+    candidates = candidates.sort_values('Value_Rating', ascending=False)
     
-    total_exp_points = early_picks['E_Points_Blended'].sum()
-    early_picks['Allocated_Bid'] = (
-        (early_picks['E_Points_Blended'] / total_exp_points) * early_budget
-    ).round(0).astype(int)
+    # Target 10 teams
+    target_n = config['target_teams'][1]
+    top_teams = candidates.head(target_n).copy()
     
-    # LATE: Volume picks (seeds 8-15)
-    late_candidates = valuations_df[
-        (valuations_df['Seed'] >= 8) &
-        (valuations_df['Expected_Market_Price'] <= 10)
-    ].copy()
+    # Calculate max bid for each team (maintain 1.2x value: E_Points/Bid >= 1.2)
+    top_teams['Max_Bid_Ceiling'] = (top_teams['E_Points_Blended'] / 1.2).round(0).astype(int)
+    top_teams['Max_Bid_Ceiling'] = top_teams['Max_Bid_Ceiling'].clip(lower=1)
     
-    late_candidates = late_candidates.sort_values('E_Points_Blended', ascending=False)
-    late_picks = late_candidates.head(16).copy()
+    # Allocate $100 max bid budget proportionally to max bid ceilings
+    total_ceiling = top_teams['Max_Bid_Ceiling'].sum()
     
-    weights = np.linspace(1.2, 0.5, len(late_picks))
-    weights = weights / weights.sum()
-    late_picks['Allocated_Bid'] = (weights * late_budget).round(0).astype(int)
-    late_picks['Allocated_Bid'] = late_picks['Allocated_Bid'].clip(upper=8)
+    if total_ceiling >= budget:
+        # We have budget constraints - allocate proportionally
+        top_teams['Max_Bid'] = (
+            (top_teams['Max_Bid_Ceiling'] / total_ceiling) * budget
+        ).round(0).astype(int)
+    else:
+        # We can afford max bids - allocate remaining budget proportionally
+        remaining = budget - total_ceiling
+        top_teams['Max_Bid'] = top_teams['Max_Bid_Ceiling'] + (
+            (top_teams['Max_Bid_Ceiling'] / total_ceiling) * remaining
+        ).round(0).astype(int)
     
-    # Combine
-    portfolio = pd.concat([early_picks, late_picks], ignore_index=True)
+    # Ensure minimum $1 bid
+    top_teams['Max_Bid'] = top_teams['Max_Bid'].clip(lower=1)
     
-    # Adjust for budget
-    diff = budget - portfolio['Allocated_Bid'].sum()
+    # Adjust for rounding to hit exactly $100
+    diff = budget - top_teams['Max_Bid'].sum()
     if diff != 0:
-        portfolio.loc[portfolio.index[0], 'Allocated_Bid'] += diff
+        idx = top_teams['Max_Bid'].idxmax() if diff > 0 else top_teams['Max_Bid'].idxmin()
+        top_teams.loc[idx, 'Max_Bid'] += diff
     
-    portfolio = portfolio[[
+    # Expected win price: trying for bargains at ~1.1x market price
+    top_teams['Expected_Win_Price'] = (top_teams['Expected_Market_Price'] * 1.1).round(0).astype(int)
+    top_teams['Expected_Win_Price'] = top_teams['Expected_Win_Price'].clip(lower=1)
+    
+    portfolio = top_teams[[
         'Team', 'Seed', 'E_Points_Blended', 'Expected_Market_Price',
-        'Fair_Value', 'Value_Rating', 'Allocated_Bid'
+        'Fair_Value', 'Value_Rating', 'Max_Bid', 'Expected_Win_Price'
     ]].copy()
     
     portfolio['Strategy'] = config['name']
@@ -673,20 +719,25 @@ def generate_hybrid_portfolio(valuations_df, budget=BUDGET):
 
 
 def evaluate_portfolios(portfolios):
-    """Calculate expected points and variance for each portfolio."""
+    """
+    Calculate expected points and efficiency for each portfolio.
+    Efficiency calculated at Expected_Win_Price (realistic), not Max_Bid (ceiling).
+    """
     results = []
     
     for name, portfolio in portfolios.items():
-        total_bid = portfolio['Allocated_Bid'].sum()
+        max_bid_total = portfolio['Max_Bid'].sum()
+        expected_spend = portfolio['Expected_Win_Price'].sum()
         expected_points = portfolio['E_Points_Blended'].sum()
         n_teams = len(portfolio)
         
         results.append({
             'Strategy': name,
             'N_Teams': n_teams,
-            'Total_Bid': total_bid,
+            'Max_Bid': max_bid_total,
+            'Expected_Spend': expected_spend,
             'Expected_Points': round(expected_points, 2),
-            'Pts_Per_Dollar': round(expected_points / total_bid, 3),
+            'Pts_Per_Dollar': round(expected_points / expected_spend, 3),
             'Avg_Value_Rating': round(portfolio['Value_Rating'].mean(), 3)
         })
     
@@ -930,15 +981,16 @@ def main():
     print("-" * 70)
     
     portfolios = {
-        'Value Hunter': generate_value_hunter_portfolio(team_valuations),
-        'Patient Accumulator': generate_patient_accumulator_portfolio(team_valuations),
-        'Hybrid': generate_hybrid_portfolio(team_valuations)
+        'Conservative': generate_conservative_portfolio(team_valuations),
+        'Balanced': generate_balanced_portfolio(team_valuations),
+        'Aggressive': generate_aggressive_portfolio(team_valuations)
     }
     
     for name, portfolio in portfolios.items():
         print(f"  ✓ {name}: {len(portfolio)} teams, "
-              f"${portfolio['Allocated_Bid'].sum()} budget, "
-              f"{portfolio['E_Points_Blended'].sum():.1f} exp points")
+              f"max=${portfolio['Max_Bid'].sum()}, "
+              f"expect=${portfolio['Expected_Win_Price'].sum()}, "
+              f"{portfolio['E_Points_Blended'].sum():.1f} exp pts")
     print()
     
     portfolios_eval = evaluate_portfolios(portfolios)
@@ -1034,8 +1086,16 @@ def main():
         print(f"  {row['Strategy']:<25} "
               f"{row['N_Teams']:>2} teams  "
               f"{row['Expected_Points']:>5.1f} pts  "
-              f"${row['Total_Bid']:>3}  "
+              f"Max=${row['Max_Bid']:>3}  "
+              f"Expect=${row['Expected_Spend']:>3}  "
               f"({row['Pts_Per_Dollar']:.2f} pts/$)")
+    print()
+    print("  NOTE: Historical analysis (8 years, 62 buyers):")
+    print("    • 77% of buyers: 5-9 teams")
+    print("    • 23% of buyers: 10-13 teams")
+    print("    • 3% of buyers: 14+ teams (Travis 2024: 24 teams)")
+    print("    If auction dynamics allow 11-13 teams, take them.")
+    print("    But don't force it - the edge is recognizing value, not hitting a target.")
     print()
     
     print("  AVOID (Worst Value Ratings)")

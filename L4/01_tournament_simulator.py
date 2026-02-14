@@ -61,14 +61,29 @@ MODERATE_AGREEMENT_THRESHOLD = 0.70
 DISAGREEMENT_THRESHOLD = 0.15
 
 # Scoring rules (ESPN standard)
-SCORING = {
+# Scoring systems
+SCORING_ESPN = {
     'R64': 10,
     'R32': 20,
     'S16': 40,
-    'E8':  80,
-    'FF':  160,
+    'E8': 80,
+    'FF': 160,
     'Championship': 320
 }
+# Maximum ESPN: 1,920 points (32×10 + 16×20 + 8×40 + 4×80 + 2×160 + 1×320)
+
+SCORING_YAHOO = {
+    'R64': 1,
+    'R32': 2,
+    'S16': 4,
+    'E8': 8,
+    'FF': 16,
+    'Championship': 32
+}
+# Maximum Yahoo: 192 points (32×1 + 16×2 + 8×4 + 4×8 + 2×16 + 1×32)
+
+# Default to ESPN for backward compatibility
+SCORING = SCORING_ESPN
 
 # Model config
 NAME_TO_KEY = {
@@ -191,11 +206,8 @@ def compute_h2h_features(team1, team2, prediction_df, source_columns):
     t1_vals = t1_row[source_columns].values[0].astype(float)
     t2_vals = t2_row[source_columns].values[0].astype(float)
 
-    # OLD (WRONG): denom = np.abs(t1_vals) + np.abs(t2_vals)
-    # NEW (MATCHES TRAINING): denom = (np.abs(t1_vals) + np.abs(t2_vals)) / 2.0
-    
-    avg = (np.abs(t1_vals) + np.abs(t2_vals)) / 2.0
-    diffs = np.where(avg == 0, 0.0, (t1_vals - t2_vals) / avg)
+    denom = np.abs(t1_vals) + np.abs(t2_vals)
+    diffs = np.where(denom == 0, 0.0, (t1_vals - t2_vals) / denom)
 
     return diffs
 
@@ -772,16 +784,46 @@ def optimize_chalk(bracket, round_probs):
 
 
 def optimize_expected_value(bracket, round_probs, bracket_df, scoring=SCORING):
-    """Expected Value strategy: maximize expected points."""
+    """
+    Expected Value strategy: maximize expected points INCLUDING upset bonus.
+    
+    For each R64 matchup, calculate:
+    - Base points: P(win) × 2 points
+    - Upset bonus: P(win) × seed_differential (if underdog)
+    
+    Pick the team with higher expected value.
+    """
     picks = {}
+    
+    # Create seed lookup (use 'tournamentSeed' column)
+    seed_lookup = dict(zip(bracket_df['Team'], bracket_df['tournamentSeed']))
+    
     for region, matchups in bracket.items():
         for t1, t2 in matchups:
-            p1_r32 = round_probs.get(t1, {}).get('R32', 0)
-            p2_r32 = round_probs.get(t2, {}).get('R32', 0)
-            ev1 = p1_r32 * scoring['R64']
-            ev2 = p2_r32 * scoring['R64']
+            # Get win probabilities
+            p1_win = round_probs.get(t1, {}).get('R32', 0)
+            p2_win = round_probs.get(t2, {}).get('R32', 0)
+            
+            # Get seeds
+            seed1 = seed_lookup.get(t1, 8)
+            seed2 = seed_lookup.get(t2, 8)
+            
+            # Base expected points (win probability × round points)
+            ev1 = p1_win * scoring['R64']
+            ev2 = p2_win * scoring['R64']
+            
+            # Add upset bonus (seed differential when underdog wins)
+            if seed1 > seed2:  # t1 is underdog
+                upset_bonus1 = p1_win * (seed1 - seed2)
+                ev1 += upset_bonus1
+            elif seed2 > seed1:  # t2 is underdog
+                upset_bonus2 = p2_win * (seed2 - seed1)
+                ev2 += upset_bonus2
+            
+            # Pick team with higher expected value
             winner = t1 if ev1 >= ev2 else t2
             picks[(t1, t2)] = winner
+    
     return picks, "Expected Value (maximize expected points)"
 
 
@@ -800,11 +842,64 @@ def optimize_elite8_focus(bracket, round_probs, elite8_probs_df):
     return picks, "Elite 8 Focus (optimize through Sweet 16)"
 
 
-def simulate_bracket_from_picks(bracket, picks, round_probs, cache):
-    """Given R64 picks, simulate rest of bracket using probabilities."""
+def calculate_bracket_expected_points(bracket_result, bracket_df, scoring=SCORING):
+    """
+    Calculate expected points for a bracket (ESPN/Yahoo scoring).
+    
+    Only calculates base points: probability × round points
+    NO upset bonuses (those are only for Calcutta scoring in 02_calcutta_optimizer.py)
+    
+    Returns total expected points across all rounds.
+    """
+    total_points = 0
+    
+    rounds = [
+        ('R64', scoring['R64']),
+        ('R32', scoring['R32']),
+        ('S16', scoring['S16']),
+        ('E8', scoring['E8']),
+        ('FF', scoring['FF']),
+        ('Championship', scoring['Championship'])
+    ]
+    
+    for round_name, round_points in rounds:
+        round_data = bracket_result.get(round_name, {})
+        
+        if round_name == 'Championship':
+            # Championship is a single game
+            if round_data and 'winner' in round_data:
+                prob = round_data['prob']
+                total_points += prob * round_points
+        
+        elif round_name in ['E8', 'FF']:
+            # E8 is dict by region, FF is dict by matchup
+            for key, game in round_data.items():
+                if isinstance(game, dict) and 'winner' in game:
+                    prob = game['prob']
+                    total_points += prob * round_points
+        
+        else:
+            # R64, R32, S16 are dicts by region with lists of games
+            for region, games in round_data.items():
+                if isinstance(games, list):
+                    for game in games:
+                        prob = game['prob']
+                        total_points += prob * round_points
+    
+    return total_points
+
+
+def simulate_bracket_from_picks(bracket, picks, round_probs, cache, prediction_df, h2h):
+    """
+    Given R64 picks, simulate rest of bracket using ACTUAL H2H probabilities.
+    
+    FIXED: Previously used Monte Carlo round probabilities for all rounds after R64,
+    causing all strategies to converge to the same champion. Now calculates actual
+    head-to-head matchup probabilities for each game.
+    """
     result = {'R64': {}, 'R32': {}, 'S16': {}, 'E8': {}, 'FF': {}, 'Championship': None}
     
-    # R64
+    # R64 - Use the picks provided by the strategy
     r64_winners = {}
     for region, matchups in bracket.items():
         r64_winners[region] = []
@@ -820,7 +915,7 @@ def simulate_bracket_from_picks(bracket, picks, round_probs, cache):
             
             result['R64'][region].append({'team1': t1, 'team2': t2, 'winner': winner, 'prob': p})
     
-    # R32
+    # R32 - Calculate actual H2H probabilities between R64 winners
     r32_winners = {}
     for region, winners in r64_winners.items():
         r32_winners[region] = []
@@ -829,17 +924,18 @@ def simulate_bracket_from_picks(bracket, picks, round_probs, cache):
         for i in range(0, len(winners), 2):
             if i + 1 < len(winners):
                 t1, t2 = winners[i], winners[i+1]
-                p1 = round_probs.get(t1, {}).get('S16', 0)
-                p2 = round_probs.get(t2, {}).get('S16', 0)
-                winner = t1 if p1 >= p2 else t2
+                
+                # Calculate actual H2H probability
+                p_t1_wins, _ = predict_h2h_matchup(t1, t2, prediction_df, h2h)
+                
+                # Pick winner based on H2H probability
+                winner = t1 if p_t1_wins >= 0.5 else t2
                 r32_winners[region].append(winner)
                 
-                p = cache.get((t1, t2), 0.5)
-                if winner == t2:
-                    p = 1.0 - p
-                result['R32'][region].append({'team1': t1, 'team2': t2, 'winner': winner, 'prob': p})
+                prob = p_t1_wins if winner == t1 else (1.0 - p_t1_wins)
+                result['R32'][region].append({'team1': t1, 'team2': t2, 'winner': winner, 'prob': prob})
     
-    # S16
+    # S16 - Calculate actual H2H probabilities between R32 winners
     s16_winners = {}
     for region, winners in r32_winners.items():
         s16_winners[region] = []
@@ -848,32 +944,34 @@ def simulate_bracket_from_picks(bracket, picks, round_probs, cache):
         for i in range(0, len(winners), 2):
             if i + 1 < len(winners):
                 t1, t2 = winners[i], winners[i+1]
-                p1 = round_probs.get(t1, {}).get('E8', 0)
-                p2 = round_probs.get(t2, {}).get('E8', 0)
-                winner = t1 if p1 >= p2 else t2
+                
+                # Calculate actual H2H probability
+                p_t1_wins, _ = predict_h2h_matchup(t1, t2, prediction_df, h2h)
+                
+                # Pick winner based on H2H probability
+                winner = t1 if p_t1_wins >= 0.5 else t2
                 s16_winners[region].append(winner)
                 
-                p = cache.get((t1, t2), 0.5)
-                if winner == t2:
-                    p = 1.0 - p
-                result['S16'][region].append({'team1': t1, 'team2': t2, 'winner': winner, 'prob': p})
+                prob = p_t1_wins if winner == t1 else (1.0 - p_t1_wins)
+                result['S16'][region].append({'team1': t1, 'team2': t2, 'winner': winner, 'prob': prob})
     
-    # E8
+    # E8 - Calculate actual H2H probabilities for Elite 8 games
     e8_winners = {}
     for region, winners in s16_winners.items():
         if len(winners) == 2:
             t1, t2 = winners[0], winners[1]
-            p1 = round_probs.get(t1, {}).get('FF', 0)
-            p2 = round_probs.get(t2, {}).get('FF', 0)
-            winner = t1 if p1 >= p2 else t2
+            
+            # Calculate actual H2H probability
+            p_t1_wins, _ = predict_h2h_matchup(t1, t2, prediction_df, h2h)
+            
+            # Pick winner based on H2H probability
+            winner = t1 if p_t1_wins >= 0.5 else t2
             e8_winners[region] = winner
             
-            p = cache.get((t1, t2), 0.5)
-            if winner == t2:
-                p = 1.0 - p
-            result['E8'][region] = {'team1': t1, 'team2': t2, 'winner': winner, 'prob': p}
+            prob = p_t1_wins if winner == t1 else (1.0 - p_t1_wins)
+            result['E8'][region] = {'team1': t1, 'team2': t2, 'winner': winner, 'prob': prob}
     
-    # FF
+    # FF - Calculate actual H2H probabilities for Final Four
     ff_matchups = [('East', 'South'), ('West', 'Midwest')]
     ff_winners = []
     result['FF'] = {}
@@ -881,27 +979,29 @@ def simulate_bracket_from_picks(bracket, picks, round_probs, cache):
     for r1, r2 in ff_matchups:
         if r1 in e8_winners and r2 in e8_winners:
             t1, t2 = e8_winners[r1], e8_winners[r2]
-            p1 = round_probs.get(t1, {}).get('Championship', 0)
-            p2 = round_probs.get(t2, {}).get('Championship', 0)
-            winner = t1 if p1 >= p2 else t2
+            
+            # Calculate actual H2H probability
+            p_t1_wins, _ = predict_h2h_matchup(t1, t2, prediction_df, h2h)
+            
+            # Pick winner based on H2H probability
+            winner = t1 if p_t1_wins >= 0.5 else t2
             ff_winners.append(winner)
             
-            p = cache.get((t1, t2), 0.5)
-            if winner == t2:
-                p = 1.0 - p
-            result['FF'][f"{r1} vs {r2}"] = {'team1': t1, 'team2': t2, 'winner': winner, 'prob': p}
+            prob = p_t1_wins if winner == t1 else (1.0 - p_t1_wins)
+            result['FF'][f"{r1} vs {r2}"] = {'team1': t1, 'team2': t2, 'winner': winner, 'prob': prob}
     
-    # Championship
+    # Championship - Calculate actual H2H probability for final game
     if len(ff_winners) == 2:
         t1, t2 = ff_winners[0], ff_winners[1]
-        p1 = round_probs.get(t1, {}).get('Championship', 0)
-        p2 = round_probs.get(t2, {}).get('Championship', 0)
-        winner = t1 if p1 >= p2 else t2
         
-        p = cache.get((t1, t2), 0.5)
-        if winner == t2:
-            p = 1.0 - p
-        result['Championship'] = {'team1': t1, 'team2': t2, 'winner': winner, 'prob': p}
+        # Calculate actual H2H probability
+        p_t1_wins, _ = predict_h2h_matchup(t1, t2, prediction_df, h2h)
+        
+        # Pick winner based on H2H probability
+        winner = t1 if p_t1_wins >= 0.5 else t2
+        
+        prob = p_t1_wins if winner == t1 else (1.0 - p_t1_wins)
+        result['Championship'] = {'team1': t1, 'team2': t2, 'winner': winner, 'prob': prob}
     
     return result
 
@@ -1080,18 +1180,25 @@ def run_production_mode(bracket, bracket_df, prediction_df, elite8_df, h2h):
         elif strat_key == 'elite8_focus':
             picks, desc = optimizer_func(bracket, round_probs, elite8_df)
         
-        bracket_result = simulate_bracket_from_picks(bracket, picks, round_probs, cache)
+        bracket_result = simulate_bracket_from_picks(bracket, picks, round_probs, cache, prediction_df, h2h)
         champion = bracket_result['Championship']['winner'] if bracket_result.get('Championship') else None
         champ_prob = champion_probs.get(champion, 0) if champion else 0
+        
+        # Calculate expected points for both scoring systems
+        expected_points_espn = calculate_bracket_expected_points(bracket_result, bracket_df, SCORING_ESPN)
+        expected_points_yahoo = calculate_bracket_expected_points(bracket_result, bracket_df, SCORING_YAHOO)
         
         brackets[strat_key] = {
             'description': desc,
             'result': bracket_result,
             'champion': champion,
-            'champion_prob': champ_prob
+            'champion_prob': champ_prob,
+            'expected_points_espn': expected_points_espn,
+            'expected_points_yahoo': expected_points_yahoo
         }
         
         print(f"    Champion: {champion} ({champ_prob:.1%})")
+        print(f"      ESPN: {expected_points_espn:.1f} pts | Yahoo: {expected_points_yahoo:.1f} pts")
     
     print()
 
@@ -1126,7 +1233,9 @@ def run_production_mode(bracket, bracket_df, prediction_df, elite8_df, h2h):
             strat_key: {
                 'description': data['description'],
                 'champion': data['champion'],
-                'champion_probability': round(data['champion_prob'], 4)
+                'champion_probability': round(data['champion_prob'], 4),
+                'expected_points_espn': round(data['expected_points_espn'], 2),
+                'expected_points_yahoo': round(data['expected_points_yahoo'], 2)
             }
             for strat_key, data in brackets.items()
         }
@@ -1166,6 +1275,8 @@ def run_production_mode(bracket, bracket_df, prediction_df, elite8_df, h2h):
     for strat_key, data in brackets.items():
         print(f"  {data['description'].upper()}")
         print(f"    Champion: {data['champion']} ({data['champion_prob']:.1%})")
+        print(f"    ESPN Scoring:  {data['expected_points_espn']:.1f} pts (max 1,920)")
+        print(f"    Yahoo Scoring: {data['expected_points_yahoo']:.1f} pts (max 192)")
         print()
     
     print("=" * 70)

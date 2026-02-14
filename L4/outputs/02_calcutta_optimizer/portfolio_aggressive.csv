@@ -1,0 +1,11 @@
+Team,Seed,E_Points_Blended,Expected_Market_Price,Fair_Value,Value_Rating,Max_Bid,Expected_Win_Price,Strategy
+Stephen F. Austin,15,16.41,1.78,17.54,9.219,17,2,Aggressive
+North Dakota St.,15,12.85,1.78,13.73,7.219,13,2,Aggressive
+Norfolk St.,16,6.82,1.0,7.29,6.82,7,1,Aggressive
+Vermont,16,6.53,1.0,6.98,6.53,6,1,Aggressive
+Colgate,15,11.57,1.78,12.36,6.5,12,2,Aggressive
+Lipscomb,15,11.35,1.78,12.13,6.376,11,2,Aggressive
+Youngstown St.,16,4.21,1.0,4.5,4.21,5,1,Aggressive
+LIU,16,4.19,1.0,4.48,4.19,3,1,Aggressive
+Saint Louis,11,18.94,7.56,20.24,2.505,19,8,Aggressive
+Hawaii,14,7.1,3.06,7.59,2.32,7,3,Aggressive
