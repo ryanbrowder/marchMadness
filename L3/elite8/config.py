@@ -6,7 +6,8 @@ Toggle USE_SEEDS to compare models with vs without tournamentSeed
 # ============================================================================
 # SEED CONFIGURATION - TOGGLE THIS
 # ============================================================================
-USE_SEEDS = True  # Set to False for "pure metrics" model
+#USE_SEEDS = True  # Set to False for "pure metrics" model
+USE_SEEDS = False  # Set to False for "pure metrics" mode
 
 # ============================================================================
 # AUTO-GENERATED PATHS (DON'T EDIT)
@@ -29,11 +30,10 @@ TOURNAMENT_RESULTS_FILE = L2_DIR / 'data' / 'tournamentResults.csv'  # L2/data/
 
 # Output directories (automatically add suffix)
 OUTPUT_01 = CONFIG_DIR / f'outputs/01_feature_selection{SUFFIX}'
-OUTPUT_02 = CONFIG_DIR / f'outputs/02_exploratory_models{SUFFIX}'
-OUTPUT_03 = CONFIG_DIR / f'outputs/03_ensemble_models{SUFFIX}'
-OUTPUT_04 = CONFIG_DIR / f'outputs/04_backtest{SUFFIX}'
-OUTPUT_05 = CONFIG_DIR / f'outputs/05_2026_predictions{SUFFIX}'
-OUTPUT_06 = CONFIG_DIR / f'outputs/06_tournament_indicator{SUFFIX}'
+OUTPUT_02 = CONFIG_DIR / f'outputs/02_ensemble_models{SUFFIX}'
+OUTPUT_03 = CONFIG_DIR / f'outputs/03_backtest{SUFFIX}'
+OUTPUT_04 = CONFIG_DIR / f'outputs/04_2026_predictions{SUFFIX}'
+OUTPUT_05 = CONFIG_DIR / f'outputs/05_tournament_indicator{SUFFIX}'
 
 # Model configuration
 RANDOM_STATE = 42

@@ -1,9 +1,0 @@
-Metric,Value
-Chalk Score,5
-Tournament Type,CHALK
-Chalk Probability,60.0%
-Normal Probability,30.0%
-Chaos Probability,10.0%
-Expected ROC-AUC,0.93-1.00
-Expected Accuracy,62-100%
-Expected Correct Picks,6-8
