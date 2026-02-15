@@ -1,9 +1,9 @@
 Team,Seed,E_Points_Blended,Expected_Market_Price,Fair_Value,Value_Rating,Max_Bid,Expected_Win_Price,Strategy
-Stephen F. Austin,15,19.4,1.78,19.35,10.899,24,2,Balanced
-North Dakota St.,15,16.6,1.78,16.55,9.326,20,2,Balanced
-Colgate,15,13.38,1.78,13.34,7.517,16,2,Balanced
-Norfolk St.,16,7.19,1.0,7.17,7.19,9,1,Balanced
-Lipscomb,15,12.3,1.78,12.27,6.91,14,2,Balanced
-Vermont,16,5.57,1.0,5.55,5.57,7,1,Balanced
-LIU,16,5.18,1.0,5.17,5.18,5,1,Balanced
-Youngstown St.,16,4.61,1.0,4.6,4.61,5,1,Balanced
+Morgan St.,16,14.22,1.0,15.18,14.22,23,1,Balanced
+LIU,16,9.34,1.0,9.97,9.34,15,1,Balanced
+Navy,15,9.68,1.78,10.33,5.438,15,2,Balanced
+Tennessee St.,16,4.99,1.0,5.33,4.99,8,1,Balanced
+Merrimack,15,7.33,1.78,7.82,4.118,13,2,Balanced
+Appalachian St.,16,3.94,1.0,4.21,3.94,8,1,Balanced
+Harvard,15,6.0,1.78,6.4,3.371,10,2,Balanced
+Wright St.,15,4.17,1.78,4.45,2.343,8,2,Balanced

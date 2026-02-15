@@ -18,6 +18,7 @@ pct_diff_bartTorvik_EFG%,0.1306821974800728,0.1306821974800728,DROP,Redundant wi
 pct_diff_kenpom_AdjT_Rank,0.0074676917962524,0.0074676917962524,DROP,Redundant with stronger feature
 pct_diff_kenpom_AdjT,0.0046966904368558,0.0046966904368558,DROP,Redundant with stronger feature
 pct_diff_kenpom_NetRtg,0.436895277897506,0.436895277897506,KEEP,Selected
+pct_diff_tournamentSeed,-0.4177940999638835,0.4177940999638835,KEEP,Selected
 pct_diff_kenpom_ORtg,0.4038637942672937,0.4038637942672937,KEEP,Selected
 pct_diff_kenpom_DRtg,-0.3914306994743008,0.3914306994743008,KEEP,Selected
 pct_diff_kenpom_SOS_DRtg,-0.3879406499413338,0.3879406499413338,KEEP,Selected

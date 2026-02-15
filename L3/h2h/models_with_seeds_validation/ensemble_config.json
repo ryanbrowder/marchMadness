@@ -1,10 +1,10 @@
 {
   "weights": {
-    "Random Forest": 0.2,
-    "Gradient Boosting": 0.2,
-    "Neural Network": 0.2,
-    "Gaussian Naive Bayes": 0.2,
-    "SVM": 0.2
+    "Neural Network": 0.35,
+    "SVM": 0.3,
+    "Random Forest": 0.11666666666666665,
+    "Gradient Boosting": 0.11666666666666665,
+    "Gaussian Naive Bayes": 0.11666666666666665
   },
   "models": [
     "Random Forest",
@@ -15,6 +15,7 @@
   ],
   "feature_columns": [
     "pct_diff_kenpom_NetRtg",
+    "pct_diff_tournamentSeed",
     "pct_diff_kenpom_ORtg",
     "pct_diff_kenpom_DRtg",
     "pct_diff_kenpom_SOS_DRtg",
@@ -42,7 +43,7 @@
     "pct_diff_bartTorvik_3PR",
     "pct_diff_kenpom_Luck"
   ],
-  "use_seeds": false,
+  "use_seeds": true,
   "train_years": [
     2008,
     2024
@@ -53,10 +54,10 @@
   "random_seed": 42,
   "fallback_weights": {
     "exclude_gaussian_naive_bayes": {
-      "Gradient Boosting": 0.4,
+      "Neural Network": 0.4,
       "SVM": 0.3,
       "Random Forest": 0.15,
-      "Neural Network": 0.15
+      "Gradient Boosting": 0.15
     }
   }
 }

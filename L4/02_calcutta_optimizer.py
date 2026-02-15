@@ -77,7 +77,7 @@ N_ENTRANTS_TYPICAL = 7  # Typical pool size
 # 0.5 = 50/50 balanced
 # 0.7 = 70% model, 30% historical (trust the model)
 # 1.0 = 100% model (no historical anchor)
-MODEL_WEIGHT = 0.5  # ADJUST THIS VALUE (0.0 to 1.0)
+MODEL_WEIGHT = 0.9  # ADJUST THIS VALUE (0.0 to 1.0)
 
 # Strategy definitions
 STRATEGIES = {

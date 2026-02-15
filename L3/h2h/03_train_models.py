@@ -17,6 +17,29 @@ Author: Ryan Browder
 Date: 2025-01-31
 """
 
+# ============================================================================
+# *** CONFIGURATION - EDIT THESE SETTINGS ***
+# ============================================================================
+
+# Step 1: Choose MODE
+#MODE = 'validation'  # Options: 'validation' or 'production'
+MODE = 'production'  # Options: 'validation' or 'production'
+
+# Step 2: Choose USE_SEEDS
+#USE_SEEDS = True  # Options: True or False
+USE_SEEDS = False  # Options: True or False
+
+# ============================================================================
+
+# Step 3: Set PRODUCTION_STRATEGY (only used if MODE='production')
+# Update these after running validation for each USE_SEEDS configuration
+PRODUCTION_STRATEGY_NO_SEEDS = 'De-emphasize Worst'  # From USE_SEEDS=False validation
+PRODUCTION_STRATEGY_WITH_SEEDS = 'Emphasize Top 2'  # UPDATE after USE_SEEDS=True validation
+
+# ============================================================================
+# End of configuration - Don't edit below this line
+# ============================================================================
+
 import pandas as pd
 import numpy as np
 import pickle
@@ -44,22 +67,18 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # ============================================================================
-# Configuration
+# Internal Configuration (uses settings from top of file)
 # ============================================================================
-
-# MODE: 'validation' or 'production'
-# - validation: Train 2008-2024, test 2025, find best ensemble strategy
-# - production: Train 2008-2025 (all data), use winning strategy from validation
-MODE = 'production'
-#MODE = 'validation'  # Switch to 'production' after validation analysis
 
 # Input paths
 TRAINING_MATCHUPS_PATH = 'outputs/01_build_training_matchups/training_matchups.csv'
 SELECTED_FEATURES_PATH = 'outputs/02_feature_correlation/selected_features.csv'
 
-# Output directories (with mode suffix)
-MODELS_DIR = f'models{("_" + MODE) if MODE == "validation" else ""}'
-OUTPUT_DIR = f'outputs/03_train_models{("_" + MODE) if MODE == "validation" else ""}'
+# Output directories (auto-generated based on MODE and USE_SEEDS)
+seeds_suffix = '_with_seeds' if USE_SEEDS else ''
+mode_suffix = '_validation' if MODE == 'validation' else ''
+MODELS_DIR = f'models{seeds_suffix}{mode_suffix}'
+OUTPUT_DIR = f'outputs/03_train_models{seeds_suffix}{mode_suffix}'
 
 # Temporal validation split based on MODE
 if MODE == 'validation':
@@ -67,21 +86,31 @@ if MODE == 'validation':
     VALIDATION_YEAR = 2025
     PRODUCTION_STRATEGY = None  # Will be determined from validation
     print("\n" + "="*80)
-    print("H2H TRAINING - VALIDATION MODE")
+    print(f"H2H TRAINING - VALIDATION MODE {'WITH SEEDS' if USE_SEEDS else 'NO SEEDS'}")
     print("="*80)
     print(f"Train: {TRAIN_YEARS[0]}-{TRAIN_YEARS[1]} | Validate: {VALIDATION_YEAR}")
     print("Experimenting with ensemble strategies to find best approach")
+    if USE_SEEDS:
+        print("Using tournamentSeed feature (bracket-aware predictions)")
+    else:
+        print("Pure basketball metrics only (pre-Selection Sunday ready)")
     print("="*80)
 else:  # production
     TRAIN_YEARS = (2008, 2025)
     VALIDATION_YEAR = None  # No validation set in production
-    # Set this based on your validation results
-    PRODUCTION_STRATEGY = 'Emphasize Top 2'  # Update after running validation
+    
+    # Use the appropriate production strategy based on USE_SEEDS
+    PRODUCTION_STRATEGY = PRODUCTION_STRATEGY_WITH_SEEDS if USE_SEEDS else PRODUCTION_STRATEGY_NO_SEEDS
+    
     print("\n" + "="*80)
-    print("H2H TRAINING - PRODUCTION MODE")
+    print(f"H2H TRAINING - PRODUCTION MODE {'WITH SEEDS' if USE_SEEDS else 'NO SEEDS'}")
     print("="*80)
     print(f"Train: {TRAIN_YEARS[0]}-{TRAIN_YEARS[1]} (all available data)")
     print(f"Using strategy from validation: {PRODUCTION_STRATEGY}")
+    if USE_SEEDS:
+        print("Using tournamentSeed feature (bracket-aware predictions)")
+    else:
+        print("Pure basketball metrics only (pre-Selection Sunday ready)")
     print("="*80)
 
 # Random seed for reproducibility
@@ -116,6 +145,13 @@ def load_data():
     
     # Filter to KEEP features only (after multicollinearity resolution)
     keep_features = selected[selected['status'] == 'KEEP']['feature'].tolist()
+    
+    # Apply USE_SEEDS filter
+    if not USE_SEEDS and 'pct_diff_tournamentSeed' in keep_features:
+        keep_features.remove('pct_diff_tournamentSeed')
+        print(f"\n⚠ USE_SEEDS=False - excluding pct_diff_tournamentSeed")
+        print(f"  Building pure basketball metrics model")
+    
     print(f"  Features marked KEEP: {len(keep_features)}")
     
     return df, keep_features
@@ -622,6 +658,7 @@ def save_models(models_dict, scaler, ensemble_weights, feature_cols, fallback_we
         'weights': ensemble_weights,
         'models': list(models_dict.keys()),
         'feature_columns': feature_cols,
+        'use_seeds': USE_SEEDS,
         'train_years': TRAIN_YEARS,
         'validation_year': VALIDATION_YEAR if MODE == 'validation' else None,
         'mode': MODE,

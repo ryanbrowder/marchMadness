@@ -1,10 +1,10 @@
 {
   "weights": {
-    "Gradient Boosting": 0.35,
-    "Random Forest": 0.3,
-    "Neural Network": 0.117,
-    "SVM": 0.117,
-    "Gaussian Naive Bayes": 0.117
+    "Gradient Boosting": 0.2375,
+    "Random Forest": 0.2375,
+    "Neural Network": 0.2375,
+    "SVM": 0.2375,
+    "Gaussian Naive Bayes": 0.05
   },
   "models": [
     "Random Forest",
@@ -42,12 +42,13 @@
     "pct_diff_bartTorvik_3PR",
     "pct_diff_kenpom_Luck"
   ],
+  "use_seeds": false,
   "train_years": [
     2008,
     2025
   ],
   "validation_year": null,
   "mode": "production",
-  "strategy": "Emphasize Top 2",
+  "strategy": "De-emphasize Worst",
   "random_seed": 42
 }

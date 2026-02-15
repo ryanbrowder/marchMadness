@@ -39,10 +39,14 @@ warnings.filterwarnings('ignore')
 # CONFIGURATION
 # ============================================================================
 
-# L3 output paths
-ELITE8_PREDICTIONS_PATH = Path("../L3/elite8/outputs/05_2026_predictions/elite8_predictions_2026_long.csv")
-H2H_MODEL_DIR            = Path("../L3/h2h/models")
+# L3 output paths - Primary models (WITH SEEDS - bracket aware, post-Selection Sunday)
+ELITE8_PREDICTIONS_PATH = Path("../L3/elite8/outputs/04_2026_predictions/elite8_predictions_2026_long.csv")
+H2H_MODEL_DIR            = Path("../L3/h2h/models_with_seeds")
 PREDICTION_DATA_PATH     = Path("../L3/data/predictionData/predict_set_2026.csv")
+
+# Comparison models (NO SEEDS - pure metrics, pre-Selection Sunday)
+ELITE8_PREDICTIONS_NO_SEEDS_PATH = Path("../L3/elite8/outputs/04_2026_predictions_no_seeds/elite8_predictions_2026_long.csv")
+H2H_MODEL_DIR_NO_SEEDS           = Path("../L3/h2h/models")
 
 # L4 output
 OUTPUT_DIR = Path("outputs/01_tournament_simulator")
@@ -112,6 +116,18 @@ def load_elite8_predictions():
     return df
 
 
+def load_both_elite8_predictions():
+    """
+    Load both WITH SEEDS and NO SEEDS Elite 8 predictions for comparison.
+    
+    Returns:
+        tuple: (elite8_with_seeds, elite8_no_seeds)
+    """
+    elite8_with_seeds = pd.read_csv(ELITE8_PREDICTIONS_PATH)
+    elite8_no_seeds = pd.read_csv(ELITE8_PREDICTIONS_NO_SEEDS_PATH)
+    return elite8_with_seeds, elite8_no_seeds
+
+
 def load_h2h():
     """Load H2H models, scaler, and config."""
     with open(H2H_MODEL_DIR / 'ensemble_config.json', 'r') as f:
@@ -142,6 +158,56 @@ def load_h2h():
         'feature_columns':  feature_columns,
         'source_columns':   source_columns,
     }
+
+
+def load_h2h_from_dir(model_dir):
+    """Load H2H models from a specific directory."""
+    with open(model_dir / 'ensemble_config.json', 'r') as f:
+        config = json.load(f)
+
+    feature_columns = config['feature_columns']
+    source_columns  = [c.replace('pct_diff_', '') for c in feature_columns]
+
+    weights = {NAME_TO_KEY[k]: v for k, v in config['weights'].items()}
+
+    fallback_weights = {}
+    for scenario, w in config.get('fallback_weights', {}).items():
+        fallback_weights[scenario] = {NAME_TO_KEY[k]: v for k, v in w.items()}
+
+    models = {}
+    for key, filename in H2H_MODEL_FILES.items():
+        with open(model_dir / filename, 'rb') as f:
+            models[key] = pickle.load(f)
+
+    with open(model_dir / 'feature_scaler.pkl', 'rb') as f:
+        scaler = pickle.load(f)
+
+    return {
+        'models':           models,
+        'scaler':           scaler,
+        'weights':          weights,
+        'fallback_weights': fallback_weights,
+        'feature_columns':  feature_columns,
+        'source_columns':   source_columns,
+    }
+
+
+def load_both_h2h_models():
+    """
+    Load both WITH SEEDS and NO SEEDS H2H models for strategic comparison.
+    
+    Returns:
+        tuple: (h2h_with_seeds, h2h_no_seeds)
+    """
+    print("Loading H2H models (both WITH and NO SEEDS)...")
+    
+    h2h_with_seeds = load_h2h_from_dir(H2H_MODEL_DIR)
+    h2h_no_seeds = load_h2h_from_dir(H2H_MODEL_DIR_NO_SEEDS)
+    
+    print(f"  ✓ WITH SEEDS: {len(h2h_with_seeds['models'])} models, {len(h2h_with_seeds['feature_columns'])} features")
+    print(f"  ✓ NO SEEDS: {len(h2h_no_seeds['models'])} models, {len(h2h_no_seeds['feature_columns'])} features")
+    
+    return h2h_with_seeds, h2h_no_seeds
 
 
 def load_prediction_data():
@@ -196,7 +262,12 @@ def construct_bracket(prediction_df):
 # ============================================================================
 
 def compute_h2h_features(team1, team2, prediction_df, source_columns):
-    """Compute 29 pct_diff features for a matchup."""
+    """
+    Compute pct_diff features for a matchup.
+    
+    Uses L3's formula: (A - B) / average(A, B)
+    This matches how the models were trained in L3/h2h/03_train_models.py
+    """
     t1_row = prediction_df[prediction_df['Team'] == team1]
     t2_row = prediction_df[prediction_df['Team'] == team2]
 
@@ -206,29 +277,47 @@ def compute_h2h_features(team1, team2, prediction_df, source_columns):
     t1_vals = t1_row[source_columns].values[0].astype(float)
     t2_vals = t2_row[source_columns].values[0].astype(float)
 
-    denom = np.abs(t1_vals) + np.abs(t2_vals)
-    diffs = np.where(denom == 0, 0.0, (t1_vals - t2_vals) / denom)
+    # L3's formula: (A - B) / ((A + B) / 2) = 2(A - B) / (A + B)
+    avg = (t1_vals + t2_vals) / 2.0
+    diffs = np.where(avg == 0, 0.0, (t1_vals - t2_vals) / avg)
 
     return diffs
 
 
 def predict_h2h_matchup(team1, team2, prediction_df, h2h):
-    """Predict P(team1 beats team2) using H2H ensemble."""
+    """
+    Predict P(team1 beats team2) using H2H ensemble.
+    
+    CRITICAL: Matches L3's exact implementation:
+    - Neural Network, Gaussian Naive Bayes, SVM use SCALED features
+    - Random Forest, Gradient Boosting use RAW (unscaled) features
+    """
     diffs = compute_h2h_features(team1, team2, prediction_df, h2h['source_columns'])
     if diffs is None:
         return 0.5, {'excluded': [], 'note': 'Unknown team'}
 
-    X = h2h['scaler'].transform(diffs.reshape(1, -1))
+    # Keep both raw and scaled features
+    X_raw = diffs.reshape(1, -1)
+    X_scaled = h2h['scaler'].transform(X_raw)
 
     predictions = {}
     excluded = []
 
+    # Models that need scaled features (matches L3)
+    SCALED_MODELS = {'NN', 'GNB', 'SVM'}
+
     for key, model in h2h['models'].items():
         try:
-            if hasattr(model, 'predict_proba'):
-                pred = model.predict_proba(X)[0, 1]
+            # Use scaled features only for NN, GNB, SVM (like L3)
+            if key in SCALED_MODELS:
+                X_model = X_scaled
             else:
-                pred = float(model.predict(X)[0])
+                X_model = X_raw
+            
+            if hasattr(model, 'predict_proba'):
+                pred = model.predict_proba(X_model)[0, 1]
+            else:
+                pred = float(model.predict(X_model)[0])
 
             if key == 'GNB' and (pred < 0.01 or pred > 0.99):
                 excluded.append(key)
@@ -255,6 +344,64 @@ def predict_h2h_matchup(team1, team2, prediction_df, h2h):
     prob = sum(predictions[k] * active_w[k] for k in active_w) / total_w
 
     return prob, {'excluded': excluded}
+
+
+
+def identify_seed_bias(bracket_df, elite8_with_seeds, elite8_no_seeds, threshold=0.02):
+    """
+    Compare WITH SEEDS vs NO SEEDS Elite 8 probabilities to identify seed bias.
+    
+    Positive bias: Committee seed helps team (potentially overseeded - FADE)
+    Negative bias: Committee seed hurts team (potentially underseeded - VALUE)
+    
+    Args:
+        bracket_df: Tournament teams with seeds
+        elite8_with_seeds: Elite 8 predictions using WITH SEEDS models
+        elite8_no_seeds: Elite 8 predictions using NO SEEDS models
+        threshold: Minimum difference to flag as FADE/VALUE (default 3%)
+    
+    Returns:
+        DataFrame with seed bias analysis sorted by bias magnitude
+    """
+    results = []
+    
+    # Create lookups for Elite 8 probabilities
+    e8_with_lookup = dict(zip(elite8_with_seeds['Team'], elite8_with_seeds['Elite8_Probability']))
+    e8_no_lookup = dict(zip(elite8_no_seeds['Team'], elite8_no_seeds['Elite8_Probability']))
+    
+    for _, row in bracket_df.iterrows():
+        team = row['Team']
+        seed = row['tournamentSeed']
+        region = row['Region']
+        
+        # Get Elite 8 probabilities from both models
+        e8_with = e8_with_lookup.get(team, 0)
+        e8_no = e8_no_lookup.get(team, 0)
+        
+        # Seed bias = how much the seed helps/hurts compared to pure metrics
+        seed_bias = e8_with - e8_no
+        
+        # Categorize
+        if seed_bias > threshold:
+            category = 'FADE'  # Seed helps them (potentially overseeded)
+        elif seed_bias < -threshold:
+            category = 'VALUE'  # Seed hurts them (potentially underseeded)
+        else:
+            category = 'NEUTRAL'
+        
+        results.append({
+            'Team': team,
+            'Seed': seed,
+            'Region': region,
+            'E8_With_Seeds': e8_with,
+            'E8_No_Seeds': e8_no,
+            'Seed_Bias': seed_bias,
+            'Category': category
+        })
+    
+    df = pd.DataFrame(results)
+    return df.sort_values('Seed_Bias', ascending=False)
+
 
 
 # ============================================================================
@@ -785,18 +932,18 @@ def optimize_chalk(bracket, round_probs):
 
 def optimize_expected_value(bracket, round_probs, bracket_df, scoring=SCORING):
     """
-    Expected Value strategy: maximize expected points INCLUDING upset bonus.
+    Expected Value strategy: maximize expected points.
     
-    For each R64 matchup, calculate:
-    - Base points: P(win) × 2 points
-    - Upset bonus: P(win) × seed_differential (if underdog)
+    For ESPN/Yahoo scoring (no upset bonuses):
+    Expected Value = P(win) × round_points
     
-    Pick the team with higher expected value.
+    Since round_points is constant for all teams in R64, this simplifies to
+    picking the team with highest win probability, which is identical to CHALK.
+    
+    NOTE: This strategy only differs from CHALK in Calcutta scoring (which has
+    upset bonuses). For bracket pools, Expected Value = CHALK.
     """
     picks = {}
-    
-    # Create seed lookup (use 'tournamentSeed' column)
-    seed_lookup = dict(zip(bracket_df['Team'], bracket_df['tournamentSeed']))
     
     for region, matchups in bracket.items():
         for t1, t2 in matchups:
@@ -804,21 +951,11 @@ def optimize_expected_value(bracket, round_probs, bracket_df, scoring=SCORING):
             p1_win = round_probs.get(t1, {}).get('R32', 0)
             p2_win = round_probs.get(t2, {}).get('R32', 0)
             
-            # Get seeds
-            seed1 = seed_lookup.get(t1, 8)
-            seed2 = seed_lookup.get(t2, 8)
-            
-            # Base expected points (win probability × round points)
+            # Expected Value without upset bonuses:
+            # EV = P(win) × round_points
+            # Since round_points is constant, just pick higher probability
             ev1 = p1_win * scoring['R64']
             ev2 = p2_win * scoring['R64']
-            
-            # Add upset bonus (seed differential when underdog wins)
-            if seed1 > seed2:  # t1 is underdog
-                upset_bonus1 = p1_win * (seed1 - seed2)
-                ev1 += upset_bonus1
-            elif seed2 > seed1:  # t2 is underdog
-                upset_bonus2 = p2_win * (seed2 - seed1)
-                ev2 += upset_bonus2
             
             # Pick team with higher expected value
             winner = t1 if ev1 >= ev2 else t2
@@ -982,7 +1119,7 @@ def simulate_bracket_from_picks(bracket, picks, round_probs, cache, prediction_d
             
             # Calculate actual H2H probability
             p_t1_wins, _ = predict_h2h_matchup(t1, t2, prediction_df, h2h)
-            
+
             # Pick winner based on H2H probability
             winner = t1 if p_t1_wins >= 0.5 else t2
             ff_winners.append(winner)
@@ -1137,7 +1274,7 @@ def export_bracket_text(bracket_result, strategy_name, champion_prob):
     return filepath
 
 
-def run_production_mode(bracket, bracket_df, prediction_df, elite8_df, h2h):
+def run_production_mode(bracket, bracket_df, prediction_df, elite8_df, h2h, h2h_no_seeds=None, elite8_no_seeds=None):
     """Run bracket optimization."""
     print()
     print("=" * 70)
@@ -1157,6 +1294,28 @@ def run_production_mode(bracket, bracket_df, prediction_df, elite8_df, h2h):
         n_trace=0  # No traces in production mode
     )
     print()
+
+    # Strategic Intelligence: Identify seed bias (only if NO SEEDS data provided)
+    if h2h_no_seeds is not None and elite8_no_seeds is not None:
+        print("Analyzing seed bias (WITH SEEDS vs NO SEEDS)...")
+        print("-" * 70)
+        
+        seed_bias_df = identify_seed_bias(bracket_df, elite8_df, elite8_no_seeds)
+        
+        fade_candidates = seed_bias_df[seed_bias_df['Category'] == 'FADE'].head(5)
+        value_picks = seed_bias_df[seed_bias_df['Category'] == 'VALUE'].head(5)
+        
+        if len(fade_candidates) > 0:
+            print("\n  FADE CANDIDATES (Overseeded - Committee > Metrics):")
+            for _, row in fade_candidates.iterrows():
+                print(f"    {row['Team']:<20} ({row['Seed']:>2}): +{row['Seed_Bias']*100:>4.1f}% Elite 8 boost")
+        
+        if len(value_picks) > 0:
+            print("\n  VALUE PICKS (Underseeded - Metrics > Committee):")
+            for _, row in value_picks.iterrows():
+                print(f"    {row['Team']:<20} ({row['Seed']:>2}): {row['Seed_Bias']*100:>5.1f}% Elite 8 penalty")
+        
+        print()
 
     # Generate optimal brackets
     print("Generating optimal brackets...")
@@ -1210,6 +1369,13 @@ def run_production_mode(bracket, bracket_df, prediction_df, elite8_df, h2h):
     round_probs_path = OUTPUT_DIR / 'round_probabilities.csv'
     round_probs_df.to_csv(round_probs_path, index=False)
     print(f"  ✓ round_probabilities.csv ({len(round_probs_df)} teams)")
+    
+    # Export seed bias analysis if available
+    if h2h_no_seeds is not None and elite8_no_seeds is not None:
+        seed_bias_df = identify_seed_bias(bracket_df, elite8_df, elite8_no_seeds)
+        seed_bias_path = OUTPUT_DIR / 'seed_bias_analysis.csv'
+        seed_bias_df.to_csv(seed_bias_path, index=False)
+        print(f"  ✓ seed_bias_analysis.csv (strategic intelligence)")
     
     for strat_key, bracket_data in brackets.items():
         csv_path = export_bracket_csv(bracket_data['result'], strat_key)
@@ -1303,12 +1469,13 @@ def main():
     print("-" * 70)
     
     print("  Elite 8 predictions...")
-    elite8_df = load_elite8_predictions()
-    print(f"    ✓ {len(elite8_df)} teams")
+    elite8_with_seeds, elite8_no_seeds = load_both_elite8_predictions()
+    elite8_df = elite8_with_seeds  # Use WITH SEEDS for primary simulation
+    print(f"    ✓ {len(elite8_df)} teams (WITH SEEDS + NO SEEDS loaded)")
     
     print("  H2H models and config...")
-    h2h = load_h2h()
-    print(f"    ✓ {len(h2h['models'])} models, {len(h2h['feature_columns'])} features")
+    h2h_with_seeds, h2h_no_seeds = load_both_h2h_models()
+    h2h = h2h_with_seeds  # Use WITH SEEDS for primary simulation
     
     print("  Prediction data...")
     prediction_df = load_prediction_data()
@@ -1327,7 +1494,7 @@ def main():
     if args.validate:
         run_validation_mode(bracket, bracket_df, prediction_df, elite8_df, h2h)
     else:
-        run_production_mode(bracket, bracket_df, prediction_df, elite8_df, h2h)
+        run_production_mode(bracket, bracket_df, prediction_df, elite8_df, h2h, h2h_no_seeds, elite8_no_seeds)
     
     print()
     print(f"Outputs saved to: {OUTPUT_DIR}/")
