@@ -1,65 +1,65 @@
 ﻿Region,Seed,Team,Team Index
 EAST,1,Duke,76
-EAST,2,Illinois,125
+EAST,2,Uconn,62
 EAST,3,Kansas,138
-EAST,4,Vanderbilt,353
-EAST,5,St. Johns,296
-EAST,6,North Carolina,211
-EAST,7,Kentucky,142
-EAST,8,Auburn,17
-EAST,9,Indiana,129
+EAST,4,Michigan St,180
+EAST,5,Vanderbilt,353
+EAST,6,Louisville,159
+EAST,7,NC State,196
+EAST,8,Miami,177
+EAST,9,Texas,312
 EAST,10,UCF,330
-EAST,11,Santa Clara,274
-EAST,12,Belmont,23
-EAST,13,UNC Wilmington,337
+EAST,11,Missouri,187
+EAST,12,South Florida,284
+EAST,13,High Point,116
 EAST,14,Austin Peay,18
 EAST,15,Navy,198
-EAST,16,LIU,143
+EAST,16,Howard,121
 MIDWEST,1,Michigan,179
 MIDWEST,2,Iowa St,133
-MIDWEST,3,Michigan St.,180
-MIDWEST,4,Alabama,4
-MIDWEST,5,Louisville,159
-MIDWEST,6,Tennessee,308
-MIDWEST,7,North Carolina St,196
-MIDWEST,8,Villanova,355
-MIDWEST,9,St Marys,266
-MIDWEST,10,UCLA,331
-MIDWEST,11,Miami OH,178
-MIDWEST,12,South Florida,284
-MIDWEST,13,California Baptist,36
-MIDWEST,14,ETSU,79
-MIDWEST,15,Harvard,114
-MIDWEST,16,Morgan St,193
-SOUTH,1,Uconn,62
-SOUTH,2,Houston,119
-SOUTH,3,Nebraska,199
-SOUTH,4,Texas Tech,317
-SOUTH,5,Virginia,356
-SOUTH,6,BYU,19
+MIDWEST,3,Texas Tech,317
+MIDWEST,4,Virginia,356
+MIDWEST,5,Tennessee,308
+MIDWEST,6,Kentucky,142
+MIDWEST,7,Wisconsin,374
+MIDWEST,8,St Louis,265
+MIDWEST,9,SMU,260
+MIDWEST,10,Georgia,104
+MIDWEST,11,Santa Clara,274
+MIDWEST,12,Yale,380
+MIDWEST,13,Cal Baptist,36
+MIDWEST,14,UC Irvine,326
+MIDWEST,15,ETSU,79
+MIDWEST,16,UMBC,332
+SOUTH,1,Houston,119
+SOUTH,2,Illinois,125
+SOUTH,3,Florida,91
+SOUTH,4,Nebraska,199
+SOUTH,5,Arkansas,13
+SOUTH,6,North Carolina,211
 SOUTH,7,Utah St,347
-SOUTH,8,Iowa,132
-SOUTH,9,Texas A&M,313
-SOUTH,10,Miami,177
-SOUTH,11,Texas,312
+SOUTH,8,Clemson,55
+SOUTH,9,Indiana,129
+SOUTH,10,Texas AM,313
+SOUTH,11,Ohio St,229
 SOUTH,12,Liberty,150
-SOUTH,13,Hawaii,115
-SOUTH,14,North Dakota St.,215
-SOUTH,15,Merrimack,176
-SOUTH,16,Tennessee St,310
+SOUTH,13,SF Austin,299
+SOUTH,14,Portland St,243
+SOUTH,15,Troy,321
+SOUTH,16,Wright St,377
 WEST,1,Arizona,11
 WEST,2,Purdue,248
-WEST,3,Florida,91
-WEST,4,Gonzaga,108
-WEST,5,Arkansas,13
-WEST,6,Clemson,55
-WEST,7,St Louis,265
-WEST,8,Wisconsin,374
-WEST,9,SMU,260
-WEST,10,Georgia,104
-WEST,11,San Diego St,271
-WEST,12,SF Austin,299
-WEST,13,Portland St,243
-WEST,14,Winthrop,373
-WEST,15,Wright St,377
-WEST,16,APP,10
+WEST,3,Gonzaga,108
+WEST,4,Alabama,4
+WEST,5,St John's,296
+WEST,6,BYU,19
+WEST,7,Villanova,355
+WEST,8,Iowa,132
+WEST,9,St Marys,266
+WEST,10,Auburn,17
+WEST,11,Miami OH,178
+WEST,12,Belmont,23
+WEST,13,UNC Wilmington,337
+WEST,14,North Dakota St.,215
+WEST,15,Merrimack,176
+WEST,16,LIU,143

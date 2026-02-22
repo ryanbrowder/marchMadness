@@ -1,11 +1,11 @@
 Team,Seed,E_Points_Blended,Expected_Market_Price,Fair_Value,Value_Rating,Max_Bid,Expected_Win_Price,Strategy
-Morgan St.,16,14.22,1.0,15.18,14.22,21,1,Aggressive
-LIU,16,9.34,1.0,9.97,9.34,14,1,Aggressive
-Navy,15,9.68,1.78,10.33,5.438,14,2,Aggressive
-Tennessee St.,16,4.99,1.0,5.33,4.99,7,1,Aggressive
-Merrimack,15,7.33,1.78,7.82,4.118,10,2,Aggressive
-Appalachian St.,16,3.94,1.0,4.21,3.94,5,1,Aggressive
-Harvard,15,6.0,1.78,6.4,3.371,8,2,Aggressive
-Wright St.,15,4.17,1.78,4.45,2.343,5,2,Aggressive
-North Dakota St.,14,5.58,3.06,5.96,1.824,8,3,Aggressive
-East Tennessee St.,14,5.57,3.06,5.94,1.82,8,3,Aggressive
+UMBC,16,12.31,1.0,12.71,12.31,15,1,Aggressive
+Troy,15,17.65,1.78,18.23,9.916,22,2,Aggressive
+LIU,16,5.61,1.0,5.79,5.61,7,1,Aggressive
+Howard,16,5.43,1.0,5.61,5.43,7,1,Aggressive
+Navy,15,8.15,1.78,8.42,4.579,10,2,Aggressive
+Merrimack,15,6.67,1.78,6.89,3.747,9,2,Aggressive
+Wright St.,16,2.9,1.0,3.0,2.9,3,1,Aggressive
+East Tennessee St.,15,4.52,1.78,4.67,2.539,6,2,Aggressive
+UC Irvine,14,7.68,3.06,7.93,2.51,9,3,Aggressive
+High Point,13,10.09,4.55,10.42,2.218,12,5,Aggressive

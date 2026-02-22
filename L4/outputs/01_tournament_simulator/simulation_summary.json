@@ -2,42 +2,42 @@
   "simulation": {
     "n_sims": 50000,
     "converged": false,
-    "unique_matchups": 973,
-    "gnb_exclusion_rate": 0.8911
+    "unique_matchups": 1045,
+    "gnb_exclusion_rate": 0.8804
   },
   "top_10_champions": {
-    "Michigan": 0.3033,
-    "Duke": 0.296,
-    "Arizona": 0.2111,
-    "Iowa St.": 0.1638,
-    "Purdue": 0.1553,
-    "Houston": 0.1422,
-    "Illinois": 0.1067,
-    "Connecticut": 0.1063,
-    "Gonzaga": 0.1061,
-    "Texas Tech": 0.0968
+    "Michigan": 0.3807,
+    "Arizona": 0.2744,
+    "Duke": 0.2724,
+    "Purdue": 0.1912,
+    "Houston": 0.1745,
+    "Illinois": 0.118,
+    "Iowa St.": 0.1079,
+    "Florida": 0.0987,
+    "Connecticut": 0.0703,
+    "Gonzaga": 0.053
   },
   "strategies": {
     "chalk": {
       "description": "Chalk (always pick favorite)",
       "champion": "Michigan",
-      "champion_probability": 0.3033,
-      "expected_points_espn": 1311.4,
-      "expected_points_yahoo": 131.14
+      "champion_probability": 0.3807,
+      "expected_points_espn": 1338.21,
+      "expected_points_yahoo": 133.82
     },
     "expected_value": {
       "description": "Expected Value (maximize expected points)",
       "champion": "Michigan",
-      "champion_probability": 0.3033,
-      "expected_points_espn": 1311.4,
-      "expected_points_yahoo": 131.14
+      "champion_probability": 0.3807,
+      "expected_points_espn": 1338.21,
+      "expected_points_yahoo": 133.82
     },
     "elite8_focus": {
       "description": "Elite 8 Focus (optimize through Sweet 16)",
       "champion": "Michigan",
-      "champion_probability": 0.3033,
-      "expected_points_espn": 1308.07,
-      "expected_points_yahoo": 130.81
+      "champion_probability": 0.3807,
+      "expected_points_espn": 1337.52,
+      "expected_points_yahoo": 133.75
     }
   }
 }

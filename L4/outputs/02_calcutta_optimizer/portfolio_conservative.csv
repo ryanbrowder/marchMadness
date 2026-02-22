@@ -1,7 +1,7 @@
 Team,Seed,E_Points_Blended,Expected_Market_Price,Fair_Value,Value_Rating,Max_Bid,Expected_Win_Price,Strategy
-Morgan St.,16,14.22,1.0,15.18,14.22,28,1,Conservative
-LIU,16,9.34,1.0,9.97,9.34,20,1,Conservative
-Navy,15,9.68,1.78,10.33,5.438,20,2,Conservative
-Tennessee St.,16,4.99,1.0,5.33,4.99,8,1,Conservative
-Merrimack,15,7.33,1.78,7.82,4.118,16,2,Conservative
-Appalachian St.,16,3.94,1.0,4.21,3.94,8,1,Conservative
+UMBC,16,12.31,1.0,12.71,12.31,21,1,Conservative
+Troy,15,17.65,1.78,18.23,9.916,32,2,Conservative
+LIU,16,5.61,1.0,5.79,5.61,11,1,Conservative
+Howard,16,5.43,1.0,5.61,5.43,11,1,Conservative
+Navy,15,8.15,1.78,8.42,4.579,14,2,Conservative
+Merrimack,15,6.67,1.78,6.89,3.747,11,2,Conservative

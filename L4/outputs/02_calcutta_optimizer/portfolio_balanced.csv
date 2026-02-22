@@ -1,9 +1,9 @@
 Team,Seed,E_Points_Blended,Expected_Market_Price,Fair_Value,Value_Rating,Max_Bid,Expected_Win_Price,Strategy
-Morgan St.,16,14.22,1.0,15.18,14.22,23,1,Balanced
-LIU,16,9.34,1.0,9.97,9.34,15,1,Balanced
-Navy,15,9.68,1.78,10.33,5.438,15,2,Balanced
-Tennessee St.,16,4.99,1.0,5.33,4.99,8,1,Balanced
-Merrimack,15,7.33,1.78,7.82,4.118,13,2,Balanced
-Appalachian St.,16,3.94,1.0,4.21,3.94,8,1,Balanced
-Harvard,15,6.0,1.78,6.4,3.371,10,2,Balanced
-Wright St.,15,4.17,1.78,4.45,2.343,8,2,Balanced
+UMBC,16,12.31,1.0,12.71,12.31,19,1,Balanced
+Troy,15,17.65,1.78,18.23,9.916,29,2,Balanced
+LIU,16,5.61,1.0,5.79,5.61,10,1,Balanced
+Howard,16,5.43,1.0,5.61,5.43,10,1,Balanced
+Navy,15,8.15,1.78,8.42,4.579,12,2,Balanced
+Merrimack,15,6.67,1.78,6.89,3.747,10,2,Balanced
+Wright St.,16,2.9,1.0,3.0,2.9,3,1,Balanced
+East Tennessee St.,15,4.52,1.78,4.67,2.539,7,2,Balanced

@@ -26,8 +26,8 @@ Date: 2025-01-31
 MODE = 'production'  # Options: 'validation' or 'production'
 
 # Step 2: Choose USE_SEEDS
-#USE_SEEDS = True  # Options: True or False
-USE_SEEDS = False  # Options: True or False
+USE_SEEDS = True  # Options: True or False
+#USE_SEEDS = False  # Options: True or False
 
 # ============================================================================
 
