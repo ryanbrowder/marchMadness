@@ -23,6 +23,7 @@ from pathlib import Path
 # FEATURE TOGGLES
 # ============================================================================
 INCLUDE_VEGAS_ODDS = False  # Set to False to disable Vegas odds integration
+INCLUDE_LRMCB = False  # Set to False to exclude LRMCB (if not available for current year)
 
 # ============================================================================
 # CONFIGURATION
@@ -39,13 +40,16 @@ INPUTS = {
 }
 
 # Bracketology input (ESPN projected tournament seeds)
-BRACKETOLOGY_PATH = '../L1/data/bracketology/espn_bracketology_2026.csv'
+BRACKETOLOGY_PATH = 'data/bracketology/espn_bracketology_2026.csv'
 
 # Vegas odds input (DraftKings Elite 8 probabilities)
 VEGAS_ODDS_PATH = 'data/vegasOdds/vegasOdds_analyze_L2.csv'
 
-# Optional sources (skip if file doesn't exist)
-OPTIONAL_SOURCES = ['LRMCB', 'powerRank']
+# Optional sources (skip if file doesn't exist OR if disabled by flag)
+OPTIONAL_SOURCES = []
+if INCLUDE_LRMCB:
+    OPTIONAL_SOURCES.append('LRMCB')
+OPTIONAL_SOURCES.append('powerRank')  # powerRank always optional
 
 # All sources (will be filtered to available sources at runtime)
 ALL_SOURCES = ['bartTorvik', 'kenPom', 'espnBPI', 'masseyComposite', 'LRMCB', 'powerRank']
@@ -112,6 +116,8 @@ def main():
     
     print(f"\n  Available sources: {len(available_sources)}/{len(INPUTS)}")
     print(f"  Using: {', '.join(available_sources)}")
+    if not INCLUDE_LRMCB:
+        print(f"  Note: LRMCB excluded by flag (INCLUDE_LRMCB = False)")
     
     # Load sources
     print("\n[2/5] Loading source data...")

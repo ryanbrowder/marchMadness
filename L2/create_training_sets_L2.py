@@ -18,6 +18,11 @@ import os
 from pathlib import Path
 
 # ============================================================================
+# FEATURE TOGGLES
+# ============================================================================
+INCLUDE_LRMCB = False  # Set to False to exclude LRMCB from RICH view
+
+# ============================================================================
 # CONFIGURATION
 # ============================================================================
 
@@ -33,7 +38,10 @@ INPUTS = {
 
 # Source groups by coverage period
 SOURCES_2008 = ['bartTorvik', 'kenPom', 'espnBPI', 'masseyComposite']  # Long view
-SOURCES_2016 = ['LRMCB', 'powerRank']  # Additional sources for rich view (2016+)
+SOURCES_2016_BASE = ['powerRank']  # Base sources for rich view (2016+)
+
+# Conditionally add LRMCB based on feature flag
+SOURCES_2016 = ['LRMCB'] + SOURCES_2016_BASE if INCLUDE_LRMCB else SOURCES_2016_BASE
 
 # Output path (relative to script location in L2/)
 OUTPUT_DIR = '../L3/data/trainingData'
@@ -43,7 +51,7 @@ OUTPUT_FILES = {
 }
 
 # Columns to drop (tournament metadata - not features)
-TOURNAMENT_COLS = ['tournamentOutcome']
+TOURNAMENT_COLS = ['tournamentSeed', 'tournamentOutcome']
 
 # ============================================================================
 # MAIN EXECUTION
@@ -301,13 +309,15 @@ def main():
     print(f"  Features: {len(df_long.columns)}")
     print(f"  Teams/year: {len(df_long) / df_long['Year'].nunique():.1f}")
     
-    print(f"\nRICH VIEW (2016-2025, 6 sources):")
+    print(f"\nRICH VIEW (2016-2025, {len(SOURCES_2008) + len(SOURCES_2016)} sources):")
     print(f"  Sources: {', '.join(SOURCES_2008 + SOURCES_2016)}")
     print(f"  Output: {output_path_rich}")
     print(f"  Rows: {len(df_rich):,}")
     print(f"  Year range: {df_rich['Year'].min()}-{df_rich['Year'].max()}")
     print(f"  Features: {len(df_rich.columns)}")
     print(f"  Teams/year: {len(df_rich) / df_rich['Year'].nunique():.1f}")
+    if not INCLUDE_LRMCB:
+        print(f"  Note: LRMCB excluded (INCLUDE_LRMCB = False)")
     print("="*80)
 
 if __name__ == "__main__":

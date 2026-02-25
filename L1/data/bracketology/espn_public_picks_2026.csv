@@ -1,0 +1,68 @@
+team_name,champion_pct,final4_pct,elite8_pct,sweet16_pct,round32_pct,round64_pct,seed_estimate,notes
+Duke,12.7,27.3,40.4,49.2,53.4,55.6,1,Blue blood bias - always overrepresented in public picks
+Michigan,10.6,23.9,37.3,46.7,52.2,55.2,1,Hot team + big brand = public favorite
+Arizona,8.1,21.8,35.2,45.3,51.2,54.8,1,Strong metrics but West Coast = slightly less public hype
+Houston,6.7,19.7,33.4,43.2,50.1,54.3,2,Great team but not sexy brand - public undervalues
+Iowa State,4.8,16.1,29.7,40.7,48.6,53.4,2,Solid team but not traditional power
+UConn,4.1,15,28.2,39.8,47.7,53.3,2,Defending champs but inconsistent season = public hesitant
+Nebraska,2.7,10.6,21.7,34.8,44.8,51.8,3,Cinderella story appeal but public skeptical of sustainability
+Gonzaga,3.2,12.1,24.8,37.8,46.3,52.6,3,Perennial favorite but WCC discount in public mind
+Florida,2.3,9.5,20.2,33.1,42.8,50.9,3,Strong finish but early struggles hurt public confidence
+Alabama,2.2,9.5,20.2,33.1,42.8,50.9,4,SEC talent but inconsistent - public hesitant
+Louisville,2.7,10.9,22.7,36.2,45.2,52,4,Guard-heavy = public likes but injury concerns
+Kentucky,2.9,12.4,25,37.4,46.1,52.4,4,Blue blood tax - always picked higher than metrics suggest
+St. John's,1.6,7.6,16.8,29.6,40.7,49.6,5,Hot streak but public remembers early struggles
+Texas Tech,1.4,7.1,15.9,28.7,39.9,49.2,5,Toppin injury tanks public confidence
+Vanderbilt,1.2,6.4,15,27.4,39.1,48.3,5,Offense flashy but defense concerns
+Purdue,2,9.7,20.9,34.1,44.1,51.2,6,Elite metrics but tournament choker reputation hurts
+Illinois,1.6,7.9,17.2,30.2,41.2,50,6,B1G strong but not sexy
+Auburn,1.8,8.4,18.1,31,41.5,50.3,6,Bruce Pearl March reputation despite recent struggles
+Tennessee,1.4,7.1,15.9,28.7,39.9,49.2,7,Defensive identity doesn't excite public
+Michigan State,1.8,8.1,18.2,31.4,42.4,50.4,7,Izzo March magic = public always believes
+Creighton,1,5.5,13.4,25.6,37.6,47.6,7,Doug McDermott nostalgia but current team underwhelming
+North Carolina,2.7,11.7,24.2,36.5,45.5,52.1,8,Blue blood + upset of Duke = public overreaction
+BYU,0.9,5,12.4,24.8,36.9,46.9,8,Saunders injury + recent struggles hurt confidence
+USC,0.8,4.6,11.5,23.7,36,46.3,8,Good program but not flashy
+Wisconsin,1.1,5.8,14.1,26.6,38.5,48.1,9,Gard system respected but not exciting
+UCLA,1.2,6.7,15.5,28.1,39.5,48.8,9,Brand name carries weight despite mediocre year
+Arkansas,1,5.3,13,25.8,37.8,47.5,9,SEC hype but inconsistent results
+Kansas,2.2,9.7,20.9,34.1,44.1,51.2,10,Self + blue blood = public always picks despite struggles
+Ohio State,0.6,4.1,10.7,22.3,35.1,45.5,10,B1G grind respect but low ceiling perception
+Missouri,0.5,3.6,9.8,21.1,33.8,44.8,10,SEC depth team - public overlooks
+Xavier,0.7,4.8,12,24.3,36.7,46.7,11,Big East tournament rep maintains fan interest
+Marquette,0.6,4.3,10.9,22.9,35.5,46.1,11,Shaka Smart building but down year perception
+Oklahoma,0.4,2.9,8.4,19.3,32,43.2,11,Porter Moser respect but talent questions
+Clemson,0.3,2.7,7.9,18.5,31.1,42.6,12,ACC sleeper but public doesn't know roster
+Ole Miss,0.3,2.3,7,17.1,29.9,41.9,12,Kermit Davis quietly good - undervalued
+San Diego State,0.7,4.4,11.2,23,35.7,46,12,March brand from recent Final Four
+Indiana,0.5,3.8,10.1,21.6,34.2,45,13,Woodson hot seat = public fade
+Virginia,0.6,4.2,10.6,22.2,34.7,45.4,13,Bennett system believers vs pack line skeptics
+Utah State,0.2,2,6.3,16.1,29,41,13,Mid-major discount despite strong metrics
+SMU,0.4,3.2,8.7,20,32.5,43.6,14,ACC first year = public unsure
+Miami FL,0.5,3.5,9.5,20.6,33.2,44.2,14,Larranaga March magic believers
+NC State,0.3,2.8,8.1,18.8,31.4,42.9,14,Kevin Keatts hot seat concerns
+Georgia,0.2,1.6,5.6,14.8,27.6,40,15,SEC depth = undervalued by casual fans
+Saint Mary's,0.3,2.4,7.3,17.8,30.3,42.1,15,Perennial solid but WCC discount
+High Point,0.1,0.7,3.1,10.3,23.4,37.3,15,Mid-major Cinderella hope
+Vermont,0.1,1.2,4.5,12.7,25.9,38.8,16,America East champs - public Cinderella pick
+Navy,0.1,0.8,3.5,11.2,24.3,37.9,16,Service academy story appeal
+Stephen F Austin,0.1,0.7,3.3,10.8,23.8,37.5,16,Southland auto-bid
+Abilene Christian,0.1,0.5,2.7,9.8,22.6,36.7,16,WAC auto-bid - public ignores
+Princeton,0.1,1.3,4.8,13.1,26.2,39.2,14,Ivy League upset potential - public remembers past upsets
+UAB,0.1,1.5,5.2,14,27.1,39.9,13,C-USA respect from past tournament runs
+VCU,0.2,2.2,6.7,16.8,29.6,41.7,12,Havoc defense brand recognition persists
+Colorado State,0.2,1.8,5.9,15.8,28.6,40.9,11,MWC solid program
+Saint Joseph's,0.1,1.4,4.9,13.5,26.6,39.5,15,A-10 bid - public neutral
+Dayton,0.3,2.4,7.4,18,30.5,42.3,11,A-10 power + March history
+Texas A&M,0.9,5.2,12.9,25.4,37.7,47.4,10,SEC depth + Kyle Field intimidation factor
+Iowa,0.8,4.9,12.1,24.5,37,47,9,Fran McCaffery hot/cold reputation
+Penn State,0.5,3.6,9.7,21.3,33.9,44.6,12,Micah Shrewsberry building something
+Northwestern,0.2,1.9,6.1,15.9,28.8,41.2,14,Chris Collins March struggles well known
+LSU,0.5,3.8,10.1,21.6,34.2,45,11,SEC talent but coaching transition questions
+Providence,0.2,1.5,5.3,14.3,27.4,40.2,13,Big East grinder
+Seton Hall,0.1,1.2,4.7,13,26,39.3,14,Sha Carr momentum building
+Butler,0.2,2,6.4,16.5,29.1,41.3,12,Thad Matta nostalgia factor
+Maryland,0.3,2.9,8.3,19.1,31.8,43.2,13,Kevin Willard hot seat concerns
+Oregon,0.3,2.5,7.6,18.3,30.7,42.7,12,Dana Altman always dangerous in March
+Wake Forest,0.4,3.3,9.2,20.5,33.1,43.9,11,Steve Forbes quietly excellent
+Syracuse,0.3,3,8.6,19.6,32.2,43.3,12,Autry first tourney - public unsure
