@@ -1,0 +1,460 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2868
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 ================================================================================\
+L3 ELITE 8 PROBABILISTIC FORECASTING SYSTEM\
+================================================================================\
+\
+SYSTEM OVERVIEW\
+================================================================================\
+\
+A sophisticated March Madness Elite 8 prediction system that models tournament \
+outcomes as sequences of binary probabilities rather than traditional bracket \
+logic. The system features a two-model architecture comparing bracket-aware \
+predictions (WITH seeds) against pure basketball metrics (WITHOUT seeds) to \
+identify value opportunities and overseeded teams.\
+\
+Key Philosophy: "Think in probabilities, not brackets"\
+Focus: Elite 8 optimization (skill-vs-variance sweet spot)\
+\
+VALIDATED PERFORMANCE\
+- Historical ROC-AUC: 0.902 (2015-2025, 11 years)\
+- Elite 8 Accuracy: 53.8% (4.3/8 picks average)\
+- Best Year: 2025 (0.998 ROC-AUC, 7/8 correct - extreme chalk)\
+- Worst Year: 2018 (0.787 ROC-AUC, 3/8 correct - chaos)\
+- Range: 0.75-1.00 depending on tournament type\
+\
+ARCHITECTURE\
+================================================================================\
+\
+DIRECTORY STRUCTURE:\
+marchMadness/\
+\uc0\u9500 \u9472 \u9472  L2/\
+\uc0\u9474    \u9492 \u9472 \u9472  data/\
+\uc0\u9474        \u9492 \u9472 \u9472  tournamentResults.csv          (historical tournament outcomes)\
+\uc0\u9500 \u9472 \u9472  L3/\
+\uc0\u9474    \u9500 \u9472 \u9472  config.py                          (shared configuration)\
+\uc0\u9474    \u9500 \u9472 \u9472  data/\
+\uc0\u9474    \u9474    \u9500 \u9472 \u9472  trainingData/\
+\uc0\u9474    \u9474    \u9474    \u9500 \u9472 \u9472  training_set_long.csv      (17 years, rich features)\
+\uc0\u9474    \u9474    \u9474    \u9492 \u9472 \u9472  training_set_rich.csv      (subset with complete data)\
+\uc0\u9474    \u9474    \u9492 \u9472 \u9472  predictionData/\
+\uc0\u9474    \u9474        \u9492 \u9472 \u9472  predict_set_2026.csv       (2026 tournament teams)\
+\uc0\u9474    \u9492 \u9472 \u9472  elite8/\
+\uc0\u9474        \u9500 \u9472 \u9472  01_feature_selection.py\
+\uc0\u9474        \u9500 \u9472 \u9472  02_ensemble_models.py\
+\uc0\u9474        \u9500 \u9472 \u9472  03_backtest_historical.py\
+\uc0\u9474        \u9500 \u9472 \u9472  04_apply_to_2026.py\
+\uc0\u9474        \u9500 \u9472 \u9472  05_tournament_type_indicator.py\
+\uc0\u9474        \u9500 \u9472 \u9472  06_compare_seed_impact.py\
+\uc0\u9474        \u9492 \u9472 \u9472  outputs/                       (auto-generated)\
+\
+CONFIGURATION\
+================================================================================\
+\
+Location: L3/config.py\
+\
+TWO KEY TOGGLES:\
+1. USE_SEEDS = True/False\
+   - True:  Bracket-aware model (includes ESPN bracketology seeds)\
+   - False: Pure metrics model (basketball performance only)\
+\
+2. MODE = 'validation' / 'production'\
+   - validation: Train 2008-2024, test on 2025 (strategy selection)\
+   - production:  Train 2008-2025 (final model for 2026+)\
+\
+AUTO-GENERATED PATHS:\
+- Output directories automatically append "_no_seeds" when USE_SEEDS = False\
+- All scripts read from config.py - no hardcoded paths\
+\
+PIPELINE SEQUENCING\
+================================================================================\
+\
+STEP 1: WITH SEEDS (BRACKET-AWARE MODEL)\
+--------------------------------------------------------------------------------\
+\
+1a. VALIDATION (determine best ensemble strategy)\
+    Edit L3/config.py:\
+        USE_SEEDS = True\
+        MODE = 'validation'\
+    \
+    Run:\
+        python 01_feature_selection.py\
+        python 02_ensemble_models.py\
+    \
+    Expected Output:\
+        - Best strategy: ROC-AUC Weighted or Equal Weight\
+        - 2025 performance: ~0.998 ROC-AUC (chalk year)\
+\
+1b. PRODUCTION (train final model)\
+    Edit L3/config.py:\
+        USE_SEEDS = True\
+        MODE = 'production'\
+    \
+    Run:\
+        python 02_ensemble_models.py\
+        python 03_backtest_historical.py\
+        python 04_apply_to_2026.py\
+        python 05_tournament_type_indicator.py\
+    \
+    Expected Output:\
+        - 0.902 ROC-AUC historical average\
+        - 9-11 teams >50% probability\
+        - 60% chalk forecast for 2026\
+\
+STEP 2: WITHOUT SEEDS (PURE METRICS MODEL)\
+--------------------------------------------------------------------------------\
+\
+2a. VALIDATION\
+    Edit L3/config.py:\
+        USE_SEEDS = False\
+        MODE = 'validation'\
+    \
+    Run:\
+        python 01_feature_selection.py\
+        python 02_ensemble_models.py\
+\
+2b. PRODUCTION\
+    Edit L3/config.py:\
+        USE_SEEDS = False\
+        MODE = 'production'\
+    \
+    Run:\
+        python 02_ensemble_models.py\
+        python 03_backtest_historical.py\
+        python 04_apply_to_2026.py\
+        python 05_tournament_type_indicator.py\
+    \
+    Expected Output:\
+        - 0.897 ROC-AUC historical average (-0.005 vs WITH seeds)\
+        - 8-10 teams >50% probability\
+        - Similar chalk forecast\
+\
+STEP 3: COMPARISON (THE PAYOFF)\
+--------------------------------------------------------------------------------\
+\
+Run (no config changes needed):\
+    python 06_compare_seed_impact.py\
+\
+Output:\
+    - Side-by-side team probabilities\
+    - Seed effect calculation (WITH - WITHOUT)\
+    - Value picks (underseeded by ESPN)\
+    - Fade candidates (overseeded by ESPN)\
+    - Strategic recommendations\
+\
+SCRIPT DETAILS\
+================================================================================\
+\
+01_FEATURE_SELECTION.PY\
+Purpose: Identify predictive features, eliminate multicollinearity\
+Inputs:  training_set_long.csv, training_set_rich.csv, tournamentResults.csv\
+Outputs: \
+  - labeled_training_*.csv (joined with Elite 8 labels)\
+  - reduced_features_*.csv (29 long, 25-26 rich features)\
+  - correlation/VIF analysis files\
+Notes:\
+  - tournamentSeed automatically excluded when USE_SEEDS = False\
+  - tournamentSeed protected from auto-removal when USE_SEEDS = True\
+\
+02_ENSEMBLE_MODELS.PY\
+Purpose: Train 4-model ensemble, select optimal weighting strategy\
+Models: Logistic Regression, Random Forest, SVM, Gaussian NB (calibrated)\
+Strategies Tested:\
+  - Equal Weight (0.25 each)\
+  - ROC-AUC Weighted (by validation performance)\
+  - Inverse Log-Loss Weighted\
+\
+Validation Mode:\
+  - Trains on 2008-2024, tests on 2025\
+  - Selects best strategy based on ROC-AUC\
+  - Saves validation models (for reference)\
+\
+Production Mode:\
+  - Trains on 2008-2025 (all available data)\
+  - Uses strategy identified in validation\
+  - Saves production models (for predictions)\
+\
+Outputs:\
+  - trained_ensemble_long_production.pkl\
+  - trained_ensemble_rich_production.pkl\
+  - Performance metrics CSV files\
+\
+03_BACKTEST_HISTORICAL.PY\
+Purpose: Walk-forward validation on 11 historical tournaments\
+Method: For each year 2015-2025, train on all prior years, test on that year\
+Outputs:\
+  - backtest_summary.csv (aggregate performance)\
+  - predictions_YEAR_DATASET.csv (year-by-year details)\
+  - Chalk vs Chaos year classification\
+\
+Key Insight:\
+  - Chalk years: 0.93-1.00 ROC-AUC (favorites win)\
+  - Chaos years: 0.75-0.85 ROC-AUC (major upsets)\
+\
+04_APPLY_TO_2026.PY\
+Purpose: Generate Elite 8 probabilities for 2026 tournament\
+Inputs:  predict_set_2026.csv, production ensemble models\
+Outputs:\
+  - elite8_predictions_2026_comparison.csv (long vs rich)\
+  - elite8_predictions_2026_long.csv\
+  - elite8_predictions_2026_rich.csv\
+  - top_30_elite8_2026_consensus.csv\
+\
+Features:\
+  - Consensus picks (both models >50%)\
+  - Model disagreement analysis\
+  - Probability tiers (Elite/Strong/Moderate/Long Shot)\
+\
+05_TOURNAMENT_TYPE_INDICATOR.PY\
+Purpose: Forecast tournament type (Chalk/Normal/Chaos) using 7 signals\
+Signals:\
+  1. Top team probability\
+  2. High-confidence picks (\uc0\u8805 50%)\
+  3. Top 10 spread\
+  4. Top 20 standard deviation\
+  5. Model agreement\
+  6. Parity (30-50% range)\
+  7. Top 5 average\
+\
+Output: Chalk score \uc0\u8594  Tournament type \u8594  Expected performance\
+  - CHALK (score \uc0\u8805 5): 60-80% probability, expect 4-6/8 correct\
+  - NORMAL (score -5 to 5): 40-50% probability, expect 3-5/8 correct\
+  - CHAOS (score <-5): 10-30% probability, expect 3-4/8 correct\
+\
+06_COMPARE_SEED_IMPACT.PY\
+Purpose: Compare WITH vs WITHOUT seeds models to identify opportunities\
+Key Metrics:\
+  - Seed effect = Prob(WITH seeds) - Prob(WITHOUT seeds)\
+  - Positive effect = OVERSEEDED (seeds boost probability)\
+  - Negative effect = UNDERSEEDED (metrics better than seeds)\
+\
+Strategic Output:\
+  - Consensus picks (both models agree, <2% difference)\
+  - Value picks (underseeded, metrics >> seeds)\
+  - Fade candidates (overseeded, seeds >> metrics)\
+\
+OUTPUTS GUIDE\
+================================================================================\
+\
+ALL OUTPUTS SAVED TO: L3/elite8/outputs/\
+\
+WITH SEEDS:\
+  01_feature_selection/\
+  02_ensemble_models/\
+  03_backtest/\
+  04_2026_predictions/\
+  05_tournament_indicator/\
+  06_seed_impact/          (comparison results)\
+\
+WITHOUT SEEDS:\
+  01_feature_selection_no_seeds/\
+  02_ensemble_models_no_seeds/\
+  03_backtest_no_seeds/\
+  04_2026_predictions_no_seeds/\
+  05_tournament_indicator_no_seeds/\
+\
+KEY FINDINGS FROM 2026 ANALYSIS\
+================================================================================\
+\
+SEED IMPACT (0.069% average - essentially zero!)\
+- Seeds add 0-2% to most teams\
+- Model correlation: 0.9984 (nearly identical predictions)\
+- Historical ROC-AUC difference: 0.006 (negligible)\
+\
+CONSENSUS PICKS (both models agree):\
+  1. Arizona      70.1%  (seed effect: +0.5%)\
+  2. Connecticut  66.2%  (seed effect: +1.9%)\
+  3. Michigan     63.8%  (seed effect: +0.6%)\
+  4. Duke         62.5%  (seed effect: +0.7%)\
+  5. Iowa St.     58.8%  (seed effect: +0.6%)\
+\
+FADE CANDIDATES (overseeded - metrics skeptical):\
+  - Houston:  56.8% WITH seeds \uc0\u8594  52.9% metrics (-3.9%)\
+  - Purdue:   56.9% WITH seeds \uc0\u8594  53.6% metrics (-3.3%)\
+  - Florida:  57.7% WITH seeds \uc0\u8594  54.8% metrics (-2.9%)\
+  - Illinois: 55.1% WITH seeds \uc0\u8594  52.2% metrics (-2.9%)\
+  \
+  CRITICAL: These teams cross 50% ONLY with seeds!\
+\
+VALUE PICKS (underseeded - minimal, all low probability):\
+  - Utah St., Miami FL, Louisville (all <40% probability)\
+\
+TOURNAMENT FORECAST: 60% CHALK\
+- Expected performance: 0.88-0.95 ROC-AUC\
+- Expected picks: 4-6 out of 8 correct\
+- Comparable to: 2015, 2019, 2021 (moderate chalk)\
+\
+STRATEGIC APPLICATIONS\
+================================================================================\
+\
+CONSERVATIVE POOL STRATEGY (Friends, Small Pools):\
+  \'95 Trust top 4-5 consensus picks\
+  \'95 Pick teams >50% for Elite 8\
+  \'95 Avoid risky differentiation\
+  \'95 Expected finish: Top 15-25%\
+\
+COMPETITIVE POOL STRATEGY (ESPN, Large Pools):\
+  \'95 Trust top 4 as locks: Arizona, UConn, Michigan, Duke\
+  \'95 FADE overseeded: Houston, Purdue, Florida (everyone picks them)\
+  \'95 Add 1-2 variance plays from 40-50% range\
+  \'95 Expected finish: Top 20-30% (hard to differentiate in chalk years)\
+\
+CALCUTTA AUCTION STRATEGY:\
+  \'95 TARGET: Top 4 consensus (expensive but justified)\
+  \'95 AVOID: Houston, Purdue, Florida, Illinois (overvalued by seeds)\
+  \'95 Budget allocation: 60% top-4, 30% middle tier, 10% fliers\
+  \'95 In chalk years, favorites win - pay up for quality\
+\
+DEPLOYMENT INSTRUCTIONS (SELECTION SUNDAY)\
+================================================================================\
+\
+WHEN: March 16, 2026 (Selection Sunday)\
+\
+STEPS:\
+1. Update predict_set_2026.csv with actual tournament seeds\
+   - Replace ESPN bracketology with real committee seeds\
+   - Verify all team names match L2 index\
+\
+2. Run WITH SEEDS pipeline:\
+   Edit L3/config.py:\
+       USE_SEEDS = True\
+       MODE = 'production'\
+   \
+   Run:\
+       python 04_apply_to_2026.py\
+       python 05_tournament_type_indicator.py\
+\
+3. Run WITHOUT SEEDS pipeline:\
+   Edit L3/config.py:\
+       USE_SEEDS = False\
+       MODE = 'production'\
+   \
+   Run:\
+       python 04_apply_to_2026.py\
+       python 05_tournament_type_indicator.py\
+\
+4. Compare models:\
+   Run:\
+       python 06_compare_seed_impact.py\
+\
+5. Review outputs:\
+   - Check updated probabilities\
+   - Confirm tournament type forecast\
+   - Identify new fade candidates (if seeds changed significantly)\
+   - Finalize bracket/auction strategy\
+\
+FIRST WEEKEND MONITORING:\
+- By Sweet 16, you'll know if it's actually chalk or chaos\
+- Adjust Elite 8 picks if first weekend shows unexpected upsets\
+- Model assumes moderate chalk (60%) - recalibrate if wrong\
+\
+TECHNICAL NOTES\
+================================================================================\
+\
+ENSEMBLE ARCHITECTURE:\
+- ROC-AUC Weighted: 24% LR, 24% RF, 23% SVM, 29% GNB (calibrated)\
+- Class weights: 'balanced' to handle 12% positive class\
+- Feature scaling: StandardScaler for LR/SVM, raw features for RF/GNB\
+\
+DATA REQUIREMENTS:\
+- Training: 2008-2025 tournament teams (1,147 team-years)\
+- Features: KenPom, Bart Torvik, BPI, Massey, PowerRank, LRMCB\
+- Missing data: Handled via median imputation\
+- NaN columns: Automatically dropped\
+\
+VALIDATION METHODOLOGY:\
+- Walk-forward: Train on all years before test year\
+- No future data leakage\
+- Consistent with H2H model approach\
+- 2025 used for strategy selection (extreme chalk year)\
+\
+KNOWN LIMITATIONS:\
+- System performs best in chalk years (0.93-1.00 ROC-AUC)\
+- Struggles in chaos years (0.75-0.85 ROC-AUC)\
+- Probabilities are team-level, not matchup-specific\
+- Assumes independence between games (not true in reality)\
+- 5-year training window may underweight recent trends\
+\
+MAINTENANCE & UPDATES\
+================================================================================\
+\
+ANNUAL TASKS:\
+1. Update training data (L3/data/trainingData/)\
+   - Add new season's team metrics\
+   - Update tournamentResults.csv with actual outcomes\
+\
+2. Re-run validation on new data\
+   - Verify ROC-AUC Weighted still optimal\
+   - Check for model drift\
+\
+3. Update prediction data (L3/data/predictionData/)\
+   - Scrape current season metrics\
+   - Get ESPN bracketology seeds pre-Selection Sunday\
+\
+4. Monitor system performance\
+   - Compare predictions to actual Elite 8\
+   - Analyze misses for pattern changes\
+\
+MID-SEASON UPDATES (Optional):\
+- Re-run 04_apply_to_2026.py as metrics update (Dec-Feb)\
+- Track probability evolution through season\
+- Identify teams trending up/down\
+\
+TROUBLESHOOTING\
+================================================================================\
+\
+COMMON ISSUES:\
+\
+1. "FileNotFoundError: trained_ensemble_*.pkl"\
+   - Run 02_ensemble_models.py first in production mode\
+   - Check OUTPUT_02 path in config.py\
+\
+2. "Shape mismatch" errors\
+   - Features changed between training and prediction\
+   - Verify feature lists match in reduced_features_*.csv\
+\
+3. Probabilities seem off (all >90% or <10%)\
+   - Check feature scaling (should see warnings)\
+   - Verify training data loaded correctly\
+   - Check for NaN handling issues\
+\
+4. Different results than documented\
+   - Verify MODE = 'production' for final runs\
+   - Check USE_SEEDS matches expected model\
+   - Ensure using same training data\
+\
+5. Scripts reading wrong output directories\
+   - Check config.py OUTPUT_XX variables\
+   - Verify ELITE8_DIR is set correctly\
+   - Clear old outputs if paths changed\
+\
+CONTACT & SUPPORT\
+================================================================================\
+\
+System Developer: Ryan Browder\
+Context: Ohio State University Lecturer (Marketing & Logistics)\
+         Cardinal Health (OptiFreight) - Product & Technology Leader\
+\
+Philosophy: Probabilistic thinking > bracket logic\
+           Economic utility > prediction leaderboards\
+           Skill optimization > variance chasing\
+\
+This system is designed for:\
+- Bracket pool optimization\
+- Calcutta auction strategy\
+- Expected value decision-making\
+- NOT for: gambling, certainty, or bracket perfection\
+\
+Remember: Even with 0.90 ROC-AUC, you're picking 4-6 correct out of 8.\
+The goal is to beat your pool, not predict perfectly.\
+\
+Good luck! \uc0\u55356 \u57280 \
+\
+================================================================================\
+END OF README\
+================================================================================}
