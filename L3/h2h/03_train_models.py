@@ -18,26 +18,31 @@ Date: 2025-01-31
 """
 
 # ============================================================================
-# *** CONFIGURATION - EDIT THESE SETTINGS ***
+# Import Shared Configuration
 # ============================================================================
+import sys
+from pathlib import Path
 
-# Step 1: Choose MODE
-#MODE = 'validation'  # Options: 'validation' or 'production'
-MODE = 'production'  # Options: 'validation' or 'production'
+# Add parent directory to path to import config
+sys.path.insert(0, str(Path(__file__).parent.parent))
+import config
 
-# Step 2: Choose USE_SEEDS
-USE_SEEDS = True  # Options: True or False
-#USE_SEEDS = False  # Options: True or False
+# Use shared configuration
+MODE = config.MODE
+USE_SEEDS = config.USE_SEEDS
+TRAINING_MATCHUPS_PATH = str(config.H2H_TRAINING_MATCHUPS)
+SELECTED_FEATURES_PATH = str(config.H2H_SELECTED_FEATURES)
+MODELS_DIR = str(config.H2H_MODELS_DIR)
+OUTPUT_DIR = str(config.H2H_OUTPUT_DIR)
+
+# Production strategies
+if MODE == 'production':
+    PRODUCTION_STRATEGY = config.H2H_PRODUCTION_STRATEGY_WITH_SEEDS if USE_SEEDS else config.H2H_PRODUCTION_STRATEGY_NO_SEEDS
+else:
+    PRODUCTION_STRATEGY = None
 
 # ============================================================================
-
-# Step 3: Set PRODUCTION_STRATEGY (only used if MODE='production')
-# Update these after running validation for each USE_SEEDS configuration
-PRODUCTION_STRATEGY_NO_SEEDS = 'De-emphasize Worst'  # From USE_SEEDS=False validation
-PRODUCTION_STRATEGY_WITH_SEEDS = 'Emphasize Top 2'  # UPDATE after USE_SEEDS=True validation
-
-# ============================================================================
-# End of configuration - Don't edit below this line
+# End of configuration
 # ============================================================================
 
 import pandas as pd
@@ -66,25 +71,10 @@ from sklearn.metrics import (
 import warnings
 warnings.filterwarnings('ignore')
 
-# ============================================================================
-# Internal Configuration (uses settings from top of file)
-# ============================================================================
-
-# Input paths
-TRAINING_MATCHUPS_PATH = 'outputs/01_build_training_matchups/training_matchups.csv'
-SELECTED_FEATURES_PATH = 'outputs/02_feature_correlation/selected_features.csv'
-
-# Output directories (auto-generated based on MODE and USE_SEEDS)
-seeds_suffix = '_with_seeds' if USE_SEEDS else ''
-mode_suffix = '_validation' if MODE == 'validation' else ''
-MODELS_DIR = f'models{seeds_suffix}{mode_suffix}'
-OUTPUT_DIR = f'outputs/03_train_models{seeds_suffix}{mode_suffix}'
-
 # Temporal validation split based on MODE
 if MODE == 'validation':
     TRAIN_YEARS = (2008, 2024)
     VALIDATION_YEAR = 2025
-    PRODUCTION_STRATEGY = None  # Will be determined from validation
     print("\n" + "="*80)
     print(f"H2H TRAINING - VALIDATION MODE {'WITH SEEDS' if USE_SEEDS else 'NO SEEDS'}")
     print("="*80)
@@ -98,9 +88,6 @@ if MODE == 'validation':
 else:  # production
     TRAIN_YEARS = (2008, 2025)
     VALIDATION_YEAR = None  # No validation set in production
-    
-    # Use the appropriate production strategy based on USE_SEEDS
-    PRODUCTION_STRATEGY = PRODUCTION_STRATEGY_WITH_SEEDS if USE_SEEDS else PRODUCTION_STRATEGY_NO_SEEDS
     
     print("\n" + "="*80)
     print(f"H2H TRAINING - PRODUCTION MODE {'WITH SEEDS' if USE_SEEDS else 'NO SEEDS'}")

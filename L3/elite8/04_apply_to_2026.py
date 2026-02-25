@@ -9,12 +9,15 @@ import pickle
 from pathlib import Path
 
 # Import configuration
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
 import config
 
 # Configuration
 INPUT_FILE = config.PREDICT_DATA_FILE
-MODEL_DIR = config.OUTPUT_03
-OUTPUT_DIR = config.OUTPUT_05
+MODEL_DIR = config.OUTPUT_02
+OUTPUT_DIR = config.OUTPUT_04
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 print("="*80)

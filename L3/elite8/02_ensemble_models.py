@@ -17,14 +17,16 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # Import configuration
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
 import config
 
 # Configuration
-#MODE = 'validation'  # 'validation' or 'production'
-MODE = 'production'  # 'validation' or 'production'
+MODE = config.MODE
 
 INPUT_DIR = config.OUTPUT_01
-OUTPUT_DIR = config.OUTPUT_03
+OUTPUT_DIR = config.OUTPUT_02
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 RANDOM_STATE = config.RANDOM_STATE

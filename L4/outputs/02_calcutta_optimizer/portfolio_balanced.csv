@@ -1,9 +1,9 @@
 Team,Seed,E_Points_Blended,Expected_Market_Price,Fair_Value,Value_Rating,Max_Bid,Expected_Win_Price,Strategy
-UMBC,16,12.31,1.0,12.71,12.31,19,1,Balanced
-Troy,15,17.65,1.78,18.23,9.916,29,2,Balanced
-LIU,16,5.61,1.0,5.79,5.61,10,1,Balanced
-Howard,16,5.43,1.0,5.61,5.43,10,1,Balanced
-Navy,15,8.15,1.78,8.42,4.579,12,2,Balanced
-Merrimack,15,6.67,1.78,6.89,3.747,10,2,Balanced
-Wright St.,16,2.9,1.0,3.0,2.9,3,1,Balanced
-East Tennessee St.,15,4.52,1.78,4.67,2.539,7,2,Balanced
+UMBC,16,13.13,1.0,13.57,13.13,20,1,Balanced
+Southeast Missouri St.,16,9.5,1.0,9.82,9.5,12,1,Balanced
+LIU,16,7.21,1.0,7.45,7.21,10,1,Balanced
+Appalachian St.,16,5.63,1.0,5.82,5.63,8,1,Balanced
+Utah Tech,15,9.9,1.78,10.23,5.562,14,2,Balanced
+Merrimack,15,9.76,1.78,10.08,5.483,14,2,Balanced
+Portland St.,15,6.95,1.78,7.18,3.904,10,2,Balanced
+Navy,14,9.55,3.06,9.87,3.121,12,4,Balanced
