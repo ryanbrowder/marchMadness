@@ -200,11 +200,14 @@ def main():
     curr["year"] = 2026
     curr = add_index(curr, index_lookup, team_col="team_name")
 
+    # Drop synthetic/placeholder columns not present in real ESPN data
+    curr = curr.drop(columns=[c for c in ["seed_estimate", "notes"] if c in curr.columns])
+
     # Column order: year + identity first, then pcts, then metadata
     col_order = (
-        ["year", "teamsIndex", "team_name", "seed_estimate"]
+        ["year", "teamsIndex", "team_name"]
         + pct_cols
-        + [c for c in curr.columns if c not in ["year", "teamsIndex", "team_name", "seed_estimate"] + pct_cols]
+        + [c for c in curr.columns if c not in ["year", "teamsIndex", "team_name"] + pct_cols]
     )
     curr = curr[[c for c in col_order if c in curr.columns]]
     curr = curr.sort_values("champion_pct", ascending=False)

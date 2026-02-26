@@ -2,7 +2,7 @@
   OPTIMAL BRACKET: Expected Value (maximize expected points)
 ======================================================================
 
-🏆 CHAMPION: Michigan (31.2%)
+🏆 CHAMPION: Michigan (31.1%)
 
 R64
 ----------------------------------------------------------------------

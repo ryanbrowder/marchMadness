@@ -216,6 +216,28 @@ def load_prediction_data():
     return df
 
 
+def load_public_picks():
+    """
+    Load ESPN public pick percentages for contrarian analysis.
+    
+    Returns DataFrame with columns:
+        - team_name
+        - champion_pct (public % picking team to win championship)
+        - final4_pct (public % picking team to reach Final Four)
+        - elite8_pct, sweet16_pct, round32_pct, round64_pct
+    
+    Returns None if file doesn't exist (allows graceful degradation).
+    """
+    public_picks_path = Path("../L2/data/bracketology/espn_public_picks_2026_clean.csv")
+    
+    if not public_picks_path.exists():
+        print(f"  ⚠ Public picks file not found: {public_picks_path}")
+        return None
+    
+    df = pd.read_csv(public_picks_path)
+    return df
+
+
 def construct_bracket(prediction_df):
     """Build tournament bracket from tournamentSeed."""
     df = prediction_df.copy()
@@ -1143,8 +1165,18 @@ def simulate_bracket_from_picks(bracket, picks, round_probs, cache, prediction_d
     return result
 
 
-def export_round_probabilities(round_probs, bracket_df):
-    """Export round probability table."""
+def export_round_probabilities(round_probs, bracket_df, public_picks_df=None):
+    """
+    Export round probability table with optional public pick contrarian analysis.
+    
+    Args:
+        round_probs: Dictionary of team probabilities by round
+        bracket_df: DataFrame with team info (seed, region)
+        public_picks_df: Optional DataFrame with ESPN public pick percentages
+    
+    Returns:
+        DataFrame with probabilities and contrarian metrics
+    """
     rows = []
     rounds = ['R64', 'R32', 'S16', 'E8', 'FF', 'Championship']
     
@@ -1154,9 +1186,11 @@ def export_round_probabilities(round_probs, bracket_df):
         if len(team_info) > 0:
             row['Seed'] = int(team_info.iloc[0]['tournamentSeed'])
             row['Region'] = team_info.iloc[0]['Region']
+            row['teamsIndex'] = int(team_info.iloc[0]['teamsIndex'])  # Add teamsIndex for merge
         else:
             row['Seed'] = None
             row['Region'] = None
+            row['teamsIndex'] = None
         
         for round_name in rounds:
             row[f'P_{round_name}'] = round_probs[team].get(round_name, 0)
@@ -1164,6 +1198,70 @@ def export_round_probabilities(round_probs, bracket_df):
         rows.append(row)
     
     df = pd.DataFrame(rows)
+    
+    # Add public pick data if available
+    if public_picks_df is not None:
+        # Select columns from public picks (using teamsIndex for merge)
+        public_subset = public_picks_df[[
+            'teamsIndex',
+            'round64_pct',
+            'round32_pct',
+            'sweet16_pct',
+            'elite8_pct',
+            'final4_pct',
+            'champion_pct'
+        ]].copy()
+        
+        # Rename columns
+        public_subset.columns = [
+            'teamsIndex',
+            'Public_R64_Pct',
+            'Public_R32_Pct',
+            'Public_S16_Pct',
+            'Public_E8_Pct',
+            'Public_FF_Pct',
+            'Public_Champion_Pct'
+        ]
+        
+        # Merge on teamsIndex (not team name!)
+        df = df.merge(public_subset, on='teamsIndex', how='left')
+        
+        # Calculate contrarian ratios for each round (Public / Model)
+        # Lower ratio = public undervalues (contrarian opportunity)
+        round_mappings = [
+            ('R64', 'Public_R64_Pct', 'R64_Contrarian_Ratio'),
+            ('R32', 'Public_R32_Pct', 'R32_Contrarian_Ratio'),
+            ('S16', 'Public_S16_Pct', 'S16_Contrarian_Ratio'),
+            ('E8', 'Public_E8_Pct', 'E8_Contrarian_Ratio'),
+            ('FF', 'Public_FF_Pct', 'FF_Contrarian_Ratio'),
+            ('Championship', 'Public_Champion_Pct', 'Champion_Contrarian_Ratio')
+        ]
+        
+        for round_name, public_col, ratio_col in round_mappings:
+            model_col = f'P_{round_name}'
+            df[ratio_col] = df[public_col] / (df[model_col] * 100)
+            df[ratio_col] = df[ratio_col].round(2)
+        
+        # Reorder columns to group model/public/ratio for each round together
+        column_order = ['Team', 'Seed', 'Region']
+        
+        # Add columns for each round: Model %, Public %, Ratio
+        rounds_in_order = [
+            ('R64', 'Public_R64_Pct', 'R64_Contrarian_Ratio'),
+            ('R32', 'Public_R32_Pct', 'R32_Contrarian_Ratio'),
+            ('S16', 'Public_S16_Pct', 'S16_Contrarian_Ratio'),
+            ('E8', 'Public_E8_Pct', 'E8_Contrarian_Ratio'),
+            ('FF', 'Public_FF_Pct', 'FF_Contrarian_Ratio'),
+            ('Championship', 'Public_Champion_Pct', 'Champion_Contrarian_Ratio')
+        ]
+        
+        for round_name, public_col, ratio_col in rounds_in_order:
+            column_order.append(f'P_{round_name}')
+            column_order.append(public_col)
+            column_order.append(ratio_col)
+        
+        df = df[column_order]
+    
     df = df.sort_values('P_Championship', ascending=False)
     return df
 
@@ -1275,14 +1373,16 @@ def export_bracket_text(bracket_result, strategy_name, champion_prob):
 
 
 def run_production_mode(bracket, bracket_df, prediction_df, elite8_df, h2h, h2h_no_seeds=None, elite8_no_seeds=None):
-    """Run bracket optimization."""
+    """Run bracket optimization with narrative output."""
     print()
     print("=" * 70)
     print("                    PRODUCTION MODE")
     print("=" * 70)
     print()
 
-    # Full simulation
+    # ========================================================================
+    # STEP 1: Run simulations (quiet except progress)
+    # ========================================================================
     print("Running Monte Carlo simulation...")
     print("-" * 70)
     
@@ -1291,36 +1391,48 @@ def run_production_mode(bracket, bracket_df, prediction_df, elite8_df, h2h, h2h_
         n_sims=N_SIMS_PRODUCTION,
         convergence_check=CONVERGENCE_CHECK,
         convergence_thresh=CONVERGENCE_THRESH,
-        n_trace=0  # No traces in production mode
+        n_trace=0
     )
     print()
 
-    # Strategic Intelligence: Identify seed bias (only if NO SEEDS data provided)
+    # Load supporting data (quiet)
+    public_picks_df = load_public_picks()
+    
+    # Calculate seed bias (quiet)
+    seed_bias_df = None
+    fade_candidates = pd.DataFrame()
+    value_picks = pd.DataFrame()
     if h2h_no_seeds is not None and elite8_no_seeds is not None:
-        print("Analyzing seed bias (WITH SEEDS vs NO SEEDS)...")
-        print("-" * 70)
-        
         seed_bias_df = identify_seed_bias(bracket_df, elite8_df, elite8_no_seeds)
-        
         fade_candidates = seed_bias_df[seed_bias_df['Category'] == 'FADE'].head(5)
         value_picks = seed_bias_df[seed_bias_df['Category'] == 'VALUE'].head(5)
-        
-        if len(fade_candidates) > 0:
-            print("\n  FADE CANDIDATES (Overseeded - Committee > Metrics):")
-            for _, row in fade_candidates.iterrows():
-                print(f"    {row['Team']:<20} ({row['Seed']:>2}): +{row['Seed_Bias']*100:>4.1f}% Elite 8 boost")
-        
-        if len(value_picks) > 0:
-            print("\n  VALUE PICKS (Underseeded - Metrics > Committee):")
-            for _, row in value_picks.iterrows():
-                print(f"    {row['Team']:<20} ({row['Seed']:>2}): {row['Seed_Bias']*100:>5.1f}% Elite 8 penalty")
-        
-        print()
-
-    # Generate optimal brackets
-    print("Generating optimal brackets...")
-    print("-" * 70)
     
+    # Calculate contrarian opportunities (quiet)
+    contrarian_df = None
+    contrarian_champ = pd.DataFrame()
+    contrarian_ff = pd.DataFrame()
+    if public_picks_df is not None:
+        contrarian_df = pd.DataFrame()
+        contrarian_df['Team'] = list(round_probs.keys())
+        contrarian_df['P_Championship'] = [round_probs[t].get('Championship', 0) for t in contrarian_df['Team']]
+        contrarian_df['P_FF'] = [round_probs[t].get('FF', 0) for t in contrarian_df['Team']]
+        
+        # Add teamsIndex for merge
+        team_index_lookup = bracket_df.set_index('Team')['teamsIndex'].to_dict()
+        contrarian_df['teamsIndex'] = contrarian_df['Team'].map(team_index_lookup)
+        
+        # Merge on teamsIndex
+        public_subset = public_picks_df[['teamsIndex', 'champion_pct', 'final4_pct']].copy()
+        public_subset.columns = ['teamsIndex', 'Public_Champion_Pct', 'Public_FF_Pct']
+        contrarian_df = contrarian_df.merge(public_subset, on='teamsIndex', how='left')
+        
+        contrarian_df['Champion_Ratio'] = contrarian_df['Public_Champion_Pct'] / (contrarian_df['P_Championship'] * 100)
+        contrarian_df['FF_Ratio'] = contrarian_df['Public_FF_Pct'] / (contrarian_df['P_FF'] * 100)
+        
+        contrarian_champ = contrarian_df[contrarian_df['P_Championship'] > 0.05].sort_values('Champion_Ratio').head(5)
+        contrarian_ff = contrarian_df[contrarian_df['P_FF'] > 0.10].sort_values('FF_Ratio').head(5)
+    
+    # Generate brackets (quiet)
     strategies = [
         ('chalk', optimize_chalk),
         ('expected_value', optimize_expected_value),
@@ -1328,22 +1440,21 @@ def run_production_mode(bracket, bracket_df, prediction_df, elite8_df, h2h, h2h_
     ]
     
     brackets = {}
-    
-    for strat_key, optimizer_func in strategies:
-        print(f"\n  {strat_key}...")
-        
+    for strat_key, optimizer_fn in strategies:
+        # Call optimizer with correct arguments
         if strat_key == 'chalk':
-            picks, desc = optimizer_func(bracket, round_probs)
+            picks, desc = optimizer_fn(bracket, round_probs)
         elif strat_key == 'expected_value':
-            picks, desc = optimizer_func(bracket, round_probs, bracket_df)
+            picks, desc = optimizer_fn(bracket, round_probs, bracket_df)
         elif strat_key == 'elite8_focus':
-            picks, desc = optimizer_func(bracket, round_probs, elite8_df)
+            picks, desc = optimizer_fn(bracket, round_probs, elite8_df)
         
+        # Simulate bracket from picks
         bracket_result = simulate_bracket_from_picks(bracket, picks, round_probs, cache, prediction_df, h2h)
         champion = bracket_result['Championship']['winner'] if bracket_result.get('Championship') else None
         champ_prob = champion_probs.get(champion, 0) if champion else 0
         
-        # Calculate expected points for both scoring systems
+        # Calculate expected points
         expected_points_espn = calculate_bracket_expected_points(bracket_result, bracket_df, SCORING_ESPN)
         expected_points_yahoo = calculate_bracket_expected_points(bracket_result, bracket_df, SCORING_YAHOO)
         
@@ -1355,24 +1466,198 @@ def run_production_mode(bracket, bracket_df, prediction_df, elite8_df, h2h, h2h_
             'expected_points_espn': expected_points_espn,
             'expected_points_yahoo': expected_points_yahoo
         }
+    
+    # ========================================================================
+    # STEP 2: STRATEGIC RECOMMENDATIONS (THE "SO WHAT")
+    # ========================================================================
+    print()
+    print("=" * 70)
+    print("              STRATEGIC RECOMMENDATIONS")
+    print("=" * 70)
+    print()
+    
+    # Get top teams
+    top_mc = sorted(champion_probs.items(), key=lambda x: x[1], reverse=True)[:3]
+    bracket_winner = brackets['chalk']['champion']
+    bracket_h2h_prob = brackets['chalk']['result']['Championship']['prob']  # H2H win probability
+    
+    print("YOUR BRACKET PICK")
+    print("-" * 70)
+    print(f"  Champion: {bracket_winner} ({bracket_h2h_prob*100:.1f}% to win when they meet opponents)")
+    print()
+    print(f"  Why: {bracket_winner} is the optimal pick because they win head-to-head")
+    print(f"       matchups against likely opponents, even if another team has")
+    print(f"       more overall paths to the championship.")
+    print()
+    
+    # Monte Carlo vs Bracket explanation
+    if top_mc[0][0] != bracket_winner:
+        mc_leader = top_mc[0][0]
+        mc_prob = top_mc[0][1]
+        print(f"  Note: {mc_leader} has highest Monte Carlo probability ({mc_prob*100:.1f}%)")
+        print(f"        because they have an easier path, but {bracket_winner} beats them")
+        print(f"        head-to-head when they meet.")
+    print()
+    
+    # Contrarian opportunities
+    if len(contrarian_champ) > 0:
+        print("CONTRARIAN EDGE (Public Severely Undervalues)")
+        print("-" * 70)
         
-        print(f"    Champion: {champion} ({champ_prob:.1%})")
-        print(f"      ESPN: {expected_points_espn:.1f} pts | Yahoo: {expected_points_yahoo:.1f} pts")
+        for idx, (_, row) in enumerate(contrarian_champ.head(3).iterrows(), 1):
+            print(f"  {idx}. {row['Team']}")
+            print(f"     Model: {row['P_Championship']*100:>5.1f}% champion | Public picks: {row['Public_Champion_Pct']:>5.1f}% (Ratio: {row['Champion_Ratio']:.2f})")
+            
+            # Add seed bias context if available
+            if seed_bias_df is not None:
+                team_bias = seed_bias_df[seed_bias_df['Team'] == row['Team']]
+                if len(team_bias) > 0:
+                    bias_val = team_bias.iloc[0]['Seed_Bias']
+                    if abs(bias_val) > 0.02:
+                        bias_type = "overseeded" if bias_val > 0 else "underseeded"
+                        print(f"     Seed bias: {bias_type} ({bias_val*100:+.1f}% Elite 8)")
+            print()
+        
+        print(f"  Strategy: Public severely undervalues these teams. Pick them in")
+        print(f"            bracket pools for differentiation and edge over casual fans.")
+        print()
+    
+    # Teams to avoid
+    if len(fade_candidates) > 0:
+        print("TEAMS TO AVOID (Overpriced Due to Seeding)")
+        print("-" * 70)
+        
+        for idx, (_, row) in enumerate(fade_candidates.head(3).iterrows(), 1):
+            print(f"  {idx}. {row['Team']} ({int(row['Seed'])}-seed)")
+            print(f"     Gets +{row['Seed_Bias']*100:.1f}% Elite 8 boost from favorable seeding")
+            print(f"     Market will overprice based on inflated probabilities")
+            print()
+        
+        print(f"  Strategy: Don't overpay in Calcutta auctions. Some of their Elite 8")
+        print(f"            probability comes from bracket luck, not pure team strength.")
+        print()
+    
+    # ========================================================================
+    # STEP 3: SUPPORTING ANALYSIS (THE "WHY")
+    # ========================================================================
+    print()
+    print("=" * 70)
+    print("               SUPPORTING ANALYSIS")
+    print("=" * 70)
+    print()
+    
+    # Contrarian details
+    if len(contrarian_champ) > 0:
+        print("Full Contrarian Champion List")
+        print("-" * 70)
+        for _, row in contrarian_champ.iterrows():
+            print(f"  {row['Team']:<20} Model: {row['P_Championship']*100:>5.1f}%  Public: {row['Public_Champion_Pct']:>5.1f}%  Ratio: {row['Champion_Ratio']:.2f}")
+        print()
+    
+    # Seed bias details
+    if seed_bias_df is not None:
+        print("Seed Bias Analysis (Committee vs Pure Metrics)")
+        print("-" * 70)
+        
+        if len(fade_candidates) > 0:
+            print("\n  FADE (Overseeded - Committee helps them):")
+            for _, row in fade_candidates.iterrows():
+                print(f"    {row['Team']:<20} ({row['Seed']:>2}): +{row['Seed_Bias']*100:>4.1f}% Elite 8 boost")
+        
+        if len(value_picks) > 0:
+            print("\n  VALUE (Underseeded - Better than seed suggests):")
+            for _, row in value_picks.iterrows():
+                print(f"    {row['Team']:<20} ({row['Seed']:>2}): {row['Seed_Bias']*100:>5.1f}% Elite 8 penalty")
+        print()
+    
+    # Monte Carlo details
+    print("Monte Carlo Champion Probabilities")
+    print("-" * 70)
+    for idx, (team, prob) in enumerate(top_mc[:5], 1):
+        print(f"  {idx}. {team:<20} {prob*100:>5.1f}%")
+    print()
+    
+    # ========================================================================
+    # STEP 4: SIMULATION SUMMARY (THE DATA)
+    # ========================================================================
+    print()
+    print("=" * 70)
+    print("                SIMULATION SUMMARY")
+    print("=" * 70)
+    print()
+    
+    print(f"  Simulations:      {sim_stats['n_simulations']:,}")
+    print(f"  Converged:        {'Yes' if sim_stats['converged'] else 'No'}")
+    print(f"  Unique matchups:  {sim_stats['unique_matchups']:,}")
+    print()
+    
+    print("  TOP 10 CHAMPIONSHIP PROBABILITIES")
+    print("  " + "-" * 110)
+    if public_picks_df is not None:
+        print(f"  {'Team':<20} {'Champion':<12} {'Champion':<12} {'Champion':<10} {'Elite 8':<12} {'Elite 8':<12}")
+        print(f"  {'':<20} {'Model %':<12} {'Public %':<12} {'Ratio':<10} {'Model %':<12} {'Public %':<12}")
+    else:
+        print(f"  {'Team':<24} {'P(Champion)':<15} {'P(Elite 8)':<15}")
+    print("  " + "-" * 110)
+    
+    top_10 = sorted(champion_probs.items(), key=lambda x: x[1], reverse=True)[:10]
+    
+    if public_picks_df is not None:
+        # Create team name to teamsIndex lookup
+        team_to_index = bracket_df.set_index('Team')['teamsIndex'].to_dict()
+        
+        # Create teamsIndex to public picks lookups
+        public_champ_lookup = public_picks_df.set_index('teamsIndex')['champion_pct'].to_dict()
+        public_e8_lookup = public_picks_df.set_index('teamsIndex')['elite8_pct'].to_dict()
+        
+        for team, prob in top_10:
+            e8_prob = round_probs.get(team, {}).get('E8', 0)
+            
+            # Get teamsIndex for this team, then lookup public picks
+            team_index = team_to_index.get(team)
+            public_champ_pct = public_champ_lookup.get(team_index, 0) if team_index else 0
+            public_e8_pct = public_e8_lookup.get(team_index, 0) if team_index else 0
+            
+            ratio = public_champ_pct / (prob * 100) if prob > 0 else 0
+            print(f"  {team:<20} {prob*100:>6.1f}%      {public_champ_pct:>6.1f}%      {ratio:>5.2f}       {e8_prob*100:>6.1f}%      {public_e8_pct:>6.1f}%")
+    else:
+        for team, prob in top_10:
+            e8_prob = round_probs.get(team, {}).get('E8', 0)
+            print(f"  {team:<24} {prob*100:>6.1f}%         {e8_prob*100:>6.1f}%")
+    print()
+    
+    print("  OPTIMAL BRACKETS")
+    print("  " + "-" * 66)
+    for strat_key in ['chalk', 'expected_value', 'elite8_focus']:
+        data = brackets[strat_key]
+        strat_display = {
+            'chalk': 'CHALK (Always Pick Favorite)',
+            'expected_value': 'EXPECTED VALUE (Maximize Points)',
+            'elite8_focus': 'ELITE 8 FOCUS (Optimize Through Sweet 16)'
+        }
+        
+        print(f"\n  {strat_display[strat_key]}")
+        print(f"    Champion: {data['champion']} ({data['champion_prob']*100:.1f}%)")
+        print(f"    ESPN Scoring:  {data['expected_points_espn']:.1f} pts (max 1,920)")
+        print(f"    Yahoo Scoring: {data['expected_points_yahoo']:.1f} pts (max 192)")
     
     print()
+    print("=" * 70)
+    print()
 
-    # Export outputs
+    # ========================================================================
+    # STEP 5: EXPORT FILES
+    # ========================================================================
     print("Exporting outputs...")
     print("-" * 70)
     
-    round_probs_df = export_round_probabilities(round_probs, bracket_df)
+    round_probs_df = export_round_probabilities(round_probs, bracket_df, public_picks_df)
     round_probs_path = OUTPUT_DIR / 'round_probabilities.csv'
     round_probs_df.to_csv(round_probs_path, index=False)
     print(f"  ✓ round_probabilities.csv ({len(round_probs_df)} teams)")
     
     # Export seed bias analysis if available
-    if h2h_no_seeds is not None and elite8_no_seeds is not None:
-        seed_bias_df = identify_seed_bias(bracket_df, elite8_df, elite8_no_seeds)
+    if seed_bias_df is not None:
         seed_bias_path = OUTPUT_DIR / 'seed_bias_analysis.csv'
         seed_bias_df.to_csv(seed_bias_path, index=False)
         print(f"  ✓ seed_bias_analysis.csv (strategic intelligence)")
@@ -1411,41 +1696,10 @@ def run_production_mode(bracket, bracket_df, prediction_df, elite8_df, h2h, h2h_
     with open(summary_path, 'w') as f:
         json.dump(summary, f, indent=2)
     print(f"  ✓ simulation_summary.json")
-    print()
-
-    # Print summary
-    print("=" * 70)
-    print("                    SIMULATION SUMMARY")
-    print("=" * 70)
-    print()
-    print(f"  Simulations:      {sim_stats['n_simulations']:,}")
-    print(f"  Converged:        {'Yes' if sim_stats['converged'] else 'No'}")
-    print(f"  Unique matchups:  {sim_stats['unique_matchups']:,}")
-    print()
     
-    print("  TOP 10 CHAMPIONSHIP PROBABILITIES")
-    print("  " + "-" * 66)
-    print(f"  {'Team':<25} {'P(Champion)':<15} {'P(Elite 8)':<15}")
-    print("  " + "-" * 66)
-    
-    for team, prob in sorted(champion_probs.items(), key=lambda x: -x[1])[:10]:
-        e8_prob = round_probs.get(team, {}).get('E8', 0)
-        print(f"  {team:<25} {prob:>8.1%}          {e8_prob:>8.1%}")
     print()
-    
-    print("=" * 70)
-    print("                    OPTIMAL BRACKETS")
-    print("=" * 70)
+    print(f"Outputs saved to: {OUTPUT_DIR}")
     print()
-    
-    for strat_key, data in brackets.items():
-        print(f"  {data['description'].upper()}")
-        print(f"    Champion: {data['champion']} ({data['champion_prob']:.1%})")
-        print(f"    ESPN Scoring:  {data['expected_points_espn']:.1f} pts (max 1,920)")
-        print(f"    Yahoo Scoring: {data['expected_points_yahoo']:.1f} pts (max 192)")
-        print()
-    
-    print("=" * 70)
 
 
 # ============================================================================
