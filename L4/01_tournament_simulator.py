@@ -39,6 +39,9 @@ warnings.filterwarnings('ignore')
 # CONFIGURATION
 # ============================================================================
 
+# Utils
+TEAMSINDEX_PATH = Path("../utils/teamsIndex.csv")
+
 # L3 output paths - Primary models (WITH SEEDS - bracket aware, post-Selection Sunday)
 ELITE8_PREDICTIONS_PATH = Path("../L3/elite8/outputs/04_2026_predictions/elite8_predictions_2026_long.csv")
 H2H_MODEL_DIR            = Path("../L3/h2h/models_with_seeds")
@@ -214,6 +217,22 @@ def load_prediction_data():
     """Load raw 2026 prediction features."""
     df = pd.read_csv(PREDICTION_DATA_PATH)
     return df
+
+
+def load_teamsindex():
+    """
+    Load teamsIndex.csv mapping (canonical team name -> teamsIndex).
+    
+    Returns dictionary: {team_name: teamsIndex}
+    """
+    df = pd.read_csv(TEAMSINDEX_PATH)
+    # Create lookup: team name -> teamsIndex
+    team_to_index = {}
+    for _, row in df.iterrows():
+        team_name = row['Team']
+        index = row['Index']
+        team_to_index[team_name] = index
+    return team_to_index
 
 
 def load_public_picks():
@@ -1165,7 +1184,7 @@ def simulate_bracket_from_picks(bracket, picks, round_probs, cache, prediction_d
     return result
 
 
-def export_round_probabilities(round_probs, bracket_df, public_picks_df=None):
+def export_round_probabilities(round_probs, bracket_df, public_picks_df=None, team_to_index=None):
     """
     Export round probability table with optional public pick contrarian analysis.
     
@@ -1173,6 +1192,7 @@ def export_round_probabilities(round_probs, bracket_df, public_picks_df=None):
         round_probs: Dictionary of team probabilities by round
         bracket_df: DataFrame with team info (seed, region)
         public_picks_df: Optional DataFrame with ESPN public pick percentages
+        team_to_index: Optional dictionary mapping team names to teamsIndex
     
     Returns:
         DataFrame with probabilities and contrarian metrics
@@ -1186,11 +1206,13 @@ def export_round_probabilities(round_probs, bracket_df, public_picks_df=None):
         if len(team_info) > 0:
             row['Seed'] = int(team_info.iloc[0]['tournamentSeed'])
             row['Region'] = team_info.iloc[0]['Region']
-            row['teamsIndex'] = int(team_info.iloc[0]['teamsIndex'])  # Add teamsIndex for merge
         else:
             row['Seed'] = None
             row['Region'] = None
-            row['teamsIndex'] = None
+        
+        # Add teamsIndex for merge
+        if team_to_index:
+            row['teamsIndex'] = team_to_index.get(team)
         
         for round_name in rounds:
             row[f'P_{round_name}'] = round_probs[team].get(round_name, 0)
@@ -1200,8 +1222,8 @@ def export_round_probabilities(round_probs, bracket_df, public_picks_df=None):
     df = pd.DataFrame(rows)
     
     # Add public pick data if available
-    if public_picks_df is not None:
-        # Select columns from public picks (using teamsIndex for merge)
+    if public_picks_df is not None and team_to_index is not None:
+        # Select columns from public picks (merge on teamsIndex)
         public_subset = public_picks_df[[
             'teamsIndex',
             'round64_pct',
@@ -1223,7 +1245,7 @@ def export_round_probabilities(round_probs, bracket_df, public_picks_df=None):
             'Public_Champion_Pct'
         ]
         
-        # Merge on teamsIndex (not team name!)
+        # Merge on teamsIndex
         df = df.merge(public_subset, on='teamsIndex', how='left')
         
         # Calculate contrarian ratios for each round (Public / Model)
@@ -1397,6 +1419,7 @@ def run_production_mode(bracket, bracket_df, prediction_df, elite8_df, h2h, h2h_
 
     # Load supporting data (quiet)
     public_picks_df = load_public_picks()
+    team_to_index = load_teamsindex()
     
     # Calculate seed bias (quiet)
     seed_bias_df = None
@@ -1418,8 +1441,7 @@ def run_production_mode(bracket, bracket_df, prediction_df, elite8_df, h2h, h2h_
         contrarian_df['P_FF'] = [round_probs[t].get('FF', 0) for t in contrarian_df['Team']]
         
         # Add teamsIndex for merge
-        team_index_lookup = bracket_df.set_index('Team')['teamsIndex'].to_dict()
-        contrarian_df['teamsIndex'] = contrarian_df['Team'].map(team_index_lookup)
+        contrarian_df['teamsIndex'] = contrarian_df['Team'].map(team_to_index)
         
         # Merge on teamsIndex
         public_subset = public_picks_df[['teamsIndex', 'champion_pct', 'final4_pct']].copy()
@@ -1603,10 +1625,7 @@ def run_production_mode(bracket, bracket_df, prediction_df, elite8_df, h2h, h2h_
     top_10 = sorted(champion_probs.items(), key=lambda x: x[1], reverse=True)[:10]
     
     if public_picks_df is not None:
-        # Create team name to teamsIndex lookup
-        team_to_index = bracket_df.set_index('Team')['teamsIndex'].to_dict()
-        
-        # Create teamsIndex to public picks lookups
+        # Create teamsIndex lookups from public picks
         public_champ_lookup = public_picks_df.set_index('teamsIndex')['champion_pct'].to_dict()
         public_e8_lookup = public_picks_df.set_index('teamsIndex')['elite8_pct'].to_dict()
         
@@ -1651,7 +1670,7 @@ def run_production_mode(bracket, bracket_df, prediction_df, elite8_df, h2h, h2h_
     print("Exporting outputs...")
     print("-" * 70)
     
-    round_probs_df = export_round_probabilities(round_probs, bracket_df, public_picks_df)
+    round_probs_df = export_round_probabilities(round_probs, bracket_df, public_picks_df, team_to_index)
     round_probs_path = OUTPUT_DIR / 'round_probabilities.csv'
     round_probs_df.to_csv(round_probs_path, index=False)
     print(f"  ✓ round_probabilities.csv ({len(round_probs_df)} teams)")
