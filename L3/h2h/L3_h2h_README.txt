@@ -279,30 +279,21 @@ Fix: This is a known bug in production mode strategy application. Weights are
      still reasonable. Can manually edit ensemble_config.json if needed.
 
 ================================================================================
-NEXT STEPS: L4 APPLICATION LAYER
+L4 APPLICATION LAYER
 ================================================================================
 
-With trained models, you can now build:
+With trained models ready, proceed to L4 for decision applications:
 
-1. Bracket Simulator (Monte Carlo)
-   - Load H2H production models
-   - Simulate 10,000 tournaments
-   - Output Elite 8 / Champion probabilities
+  L4.01 — Tournament Simulator
+           Runs 50,000 Monte Carlo simulations using H2H production models.
+           Outputs round-by-round probabilities, seed bias analysis, and
+           optimal bracket recommendations across three strategies.
 
-2. Seed Impact Analyzer
-   - Compare models/ vs models_with_seeds/ predictions
-   - Identify consensus picks vs seed-dependent predictions
-   - Find overseeded/underseeded teams
+  L4.02 — Calcutta Optimizer
+           Combines Elite 8 + H2H probabilities to generate expected value
+           rankings, value picks, and budget-constrained bidding recommendations.
 
-3. Calcutta Strategy Optimizer
-   - Combine Elite 8 + H2H probabilities
-   - Calculate expected values with budget constraints
-   - Non-linear payoff optimization
-
-4. Pool Bracket Generator
-   - Given scoring rules, generate optimal bracket
-   - Two-bracket hedge strategy (different champion paths)
-   - Maximize P(winning pool)
+See L4/README.txt for full documentation and execution instructions.
 
 ================================================================================
 CONTACT & UPDATES

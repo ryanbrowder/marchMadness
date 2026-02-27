@@ -421,8 +421,8 @@ grep "^2026,Michigan," ../L3/data/predictionData/predict_set_2026.csv | cut -d',
 grep "^2008,Kansas," ../L3/data/trainingData/training_set_long.csv | cut -d',' -f4
 
 # 4. Retrain L3 models (critical!)
-cd ../L3
-# [Run L3 training scripts]
+cd ../L3/elite8 && python 03_train_models.py   # validation then production
+cd ../h2h && python 03_train_models.py         # all four configurations
 ```
 
 **Important:** After regenerating L2 data, ALWAYS retrain L3 models.
