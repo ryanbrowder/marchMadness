@@ -41,9 +41,9 @@ L1/
 └── data/                          ← all raw inputs live here
     ├── bartTorvik/                  (written by L0 scraper)
     ├── bracketology/
-    │   ├── espn_bracketology_2026.xlsx
-    │   ├── espn_public_picks_2026.csv
-    │   └── espn_public_picks_historical.xlsx
+    │   ├── espn_bracketology_2026.xlsx       (manually updated post-Selection Sunday)
+    │   ├── espn_public_picks_2026.csv        (manually updated post-Selection Sunday)
+    │   └── espn_public_picks_historical.xlsx (manually maintained archive)
     ├── espnBPI/                     (written by L0 scraper)
     ├── kenPom/                      (written by L0 scraper)
     ├── LRMCB/
@@ -114,11 +114,22 @@ BRACKETOLOGY
   Output: L2/data/bracketology/espn_public_picks_2026_clean.csv
 
   Notes:
-    This source is structurally different — it processes public bracket
-    pick percentages for use in L4 contrarian analysis, not team metrics.
-    No year split. Output is the cleaned current-season picks file only.
-    espn_bracketology_2026.xlsx contains projected seeds/regions and is
-    referenced directly by L2/create_predict_set_L2.py.
+    These files are manually maintained — no L0 scraper.
+    Prior to Selection Sunday, espn_bracketology_2026.xlsx and
+    espn_public_picks_2026.csv contain synthetic/placeholder data.
+    Once the tournament bracket is announced, both files must be manually
+    updated with actual bracket and public pick data before running L1
+    and proceeding to L4 contrarian analysis.
+
+    espn_bracketology_2026.xlsx — projected seeds and regions, referenced
+    directly by L2/create_predict_set_L2.py to add tournamentSeed and
+    tournamentRegion columns to the predict dataset.
+
+    espn_public_picks_2026.csv — public bracket pick percentages, cleaned
+    by this script and consumed by L4 for contrarian analysis.
+
+    espn_public_picks_historical.xlsx — archive of prior years' public
+    pick data. Manually appended each year post-tournament.
 
 ESPN BPI
   Script: espnBPI_transform_L1.py

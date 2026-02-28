@@ -71,6 +71,9 @@ ROUND_MAP = {
 BUDGET = 100
 N_ENTRANTS_TYPICAL = 7  # Typical pool size
 
+# Auction rules
+MAX_SEED = 15  # Only seeds 1-15 are eligible for bidding (no 16 seeds)
+
 # Model blending weight (adjust to control historical vs model influence)
 # 0.0 = 100% historical baseline (ignore model)
 # 0.3 = 30% model, 70% historical (default conservative)
@@ -969,6 +972,13 @@ def main():
         historical_with_expected, expected_points_2026
     )
     print(f"  ✓ Blended historical + model (70/30)")
+    
+    # Filter to seeds 1-15 only (16 seeds not eligible in auction)
+    teams_before = len(team_valuations)
+    team_valuations = team_valuations[team_valuations['Seed'] <= MAX_SEED].copy()
+    teams_filtered = teams_before - len(team_valuations)
+    if teams_filtered > 0:
+        print(f"  ✓ Filtered out {teams_filtered} teams with seed > {MAX_SEED} (not eligible for bidding)")
     
     team_valuations = estimate_market_prices(team_valuations, auction_market)
     print(f"  ✓ Estimated market prices")

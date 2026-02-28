@@ -1,7 +1,7 @@
 Team,Seed,E_Points_Blended,Expected_Market_Price,Fair_Value,Value_Rating,Max_Bid,Expected_Win_Price,Strategy
-UMBC,16,11.87,1.0,12.49,11.87,26,1,Conservative
-Appalachian St.,16,6.9,1.0,7.26,6.9,13,1,Conservative
-Utah Tech,15,11.51,1.78,12.11,6.466,26,2,Conservative
-LIU,16,6.35,1.0,6.68,6.35,13,1,Conservative
-Southeast Missouri St.,16,4.03,1.0,4.24,4.03,9,1,Conservative
-Merrimack,15,6.82,1.78,7.17,3.831,13,2,Conservative
+Utah Tech,15,11.51,1.71,12.66,6.731,25,2,Conservative
+Merrimack,15,6.82,1.71,7.5,3.988,13,2,Conservative
+Portland St.,15,6.71,1.71,7.38,3.924,13,2,Conservative
+Navy,14,9.6,2.79,10.56,3.441,21,4,Conservative
+Wright St.,15,4.41,1.71,4.85,2.579,7,2,Conservative
+UNC Wilmington,13,9.36,4.14,10.3,2.261,21,5,Conservative

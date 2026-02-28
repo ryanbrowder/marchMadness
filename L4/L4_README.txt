@@ -124,21 +124,23 @@ HOW TO RUN:
 WHAT IT DOES:
   1. Loads tournament simulator probabilities (from L4.01)
   2. Loads historical auction prices (from auction_history.csv)
-  3. Calculates Expected Value for each team
-  4. Optimizes portfolio allocation given budget constraints
-  5. Identifies value picks and teams to avoid
-  6. Exports bidding recommendations
+  3. Blends historical + model valuations (70/30)
+  4. Filters to seeds 1–15 only (16 seeds excluded per auction rules)
+  5. Calculates Expected Value for each eligible team
+  6. Optimizes portfolio allocation given budget constraints
+  7. Identifies value picks and teams to avoid
+  8. Exports bidding recommendations
 
 INPUTS:
   • Tournament probabilities from 01_tournament_simulator.py
   • Historical auction prices from auction_history.csv
   • Your auction budget (configurable in script)
   • Payout structure (configurable - linear, top-heavy, winner-take-all)
+  • MAX_SEED = 15 (auction rule — 16 seeds not eligible for bidding)
 
 OUTPUTS:
-  [Outputs depend on implementation - typically:]
-  calcutta_recommendations.csv - Teams ranked by Expected Value
-  optimal_portfolio.csv - Recommended team allocations
+  calcutta_recommendations.csv - All eligible teams ranked by Expected Value
+  optimal_portfolio.csv - Recommended team allocations within budget
   value_picks.csv - Teams underpriced relative to model
   avoid_list.csv - Teams overpriced by market
 
@@ -183,6 +185,11 @@ SIMULATION PARAMETERS (01_tournament_simulator.py):
   N_SIMS_PRODUCTION = 50000 - Number of Monte Carlo simulations
   CONVERGENCE_CHECK = 10000 - Check convergence every N sims
   CONVERGENCE_THRESH = 0.001 - Convergence threshold
+
+AUCTION PARAMETERS (02_calcutta_optimizer.py):
+  MAX_SEED = 15 - Highest seed eligible for bidding (excludes 16 seeds)
+                  Based on historical auction data (2013–2016): no 16 seeds
+                  have ever been purchased. Change to 16 to include them.
 
 SCORING SYSTEMS (configurable):
   ESPN Standard: R64=10, R32=20, S16=40, E8=80, FF=160, Championship=320
