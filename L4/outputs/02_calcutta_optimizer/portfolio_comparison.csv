@@ -1,4 +1,4 @@
 Strategy,N_Teams,Max_Bid,Expected_Spend,Expected_Points,Pts_Per_Dollar,Avg_Value_Rating
-Conservative,6,100,21,56.55,2.693,3.979
-Balanced,8,100,29,73.68,2.541,3.501
-Aggressive,10,100,43,97.1,2.258,3.179
+Conservative,6,100,16,44.46,2.779,3.637
+Balanced,8,100,27,68.92,2.553,3.28
+Aggressive,10,100,40,90.53,2.263,3.013

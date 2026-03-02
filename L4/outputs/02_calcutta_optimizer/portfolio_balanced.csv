@@ -1,9 +1,9 @@
 Team,Seed,E_Points_Blended,Expected_Market_Price,Fair_Value,Value_Rating,Max_Bid,Expected_Win_Price,Strategy
-Portland St.,15,11.08,1.71,12.02,6.48,15,2,Balanced
-Merrimack,15,7.96,1.71,8.63,4.655,10,2,Balanced
-Navy,14,10.98,2.79,11.91,3.935,15,3,Balanced
-Marshall,15,6.46,1.71,7.01,3.778,8,2,Balanced
-Wright St.,15,4.91,1.71,5.32,2.871,6,2,Balanced
-Santa Clara,11,15.16,7.04,16.44,2.153,22,8,Balanced
-High Point,13,8.85,4.14,9.6,2.138,12,5,Balanced
-Stephen F. Austin,13,8.28,4.14,8.98,2.0,12,5,Balanced
+Merrimack,15,9.63,1.71,10.43,5.632,13,2,Balanced
+Navy,14,10.15,2.79,11.0,3.638,15,3,Balanced
+Marshall,15,6.14,1.71,6.65,3.591,9,2,Balanced
+Portland St.,15,5.4,1.71,5.85,3.158,9,2,Balanced
+Austin Peay,14,8.31,2.79,9.0,2.978,13,3,Balanced
+Wright St.,15,4.83,1.71,5.23,2.825,6,2,Balanced
+High Point,13,9.45,4.14,10.24,2.283,13,5,Balanced
+Santa Clara,11,15.01,7.04,16.26,2.132,22,8,Balanced

@@ -1,11 +1,11 @@
 Team,Seed,E_Points_Blended,Expected_Market_Price,Fair_Value,Value_Rating,Max_Bid,Expected_Win_Price,Strategy
-Portland St.,15,11.08,1.71,12.02,6.48,11,2,Aggressive
-Merrimack,15,7.96,1.71,8.63,4.655,9,2,Aggressive
-Navy,14,10.98,2.79,11.91,3.935,11,3,Aggressive
-Marshall,15,6.46,1.71,7.01,3.778,6,2,Aggressive
-Wright St.,15,4.91,1.71,5.32,2.871,4,2,Aggressive
-Santa Clara,11,15.16,7.04,16.44,2.153,16,8,Aggressive
-High Point,13,8.85,4.14,9.6,2.138,9,5,Aggressive
-Stephen F. Austin,13,8.28,4.14,8.98,2.0,9,5,Aggressive
-Georgia,9,10.44,5.4,11.32,1.933,11,6,Aggressive
-San Diego St.,11,12.98,7.04,14.08,1.844,14,8,Aggressive
+Merrimack,15,9.63,1.71,10.43,5.632,11,2,Aggressive
+Navy,14,10.15,2.79,11.0,3.638,11,3,Aggressive
+Marshall,15,6.14,1.71,6.65,3.591,7,2,Aggressive
+Portland St.,15,5.4,1.71,5.85,3.158,7,2,Aggressive
+Austin Peay,14,8.31,2.79,9.0,2.978,9,3,Aggressive
+Wright St.,15,4.83,1.71,5.23,2.825,4,2,Aggressive
+High Point,13,9.45,4.14,10.24,2.283,11,5,Aggressive
+Santa Clara,11,15.01,7.04,16.26,2.132,17,8,Aggressive
+Stephen F. Austin,13,8.27,4.14,8.96,1.998,9,5,Aggressive
+San Diego St.,11,13.34,7.04,14.45,1.895,14,8,Aggressive
