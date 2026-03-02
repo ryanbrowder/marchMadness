@@ -45,11 +45,11 @@ BRACKETOLOGY_PATH = 'data/bracketology/espn_bracketology_2026.csv'
 # Vegas odds input (DraftKings Elite 8 probabilities)
 VEGAS_ODDS_PATH = 'data/vegasOdds/vegasOdds_analyze_L2.csv'
 
-# Optional sources (skip if file doesn't exist OR if disabled by flag)
-OPTIONAL_SOURCES = []
-if INCLUDE_LRMCB:
-    OPTIONAL_SOURCES.append('LRMCB')
-OPTIONAL_SOURCES.append('powerRank')  # powerRank always optional
+# Optional sources (skip if file doesn't exist)
+# When INCLUDE_LRMCB = False, treat LRMCB as optional (skip if missing)
+OPTIONAL_SOURCES = ['powerRank']
+if not INCLUDE_LRMCB:
+    OPTIONAL_SOURCES.append('LRMCB')  # Skip LRMCB when flag is False
 
 # All sources (will be filtered to available sources at runtime)
 ALL_SOURCES = ['bartTorvik', 'kenPom', 'espnBPI', 'masseyComposite', 'LRMCB', 'powerRank']
@@ -113,6 +113,10 @@ def main():
         is_optional = source in OPTIONAL_SOURCES
         if validate_file_exists(path, optional=is_optional):
             available_sources.append(source)
+    
+    # Filter out LRMCB if flag is False
+    if not INCLUDE_LRMCB and 'LRMCB' in available_sources:
+        available_sources.remove('LRMCB')
     
     print(f"\n  Available sources: {len(available_sources)}/{len(INPUTS)}")
     print(f"  Using: {', '.join(available_sources)}")

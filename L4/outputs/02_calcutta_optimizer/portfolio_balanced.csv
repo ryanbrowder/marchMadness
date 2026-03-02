@@ -1,9 +1,9 @@
 Team,Seed,E_Points_Blended,Expected_Market_Price,Fair_Value,Value_Rating,Max_Bid,Expected_Win_Price,Strategy
-Utah Tech,15,11.51,1.71,12.66,6.731,20,2,Balanced
-Merrimack,15,6.82,1.71,7.5,3.988,12,2,Balanced
-Portland St.,15,6.71,1.71,7.38,3.924,10,2,Balanced
-Navy,14,9.6,2.79,10.56,3.441,15,3,Balanced
-Wright St.,15,4.41,1.71,4.85,2.579,6,2,Balanced
-UNC Wilmington,13,9.36,4.14,10.3,2.261,15,5,Balanced
-High Point,13,8.34,4.14,9.18,2.014,15,5,Balanced
-UC Irvine,14,4.99,2.79,5.49,1.789,7,3,Balanced
+Portland St.,15,11.08,1.71,12.02,6.48,15,2,Balanced
+Merrimack,15,7.96,1.71,8.63,4.655,10,2,Balanced
+Navy,14,10.98,2.79,11.91,3.935,15,3,Balanced
+Marshall,15,6.46,1.71,7.01,3.778,8,2,Balanced
+Wright St.,15,4.91,1.71,5.32,2.871,6,2,Balanced
+Santa Clara,11,15.16,7.04,16.44,2.153,22,8,Balanced
+High Point,13,8.85,4.14,9.6,2.138,12,5,Balanced
+Stephen F. Austin,13,8.28,4.14,8.98,2.0,12,5,Balanced
