@@ -1403,12 +1403,12 @@ def export_round_probabilities(round_probs, bracket_df, champion_probs=None, pub
         # So round64_pct (win R64) = Public_R32_Pct (reach R32)
         public_subset.columns = [
             'teamsIndex',
-            'Public_R32_Pct',      # round64_pct = won R64 = reached R32
-            'Public_S16_Pct',      # round32_pct = won R32 = reached S16
-            'Public_E8_Pct',       # sweet16_pct = won S16 = reached E8
-            'Public_FF_Pct',       # elite8_pct = won E8 = reached FF
-            'Public_Champion_Pct', # final4_pct = won FF = reached Championship
-            'Public_WIN_Champion_Pct' # champion_pct = won Championship
+            'Public_R32_Pct',           # round64_pct = won R64 = reached R32
+            'Public_S16_Pct',           # round32_pct = won R32 = reached S16
+            'Public_E8_Pct',            # sweet16_pct = won S16 = reached E8
+            'Public_FF_Pct',            # elite8_pct = won E8 = reached FF
+            'Public_Championship_Pct',  # final4_pct = won FF = reached Championship
+            'Public_WIN_Champion_Pct'   # champion_pct = won Championship
         ]
         
         # Merge on teamsIndex
@@ -1425,7 +1425,7 @@ def export_round_probabilities(round_probs, bracket_df, champion_probs=None, pub
             ('S16', 'Public_S16_Pct', 'S16_Contrarian_Ratio'),
             ('E8', 'Public_E8_Pct', 'E8_Contrarian_Ratio'),
             ('FF', 'Public_FF_Pct', 'FF_Contrarian_Ratio'),
-            ('Championship', 'Public_Champion_Pct', 'Champion_Contrarian_Ratio')
+            ('Championship', 'Public_Championship_Pct', 'Championship_Contrarian_Ratio')
         ]
         
         for round_name, public_col, ratio_col in round_mappings:
@@ -1443,7 +1443,7 @@ def export_round_probabilities(round_probs, bracket_df, champion_probs=None, pub
             ('S16', 'Public_S16_Pct', 'S16_Contrarian_Ratio'),
             ('E8', 'Public_E8_Pct', 'E8_Contrarian_Ratio'),
             ('FF', 'Public_FF_Pct', 'FF_Contrarian_Ratio'),
-            ('Championship', 'Public_Champion_Pct', 'Champion_Contrarian_Ratio')
+            ('Championship', 'Public_Championship_Pct', 'Championship_Contrarian_Ratio')
         ]
         
         for round_name, public_col, ratio_col in rounds_in_order:
@@ -1451,11 +1451,18 @@ def export_round_probabilities(round_probs, bracket_df, champion_probs=None, pub
             column_order.append(public_col)
             column_order.append(ratio_col)
         
-        # Add P_WIN_Championship and Public_WIN_Champion_Pct if they exist
+        # Calculate WIN_Champion_Contrarian_Ratio
+        if 'P_WIN_Championship' in df.columns and 'Public_WIN_Champion_Pct' in df.columns:
+            df['WIN_Champion_Contrarian_Ratio'] = df['Public_WIN_Champion_Pct'] / (df['P_WIN_Championship'] * 100)
+            df['WIN_Champion_Contrarian_Ratio'] = df['WIN_Champion_Contrarian_Ratio'].round(2)
+        
+        # Add P_WIN_Championship, Public_WIN_Champion_Pct, and WIN_Champion_Contrarian_Ratio if they exist
         if 'P_WIN_Championship' in df.columns:
             column_order.append('P_WIN_Championship')
         if 'Public_WIN_Champion_Pct' in df.columns:
             column_order.append('Public_WIN_Champion_Pct')
+        if 'WIN_Champion_Contrarian_Ratio' in df.columns:
+            column_order.append('WIN_Champion_Contrarian_Ratio')
         
         # Only select columns that exist in df
         column_order = [col for col in column_order if col in df.columns]
@@ -1641,11 +1648,11 @@ def run_production_mode(bracket, bracket_df, prediction_df, elite8_df, h2h, h2h_
         
         # Merge on teamsIndex
         public_subset = public_picks_df[['teamsIndex', 'champion_pct', 'final4_pct']].copy()
-        public_subset.columns = ['teamsIndex', 'Public_Champion_Pct', 'Public_FF_Pct']
+        public_subset.columns = ['teamsIndex', 'Public_Championship_Pct', 'Public_FF_Pct']
         contrarian_df = contrarian_df.merge(public_subset, on='teamsIndex', how='left')
         
         # Champion ratio: Use champion_pct from ESPN (public who picked to win championship)
-        contrarian_df['Champion_Ratio'] = contrarian_df['Public_Champion_Pct'] / (contrarian_df['P_WIN_Championship'] * 100)
+        contrarian_df['Champion_Ratio'] = contrarian_df['Public_Championship_Pct'] / (contrarian_df['P_WIN_Championship'] * 100)
         contrarian_df['FF_Ratio'] = contrarian_df['Public_FF_Pct'] / (contrarian_df['P_FF'] * 100)
         
         contrarian_champ = contrarian_df[contrarian_df['P_WIN_Championship'] > 0.05].sort_values('Champion_Ratio').head(5)
@@ -1725,7 +1732,7 @@ def run_production_mode(bracket, bracket_df, prediction_df, elite8_df, h2h, h2h_
         
         for idx, (_, row) in enumerate(contrarian_champ.head(3).iterrows(), 1):
             print(f"  {idx}. {row['Team']}")
-            print(f"     Model: {row['P_WIN_Championship']*100:>5.1f}% WIN champion | Public picks: {row['Public_Champion_Pct']:>5.1f}% (Ratio: {row['Champion_Ratio']:.2f})")
+            print(f"     Model: {row['P_WIN_Championship']*100:>5.1f}% WIN champion | Public picks: {row['Public_Championship_Pct']:>5.1f}% (Ratio: {row['Champion_Ratio']:.2f})")
             
             # Add seed bias context if available
             if seed_bias_df is not None:
@@ -1770,7 +1777,7 @@ def run_production_mode(bracket, bracket_df, prediction_df, elite8_df, h2h, h2h_
         print("Full Contrarian Champion List")
         print("-" * 70)
         for _, row in contrarian_champ.iterrows():
-            print(f"  {row['Team']:<20} Model: {row['P_WIN_Championship']*100:>5.1f}%  Public: {row['Public_Champion_Pct']:>5.1f}%  Ratio: {row['Champion_Ratio']:.2f}")
+            print(f"  {row['Team']:<20} Model: {row['P_WIN_Championship']*100:>5.1f}%  Public: {row['Public_Championship_Pct']:>5.1f}%  Ratio: {row['Champion_Ratio']:.2f}")
         print()
     
     # Seed bias details
