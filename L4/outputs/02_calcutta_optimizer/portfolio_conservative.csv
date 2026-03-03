@@ -1,7 +1,7 @@
 Team,Seed,E_Points_Blended,Expected_Market_Price,Fair_Value,Value_Rating,Max_Bid,Expected_Win_Price,Strategy
-Merrimack,15,9.63,1.71,10.43,5.632,23,2,Conservative
-Navy,14,10.15,2.79,11.0,3.638,23,4,Conservative
-Marshall,15,6.14,1.71,6.65,3.591,14,2,Conservative
-Portland St.,15,5.4,1.71,5.85,3.158,14,2,Conservative
-Austin Peay,14,8.31,2.79,9.0,2.978,18,4,Conservative
-Wright St.,15,4.83,1.71,5.23,2.825,8,2,Conservative
+Merrimack,15,7.35,1.71,8.14,4.298,20,2,Conservative
+Navy,14,9.69,2.79,10.73,3.473,25,4,Conservative
+Wright St.,15,4.64,1.71,5.14,2.713,10,2,Conservative
+East Tennessee St.,15,4.51,1.71,4.99,2.637,10,2,Conservative
+Portland St.,15,4.31,1.71,4.77,2.52,10,2,Conservative
+High Point,13,9.1,4.14,10.07,2.198,25,5,Conservative
