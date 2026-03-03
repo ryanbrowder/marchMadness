@@ -613,7 +613,7 @@ def simulate_tournament(bracket, prediction_df, h2h, n_sims=50000,
                     })
 
         # --- Final Four ---
-        ff_matchups = [('East', 'South'), ('West', 'Midwest')]
+        ff_matchups = [('East', 'Midwest'), ('South', 'West')]
         ff_winners = []
         for r1, r2 in ff_matchups:
             if r1 in e8_winners and r2 in e8_winners:
@@ -1150,7 +1150,7 @@ def simulate_bracket_from_picks(bracket, picks, round_probs, cache, prediction_d
             result['E8'][region] = {'team1': t1, 'team2': t2, 'winner': winner, 'prob': prob}
     
     # FF - Calculate actual H2H probabilities for Final Four
-    ff_matchups = [('East', 'South'), ('West', 'Midwest')]
+    ff_matchups = [('East', 'Midwest'), ('South', 'West')]
     ff_winners = []
     result['FF'] = {}
     

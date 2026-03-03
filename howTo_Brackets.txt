@@ -1,0 +1,203 @@
+================================================================================
+                  BRACKET WORKFLOW: ELITE 8 FIRST
+================================================================================
+
+CORE PRINCIPLE: Build from Elite 8 backwards. Your model is strongest at 
+predicting Elite 8 (0.902 ROC-AUC). Championship is path-dependent and 
+uncertain. Early rounds are high variance.
+
+KEY FILES:
+  - round_probabilities.csv (your primary data source)
+  - bracket_chalk.csv (starting template)
+
+
+================================================================================
+              BRACKET 1: MAXIMIZE EXPECTED VALUE (5 min)
+================================================================================
+
+GOAL: Pick teams most likely to reach each round
+
+STEP 1: Identify Elite 8
+  □ Open round_probabilities.csv
+  □ Sort by P_E8 (descending)
+  □ Pick top 8 teams
+  □ Verify 2 per region
+
+STEP 2: Build the bracket
+  □ Copy bracket_chalk.csv as template
+  □ Confirm Elite 8 matches top 8 by P_E8
+  □ Champion: Highest P_Championship
+  □ Submit
+
+DONE. Bracket 1 complete.
+
+
+================================================================================
+              BRACKET 2: CONTRARIAN + HEDGE (15 min)
+================================================================================
+
+GOAL: Differentiate where public is wrong, hedge championship outcome
+
+STEP 1: Identify Elite 8 (Contrarian Mix)
+  □ Open round_probabilities.csv
+  □ Apply TIER SYSTEM to pick 8 teams:
+
+  TIER 1 (P_E8 > 60%): ALWAYS PICK - ignore ratio
+    → Lock these in first
+
+  TIER 2 (P_E8 40-60%): Pick if E8_Contrarian_Ratio < 0.6
+    → Good contrarian value
+
+  TIER 3 (P_E8 25-40%): Only if ratio < 0.4 AND you want max differentiation
+    → High risk, use sparingly (0-1 team max)
+
+  TIER 4 (P_E8 < 25%): NEVER PICK
+    → Too low probability
+
+  TARGET: 3 from Tier 1 + 4-5 from Tier 2 + 0-1 from Tier 3 = 8 teams
+  VERIFY: 2 teams per region
+
+STEP 2: Pick Different Champion (Hedge Bracket 1)
+  □ If Bracket 1 = Michigan → Pick Duke
+  □ If Bracket 1 = Duke → Pick Michigan or Arizona
+  □ Or pick contrarian (ratio < 0.3)
+
+STEP 3: Build Final Four
+  □ From your 8 Elite 8 teams
+  □ Sort by P_FF
+  □ Pick top 3 + 1 contrarian (if strong ratio)
+
+STEP 4: Fill Early Rounds
+  □ Use P_R32, P_S16 columns
+  □ Pick team with higher probability for each matchup
+  □ Goal: Get TO your Elite 8
+
+STEP 5: Submit
+
+
+================================================================================
+              QUICK DECISION TABLE
+================================================================================
+
+FOR ANY TEAM: Should I pick them for Elite 8?
+
+BRACKET 1:
+  P_E8 in top 8? → YES: Pick  |  NO: Don't pick
+
+BRACKET 2:
+  P_E8 > 60%               → ALWAYS PICK (Tier 1)
+  P_E8 40-60% + ratio <0.6 → PICK (Tier 2 - good value)
+  P_E8 40-60% + ratio >0.6 → MAYBE (Tier 2 - filler if needed)
+  P_E8 25-40% + ratio <0.4 → MAYBE (Tier 3 - aggressive, 0-1 max)
+  P_E8 25-40% + ratio >0.4 → DON'T PICK
+  P_E8 < 25%               → NEVER PICK (Tier 4)
+
+RATIO GUIDE:
+  < 0.4 = Severely undervalued (strong contrarian)
+  < 0.6 = Undervalued (good contrarian)
+  > 1.0 = Overvalued (fade)
+
+
+================================================================================
+              CONTRARIAN RATIO EXPLAINED
+================================================================================
+
+Ratio = Public % / Model %
+
+LOW ratio  = Public undervalues = OPPORTUNITY
+HIGH ratio = Public overvalues = AVOID
+
+Examples:
+  Houston:  15.1% model, 2.2% public → 0.15 ratio (SEVERELY undervalued)
+  Arizona:  27.3% model, 8.6% public → 0.31 ratio (undervalued)
+  Duke:     45.4% model, 15.1% public → 0.33 ratio (slight undervalue)
+  UConn:    9.7% model, 7.3% public → 0.75 ratio (fairly valued)
+  Purdue:   6.1% model, 8.2% public → 1.34 ratio (OVERVALUED - fade)
+
+
+================================================================================
+              VERIFICATION CHECKLIST
+================================================================================
+
+Before submitting:
+  □ Bracket 1: Top 8 teams by P_E8
+  □ Bracket 2: Mix of Tier 1/2/3 with contrarian focus
+  □ Both brackets: 8 Elite 8 teams (2 per region)
+  □ Both brackets: 4 Final Four teams
+  □ DIFFERENT champions between brackets
+  □ Bracket 2: 1-3 teams with ratio < 0.5
+
+
+================================================================================
+              COMMON MISTAKES
+================================================================================
+
+DON'T:
+  × Pick champion first, fill backwards
+  × Try to predict every R64 upset
+  × Use same champion in both brackets
+  × Pick P_E8 < 25% no matter how good the ratio
+  × Ignore ratios in Bracket 2 (defeats the purpose)
+  × Go all contrarian (keep 3+ Tier 1 locks)
+
+DO:
+  ✓ Build from Elite 8 backwards
+  ✓ Use P_E8 thresholds (60%, 40%, 25%)
+  ✓ Hedge champions between brackets
+  ✓ Balance probability + contrarian value
+  ✓ Keep 2 teams per region in Elite 8
+
+
+================================================================================
+              SCORING REMINDER
+================================================================================
+
+ESPN Standard:
+  R64: 10  |  R32: 20  |  S16: 40  |  E8: 80  |  FF: 160  |  Champ: 320
+
+Elite 8 Strategy:
+  8 correct Elite 8 = 640 points (33% of total)
+  1 correct champion = 320 points (17% of total)
+  
+  Elite 8 is 4x more predictable → optimize there
+
+
+================================================================================
+              2026 EXAMPLE WALKTHROUGH
+================================================================================
+
+BRACKET 1 ELITE 8:
+  1. Arizona     (73.9%) - Tier 1
+  2. Duke        (68.3%) - Tier 1
+  3. Michigan    (63.3%) - Tier 1
+  4. Houston     (54.1%) - Tier 2, ratio 0.30
+  5. Connecticut (54.2%) - Tier 2, ratio 0.76
+  6. Iowa St     (47.9%) - Tier 2, ratio 0.51
+  7. Kansas      (44.3%) - Tier 2, ratio 0.61
+  8. Florida     (40.4%) - Tier 2, ratio 0.68
+  
+  Champion: Michigan (31.4%)
+
+BRACKET 2 ELITE 8 (Contrarian Option):
+  Keep: Arizona, Duke, Michigan (Tier 1 - must haves)
+  Keep: Houston, Iowa St, Kansas (Tier 2 - strong ratios)
+  Keep: Florida OR swap for Illinois (40.1%, ratio 0.67)
+  Keep: Connecticut OR swap for Alabama (28.7%, ratio 0.36 - aggressive)
+  
+  Champion: Duke (45.4%) - hedges Michigan
+
+
+================================================================================
+              EXECUTION SUMMARY
+================================================================================
+
+1. Run: python 01_tournament_simulator.py
+2. Open: round_probabilities.csv
+3. Bracket 1: Sort by P_E8, pick top 8, use chalk template (5 min)
+4. Bracket 2: Apply tier system, pick contrarian, different champion (15 min)
+5. Submit both
+
+Total time: 20 minutes
+Expected value: Well above casual brackets
+
+Your edge: Elite 8 model (0.902 AUC) + contrarian public data + systematic process
