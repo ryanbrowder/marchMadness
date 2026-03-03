@@ -2,40 +2,40 @@
   "simulation": {
     "n_sims": 50000,
     "converged": false,
-    "unique_matchups": 999,
-    "gnb_exclusion_rate": 0.8789
+    "unique_matchups": 998,
+    "gnb_exclusion_rate": 0.8858
   },
   "top_10_champions": {
-    "Duke": 0.4622,
-    "Michigan": 0.4531,
-    "Arizona": 0.2268,
-    "Connecticut": 0.131,
-    "Houston": 0.091,
-    "Florida": 0.0824,
-    "Purdue": 0.0808,
-    "Michigan St.": 0.0685,
-    "Texas Tech": 0.0669,
-    "Kansas": 0.0621
+    "Duke": 0.3373,
+    "Michigan": 0.253,
+    "Arizona": 0.1234,
+    "Houston": 0.0492,
+    "Connecticut": 0.0357,
+    "Purdue": 0.0291,
+    "Texas Tech": 0.0276,
+    "Florida": 0.026,
+    "Illinois": 0.0197,
+    "Michigan St.": 0.0179
   },
   "strategies": {
     "chalk": {
       "description": "Chalk (always pick favorite)",
       "champion": "Duke",
-      "champion_probability": 0.4622,
+      "champion_probability": 0.3373,
       "expected_points_espn": 1404.19,
       "expected_points_yahoo": 140.42
     },
     "expected_value": {
       "description": "Expected Value (maximize expected points)",
       "champion": "Duke",
-      "champion_probability": 0.4622,
+      "champion_probability": 0.3373,
       "expected_points_espn": 1404.19,
       "expected_points_yahoo": 140.42
     },
     "elite8_focus": {
       "description": "Elite 8 Focus (optimize through Sweet 16)",
       "champion": "Duke",
-      "champion_probability": 0.4622,
+      "champion_probability": 0.3373,
       "expected_points_espn": 1400.53,
       "expected_points_yahoo": 140.05
     }
