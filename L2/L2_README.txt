@@ -184,7 +184,7 @@ Check that training and prediction are on same scale:
 ```bash
 # Quick check - both should show 364.0
 grep "^2026,Michigan," ../L3/data/predictionData/predict_set_2026.csv | cut -d',' -f5
-grep "^2008,Kansas," ../L3/data/trainingData/training_set_long.csv | cut -d',' -f4
+grep "^2008,Kansas," ../L3/data/trainingData/training_set_long.csv | cut -d',' -f5
 ```
 
 If both show ~364, scale normalization worked correctly.

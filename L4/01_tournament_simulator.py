@@ -46,6 +46,7 @@ TEAMSINDEX_PATH = Path("../utils/teamsIndex.csv")
 ELITE8_PREDICTIONS_PATH = Path("../L3/elite8/outputs/04_2026_predictions/elite8_predictions_2026_long.csv")
 H2H_MODEL_DIR            = Path("../L3/h2h/models_with_seeds")
 PREDICTION_DATA_PATH     = Path("../L3/data/predictionData/predict_set_2026.csv")
+ESPN_BRACKET_PATH       = Path("../L2/data/bracketology/espn_bracketology_2026.csv")
 
 # Comparison models (NO SEEDS - pure metrics, pre-Selection Sunday)
 ELITE8_PREDICTIONS_NO_SEEDS_PATH = Path("../L3/elite8/outputs/04_2026_predictions_no_seeds/elite8_predictions_2026_long.csv")
@@ -216,6 +217,15 @@ def load_both_h2h_models():
 def load_prediction_data():
     """Load raw 2026 prediction features."""
     df = pd.read_csv(PREDICTION_DATA_PATH)
+    
+    # Load Region from ESPN bracket (merge on Index, not Team name)
+    try:
+        regions_df = pd.read_csv(ESPN_BRACKET_PATH)[["Team Index", "Region"]]
+        regions_df = regions_df.rename(columns={"Team Index": "Index"})
+        df = df.merge(regions_df, on="Index", how="left")
+        print(f"  ✓ Merged Region: {len(df[df['Region'].notna()])} teams")
+    except:
+        print("  ⚠ Could not load Region from ESPN bracket")
     return df
 
 
@@ -449,10 +459,124 @@ def identify_seed_bias(bracket_df, elite8_with_seeds, elite8_no_seeds, threshold
 # SIMULATION ENGINE
 # ============================================================================
 
+
+
+# ============================================================================
+# PLAY-IN GAME SUPPORT
+# ============================================================================
+
+def identify_play_in_matchups(bracket_df):
+    """
+    Identify play-in games from duplicate seeds in same region.
+    
+    Args:
+        bracket_df: DataFrame with Team, tournamentSeed, Region columns
+    
+    Returns:
+        List of dicts: [{'team1': str, 'team2': str, 'seed': int, 'region': str}, ...]
+    """
+    play_in_matchups = []
+    
+    # Check each region for duplicate 11 and 16 seeds
+    for region in bracket_df['Region'].unique():
+        for seed in [11, 16]:
+            teams = bracket_df[
+                (bracket_df['Region'] == region) & 
+                (bracket_df['tournamentSeed'] == seed)
+            ]
+            
+            if len(teams) == 2:
+                play_in_matchups.append({
+                    'team1': teams.iloc[0]['Team'],
+                    'team2': teams.iloc[1]['Team'],
+                    'seed': seed,
+                    'region': region
+                })
+            elif len(teams) > 2:
+                print(f"  WARNING: Found {len(teams)} teams with seed {seed} in {region}")
+    
+    return play_in_matchups
+
+
+def resolve_play_ins_deterministic(prediction_df, h2h, play_in_matchups):
+    """
+    Resolve play-in games deterministically (pick favorites) for bracket construction.
+    
+    Args:
+        prediction_df: Full team data (68 teams)
+        h2h: H2H model dictionary
+        play_in_matchups: List of play-in matchup dicts
+    
+    Returns:
+        prediction_df with losers removed (64 teams)
+    """
+    if len(play_in_matchups) == 0:
+        return prediction_df
+    
+    losers = []
+    
+    print("Resolving play-in games (picking favorites for bracket)...")
+    print("-" * 70)
+    
+    for matchup in play_in_matchups:
+        team1 = matchup['team1']
+        team2 = matchup['team2']
+        
+        # Get H2H probability using existing function
+        result = predict_h2h_matchup(team1, team2, prediction_df, h2h)
+        prob = result[0] if isinstance(result, tuple) else result
+        
+        # Pick favorite (deterministic for bracket construction)
+        if prob > 0.5:
+            winner, loser = team1, team2
+        else:
+            winner, loser = team2, team1
+            prob = 1 - prob
+        
+        losers.append(loser)
+        
+        print(f"  {matchup['seed']}-seed ({matchup['region']}): "
+              f"{winner} over {loser} ({prob:.1%})")
+    
+    # Remove losers from dataset
+    bracket_64 = prediction_df[~prediction_df['Team'].isin(losers)].copy()
+    
+    print(f"  ✓ Resolved {len(play_in_matchups)} play-ins, proceeding with {len(bracket_64)} teams\n")
+    
+    return bracket_64
+
+
+def simulate_play_in_game(team1, team2, prediction_df, h2h):
+    """
+    Simulate a single play-in game (randomized for Monte Carlo).
+    
+    Args:
+        team1, team2: Team names
+        prediction_df: Full team data
+        h2h: H2H model dictionary
+    
+    Returns:
+        tuple: (winner, loser, probability)
+    """
+    result = predict_h2h_matchup(team1, team2, prediction_df, h2h)
+    prob = result[0] if isinstance(result, tuple) else result
+    
+    # Randomize outcome
+    if np.random.random() < prob:
+        return team1, team2, prob
+    else:
+        return team2, team1, 1 - prob
+
+
 def simulate_tournament(bracket, prediction_df, h2h, n_sims=50000, 
                        convergence_check=10000, convergence_thresh=0.001,
                        n_trace=5):
     """
+    
+    # Detect play-in matchups (done once, outside simulation loop)
+    play_in_matchups = identify_play_in_matchups(bracket_df)
+    has_play_ins = len(play_in_matchups) > 0
+
     Monte Carlo simulation with full round tracking.
     
     Args:
@@ -465,6 +589,11 @@ def simulate_tournament(bracket, prediction_df, h2h, n_sims=50000,
         cache: matchup probability cache
         traces: list of sample simulation game logs (if n_trace > 0)
     """
+    
+    # Detect play-in matchups (done once, outside simulation loop)
+    bracket_df = prediction_df[prediction_df["tournamentSeed"].between(1, 16)].copy()
+    play_in_matchups = identify_play_in_matchups(bracket_df)
+    has_play_ins = len(play_in_matchups) > 0
     print(f"Running {n_sims:,} tournament simulations...")
     if convergence_check:
         print(f"  Convergence: check every {convergence_check:,}, threshold {convergence_thresh:.3f}")
@@ -508,6 +637,33 @@ def simulate_tournament(bracket, prediction_df, h2h, n_sims=50000,
         return p
 
     for sim_idx in range(n_sims):
+        
+        # If play-ins exist, simulate them first for this iteration
+        if has_play_ins:
+            sim_prediction_df = prediction_df.copy()
+            losers = []
+            
+            for matchup in play_in_matchups:
+                winner, loser, _ = simulate_play_in_game(
+                    matchup['team1'], 
+                    matchup['team2'], 
+                    sim_prediction_df, 
+                    h2h
+                )
+                losers.append(loser)
+            
+            # Remove losers for this simulation
+            sim_prediction_df = sim_prediction_df[
+                ~sim_prediction_df['Team'].isin(losers)
+            ].copy()
+            
+            # Reconstruct bracket with 64 teams for this simulation
+            sim_bracket, _ = construct_bracket(sim_prediction_df)
+        else:
+            # No play-ins, use original bracket
+            sim_bracket = bracket
+            sim_prediction_df = prediction_df
+
         if sim_idx % 5000 == 0:
             print(f"    [{sim_idx:>6}/{n_sims}] ...", flush=True)
 
@@ -516,7 +672,7 @@ def simulate_tournament(bracket, prediction_df, h2h, n_sims=50000,
 
         # --- R64 ---
         r64_winners = {}
-        for region, matchups in bracket.items():
+        for region, matchups in sim_bracket.items():
             r64_winners[region] = []
             for t1, t2 in matchups:
                 sim_rounds['R64'].add(t1)
@@ -1401,6 +1557,22 @@ def run_production_mode(bracket, bracket_df, prediction_df, elite8_df, h2h, h2h_
     print("                    PRODUCTION MODE")
     print("=" * 70)
     print()
+    
+    # ========================================================================
+    # Resolve play-in games deterministically for bracket construction
+    # ========================================================================
+    # Filter to tournament teams only (68 teams with seeds)
+    tournament_df = prediction_df[prediction_df["tournamentSeed"].between(1, 16)].copy()
+    
+    play_in_matchups = identify_play_in_matchups(tournament_df)
+    if len(play_in_matchups) > 0:
+        tournament_df = resolve_play_ins_deterministic(
+            tournament_df, h2h, play_in_matchups
+        )
+        # Reconstruct bracket with 64 teams
+        bracket, bracket_df = construct_bracket(tournament_df)
+        # Update prediction_df to use resolved tournament teams
+        prediction_df = tournament_df
 
     # ========================================================================
     # STEP 1: Run simulations (quiet except progress)

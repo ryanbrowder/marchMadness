@@ -66,8 +66,11 @@ def clean_powerrank_data(df: pd.DataFrame) -> pd.DataFrame:
     # Fix encoding issues
     df = fix_encoding_issues(df)
     
-    # Strip records from team names (e.g., "Duke (15-2)" -> "Duke")
+    # Strip records from team names FIRST (e.g., "Kansas 1 (9-2)" -> "Kansas 1")
     df['Team'] = df['Team'].str.replace(r'\s*\([^)]*\)\s*$', '', regex=True)
+    
+    # THEN strip trailing rank numbers (e.g., "Kansas 1" -> "Kansas")
+    df['Team'] = df['Team'].str.replace(r'\s+\d+\s*$', '', regex=True)
     
     # Strip whitespace from team names
     df['Team'] = df['Team'].str.strip()
