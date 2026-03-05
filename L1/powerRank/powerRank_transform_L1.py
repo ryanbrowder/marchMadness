@@ -1,6 +1,7 @@
 """
 Power Rank L1 Transform
 Transforms raw Power Rank data from L0 to clean, standardized L2 format
+Handles both Dr. Feng's historical data (2002-2025) and scraped current data (2026)
 """
 
 import pandas as pd
@@ -59,6 +60,32 @@ def fix_encoding_issues(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
+def load_feng_historical(input_path: str) -> pd.DataFrame:
+    """
+    Load Dr. Feng's historical data format
+    Format: Year, Rank, Team, Rating (no headers)
+    """
+    df = pd.read_csv(input_path, names=['Year', 'Rank', 'Team', 'PowerRank'])
+    
+    # Drop the Rank column - we only need Rating (PowerRank)
+    df = df[['Year', 'Team', 'PowerRank']]
+    
+    return df
+
+
+def load_scraped_current(input_path: str) -> pd.DataFrame:
+    """
+    Load scraped current season data
+    Format: Team, PowerRank, Year (with headers)
+    """
+    df = pd.read_csv(input_path, encoding='utf-8-sig')
+    
+    # Reorder to match standard format
+    df = df[['Year', 'Team', 'PowerRank']]
+    
+    return df
+
+
 def clean_powerrank_data(df: pd.DataFrame) -> pd.DataFrame:
     """Clean and standardize Power Rank data"""
     df = df.copy()
@@ -66,8 +93,10 @@ def clean_powerrank_data(df: pd.DataFrame) -> pd.DataFrame:
     # Fix encoding issues
     df = fix_encoding_issues(df)
     
-    # Strip records from team names FIRST (e.g., "Kansas 1 (9-2)" -> "Kansas 1")
-    df['Team'] = df['Team'].str.replace(r'\s*\([^)]*\)\s*$', '', regex=True)
+    # Strip ONLY records (W-L format) from team names, NOT location qualifiers
+    # This regex matches patterns like (15-2), (9-2-1), but NOT (FL), (OH), (PA), (NY)
+    # Pattern: parentheses containing digits, dashes, and optional spaces
+    df['Team'] = df['Team'].str.replace(r'\s*\(\d+[-\s]*\d+[-\s]*\d*\)\s*$', '', regex=True)
     
     # THEN strip trailing rank numbers (e.g., "Kansas 1" -> "Kansas")
     df['Team'] = df['Team'].str.replace(r'\s+\d+\s*$', '', regex=True)
@@ -75,11 +104,24 @@ def clean_powerrank_data(df: pd.DataFrame) -> pd.DataFrame:
     # Strip whitespace from team names
     df['Team'] = df['Team'].str.strip()
     
-    # Convert PowerRank to float64 (preserves decimals from 2019 data)
+    # Convert PowerRank (rating) to float64
     df['PowerRank'] = pd.to_numeric(df['PowerRank'], errors='coerce').astype('float64')
     
     # Convert Year to integer
     df['Year'] = pd.to_numeric(df['Year'], errors='coerce').astype('Int64')
+    
+    # Check for duplicates BEFORE removing them
+    duplicates = df[df.duplicated(subset=['Team', 'Year'], keep=False)]
+    if len(duplicates) > 0:
+        print(f"\n   Found {len(duplicates)} duplicate entries (showing first 20):")
+        print("   These will be deduplicated (keeping first occurrence):\n")
+        dup_summary = duplicates.sort_values(['Year', 'Team', 'PowerRank']).head(20)
+        print(dup_summary[['Year', 'Team', 'PowerRank']].to_string(index=False))
+        
+        # Show which years have duplicates
+        dup_by_year = duplicates.groupby('Year').size()
+        print(f"\n   Duplicates by year:")
+        print(dup_by_year.to_string())
     
     # Remove duplicates (keep first occurrence)
     df = df.drop_duplicates(subset=['Team', 'Year'], keep='first')
@@ -138,23 +180,29 @@ def reorder_and_select_columns(df: pd.DataFrame) -> pd.DataFrame:
     return df[final_columns]
 
 
-def transform_powerrank_data(input_path: str, output_path: str, lookup_path: str):
+def transform_powerrank_data(input_path: str, output_path: str, lookup_path: str, 
+                             data_type: str = 'historical'):
     """
     Main transformation pipeline for Power Rank data
     
     Args:
         input_path: Path to raw Power Rank CSV (L1)
         output_path: Path for cleaned output CSV (L2)
-        lookup_path: Path to team lookup CSV (teamsIndex.csv with 'Team' and 'Index' columns)
+        lookup_path: Path to team lookup CSV
+        data_type: 'historical' for Dr. Feng's data, 'current' for scraped data
     """
     
     print("Starting Power Rank transformation...")
     print(f"Input: {input_path}")
     print(f"Output: {output_path}")
+    print(f"Type: {data_type}")
     
-    # Load data
+    # Load data based on type
     print("\n1. Loading data...")
-    df = pd.read_csv(input_path, encoding='utf-8-sig')  # Handle BOM
+    if data_type == 'historical':
+        df = load_feng_historical(input_path)
+    else:
+        df = load_scraped_current(input_path)
     print(f"   Loaded {len(df)} rows")
     
     # Load team lookup
@@ -193,7 +241,8 @@ def transform_powerrank_data(input_path: str, output_path: str, lookup_path: str
     # Final column selection and sorting
     print("\n6. Finalizing output...")
     df = reorder_and_select_columns(df)
-    df = df.sort_values(['Year', 'PowerRank']).reset_index(drop=True)
+    # Sort by Year, then PowerRank descending (higher rating = better)
+    df = df.sort_values(['Year', 'PowerRank'], ascending=[True, False]).reset_index(drop=True)
     
     # PowerRank statistics by year
     print("\n7. PowerRank Statistics by Year:")
@@ -215,8 +264,8 @@ if __name__ == "__main__":
     project_root = script_dir.parent.parent  # Go up from L1/powerRank to project root
     
     # Input files
-    historical_file = project_root / "L1" / "data" / "powerRank" / "powerRank_raw_L1.csv"
-    current_file = project_root / "L1" / "data" / "powerRank" / "powerRank_rawCurrent_L1.csv"
+    historical_file = project_root / "L1" / "data" / "powerRank" / "thepowerrank_pretourney_2002_2025.csv"
+    current_file = project_root / "L1" / "data" / "powerRank" / "powerRank_raw_L1.csv"
     
     # Output files
     analyze_file = project_root / "L2" / "data" / "powerRank" / "powerRank_analyze_L2.csv"
@@ -225,14 +274,15 @@ if __name__ == "__main__":
     # Team lookup
     lookup_file = script_dir / ".." / ".." / "utils" / "teamsIndex.csv"
     
-    # Transform historical data (2016-2024)
+    # Transform historical data (2002-2025)
     print("="*60)
-    print("TRANSFORMING HISTORICAL DATA (2016-2024)")
+    print("TRANSFORMING HISTORICAL DATA (2002-2025)")
     print("="*60)
     df_analyze = transform_powerrank_data(
         str(historical_file),
         str(analyze_file),
-        str(lookup_file)
+        str(lookup_file),
+        data_type='historical'
     )
     
     print("\n" + "="*60)
@@ -243,7 +293,8 @@ if __name__ == "__main__":
     df_predict = transform_powerrank_data(
         str(current_file),
         str(predict_file),
-        str(lookup_file)
+        str(lookup_file),
+        data_type='current'
     )
     
     print("\n" + "="*60)

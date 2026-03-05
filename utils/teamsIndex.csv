@@ -128,6 +128,7 @@ Central Arkansas,45
 CCSU,46
 Central Conn,46
 Central Connecticut,46
+Central Connecticut State,46
 C Michigan,47
 CMU,47
 Central Michigan,47
@@ -140,6 +141,7 @@ Charleston So,49
 Charleston Southern,49
 Birmingham So,49
 Birmingham Southern,49
+Birm Southern,49
 CLT,50
 Charlotte,50
 Chattanooga,51
@@ -489,6 +491,7 @@ MichiganState,180
 MTSU,181
 Middle Tennessee,181
 Middle Tennessee St,181
+Middle Tennessee State,181
 MILW,182
 Milwaukee,182
 WI Milwaukee,182
@@ -776,6 +779,7 @@ Santa Clara,274
 SAV,275
 Savannah St.,275
 Savannah St,275
+Savannah State,275
 SEA,276
 Seattle,276
 HALL,277
@@ -831,6 +835,7 @@ St. Bonaventure,294
 SBU,294
 St. Francis NY,295
 St Francis NY,295
+St. Francis (NY),295
 SJU,296
 St John's,296
 St. John's,296
@@ -895,6 +900,7 @@ TXST,316
 Texas St.,316
 Texas State,316
 Texas St,316
+Sw Texas St,316
 TTU,317
 Texas Tech,317
 TexasTech,317
@@ -976,6 +982,7 @@ Utah State,347
 UTU,348
 Dixie St.,348
 Utah Tech,348
+Dixie State,348
 UVU,349
 Utah Valley,349
 Utah Valley St.,349
@@ -1035,6 +1042,7 @@ Winston Salem St.,372
 W Salem St,372
 Winston Salem St,372
 WSSU,372
+Winston-Salem St,372
 WIN,373
 Winthrop,373
 WIS,374

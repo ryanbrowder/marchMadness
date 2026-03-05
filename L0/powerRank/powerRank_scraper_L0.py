@@ -1,6 +1,6 @@
 """
 Power Rank Current Season Scraper (L0) - Simple Version
-Attempts to scrape using requests before falling back to Selenium
+Scrapes current season ratings (not ranks) from thepowerrank.com
 """
 
 import requests
@@ -18,7 +18,7 @@ def scrape_with_requests(url: str) -> pd.DataFrame:
         url: URL to Power Rank college basketball rankings
         
     Returns:
-        DataFrame with Team, PowerRank, Year columns
+        DataFrame with Team, PowerRank (rating), Year columns
     """
     print("Attempting to scrape with requests (simple method)...")
     
@@ -44,14 +44,14 @@ def scrape_with_requests(url: str) -> pd.DataFrame:
     
     for row in rows:
         cells = row.find_all(['td', 'th'])
-        if len(cells) >= 2:
-            rank = cells[0].get_text(strip=True)
+        if len(cells) >= 3:  # Need at least 3 columns: rank, team, rating
             team = cells[1].get_text(strip=True)
+            rating = cells[2].get_text(strip=True)  # Rating is typically in 3rd column
             
-            if rank and team:
+            if team and rating:
                 data.append({
                     'Team': team,
-                    'PowerRank': rank,
+                    'PowerRank': rating,  # This is the RATING, not rank
                     'Year': 2026
                 })
     
@@ -82,11 +82,11 @@ def scrape_power_rankings(url: str, output_path: str):
         df = scrape_with_requests(url)
         
         if df is not None and len(df) > 0:
-            # Convert PowerRank to numeric
+            # Convert PowerRank (rating) to numeric
             df['PowerRank'] = pd.to_numeric(df['PowerRank'], errors='coerce')
             
-            # Sort by PowerRank
-            df = df.sort_values('PowerRank').reset_index(drop=True)
+            # Sort by PowerRank descending (higher rating = better)
+            df = df.sort_values('PowerRank', ascending=False).reset_index(drop=True)
             
             # Display sample
             print("\nSample of scraped data:")
@@ -113,7 +113,7 @@ if __name__ == "__main__":
     project_root = script_dir.parent.parent  # Go up from L0/powerRank to project root
     
     url = "https://thepowerrank.com/college-basketball-rankings/"
-    output_file = project_root / "L1" / "data" / "powerRank" / "powerRank_rawCurrent_L1.csv"
+    output_file = project_root / "L1" / "data" / "powerRank" / "powerRank_raw_L1.csv"
     
     # Run scraper
     df_result = scrape_power_rankings(url, str(output_file))
