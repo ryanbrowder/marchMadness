@@ -1,9 +1,0 @@
-Metric,Value
-Chalk Score,8
-Tournament Type,EXTREME CHALK
-Chalk Probability,80.0%
-Normal Probability,15.0%
-Chaos Probability,5.0%
-Expected ROC-AUC,0.93-1.00
-Expected Accuracy,75-100%
-Expected Correct Picks,6-8
