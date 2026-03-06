@@ -27,7 +27,7 @@ from pathlib import Path
 
 # Input paths
 TOURNAMENT_RESULTS_PATH = '../../L2/data/srcbb/srcbb_analyze_L2.csv'
-TRAINING_FEATURES_PATH = '../data/trainingData/training_set_long.csv'
+TRAINING_FEATURES_PATH = '../data/trainingData/training_set_unified.csv'
 
 # Output directory
 OUTPUT_DIR = 'outputs/01_build_training_matchups'
@@ -120,6 +120,48 @@ def diagnose_missing_joins(results_df, features_df):
         print("\n✓ All team-year combinations have matching features")
     
     return missing
+
+def add_tournament_seeds(features_df, results_df):
+    """
+    Extract tournamentSeed from results file and add to features dataframe.
+    
+    The unified training set drops tournamentSeed to prevent data leakage in Elite 8 models,
+    but H2H models need it to calculate pct_diff_tournamentSeed for bracket-aware predictions.
+    
+    Returns:
+        features_df with tournamentSeed column added
+    """
+    print("\n" + "="*80)
+    print("ADDING TOURNAMENT SEEDS")
+    print("="*80)
+    
+    # Extract unique (Year, TeamA_ID, SeedA) from results
+    seedsA = results_df[['Year', 'TeamA_ID', 'SeedA']].drop_duplicates()
+    seedsA = seedsA.rename(columns={'TeamA_ID': 'Index', 'SeedA': 'tournamentSeed'})
+    
+    # Extract unique (Year, TeamB_ID, SeedB) from results  
+    seedsB = results_df[['Year', 'TeamB_ID', 'SeedB']].drop_duplicates()
+    seedsB = seedsB.rename(columns={'TeamB_ID': 'Index', 'SeedB': 'tournamentSeed'})
+    
+    # Combine both (handles teams that appear as both TeamA and TeamB)
+    all_seeds = pd.concat([seedsA, seedsB]).drop_duplicates()
+    
+    print(f"\nExtracted seeds for {len(all_seeds)} team-year combinations")
+    
+    # Merge seeds into features
+    features_with_seeds = features_df.merge(
+        all_seeds,
+        on=['Year', 'Index'],
+        how='left'
+    )
+    
+    teams_with_seeds = features_with_seeds['tournamentSeed'].notna().sum()
+    print(f"  {teams_with_seeds} teams matched with tournament seeds")
+    print(f"  {len(features_with_seeds) - teams_with_seeds} teams without seeds (didn't make tournament)")
+    
+    print(f"\n✓ Added tournamentSeed column to features")
+    
+    return features_with_seeds
 
 def identify_feature_columns(features_df):
     """Identify numeric feature columns to use for differentials."""
@@ -339,6 +381,11 @@ def main():
     
     # Load data
     results, features = load_data()
+    
+    # Add tournament seeds from results to features
+    # (unified training set drops seeds to prevent data leakage in Elite 8,
+    #  but H2H needs them for pct_diff_tournamentSeed)
+    features = add_tournament_seeds(features, results)
     
     # Diagnose missing joins BEFORE joining
     missing_teams = diagnose_missing_joins(results, features)

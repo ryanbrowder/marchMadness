@@ -1,6 +1,11 @@
 """
 L3 Seed Impact Comparison
 Compares models WITH seeds vs WITHOUT seeds to identify value opportunities
+
+UNIFIED DATASET (March 2026):
+- Compares unified model WITH seeds vs unified model WITHOUT seeds
+- Identifies overseeded teams (fade candidates) and underseeded teams (value picks)
+- Same comparison methodology, but with single unified model architecture
 """
 
 import pandas as pd
@@ -19,8 +24,8 @@ import config
 # Configuration - Build paths without config suffix
 BASE_DIR = config.L3_DIR / 'elite8' / 'outputs'
 
-PREDICTIONS_WITH_SEEDS = BASE_DIR / '04_2026_predictions' / 'elite8_predictions_2026_comparison.csv'
-PREDICTIONS_NO_SEEDS = BASE_DIR / '04_2026_predictions_no_seeds' / 'elite8_predictions_2026_comparison.csv'
+PREDICTIONS_WITH_SEEDS = BASE_DIR / '04_2026_predictions' / 'elite8_predictions_2026.csv'
+PREDICTIONS_NO_SEEDS = BASE_DIR / '04_2026_predictions_no_seeds' / 'elite8_predictions_2026.csv'
 BACKTEST_WITH_SEEDS = BASE_DIR / '03_backtest' / 'backtest_summary.csv'
 BACKTEST_NO_SEEDS = BASE_DIR / '03_backtest_no_seeds' / 'backtest_summary.csv'
 
@@ -44,18 +49,18 @@ print(f"Loaded WITH seeds predictions: {len(preds_with)} teams")
 print(f"Loaded WITHOUT seeds predictions: {len(preds_no)} teams")
 
 # Merge on team name
-comparison = preds_with[['Team', 'Avg_Probability']].merge(
-    preds_no[['Team', 'Avg_Probability']],
+comparison = preds_with[['Team', 'P_E8']].merge(
+    preds_no[['Team', 'P_E8']],
     on='Team',
     suffixes=('_with_seeds', '_no_seeds')
 )
 
 # Calculate seed effect
-comparison['seed_effect'] = comparison['Avg_Probability_with_seeds'] - comparison['Avg_Probability_no_seeds']
+comparison['seed_effect'] = comparison['P_E8_with_seeds'] - comparison['P_E8_no_seeds']
 comparison['abs_seed_effect'] = comparison['seed_effect'].abs()
 
 # Sort by probability with seeds
-comparison = comparison.sort_values('Avg_Probability_with_seeds', ascending=False).reset_index(drop=True)
+comparison = comparison.sort_values('P_E8_with_seeds', ascending=False).reset_index(drop=True)
 comparison['rank'] = comparison.index + 1
 
 print(f"\nMerged comparison: {len(comparison)} teams")
@@ -78,7 +83,7 @@ print(f"  Mean: {comparison['abs_seed_effect'].mean():.3%}")
 print(f"  Median: {comparison['abs_seed_effect'].median():.3%}")
 
 # Correlation
-correlation = comparison['Avg_Probability_with_seeds'].corr(comparison['Avg_Probability_no_seeds'])
+correlation = comparison['P_E8_with_seeds'].corr(comparison['P_E8_no_seeds'])
 print(f"\nCorrelation between models: {correlation:.4f}")
 
 # ============================================================================
@@ -98,7 +103,7 @@ value_picks = comparison[comparison['seed_effect'] < -0.02].sort_values('seed_ef
 fade_candidates = comparison[comparison['seed_effect'] > 0.02].sort_values('seed_effect', ascending=False)
 
 # Consensus picks: both models agree (small seed effect)
-consensus = comparison[comparison['abs_seed_effect'] < 0.02].sort_values('Avg_Probability_with_seeds', ascending=False)
+consensus = comparison[comparison['abs_seed_effect'] < 0.02].sort_values('P_E8_with_seeds', ascending=False)
 
 print(f"\nVALUE PICKS (Underseeded - Metrics >> Seeds):")
 print(f"  Found {len(value_picks)} teams")
@@ -106,7 +111,7 @@ if len(value_picks) > 0:
     print("\n  Top 10 Value Picks:")
     print("  Rank  Team                      With Seeds  No Seeds  Seed Effect")
     for _, row in value_picks.head(10).iterrows():
-        print(f"  {row['rank']:>4}  {row['Team']:<25} {row['Avg_Probability_with_seeds']:>10.1%} {row['Avg_Probability_no_seeds']:>9.1%} {row['seed_effect']:>12.1%}")
+        print(f"  {row['rank']:>4}  {row['Team']:<25} {row['P_E8_with_seeds']:>10.1%} {row['P_E8_no_seeds']:>9.1%} {row['seed_effect']:>12.1%}")
 
 print(f"\nFADE CANDIDATES (Overseeded - Seeds >> Metrics):")
 print(f"  Found {len(fade_candidates)} teams")
@@ -114,7 +119,7 @@ if len(fade_candidates) > 0:
     print("\n  Top 10 Fade Candidates:")
     print("  Rank  Team                      With Seeds  No Seeds  Seed Effect")
     for _, row in fade_candidates.head(10).iterrows():
-        print(f"  {row['rank']:>4}  {row['Team']:<25} {row['Avg_Probability_with_seeds']:>10.1%} {row['Avg_Probability_no_seeds']:>9.1%} {row['seed_effect']:>12.1%}")
+        print(f"  {row['rank']:>4}  {row['Team']:<25} {row['P_E8_with_seeds']:>10.1%} {row['P_E8_no_seeds']:>9.1%} {row['seed_effect']:>12.1%}")
 
 print(f"\nCONSENSUS PICKS (Both Models Agree):")
 print(f"  Found {len(consensus)} teams")
@@ -122,7 +127,7 @@ if len(consensus) > 0:
     print("\n  Top 10 Consensus Picks:")
     print("  Rank  Team                      With Seeds  No Seeds  Seed Effect")
     for _, row in consensus.head(10).iterrows():
-        print(f"  {row['rank']:>4}  {row['Team']:<25} {row['Avg_Probability_with_seeds']:>10.1%} {row['Avg_Probability_no_seeds']:>9.1%} {row['seed_effect']:>12.1%}")
+        print(f"  {row['rank']:>4}  {row['Team']:<25} {row['P_E8_with_seeds']:>10.1%} {row['P_E8_no_seeds']:>9.1%} {row['seed_effect']:>12.1%}")
 
 # ============================================================================
 # [4] HISTORICAL BACKTEST COMPARISON
@@ -133,24 +138,10 @@ print("-" * 80)
 backtest_with = pd.read_csv(BACKTEST_WITH_SEEDS)
 backtest_no = pd.read_csv(BACKTEST_NO_SEEDS)
 
-# Compare long model performance
-long_with = backtest_with[backtest_with['Dataset'] == 'long']
-long_no = backtest_no[backtest_no['Dataset'] == 'long']
-
-print("\nLONG Model Historical Performance:")
-print(f"  WITH seeds:    {long_with['ROC-AUC'].mean():.3f} ROC-AUC, {long_with['Correct Picks'].sum()}/{long_with['Correct Picks'].count()*8} correct ({long_with['Correct Picks'].sum()/(long_with['Correct Picks'].count()*8):.1%})")
-print(f"  WITHOUT seeds: {long_no['ROC-AUC'].mean():.3f} ROC-AUC, {long_no['Correct Picks'].sum()}/{long_no['Correct Picks'].count()*8} correct ({long_no['Correct Picks'].sum()/(long_no['Correct Picks'].count()*8):.1%})")
-print(f"  Difference:    {long_with['ROC-AUC'].mean() - long_no['ROC-AUC'].mean():.3f} ROC-AUC")
-
-# Compare rich model performance
-rich_with = backtest_with[backtest_with['Dataset'] == 'rich']
-rich_no = backtest_no[backtest_no['Dataset'] == 'rich']
-
-if len(rich_with) > 0 and len(rich_no) > 0:
-    print("\nRICH Model Historical Performance:")
-    print(f"  WITH seeds:    {rich_with['ROC-AUC'].mean():.3f} ROC-AUC, {rich_with['Correct Picks'].sum()}/{rich_with['Correct Picks'].count()*8} correct ({rich_with['Correct Picks'].sum()/(rich_with['Correct Picks'].count()*8):.1%})")
-    print(f"  WITHOUT seeds: {rich_no['ROC-AUC'].mean():.3f} ROC-AUC, {rich_no['Correct Picks'].sum()}/{rich_no['Correct Picks'].count()*8} correct ({rich_no['Correct Picks'].sum()/(rich_no['Correct Picks'].count()*8):.1%})")
-    print(f"  Difference:    {rich_with['ROC-AUC'].mean() - rich_no['ROC-AUC'].mean():.3f} ROC-AUC")
+print("\nUNIFIED Model Historical Performance:")
+print(f"  WITH seeds:    {backtest_with['ROC-AUC'].mean():.3f} ROC-AUC, {backtest_with['Correct Picks'].sum()}/{backtest_with['Correct Picks'].count()*8} correct ({backtest_with['Correct Picks'].sum()/(backtest_with['Correct Picks'].count()*8):.1%})")
+print(f"  WITHOUT seeds: {backtest_no['ROC-AUC'].mean():.3f} ROC-AUC, {backtest_no['Correct Picks'].sum()}/{backtest_no['Correct Picks'].count()*8} correct ({backtest_no['Correct Picks'].sum()/(backtest_no['Correct Picks'].count()*8):.1%})")
+print(f"  Difference:    {backtest_with['ROC-AUC'].mean() - backtest_no['ROC-AUC'].mean():.3f} ROC-AUC")
 
 print("\nHISTORICAL INSIGHT:")
 print("  Seeds provide minimal historical predictive value (~0.005 ROC-AUC)")
@@ -174,7 +165,7 @@ for _, row in top_25.iterrows():
     else:
         interpretation = "CONSENSUS"
     
-    print(f" {row['rank']:>4}  {row['Team']:<25} {row['Avg_Probability_with_seeds']:>10.1%} {row['Avg_Probability_no_seeds']:>9.1%} {row['seed_effect']:>12.1%}  {interpretation}")
+    print(f" {row['rank']:>4}  {row['Team']:<25} {row['P_E8_with_seeds']:>10.1%} {row['P_E8_no_seeds']:>9.1%} {row['seed_effect']:>12.1%}  {interpretation}")
 
 # ============================================================================
 # [6] STRATEGIC RECOMMENDATIONS
@@ -183,22 +174,22 @@ print("\n[6] STRATEGIC RECOMMENDATIONS")
 print("="*80)
 
 # Get high probability teams
-high_prob_consensus = consensus[consensus['Avg_Probability_with_seeds'] >= 0.45].head(5)
-high_prob_value = value_picks[value_picks['Avg_Probability_no_seeds'] >= 0.35].head(3)
-high_prob_fade = fade_candidates[fade_candidates['Avg_Probability_with_seeds'] >= 0.45].head(3)
+high_prob_consensus = consensus[consensus['P_E8_with_seeds'] >= 0.45].head(5)
+high_prob_value = value_picks[value_picks['P_E8_no_seeds'] >= 0.35].head(3)
+high_prob_fade = fade_candidates[fade_candidates['P_E8_with_seeds'] >= 0.45].head(3)
 
 print("\n📊 CONSERVATIVE POOL STRATEGY:")
 print("  • Trust CONSENSUS picks (both models agree)")
 print("  Recommended teams:")
 for _, row in high_prob_consensus.iterrows():
-    print(f"    - {row['Team']}: {row['Avg_Probability_with_seeds']:.1%} (consensus)")
+    print(f"    - {row['Team']}: {row['P_E8_with_seeds']:.1%} (consensus)")
 
 print("\n🎯 DIFFERENTIATION STRATEGY (Large Pools):")
 print("  • Pick VALUE PICKS to differentiate from ESPN bracket consensus")
 print("  Recommended value plays:")
 if len(high_prob_value) > 0:
     for _, row in high_prob_value.iterrows():
-        print(f"    - {row['Team']}: {row['Avg_Probability_no_seeds']:.1%} metrics (vs {row['Avg_Probability_with_seeds']:.1%} with seeds)")
+        print(f"    - {row['Team']}: {row['P_E8_no_seeds']:.1%} metrics (vs {row['P_E8_with_seeds']:.1%} with seeds)")
 else:
     print("    - No strong value picks found (minimal underseeding)")
 
@@ -208,14 +199,14 @@ print("  • AVOID: Fade candidates (overseeded teams)")
 print("  Value picks for auction:")
 if len(value_picks) > 0:
     for _, row in value_picks.head(5).iterrows():
-        print(f"    - {row['Team']}: Metrics say {row['Avg_Probability_no_seeds']:.1%}, market may underprice")
+        print(f"    - {row['Team']}: Metrics say {row['P_E8_no_seeds']:.1%}, market may underprice")
 else:
     print("    - No clear value picks (seeds align with metrics)")
 
 print("\n  Teams to fade in auction:")
 if len(fade_candidates) > 0:
     for _, row in fade_candidates.head(5).iterrows():
-        print(f"    - {row['Team']}: Seeds say {row['Avg_Probability_with_seeds']:.1%}, metrics say {row['Avg_Probability_no_seeds']:.1%}")
+        print(f"    - {row['Team']}: Seeds say {row['P_E8_with_seeds']:.1%}, metrics say {row['P_E8_no_seeds']:.1%}")
 else:
     print("    - No clear fade candidates (seeds align with metrics)")
 
@@ -230,7 +221,7 @@ fig, axes = plt.subplots(2, 2, figsize=(16, 12))
 
 # Plot 1: Scatter plot with 45-degree line
 ax1 = axes[0, 0]
-ax1.scatter(comparison['Avg_Probability_no_seeds'], comparison['Avg_Probability_with_seeds'], alpha=0.5)
+ax1.scatter(comparison['P_E8_no_seeds'], comparison['P_E8_with_seeds'], alpha=0.5)
 ax1.plot([0, 1], [0, 1], 'r--', label='Perfect Agreement')
 ax1.set_xlabel('Probability WITHOUT Seeds (Pure Metrics)')
 ax1.set_ylabel('Probability WITH Seeds (Bracket-Aware)')
@@ -240,7 +231,7 @@ ax1.grid(True, alpha=0.3)
 
 # Annotate top teams
 for _, row in comparison.head(10).iterrows():
-    ax1.annotate(row['Team'], (row['Avg_Probability_no_seeds'], row['Avg_Probability_with_seeds']),
+    ax1.annotate(row['Team'], (row['P_E8_no_seeds'], row['P_E8_with_seeds']),
                 fontsize=8, alpha=0.7)
 
 # Plot 2: Seed effect distribution
@@ -258,8 +249,8 @@ ax3 = axes[1, 0]
 top_20 = comparison.head(20)
 x = np.arange(len(top_20))
 width = 0.35
-ax3.barh(x - width/2, top_20['Avg_Probability_no_seeds'], width, label='Without Seeds', alpha=0.8)
-ax3.barh(x + width/2, top_20['Avg_Probability_with_seeds'], width, label='With Seeds', alpha=0.8)
+ax3.barh(x - width/2, top_20['P_E8_no_seeds'], width, label='Without Seeds', alpha=0.8)
+ax3.barh(x + width/2, top_20['P_E8_with_seeds'], width, label='With Seeds', alpha=0.8)
 ax3.set_yticks(x)
 ax3.set_yticklabels(top_20['Team'], fontsize=8)
 ax3.set_xlabel('Elite 8 Probability')

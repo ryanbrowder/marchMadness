@@ -81,6 +81,14 @@ def transform_espn_bpi(df, teams_index, dataset_name):
     # Merge with teamsIndex to get Index
     df = df.merge(teams_index[['Team', 'Index']], on='Team', how='left')
     
+    # Deduplicate: ESPN lists both SFBK and LIU with same Index 143
+    # Keep first occurrence per (Year, Index) to avoid duplicates
+    rows_before = len(df)
+    df = df.drop_duplicates(subset=['Year', 'Index'], keep='first')
+    duplicates_removed = rows_before - len(df)
+    if duplicates_removed > 0:
+        print(f"  Removed {duplicates_removed} duplicate (Year, Index) pairs")
+    
     # Check for unmatched teams
     unmatched = df[df['Index'].isna()]
     if len(unmatched) > 0:

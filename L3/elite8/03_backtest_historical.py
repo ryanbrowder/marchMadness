@@ -1,6 +1,11 @@
 """
 L3 Historical Backtesting
 Configure via config.py: USE_SEEDS = True/False
+
+UNIFIED DATASET (March 2026):
+- Single model trained on all available data
+- Walk-forward validation: train on years < test_year, test on test_year
+- Years: 2015-2025 (11 years, excluding 2020 - no tournament)
 """
 
 import pandas as pd
@@ -42,20 +47,18 @@ print("="*80)
 print("\n[1] LOADING DATA")
 print("-" * 80)
 
-labeled_long = pd.read_csv(INPUT_DIR / 'labeled_training_long.csv')
-labeled_rich = pd.read_csv(INPUT_DIR / 'labeled_training_rich.csv')
+# Load unified dataset (replaces old long/rich split)
+labeled_unified = pd.read_csv(INPUT_DIR / 'labeled_training_unified.csv')
+features_unified = pd.read_csv(INPUT_DIR / 'reduced_features_unified.csv')['feature'].tolist()
 
-features_long = pd.read_csv(INPUT_DIR / 'reduced_features_long.csv')['feature'].tolist()
-features_rich = pd.read_csv(INPUT_DIR / 'reduced_features_rich.csv')['feature'].tolist()
-
-print(f"Loaded data - Long: {labeled_long.shape[0]} rows, Rich: {labeled_rich.shape[0]} rows")
-print(f"Years available: {sorted(labeled_long['Year'].unique())}")
+print(f"Loaded data - Unified: {labeled_unified.shape[0]} rows")
+print(f"Years available: {sorted(labeled_unified['Year'].unique())}")
 
 # ============================================================================
 # BACKTESTING FUNCTION
 # ============================================================================
 
-def backtest_year(df, feature_list, test_year, dataset_name):
+def backtest_year(df, feature_list, test_year):
     """Train on all years before test_year, evaluate on test_year"""
     
     # Extract features and label
@@ -163,7 +166,6 @@ def backtest_year(df, feature_list, test_year, dataset_name):
     
     return {
         'year': test_year,
-        'dataset': dataset_name,
         'train_samples': len(X_train),
         'test_samples': len(X_test),
         'elite8_actual_count': len(elite8_actual),
@@ -191,17 +193,11 @@ for year in BACKTEST_YEARS:
     
     print(f"\nYear {year}:")
     
-    # Long model
-    result_long = backtest_year(labeled_long, features_long, year, 'long')
-    if result_long:
-        results.append(result_long)
-        print(f"  LONG - ROC-AUC: {result_long['roc_auc']:.3f} | Elite 8 Accuracy: {result_long['elite8_accuracy']:.1%} ({result_long['correct_picks']}/8)")
-    
-    # Rich model
-    result_rich = backtest_year(labeled_rich, features_rich, year, 'rich')
-    if result_rich:
-        results.append(result_rich)
-        print(f"  RICH - ROC-AUC: {result_rich['roc_auc']:.3f} | Elite 8 Accuracy: {result_rich['elite8_accuracy']:.1%} ({result_rich['correct_picks']}/8)")
+    # Unified model
+    result = backtest_year(labeled_unified, features_unified, year)
+    if result:
+        results.append(result)
+        print(f"  UNIFIED - ROC-AUC: {result['roc_auc']:.3f} | Elite 8 Accuracy: {result['elite8_accuracy']:.1%} ({result['correct_picks']}/8)")
 
 # ============================================================================
 # ANALYZE RESULTS
@@ -211,23 +207,20 @@ print("="*80)
 
 results_df = pd.DataFrame([{
     'Year': r['year'],
-    'Dataset': r['dataset'],
     'ROC-AUC': r['roc_auc'],
     'Log Loss': r['log_loss'],
     'Elite 8 Accuracy': r['elite8_accuracy'],
     'Correct Picks': r['correct_picks']
 } for r in results])
 
-# Overall statistics by dataset
+# Overall statistics
 print("\nOVERALL STATISTICS:")
-for dataset in ['long', 'rich']:
-    dataset_results = results_df[results_df['Dataset'] == dataset]
-    print(f"\n{dataset.upper()} Model:")
-    print(f"  Average ROC-AUC: {dataset_results['ROC-AUC'].mean():.3f}")
-    print(f"  Average Log Loss: {dataset_results['Log Loss'].mean():.3f}")
-    print(f"  Average Elite 8 Accuracy: {dataset_results['Elite 8 Accuracy'].mean():.1%}")
-    print(f"  Best Year: {dataset_results.loc[dataset_results['ROC-AUC'].idxmax(), 'Year']:.0f} (ROC-AUC: {dataset_results['ROC-AUC'].max():.3f})")
-    print(f"  Worst Year: {dataset_results.loc[dataset_results['ROC-AUC'].idxmin(), 'Year']:.0f} (ROC-AUC: {dataset_results['ROC-AUC'].min():.3f})")
+print(f"\nUNIFIED Model:")
+print(f"  Average ROC-AUC: {results_df['ROC-AUC'].mean():.3f}")
+print(f"  Average Log Loss: {results_df['Log Loss'].mean():.3f}")
+print(f"  Average Elite 8 Accuracy: {results_df['Elite 8 Accuracy'].mean():.1%}")
+print(f"  Best Year: {results_df.loc[results_df['ROC-AUC'].idxmax(), 'Year']:.0f} (ROC-AUC: {results_df['ROC-AUC'].max():.3f})")
+print(f"  Worst Year: {results_df.loc[results_df['ROC-AUC'].idxmin(), 'Year']:.0f} (ROC-AUC: {results_df['ROC-AUC'].min():.3f})")
 
 # Year-by-year breakdown
 print("\n" + "="*80)
@@ -235,14 +228,13 @@ print("YEAR-BY-YEAR BREAKDOWN")
 print("="*80)
 
 for year in sorted(results_df['Year'].unique()):
-    year_data = results_df[results_df['Year'] == year]
+    year_data = results_df[results_df['Year'] == year].iloc[0]
     
     print(f"\n{int(year)}:")
-    for _, row in year_data.iterrows():
-        print(f"  {row['Dataset'].upper():5s} - ROC-AUC: {row['ROC-AUC']:.3f} | Accuracy: {row['Elite 8 Accuracy']:.1%} | Picks: {int(row['Correct Picks'])}/8")
+    print(f"  UNIFIED - ROC-AUC: {year_data['ROC-AUC']:.3f} | Accuracy: {year_data['Elite 8 Accuracy']:.1%} | Picks: {int(year_data['Correct Picks'])}/8")
     
-    # Show actual vs predicted for long model
-    year_result = [r for r in results if r['year'] == year and r['dataset'] == 'long'][0]
+    # Show actual vs predicted
+    year_result = [r for r in results if r['year'] == year][0]
     print(f"\n  Actual Elite 8: {', '.join(year_result['elite8_actual'])}")
     print(f"  Top 8 Predicted: {', '.join(year_result['elite8_predicted'])}")
     
@@ -265,20 +257,16 @@ for year in sorted(results_df['Year'].unique()):
 print("\n[4] CHALK vs CHAOS ANALYSIS")
 print("="*80)
 
-# Categorize years based on average ROC-AUC
-avg_by_year = results_df.groupby('Year')['ROC-AUC'].mean().sort_values(ascending=False)
+# Categorize years based on ROC-AUC
+sorted_years = results_df.sort_values('ROC-AUC', ascending=False)
 
 print("\nCHALK YEARS (High predictability):")
-for year in avg_by_year.head(5).index:
-    roc = avg_by_year[year]
-    acc_long = results_df[(results_df['Year'] == year) & (results_df['Dataset'] == 'long')]['Elite 8 Accuracy'].values[0]
-    print(f"  {int(year)}: ROC-AUC {roc:.3f} | Elite 8 Accuracy: {acc_long:.1%}")
+for _, row in sorted_years.head(5).iterrows():
+    print(f"  {int(row['Year'])}: ROC-AUC {row['ROC-AUC']:.3f} | Elite 8 Accuracy: {row['Elite 8 Accuracy']:.1%}")
 
 print("\nCHAOS YEARS (Low predictability):")
-for year in avg_by_year.tail(5).index:
-    roc = avg_by_year[year]
-    acc_long = results_df[(results_df['Year'] == year) & (results_df['Dataset'] == 'long')]['Elite 8 Accuracy'].values[0]
-    print(f"  {int(year)}: ROC-AUC {roc:.3f} | Elite 8 Accuracy: {acc_long:.1%}")
+for _, row in sorted_years.tail(5).iterrows():
+    print(f"  {int(row['Year'])}: ROC-AUC {row['ROC-AUC']:.3f} | Elite 8 Accuracy: {row['Elite 8 Accuracy']:.1%}")
 
 # ============================================================================
 # SAVE DETAILED RESULTS
@@ -293,13 +281,11 @@ print(f"Saved summary: backtest_summary.csv")
 # Save detailed predictions for each year
 for result in results:
     year = result['year']
-    dataset = result['dataset']
     
     pred_df = result['all_predictions'].copy()
     pred_df['Year'] = year
-    pred_df['Dataset'] = dataset
     
-    output_file = OUTPUT_DIR / f'predictions_{year}_{dataset}.csv'
+    output_file = OUTPUT_DIR / f'predictions_{year}_unified.csv'
     pred_df.to_csv(output_file, index=False)
 
 print(f"Saved {len(results)} detailed prediction files")
@@ -312,12 +298,11 @@ print("BACKTESTING COMPLETE")
 print("="*80)
 
 print("\nKEY INSIGHTS:")
-long_results = results_df[results_df['Dataset'] == 'long']
-print(f"  Average ROC-AUC: {long_results['ROC-AUC'].mean():.3f}")
-print(f"  Average Elite 8 Accuracy: {long_results['Elite 8 Accuracy'].mean():.1%}")
-print(f"  Best performance: {long_results['ROC-AUC'].max():.3f}")
-print(f"  Worst performance: {long_results['ROC-AUC'].min():.3f}")
-print(f"  Performance range: {long_results['ROC-AUC'].max() - long_results['ROC-AUC'].min():.3f}")
+print(f"  Average ROC-AUC: {results_df['ROC-AUC'].mean():.3f}")
+print(f"  Average Elite 8 Accuracy: {results_df['Elite 8 Accuracy'].mean():.1%}")
+print(f"  Best performance: {results_df['ROC-AUC'].max():.3f}")
+print(f"  Worst performance: {results_df['ROC-AUC'].min():.3f}")
+print(f"  Performance range: {results_df['ROC-AUC'].max() - results_df['ROC-AUC'].min():.3f}")
 
 print("\nIMPLICATIONS FOR 2026:")
 print("  ✓ Model performs well in chalk years (favorites win)")
@@ -327,6 +312,6 @@ print("  ✓ Use probabilities to identify confidence level")
 
 print("\nOUTPUTS:")
 print(f"  {OUTPUT_DIR}/backtest_summary.csv")
-print(f"  {OUTPUT_DIR}/predictions_YEAR_DATASET.csv (detailed predictions)")
+print(f"  {OUTPUT_DIR}/predictions_YEAR_unified.csv (detailed predictions)")
 
 print("\n" + "="*80)

@@ -293,3 +293,10 @@ System architecture follows modular design:
   L0 → L1 → L2 → L3 → L4
   Each layer depends only on previous layers' outputs.
 
+================================================================================
+AUTHOR
+================================================================================
+
+Ryan Browder
+March Madness Computron
+

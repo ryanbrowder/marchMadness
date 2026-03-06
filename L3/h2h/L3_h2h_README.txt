@@ -24,6 +24,36 @@ Model naming convention:
 - USE_SEEDS=True  → models_with_seeds/ and models_with_seeds_validation/
 
 ================================================================================
+DATA SOURCE UPDATE (MARCH 2026)
+================================================================================
+
+Training data upgraded from training_set_long.csv to training_set_unified.csv:
+
+BEFORE (LONG dataset):
+- 2008-2025, 4 sources (bartTorvik, kenPom, espnBPI, masseyComposite)
+- ~1,147 tournament teams
+- 46 pct_diff features
+
+AFTER (UNIFIED dataset):
+- 2008-2025, 5 sources (added PowerRank with historical data)
+- ~1,147 tournament teams (same coverage, richer features)
+- 47 pct_diff features (added PowerRank, tournamentSeed)
+
+KEY CHANGES:
+1. PowerRank added: Continuous rating from Dr. Ed Feng, coverage 2008-2025
+   - Correlation with target: 0.365 (strong predictor)
+   - Resolution: DROPPED in 02b (redundant with kenpom_NetRtg at r=0.967)
+   - Impact: Validates existing features, no change to final model
+
+2. tournamentSeed extraction: Script 01 now extracts seeds from tournament
+   results and merges into features for H2H differential calculations
+   - Correlation with target: -0.418 (2nd strongest predictor)
+   - Resolution: KEPT in 02b (strong signal, not redundant)
+   - Impact: Properly enables dual-model architecture (NO SEEDS vs WITH SEEDS)
+
+Result: Same 28 KEEP features, but tournamentSeed now properly included
+
+================================================================================
 DATA PIPELINE (ONE-TIME SETUP)
 ================================================================================
 
@@ -33,10 +63,18 @@ STEP 1: Build Training Matchups
 ------------------------
 Script: 01_build_training_matchups.py
 Input:  - L2/data/srcbb/srcbb_analyze_L2.csv (tournament results)
-        - L3/data/trainingData/training_set_long.csv (team features)
+        - L3/data/trainingData/training_set_unified.csv (team features)
 Output: outputs/01_build_training_matchups/training_matchups.csv
-Action: Creates percentage differential features for all 46 metrics
-Result: 1,071 games (2008-2025), 46 pct_diff features including tournamentSeed
+Action: Creates percentage differential features for all metrics
+        Extracts tournamentSeed from results and adds to features
+Result: 1,071 games (2008-2025), 47 pct_diff features
+        Includes: PowerRank (new), tournamentSeed (extracted from results)
+
+Note: training_set_unified.csv contains 5 sources (bartTorvik, kenPom, espnBPI,
+      masseyComposite, powerRank) with historical PowerRank data back to 2008.
+      tournamentSeed is NOT in the unified dataset (dropped to prevent data
+      leakage in Elite 8 models), so Script 01 extracts it from tournament
+      results and merges it into features for H2H differential calculations.
 
 Command:
 $ cd L3/h2h
@@ -50,7 +88,9 @@ Output: - outputs/02_feature_correlation/feature_target_correlations.csv
         - outputs/02_feature_correlation/feature_intercorrelations.csv
         - outputs/02_feature_correlation/correlation_heatmap.png
 Action: Analyzes predictive power and detects multicollinearity
-Result: Identifies 20 strong features, 39 redundant pairs
+Result: Identifies 21 strong features, 46 severe redundant pairs
+        PowerRank correlation: 0.365 (strong)
+        tournamentSeed correlation: -0.418 (2nd strongest predictor)
 
 Command:
 $ python 02_feature_correlation_analysis.py
@@ -61,7 +101,9 @@ Script: 02b_multicollinearity_resolver.py
 Input:  outputs/02_feature_correlation/*.csv
 Output: outputs/02_feature_correlation/selected_features.csv
 Action: Resolves redundant pairs, keeps stronger predictor
-Result: 28 features marked KEEP (including tournamentSeed), 18 marked DROP
+Result: 28 features marked KEEP (including tournamentSeed), 19 marked DROP
+        PowerRank: DROPPED (redundant with kenpom_NetRtg at r=0.967)
+        tournamentSeed: KEPT (strong signal, r=-0.418, not redundant)
 
 Command:
 $ python 02b_multicollinearity_resolver.py
@@ -200,25 +242,32 @@ Find team IDs in: L3/data/predictionData/predict_set_2026.csv
 Common teams: Michigan (179), Arizona (11), Purdue (248), Houston (119)
 
 ================================================================================
-KEY FINDINGS
+KEY FINDINGS (UPDATED MARCH 2026 - UNIFIED DATASET)
 ================================================================================
 
 Seed Impact on Predictive Power:
-- Seeds add only +0.003 ROC-AUC (minimal, matches Elite 8 findings)
-- Committee seeds based on same metrics models use
-- Provides strategic differentiation, not predictive lift
+- Seeds add only +0.0023 ROC-AUC (NO SEEDS: 0.9442, WITH SEEDS: 0.9465)
+- Minimal predictive lift (committee seeds based on same metrics models use)
+- Provides strategic differentiation, not performance improvement
 
 Model Behavior Changes With Seeds:
 NO SEEDS:  GB (0.945) > SVM (0.936) > RF (0.920) > NN (0.893)
 WITH SEEDS: NN (0.940) > SVM (0.936) > RF (0.922) > GB (0.912)
 
-Neural Network and SVM are "seed learners" - heavily weight tournamentSeed
-Random Forest and Gradient Boosting mostly ignore it
+Neural Network becomes best model WITH SEEDS (learns to leverage tournamentSeed)
+Gradient Boosting becomes best model WITHOUT SEEDS (pure metrics)
+
+PowerRank Integration:
+- Added from Dr. Ed Feng's historical data (2008-2025 coverage)
+- Strong correlation: 0.365 with game outcomes
+- Redundant with kenpom_NetRtg (r=0.967) → dropped in multicollinearity resolution
+- Validates existing feature set, confirms kenpom_NetRtg as primary composite signal
 
 Seed Boost Magnitude:
 - Close matchups (Purdue vs Houston): +2.9% to projected higher seed
-- Clearer gaps (Michigan vs Arizona): +6.6% to projected higher seed
-- Typical range: 1-7% boost depending on projected seed differential
+- Clearer gaps (Michigan vs Arizona): +6.6% to projected higher seed  
+- Duke vs Michigan (both 1-seeds): +8.1% to Duke (projected #1 overall)
+- Typical range: 2-8% boost depending on projected seed differential
 
 Strategic Applications:
 - Consensus picks: Both models strongly agree → safe pool picks
@@ -238,9 +287,9 @@ L3/h2h/
 │
 ├── outputs/
 │   ├── 01_build_training_matchups/
-│   │   └── training_matchups.csv (1,071 games, 46 pct_diff features)
+│   │   └── training_matchups.csv (1,071 games, 47 pct_diff features)
 │   ├── 02_feature_correlation/
-│   │   ├── selected_features.csv (28 KEEP, 18 DROP)
+│   │   ├── selected_features.csv (28 KEEP, 19 DROP)
 │   │   └── correlation_heatmap.png
 │   ├── 03_train_models_validation/ (NO SEEDS results)
 │   └── 03_train_models_with_seeds_validation/ (WITH SEEDS results)
@@ -279,29 +328,46 @@ Fix: This is a known bug in production mode strategy application. Weights are
      still reasonable. Can manually edit ensemble_config.json if needed.
 
 ================================================================================
-L4 APPLICATION LAYER
+NEXT STEPS: L4 APPLICATION LAYER
 ================================================================================
 
-With trained models ready, proceed to L4 for decision applications:
+With trained models, you can now build:
 
-  L4.01 — Tournament Simulator
-           Runs 50,000 Monte Carlo simulations using H2H production models.
-           Outputs round-by-round probabilities, seed bias analysis, and
-           optimal bracket recommendations across three strategies.
+1. Bracket Simulator (Monte Carlo)
+   - Load H2H production models
+   - Simulate 10,000 tournaments
+   - Output Elite 8 / Champion probabilities
 
-  L4.02 — Calcutta Optimizer
-           Combines Elite 8 + H2H probabilities to generate expected value
-           rankings, value picks, and budget-constrained bidding recommendations.
+2. Seed Impact Analyzer
+   - Compare models/ vs models_with_seeds/ predictions
+   - Identify consensus picks vs seed-dependent predictions
+   - Find overseeded/underseeded teams
 
-See L4/README.txt for full documentation and execution instructions.
+3. Calcutta Strategy Optimizer
+   - Combine Elite 8 + H2H probabilities
+   - Calculate expected values with budget constraints
+   - Non-linear payoff optimization
+
+4. Pool Bracket Generator
+   - Given scoring rules, generate optimal bracket
+   - Two-bracket hedge strategy (different champion paths)
+   - Maximize P(winning pool)
 
 ================================================================================
 CONTACT & UPDATES
 ================================================================================
 
-Pipeline Version: 2025-02-24
-Author: Ryan Browder
-System: March Madness Computron
+================================================================================
+AUTHOR
+================================================================================
+
+Ryan Browder
+March Madness Computron
+
+Major Update (March 2026):
+- Upgraded to training_set_unified.csv (5 sources, PowerRank added 2008-2025)
+- tournamentSeed now properly extracted and integrated for H2H differentials
+- 47 pct_diff features → 28 KEEP features after multicollinearity resolution
 
 For updates to production strategies or threshold tuning, edit L3/config.py
 For model architecture changes, edit 03_train_models.py hyperparameters

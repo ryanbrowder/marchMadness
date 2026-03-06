@@ -1,9 +1,9 @@
 Team,Seed,E_Points_Blended,Expected_Market_Price,Fair_Value,Value_Rating,Max_Bid,Expected_Win_Price,Strategy
-Merrimack,15,7.35,1.71,8.14,4.298,12,2,Balanced
-Navy,14,9.69,2.79,10.73,3.473,14,3,Balanced
-Wright St.,15,4.64,1.71,5.14,2.713,7,2,Balanced
-East Tennessee St.,15,4.51,1.71,4.99,2.637,7,2,Balanced
-Portland St.,15,4.31,1.71,4.77,2.52,7,2,Balanced
-High Point,13,9.1,4.14,10.07,2.198,14,5,Balanced
-Santa Clara,11,15.27,7.04,16.91,2.169,25,8,Balanced
-UNC Wilmington,13,8.86,4.14,9.81,2.14,14,5,Balanced
+Merrimack,15,12.21,1.71,13.45,7.14,16,2,Balanced
+Wright St.,15,7.23,1.71,7.96,4.228,10,2,Balanced
+Navy,14,10.79,2.79,11.88,3.867,14,3,Balanced
+Portland St.,15,4.64,1.71,5.11,2.713,6,2,Balanced
+East Tennessee St.,15,4.37,1.71,4.81,2.556,6,2,Balanced
+Santa Clara,11,14.74,7.04,16.24,2.094,22,8,Balanced
+Iowa,9,11.11,5.4,12.24,2.057,14,6,Balanced
+Stephen F. Austin,13,8.31,4.14,9.15,2.007,12,5,Balanced

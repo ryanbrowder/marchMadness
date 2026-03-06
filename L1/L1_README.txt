@@ -327,4 +327,10 @@ ISSUE: LRMCB file not found
 FIX: If intentional — set INCLUDE_LRMCB = False in both L2 scripts
      If unintentional — verify file placed at L1/data/LRMCB/LRMCB_raw_L1.csv
 
+
 ================================================================================
+AUTHOR
+================================================================================
+
+Ryan Browder
+March Madness Computron

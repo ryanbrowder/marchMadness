@@ -229,3 +229,8 @@ DEPENDENCIES
   undetected-chromedriver handles ChromeDriver version matching automatically.
 
 ================================================================================
+AUTHOR
+================================================================================
+
+Ryan Browder
+March Madness Computron

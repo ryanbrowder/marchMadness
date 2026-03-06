@@ -1,26 +1,23 @@
 """
 create_training_sets_L2.py
 
-Purpose: Join clean L2 feature sources to create training datasets
-- Creates TWO views: long (2008+) and rich (2016+)
-- LONG view: bartTorvik, kenPom, espnBPI, masseyComposite (2008-2025)
-- RICH view: All long sources + LRMCB, powerRank (2016-2025)
+Purpose: Join clean L2 feature sources to create unified training dataset
+- Creates ONE unified view (2008-2025, 5 sources)
+- Sources: bartTorvik, kenPom, espnBPI, masseyComposite, powerRank
+- PowerRank now available 2002-2026 (using 2008+ for consistency)
+- LRMCB removed (no 2026 data available, source discontinued)
 - Filters to tournament teams only
-- Removes tournament metadata to keep features pure
-- Outputs to L3/data/trainingData/
+- Removes tournament metadata to prevent data leakage
+- Outputs to L3/data/trainingData/training_set_unified.csv
 
 Author: Ryan Browder
 Created: 2025-01-29
+Updated: 2025-03-05 (PowerRank integration, unified pipeline)
 """
 
 import pandas as pd
 import os
 from pathlib import Path
-
-# ============================================================================
-# FEATURE TOGGLES
-# ============================================================================
-INCLUDE_LRMCB = False  # Set to False to exclude LRMCB from RICH view
 
 # ============================================================================
 # CONFIGURATION
@@ -32,26 +29,18 @@ INPUTS = {
     'kenPom': 'data/kenPom/kenPom_analyze_L2.csv',
     'espnBPI': 'data/espnBPI/espnBPI_analyze_L2.csv',
     'masseyComposite': 'data/masseyComposite/masseyComposite_analyze_L2.csv',
-    'LRMCB': 'data/LRMCB/LRMCB_analyze_L2.csv',
     'powerRank': 'data/powerRank/powerRank_analyze_L2.csv'
 }
 
-# Source groups by coverage period
-SOURCES_2008 = ['bartTorvik', 'kenPom', 'espnBPI', 'masseyComposite']  # Long view
-SOURCES_2016_BASE = ['powerRank']  # Base sources for rich view (2016+)
-
-# Conditionally add LRMCB based on feature flag
-SOURCES_2016 = ['LRMCB'] + SOURCES_2016_BASE if INCLUDE_LRMCB else SOURCES_2016_BASE
+# All sources for unified training set (2008-2025)
+ALL_SOURCES = ['bartTorvik', 'kenPom', 'espnBPI', 'masseyComposite', 'powerRank']
 
 # Output path (relative to script location in L2/)
 OUTPUT_DIR = '../L3/data/trainingData'
-OUTPUT_FILES = {
-    'long': 'training_set_long.csv',   # 2008+ with 4 sources
-    'rich': 'training_set_rich.csv'    # 2016+ with 6 sources
-}
+OUTPUT_FILE = 'training_set_unified.csv'  # Single unified dataset
 
-# Columns to drop (tournament metadata - not features)
-TOURNAMENT_COLS = ['tournamentOutcome']  # Keep tournamentSeed as a feature
+# Columns to drop (tournament metadata - not features, prevents data leakage)
+TOURNAMENT_COLS = ['tournamentSeed', 'tournamentOutcome']
 
 # ============================================================================
 # MAIN EXECUTION
@@ -117,207 +106,127 @@ def main():
     bart = sources['bartTorvik']
     
     # ========================================================================
-    # CREATE LONG VIEW (2008+, 4 sources)
+    # CREATE UNIFIED TRAINING SET (2008-2025, 5 sources)
     # ========================================================================
-    print("\n[3/6] Creating LONG view (2008+, 4 sources)...")
+    print("\n[3/4] Creating unified training set (2008-2025, 5 sources)...")
     print("-" * 80)
     
-    df_long = bart.copy()
-    print(f"  Starting with bartTorvik: {len(df_long):,} rows")
-    print(f"  Tournament teams in bartTorvik: {df_long['tournamentSeed'].notna().sum()}")
+    df = bart.copy()
+    print(f"  Starting with bartTorvik: {len(df):,} rows")
+    print(f"  Tournament teams in bartTorvik: {df['tournamentSeed'].notna().sum()}")
     
-    # Join each source in SOURCES_2008
-    for source_name in SOURCES_2008[1:]:  # Skip bartTorvik (already loaded)
-        df_long = df_long.merge(
+    # Join each source (skip bartTorvik - already loaded)
+    for source_name in ALL_SOURCES[1:]:
+        df = df.merge(
             sources[source_name],
             on=['Year', 'Index'],
             how='inner',
             suffixes=('', '_DROP')
         )
-        df_long = df_long.drop(columns=[col for col in df_long.columns if col.endswith('_DROP')])
-        print(f"  After {source_name} join: {len(df_long):,} rows, {len(df_long.columns)} columns")
-        diagnose_lost_teams(bart, df_long, source_name)
+        df = df.drop(columns=[col for col in df.columns if col.endswith('_DROP')])
+        print(f"  After {source_name} join: {len(df):,} rows, {len(df.columns)} columns")
+        diagnose_lost_teams(bart, df, source_name)
     
     # Check for duplicates
     print(f"\n  Checking for duplicates on (Year, Index)...")
-    dupes_before = df_long.duplicated(subset=['Year', 'Index']).sum()
+    dupes_mask = df.duplicated(subset=['Year', 'Index'], keep=False)
+    dupes_before = df.duplicated(subset=['Year', 'Index']).sum()
+    
     if dupes_before > 0:
         print(f"  ⚠ Found {dupes_before} duplicate team-seasons")
-        df_long = df_long.drop_duplicates(subset=['Year', 'Index'], keep='first')
-        print(f"  Removed duplicates, kept first occurrence")
+        print(f"\n  Duplicate records (showing all occurrences):")
+        dupe_records = df[dupes_mask][['Year', 'Team', 'Index']].sort_values(['Year', 'Index', 'Team'])
+        for _, row in dupe_records.iterrows():
+            print(f"    {row['Year']} {row['Team']:<30} (Index: {row['Index']:>3})")
+        df = df.drop_duplicates(subset=['Year', 'Index'], keep='first')
+        print(f"\n  Removed duplicates, kept first occurrence")
     else:
         print(f"  ✓ No duplicates found")
     
     # Filter to tournament teams
     print(f"\n  Filtering to tournament teams...")
-    print(f"  Before filter: {len(df_long):,} rows")
-    df_long = df_long[df_long['tournamentSeed'].notna()].copy()
-    print(f"  After filter: {len(df_long):,} rows")
+    print(f"  Before filter: {len(df):,} rows")
+    df = df[df['tournamentSeed'].notna()].copy()
+    print(f"  After filter: {len(df):,} rows")
     
-    # Drop tournament metadata
-    df_long = df_long.drop(columns=TOURNAMENT_COLS)
-    print(f"  Final feature count: {len(df_long.columns)}")
+    # Drop tournament metadata (prevents data leakage)
+    df = df.drop(columns=TOURNAMENT_COLS)
+    print(f"  Dropped tournament metadata: {', '.join(TOURNAMENT_COLS)}")
+    print(f"  Final feature count: {len(df.columns)}")
     
     # Invert rank columns (lower rank = better → higher value = better)
+    # NOTE: PowerRank is a RATING (not a rank), so we exclude it from this process
     print(f"\n  Inverting rank columns for pct_diff compatibility...")
-    rank_cols = [c for c in df_long.columns if 'Rank' in c or c.endswith('_Rk')]
+    rank_cols = [c for c in df.columns if ('Rank' in c or c.endswith('_Rk')) and c != 'PowerRank']
     
     if rank_cols:
         print(f"    Found {len(rank_cols)} rank columns to invert:")
         for col in rank_cols:
-            if col in df_long.columns and df_long[col].notna().any():
-                max_rank = df_long[col].max()
-                min_rank = df_long[col].min()
-                df_long[col] = max_rank - df_long[col]
+            if col in df.columns and df[col].notna().any():
+                max_rank = df[col].max()
+                min_rank = df[col].min()
+                df[col] = max_rank - df[col]
                 print(f"      {col}: inverted (range now 0-{max_rank - min_rank:.0f})")
-        print(f"    ✓ Rank inversion complete for LONG view")
+        print(f"    ✓ Rank inversion complete")
+        if 'PowerRank' in df.columns:
+            print(f"    ℹ PowerRank excluded (it's a rating, not a rank)")
     else:
         print(f"    No rank columns found to invert")
     
     # Normalize ranks to standard 0-364 scale
+    # NOTE: PowerRank is excluded - it's mean-centered around 0 by design
     print(f"\n  Normalizing ranks to standard 0-364 scale...")
     STANDARD_MAX_RANK = 364  # Modern D1 basketball field size
     
     if rank_cols:
         print(f"    Normalizing {len(rank_cols)} rank columns to 0-364 scale:")
         for col in rank_cols:
-            if col in df_long.columns and df_long[col].notna().any():
-                current_max = df_long[col].max()
+            if col in df.columns and df[col].notna().any():
+                current_max = df[col].max()
                 if current_max > 0:
-                    df_long[col] = (df_long[col] / current_max) * STANDARD_MAX_RANK
+                    df[col] = (df[col] / current_max) * STANDARD_MAX_RANK
                     print(f"      {col}: normalized (max was {current_max:.0f}, now {STANDARD_MAX_RANK})")
-        print(f"    ✓ Rank normalization complete for LONG view (all ranks now on 0-364 scale)")
+        print(f"    ✓ Rank normalization complete (all ranks now on 0-364 scale)")
+        if 'PowerRank' in df.columns:
+            print(f"    ℹ PowerRank excluded (mean-centered rating, range: {df['PowerRank'].min():.1f} to {df['PowerRank'].max():.1f})")
     else:
         print(f"    No rank columns to normalize")
     
     # ========================================================================
-    # CREATE RICH VIEW (2016+, 6 sources)
+    # VALIDATE AND WRITE OUTPUT
     # ========================================================================
-    print("\n[4/6] Creating RICH view (2016+, 6 sources)...")
-    print("-" * 80)
-    
-    df_rich = bart.copy()
-    print(f"  Starting with bartTorvik: {len(df_rich):,} rows")
-    
-    # Join all sources (2008 sources + 2016 sources)
-    all_sources = SOURCES_2008[1:] + SOURCES_2016
-    for source_name in all_sources:
-        df_rich = df_rich.merge(
-            sources[source_name],
-            on=['Year', 'Index'],
-            how='inner',
-            suffixes=('', '_DROP')
-        )
-        df_rich = df_rich.drop(columns=[col for col in df_rich.columns if col.endswith('_DROP')])
-        print(f"  After {source_name} join: {len(df_rich):,} rows, {len(df_rich.columns)} columns")
-        diagnose_lost_teams(bart, df_rich, source_name, min_year=2016)  # Only show 2016+ losses
-    
-    # Check for duplicates
-    print(f"\n  Checking for duplicates on (Year, Index)...")
-    dupes_before = df_rich.duplicated(subset=['Year', 'Index']).sum()
-    if dupes_before > 0:
-        print(f"  ⚠ Found {dupes_before} duplicate team-seasons")
-        df_rich = df_rich.drop_duplicates(subset=['Year', 'Index'], keep='first')
-        print(f"  Removed duplicates, kept first occurrence")
-    else:
-        print(f"  ✓ No duplicates found")
-    
-    # Filter to 2016+ and tournament teams
-    print(f"\n  Filtering to 2016+ and tournament teams...")
-    print(f"  Before filter: {len(df_rich):,} rows")
-    df_rich = df_rich[(df_rich['Year'] >= 2016) & (df_rich['tournamentSeed'].notna())].copy()
-    print(f"  After filter: {len(df_rich):,} rows")
-    
-    # Drop tournament metadata
-    df_rich = df_rich.drop(columns=TOURNAMENT_COLS)
-    print(f"  Final feature count: {len(df_rich.columns)}")
-    
-    # Invert rank columns (lower rank = better → higher value = better)
-    print(f"\n  Inverting rank columns for pct_diff compatibility...")
-    rank_cols = [c for c in df_rich.columns if 'Rank' in c or c.endswith('_Rk')]
-    
-    if rank_cols:
-        print(f"    Found {len(rank_cols)} rank columns to invert:")
-        for col in rank_cols:
-            if col in df_rich.columns and df_rich[col].notna().any():
-                max_rank = df_rich[col].max()
-                min_rank = df_rich[col].min()
-                df_rich[col] = max_rank - df_rich[col]
-                print(f"      {col}: inverted (range now 0-{max_rank - min_rank:.0f})")
-        print(f"    ✓ Rank inversion complete for RICH view")
-    else:
-        print(f"    No rank columns found to invert")
-    
-    # Normalize ranks to standard 0-364 scale
-    print(f"\n  Normalizing ranks to standard 0-364 scale...")
-    STANDARD_MAX_RANK = 364  # Modern D1 basketball field size
-    
-    if rank_cols:
-        print(f"    Normalizing {len(rank_cols)} rank columns to 0-364 scale:")
-        for col in rank_cols:
-            if col in df_rich.columns and df_rich[col].notna().any():
-                current_max = df_rich[col].max()
-                if current_max > 0:
-                    df_rich[col] = (df_rich[col] / current_max) * STANDARD_MAX_RANK
-                    print(f"      {col}: normalized (max was {current_max:.0f}, now {STANDARD_MAX_RANK})")
-        print(f"    ✓ Rank normalization complete for RICH view (all ranks now on 0-364 scale)")
-    else:
-        print(f"    No rank columns to normalize")
-    
-    # ========================================================================
-    # VALIDATE AND WRITE OUTPUTS
-    # ========================================================================
-    print("\n[5/6] Validating outputs...")
+    print("\n[4/4] Validating and writing output...")
     
     # Validate no nulls in key columns
-    for name, df in [('LONG', df_long), ('RICH', df_rich)]:
-        print(f"\n  {name} view:")
-        null_counts = df[['Year', 'Team', 'Index']].isnull().sum()
-        if null_counts.sum() > 0:
-            print(f"    ⚠ WARNING: Null values found in key columns:")
-            print(null_counts[null_counts > 0])
-        else:
-            print(f"    ✓ No nulls in key columns")
+    null_counts = df[['Year', 'Team', 'Index']].isnull().sum()
+    if null_counts.sum() > 0:
+        print(f"  ⚠ WARNING: Null values found in key columns:")
+        print(null_counts[null_counts > 0])
+    else:
+        print(f"  ✓ No nulls in key columns")
     
     # Create output directory if needed
-    print(f"\n[6/6] Writing outputs...")
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     
-    # Write long view
-    output_path_long = os.path.join(OUTPUT_DIR, OUTPUT_FILES['long'])
-    df_long.to_csv(output_path_long, index=False)
-    print(f"  ✓ Written: {output_path_long}")
-    print(f"    Rows: {len(df_long):,}")
-    print(f"    Columns: {len(df_long.columns)}")
-    
-    # Write rich view
-    output_path_rich = os.path.join(OUTPUT_DIR, OUTPUT_FILES['rich'])
-    df_rich.to_csv(output_path_rich, index=False)
-    print(f"  ✓ Written: {output_path_rich}")
-    print(f"    Rows: {len(df_rich):,}")
-    print(f"    Columns: {len(df_rich.columns)}")
+    # Write unified training set
+    output_path = os.path.join(OUTPUT_DIR, OUTPUT_FILE)
+    df.to_csv(output_path, index=False)
+    print(f"  ✓ Written: {output_path}")
+    print(f"    Rows: {len(df):,}")
+    print(f"    Columns: {len(df.columns)}")
     
     # Summary
     print("\n" + "="*80)
     print("SUMMARY")
     print("="*80)
-    print(f"\nLONG VIEW (2008-2025, 4 sources):")
-    print(f"  Sources: {', '.join(SOURCES_2008)}")
-    print(f"  Output: {output_path_long}")
-    print(f"  Rows: {len(df_long):,}")
-    print(f"  Year range: {df_long['Year'].min()}-{df_long['Year'].max()}")
-    print(f"  Features: {len(df_long.columns)}")
-    print(f"  Teams/year: {len(df_long) / df_long['Year'].nunique():.1f}")
-    
-    print(f"\nRICH VIEW (2016-2025, {len(SOURCES_2008) + len(SOURCES_2016)} sources):")
-    print(f"  Sources: {', '.join(SOURCES_2008 + SOURCES_2016)}")
-    print(f"  Output: {output_path_rich}")
-    print(f"  Rows: {len(df_rich):,}")
-    print(f"  Year range: {df_rich['Year'].min()}-{df_rich['Year'].max()}")
-    print(f"  Features: {len(df_rich.columns)}")
-    print(f"  Teams/year: {len(df_rich) / df_rich['Year'].nunique():.1f}")
-    if not INCLUDE_LRMCB:
-        print(f"  Note: LRMCB excluded (INCLUDE_LRMCB = False)")
+    print(f"\nUNIFIED TRAINING SET (2008-2025, 5 sources):")
+    print(f"  Sources: {', '.join(ALL_SOURCES)}")
+    print(f"  Output: {output_path}")
+    print(f"  Rows: {len(df):,}")
+    print(f"  Year range: {df['Year'].min()}-{df['Year'].max()}")
+    print(f"  Features: {len(df.columns)}")
+    print(f"  Teams/year: {len(df) / df['Year'].nunique():.1f}")
+    print(f"  PowerRank coverage: 2002-2026 (using 2008-2025 for this dataset)")
     print("="*80)
 
 if __name__ == "__main__":

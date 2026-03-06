@@ -2,7 +2,7 @@
 FEATURE SELECTION RECOMMENDATIONS
 ================================================================================
 
-1. KEEP - Strong predictive features (|r| >= 0.20): 20 features
+1. KEEP - Strong predictive features (|r| >= 0.20): 21 features
 
    pct_diff_kenpom_NetRtg: r = 0.437
    pct_diff_tournamentSeed: r = -0.418
@@ -16,10 +16,10 @@ FEATURE SELECTION RECOMMENDATIONS
    pct_diff_bartTorvik_Barthag: r = 0.370
    pct_diff_BPI_Rank: r = 0.367
    pct_diff_bartTorvik_AdjOE: r = 0.366
+   pct_diff_PowerRank: r = 0.365
    pct_diff_kenpom_SOS_DRtg_Rank: r = 0.363
    pct_diff_kenpom_SOS_ORtg_Rank: r = 0.357
-   pct_diff_bartTorvik_Rk: r = 0.350
-   ... and 5 more
+   ... and 6 more
 
 2. CONSIDER - Moderate predictive features (0.10 <= |r| < 0.20): 9 features
    These may add value in ensemble models
@@ -39,7 +39,7 @@ FEATURE SELECTION RECOMMENDATIONS
    pct_diff_kenpom_AdjT_Rank: r = 0.007
    ... and 2 more
 
-4. RESOLVE MULTICOLLINEARITY - 39 severe redundancies (|r| >= 0.85)
+4. RESOLVE MULTICOLLINEARITY - 46 severe redundancies (|r| >= 0.85)
    For each pair, keep the feature with higher target correlation:
 
    pct_diff_bartTorvik_Rk <-> pct_diff_bartTorvik_Barthag (r = 0.993)
@@ -72,12 +72,12 @@ FEATURE SELECTION RECOMMENDATIONS
    pct_diff_bartTorvik_Barthag <-> pct_diff_kenpom_NetRtg (r = 0.976)
       KEEP: pct_diff_kenpom_NetRtg, DROP: pct_diff_bartTorvik_Barthag
 
-   ... and 29 more pairs to resolve
+   ... and 36 more pairs to resolve
 
 ================================================================================
 SUMMARY
 ================================================================================
-Total features analyzed: 46
-Recommended to KEEP: 20
+Total features analyzed: 47
+Recommended to KEEP: 21
 Recommended to CONSIDER: 9
 Recommended to DROP: 12

@@ -1,6 +1,17 @@
 """
 L3 Elite 8 Model Configuration
 Toggle USE_SEEDS to compare models with vs without tournamentSeed
+
+DATASET: training_set_unified.csv (March 2026 Update)
+- Years: 2008-2025 (18 years, 1,147 tournament teams)
+- Sources: bartTorvik, kenPom, espnBPI, masseyComposite, powerRank
+- PowerRank: Continuous rating (-28 to +24), NOT normalized to 0-364
+- Features: ~52-54 columns before selection, ~30-35 after correlation reduction
+
+ARCHITECTURE:
+- Single unified model (replaces old long/rich split)
+- Two-model comparison: WITH seeds vs WITHOUT seeds
+- Ensemble: Logistic Regression + Random Forest + SVM + Gaussian NB (calibrated)
 """
 
 # ============================================================================
@@ -14,8 +25,22 @@ USE_SEEDS = True  # Set to False for "pure metrics" model
 # ============================================================================
 MODE = 'production'  # 'validation' or 'production'
 #MODE = 'validation'  # 'validation' or 'production'
+
 # validation: train on 2008-2024, test on 2025 (for strategy selection)
 # production: train on 2008-2025 (for 2026 predictions)
+
+# ============================================================================
+# POWERRANK HANDLING (DON'T EDIT - for reference only)
+# ============================================================================
+# PowerRank is a RATING (continuous variable), NOT a rank:
+# - Range: -28 to +24 (historically)
+# - Mean-centered around 0 by design
+# - Higher values = stronger teams (already directional)
+# - Do NOT normalize to 0-364 scale
+# - Do NOT invert
+# - Treat like kenpom_NetRtg or bartTorvik_Barthag (continuous metrics)
+# Elite teams typically: 15-24 range
+# Average teams: -5 to +5 range
 
 # ============================================================================
 # PRODUCTION STRATEGIES (only used if MODE='production')
@@ -27,6 +52,13 @@ H2H_PRODUCTION_STRATEGY_WITH_SEEDS = 'Emphasize Top 2'
 # ============================================================================
 # AUTO-GENERATED PATHS (DON'T EDIT)
 # ============================================================================
+# MIGRATION NOTE (March 2026):
+# - Removed: LONG vs RICH model split
+# - Unified: Single model trained on all available data (2008-2025)
+# - Preserved: WITH vs WITHOUT seeds comparison (SUFFIX handling)
+# - Scripts now use: training_set_unified.csv instead of long/rich CSVs
+# ============================================================================
+
 from pathlib import Path
 
 # Suffix for output directories
@@ -75,8 +107,10 @@ def print_config():
     print("="*80)
     print("CONFIGURATION")
     print("="*80)
+    print(f"Dataset: training_set_unified.csv (2008-2025, 1,147 teams)")
     print(f"Model Type: {MODEL_TYPE}")
     print(f"Include tournamentSeed: {USE_SEEDS}")
+    print(f"Mode: {MODE}")
     print(f"Output Suffix: '{SUFFIX}'")
     print(f"Output Directory: outputs/*{SUFFIX}/")
     print(f"\nResolved Paths:")
@@ -95,3 +129,32 @@ def get_excluded_columns():
         base_exclude.append('tournamentSeed')
     
     return base_exclude
+
+def get_training_dataset_path():
+    """Get path to unified training dataset
+    
+    Returns:
+        Path: training_set_unified.csv path
+    
+    Migration Note:
+        - OLD: training_set_long.csv (2008-2025, 4 sources) 
+        - OLD: training_set_rich.csv (2016-2025, 6 sources)
+        - NEW: training_set_unified.csv (2008-2025, 5 sources + PowerRank)
+    """
+    return RESULTS_DIR / 'training_set_unified.csv'
+
+def is_powerrank_column(col_name):
+    """Check if column is PowerRank (needs special handling)
+    
+    PowerRank is a RATING (continuous), not a rank:
+    - Do NOT normalize to 0-364 scale
+    - Do NOT invert
+    - Already directional (higher = better)
+    
+    Args:
+        col_name: Column name to check
+        
+    Returns:
+        bool: True if column is PowerRank rating
+    """
+    return col_name == 'PowerRank' or col_name == 'powerrank'

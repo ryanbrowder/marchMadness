@@ -3,16 +3,17 @@ create_predict_set_L2.py
 
 Purpose: Join clean L2 prediction sources to create prediction dataset
 - Uses *_predict_L2.csv files (current season 2026 data)
-- Joins all available sources (bartTorvik, kenPom, espnBPI, masseyComposite required)
-- Optional sources: LRMCB, powerRank (skipped if files don't exist)
+- Required sources: bartTorvik, kenPom, espnBPI, masseyComposite, powerRank
+- PowerRank now a core source (2002-2026 coverage, using 2026 data)
+- LRMCB removed (no 2026 data available, source discontinued)
 - Adds ESPN bracketology data (tournamentSeed, tournamentRegion)
-- Adds Vegas odds (elite8_prob, final4_prob, champ_prob from DraftKings)
+- Optional: Vegas odds (elite8_prob, final4_prob, champ_prob from DraftKings)
 - No tournament filtering (prediction is pre-tournament)
-- Outputs to L3/data/predictionData/
+- Outputs to L3/data/predictionData/predict_set_2026.csv
 
 Author: Ryan Browder
 Created: 2025-01-30
-Updated: 2025-02-09 (added Vegas odds integration)
+Updated: 2025-03-05 (PowerRank integration, unified pipeline)
 """
 
 import pandas as pd
@@ -23,7 +24,6 @@ from pathlib import Path
 # FEATURE TOGGLES
 # ============================================================================
 INCLUDE_VEGAS_ODDS = False  # Set to False to disable Vegas odds integration
-INCLUDE_LRMCB = False  # Set to False to exclude LRMCB (if not available for current year)
 
 # ============================================================================
 # CONFIGURATION
@@ -35,7 +35,6 @@ INPUTS = {
     'kenPom': 'data/kenPom/kenPom_predict_L2.csv',
     'espnBPI': 'data/espnBPI/espnBPI_predict_L2.csv',
     'masseyComposite': 'data/masseyComposite/masseyComposite_predict_L2.csv',
-    'LRMCB': 'data/LRMCB/LRMCB_predict_L2.csv',
     'powerRank': 'data/powerRank/powerRank_predict_L2.csv'
 }
 
@@ -45,14 +44,9 @@ BRACKETOLOGY_PATH = 'data/bracketology/espn_bracketology_2026.csv'
 # Vegas odds input (DraftKings Elite 8 probabilities)
 VEGAS_ODDS_PATH = 'data/vegasOdds/vegasOdds_analyze_L2.csv'
 
-# Optional sources (skip if file doesn't exist)
-# When INCLUDE_LRMCB = False, treat LRMCB as optional (skip if missing)
-OPTIONAL_SOURCES = ['powerRank']
-if not INCLUDE_LRMCB:
-    OPTIONAL_SOURCES.append('LRMCB')  # Skip LRMCB when flag is False
-
-# All sources (will be filtered to available sources at runtime)
-ALL_SOURCES = ['bartTorvik', 'kenPom', 'espnBPI', 'masseyComposite', 'LRMCB', 'powerRank']
+# All sources are required now (no optional sources)
+# PowerRank now goes back to 2002, making it a core source
+ALL_SOURCES = ['bartTorvik', 'kenPom', 'espnBPI', 'masseyComposite', 'powerRank']
 
 # Output path (relative to script location in L2/)
 OUTPUT_DIR = '../L3/data/predictionData'
@@ -110,18 +104,11 @@ def main():
     print("\n[1/5] Validating input files...")
     available_sources = []
     for source, path in INPUTS.items():
-        is_optional = source in OPTIONAL_SOURCES
-        if validate_file_exists(path, optional=is_optional):
+        if validate_file_exists(path, optional=False):
             available_sources.append(source)
-    
-    # Filter out LRMCB if flag is False
-    if not INCLUDE_LRMCB and 'LRMCB' in available_sources:
-        available_sources.remove('LRMCB')
     
     print(f"\n  Available sources: {len(available_sources)}/{len(INPUTS)}")
     print(f"  Using: {', '.join(available_sources)}")
-    if not INCLUDE_LRMCB:
-        print(f"  Note: LRMCB excluded by flag (INCLUDE_LRMCB = False)")
     
     # Load sources
     print("\n[2/5] Loading source data...")
@@ -233,9 +220,10 @@ def main():
     
     # ========================================================================
     # INVERT RANK COLUMNS (lower rank = better → higher value = better)
+    # NOTE: PowerRank is a RATING (not a rank), so we exclude it from this process
     # ========================================================================
     print(f"\n  Inverting rank columns for pct_diff compatibility...")
-    rank_cols = [c for c in df.columns if 'Rank' in c or c.endswith('_Rk')]
+    rank_cols = [c for c in df.columns if ('Rank' in c or c.endswith('_Rk')) and c != 'PowerRank']
     
     if rank_cols:
         print(f"    Found {len(rank_cols)} rank columns to invert:")
@@ -246,11 +234,14 @@ def main():
                 df[col] = max_rank - df[col]
                 print(f"      {col}: inverted (was {min_rank:.0f}-{max_rank:.0f}, now {0:.0f}-{max_rank - min_rank:.0f})")
         print(f"    ✓ Rank inversion complete (higher values now = better teams)")
+        if 'PowerRank' in df.columns:
+            print(f"    ℹ PowerRank excluded (it's a rating, not a rank)")
     else:
         print(f"    No rank columns found to invert")
     
     # ========================================================================
     # NORMALIZE RANKS TO STANDARD 0-364 SCALE
+    # NOTE: PowerRank is excluded - it's mean-centered around 0 by design
     # ========================================================================
     print(f"\n  Normalizing ranks to standard 0-364 scale...")
     STANDARD_MAX_RANK = 364  # Modern D1 basketball field size
@@ -264,6 +255,8 @@ def main():
                     df[col] = (df[col] / current_max) * STANDARD_MAX_RANK
                     print(f"      {col}: normalized (max was {current_max:.0f}, now {STANDARD_MAX_RANK})")
         print(f"    ✓ Rank normalization complete (all ranks now on 0-364 scale)")
+        if 'PowerRank' in df.columns:
+            print(f"    ℹ PowerRank excluded (mean-centered rating, range: {df['PowerRank'].min():.1f} to {df['PowerRank'].max():.1f})")
     else:
         print(f"    No rank columns to normalize")
     

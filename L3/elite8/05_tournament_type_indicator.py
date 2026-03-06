@@ -1,6 +1,11 @@
 """
 L3 Tournament Type Indicator
 Configure via config.py: USE_SEEDS = True/False
+
+UNIFIED DATASET (March 2026):
+- Single model predictions (no long/rich comparison)
+- Analyzes prediction characteristics to forecast tournament type
+- Outputs: Chalk score, tournament type probability, strategy recommendations
 """
 
 import pandas as pd
@@ -14,7 +19,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 import config
 
 # Configuration
-PREDICTIONS_FILE = config.OUTPUT_04 / 'elite8_predictions_2026_comparison.csv'
+PREDICTIONS_FILE = config.OUTPUT_04 / 'elite8_predictions_2026.csv'
 BACKTEST_FILE = config.OUTPUT_03 / 'backtest_summary.csv'
 OUTPUT_DIR = config.OUTPUT_05
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -35,8 +40,7 @@ print(f"Loaded {len(preds)} team predictions")
 
 # Load backtest results for context
 backtest = pd.read_csv(BACKTEST_FILE)
-backtest_long = backtest[backtest['Dataset'] == 'long']
-print(f"Loaded {len(backtest_long)} years of historical performance")
+print(f"Loaded {len(backtest)} years of historical performance")
 
 # ============================================================================
 # ANALYZE PREDICTION DISTRIBUTION
@@ -47,7 +51,7 @@ print("-" * 80)
 chalk_score = 0
 
 # Metric 1: Top team probability
-top_prob = preds['Avg_Probability'].iloc[0]
+top_prob = preds['P_E8'].iloc[0]
 top_team = preds['Team'].iloc[0]
 print(f"\n[1] TOP TEAM: {top_team} at {top_prob:.1%}")
 if top_prob >= 0.65:
@@ -63,7 +67,7 @@ else:
     top_signal = "CHAOS"
 
 # Metric 2: High-confidence picks
-high_conf = len(preds[preds['Avg_Probability'] >= 0.50])
+high_conf = len(preds[preds['P_E8'] >= 0.50])
 print(f"\n[2] HIGH-CONFIDENCE PICKS (≥50%): {high_conf}")
 if high_conf >= 6:
     print("  → CHALK signal (many strong teams)")
@@ -78,7 +82,7 @@ else:
     conf_signal = "CHAOS"
 
 # Metric 3: Probability spread (top 10)
-top_10_probs = preds['Avg_Probability'].head(10).values
+top_10_probs = preds['P_E8'].head(10).values
 spread = top_10_probs[0] - top_10_probs[9]
 print(f"\n[3] TOP 10 SPREAD: {spread:.1%}")
 print(f"  Range: {top_10_probs[0]:.1%} (#{1}) to {top_10_probs[9]:.1%} (#{10})")
@@ -95,7 +99,7 @@ else:
     spread_signal = "CHAOS"
 
 # Metric 4: Std dev of top 20
-top_20_std = preds['Avg_Probability'].head(20).std()
+top_20_std = preds['P_E8'].head(20).std()
 print(f"\n[4] TOP 20 STANDARD DEVIATION: {top_20_std:.3f}")
 if top_20_std >= 0.12:
     print("  → CHALK signal (clear separation)")
@@ -109,27 +113,9 @@ else:
     chalk_score -= 1
     std_signal = "CHAOS"
 
-# Metric 5: Model disagreement
-avg_diff = preds['Difference'].mean()
-max_diff = preds['Difference'].max()
-print(f"\n[5] MODEL AGREEMENT:")
-print(f"  Average disagreement: {avg_diff:.1%}")
-print(f"  Maximum disagreement: {max_diff:.1%}")
-if avg_diff <= 0.02:
-    print("  → CHALK signal (models very confident)")
-    chalk_score += 1
-    agree_signal = "CHALK"
-elif avg_diff <= 0.05:
-    print("  → NEUTRAL")
-    agree_signal = "NEUTRAL"
-else:
-    print("  → CHAOS signal (models uncertain)")
-    chalk_score -= 1
-    agree_signal = "CHAOS"
-
-# Metric 6: Parity in 30-50% range
-parity_count = len(preds[(preds['Avg_Probability'] >= 0.30) & (preds['Avg_Probability'] <= 0.50)])
-print(f"\n[6] TEAMS IN 30-50% RANGE: {parity_count}")
+# Metric 5: Parity in 30-50% range
+parity_count = len(preds[(preds['P_E8'] >= 0.30) & (preds['P_E8'] <= 0.50)])
+print(f"\n[5] TEAMS IN 30-50% RANGE: {parity_count}")
 if parity_count >= 20:
     print("  → CHAOS signal (many viable teams)")
     chalk_score -= 2
@@ -142,9 +128,9 @@ else:
     chalk_score += 2
     parity_signal = "CHALK"
 
-# Metric 7: Concentration at top
-top_5_avg = preds['Avg_Probability'].head(5).mean()
-print(f"\n[7] TOP 5 AVERAGE PROBABILITY: {top_5_avg:.1%}")
+# Metric 6: Concentration at top
+top_5_avg = preds['P_E8'].head(5).mean()
+print(f"\n[6] TOP 5 AVERAGE PROBABILITY: {top_5_avg:.1%}")
 if top_5_avg >= 0.55:
     print("  → CHALK signal (strong top tier)")
     chalk_score += 1
@@ -163,10 +149,10 @@ else:
 print("\n[3] TOURNAMENT TYPE ESTIMATION")
 print("="*80)
 
-print(f"\nCHALK SCORE: {chalk_score} (range: -14 to +12)")
+print(f"\nCHALK SCORE: {chalk_score} (range: -13 to +11)")
 
 # Convert score to probability distribution - FIXED EXPECTATIONS
-if chalk_score >= 8:
+if chalk_score >= 7:
     # EXTREME CHALK (like 2025)
     tournament_type = "EXTREME CHALK"
     chalk_prob = 0.80
@@ -176,7 +162,7 @@ if chalk_score >= 8:
     expected_acc = "75-100%"
     picks = "6-8"
     color = "🟢"
-elif chalk_score >= 5:
+elif chalk_score >= 4:
     # CHALK (like 2019, 2021) - FIXED TO BE REALISTIC
     tournament_type = "CHALK"
     chalk_prob = 0.60
@@ -196,7 +182,7 @@ elif chalk_score >= 0:
     expected_acc = "50-62%"
     picks = "4-5"
     color = "🔵"
-elif chalk_score >= -5:
+elif chalk_score >= -4:
     # NORMAL (chaos lean)
     tournament_type = "NORMAL (chaos lean)"
     chalk_prob = 0.20
@@ -240,7 +226,6 @@ signals_df = pd.DataFrame({
         'High-Confidence Picks',
         'Top 10 Spread',
         'Top 20 Std Dev',
-        'Model Agreement',
         'Parity (30-50%)',
         'Top 5 Average'
     ],
@@ -249,7 +234,6 @@ signals_df = pd.DataFrame({
         f"{high_conf}",
         f"{spread:.1%}",
         f"{top_20_std:.3f}",
-        f"{avg_diff:.1%}",
         f"{parity_count}",
         f"{top_5_avg:.1%}"
     ],
@@ -258,7 +242,6 @@ signals_df = pd.DataFrame({
         conf_signal,
         spread_signal,
         std_signal,
-        agree_signal,
         parity_signal,
         top5_signal
     ]
@@ -281,17 +264,17 @@ print("-" * 80)
 
 print("\nPast Tournament Types (by ROC-AUC):")
 print("\nCHALK YEARS:")
-chalk_years = backtest_long[backtest_long['ROC-AUC'] >= 0.93].sort_values('ROC-AUC', ascending=False)
+chalk_years = backtest[backtest['ROC-AUC'] >= 0.93].sort_values('ROC-AUC', ascending=False)
 for _, row in chalk_years.iterrows():
     print(f"  {int(row['Year'])}: ROC-AUC {row['ROC-AUC']:.3f} | {row['Correct Picks']}/8 correct")
 
 print("\nNORMAL YEARS:")
-normal_years = backtest_long[(backtest_long['ROC-AUC'] >= 0.85) & (backtest_long['ROC-AUC'] < 0.93)].sort_values('ROC-AUC', ascending=False)
+normal_years = backtest[(backtest['ROC-AUC'] >= 0.85) & (backtest['ROC-AUC'] < 0.93)].sort_values('ROC-AUC', ascending=False)
 for _, row in normal_years.iterrows():
     print(f"  {int(row['Year'])}: ROC-AUC {row['ROC-AUC']:.3f} | {row['Correct Picks']}/8 correct")
 
 print("\nCHAOS YEARS:")
-chaos_years = backtest_long[backtest_long['ROC-AUC'] < 0.85].sort_values('ROC-AUC', ascending=False)
+chaos_years = backtest[backtest['ROC-AUC'] < 0.85].sort_values('ROC-AUC', ascending=False)
 for _, row in chaos_years.iterrows():
     print(f"  {int(row['Year'])}: ROC-AUC {row['ROC-AUC']:.3f} | {row['Correct Picks']}/8 correct")
 

@@ -201,3 +201,10 @@ Total time: 20 minutes
 Expected value: Well above casual brackets
 
 Your edge: Elite 8 model (0.902 AUC) + contrarian public data + systematic process
+
+================================================================================
+AUTHOR
+================================================================================
+
+Ryan Browder
+March Madness Computron
