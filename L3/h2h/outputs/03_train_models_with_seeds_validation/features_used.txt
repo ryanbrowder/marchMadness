@@ -1,0 +1,30 @@
+Features used for model training (28 total):
+
+1. pct_diff_kenpom_NetRtg
+2. pct_diff_tournamentSeed
+3. pct_diff_kenpom_ORtg
+4. pct_diff_kenpom_DRtg
+5. pct_diff_kenpom_SOS_DRtg
+6. pct_diff_bartTorvik_Wins_Overall
+7. pct_diff_bartTorvik_G
+8. pct_diff_bartTorvik_ORB
+9. pct_diff_bartTorvik_EFGD%
+10. pct_diff_kenpom_SOS_NetRtg
+11. pct_diff_bartTorvik_TOR
+12. pct_diff_bartTorvik_2P%
+13. pct_diff_bartTorvik_3P%D
+14. pct_diff_bartTorvik_FTRD
+15. pct_diff_bartTorvik_3P%
+16. pct_diff_bartTorvik_FTR
+17. pct_diff_BPI_Off
+18. pct_diff_kenpom_NCSOS_NetRtg_Rank
+19. pct_diff_kenpom_Luck_Rank
+20. pct_diff_BPI_Def
+21. pct_diff_bartTorvik_TORD
+22. pct_diff_kenpom_NCSOS_NetRtg
+23. pct_diff_bartTorvik_DRB
+24. pct_diff_bartTorvik_WAB
+25. pct_diff_bartTorvik_3PRD
+26. pct_diff_bartTorvik_Adj T.
+27. pct_diff_bartTorvik_3PR
+28. pct_diff_kenpom_Luck

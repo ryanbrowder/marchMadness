@@ -82,12 +82,23 @@ def transform_espn_bpi(df, teams_index, dataset_name):
     df = df.merge(teams_index[['Team', 'Index']], on='Team', how='left')
     
     # Deduplicate: ESPN lists both SFBK and LIU with same Index 143
-    # Keep first occurrence per (Year, Index) to avoid duplicates
+    # Strategy: Prioritize LIU (merged entity) over SFBK by sorting before dedup
+    # Sort by Year, Index, then Team alphabetically (LIU < SFBK, so LIU comes first)
+    df = df.sort_values(['Year', 'Index', 'Team'], ascending=[True, True, True])
+    
+    # Keep first occurrence per (Year, Index) - this will now be LIU when both exist
     rows_before = len(df)
+    
+    # Identify duplicates before removing
+    duplicates = df[df.duplicated(subset=['Year', 'Index'], keep='first')]
+    if len(duplicates) > 0:
+        print(f"  Found {len(duplicates)} duplicate (Year, Index) pairs:")
+        for _, row in duplicates.iterrows():
+            print(f"    Year {row['Year']}, Index {row['Index']}: {row['Team']} (removing)")
+    
+    # Remove duplicates
     df = df.drop_duplicates(subset=['Year', 'Index'], keep='first')
     duplicates_removed = rows_before - len(df)
-    if duplicates_removed > 0:
-        print(f"  Removed {duplicates_removed} duplicate (Year, Index) pairs")
     
     # Check for unmatched teams
     unmatched = df[df['Index'].isna()]

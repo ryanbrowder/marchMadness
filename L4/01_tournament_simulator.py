@@ -43,13 +43,13 @@ warnings.filterwarnings('ignore')
 TEAMSINDEX_PATH = Path("../utils/teamsIndex.csv")
 
 # L3 output paths - Primary models (WITH SEEDS - bracket aware, post-Selection Sunday)
-ELITE8_PREDICTIONS_PATH = Path("../L3/elite8/outputs/04_2026_predictions/elite8_predictions_2026_long.csv")
+ELITE8_PREDICTIONS_PATH = Path("../L3/elite8/outputs/04_2026_predictions/elite8_predictions_2026.csv")
 H2H_MODEL_DIR            = Path("../L3/h2h/models_with_seeds")
 PREDICTION_DATA_PATH     = Path("../L3/data/predictionData/predict_set_2026.csv")
 ESPN_BRACKET_PATH       = Path("../L2/data/bracketology/espn_bracketology_2026.csv")
 
 # Comparison models (NO SEEDS - pure metrics, pre-Selection Sunday)
-ELITE8_PREDICTIONS_NO_SEEDS_PATH = Path("../L3/elite8/outputs/04_2026_predictions_no_seeds/elite8_predictions_2026_long.csv")
+ELITE8_PREDICTIONS_NO_SEEDS_PATH = Path("../L3/elite8/outputs/04_2026_predictions_no_seeds/elite8_predictions_2026.csv")
 H2H_MODEL_DIR_NO_SEEDS           = Path("../L3/h2h/models")
 
 # L4 output
@@ -417,8 +417,8 @@ def identify_seed_bias(bracket_df, elite8_with_seeds, elite8_no_seeds, threshold
     results = []
     
     # Create lookups for Elite 8 probabilities
-    e8_with_lookup = dict(zip(elite8_with_seeds['Team'], elite8_with_seeds['Elite8_Probability']))
-    e8_no_lookup = dict(zip(elite8_no_seeds['Team'], elite8_no_seeds['Elite8_Probability']))
+    e8_with_lookup = dict(zip(elite8_with_seeds['Team'], elite8_with_seeds['P_E8']))
+    e8_no_lookup = dict(zip(elite8_no_seeds['Team'], elite8_no_seeds['P_E8']))
     
     for _, row in bracket_df.iterrows():
         team = row['Team']
@@ -1046,8 +1046,8 @@ def run_validation_mode(bracket, bracket_df, prediction_df, elite8_df, h2h):
     tournament_teams = set(bracket_df['Team'])
     elite8_direct = (
         elite8_df[elite8_df['Team'].isin(tournament_teams)]
-        [['Team', 'Elite8_Probability']]
-        .rename(columns={'Elite8_Probability': 'P_Elite8_Direct'})
+        [['Team', 'P_E8']]
+        .rename(columns={'P_E8': 'P_Elite8_Direct'})
         .merge(bracket_df[['Team', 'tournamentSeed', 'Region']], on='Team')
         .rename(columns={'tournamentSeed': 'Seed'})
     )
@@ -1166,7 +1166,7 @@ def optimize_expected_value(bracket, round_probs, bracket_df, scoring=SCORING):
 def optimize_elite8_focus(bracket, round_probs, elite8_probs_df):
     """Elite 8 Focus: optimize through Sweet 16 using direct probabilities."""
     picks = {}
-    e8_lookup = dict(zip(elite8_probs_df['Team'], elite8_probs_df['Elite8_Probability']))
+    e8_lookup = dict(zip(elite8_probs_df['Team'], elite8_probs_df['P_E8']))
     
     for region, matchups in bracket.items():
         for t1, t2 in matchups:
