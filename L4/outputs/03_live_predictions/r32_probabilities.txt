@@ -1,0 +1,53 @@
+================================================================================
+          ROUND OF 32 - LIVE PROBABILITIES
+================================================================================
+
+Based on actual tournament results
+
+ALL MATCHUPS
+--------------------------------------------------------------------------------
+
+  West:
+    (1.0) Duke vs (8.0) Saint Louis
+      → Duke 84.0% [STRONG]
+    (5.0) Tennessee vs (2.0) Michigan St.
+      → Michigan St. 75.5% [STRONG]
+
+
+================================================================================
+                    BETTING TIERS
+================================================================================
+
+LOCKS (>90% - Bet Heavy) [0 games]
+--------------------------------------------------------------------------------
+  None
+
+STRONG FAVORITES (70-90% - Bet Moderate) [2 games]
+--------------------------------------------------------------------------------
+  Duke vs Saint Louis
+    → Duke 84.0%
+    - Good betting opportunity with solid edge
+
+  Michigan St. vs Tennessee
+    → Michigan St. 75.5%
+    - Good betting opportunity with solid edge
+
+LEANS (60-70% - Small Bet) [0 games]
+--------------------------------------------------------------------------------
+  None
+
+SLIGHT EDGES (55-60% - Minimal Bet or Pass) [0 games]
+--------------------------------------------------------------------------------
+  None
+
+TOSS-UPS (<55% - Avoid or Hedge) [0 games]
+--------------------------------------------------------------------------------
+  None
+
+================================================================================
+
+NOTE: Model probabilities ≠ betting odds.
+      Use as ONE input to betting decisions.
+      Consider injuries, matchups, and market odds.
+
+================================================================================

@@ -535,6 +535,11 @@ def resolve_play_ins_deterministic(prediction_df, h2h, play_in_matchups):
         
         losers.append(loser)
         
+        # Store probability for export (CRITICAL: before removing losers!)
+        matchup['probability'] = prob
+        matchup['winner'] = winner
+        matchup['loser'] = loser
+        
         print(f"  {matchup['seed']}-seed ({matchup['region']}): "
               f"{winner} over {loser} ({prob:.1%})")
     
@@ -1580,6 +1585,404 @@ def export_bracket_text(bracket_result, strategy_name, champion_prob):
     return filepath
 
 
+
+
+def export_game_probabilities(bracket, prediction_df, h2h, play_in_matchups=None, output_dir=None):
+    """
+    Export game-by-game probabilities for entire tournament.
+    
+    Creates both CSV and TXT formats showing:
+    - Play-in games (First Four)
+    - R64 matchups with probabilities
+    - Expected bracket path through championship (based on favorites)
+    
+    Args:
+        bracket: Tournament bracket structure (dict of region -> list of R64 matchups)
+        prediction_df: Team prediction data
+        h2h: H2H model dictionary
+        play_in_matchups: List of play-in matchup dicts (optional)
+        output_dir: Output directory path
+    
+    Returns:
+        Tuple of (csv_path, txt_path)
+    """
+    if output_dir is None:
+        output_dir = OUTPUT_DIR
+    
+    rows = []  # For CSV
+    txt_lines = []  # For TXT
+    
+    # Header
+    txt_lines.append("=" * 80)
+    txt_lines.append("          GAME-BY-GAME PROBABILITIES - 2026 NCAA TOURNAMENT")
+    txt_lines.append("=" * 80)
+    txt_lines.append("")
+    
+    # Get seed info for display
+    bracket_df = prediction_df[prediction_df['tournamentSeed'].between(1, 16)].copy()
+    team_to_seed = dict(zip(bracket_df['Team'], bracket_df['tournamentSeed']))
+    
+    # ========================================================================
+    # PLAY-IN GAMES (First Four)
+    # ========================================================================
+    if play_in_matchups and len(play_in_matchups) > 0:
+        txt_lines.append("FIRST FOUR (Play-In Games)")
+        txt_lines.append("-" * 80)
+        txt_lines.append("")
+        
+        for matchup in play_in_matchups:
+            team1 = matchup['team1']
+            team2 = matchup['team2']
+            seed = matchup['seed']
+            region = matchup['region']
+            
+            # Use stored probability
+            if 'probability' in matchup and 'winner' in matchup:
+                winner = matchup['winner']
+                prob = matchup['probability'] if winner == team1 else (1 - matchup['probability'])
+            else:
+                prob = predict_h2h_matchup(team1, team2, prediction_df, h2h)
+                if isinstance(prob, tuple):
+                    prob = prob[0]
+            
+            # Add to CSV
+            rows.append({
+                'Round': 'Play-In',
+                'Region': region,
+                'Seed': seed,
+                'Team1': team1,
+                'Team2': team2,
+                'Team1_Prob': round(prob, 4),
+                'Team2_Prob': round(1 - prob, 4),
+                'Favorite': team1 if prob > 0.5 else team2,
+                'Favorite_Prob': round(max(prob, 1-prob), 4)
+            })
+            
+            # Add to TXT
+            favorite = team1 if prob > 0.5 else team2
+            fav_prob = max(prob, 1-prob)
+            txt_lines.append(f"  {region} - {seed}-seed:")
+            txt_lines.append(f"    {team1} vs {team2}")
+            txt_lines.append(f"    → {favorite} {fav_prob*100:.1f}%")
+            txt_lines.append("")
+        
+        txt_lines.append("")
+    
+    # ========================================================================
+    # BUILD EXPECTED BRACKET PATH (following favorites)
+    # ========================================================================
+    
+    # R64
+    txt_lines.append("ROUND OF 64")
+    txt_lines.append("-" * 80)
+    txt_lines.append("")
+    
+    r64_winners = {}  # Track expected winners for next round
+    
+    for region in ['East', 'Midwest', 'South', 'West']:
+        if region not in bracket:
+            continue
+        
+        txt_lines.append(f"  {region} Region:")
+        r64_winners[region] = []
+        
+        for team1, team2 in bracket[region]:
+            seed1 = team_to_seed.get(team1, '?')
+            seed2 = team_to_seed.get(team2, '?')
+            
+            # Get H2H probability
+            prob = predict_h2h_matchup(team1, team2, prediction_df, h2h)
+            if isinstance(prob, tuple):
+                prob = prob[0]
+            
+            # Determine favorite
+            favorite = team1 if prob > 0.5 else team2
+            fav_prob = max(prob, 1-prob)
+            
+            # Track winner for next round
+            r64_winners[region].append(favorite)
+            
+            # Add to CSV
+            rows.append({
+                'Round': 'R64',
+                'Region': region,
+                'Seed': f'{seed1} vs {seed2}',
+                'Team1': team1,
+                'Team2': team2,
+                'Team1_Prob': round(prob, 4),
+                'Team2_Prob': round(1 - prob, 4),
+                'Favorite': favorite,
+                'Favorite_Prob': round(fav_prob, 4)
+            })
+            
+            # Add to TXT
+            txt_lines.append(f"    ({seed1}) {team1} vs ({seed2}) {team2}")
+            txt_lines.append(f"      → {favorite} {fav_prob*100:.1f}%")
+        
+        txt_lines.append("")
+    
+    txt_lines.append("")
+    
+    # R32
+    txt_lines.append("ROUND OF 32 (Expected Matchups Based on R64 Favorites)")
+    txt_lines.append("-" * 80)
+    txt_lines.append("")
+    
+    r32_winners = {}
+    
+    for region in ['East', 'Midwest', 'South', 'West']:
+        if region not in r64_winners:
+            continue
+        
+        txt_lines.append(f"  {region} Region:")
+        r32_winners[region] = []
+        
+        winners = r64_winners[region]
+        for i in range(0, len(winners), 2):
+            if i + 1 < len(winners):
+                team1, team2 = winners[i], winners[i+1]
+                seed1 = team_to_seed.get(team1, '?')
+                seed2 = team_to_seed.get(team2, '?')
+                
+                # Get H2H probability
+                prob = predict_h2h_matchup(team1, team2, prediction_df, h2h)
+                if isinstance(prob, tuple):
+                    prob = prob[0]
+                
+                # Determine favorite
+                favorite = team1 if prob > 0.5 else team2
+                fav_prob = max(prob, 1-prob)
+                
+                # Track winner for next round
+                r32_winners[region].append(favorite)
+                
+                # Add to CSV
+                rows.append({
+                    'Round': 'R32',
+                    'Region': region,
+                    'Seed': f'{seed1} vs {seed2}',
+                    'Team1': team1,
+                    'Team2': team2,
+                    'Team1_Prob': round(prob, 4),
+                    'Team2_Prob': round(1 - prob, 4),
+                    'Favorite': favorite,
+                    'Favorite_Prob': round(fav_prob, 4)
+                })
+                
+                # Add to TXT
+                txt_lines.append(f"    ({seed1}) {team1} vs ({seed2}) {team2}")
+                txt_lines.append(f"      → {favorite} {fav_prob*100:.1f}%")
+        
+        txt_lines.append("")
+    
+    txt_lines.append("")
+    
+    # S16 (Sweet 16)
+    txt_lines.append("SWEET 16 (Expected Matchups Based on R32 Favorites)")
+    txt_lines.append("-" * 80)
+    txt_lines.append("")
+    
+    s16_winners = {}
+    
+    for region in ['East', 'Midwest', 'South', 'West']:
+        if region not in r32_winners:
+            continue
+        
+        txt_lines.append(f"  {region} Region:")
+        s16_winners[region] = []
+        
+        winners = r32_winners[region]
+        for i in range(0, len(winners), 2):
+            if i + 1 < len(winners):
+                team1, team2 = winners[i], winners[i+1]
+                seed1 = team_to_seed.get(team1, '?')
+                seed2 = team_to_seed.get(team2, '?')
+                
+                # Get H2H probability
+                prob = predict_h2h_matchup(team1, team2, prediction_df, h2h)
+                if isinstance(prob, tuple):
+                    prob = prob[0]
+                
+                # Determine favorite
+                favorite = team1 if prob > 0.5 else team2
+                fav_prob = max(prob, 1-prob)
+                
+                # Track winner for next round
+                s16_winners[region].append(favorite)
+                
+                # Add to CSV
+                rows.append({
+                    'Round': 'S16',
+                    'Region': region,
+                    'Seed': f'{seed1} vs {seed2}',
+                    'Team1': team1,
+                    'Team2': team2,
+                    'Team1_Prob': round(prob, 4),
+                    'Team2_Prob': round(1 - prob, 4),
+                    'Favorite': favorite,
+                    'Favorite_Prob': round(fav_prob, 4)
+                })
+                
+                # Add to TXT
+                txt_lines.append(f"    ({seed1}) {team1} vs ({seed2}) {team2}")
+                txt_lines.append(f"      → {favorite} {fav_prob*100:.1f}%")
+        
+        txt_lines.append("")
+    
+    txt_lines.append("")
+    
+    # E8 (Elite 8)
+    txt_lines.append("ELITE 8 (Expected Matchups Based on S16 Favorites)")
+    txt_lines.append("-" * 80)
+    txt_lines.append("")
+    
+    e8_winners = {}
+    
+    for region in ['East', 'Midwest', 'South', 'West']:
+        if region not in s16_winners or len(s16_winners[region]) != 2:
+            continue
+        
+        team1, team2 = s16_winners[region]
+        seed1 = team_to_seed.get(team1, '?')
+        seed2 = team_to_seed.get(team2, '?')
+        
+        # Get H2H probability
+        prob = predict_h2h_matchup(team1, team2, prediction_df, h2h)
+        if isinstance(prob, tuple):
+            prob = prob[0]
+        
+        # Determine favorite
+        favorite = team1 if prob > 0.5 else team2
+        fav_prob = max(prob, 1-prob)
+        
+        # Track winner for next round
+        e8_winners[region] = favorite
+        
+        # Add to CSV
+        rows.append({
+            'Round': 'E8',
+            'Region': region,
+            'Seed': f'{seed1} vs {seed2}',
+            'Team1': team1,
+            'Team2': team2,
+            'Team1_Prob': round(prob, 4),
+            'Team2_Prob': round(1 - prob, 4),
+            'Favorite': favorite,
+            'Favorite_Prob': round(fav_prob, 4)
+        })
+        
+        # Add to TXT
+        txt_lines.append(f"  {region} Region:")
+        txt_lines.append(f"    ({seed1}) {team1} vs ({seed2}) {team2}")
+        txt_lines.append(f"      → {favorite} {fav_prob*100:.1f}% (Regional Champion)")
+        txt_lines.append("")
+    
+    txt_lines.append("")
+    
+    # FF (Final Four)
+    txt_lines.append("FINAL FOUR (Expected Matchups Based on E8 Favorites)")
+    txt_lines.append("-" * 80)
+    txt_lines.append("")
+    
+    ff_matchups = [('East', 'Midwest'), ('South', 'West')]
+    ff_winners = []
+    
+    for r1, r2 in ff_matchups:
+        if r1 in e8_winners and r2 in e8_winners:
+            team1, team2 = e8_winners[r1], e8_winners[r2]
+            seed1 = team_to_seed.get(team1, '?')
+            seed2 = team_to_seed.get(team2, '?')
+            
+            # Get H2H probability
+            prob = predict_h2h_matchup(team1, team2, prediction_df, h2h)
+            if isinstance(prob, tuple):
+                prob = prob[0]
+            
+            # Determine favorite
+            favorite = team1 if prob > 0.5 else team2
+            fav_prob = max(prob, 1-prob)
+            
+            # Track winner for championship
+            ff_winners.append(favorite)
+            
+            # Add to CSV
+            rows.append({
+                'Round': 'FF',
+                'Region': f'{r1} vs {r2}',
+                'Seed': f'{seed1} vs {seed2}',
+                'Team1': team1,
+                'Team2': team2,
+                'Team1_Prob': round(prob, 4),
+                'Team2_Prob': round(1 - prob, 4),
+                'Favorite': favorite,
+                'Favorite_Prob': round(fav_prob, 4)
+            })
+            
+            # Add to TXT
+            txt_lines.append(f"  {r1} Champion vs {r2} Champion:")
+            txt_lines.append(f"    ({seed1}) {team1} vs ({seed2}) {team2}")
+            txt_lines.append(f"      → {favorite} {fav_prob*100:.1f}%")
+            txt_lines.append("")
+    
+    txt_lines.append("")
+    
+    # Championship
+    txt_lines.append("CHAMPIONSHIP (Expected Matchup Based on FF Favorites)")
+    txt_lines.append("-" * 80)
+    txt_lines.append("")
+    
+    if len(ff_winners) == 2:
+        team1, team2 = ff_winners[0], ff_winners[1]
+        seed1 = team_to_seed.get(team1, '?')
+        seed2 = team_to_seed.get(team2, '?')
+        
+        # Get H2H probability
+        prob = predict_h2h_matchup(team1, team2, prediction_df, h2h)
+        if isinstance(prob, tuple):
+            prob = prob[0]
+        
+        # Determine favorite
+        favorite = team1 if prob > 0.5 else team2
+        fav_prob = max(prob, 1-prob)
+        
+        # Add to CSV
+        rows.append({
+            'Round': 'Championship',
+            'Region': 'National',
+            'Seed': f'{seed1} vs {seed2}',
+            'Team1': team1,
+            'Team2': team2,
+            'Team1_Prob': round(prob, 4),
+            'Team2_Prob': round(1 - prob, 4),
+            'Favorite': favorite,
+            'Favorite_Prob': round(fav_prob, 4)
+        })
+        
+        # Add to TXT
+        txt_lines.append(f"  Championship Game:")
+        txt_lines.append(f"    ({seed1}) {team1} vs ({seed2}) {team2}")
+        txt_lines.append(f"      → {favorite} {fav_prob*100:.1f}% 🏆 CHAMPION")
+        txt_lines.append("")
+    
+    txt_lines.append("=" * 80)
+    
+    # ========================================================================
+    # EXPORT FILES
+    # ========================================================================
+    
+    # CSV export
+    df = pd.DataFrame(rows)
+    csv_path = output_dir / 'game_probabilities.csv'
+    df.to_csv(csv_path, index=False)
+    
+    # TXT export
+    txt_path = output_dir / 'game_probabilities.txt'
+    with open(txt_path, 'w') as f:
+        f.write('\n'.join(txt_lines))
+    
+    return csv_path, txt_path
+
+
 def run_production_mode(bracket, bracket_df, prediction_df, elite8_df, h2h, h2h_no_seeds=None, elite8_no_seeds=None):
     """Run bracket optimization with narrative output."""
     print()
@@ -1878,6 +2281,13 @@ def run_production_mode(bracket, bracket_df, prediction_df, elite8_df, h2h, h2h_
     round_probs_path = OUTPUT_DIR / 'round_probabilities.csv'
     round_probs_df.to_csv(round_probs_path, index=False)
     print(f"  ✓ round_probabilities.csv ({len(round_probs_df)} teams)")
+    
+    # Export game-by-game probabilities
+    csv_path, txt_path = export_game_probabilities(
+        bracket, prediction_df, h2h, play_in_matchups, OUTPUT_DIR
+    )
+    print(f"  ✓ game_probabilities.csv")
+    print(f"  ✓ game_probabilities.txt")
     
     # Export seed bias analysis if available
     if seed_bias_df is not None:
