@@ -19,6 +19,7 @@ DIRECTORY STRUCTURE
 ================================================================================
 
 L1/
+├── L1_PRIME.py                       ← runs all active transforms in sequence
 ├── bartTorvik/
 │   └── bartTorvik_transform_L1.py
 ├── bracketology/
@@ -28,7 +29,7 @@ L1/
 ├── kenPom/
 │   └── kenPom_transform_L1.py
 ├── LRMCB/
-│   └── LRMCB_transform_L1.py
+│   └── LRMCB_transform_L1.py         (commented out in L1_PRIME by default)
 ├── masseyComposite/
 │   └── masseyComposite_transform_L1.py
 ├── powerRank/
@@ -36,24 +37,35 @@ L1/
 ├── srcbb/
 │   └── srcbb_transform_L1.py
 ├── vegasOdds/
-│   └── vegasOdds_transform_L1.py
+│   └── vegasOdds_transform_L1.py     (commented out in L1_PRIME by default)
 │
 └── data/                          ← all raw inputs live here
-    ├── bartTorvik/                  (written by L0 scraper)
+    ├── bartTorvik/
+    │   ├── bartTorvik_historical_raw.csv     (written by L0 historical scraper)
+    │   └── bartTorvik_current_raw.csv        (written by L0 current scraper)
     ├── bracketology/
     │   ├── espn_bracketology_2026.xlsx       (manually updated post-Selection Sunday)
     │   ├── espn_public_picks_2026.csv        (manually updated post-Selection Sunday)
     │   └── espn_public_picks_historical.xlsx (manually maintained archive)
-    ├── espnBPI/                     (written by L0 scraper)
-    ├── kenPom/                      (written by L0 scraper)
+    ├── espnBPI/
+    │   ├── espnBPI_historical_raw.csv        (written by L0 historical scraper)
+    │   └── espnBPI_current_raw.csv           (written by L0 current scraper)
+    ├── kenPom/
+    │   ├── kenPom_historical_raw.csv         (written by L0 historical scraper)
+    │   └── kenPom_current_raw.csv            (written by L0 current scraper)
     ├── LRMCB/
-    │   └── LRMCB_raw_L1.csv         (manually maintained — no L0 scraper)
-    ├── masseyComposite/             (written by L0 scraper)
-    ├── powerRank/                   (written by L0 scraper)
-    ├── srcbb/                       (written by L0 scraper)
+    │   └── LRMCB_raw_L1.csv                  (manually maintained — no L0 scraper)
+    ├── masseyComposite/
+    │   ├── masseyComposite_historical_raw.csv (written by L0 historical scraper)
+    │   └── masseyComposite_current_raw.csv    (written by L0 current scraper)
+    ├── powerRank/
+    │   ├── powerRank_historical_raw.csv      (written by L0 historical scraper)
+    │   └── powerRank_current_raw.csv         (written by L0 current scraper)
+    ├── srcbb/
+    │   └── srcbb_raw_L1.csv                  (written by L0 scraper)
     └── vegasOdds/
-        ├── vegasOdds_Champion.csv   (manually maintained — no L0 scraper)
-        └── vegasOdds_Final4.csv     (manually maintained — no L0 scraper)
+        ├── vegasOdds_Champion.csv            (manually maintained — no L0 scraper)
+        └── vegasOdds_Final4.csv              (manually maintained — no L0 scraper)
 
 ================================================================================
 SHARED TRANSFORM LOGIC (ALL SOURCES)
@@ -92,7 +104,9 @@ SOURCE-SPECIFIC NOTES
 
 BART TORVIK
   Script: bartTorvik_transform_L1.py
-  Input:  L1/data/bartTorvik/  (written by L0 scraper)
+  Input:  L1/data/bartTorvik/bartTorvik_historical_raw.csv
+          L1/data/bartTorvik/bartTorvik_current_raw.csv
+          (both written by L0 scrapers — concatenated before processing)
   Output: L2/data/bartTorvik/bartTorvik_analyze_L2.csv
           L2/data/bartTorvik/bartTorvik_predict_L2.csv
 
@@ -133,7 +147,9 @@ BRACKETOLOGY
 
 ESPN BPI
   Script: espnBPI_transform_L1.py
-  Input:  L1/data/espnBPI/  (written by L0 scraper)
+  Input:  L1/data/espnBPI/espnBPI_historical_raw.csv
+          L1/data/espnBPI/espnBPI_current_raw.csv
+          (both written by L0 scrapers — concatenated before processing)
   Output: L2/data/espnBPI/espnBPI_analyze_L2.csv
           L2/data/espnBPI/espnBPI_predict_L2.csv
 
@@ -141,7 +157,9 @@ ESPN BPI
 
 KEN POM
   Script: kenPom_transform_L1.py
-  Input:  L1/data/kenPom/  (written by L0 scraper)
+  Input:  L1/data/kenPom/kenPom_historical_raw.csv
+          L1/data/kenPom/kenPom_current_raw.csv
+          (both written by L0 scrapers — concatenated before processing)
   Output: L2/data/kenPom/kenPom_analyze_L2.csv
           L2/data/kenPom/kenPom_predict_L2.csv
 
@@ -175,7 +193,9 @@ LRMCB
 
 MASSEY COMPOSITE
   Script: masseyComposite_transform_L1.py
-  Input:  L1/data/masseyComposite/  (written by L0 scraper)
+  Input:  L1/data/masseyComposite/masseyComposite_historical_raw.csv
+          L1/data/masseyComposite/masseyComposite_current_raw.csv
+          (both written by L0 scrapers — concatenated before processing)
   Output: L2/data/masseyComposite/masseyComposite_analyze_L2.csv
           L2/data/masseyComposite/masseyComposite_predict_L2.csv
 
@@ -185,7 +205,9 @@ MASSEY COMPOSITE
 
 POWER RANK
   Script: powerRank_transform_L1.py
-  Input:  L1/data/powerRank/  (written by L0 scraper)
+  Input:  L1/data/powerRank/powerRank_historical_raw.csv
+          L1/data/powerRank/powerRank_current_raw.csv
+          (both written by L0 scrapers — concatenated before processing)
   Output: L2/data/powerRank/powerRank_analyze_L2.csv
           L2/data/powerRank/powerRank_predict_L2.csv
 
@@ -251,31 +273,51 @@ Common failure sources:
   - "vs." or opponent string corrupting Torvik team name field
 
 ================================================================================
-EXECUTION SEQUENCE
+EXECUTION
 ================================================================================
 
-Transform scripts are independent and can be run in any order.
-All must complete successfully before running L2.
+L1_PRIME.py — FULL TRANSFORM ORCHESTRATOR
 
-  cd L1/bartTorvik    && python bartTorvik_transform_L1.py
-  cd ../kenPom        && python kenPom_transform_L1.py
-  cd ../espnBPI       && python espnBPI_transform_L1.py
-  cd ../masseyComposite && python masseyComposite_transform_L1.py
-  cd ../LRMCB         && python LRMCB_transform_L1.py         (if data available)
-  cd ../powerRank     && python powerRank_transform_L1.py
-  cd ../srcbb         && python srcbb_transform_L1.py
-  cd ../vegasOdds     && python vegasOdds_transform_L1.py     (if using Vegas)
-  cd ../bracketology  && python clean_espn_public_picks.py
+  Runs all active transforms in sequence from the L1 root directory.
 
-Verify all expected output files exist in L2/data/ before proceeding:
+    cd L1
+    python L1_PRIME.py
 
-  ls ../../L2/data/bartTorvik/
-  ls ../../L2/data/kenPom/
-  ls ../../L2/data/espnBPI/
-  ls ../../L2/data/masseyComposite/
-  ls ../../L2/data/powerRank/
-  ls ../../L2/data/srcbb/
-  ls ../../L2/data/bracketology/
+  Active by default:
+    bartTorvik, bracketology, espnBPI, kenPom,
+    masseyComposite, powerRank, srcbb
+
+  Commented out by default (enable when data is available):
+    LRMCB        — uncomment when LRMCB_raw_L1.csv is present
+    vegasOdds    — uncomment when vegasOdds CSVs are populated
+
+  If a script is not found, L1_PRIME skips it and continues.
+  Exit code is non-zero if any active script fails.
+
+RUNNING INDIVIDUAL TRANSFORMS
+
+  Transform scripts are independent and can be run individually
+  when only one source needs to be refreshed.
+
+    cd L1/bartTorvik    && python bartTorvik_transform_L1.py
+    cd L1/kenPom        && python kenPom_transform_L1.py
+    cd L1/espnBPI       && python espnBPI_transform_L1.py
+    cd L1/masseyComposite && python masseyComposite_transform_L1.py
+    cd L1/powerRank     && python powerRank_transform_L1.py
+    cd L1/srcbb         && python srcbb_transform_L1.py
+    cd L1/bracketology  && python clean_espn_public_picks.py
+    cd L1/LRMCB         && python LRMCB_transform_L1.py       (if data available)
+    cd L1/vegasOdds     && python vegasOdds_transform_L1.py   (if using Vegas)
+
+VERIFY OUTPUTS BEFORE PROCEEDING TO L2
+
+    ls L2/data/bartTorvik/
+    ls L2/data/kenPom/
+    ls L2/data/espnBPI/
+    ls L2/data/masseyComposite/
+    ls L2/data/powerRank/
+    ls L2/data/srcbb/
+    ls L2/data/bracketology/
 
 ================================================================================
 VALIDATION — WHAT GOOD OUTPUT LOOKS LIKE

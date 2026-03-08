@@ -1,21 +1,28 @@
 """
 ESPN BPI Transform Script (L1 → L2)
 
-Transforms ESPN BPI data from raw format to analysis-ready format.
+Concatenates historical and current ESPN BPI data, then transforms to analysis-ready format.
+Reads: espnBPI_historical_raw.csv + espnBPI_current_raw.csv
 Handles column structure: Team, BPI, BPI_Rk, Off, Def, Year
 Renames to: Team, BPI, BPI_Rank, BPI_Off, BPI_Def, Year
 
 Splits data:
-- Year 2026 → espnBPI_predict_L2.csv (current season for predictions)
-- Years 2008-2025 → espnBPI_analyze_L2.csv (historical data for training)
+- Year <= (CURRENT_YEAR - 1) → espnBPI_analyze_L2.csv (historical training data)
+- Year == CURRENT_YEAR → espnBPI_predict_L2.csv (current season for predictions)
 
 Outputs:
 - L2/data/espnBPI/espnBPI_analyze_L2.csv (historical)
-- L2/data/espnBPI/espnBPI_predict_L2.csv (2026)
+- L2/data/espnBPI/espnBPI_predict_L2.csv (current)
 """
 
-import pandas as pd
+import sys
 import os
+
+# Add utils to path for CURRENT_YEAR
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../utils')))
+from utils import CURRENT_YEAR
+
+import pandas as pd
 import re
 
 def clean_team_name(name):
@@ -81,25 +88,6 @@ def transform_espn_bpi(df, teams_index, dataset_name):
     # Merge with teamsIndex to get Index
     df = df.merge(teams_index[['Team', 'Index']], on='Team', how='left')
     
-    # Deduplicate: ESPN lists both SFBK and LIU with same Index 143
-    # Strategy: Prioritize LIU (merged entity) over SFBK by sorting before dedup
-    # Sort by Year, Index, then Team alphabetically (LIU < SFBK, so LIU comes first)
-    df = df.sort_values(['Year', 'Index', 'Team'], ascending=[True, True, True])
-    
-    # Keep first occurrence per (Year, Index) - this will now be LIU when both exist
-    rows_before = len(df)
-    
-    # Identify duplicates before removing
-    duplicates = df[df.duplicated(subset=['Year', 'Index'], keep='first')]
-    if len(duplicates) > 0:
-        print(f"  Found {len(duplicates)} duplicate (Year, Index) pairs:")
-        for _, row in duplicates.iterrows():
-            print(f"    Year {row['Year']}, Index {row['Index']}: {row['Team']} (removing)")
-    
-    # Remove duplicates
-    df = df.drop_duplicates(subset=['Year', 'Index'], keep='first')
-    duplicates_removed = rows_before - len(df)
-    
     # Check for unmatched teams
     unmatched = df[df['Index'].isna()]
     if len(unmatched) > 0:
@@ -148,7 +136,8 @@ def main():
     print("="*60)
     
     # Define paths (relative to L1/espnBPI/)
-    input_path = '../data/espnBPI/espnBPI_raw_L1.csv'
+    historical_path = '../data/espnBPI/espnBPI_historical_raw.csv'
+    current_path = '../data/espnBPI/espnBPI_current_raw.csv'
     teams_index_path = '../../utils/teamsIndex.csv'
     output_dir = '../../L2/data/espnBPI'
     analyze_output = os.path.join(output_dir, 'espnBPI_analyze_L2.csv')
@@ -161,28 +150,53 @@ def main():
     print("\nLoading team index...")
     teams_index = load_teams_index(teams_index_path)
     
-    # Load raw data
-    print("\nLoading raw data...")
-    if not os.path.exists(input_path):
-        print(f"ERROR: Input file not found: {input_path}")
+    # Load and concatenate raw data files
+    print("\nLoading raw data files...")
+    
+    dfs_to_concat = []
+    
+    # Load historical data
+    if os.path.exists(historical_path):
+        df_historical_raw = pd.read_csv(historical_path)
+        dfs_to_concat.append(df_historical_raw)
+        print(f"  ✓ Historical: {len(df_historical_raw)} rows from {historical_path}")
+        print(f"    Years: {sorted(df_historical_raw['Year'].unique())}")
+    else:
+        print(f"  ⚠ Historical file not found: {historical_path}")
+    
+    # Load current data
+    if os.path.exists(current_path):
+        df_current_raw = pd.read_csv(current_path)
+        dfs_to_concat.append(df_current_raw)
+        print(f"  ✓ Current: {len(df_current_raw)} rows from {current_path}")
+        print(f"    Year: {df_current_raw['Year'].unique()[0]}")
+    else:
+        print(f"  ⚠ Current file not found: {current_path}")
+    
+    # Check if we have any data
+    if len(dfs_to_concat) == 0:
+        print("\nERROR: No data files found!")
+        print(f"  Expected: {historical_path}")
+        print(f"  Expected: {current_path}")
         return
     
-    df_raw = pd.read_csv(input_path)
-    print(f"Loaded {len(df_raw)} rows from {input_path}")
-    print(f"Years present: {sorted(df_raw['Year'].unique())}")
-    print(f"Columns: {df_raw.columns.tolist()}")
+    # Concatenate all data
+    df_raw = pd.concat(dfs_to_concat, ignore_index=True)
+    print(f"\n  ✓ Combined: {len(df_raw)} total rows")
+    print(f"    Years present: {sorted(df_raw['Year'].unique())}")
+    print(f"    Columns: {df_raw.columns.tolist()}")
     
-    # Split data: 2026 (predict) vs 2008-2025 (analyze)
-    df_historical = df_raw[df_raw['Year'] <= 2025].copy()
-    df_current = df_raw[df_raw['Year'] == 2026].copy()
+    # Split data: Historical (up to CURRENT_YEAR-1) vs Current (CURRENT_YEAR)
+    df_historical = df_raw[df_raw['Year'] < CURRENT_YEAR].copy()
+    df_current = df_raw[df_raw['Year'] == CURRENT_YEAR].copy()
     
-    print(f"\nData split:")
-    print(f"  Historical (2008-2025): {len(df_historical)} rows")
-    print(f"  Current (2026): {len(df_current)} rows")
+    print(f"\nData split (CURRENT_YEAR: {CURRENT_YEAR}):")
+    print(f"  Historical (up to {CURRENT_YEAR-1}): {len(df_historical)} rows")
+    print(f"  Current ({CURRENT_YEAR}): {len(df_current)} rows")
     
     # Process historical data (for training/validation)
     print("\n" + "-"*60)
-    print("HISTORICAL DATA (for training/validation)")
+    print(f"HISTORICAL DATA (up to {CURRENT_YEAR-1})")
     print("-"*60)
     
     if len(df_historical) > 0:
@@ -197,7 +211,7 @@ def main():
     
     # Process current season data (for predictions)
     print("\n" + "-"*60)
-    print("CURRENT SEASON DATA (2026 - for predictions)")
+    print(f"CURRENT SEASON DATA ({CURRENT_YEAR})")
     print("-"*60)
     
     if len(df_current) > 0:

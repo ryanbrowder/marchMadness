@@ -1,9 +1,9 @@
 """
 KenPom Data Transform - L1 (Transform Layer)
-Cleans and standardizes KenPom raw data
+Cleans and standardizes KenPom raw data from historical and current scrapers
 Outputs: 
-  - kenpom_predict_L2.csv (2026 data for predictions)
-  - kenpom_analyze_L2.csv (historical data for training)
+  - kenPom_predict_L2.csv (2026 data for predictions)
+  - kenPom_analyze_L2.csv (historical data for training)
 Note: Run from L1/kenPom/ directory
 """
 
@@ -12,7 +12,8 @@ import os
 
 # Configuration
 CURRENT_YEAR = 2026
-INPUT_FILE = "../data/kenPom/kenPom_raw_L1.csv"
+HISTORICAL_FILE = "../data/kenPom/kenPom_historical_raw.csv"
+CURRENT_FILE = "../data/kenPom/kenPom_current_raw.csv"
 TEAM_INDEX_FILE = "../../utils/teamsIndex.csv"
 OUTPUT_DIR = "../../L2/data/kenPom"
 PREDICT_FILE = f"{OUTPUT_DIR}/kenPom_predict_L2.csv"
@@ -127,10 +128,18 @@ def transform_data():
     print("KenPom Data Transform - L1")
     print("="*60)
     
-    # Load raw data
-    print(f"Loading raw data from {INPUT_FILE}...")
-    df = pd.read_csv(INPUT_FILE)
-    print(f"  ✓ Loaded {len(df)} rows")
+    # Load historical and current data
+    print("Loading raw data...")
+    
+    df_historical = pd.read_csv(HISTORICAL_FILE)
+    print(f"  ✓ Historical: {len(df_historical)} rows ({df_historical['Year'].min()}-{df_historical['Year'].max()})")
+    
+    df_current = pd.read_csv(CURRENT_FILE)
+    print(f"  ✓ Current: {len(df_current)} rows (year {CURRENT_YEAR})")
+    
+    # Concatenate
+    df = pd.concat([df_historical, df_current], ignore_index=True)
+    print(f"  ✓ Combined: {len(df)} total rows")
     
     # Remove duplicate headers
     print("Cleaning duplicate header rows...")

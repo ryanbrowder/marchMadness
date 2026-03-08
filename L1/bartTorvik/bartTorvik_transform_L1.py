@@ -274,21 +274,11 @@ def clean_torvik_data(df: pd.DataFrame) -> pd.DataFrame:
     """
     df = df.copy()
     
-    print(f"  Start: {len(df)} rows")
-    
     # Apply cleaning steps in order
     df = remove_header_rows(df)
-    print(f"  After remove_header_rows: {len(df)} rows")
-    
     df = parse_team_column(df)
-    print(f"  After parse_team_column: {len(df)} rows")
-    
     df = add_team_index(df)
-    print(f"  After add_team_index: {len(df)} rows")
-    
     df = remove_duplicates(df)
-    print(f"  After remove_duplicates: {len(df)} rows")
-    
     df = reorder_team_columns(df)
     df = split_record_column(df)
     df = reorder_wins_column(df)
@@ -347,7 +337,7 @@ def transform_torvik(input_file: str = None,
     Main transform function: read raw, clean, prefix, and split.
     
     Args:
-        input_file: Path to raw CSV file
+        input_file: Path to raw CSV file (legacy support, not used in split-file mode)
         predict_output: Path for prediction output
         analyze_output: Path for analysis output
     """
@@ -356,8 +346,6 @@ def transform_torvik(input_file: str = None,
     output_dir = os.path.join(os.path.dirname(__file__), '../../L2/data/bartTorvik')
     output_base_dir = os.path.join(os.path.dirname(__file__), '../../L2/data')
     
-    if input_file is None:
-        input_file = os.path.join(input_dir, 'bartTorvik_raw_L1.csv')
     if predict_output is None:
         predict_output = os.path.join(output_dir, 'bartTorvik_predict_L2.csv')
     if analyze_output is None:
@@ -372,13 +360,24 @@ def transform_torvik(input_file: str = None,
     print("="*70)
     print()
     
-    # Read raw data
-    print(f"Reading {input_file}...")
-    df = pd.read_csv(input_file)
-    print(f"  ✓ Loaded {len(df):,} rows, {len(df.columns)} columns")
+    # Read historical and current data
+    historical_file = os.path.join(input_dir, 'bartTorvik_historical_raw.csv')
+    current_file = os.path.join(input_dir, 'bartTorvik_current_raw.csv')
+    
+    print(f"Reading historical data...")
+    df_historical = pd.read_csv(historical_file)
+    print(f"  ✓ Historical: {len(df_historical):,} rows ({df_historical['Year'].min()}-{df_historical['Year'].max()})")
+    
+    print(f"Reading current year data...")
+    df_current = pd.read_csv(current_file)
+    print(f"  ✓ Current: {len(df_current):,} rows (year {df_current['Year'].iloc[0]})")
+    
+    # Concatenate
+    df = pd.concat([df_historical, df_current], ignore_index=True)
+    print(f"  ✓ Combined: {len(df):,} total rows, {len(df.columns)} columns")
     
     # Clean data
-    print("Cleaning data...")
+    print("\nCleaning data...")
     df = clean_torvik_data(df)
     print(f"  ✓ Cleaned")
     
