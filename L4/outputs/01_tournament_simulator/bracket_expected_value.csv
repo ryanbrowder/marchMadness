@@ -1,64 +1,64 @@
 Round,Region,Team1,Team2,Winner,Probability
-R64,East,Michigan,Bethune Cookman,Michigan,0.9682
-R64,East,Clemson,UCLA,UCLA,0.6585
-R64,East,Tennessee,Yale,Tennessee,0.7569
-R64,East,Virginia,UNC Wilmington,Virginia,0.8918
-R64,East,Louisville,Indiana,Louisville,0.881
-R64,East,Purdue,UC Irvine,Purdue,0.8386
-R64,East,Villanova,Ohio St.,Villanova,0.6887
-R64,East,Florida,Wright St.,Florida,0.9635
-R64,Midwest,Connecticut,LIU,Connecticut,0.9699
-R64,Midwest,Utah St.,Iowa,Iowa,0.6615
-R64,Midwest,North Carolina,Liberty,North Carolina,0.8421
-R64,Midwest,Texas Tech,Cal Baptist,Texas Tech,0.9123
-R64,Midwest,Kentucky,Texas,Kentucky,0.7076
-R64,Midwest,Nebraska,Navy,Nebraska,0.8248
-R64,Midwest,Saint Mary's,Texas A&M,Saint Mary's,0.734
-R64,Midwest,Michigan St.,Merrimack,Michigan St.,0.8947
-R64,South,Arizona,UMBC,Arizona,0.887
-R64,South,Georgia,N.C. State,N.C. State,0.5642
-R64,South,St. John's,Belmont,St. John's,0.903
-R64,South,Kansas,High Point,Kansas,0.8744
-R64,South,Vanderbilt,Miami OH,Vanderbilt,0.8322
-R64,South,Gonzaga,Troy,Gonzaga,0.9681
-R64,South,BYU,Missouri,BYU,0.6507
-R64,South,Illinois,East Tennessee St.,Illinois,0.9306
-R64,West,Duke,Central Arkansas,Duke,0.9581
-R64,West,Saint Louis,UCF,Saint Louis,0.6763
-R64,West,Arkansas,South Florida,Arkansas,0.844
-R64,West,Alabama,Stephen F. Austin,Alabama,0.7684
-R64,West,Wisconsin,Santa Clara,Wisconsin,0.5119
-R64,West,Iowa St.,North Dakota St.,Iowa St.,0.9743
-R64,West,Miami FL,TCU,Miami FL,0.5692
-R64,West,Houston,Portland St.,Houston,0.9753
-R32,East,Michigan,UCLA,Michigan,0.834
-R32,East,Tennessee,Virginia,Virginia,0.5199
-R32,East,Louisville,Purdue,Purdue,0.8063
-R32,East,Villanova,Florida,Florida,0.8437
-R32,Midwest,Connecticut,Iowa,Connecticut,0.9031
-R32,Midwest,North Carolina,Texas Tech,Texas Tech,0.8384
-R32,Midwest,Kentucky,Nebraska,Nebraska,0.7526
-R32,Midwest,Saint Mary's,Michigan St.,Michigan St.,0.8216
-R32,South,Arizona,N.C. State,Arizona,0.8269
-R32,South,St. John's,Kansas,Kansas,0.6227
-R32,South,Vanderbilt,Gonzaga,Gonzaga,0.6597
-R32,South,BYU,Illinois,Illinois,0.7808
-R32,West,Duke,Saint Louis,Duke,0.8401
-R32,West,Arkansas,Alabama,Alabama,0.5455
-R32,West,Wisconsin,Iowa St.,Iowa St.,0.6445
-R32,West,Miami FL,Houston,Houston,0.8782
-S16,East,Michigan,Virginia,Michigan,0.8586
-S16,East,Purdue,Florida,Purdue,0.6283
-S16,Midwest,Connecticut,Texas Tech,Connecticut,0.6366
-S16,Midwest,Nebraska,Michigan St.,Michigan St.,0.5983
-S16,South,Arizona,Kansas,Arizona,0.8031
-S16,South,Gonzaga,Illinois,Illinois,0.5198
-S16,West,Duke,Alabama,Duke,0.815
-S16,West,Iowa St.,Houston,Houston,0.6668
-E8,East,Michigan,Purdue,Michigan,0.838
-E8,Midwest,Connecticut,Michigan St.,Connecticut,0.5518
-E8,South,Arizona,Illinois,Arizona,0.7202
-E8,West,Duke,Houston,Duke,0.7275
-FF,East vs Midwest,Michigan,Connecticut,Michigan,0.7606
-FF,South vs West,Arizona,Duke,Duke,0.742
-Championship,Final,Michigan,Duke,Duke,0.6044
+R64,East,Michigan,Bethune Cookman,Michigan,0.9689
+R64,East,Saint Louis,UCLA,UCLA,0.835
+R64,East,St. John's,Liberty,St. John's,0.8701
+R64,East,Texas Tech,Stephen F. Austin,Texas Tech,0.8339
+R64,East,Kentucky,Miami OH,Kentucky,0.7573
+R64,East,Purdue,UC Irvine,Purdue,0.8511
+R64,East,Saint Mary's,Texas A&M,Saint Mary's,0.7022
+R64,East,Connecticut,Illinois Chicago,Connecticut,0.955
+R64,Midwest,Florida,LIU,Florida,0.9351
+R64,Midwest,Utah St.,TCU,Utah St.,0.6465
+R64,Midwest,Arkansas,South Florida,Arkansas,0.8488
+R64,Midwest,Virginia,UNC Wilmington,Virginia,0.8896
+R64,Midwest,Wisconsin,UCF,Wisconsin,0.772
+R64,Midwest,Nebraska,East Tennessee St.,Nebraska,0.9737
+R64,Midwest,Villanova,Missouri,Villanova,0.8612
+R64,Midwest,Houston,Merrimack,Houston,0.958
+R64,South,Arizona,Portland St.,Arizona,0.9694
+R64,South,Clemson,Iowa,Iowa,0.725
+R64,South,Tennessee,High Point,Tennessee,0.7404
+R64,South,Kansas,North Dakota St.,Kansas,0.9217
+R64,South,Louisville,Auburn,Louisville,0.8394
+R64,South,Gonzaga,Navy,Gonzaga,0.937
+R64,South,BYU,Texas,BYU,0.8139
+R64,South,Illinois,Central Arkansas,Illinois,0.923
+R64,West,Duke,Tennessee St.,Duke,0.9657
+R64,West,Miami FL,Ohio St.,Ohio St.,0.5641
+R64,West,Vanderbilt,Yale,Vanderbilt,0.8185
+R64,West,Alabama,Cal Baptist,Alabama,0.862
+R64,West,North Carolina,Santa Clara,North Carolina,0.6004
+R64,West,Iowa St.,Troy,Iowa St.,0.9662
+R64,West,Georgia,N.C. State,Georgia,0.5825
+R64,West,Michigan St.,Wright St.,Michigan St.,0.9619
+R32,East,Michigan,UCLA,Michigan,0.8196
+R32,East,St. John's,Texas Tech,Texas Tech,0.7241
+R32,East,Kentucky,Purdue,Purdue,0.7688
+R32,East,Saint Mary's,Connecticut,Connecticut,0.7507
+R32,Midwest,Florida,Utah St.,Florida,0.8192
+R32,Midwest,Arkansas,Virginia,Arkansas,0.7278
+R32,Midwest,Wisconsin,Nebraska,Wisconsin,0.569
+R32,Midwest,Villanova,Houston,Houston,0.8684
+R32,South,Arizona,Iowa,Arizona,0.8095
+R32,South,Tennessee,Kansas,Kansas,0.7649
+R32,South,Louisville,Gonzaga,Gonzaga,0.6807
+R32,South,BYU,Illinois,Illinois,0.7346
+R32,West,Duke,Ohio St.,Duke,0.9165
+R32,West,Vanderbilt,Alabama,Vanderbilt,0.5094
+R32,West,North Carolina,Iowa St.,Iowa St.,0.7491
+R32,West,Georgia,Michigan St.,Georgia,0.5408
+S16,East,Michigan,Texas Tech,Michigan,0.8671
+S16,East,Purdue,Connecticut,Connecticut,0.6072
+S16,Midwest,Florida,Arkansas,Florida,0.7203
+S16,Midwest,Wisconsin,Houston,Houston,0.6824
+S16,South,Arizona,Kansas,Arizona,0.8224
+S16,South,Gonzaga,Illinois,Illinois,0.5248
+S16,West,Duke,Vanderbilt,Duke,0.9
+S16,West,Iowa St.,Georgia,Iowa St.,0.8341
+E8,East,Michigan,Connecticut,Michigan,0.7559
+E8,Midwest,Florida,Houston,Houston,0.7232
+E8,South,Arizona,Illinois,Arizona,0.7282
+E8,West,Duke,Iowa St.,Duke,0.8457
+FF,East vs Midwest,Michigan,Houston,Michigan,0.5529
+FF,South vs West,Arizona,Duke,Duke,0.7479
+Championship,Final,Michigan,Duke,Duke,0.6178

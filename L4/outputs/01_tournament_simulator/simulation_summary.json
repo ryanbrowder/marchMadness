@@ -2,42 +2,42 @@
   "simulation": {
     "n_sims": 50000,
     "converged": false,
-    "unique_matchups": 1026,
-    "gnb_exclusion_rate": 0.8723
+    "unique_matchups": 1021,
+    "gnb_exclusion_rate": 0.8805
   },
   "top_10_champions": {
-    "Duke": 0.3163,
-    "Michigan": 0.2703,
-    "Arizona": 0.1018,
-    "Houston": 0.0718,
-    "Connecticut": 0.0405,
-    "Purdue": 0.0366,
-    "Florida": 0.0287,
-    "Texas Tech": 0.0224,
-    "Illinois": 0.0185,
-    "Michigan St.": 0.0167
+    "Duke": 0.3688,
+    "Michigan": 0.2154,
+    "Arizona": 0.1302,
+    "Houston": 0.0867,
+    "Florida": 0.0319,
+    "Iowa St.": 0.0256,
+    "Connecticut": 0.0237,
+    "Arkansas": 0.0173,
+    "Purdue": 0.0165,
+    "Illinois": 0.0154
   },
   "strategies": {
     "chalk": {
       "description": "Chalk (always pick favorite)",
       "champion": "Duke",
-      "champion_probability": 0.3163,
-      "expected_points_espn": 1385.07,
-      "expected_points_yahoo": 138.51
+      "champion_probability": 0.3688,
+      "expected_points_espn": 1391.94,
+      "expected_points_yahoo": 139.19
     },
     "expected_value": {
       "description": "Expected Value (maximize expected points)",
       "champion": "Duke",
-      "champion_probability": 0.3163,
-      "expected_points_espn": 1385.07,
-      "expected_points_yahoo": 138.51
+      "champion_probability": 0.3688,
+      "expected_points_espn": 1391.94,
+      "expected_points_yahoo": 139.19
     },
     "elite8_focus": {
       "description": "Elite 8 Focus (optimize through Sweet 16)",
       "champion": "Duke",
-      "champion_probability": 0.3163,
-      "expected_points_espn": 1379.14,
-      "expected_points_yahoo": 137.91
+      "champion_probability": 0.3688,
+      "expected_points_espn": 1391.94,
+      "expected_points_yahoo": 139.19
     }
   }
 }

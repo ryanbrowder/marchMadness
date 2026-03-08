@@ -268,35 +268,45 @@ BIDDING STRATEGY:
 ================================================================================
 
 PURPOSE:
-  Calculate win probabilities for upcoming round based on actual tournament
-  results. Use for betting/gambling decisions during tournament.
+  Generate win probabilities with line value targets for betting decisions.
+  Works BOTH pre-tournament (R64) and during tournament (R32+).
 
 WHEN TO RUN:
-  After each round completes, before placing bets on next round.
+  
+  PRE-TOURNAMENT (Selection Sunday):
+    After bracket is announced, before tournament starts.
+    Use for R64 betting analysis.
+  
+  DURING TOURNAMENT (After each round):
+    After R64, R32, S16, E8, FF complete.
+    Use for next round betting analysis.
 
 HOW TO RUN:
-  cd L4
+
+  PRE-TOURNAMENT (No actual results needed):
+    cd L4
+    python 03_predict_next_round.py --next-round R64
   
-  # After R64 completes
-  python 03_predict_next_round.py --next-round R32
-  
-  # After R32 completes
-  python 03_predict_next_round.py --next-round S16
-  
-  # Continue for E8, FF, Championship
-  python 03_predict_next_round.py --next-round E8
-  python 03_predict_next_round.py --next-round FF
-  python 03_predict_next_round.py --next-round Championship
+  DURING TOURNAMENT (Requires actual_results.csv):
+    cd L4
+    python 03_predict_next_round.py --next-round R32
+    python 03_predict_next_round.py --next-round S16
+    python 03_predict_next_round.py --next-round E8
+    python 03_predict_next_round.py --next-round FF
+    python 03_predict_next_round.py --next-round Championship
 
 WHAT IT DOES:
-  1. Loads actual tournament results from data/actual_results.csv
-  2. Removes losing teams from prediction data (using Index)
-  3. Determines next round's matchups based on bracket structure
-  4. Calculates H2H probabilities using L3 ensemble models
-  5. Classifies games by betting confidence tier
-  6. Exports betting sheet with recommendations
+  1. Loads L3 H2H ensemble models
+  2. Loads prediction features for remaining teams
+  3. For R64: Generates matchups from bracket structure
+     For R32+: Determines matchups from actual results
+  4. Calculates H2H win probabilities for each matchup
+  5. Computes line value targets (odds needed for different edge levels)
+  6. Calculates expected value per $1 bet at each tier
+  7. Provides unit sizing recommendations
+  8. Exports betting sheet with actionable recommendations
 
-INPUT FILE: data/actual_results.csv
+INPUT FILE: data/actual_results.csv (for R32+ only, not needed for R64)
 
   Format (5 columns):
     round,Team IndexA,winner,Team IndexB,loser
@@ -334,70 +344,153 @@ INPUT FILE: data/actual_results.csv
 
 OUTPUTS:
   All files saved to: outputs/03_live_predictions/
+  
+  r64_probabilities.txt - R64 betting sheet (pre-tournament)
+  r32_probabilities.txt - R32 betting sheet (after R64 completes)
+  s16_probabilities.txt - Sweet 16 betting sheet (after R32 completes)
+  e8_probabilities.txt - Elite 8 betting sheet (after S16 completes)
+  ff_probabilities.txt - Final Four betting sheet (after E8 completes)
+  championship_probabilities.txt - Championship betting sheet (after FF)
+  
+  Each file includes:
+    • Game-by-game probabilities
+    • Line value targets (what odds you need for different bet tiers)
+    • Expected value per $1 bet
+    • Unit sizing recommendations
+    • Betting tier classifications
 
-  r32_probabilities.txt (or s16/e8/ff/championship) - Human-readable betting sheet
-  r32_probabilities.csv - Excel-friendly data
+KEY FEATURES:
+  ✓ R64 pre-tournament analysis (no results needed)
+  ✓ Live tournament analysis (requires actual results)
+  ✓ Line value targets (odds needed for MAX/STRONG/VALUE bets)
+  ✓ Expected value calculations per $1 bet
+  ✓ Unit sizing recommendations (6-10 units, 2-4 units, 1-2 units)
+  ✓ Two-tier classification system (confidence + line value)
 
-BETTING TIERS:
-  LOCK (>90%) - Bet heavy (biggest unit size)
-    Model has overwhelming confidence
-    Example: 1-seed vs 16-seed survivor
+TWO CLASSIFICATION SYSTEMS:
+
+  1. CONFIDENCE TIER (Based on model probability)
+     • LOCK (>90%): Very high model confidence
+     • STRONG (70-90%): High model confidence
+     • LEAN (60-70%): Modest model confidence
+     • SLIGHT (55-60%): Low model confidence
+     • TOSS-UP (<55%): Near 50/50
+     
+     → Informational only, DOES NOT determine bet size
   
-  STRONG (70-90%) - Bet moderate (standard unit)
-    Good betting opportunity with solid edge
-    Best value opportunities
+  2. LINE VALUE TIER (Based on edge you get from odds)
+     • MAX BET (8% edge): Rare, bet heavy
+     • STRONG BET (5% edge): Common, standard bet
+     • VALUE BET (2% edge): Most common, minimum bet
+     • Marginal (<2% edge): Pass
+     
+     → DETERMINES bet size (see unit recommendations)
+
+UNIT SIZING RECOMMENDATIONS:
+
+  Line Value Tier    Edge    Units       $ (if unit=$0.50)    Frequency
+  ───────────────────────────────────────────────────────────────────────
+  MAX BET            8%+     6-10        $3-5                 1-3/tournament
+  STRONG BET         5-8%    2-4         $1-2                 8-15/tournament
+  VALUE BET          2-5%    1-2         $0.50-1              10-20/tournament
+  Pass               <2%     0           $0                   Most games
   
-  LEAN (60-70%) - Bet small (half unit)
-    Modest edge, small bet recommended
+  CRITICAL: Bet size is determined by LINE VALUE tier (edge), NOT confidence!
   
-  SLIGHT (55-60%) - Minimal bet or pass
-    Very small edge, consider passing
-    Edge too small for reliable profit
-  
-  TOSS-UP (<55%) - Avoid or bet underdog for value
-    No clear edge on favorite
-    Near 50/50, no betting edge
+  Example:
+    Duke 98% [LOCK confidence] at -5000 odds
+      → Edge: ~0% (no value)
+      → Line value tier: PASS
+      → Bet: 0 units
+    
+    St Louis 58% [SLIGHT confidence] at +150 odds
+      → Edge: ~18% (huge value)
+      → Line value tier: MAX BET
+      → Bet: 6-10 units
 
 READING THE OUTPUT:
 
-  Example betting sheet (r32_probabilities.txt):
+  Example game output:
+    
+    (5) Tennessee vs (3) Gonzaga
+      → Gonzaga 74.9% [STRONG]
+      LINE VALUE:
+        MAX BET: -210 or better (EV: $0.109 | 6-10 units)
+        STRONG BET: -286 or better (EV: $0.063 | 2-4 units)
+        VALUE BET: -488 or better (EV: $0.024 | 1-2 units)
+        BREAKEVEN: -900 (EV: $0.000 | 0 units - PASS)
   
-    ============================================================================
-                        ROUND OF 32 - LIVE PROBABILITIES
-    ============================================================================
+  How to use this:
+    1. Check your sportsbook: Gonzaga -280
+    2. Compare to targets: -280 is better than -286 (STRONG BET tier)
+    3. Bet recommended units: 2-4 units (if your unit is $0.50, bet $1-2)
+    4. Expected profit: $1.50 × 0.063 = $0.095 per bet
+
+EXPECTED VALUE:
+
+  Every line value target shows expected profit per $1 bet:
+  
+    STRONG BET: -286 or better (EV: $0.063 | 2-4 units)
     
-    Based on actual tournament results
+    Interpretation:
+      • If you bet at -286, expect $0.063 profit per $1 wagered
+      • If you bet $2 (4 units at $0.50), expect $0.126 profit
+      • Over 20 similar bets, expect ~$2.52 profit
+  
+  Typical tournament EV (betting 25-30 games with proper sizing):
+    • Conservative: $1-2 profit
+    • Moderate: $2-4 profit
+    • Aggressive: $3-6 profit
+    • ROI: 4-6% (excellent in sports betting)
+
+PRE-TOURNAMENT WORKFLOW:
+
+  Selection Sunday:
+    1. python 01_tournament_simulator.py
+       → Use game_probabilities.txt to fill bracket
     
-    ALL MATCHUPS
-    ----------------------------------------------------------------------------
+    2. python 03_predict_next_round.py --next-round R64
+       → Use r64_probabilities.txt for betting with line value targets
     
-      East:
-        (1) Duke vs (8) St Louis
-          → Duke 87.5% [STRONG]
-        (4) Gonzaga vs (5) Tennessee
-          → Gonzaga 64.2% [LEAN]
+    3. python 02_calcutta_optimizer.py (if applicable)
+       → Use team_valuations_2026.csv for auction
+
+DURING TOURNAMENT WORKFLOW:
+
+  After R64 completes (Saturday evening):
+    1. Update data/actual_results.csv with all R64 results
+    2. python 03_predict_next_round.py --next-round R32
+    3. Review outputs/03_live_predictions/r32_probabilities.txt
+    4. Compare line value targets to sportsbook odds
+    5. Place R32 bets where you have good value
+  
+  After R32 completes:
+    1. Update data/actual_results.csv with R32 results
+    2. python 03_predict_next_round.py --next-round S16
+    3. Review s16_probabilities.txt
+    4. Place S16 bets
+  
+  Continue pattern for E8, FF, Championship
+
+UPDATING actual_results.csv:
+
+  After each game (example: Duke beats Central Arkansas):
+  
+    # Step 1: Look up Index values
+    grep -i "duke" utils/teamsIndex.csv
+    → 76,Duke
     
-    ============================================================================
-                        BETTING TIERS
-    ============================================================================
+    grep -i "central arkansas" utils/teamsIndex.csv
+    → 45,Central Arkansas
     
-    LOCKS (>90% - Bet Heavy) [0 games]
-    ----------------------------------------------------------------------------
-    None
-    
-    STRONG FAVORITES (70-90% - Bet Moderate) [2 games]
-    ----------------------------------------------------------------------------
-      Duke vs St Louis
-        → Duke 87.5%
-        - Good betting opportunity with solid edge
-      
-      Michigan St. vs Texas A&M
-        → Michigan St. 71.3%
-        - Good betting opportunity with solid edge
-    
-    LEANS (60-70% - Small Bet) [3 games]
-    ----------------------------------------------------------------------------
-      Gonzaga vs Tennessee
+    # Step 2: Add line to actual_results.csv
+    echo "R64,76,Duke,45,Central Arkansas" >> data/actual_results.csv
+  
+  After full round completes:
+    python 03_predict_next_round.py --next-round R32
+
+
+================================================================================
         → Gonzaga 64.2%
         - Modest edge, small bet recommended
     
@@ -710,21 +803,40 @@ CALCUTTA STRATEGY:
 
 LIVE BETTING STRATEGY:
 
-  Tier-based unit sizing:
-    • LOCK (>90%): 3-5 units
-    • STRONG (70-90%): 1-2 units
-    • LEAN (60-70%): 0.5 units
-    • SLIGHT/TOSS-UP: Pass or minimal bet
-
-  Compare to market:
-    • Model 70% but Vegas -500 (83% implied) → Pass
-    • Model 70% but Vegas -200 (67% implied) → BET!
-    • Model is ONE input, not gospel
-
+  CRITICAL: Bet size determined by LINE VALUE tier (edge), NOT confidence tier!
+  
+  Unit sizing by LINE VALUE tier:
+    • MAX BET (8%+ edge): 6-10 units - Rare, bet heavy
+    • STRONG BET (5-8% edge): 2-4 units - Common, standard bet
+    • VALUE BET (2-5% edge): 1-2 units - Most common, minimum bet
+    • Marginal (<2% edge): 0 units - Pass entirely
+  
+  Confidence tier (INFORMATIONAL ONLY - does not determine bet size):
+    • LOCK (>90%): High model confidence
+    • STRONG (70-90%): Good model confidence
+    • LEAN (60-70%): Modest model confidence
+    • SLIGHT (55-60%): Low model confidence
+    • TOSS-UP (<55%): Near 50/50
+  
+  How to use line value targets:
+    1. Model says: Gonzaga 74.9%
+    2. Sportsbook shows: Gonzaga -280
+    3. Output shows:
+       STRONG BET: -286 or better (EV: $0.063 | 2-4 units)
+    4. Compare: -280 is better than -286 (STRONG BET tier)
+    5. Bet: 2-4 units (if unit = $0.50, bet $1-2)
+  
+  Expected value per tournament (proper sizing):
+    • Conservative (15-20 bets): $1-2 profit
+    • Moderate (25-30 bets): $2-4 profit
+    • Aggressive (35-40 bets): $3-6 profit
+    • Target ROI: 4-6% (excellent in sports betting)
+  
   Track performance:
     • Log all bets in Excel
-    • Calculate ROI by tier
-    • Calibrate confidence over time
+    • Track: Date, Game, Model %, Line, Units, Tier, EV, Result, Profit
+    • Calculate ROI by LINE VALUE tier (not confidence tier)
+    • Adjust unit ranges based on results
 
 
 ================================================================================
@@ -778,8 +890,9 @@ CONTRARIAN EDGE:
 
 PRE-TOURNAMENT COMMANDS:
   cd L4
-  python 01_tournament_simulator.py    # Generate bracket probabilities
-  python 02_calcutta_optimizer.py      # Generate auction strategy
+  python 01_tournament_simulator.py         # Generate bracket probabilities
+  python 03_predict_next_round.py --next-round R64  # R64 betting analysis
+  python 02_calcutta_optimizer.py           # Generate auction strategy
 
 DURING TOURNAMENT COMMANDS:
   cd L4
@@ -792,9 +905,10 @@ DURING TOURNAMENT COMMANDS:
 
 VIEW OUTPUTS:
   cat outputs/01_tournament_simulator/game_probabilities.txt
+  cat outputs/03_live_predictions/r64_probabilities.txt
   cat outputs/03_live_predictions/r32_probabilities.txt
   open outputs/01_tournament_simulator/round_probabilities.csv
-  open outputs/03_live_predictions/r32_probabilities.csv
+  open outputs/03_live_predictions/r64_probabilities.csv
 
 FIND TEAM INDEX:
   grep -i "duke" utils/teamsIndex.csv

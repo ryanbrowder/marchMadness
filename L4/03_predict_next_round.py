@@ -5,18 +5,31 @@ Calculates win probabilities for upcoming round based on actual tournament resul
 Use during tournament for betting/gambling decisions.
 
 USAGE:
-  python predict_next_round.py --results actual_results.csv --next-round R32
-  python predict_next_round.py --results actual_results.csv --next-round S16
 
-INPUT FORMAT (actual_results.csv):
-  round,winner,loser
-  R64,Duke,Central Arkansas
-  R64,St Louis,Iowa
+  PRE-TOURNAMENT (Selection Sunday):
+    python 03_predict_next_round.py --next-round R64
+    
+    Generates R64 betting sheet with line value targets.
+    No actual_results.csv needed - uses bracket structure.
+  
+  DURING TOURNAMENT (After each round):
+    python 03_predict_next_round.py --next-round R32
+    python 03_predict_next_round.py --next-round S16
+    python 03_predict_next_round.py --next-round E8
+    python 03_predict_next_round.py --next-round FF
+    python 03_predict_next_round.py --next-round Championship
+    
+    Requires data/actual_results.csv with completed games.
+
+INPUT FORMAT (actual_results.csv - only needed for R32+):
+  round,Team IndexA,winner,Team IndexB,loser
+  R64,76,Duke,45,Central Arkansas
+  R64,265,St Louis,132,Iowa
   ...
 
 OUTPUT:
-  - next_round_probabilities.txt (human-readable betting sheet)
-  - next_round_probabilities.csv (Excel-friendly)
+  - r64_probabilities.txt (human-readable betting sheet with line value targets)
+  - r64_probabilities.csv (Excel-friendly)
 """
 
 import pandas as pd
@@ -285,6 +298,47 @@ def remove_losing_teams(prediction_df, actual_results):
     return remaining_df
 
 
+def get_r64_matchups_from_bracket(bracket_df):
+    """
+    Get all R64 matchups from tournament bracket for pre-tournament betting analysis.
+    
+    Args:
+        bracket_df: Bracket structure with Index, Team, tournamentSeed, Region
+    
+    Returns:
+        List of matchup dicts for all R64 games
+    """
+    matchups = []
+    
+    # Standard matchup pairings by seed
+    matchup_pairs = [
+        (1, 16), (8, 9),
+        (5, 12), (4, 13),
+        (6, 11), (3, 14),
+        (7, 10), (2, 15)
+    ]
+    
+    # Get matchups for each region
+    for region in ['East', 'Midwest', 'South', 'West']:
+        region_teams = bracket_df[bracket_df['Region'] == region].copy()
+        
+        for seed1, seed2 in matchup_pairs:
+            # Get teams with these seeds
+            t1 = region_teams[region_teams['tournamentSeed'] == seed1]
+            t2 = region_teams[region_teams['tournamentSeed'] == seed2]
+            
+            if len(t1) > 0 and len(t2) > 0:
+                matchups.append({
+                    'team1': t1.iloc[0]['Team'],
+                    'team2': t2.iloc[0]['Team'],
+                    'seed1': seed1,
+                    'seed2': seed2,
+                    'region': region
+                })
+    
+    return matchups
+
+
 def determine_next_round_matchups(actual_results, bracket_df, next_round):
     """
     Determine next round's matchups based on actual results.
@@ -421,6 +475,9 @@ def predict_next_round_probabilities(matchups, prediction_df, h2h):
         favorite = team1 if prob > 0.5 else team2
         favorite_prob = max(prob, 1 - prob)
         
+        # Calculate line value targets
+        line_targets = get_line_value_targets(favorite_prob)
+        
         results.append({
             'team1': team1,
             'team2': team2,
@@ -431,14 +488,43 @@ def predict_next_round_probabilities(matchups, prediction_df, h2h):
             'team2_prob': 1 - prob,
             'favorite': favorite,
             'favorite_prob': favorite_prob,
-            'confidence': classify_confidence(favorite_prob)
+            'confidence': classify_confidence(favorite_prob),
+            'line_targets': line_targets
         })
     
     return results
 
 
 def classify_confidence(prob):
-    """Classify betting confidence based on probability."""
+    """
+    Classify betting confidence based on probability.
+    
+    Tier Rationale:
+      LOCK (>90%): Overwhelming confidence, rare but strong edge
+                   Example: 1-seed vs 16-seed (~99%)
+                   Betting odds: Worse than -900
+      
+      STRONG (70-90%): Solid favorite with good edge
+                       Example: 2-seed vs 7-seed (~75%)
+                       Betting odds: -233 to -900
+      
+      LEAN (60-70%): Modest edge, reduce bet size
+                     Example: 4-seed vs 5-seed (~65%)
+                     Betting odds: -150 to -233
+      
+      SLIGHT (55-60%): Very small edge, may disappear with vig
+                       Example: 6-seed vs 6-seed (~57%)
+                       Betting odds: -122 to -150
+      
+      TOSS-UP (<55%): No meaningful edge, coin flip territory
+                      Example: Two evenly-matched teams
+                      Betting odds: Better than -122
+    
+    These thresholds align with traditional betting categories but should
+    be calibrated against historical model performance for optimal results.
+    
+    See BETTING_TIER_RATIONALE.txt for full analysis.
+    """
     if prob >= 0.90:
         return 'LOCK'
     elif prob >= 0.70:
@@ -449,6 +535,115 @@ def classify_confidence(prob):
         return 'SLIGHT'
     else:
         return 'TOSS-UP'
+
+
+def prob_to_american_odds(prob):
+    """Convert probability to American odds format."""
+    if prob >= 0.99:
+        return -10000
+    elif prob <= 0.01:
+        return +10000
+    elif prob >= 0.5:
+        # Favorite: negative odds
+        return int(-100 * prob / (1 - prob))
+    else:
+        # Underdog: positive odds
+        return int(100 * (1 - prob) / prob)
+
+
+def calculate_expected_value(model_prob, odds):
+    """
+    Calculate expected value of a $1 bet given model probability and betting odds.
+    
+    Args:
+        model_prob: Model's win probability (0-1)
+        odds: American odds (e.g., -200, +150)
+    
+    Returns:
+        Expected value in dollars per $1 bet
+    
+    Formula:
+        EV = (Win_Prob × Payout) - (Loss_Prob × Stake)
+    
+    Example:
+        Model: 75% win probability
+        Odds: -200 (bet $2 to win $1)
+        Payout: $0.50 (for $1 bet)
+        EV = (0.75 × $0.50) - (0.25 × $1) = $0.375 - $0.25 = $0.125
+        You expect to profit $0.125 per $1 bet
+    """
+    # Convert American odds to decimal payout
+    if odds >= 0:
+        # Underdog: +150 means bet $1 to win $1.50
+        payout = odds / 100.0
+    else:
+        # Favorite: -200 means bet $2 to win $1, so payout is $0.50 per $1 bet
+        payout = 100.0 / abs(odds)
+    
+    # Calculate EV
+    ev = (model_prob * payout) - ((1 - model_prob) * 1.0)
+    
+    return ev
+
+
+def get_line_value_targets(model_prob):
+    """
+    Calculate what betting line you'd need to find for different value tiers.
+    
+    Returns odds targets where you'd have sufficient edge to bet, plus expected
+    value for each tier.
+    
+    Edge thresholds:
+      - MAX BET: 8% edge (very rare, aggressive betting)
+      - STRONG BET: 5% edge (solid value, standard unit)
+      - VALUE BET: 2% edge (positive EV, small unit)
+      - BREAKEVEN: 0% edge (no value, pass)
+    
+    Example:
+      Model: 75% (Duke vs St Louis)
+      
+      MAX BET target: 75% - 8% = 67% implied → -203 odds
+        → If you find Duke at -200 or better (like -180, -150), MAX BET
+      
+      STRONG BET target: 75% - 5% = 70% implied → -233 odds
+        → If you find Duke at -230 or better (like -220, -200), STRONG BET
+      
+      VALUE BET target: 75% - 2% = 73% implied → -270 odds
+        → If you find Duke at -270 or better (like -250, -240), VALUE BET
+      
+      BREAKEVEN: 75% implied → -300 odds
+        → If Duke is -300 or worse (like -350, -400), PASS (no edge)
+    """
+    # Edge requirements
+    max_bet_edge = 0.08
+    strong_edge = 0.05
+    value_edge = 0.02
+    
+    # Calculate required market implied probabilities
+    max_bet_implied = max(0.01, model_prob - max_bet_edge)
+    strong_implied = max(0.01, model_prob - strong_edge)
+    value_implied = max(0.01, model_prob - value_edge)
+    
+    # Convert to American odds
+    max_bet_odds = prob_to_american_odds(max_bet_implied)
+    strong_odds = prob_to_american_odds(strong_implied)
+    value_odds = prob_to_american_odds(value_implied)
+    breakeven_odds = prob_to_american_odds(model_prob)
+    
+    # Calculate expected value at each tier's target odds
+    max_bet_ev = calculate_expected_value(model_prob, max_bet_odds)
+    strong_ev = calculate_expected_value(model_prob, strong_odds)
+    value_ev = calculate_expected_value(model_prob, value_odds)
+    
+    return {
+        'max_bet': max_bet_odds,
+        'strong': strong_odds,
+        'value': value_odds,
+        'breakeven': breakeven_odds,
+        'max_bet_ev': max_bet_ev,
+        'strong_ev': strong_ev,
+        'value_ev': value_ev
+    }
 
 
 def export_betting_sheet(predictions, next_round, output_dir):
@@ -463,10 +658,16 @@ def export_betting_sheet(predictions, next_round, output_dir):
     
     # Header
     txt_lines.append("=" * 80)
-    txt_lines.append(f"          {ROUND_NAMES[next_round].upper()} - LIVE PROBABILITIES")
-    txt_lines.append("=" * 80)
-    txt_lines.append("")
-    txt_lines.append("Based on actual tournament results")
+    if next_round == 'R64':
+        txt_lines.append(f"          {ROUND_NAMES[next_round].upper()} - PRE-TOURNAMENT BETTING ANALYSIS")
+        txt_lines.append("=" * 80)
+        txt_lines.append("")
+        txt_lines.append("Based on bracket structure (no results yet)")
+    else:
+        txt_lines.append(f"          {ROUND_NAMES[next_round].upper()} - LIVE PROBABILITIES")
+        txt_lines.append("=" * 80)
+        txt_lines.append("")
+        txt_lines.append("Based on actual tournament results")
     txt_lines.append("")
     
     # Group by region
@@ -485,6 +686,14 @@ def export_betting_sheet(predictions, next_round, output_dir):
         for pred in by_region[region]:
             txt_lines.append(f"    ({pred['seed1']}) {pred['team1']} vs ({pred['seed2']}) {pred['team2']}")
             txt_lines.append(f"      → {pred['favorite']} {pred['favorite_prob']*100:.1f}% [{pred['confidence']}]")
+            
+            # Add line value targets with expected value and unit recommendations
+            targets = pred['line_targets']
+            txt_lines.append(f"      LINE VALUE:")
+            txt_lines.append(f"        MAX BET: {targets['max_bet']:+d} or better (EV: ${targets['max_bet_ev']:.3f}/$ | 6-10 units)")
+            txt_lines.append(f"        STRONG BET: {targets['strong']:+d} or better (EV: ${targets['strong_ev']:.3f} per $1 | 2-4 units)")
+            txt_lines.append(f"        VALUE BET: {targets['value']:+d} or better (EV: ${targets['value_ev']:.3f} per $1 | 1-2 units)")
+            txt_lines.append(f"        BREAKEVEN: {targets['breakeven']:+d} (EV: $0.000 | 0 units - PASS)")
         
         txt_lines.append("")
     
@@ -502,9 +711,18 @@ def export_betting_sheet(predictions, next_round, output_dir):
     txt_lines.append("-" * 80)
     if locks:
         for pred in locks:
-            txt_lines.append(f"  {pred['favorite']} vs {pred['team2'] if pred['favorite'] == pred['team1'] else pred['team1']}")
+            loser = pred['team2'] if pred['favorite'] == pred['team1'] else pred['team1']
+            txt_lines.append(f"  {pred['favorite']} vs {loser}")
             txt_lines.append(f"    → {pred['favorite']} {pred['favorite_prob']*100:.1f}%")
             txt_lines.append(f"    - Model gives {pred['favorite']} {int(pred['favorite_prob']*100)} of 100 wins")
+            
+            # Line value targets
+            targets = pred['line_targets']
+            txt_lines.append(f"    LINE VALUE:")
+            txt_lines.append(f"      MAX BET: {targets['max_bet']:+d} or better")
+            txt_lines.append(f"      STRONG BET: {targets['strong']:+d} or better")
+            txt_lines.append(f"      VALUE BET: {targets['value']:+d} or better")
+            txt_lines.append(f"      PASS if worse than: {targets['breakeven']:+d}")
             txt_lines.append("")
     else:
         txt_lines.append("  None")
@@ -520,6 +738,14 @@ def export_betting_sheet(predictions, next_round, output_dir):
             txt_lines.append(f"  {pred['favorite']} vs {loser}")
             txt_lines.append(f"    → {pred['favorite']} {pred['favorite_prob']*100:.1f}%")
             txt_lines.append(f"    - Good betting opportunity with solid edge")
+            
+            # Line value targets
+            targets = pred['line_targets']
+            txt_lines.append(f"    LINE VALUE:")
+            txt_lines.append(f"      MAX BET: {targets['max_bet']:+d} or better")
+            txt_lines.append(f"      STRONG BET: {targets['strong']:+d} or better")
+            txt_lines.append(f"      VALUE BET: {targets['value']:+d} or better")
+            txt_lines.append(f"      PASS if worse than: {targets['breakeven']:+d}")
             txt_lines.append("")
     else:
         txt_lines.append("  None")
@@ -535,6 +761,14 @@ def export_betting_sheet(predictions, next_round, output_dir):
             txt_lines.append(f"  {pred['favorite']} vs {loser}")
             txt_lines.append(f"    → {pred['favorite']} {pred['favorite_prob']*100:.1f}%")
             txt_lines.append(f"    - Modest edge, small bet recommended")
+            
+            # Line value targets
+            targets = pred['line_targets']
+            txt_lines.append(f"    LINE VALUE:")
+            txt_lines.append(f"      MAX BET: {targets['max_bet']:+d} or better")
+            txt_lines.append(f"      STRONG BET: {targets['strong']:+d} or better")
+            txt_lines.append(f"      VALUE BET: {targets['value']:+d} or better")
+            txt_lines.append(f"      PASS if worse than: {targets['breakeven']:+d}")
             txt_lines.append("")
     else:
         txt_lines.append("  None")
@@ -550,6 +784,14 @@ def export_betting_sheet(predictions, next_round, output_dir):
             txt_lines.append(f"  {pred['favorite']} vs {loser}")
             txt_lines.append(f"    → {pred['favorite']} {pred['favorite_prob']*100:.1f}%")
             txt_lines.append(f"    - Very small edge, consider passing")
+            
+            # Line value targets
+            targets = pred['line_targets']
+            txt_lines.append(f"    LINE VALUE:")
+            txt_lines.append(f"      MAX BET: {targets['max_bet']:+d} or better")
+            txt_lines.append(f"      STRONG BET: {targets['strong']:+d} or better")
+            txt_lines.append(f"      VALUE BET: {targets['value']:+d} or better")
+            txt_lines.append(f"      PASS if worse than: {targets['breakeven']:+d}")
             txt_lines.append("")
     else:
         txt_lines.append("  None")
@@ -564,6 +806,14 @@ def export_betting_sheet(predictions, next_round, output_dir):
             txt_lines.append(f"  {pred['team1']} vs {pred['team2']}")
             txt_lines.append(f"    → Near 50/50 ({pred['team1_prob']*100:.1f}% vs {pred['team2_prob']*100:.1f}%)")
             txt_lines.append(f"    - No clear edge, avoid betting or bet underdog for value")
+            
+            # Line value targets (for the slight favorite)
+            targets = pred['line_targets']
+            txt_lines.append(f"    LINE VALUE (on {pred['favorite']}):")
+            txt_lines.append(f"      MAX BET: {targets['max_bet']:+d} or better")
+            txt_lines.append(f"      STRONG BET: {targets['strong']:+d} or better")
+            txt_lines.append(f"      VALUE BET: {targets['value']:+d} or better")
+            txt_lines.append(f"      PASS if worse than: {targets['breakeven']:+d}")
             txt_lines.append("")
     else:
         txt_lines.append("  None")
@@ -612,9 +862,9 @@ def export_betting_sheet(predictions, next_round, output_dir):
 def main():
     parser = argparse.ArgumentParser(description='Predict next tournament round probabilities')
     parser.add_argument('--results', default=str(DEFAULT_RESULTS_PATH),
-                       help=f'Path to actual_results.csv (default: {DEFAULT_RESULTS_PATH})')
-    parser.add_argument('--next-round', required=True, choices=['R32', 'S16', 'E8', 'FF', 'Championship'],
-                       help='Next round to predict')
+                       help=f'Path to actual_results.csv (default: {DEFAULT_RESULTS_PATH}). Not required for R64 pre-tournament analysis.')
+    parser.add_argument('--next-round', required=True, choices=['R64', 'R32', 'S16', 'E8', 'FF', 'Championship'],
+                       help='Round to predict. Use R64 for pre-tournament betting analysis (no results needed).')
     args = parser.parse_args()
     
     print()
@@ -637,33 +887,53 @@ def main():
     print(f"  ✓ Original bracket constructed ({len(bracket_df)} tournament teams)")
     print()
     
-    # Load actual results
-    print("Processing actual results...")
-    print("-" * 80)
-    
-    actual_results = load_actual_results(args.results)
-    print(f"  ✓ Loaded {len(actual_results)} completed games")
-    
-    # Show completed rounds
-    completed_rounds = actual_results['round'].value_counts().sort_index()
-    for round_name, count in completed_rounds.items():
-        print(f"    - {round_name}: {count} games")
-    print()
-    
-    # Remove losing teams
-    print("Updating remaining teams...")
-    print("-" * 80)
-    
-    remaining_df = remove_losing_teams(prediction_df, actual_results)
-    print()
-    
-    # Determine next round matchups
-    print(f"Determining {ROUND_NAMES[args.next_round]} matchups...")
-    print("-" * 80)
-    
-    matchups = determine_next_round_matchups(actual_results, bracket_df, args.next_round)
-    print(f"  ✓ {len(matchups)} matchups determined")
-    print()
+    # Branch: R64 pre-tournament vs live tournament rounds
+    if args.next_round == 'R64':
+        # PRE-TOURNAMENT R64 BETTING ANALYSIS
+        # No actual results needed - use bracket structure
+        print("=" * 80)
+        print("PRE-TOURNAMENT R64 BETTING ANALYSIS")
+        print("=" * 80)
+        print()
+        print("Generating R64 matchups from bracket...")
+        print("-" * 80)
+        
+        matchups = get_r64_matchups_from_bracket(bracket_df)
+        print(f"  ✓ {len(matchups)} R64 matchups determined")
+        print()
+        
+        # Use full prediction_df (no teams eliminated yet)
+        remaining_df = prediction_df
+        
+    else:
+        # LIVE TOURNAMENT - AFTER ROUNDS COMPLETE
+        # Load actual results
+        print("Processing actual results...")
+        print("-" * 80)
+        
+        actual_results = load_actual_results(args.results)
+        print(f"  ✓ Loaded {len(actual_results)} completed games")
+        
+        # Show completed rounds
+        completed_rounds = actual_results['round'].value_counts().sort_index()
+        for round_name, count in completed_rounds.items():
+            print(f"    - {round_name}: {count} games")
+        print()
+        
+        # Remove losing teams
+        print("Updating remaining teams...")
+        print("-" * 80)
+        
+        remaining_df = remove_losing_teams(prediction_df, actual_results)
+        print()
+        
+        # Determine next round matchups
+        print(f"Determining {ROUND_NAMES[args.next_round]} matchups...")
+        print("-" * 80)
+        
+        matchups = determine_next_round_matchups(actual_results, bracket_df, args.next_round)
+        print(f"  ✓ {len(matchups)} matchups determined")
+        print()
     
     # Calculate probabilities
     print("Calculating probabilities...")
@@ -680,6 +950,175 @@ def main():
     txt_path, csv_path = export_betting_sheet(predictions, args.next_round, OUTPUT_DIR)
     print(f"  ✓ {txt_path.name}")
     print(f"  ✓ {csv_path.name}")
+    print()
+    
+    # Display full betting sheet in terminal
+    print()
+    print("=" * 80)
+    if args.next_round == 'R64':
+        print(f"          {ROUND_NAMES[args.next_round].upper()} - PRE-TOURNAMENT BETTING ANALYSIS")
+        print("=" * 80)
+        print("Based on bracket structure (no results yet)")
+    else:
+        print(f"          {ROUND_NAMES[args.next_round].upper()} - LIVE PROBABILITIES")
+        print("=" * 80)
+        print("Based on actual tournament results")
+    print()
+    
+    # ALL MATCHUPS
+    print("ALL MATCHUPS")
+    print("-" * 80)
+    print()
+    
+    # Group by region
+    by_region = defaultdict(list)
+    for pred in predictions:
+        by_region[pred['region']].append(pred)
+    
+    for region in sorted(by_region.keys()):
+        print(f"  {region}:")
+        
+        for pred in by_region[region]:
+            print(f"    ({pred['seed1']}) {pred['team1']} vs ({pred['seed2']}) {pred['team2']}")
+            print(f"      → {pred['favorite']} {pred['favorite_prob']*100:.1f}% [{pred['confidence']}]")
+            
+            # Add line value targets with EV and unit recommendations
+            targets = pred['line_targets']
+            print(f"      LINE VALUE:")
+            print(f"        MAX BET: {targets['max_bet']:+d} or better (EV: ${targets['max_bet_ev']:.3f} | 6-10 units)")
+            print(f"        STRONG BET: {targets['strong']:+d} or better (EV: ${targets['strong_ev']:.3f} | 2-4 units)")
+            print(f"        VALUE BET: {targets['value']:+d} or better (EV: ${targets['value_ev']:.3f} | 1-2 units)")
+            print(f"        BREAKEVEN: {targets['breakeven']:+d} (EV: $0.000 | 0 units - PASS)")
+        
+        print()
+    
+    # BETTING TIERS
+    print("=" * 80)
+    print("                    BETTING TIERS")
+    print("=" * 80)
+    print()
+    
+    # LOCKS (>90%)
+    locks = [p for p in predictions if p['confidence'] == 'LOCK']
+    print(f"LOCKS (>90% - Bet Heavy) [{len(locks)} games]")
+    print("-" * 80)
+    if locks:
+        for pred in locks:
+            loser = pred['team2'] if pred['favorite'] == pred['team1'] else pred['team1']
+            print(f"  {pred['favorite']} vs {loser}")
+            print(f"    → {pred['favorite']} {pred['favorite_prob']*100:.1f}%")
+            print(f"    - Model gives {pred['favorite']} {int(pred['favorite_prob']*100)} of 100 wins")
+            
+            # Line value targets
+            targets = pred['line_targets']
+            print(f"    LINE VALUE:")
+            print(f"      MAX BET: {targets['max_bet']:+d} or better")
+            print(f"      STRONG BET: {targets['strong']:+d} or better")
+            print(f"      VALUE BET: {targets['value']:+d} or better")
+            print(f"      PASS if worse than: {targets['breakeven']:+d}")
+            print()
+    else:
+        print("  None")
+        print()
+    
+    # STRONG (70-90%)
+    strong = [p for p in predictions if p['confidence'] == 'STRONG']
+    print(f"STRONG FAVORITES (70-90% - Bet Moderate) [{len(strong)} games]")
+    print("-" * 80)
+    if strong:
+        for pred in strong:
+            loser = pred['team2'] if pred['favorite'] == pred['team1'] else pred['team1']
+            print(f"  {pred['favorite']} vs {loser}")
+            print(f"    → {pred['favorite']} {pred['favorite_prob']*100:.1f}%")
+            print(f"    - Good betting opportunity with solid edge")
+            
+            # Line value targets
+            targets = pred['line_targets']
+            print(f"    LINE VALUE:")
+            print(f"      MAX BET: {targets['max_bet']:+d} or better")
+            print(f"      STRONG BET: {targets['strong']:+d} or better")
+            print(f"      VALUE BET: {targets['value']:+d} or better")
+            print(f"      PASS if worse than: {targets['breakeven']:+d}")
+            print()
+    else:
+        print("  None")
+        print()
+    
+    # LEANS (60-70%)
+    leans = [p for p in predictions if p['confidence'] == 'LEAN']
+    print(f"LEANS (60-70% - Small Bet) [{len(leans)} games]")
+    print("-" * 80)
+    if leans:
+        for pred in leans:
+            loser = pred['team2'] if pred['favorite'] == pred['team1'] else pred['team1']
+            print(f"  {pred['favorite']} vs {loser}")
+            print(f"    → {pred['favorite']} {pred['favorite_prob']*100:.1f}%")
+            print(f"    - Modest edge, small bet recommended")
+            
+            # Line value targets
+            targets = pred['line_targets']
+            print(f"    LINE VALUE:")
+            print(f"      MAX BET: {targets['max_bet']:+d} or better")
+            print(f"      STRONG BET: {targets['strong']:+d} or better")
+            print(f"      VALUE BET: {targets['value']:+d} or better")
+            print(f"      PASS if worse than: {targets['breakeven']:+d}")
+            print()
+    else:
+        print("  None")
+        print()
+    
+    # SLIGHT EDGES (55-60%)
+    slight = [p for p in predictions if p['confidence'] == 'SLIGHT']
+    print(f"SLIGHT EDGES (55-60% - Minimal Bet or Pass) [{len(slight)} games]")
+    print("-" * 80)
+    if slight:
+        for pred in slight:
+            loser = pred['team2'] if pred['favorite'] == pred['team1'] else pred['team1']
+            print(f"  {pred['favorite']} vs {loser}")
+            print(f"    → {pred['favorite']} {pred['favorite_prob']*100:.1f}%")
+            print(f"    - Very small edge, consider passing")
+            
+            # Line value targets
+            targets = pred['line_targets']
+            print(f"    LINE VALUE:")
+            print(f"      MAX BET: {targets['max_bet']:+d} or better")
+            print(f"      STRONG BET: {targets['strong']:+d} or better")
+            print(f"      VALUE BET: {targets['value']:+d} or better")
+            print(f"      PASS if worse than: {targets['breakeven']:+d}")
+            print()
+    else:
+        print("  None")
+        print()
+    
+    # TOSS-UPS (<55%)
+    tossups = [p for p in predictions if p['confidence'] == 'TOSS-UP']
+    print(f"TOSS-UPS (<55% - Avoid or Hedge) [{len(tossups)} games]")
+    print("-" * 80)
+    if tossups:
+        for pred in tossups:
+            print(f"  {pred['team1']} vs {pred['team2']}")
+            print(f"    → Near 50/50 ({pred['team1_prob']*100:.1f}% vs {pred['team2_prob']*100:.1f}%)")
+            print(f"    - No clear edge, avoid betting or bet underdog for value")
+            
+            # Line value targets (for the slight favorite)
+            targets = pred['line_targets']
+            print(f"    LINE VALUE (on {pred['favorite']}):")
+            print(f"      MAX BET: {targets['max_bet']:+d} or better")
+            print(f"      STRONG BET: {targets['strong']:+d} or better")
+            print(f"      VALUE BET: {targets['value']:+d} or better")
+            print(f"      PASS if worse than: {targets['breakeven']:+d}")
+            print()
+    else:
+        print("  None")
+        print()
+    
+    print("=" * 80)
+    print()
+    print("NOTE: Model probabilities ≠ betting odds.")
+    print("      Use as ONE input to betting decisions.")
+    print("      Consider injuries, matchups, and market odds.")
+    print()
+    print("=" * 80)
     print()
     
     # Summary

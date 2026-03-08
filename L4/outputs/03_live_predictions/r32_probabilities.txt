@@ -7,11 +7,23 @@ Based on actual tournament results
 ALL MATCHUPS
 --------------------------------------------------------------------------------
 
+  South:
+    (5.0) Tennessee vs (3.0) Gonzaga
+      → Gonzaga 74.9% [STRONG]
+      LINE VALUE:
+        MAX BET: -202 or better (8% edge)
+        STRONG BET: -232 or better (5% edge)
+        VALUE BET: -269 or better (2% edge)
+        BREAKEVEN: -298
+
   West:
-    (1.0) Duke vs (8.0) Saint Louis
-      → Duke 84.0% [STRONG]
-    (5.0) Tennessee vs (2.0) Michigan St.
-      → Michigan St. 75.5% [STRONG]
+    (1.0) Duke vs (10.0) Texas A&M
+      → Duke 84.7% [STRONG]
+      LINE VALUE:
+        MAX BET: -329 or better (8% edge)
+        STRONG BET: -392 or better (5% edge)
+        VALUE BET: -478 or better (2% edge)
+        BREAKEVEN: -553
 
 
 ================================================================================
@@ -24,13 +36,23 @@ LOCKS (>90% - Bet Heavy) [0 games]
 
 STRONG FAVORITES (70-90% - Bet Moderate) [2 games]
 --------------------------------------------------------------------------------
-  Duke vs Saint Louis
-    → Duke 84.0%
+  Gonzaga vs Tennessee
+    → Gonzaga 74.9%
     - Good betting opportunity with solid edge
+    LINE VALUE:
+      MAX BET: -202 or better
+      STRONG BET: -232 or better
+      VALUE BET: -269 or better
+      PASS if worse than: -298
 
-  Michigan St. vs Tennessee
-    → Michigan St. 75.5%
+  Duke vs Texas A&M
+    → Duke 84.7%
     - Good betting opportunity with solid edge
+    LINE VALUE:
+      MAX BET: -329 or better
+      STRONG BET: -392 or better
+      VALUE BET: -478 or better
+      PASS if worse than: -553
 
 LEANS (60-70% - Small Bet) [0 games]
 --------------------------------------------------------------------------------

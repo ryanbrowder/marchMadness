@@ -1,11 +1,11 @@
 Team,Seed,E_Points_Blended,Expected_Market_Price,Fair_Value,Value_Rating,Max_Bid,Expected_Win_Price,Strategy
-Merrimack,15,8.23,1.71,9.11,4.813,10,2,Aggressive
-Navy,14,8.88,2.79,9.83,3.183,10,3,Aggressive
-East Tennessee St.,15,5.18,1.71,5.73,3.029,6,2,Aggressive
-Portland St.,15,4.7,1.71,5.2,2.749,6,2,Aggressive
-Wright St.,15,4.43,1.71,4.9,2.591,6,2,Aggressive
-UCLA,9,11.86,5.4,13.12,2.196,15,6,Aggressive
-Stephen F. Austin,13,8.75,4.14,9.68,2.114,10,5,Aggressive
-UC Irvine,14,5.73,2.79,6.34,2.054,7,3,Aggressive
-Iowa,9,10.28,5.4,11.38,1.904,13,6,Aggressive
-Texas,11,13.38,7.04,14.81,1.901,17,8,Aggressive
+Merrimack,15,15.0,1.71,16.2,8.772,15,2,Aggressive
+Central Arkansas,15,10.32,1.71,11.15,6.035,11,2,Aggressive
+Illinois Chicago,15,6.91,1.71,7.46,4.041,7,2,Aggressive
+Navy,14,9.02,2.79,9.74,3.233,10,3,Aggressive
+Wright St.,15,4.65,1.71,5.02,2.719,5,2,Aggressive
+UCLA,9,13.36,5.4,14.43,2.474,14,6,Aggressive
+UC Irvine,14,6.49,2.79,7.01,2.326,6,3,Aggressive
+Iowa,9,10.79,5.4,11.65,1.998,11,6,Aggressive
+Santa Clara,11,13.48,7.04,14.56,1.915,14,8,Aggressive
+Stephen F. Austin,13,7.57,4.14,8.18,1.829,7,5,Aggressive

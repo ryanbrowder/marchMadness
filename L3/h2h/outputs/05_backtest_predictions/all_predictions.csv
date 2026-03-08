@@ -5,7 +5,7 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2008,R64,Washington State,Winthrop,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8805579027500516,TeamA,True
 2008,R64,Oklahoma,St. Joseph's,6,11,TeamA,TeamA,True,TeamB,False,TeamA,True,TeamA,True,0.6968074823013246,TeamA,True
 2008,R64,Louisville,Boise State,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9355720500408736,TeamA,True
-2008,R64,Butler,South Alabama,7,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.840132871533194,TeamA,True
+2008,R64,Butler,South Alabama,7,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8401328715331942,TeamA,True
 2008,R64,Tennessee,American,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9720244395377443,TeamA,True
 2008,R32,UNC,Arkansas,1,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8863098043258066,TeamA,True
 2008,R32,Notre Dame,Washington State,5,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.23264858973987407,TeamB,True
@@ -13,7 +13,7 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2008,R32,Butler,Tennessee,7,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.17887155385475106,TeamB,True
 2008,S16,UNC,Washington State,1,4,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8147875853400969,TeamA,True
 2008,S16,Louisville,Tennessee,3,2,TeamA,TeamB,False,TeamB,False,TeamA,True,TeamA,True,0.5735800289958981,TeamA,True
-2008,E8,UNC,Louisville,1,3,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7856901821221268,TeamA,True
+2008,E8,UNC,Louisville,1,3,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7856901821221267,TeamA,True
 2008,R64,Kansas,Portland State,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9630389494377674,TeamA,True
 2008,R64,UNLV,Kent State,8,9,TeamA,TeamA,True,TeamB,False,TeamA,True,TeamA,True,0.5816772331890612,TeamA,True
 2008,R64,Clemson,Villanova,5,12,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.4009390357645757,TeamB,True
@@ -21,35 +21,35 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2008,R64,USC,Kansas State,6,11,TeamB,TeamA,False,TeamA,False,TeamB,True,TeamB,True,0.4771672848081517,TeamB,True
 2008,R64,Wisconsin,Cal State Fullerton,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8939567112983846,TeamA,True
 2008,R64,Gonzaga,Davidson,7,10,TeamB,TeamA,False,TeamB,True,TeamA,False,TeamB,True,0.14989351451273666,TeamB,True
-2008,R64,Georgetown,UMBC,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9126801281998456,TeamA,True
+2008,R64,Georgetown,UMBC,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9126801281998458,TeamA,True
 2008,R32,Kansas,UNLV,1,8,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8434227127357964,TeamA,True
 2008,R32,Villanova,Siena,12,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8100571422224866,TeamA,True
-2008,R32,Kansas State,Wisconsin,11,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.20941750051771452,TeamB,True
-2008,R32,Davidson,Georgetown,10,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.35579189671753475,TeamB,False
+2008,R32,Kansas State,Wisconsin,11,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.2094175005177145,TeamB,True
+2008,R32,Davidson,Georgetown,10,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.3557918967175347,TeamB,False
 2008,S16,Kansas,Villanova,1,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8712463756752497,TeamA,True
 2008,S16,Wisconsin,Davidson,3,10,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.4935772107145041,TeamB,True
-2008,E8,Kansas,Davidson,1,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8474483955640553,TeamA,True
-2008,R64,Memphis,UT Arlington,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9472438831950211,TeamA,True
+2008,E8,Kansas,Davidson,1,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8474483955640552,TeamA,True
+2008,R64,Memphis,UT Arlington,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.947243883195021,TeamA,True
 2008,R64,Mississippi State,Oregon,8,9,TeamA,TeamA,True,TeamB,False,TeamA,True,TeamA,True,0.633179265117676,TeamA,True
-2008,R64,Michigan State,Temple,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8949988977362795,TeamA,True
+2008,R64,Michigan State,Temple,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8949988977362793,TeamA,True
 2008,R64,Pitt,Oral Roberts,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8041745212145069,TeamA,True
 2008,R64,Marquette,Kentucky,6,11,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8338901848529146,TeamA,True
-2008,R64,Stanford,Cornell,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9284435419211038,TeamA,True
+2008,R64,Stanford,Cornell,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9284435419211039,TeamA,True
 2008,R64,Miami (FL),Saint Mary's,7,10,TeamA,TeamA,True,TeamA,True,TeamB,False,TeamA,True,0.6552772240650769,TeamA,True
-2008,R64,Texas,Austin Peay,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9265703058834746,TeamA,True
+2008,R64,Texas,Austin Peay,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9265703058834747,TeamA,True
 2008,R32,Memphis,Mississippi State,1,8,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.907758541501992,TeamA,True
 2008,R32,Michigan State,Pitt,5,4,TeamA,TeamB,False,TeamA,True,TeamA,True,TeamA,True,0.5599504546277325,TeamA,True
-2008,R32,Marquette,Stanford,6,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.3078622254484202,TeamB,True
+2008,R32,Marquette,Stanford,6,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.30786222544842023,TeamB,True
 2008,R32,Miami (FL),Texas,7,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.0868992922472872,TeamB,True
 2008,S16,Memphis,Michigan State,1,5,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8474866525999466,TeamA,True
 2008,S16,Stanford,Texas,3,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.24367862161256534,TeamB,True
 2008,E8,Memphis,Texas,1,2,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8062376101748242,TeamA,True
-2008,R64,UCLA,Mississippi Valley State,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9229528337391053,TeamA,True
+2008,R64,UCLA,Mississippi Valley State,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9229528337391051,TeamA,True
 2008,R64,BYU,Texas A&M,8,9,TeamB,TeamA,False,TeamB,True,TeamB,True,TeamB,True,0.2257161741547516,TeamB,True
 2008,R64,Drake,Western Kentucky,5,12,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.5567700586779217,TeamA,False
 2008,R64,UConn,San Diego,4,13,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.5420551962937302,TeamA,False
 2008,R64,Purdue,Baylor,6,11,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.6966988028056071,TeamA,True
-2008,R64,Xavier,Georgia,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8665477682818883,TeamA,True
+2008,R64,Xavier,Georgia,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8665477682818884,TeamA,True
 2008,R64,West Virginia,Arizona,7,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7708903850996974,TeamA,True
 2008,R64,Duke,Belmont,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9350001356649424,TeamA,True
 2008,R32,UCLA,Texas A&M,1,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9207370453406937,TeamA,True
@@ -59,31 +59,31 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2008,S16,UCLA,Western Kentucky,1,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.916809883761008,TeamA,True
 2008,S16,Xavier,West Virginia,3,7,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.6149321284175391,TeamA,True
 2008,E8,UCLA,Xavier,1,3,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8622498295751219,TeamA,True
-2008,F4,Kansas,UNC,1,1,TeamA,TeamB,False,TeamA,True,TeamA,True,TeamA,True,0.6964785958799563,TeamA,True
+2008,F4,Kansas,UNC,1,1,TeamA,TeamB,False,TeamA,True,TeamA,True,TeamA,True,0.6964785958799564,TeamA,True
 2008,F4,UCLA,Memphis,1,1,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.39033508385813476,TeamB,True
 2008,Championship,Kansas,Memphis,1,1,TeamA,TeamB,False,TeamA,True,TeamA,True,TeamA,True,0.721551138573554,TeamA,True
-2009,R64,Pitt,ETSU,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9582207778196508,TeamA,True
+2009,R64,Pitt,ETSU,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9582207778196506,TeamA,True
 2009,R64,Oklahoma State,Tennessee,8,9,TeamA,TeamA,True,TeamB,False,TeamA,True,TeamA,True,0.7238530152237963,TeamA,True
 2009,R64,Florida State,Wisconsin,5,12,TeamB,TeamA,False,TeamA,False,TeamB,True,TeamB,True,0.40097926451211086,TeamB,True
-2009,R64,Xavier,Portland State,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8842851615396442,TeamA,True
+2009,R64,Xavier,Portland State,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8842851615396441,TeamA,True
 2009,R64,UCLA,VCU,6,11,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8941410958764224,TeamA,True
-2009,R64,Villanova,American,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9287706399938749,TeamA,True
+2009,R64,Villanova,American,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9287706399938748,TeamA,True
 2009,R64,Texas,Minnesota,7,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.5500861678659286,TeamA,True
 2009,R64,Duke,Binghamton,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9792132233180223,TeamA,True
-2009,R32,Pitt,Oklahoma State,1,8,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.846392838266571,TeamA,True
+2009,R32,Pitt,Oklahoma State,1,8,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8463928382665711,TeamA,True
 2009,R32,Wisconsin,Xavier,12,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.2355400673012266,TeamB,True
 2009,R32,UCLA,Villanova,6,3,TeamB,TeamB,True,TeamA,False,TeamA,False,TeamA,False,0.2564443525937468,TeamB,True
-2009,R32,Texas,Duke,7,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.1857047832609002,TeamB,True
+2009,R32,Texas,Duke,7,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.18570478326090023,TeamB,True
 2009,S16,Pitt,Xavier,1,4,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8382329976444022,TeamA,True
 2009,S16,Villanova,Duke,3,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.6198196931295928,TeamA,True
 2009,E8,Pitt,Villanova,1,3,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.46779004194256824,TeamB,True
 2009,R64,Louisville,Morehead State,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9518446062572591,TeamA,True
 2009,R64,Ohio State,Siena,8,9,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.5041246136498098,TeamA,False
 2009,R64,Utah,Arizona,5,12,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.39011573658164284,TeamB,True
-2009,R64,Wake Forest,Cleveland State,4,13,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.44607679350966156,TeamB,True
+2009,R64,Wake Forest,Cleveland State,4,13,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.44607679350966145,TeamB,True
 2009,R64,West Virginia,Dayton,6,11,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.6048399360305987,TeamA,False
-2009,R64,Kansas,North Dakota State,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8398830132184248,TeamA,True
-2009,R64,Boston College,USC,7,10,TeamB,TeamA,False,TeamB,True,TeamB,True,TeamB,True,0.25863101357448187,TeamB,True
+2009,R64,Kansas,North Dakota State,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8398830132184247,TeamA,True
+2009,R64,Boston College,USC,7,10,TeamB,TeamA,False,TeamB,True,TeamB,True,TeamB,True,0.2586310135744818,TeamB,True
 2009,R64,Michigan State,Robert Morris,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9635058240576738,TeamA,True
 2009,R32,Louisville,Siena,1,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8265728661214151,TeamA,True
 2009,R32,Arizona,Cleveland State,12,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7324254392391301,TeamA,True
@@ -91,18 +91,18 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2009,R32,USC,Michigan State,10,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.11658259618188399,TeamB,True
 2009,S16,Louisville,Arizona,1,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8233398200786858,TeamA,True
 2009,S16,Kansas,Michigan State,3,2,TeamB,TeamB,True,TeamA,False,TeamA,False,TeamB,True,0.1844236909379326,TeamB,True
-2009,E8,Louisville,Michigan State,1,2,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.4205746710658163,TeamB,True
+2009,E8,Louisville,Michigan State,1,2,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.42057467106581625,TeamB,True
 2009,R64,UNC,Radford,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.958075996122086,TeamA,True
 2009,R64,LSU,Butler,8,9,TeamA,TeamA,True,TeamB,False,TeamB,False,TeamB,False,0.695592336413674,TeamA,True
-2009,R64,Illinois,Western Kentucky,5,12,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.5982763235473684,TeamA,False
+2009,R64,Illinois,Western Kentucky,5,12,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.5982763235473685,TeamA,False
 2009,R64,Gonzaga,Akron,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8514360256469038,TeamA,True
-2009,R64,Arizona State,Temple,6,11,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7631921280534911,TeamA,True
+2009,R64,Arizona State,Temple,6,11,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.763192128053491,TeamA,True
 2009,R64,Syracuse,Stephen F. Austin,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8376749730408405,TeamA,True
 2009,R64,Clemson,Michigan,7,10,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.3185068534279075,TeamB,True
 2009,R64,Oklahoma,Morgan State,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9132088805915305,TeamA,True
 2009,R32,UNC,LSU,1,8,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8229345256042635,TeamA,True
 2009,R32,Western Kentucky,Gonzaga,12,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.10357052048752453,TeamB,True
-2009,R32,Arizona State,Syracuse,6,3,TeamB,TeamB,True,TeamA,False,TeamA,False,TeamA,False,0.3085334004507939,TeamB,True
+2009,R32,Arizona State,Syracuse,6,3,TeamB,TeamB,True,TeamA,False,TeamA,False,TeamA,False,0.30853340045079397,TeamB,True
 2009,R32,Michigan,Oklahoma,10,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.15265941416402537,TeamB,True
 2009,S16,UNC,Gonzaga,1,4,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.724686885879834,TeamA,True
 2009,S16,Syracuse,Oklahoma,3,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.408211181848744,TeamB,True
@@ -118,19 +118,19 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2009,R32,UConn,Texas A&M,1,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8437129330361005,TeamA,True
 2009,R32,Purdue,Washington,5,4,TeamA,TeamB,False,TeamA,True,TeamA,True,TeamB,False,0.6413748568667907,TeamA,True
 2009,R32,Marquette,Missouri,6,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.138047101704781,TeamB,True
-2009,R32,Maryland,Memphis,10,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.1558554483008039,TeamB,True
-2009,S16,UConn,Purdue,1,5,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.787958671998816,TeamA,True
+2009,R32,Maryland,Memphis,10,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.15585544830080386,TeamB,True
+2009,S16,UConn,Purdue,1,5,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7879586719988161,TeamA,True
 2009,S16,Missouri,Memphis,3,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.7631988928922836,TeamA,True
 2009,E8,UConn,Missouri,1,3,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7234266718679231,TeamA,True
-2009,F4,UNC,Villanova,1,3,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7014968163899525,TeamA,True
+2009,F4,UNC,Villanova,1,3,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7014968163899526,TeamA,True
 2009,F4,UConn,Michigan State,1,2,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.3837907963484384,TeamB,True
 2009,Championship,UNC,Michigan State,1,2,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.5466340166612401,TeamA,True
 2010,R64,Kentucky,ETSU,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9479147659251586,TeamA,True
-2010,R64,Texas,Wake Forest,8,9,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.47578611098029777,TeamB,True
+2010,R64,Texas,Wake Forest,8,9,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.4757861109802978,TeamB,True
 2010,R64,Temple,Cornell,5,12,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.5804480855191878,TeamA,False
 2010,R64,Wisconsin,Wofford,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8679627726352276,TeamA,True
 2010,R64,Marquette,Washington,6,11,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.2644292370712185,TeamB,True
-2010,R64,New Mexico,Montana,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8508769228876086,TeamA,True
+2010,R64,New Mexico,Montana,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8508769228876087,TeamA,True
 2010,R64,Clemson,Missouri,7,10,TeamB,TeamA,False,TeamB,True,TeamB,True,TeamB,True,0.3544971946689733,TeamB,True
 2010,R64,West Virginia,Morgan State,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9604711357011404,TeamA,True
 2010,R32,Kentucky,Wake Forest,1,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7982358935387318,TeamA,True
@@ -141,28 +141,28 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2010,S16,Washington,West Virginia,11,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.12713100691038465,TeamB,True
 2010,E8,Kentucky,West Virginia,1,2,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.26610866085593515,TeamB,True
 2010,R64,Kansas,Lehigh,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.91655007168225,TeamA,True
-2010,R64,UNLV,Northern Iowa,8,9,TeamB,TeamA,False,TeamB,True,TeamB,True,TeamB,True,0.3007073665654446,TeamB,True
-2010,R64,Michigan State,New Mexico State,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8881818084596604,TeamA,True
+2010,R64,UNLV,Northern Iowa,8,9,TeamB,TeamA,False,TeamB,True,TeamB,True,TeamB,True,0.30070736656544467,TeamB,True
+2010,R64,Michigan State,New Mexico State,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8881818084596605,TeamA,True
 2010,R64,Maryland,Houston,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.868787539600353,TeamA,True
 2010,R64,Tennessee,San Diego State,6,11,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7475608959157165,TeamA,True
 2010,R64,Georgetown,Ohio,3,14,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.7554755439594212,TeamA,False
 2010,R64,Oklahoma State,Georgia Tech,7,10,TeamB,TeamA,False,TeamB,True,TeamB,True,TeamB,True,0.3436481732660807,TeamB,True
 2010,R64,Ohio State,UCSB,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9276322235262899,TeamA,True
-2010,R32,Kansas,Northern Iowa,1,9,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.6587749695790309,TeamA,False
+2010,R32,Kansas,Northern Iowa,1,9,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.658774969579031,TeamA,False
 2010,R32,Michigan State,Maryland,5,4,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.6481460320636625,TeamA,True
 2010,R32,Tennessee,Ohio,6,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8896177131470501,TeamA,True
 2010,R32,Georgia Tech,Ohio State,10,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.16710478601735154,TeamB,True
 2010,S16,Northern Iowa,Michigan State,9,5,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.19457233817781164,TeamB,True
-2010,S16,Tennessee,Ohio State,6,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.4583936404677911,TeamB,False
+2010,S16,Tennessee,Ohio State,6,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.4583936404677912,TeamB,False
 2010,E8,Michigan State,Tennessee,5,6,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.560563096441715,TeamA,True
 2010,R64,Duke,Arkansas-Pine Bluff,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9425794135331972,TeamA,True
 2010,R64,California,Louisville,8,9,TeamA,TeamA,True,TeamB,False,TeamA,True,TeamA,True,0.6713775695908211,TeamA,True
-2010,R64,Texas A&M,Utah State,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.690000620544896,TeamA,True
-2010,R64,Purdue,Siena,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8608115144039387,TeamA,True
+2010,R64,Texas A&M,Utah State,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.6900006205448959,TeamA,True
+2010,R64,Purdue,Siena,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8608115144039384,TeamA,True
 2010,R64,Notre Dame,Old Dominion,6,11,TeamB,TeamA,False,TeamA,False,TeamB,True,TeamA,False,0.27415930207571426,TeamB,True
-2010,R64,Baylor,Sam Houston,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8298796265211115,TeamA,True
+2010,R64,Baylor,Sam Houston,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8298796265211114,TeamA,True
 2010,R64,Richmond,Saint Mary's,7,10,TeamB,TeamA,False,TeamB,True,TeamB,True,TeamB,True,0.28787224069857725,TeamB,True
-2010,R64,Villanova,Robert Morris,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9410182500310538,TeamA,True
+2010,R64,Villanova,Robert Morris,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9410182500310539,TeamA,True
 2010,R32,Duke,California,1,8,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8796948313852759,TeamA,True
 2010,R32,Texas A&M,Purdue,5,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.2403790857359053,TeamB,True
 2010,R32,Old Dominion,Baylor,11,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.2581267196294097,TeamB,True
@@ -172,11 +172,11 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2010,E8,Duke,Baylor,1,3,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8648654319463194,TeamA,True
 2010,R64,Syracuse,Vermont,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9504729588109322,TeamA,True
 2010,R64,Gonzaga,Florida State,8,9,TeamA,TeamA,True,TeamA,True,TeamB,False,TeamB,False,0.581375743975282,TeamA,True
-2010,R64,Butler,UTEP,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7629369331899148,TeamA,True
+2010,R64,Butler,UTEP,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7629369331899147,TeamA,True
 2010,R64,Vanderbilt,Murray State,4,13,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.5471822697024871,TeamA,False
 2010,R64,Xavier,Minnesota,6,11,TeamA,TeamA,True,TeamB,False,TeamB,False,TeamA,True,0.7498679191431156,TeamA,True
 2010,R64,Pitt,Oakland,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8299300480756576,TeamA,True
-2010,R64,BYU,Florida,7,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8610834489996818,TeamA,True
+2010,R64,BYU,Florida,7,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.861083448999682,TeamA,True
 2010,R64,Kansas State,North Texas,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9397641090121499,TeamA,True
 2010,R32,Syracuse,Gonzaga,1,8,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7955318411287902,TeamA,True
 2010,R32,Butler,Murray State,5,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8807556922258652,TeamA,True
@@ -184,9 +184,9 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2010,R32,BYU,Kansas State,7,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.30726894525493315,TeamB,True
 2010,S16,Syracuse,Butler,1,5,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.39064257361631577,TeamB,True
 2010,S16,Xavier,Kansas State,6,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.30085520600966165,TeamB,True
-2010,E8,Butler,Kansas State,5,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.4618898188145914,TeamB,False
-2010,F4,Duke,West Virginia,1,2,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7652881036575704,TeamA,True
-2010,F4,Michigan State,Butler,5,5,TeamB,TeamB,True,TeamA,False,TeamA,False,TeamB,True,0.41225971569911923,TeamB,True
+2010,E8,Butler,Kansas State,5,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.46188981881459135,TeamB,False
+2010,F4,Duke,West Virginia,1,2,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7652881036575703,TeamA,True
+2010,F4,Michigan State,Butler,5,5,TeamB,TeamB,True,TeamA,False,TeamA,False,TeamB,True,0.4122597156991192,TeamB,True
 2010,Championship,Duke,Butler,1,5,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8048560013921835,TeamA,True
 2011,R64,Ohio State,UTSA,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9607853302518996,TeamA,True
 2011,R64,George Mason,Villanova,8,9,TeamA,TeamA,True,TeamB,False,TeamB,False,TeamA,True,0.7417021012698662,TeamA,True
@@ -207,20 +207,20 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2011,R64,Butler,Old Dominion,8,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7454514569657851,TeamA,True
 2011,R64,Kansas State,Utah State,5,12,TeamA,TeamA,True,TeamB,False,TeamB,False,TeamB,False,0.6552257543575705,TeamA,True
 2011,R64,Wisconsin,Belmont,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.806820804053596,TeamA,True
-2011,R64,St. John's (NY),Gonzaga,6,11,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamB,True,0.4111200743590093,TeamB,True
-2011,R64,BYU,Wofford,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8830804600192608,TeamA,True
+2011,R64,St. John's (NY),Gonzaga,6,11,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamB,True,0.41112007435900927,TeamB,True
+2011,R64,BYU,Wofford,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.883080460019261,TeamA,True
 2011,R64,UCLA,Michigan State,7,10,TeamA,TeamA,True,TeamA,True,TeamB,False,TeamB,False,0.34345373337015783,TeamB,False
 2011,R64,Florida,UCSB,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9404940889885729,TeamA,True
-2011,R32,Pitt,Butler,1,8,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.4645626836407871,TeamB,True
+2011,R32,Pitt,Butler,1,8,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.4645626836407872,TeamB,True
 2011,R32,Kansas State,Wisconsin,5,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.19654662052641456,TeamB,True
 2011,R32,Gonzaga,BYU,11,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.10316248598435014,TeamB,True
 2011,R32,UCLA,Florida,7,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.1196357402204749,TeamB,True
-2011,S16,Butler,Wisconsin,8,4,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.3807798965721264,TeamB,False
-2011,S16,BYU,Florida,3,2,TeamB,TeamB,True,TeamA,False,TeamA,False,TeamA,False,0.4350956026095801,TeamB,True
+2011,S16,Butler,Wisconsin,8,4,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.3807798965721263,TeamB,False
+2011,S16,BYU,Florida,3,2,TeamB,TeamB,True,TeamA,False,TeamA,False,TeamA,False,0.43509560260958,TeamB,True
 2011,E8,Butler,Florida,8,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.3588334584990008,TeamB,False
 2011,R64,Kansas,Boston University,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9635832284544059,TeamA,True
 2011,R64,UNLV,Illinois,8,9,TeamB,TeamA,False,TeamB,True,TeamB,True,TeamB,True,0.2678604697893387,TeamB,True
-2011,R64,Vanderbilt,Richmond,5,12,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.31932341671200165,TeamB,True
+2011,R64,Vanderbilt,Richmond,5,12,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.31932341671200154,TeamB,True
 2011,R64,Louisville,Morehead State,4,13,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.6063706892696055,TeamA,False
 2011,R64,Georgetown,VCU,6,11,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.48516225665622187,TeamB,True
 2011,R64,Purdue,St. Peter's,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8865396533434663,TeamA,True
@@ -229,7 +229,7 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2011,R32,Kansas,Illinois,1,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8297236020976223,TeamA,True
 2011,R32,Richmond,Morehead State,12,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9013332903828538,TeamA,True
 2011,R32,VCU,Purdue,11,3,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.2780081618722962,TeamB,False
-2011,R32,Florida State,Notre Dame,10,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.4518655111759565,TeamB,False
+2011,R32,Florida State,Notre Dame,10,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.4518655111759566,TeamB,False
 2011,S16,Kansas,Richmond,1,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8117602067003661,TeamA,True
 2011,S16,VCU,Florida State,11,10,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.6865698354580914,TeamA,True
 2011,E8,Kansas,VCU,1,11,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.648696248123602,TeamA,False
@@ -245,19 +245,19 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2011,R32,Arizona,Texas,5,4,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.7270576775297312,TeamA,True
 2011,R32,Cincinnati,UConn,6,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.16807615453814734,TeamB,True
 2011,R32,Temple,San Diego State,7,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.06334420542497254,TeamB,True
-2011,S16,Duke,Arizona,1,5,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.6992562486526002,TeamA,False
-2011,S16,UConn,San Diego State,3,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.5587637748698517,TeamA,True
-2011,E8,Arizona,UConn,5,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.2526366607105929,TeamB,True
+2011,S16,Duke,Arizona,1,5,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.6992562486526003,TeamA,False
+2011,S16,UConn,San Diego State,3,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.5587637748698518,TeamA,True
+2011,E8,Arizona,UConn,5,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.2526366607105928,TeamB,True
 2011,F4,UConn,Kentucky,3,4,TeamA,TeamA,True,TeamB,False,TeamB,False,TeamB,False,0.682757043960466,TeamA,True
 2011,F4,VCU,Butler,11,8,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.2604638115672018,TeamB,True
 2011,Championship,UConn,Butler,3,8,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8307517242277593,TeamA,True
 2012,R64,Syracuse,UNC Asheville,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9397028077205596,TeamA,True
-2012,R64,Kansas State,Southern Miss,8,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7936263557683598,TeamA,True
+2012,R64,Kansas State,Southern Miss,8,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7936263557683599,TeamA,True
 2012,R64,Vanderbilt,Harvard,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.6344522600704823,TeamA,True
 2012,R64,Wisconsin,Montana,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8818691321641892,TeamA,True
 2012,R64,Cincinnati,Texas,6,11,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.751525909172964,TeamA,True
 2012,R64,Florida State,St. Bonaventure,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8525604169126964,TeamA,True
-2012,R64,Gonzaga,West Virginia,7,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.5733039460773772,TeamA,True
+2012,R64,Gonzaga,West Virginia,7,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.5733039460773771,TeamA,True
 2012,R64,Ohio State,Loyola (MD),2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8957314523861619,TeamA,True
 2012,R32,Syracuse,Kansas State,1,8,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8166670694238066,TeamA,True
 2012,R32,Vanderbilt,Wisconsin,5,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.2808964449496897,TeamB,True
@@ -271,7 +271,7 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2012,R64,Temple,South Florida,5,12,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.5182974962185118,TeamA,False
 2012,R64,Michigan,Ohio,4,13,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.6026521966469799,TeamA,False
 2012,R64,San Diego State,NC State,6,11,TeamB,TeamA,False,TeamA,False,TeamB,True,TeamB,True,0.1808258604845552,TeamB,True
-2012,R64,Georgetown,Belmont,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7105222259523435,TeamA,True
+2012,R64,Georgetown,Belmont,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7105222259523434,TeamA,True
 2012,R64,Saint Mary's,Purdue,7,10,TeamB,TeamA,False,TeamA,False,TeamB,True,TeamB,True,0.25131538861775404,TeamB,True
 2012,R64,Kansas,Detroit Mercy,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9245389699243634,TeamA,True
 2012,R32,UNC,Creighton,1,8,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8129477004840711,TeamA,True
@@ -281,21 +281,21 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2012,S16,UNC,Ohio,1,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7950727014078114,TeamA,True
 2012,S16,NC State,Kansas,11,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.06592805698484966,TeamB,True
 2012,E8,UNC,Kansas,1,2,TeamB,TeamA,False,TeamA,False,TeamB,True,TeamB,True,0.2534164833204579,TeamB,True
-2012,R64,Kentucky,Western Kentucky,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9189107589143813,TeamA,True
+2012,R64,Kentucky,Western Kentucky,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9189107589143816,TeamA,True
 2012,R64,Iowa State,UConn,8,9,TeamA,TeamA,True,TeamA,True,TeamB,False,TeamA,True,0.6558634539002445,TeamA,True
 2012,R64,Wichita State,VCU,5,12,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.351823345972716,TeamB,True
-2012,R64,Indiana,New Mexico State,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8295544350226248,TeamA,True
+2012,R64,Indiana,New Mexico State,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8295544350226246,TeamA,True
 2012,R64,UNLV,Colorado,6,11,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.5735239041265868,TeamA,False
 2012,R64,Baylor,South Dakota State,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8891858059772856,TeamA,True
 2012,R64,Notre Dame,Xavier,7,10,TeamB,TeamA,False,TeamA,False,TeamB,True,TeamA,False,0.4419908823401428,TeamB,True
 2012,R64,Duke,Lehigh,2,15,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.7186366729619729,TeamA,False
 2012,R32,Kentucky,Iowa State,1,8,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8760203326805012,TeamA,True
-2012,R32,VCU,Indiana,12,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.1393657928769748,TeamB,True
+2012,R32,VCU,Indiana,12,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.13936579287697476,TeamB,True
 2012,R32,Colorado,Baylor,11,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.06547233522919099,TeamB,True
 2012,R32,Xavier,Lehigh,10,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8365969228671553,TeamA,True
 2012,S16,Kentucky,Indiana,1,4,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8340563615781937,TeamA,True
-2012,S16,Baylor,Xavier,3,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8753830468854902,TeamA,True
-2012,E8,Kentucky,Baylor,1,3,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8345743339977518,TeamA,True
+2012,S16,Baylor,Xavier,3,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8753830468854903,TeamA,True
+2012,E8,Kentucky,Baylor,1,3,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8345743339977519,TeamA,True
 2012,R64,Michigan State,LIU,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9182006218682202,TeamA,True
 2012,R64,Memphis,Saint Louis,8,9,TeamB,TeamA,False,TeamA,False,TeamB,True,TeamA,False,0.3712893161067488,TeamB,True
 2012,R64,New Mexico,Long Beach State,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7821640157989785,TeamA,True
@@ -304,10 +304,10 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2012,R64,Marquette,BYU,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8498069374429772,TeamA,True
 2012,R64,Florida,Virginia,7,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.82336121851486,TeamA,True
 2012,R64,Missouri,Norfolk State,2,15,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.6037859833076924,TeamA,False
-2012,R32,Michigan State,Saint Louis,1,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8078070512683319,TeamA,True
+2012,R32,Michigan State,Saint Louis,1,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.807807051268332,TeamA,True
 2012,R32,New Mexico,Louisville,5,4,TeamB,TeamB,True,TeamA,False,TeamA,False,TeamB,True,0.19584914002610004,TeamB,True
 2012,R32,Murray State,Marquette,6,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.1068146563749758,TeamB,True
-2012,R32,Florida,Norfolk State,7,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9274551459437212,TeamA,True
+2012,R32,Florida,Norfolk State,7,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.927455145943721,TeamA,True
 2012,S16,Michigan State,Louisville,1,4,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.32138227780873374,TeamB,True
 2012,S16,Marquette,Florida,3,7,TeamB,TeamA,False,TeamA,False,TeamB,True,TeamB,True,0.4495200018573812,TeamB,True
 2012,E8,Louisville,Florida,4,7,TeamA,TeamA,True,TeamA,True,TeamB,False,TeamB,False,0.7078854468406144,TeamA,True
@@ -316,34 +316,34 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2012,Championship,Kentucky,Kansas,1,2,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.6130129574408494,TeamA,True
 2013,R64,Indiana,James Madison,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9235772051092691,TeamA,True
 2013,R64,NC State,Temple,8,9,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.2803677394186153,TeamB,True
-2013,R64,UNLV,California,5,12,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.35335886494720314,TeamB,True
+2013,R64,UNLV,California,5,12,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.3533588649472032,TeamB,True
 2013,R64,Syracuse,Montana,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9306706254105728,TeamA,True
 2013,R64,Butler,Bucknell,6,11,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8651307743317594,TeamA,True
 2013,R64,Marquette,Davidson,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8592825336343719,TeamA,True
 2013,R64,Illinois,Colorado,7,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7792223585712418,TeamA,True
-2013,R64,Miami (FL),Pacific,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9193377328663935,TeamA,True
+2013,R64,Miami (FL),Pacific,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9193377328663934,TeamA,True
 2013,R32,Indiana,Temple,1,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7388992719780406,TeamA,True
 2013,R32,California,Syracuse,12,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.11711202464057353,TeamB,True
-2013,R32,Butler,Marquette,6,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.21269979651526283,TeamB,True
+2013,R32,Butler,Marquette,6,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.21269979651526275,TeamB,True
 2013,R32,Illinois,Miami (FL),7,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.3251325021345302,TeamB,True
-2013,S16,Indiana,Syracuse,1,4,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.35950937771207897,TeamB,True
+2013,S16,Indiana,Syracuse,1,4,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.359509377712079,TeamB,True
 2013,S16,Marquette,Miami (FL),3,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.5481083733432125,TeamA,True
 2013,E8,Syracuse,Marquette,4,3,TeamA,TeamB,False,TeamA,True,TeamA,True,TeamA,True,0.7553805272594091,TeamA,True
-2013,R64,Louisville,North Carolina A&T,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9678009521218344,TeamA,True
+2013,R64,Louisville,North Carolina A&T,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9678009521218343,TeamA,True
 2013,R64,Colorado State,Missouri,8,9,TeamA,TeamA,True,TeamB,False,TeamB,False,TeamA,True,0.6141733452619059,TeamA,True
 2013,R64,Oklahoma State,Oregon,5,12,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.2746962409953181,TeamB,True
 2013,R64,Saint Louis,New Mexico State,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.846681054780144,TeamA,True
 2013,R64,Memphis,Saint Mary's,6,11,TeamA,TeamA,True,TeamA,True,TeamB,False,TeamB,False,0.41859889898719965,TeamB,False
 2013,R64,Michigan State,Valparaiso,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8622908145995196,TeamA,True
 2013,R64,Creighton,Cincinnati,7,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7813908236819219,TeamA,True
-2013,R64,Duke,Albany (NY),2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9618024818332753,TeamA,True
+2013,R64,Duke,Albany (NY),2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9618024818332755,TeamA,True
 2013,R32,Louisville,Colorado State,1,8,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8340730486133249,TeamA,True
 2013,R32,Oregon,Saint Louis,12,4,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.6091923722878512,TeamA,True
 2013,R32,Memphis,Michigan State,6,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.18549696807408758,TeamB,True
 2013,R32,Creighton,Duke,7,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.20517504207289994,TeamB,True
 2013,S16,Louisville,Oregon,1,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8128450774585363,TeamA,True
-2013,S16,Michigan State,Duke,3,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.3515764232598468,TeamB,True
-2013,E8,Louisville,Duke,1,2,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7452052160919586,TeamA,True
+2013,S16,Michigan State,Duke,3,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.35157642325984684,TeamB,True
+2013,E8,Louisville,Duke,1,2,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7452052160919584,TeamA,True
 2013,R64,Kansas,Western Kentucky,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.938503645449757,TeamA,True
 2013,R64,UNC,Villanova,8,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.790666965848784,TeamA,True
 2013,R64,VCU,Akron,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8259290172962026,TeamA,True
@@ -351,7 +351,7 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2013,R64,UCLA,Minnesota,6,11,TeamB,TeamA,False,TeamB,True,TeamB,True,TeamB,True,0.3954104319386341,TeamB,True
 2013,R64,Florida,Northwestern State,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8758793541250258,TeamA,True
 2013,R64,San Diego State,Oklahoma,7,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.5520977666400188,TeamA,True
-2013,R64,Georgetown,Florida Gulf Coast,2,15,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.7168351176813599,TeamA,False
+2013,R64,Georgetown,Florida Gulf Coast,2,15,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.71683511768136,TeamA,False
 2013,R32,Kansas,UNC,1,8,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7697177899859687,TeamA,True
 2013,R32,VCU,Michigan,5,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.14782552211846592,TeamB,True
 2013,R32,Minnesota,Florida,11,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.16124082802669695,TeamB,True
@@ -359,7 +359,7 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2013,S16,Kansas,Michigan,1,4,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamB,True,0.34024886263777604,TeamB,True
 2013,S16,Florida,Florida Gulf Coast,3,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8884939047953238,TeamA,True
 2013,E8,Michigan,Florida,4,3,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.7079184481717525,TeamA,True
-2013,R64,Gonzaga,Southern,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9377182121510128,TeamA,True
+2013,R64,Gonzaga,Southern,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9377182121510129,TeamA,True
 2013,R64,Pitt,Wichita State,8,9,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.25018235658909166,TeamB,True
 2013,R64,Wisconsin,Ole Miss,5,12,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.5472680040383213,TeamA,False
 2013,R64,Kansas State,La Salle,4,13,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.5683395733322701,TeamA,False
@@ -368,24 +368,24 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2013,R64,Notre Dame,Iowa State,7,10,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamB,True,0.4007843463780167,TeamB,True
 2013,R64,Ohio State,Iona,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9156256043556673,TeamA,True
 2013,R32,Gonzaga,Wichita State,1,9,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.5539138484057599,TeamA,False
-2013,R32,Ole Miss,La Salle,12,13,TeamB,TeamA,False,TeamA,False,TeamB,True,TeamA,False,0.33899303347150833,TeamB,True
+2013,R32,Ole Miss,La Salle,12,13,TeamB,TeamA,False,TeamA,False,TeamB,True,TeamA,False,0.33899303347150844,TeamB,True
 2013,R32,Arizona,Harvard,6,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8489226190649339,TeamA,True
 2013,R32,Iowa State,Ohio State,10,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.14724271087073673,TeamB,True
 2013,S16,Wichita State,La Salle,9,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7661553017789412,TeamA,True
 2013,S16,Arizona,Ohio State,6,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.16335089281161946,TeamB,True
 2013,E8,Wichita State,Ohio State,9,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.3238190148346124,TeamB,False
 2013,F4,Louisville,Wichita State,1,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8818218299546884,TeamA,True
-2013,F4,Syracuse,Michigan,4,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.2914842537946575,TeamB,True
-2013,Championship,Louisville,Michigan,1,4,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7219037817224715,TeamA,True
+2013,F4,Syracuse,Michigan,4,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.29148425379465737,TeamB,True
+2013,Championship,Louisville,Michigan,1,4,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7219037817224714,TeamA,True
 2014,R64,Virginia,Coastal Carolina,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9100459177275028,TeamA,True
-2014,R64,Memphis,George Washington,8,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.6691781547302216,TeamA,True
+2014,R64,Memphis,George Washington,8,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.6691781547302218,TeamA,True
 2014,R64,Cincinnati,Harvard,5,12,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.5072653646965912,TeamA,False
 2014,R64,Michigan State,Delaware,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8918267525797686,TeamA,True
 2014,R64,UNC,Providence,6,11,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.6376001973044476,TeamA,True
 2014,R64,Iowa State,North Carolina Central,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8470432343011349,TeamA,True
-2014,R64,UConn,St. Joseph's,7,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8875332107205647,TeamA,True
+2014,R64,UConn,St. Joseph's,7,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8875332107205648,TeamA,True
 2014,R64,Villanova,Milwaukee,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9648304971123807,TeamA,True
-2014,R32,Virginia,Memphis,1,8,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7446038652529191,TeamA,True
+2014,R32,Virginia,Memphis,1,8,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7446038652529189,TeamA,True
 2014,R32,Harvard,Michigan State,12,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.07487659876582163,TeamB,True
 2014,R32,UNC,Iowa State,6,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.15780187835335005,TeamB,True
 2014,R32,UConn,Villanova,7,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.5371226922559392,TeamA,True
@@ -396,14 +396,14 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2014,R64,Kentucky,Kansas State,8,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7831171808250669,TeamA,True
 2014,R64,Saint Louis,NC State,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7035718714088531,TeamA,True
 2014,R64,Louisville,Manhattan,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8626866422597876,TeamA,True
-2014,R64,UMass,Tennessee,6,11,TeamB,TeamA,False,TeamB,True,TeamB,True,TeamB,True,0.31825563955476033,TeamB,True
+2014,R64,UMass,Tennessee,6,11,TeamB,TeamA,False,TeamB,True,TeamB,True,TeamB,True,0.3182556395547604,TeamB,True
 2014,R64,Duke,Mercer,3,14,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.6607854701603912,TeamA,False
 2014,R64,Texas,Arizona State,7,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamB,False,0.6350346576587496,TeamA,True
 2014,R64,Michigan,Wofford,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9137503957128063,TeamA,True
 2014,R32,Wichita State,Kentucky,1,8,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.38259497584574664,TeamB,True
 2014,R32,Saint Louis,Louisville,5,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.13014452751097194,TeamB,True
 2014,R32,Tennessee,Mercer,11,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8084927833889057,TeamA,True
-2014,R32,Texas,Michigan,7,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.13383544626699248,TeamB,True
+2014,R32,Texas,Michigan,7,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.13383544626699245,TeamB,True
 2014,S16,Kentucky,Louisville,8,4,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.49187380745301273,TeamB,False
 2014,S16,Tennessee,Michigan,11,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamA,False,0.2259609119687488,TeamB,True
 2014,E8,Kentucky,Michigan,8,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.4294950394322217,TeamB,False
@@ -413,68 +413,68 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2014,R64,UCLA,Tulsa,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8183106478652339,TeamA,True
 2014,R64,Ohio State,Dayton,6,11,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.3837310804586029,TeamB,True
 2014,R64,Syracuse,Western Michigan,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8975824690587801,TeamA,True
-2014,R64,New Mexico,Stanford,7,10,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.3270933022347148,TeamB,True
+2014,R64,New Mexico,Stanford,7,10,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.32709330223471483,TeamB,True
 2014,R64,Kansas,Eastern Kentucky,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.892798395562977,TeamA,True
-2014,R32,Florida,Pitt,1,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8647588643629143,TeamA,True
+2014,R32,Florida,Pitt,1,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8647588643629142,TeamA,True
 2014,R32,Stephen F. Austin,UCLA,12,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.11829190222439279,TeamB,True
-2014,R32,Dayton,Syracuse,11,3,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.44173446333713384,TeamB,False
+2014,R32,Dayton,Syracuse,11,3,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.4417344633371339,TeamB,False
 2014,R32,Stanford,Kansas,10,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.3171143948461388,TeamB,False
-2014,S16,Florida,UCLA,1,4,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8547597967332093,TeamA,True
-2014,S16,Dayton,Stanford,11,10,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.48329970675587886,TeamB,False
+2014,S16,Florida,UCLA,1,4,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8547597967332092,TeamA,True
+2014,S16,Dayton,Stanford,11,10,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.4832997067558788,TeamB,False
 2014,E8,Florida,Dayton,1,11,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8768297325842453,TeamA,True
 2014,R64,Arizona,Weber State,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9312889184353376,TeamA,True
 2014,R64,Gonzaga,Oklahoma State,8,9,TeamA,TeamA,True,TeamB,False,TeamB,False,TeamB,False,0.7181491185422902,TeamA,True
-2014,R64,Oklahoma,North Dakota State,5,12,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.46458505662908156,TeamB,True
+2014,R64,Oklahoma,North Dakota State,5,12,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.4645850566290816,TeamB,True
 2014,R64,San Diego State,New Mexico State,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8403238782866573,TeamA,True
-2014,R64,Baylor,Nebraska,6,11,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7570675410403644,TeamA,True
+2014,R64,Baylor,Nebraska,6,11,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7570675410403643,TeamA,True
 2014,R64,Creighton,Louisiana,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8290987911986774,TeamA,True
 2014,R64,Oregon,BYU,7,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7062402087723162,TeamA,True
 2014,R64,Wisconsin,American,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9262241833708421,TeamA,True
 2014,R32,Arizona,Gonzaga,1,8,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8993403597779088,TeamA,True
 2014,R32,North Dakota State,San Diego State,12,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.25536195392522054,TeamB,True
-2014,R32,Baylor,Creighton,6,3,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.4634567142864571,TeamB,False
+2014,R32,Baylor,Creighton,6,3,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.46345671428645707,TeamB,False
 2014,R32,Oregon,Wisconsin,7,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.13911285244968774,TeamB,True
 2014,S16,Arizona,San Diego State,1,4,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7826304056848745,TeamA,True
 2014,S16,Baylor,Wisconsin,6,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.23140698661050801,TeamB,True
-2014,E8,Arizona,Wisconsin,1,2,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.5351270163866048,TeamA,False
+2014,E8,Arizona,Wisconsin,1,2,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.5351270163866049,TeamA,False
 2014,F4,UConn,Florida,7,1,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.33573990483824473,TeamB,False
 2014,F4,Wisconsin,Kentucky,2,8,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.6180112674034496,TeamA,False
-2014,Championship,UConn,Kentucky,7,8,TeamA,TeamA,True,TeamB,False,TeamB,False,TeamB,False,0.7087158024961738,TeamA,True
-2015,R64,Villanova,Lafayette,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9525867055446322,TeamA,True
+2014,Championship,UConn,Kentucky,7,8,TeamA,TeamA,True,TeamB,False,TeamB,False,TeamB,False,0.7087158024961737,TeamA,True
+2015,R64,Villanova,Lafayette,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.952586705544632,TeamA,True
 2015,R64,NC State,LSU,8,9,TeamA,TeamA,True,TeamB,False,TeamA,True,TeamA,True,0.768214071931744,TeamA,True
 2015,R64,Northern Iowa,Wyoming,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.923673796103707,TeamA,True
 2015,R64,Louisville,UC-Irvine,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9234545758110061,TeamA,True
 2015,R64,Providence,Dayton,6,11,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.6131730249536224,TeamA,False
-2015,R64,Oklahoma,Albany (NY),3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9009453000830914,TeamA,True
+2015,R64,Oklahoma,Albany (NY),3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9009453000830913,TeamA,True
 2015,R64,Michigan State,Georgia,7,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7814454878279601,TeamA,True
 2015,R64,Virginia,Belmont,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9163295513833919,TeamA,True
 2015,R32,Villanova,NC State,1,8,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.7376684905157324,TeamA,False
 2015,R32,Northern Iowa,Louisville,5,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.3155460541626801,TeamB,True
 2015,R32,Dayton,Oklahoma,11,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.11675345474944754,TeamB,True
-2015,R32,Michigan State,Virginia,7,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.4765981663186794,TeamB,False
+2015,R32,Michigan State,Virginia,7,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.4765981663186795,TeamB,False
 2015,S16,NC State,Louisville,8,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.31965119570271117,TeamB,True
 2015,S16,Oklahoma,Michigan State,3,7,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.22598171450957813,TeamB,True
 2015,E8,Louisville,Michigan State,4,7,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamB,True,0.30648217477033607,TeamB,True
-2015,R64,Kentucky,Hampton,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9412262002111891,TeamA,True
-2015,R64,Cincinnati,Purdue,8,9,TeamA,TeamA,True,TeamA,True,TeamB,False,TeamA,True,0.5407679076718368,TeamA,True
-2015,R64,West Virginia,Buffalo,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9150884707612091,TeamA,True
+2015,R64,Kentucky,Hampton,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9412262002111892,TeamA,True
+2015,R64,Cincinnati,Purdue,8,9,TeamA,TeamA,True,TeamA,True,TeamB,False,TeamA,True,0.5407679076718369,TeamA,True
+2015,R64,West Virginia,Buffalo,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.915088470761209,TeamA,True
 2015,R64,Maryland,Valparaiso,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7070654552961714,TeamA,True
-2015,R64,Butler,Texas,6,11,TeamA,TeamA,True,TeamB,False,TeamB,False,TeamA,True,0.7326216383919767,TeamA,True
+2015,R64,Butler,Texas,6,11,TeamA,TeamA,True,TeamB,False,TeamB,False,TeamA,True,0.7326216383919766,TeamA,True
 2015,R64,Notre Dame,Northeastern,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.904305789019287,TeamA,True
 2015,R64,Wichita State,Indiana,7,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8105332520967428,TeamA,True
 2015,R64,Kansas,New Mexico State,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8970622185798823,TeamA,True
 2015,R32,Kentucky,Cincinnati,1,8,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9541566333016668,TeamA,True
 2015,R32,West Virginia,Maryland,5,4,TeamA,TeamB,False,TeamB,False,TeamA,True,TeamA,True,0.7967926289945523,TeamA,True
-2015,R32,Butler,Notre Dame,6,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.22569323020969814,TeamB,True
+2015,R32,Butler,Notre Dame,6,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.22569323020969811,TeamB,True
 2015,R32,Wichita State,Kansas,7,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.43242428919612086,TeamB,False
-2015,S16,Kentucky,West Virginia,1,5,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.850342873119906,TeamA,True
-2015,S16,Notre Dame,Wichita State,3,7,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7343897112729106,TeamA,True
+2015,S16,Kentucky,West Virginia,1,5,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8503428731199062,TeamA,True
+2015,S16,Notre Dame,Wichita State,3,7,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7343897112729104,TeamA,True
 2015,E8,Kentucky,Notre Dame,1,3,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8256265456900848,TeamA,True
 2015,R64,Duke,Robert Morris,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9660564791450722,TeamA,True
 2015,R64,San Diego State,St. John's (NY),8,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7319751769536943,TeamA,True
 2015,R64,Utah,Stephen F. Austin,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7632016060132035,TeamA,True
 2015,R64,Georgetown,Eastern Washington,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9293717243592666,TeamA,True
-2015,R64,SMU,UCLA,6,11,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.24358681631507265,TeamB,True
+2015,R64,SMU,UCLA,6,11,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.2435868163150727,TeamB,True
 2015,R64,Iowa State,UAB,3,14,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.7138788006337341,TeamA,False
 2015,R64,Iowa,Davidson,7,10,TeamA,TeamA,True,TeamB,False,TeamA,True,TeamA,True,0.7249787299583602,TeamA,True
 2015,R64,Gonzaga,North Dakota State,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9161051372530494,TeamA,True
@@ -483,7 +483,7 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2015,R32,UCLA,UAB,11,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8269302511807826,TeamA,True
 2015,R32,Iowa,Gonzaga,7,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.1523976007917526,TeamB,True
 2015,S16,Duke,Utah,1,5,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8756805104976595,TeamA,True
-2015,S16,UCLA,Gonzaga,11,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.13463733065240002,TeamB,True
+2015,S16,UCLA,Gonzaga,11,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.1346373306524,TeamB,True
 2015,E8,Duke,Gonzaga,1,2,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7808785696782334,TeamA,True
 2015,R64,Wisconsin,Coastal Carolina,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9554668996872872,TeamA,True
 2015,R64,Oregon,Oklahoma State,8,9,TeamA,TeamA,True,TeamB,False,TeamB,False,TeamB,False,0.700135061579202,TeamA,True
@@ -492,8 +492,8 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2015,R64,Xavier,Ole Miss,6,11,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.6465111055732516,TeamA,True
 2015,R64,Baylor,Georgia State,3,14,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.6156453143257004,TeamA,False
 2015,R64,VCU,Ohio State,7,10,TeamB,TeamA,False,TeamB,True,TeamB,True,TeamB,True,0.2739425289434387,TeamB,True
-2015,R64,Arizona,Texas Southern,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9336072692059946,TeamA,True
-2015,R32,Wisconsin,Oregon,1,8,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.853750450755777,TeamA,True
+2015,R64,Arizona,Texas Southern,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9336072692059945,TeamA,True
+2015,R32,Wisconsin,Oregon,1,8,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8537504507557772,TeamA,True
 2015,R32,Arkansas,UNC,5,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.1416703970116977,TeamB,True
 2015,R32,Xavier,Georgia State,6,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7243986616734415,TeamA,True
 2015,R32,Ohio State,Arizona,10,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.1581588597211908,TeamB,True
@@ -504,9 +504,9 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2015,F4,Kentucky,Wisconsin,1,1,TeamB,TeamB,True,TeamA,False,TeamA,False,TeamA,False,0.418794136970112,TeamB,True
 2015,Championship,Duke,Wisconsin,1,1,TeamA,TeamB,False,TeamA,True,TeamB,False,TeamB,False,0.5962082730659478,TeamA,True
 2016,R64,UNC,Florida Gulf Coast,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9571252871025486,TeamA,True
-2016,R64,USC,Providence,8,9,TeamB,TeamA,False,TeamB,True,TeamA,False,TeamB,True,0.20294721241940483,TeamB,True
+2016,R64,USC,Providence,8,9,TeamB,TeamA,False,TeamB,True,TeamA,False,TeamB,True,0.2029472124194048,TeamB,True
 2016,R64,Indiana,Chattanooga,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8176062641341513,TeamA,True
-2016,R64,Kentucky,Stony Brook,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8235898178964932,TeamA,True
+2016,R64,Kentucky,Stony Brook,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8235898178964933,TeamA,True
 2016,R64,Notre Dame,Michigan,6,11,TeamA,TeamA,True,TeamA,True,TeamB,False,TeamA,True,0.6494014993982179,TeamA,True
 2016,R64,West Virginia,Stephen F. Austin,3,14,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.6445246017268284,TeamA,False
 2016,R64,Wisconsin,Pitt,7,10,TeamA,TeamA,True,TeamA,True,TeamB,False,TeamB,False,0.5367776435408556,TeamA,True
@@ -518,19 +518,19 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2016,S16,UNC,Indiana,1,5,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8546984245943502,TeamA,True
 2016,S16,Notre Dame,Wisconsin,6,7,TeamA,TeamA,True,TeamB,False,TeamB,False,TeamA,True,0.7511563368966214,TeamA,True
 2016,E8,UNC,Notre Dame,1,6,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8285972523748547,TeamA,True
-2016,R64,Virginia,Hampton,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9340238064995762,TeamA,True
+2016,R64,Virginia,Hampton,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9340238064995761,TeamA,True
 2016,R64,Texas Tech,Butler,8,9,TeamB,TeamA,False,TeamB,True,TeamB,True,TeamB,True,0.27219922590190326,TeamB,True
 2016,R64,Purdue,Little Rock,5,12,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.47676313562742,TeamB,True
 2016,R64,Iowa State,Iona,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7723892273200901,TeamA,True
 2016,R64,Seton Hall,Gonzaga,6,11,TeamB,TeamA,False,TeamA,False,TeamB,True,TeamB,True,0.43013985545296873,TeamB,True
-2016,R64,Utah,Fresno State,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7443073188374152,TeamA,True
-2016,R64,Dayton,Syracuse,7,10,TeamB,TeamA,False,TeamB,True,TeamB,True,TeamB,True,0.16320655785198335,TeamB,True
+2016,R64,Utah,Fresno State,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7443073188374153,TeamA,True
+2016,R64,Dayton,Syracuse,7,10,TeamB,TeamA,False,TeamB,True,TeamB,True,TeamB,True,0.16320655785198332,TeamB,True
 2016,R64,Michigan State,Middle Tennessee,2,15,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.6886806150205427,TeamA,False
 2016,R32,Virginia,Butler,1,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7858652589542621,TeamA,True
 2016,R32,Little Rock,Iowa State,12,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.17496257763329778,TeamB,True
-2016,R32,Gonzaga,Utah,11,3,TeamA,TeamB,False,TeamA,True,TeamA,True,TeamA,True,0.4785065320200451,TeamB,False
+2016,R32,Gonzaga,Utah,11,3,TeamA,TeamB,False,TeamA,True,TeamA,True,TeamA,True,0.47850653202004506,TeamB,False
 2016,R32,Syracuse,Middle Tennessee,10,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8419739046661299,TeamA,True
-2016,S16,Virginia,Iowa State,1,4,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.782715716614636,TeamA,True
+2016,S16,Virginia,Iowa State,1,4,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7827157166146361,TeamA,True
 2016,S16,Gonzaga,Syracuse,11,10,TeamB,TeamB,True,TeamA,False,TeamA,False,TeamA,False,0.3196614967267685,TeamB,True
 2016,E8,Virginia,Syracuse,1,10,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.6389288345342491,TeamA,False
 2016,R64,Kansas,Austin Peay,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.949662188631113,TeamA,True
@@ -541,14 +541,14 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2016,R64,Miami (FL),Buffalo,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9287886931620213,TeamA,True
 2016,R64,Iowa,Temple,7,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.6055725113462438,TeamA,True
 2016,R64,Villanova,UNC Asheville,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9651809152642219,TeamA,True
-2016,R32,Kansas,UConn,1,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8924676362050725,TeamA,True
-2016,R32,Maryland,Hawaii,5,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8296067586620414,TeamA,True
+2016,R32,Kansas,UConn,1,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8924676362050727,TeamA,True
+2016,R32,Maryland,Hawaii,5,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8296067586620413,TeamA,True
 2016,R32,Wichita State,Miami (FL),11,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamA,False,0.20263483181344694,TeamB,True
 2016,R32,Iowa,Villanova,7,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.04931899191163198,TeamB,True
 2016,S16,Kansas,Maryland,1,5,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8796851126005968,TeamA,True
-2016,S16,Miami (FL),Villanova,3,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.13055528025126137,TeamB,True
+2016,S16,Miami (FL),Villanova,3,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.13055528025126134,TeamB,True
 2016,E8,Kansas,Villanova,1,2,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamB,True,0.2913167699509801,TeamB,True
-2016,R64,Oregon,Holy Cross,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9237495140702097,TeamA,True
+2016,R64,Oregon,Holy Cross,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9237495140702094,TeamA,True
 2016,R64,St. Joseph's,Cincinnati,8,9,TeamA,TeamA,True,TeamB,False,TeamB,False,TeamB,False,0.7058721820260414,TeamA,True
 2016,R64,Baylor,Yale,5,12,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.554112567878904,TeamA,False
 2016,R64,Duke,UNC Wilmington,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7074342354947403,TeamA,True
@@ -557,7 +557,7 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2016,R64,Oregon State,VCU,7,10,TeamB,TeamA,False,TeamB,True,TeamB,True,TeamB,True,0.3302710848089657,TeamB,True
 2016,R64,Oklahoma,Cal State Bakersfield,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.938841029787058,TeamA,True
 2016,R32,Oregon,St. Joseph's,1,8,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8443776423392068,TeamA,True
-2016,R32,Yale,Duke,12,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.14698173168823278,TeamB,True
+2016,R32,Yale,Duke,12,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.14698173168823275,TeamB,True
 2016,R32,Northern Iowa,Texas A&M,11,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.1440928335524397,TeamB,True
 2016,R32,VCU,Oklahoma,10,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.09476731784997985,TeamB,True
 2016,S16,Oregon,Duke,1,4,TeamA,TeamA,True,TeamA,True,TeamB,False,TeamA,True,0.6955741400913152,TeamA,True
@@ -565,27 +565,27 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2016,E8,Oregon,Oklahoma,1,2,TeamB,TeamA,False,TeamB,True,TeamB,True,TeamB,True,0.24578237241377843,TeamB,True
 2016,F4,Villanova,Oklahoma,2,2,TeamA,TeamB,False,TeamA,True,TeamA,True,TeamA,True,0.7616986127832391,TeamA,True
 2016,F4,Syracuse,UNC,10,1,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.16853743045740535,TeamB,True
-2016,Championship,Villanova,UNC,2,1,TeamA,TeamB,False,TeamB,False,TeamA,True,TeamA,True,0.7697496584893891,TeamA,True
+2016,Championship,Villanova,UNC,2,1,TeamA,TeamB,False,TeamB,False,TeamA,True,TeamA,True,0.7697496584893894,TeamA,True
 2017,R64,Villanova,Mount St. Mary's,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9307644409770587,TeamA,True
 2017,R64,Wisconsin,Virginia Tech,8,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8748968787058802,TeamA,True
 2017,R64,Virginia,UNC Wilmington,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.753706294112016,TeamA,True
 2017,R64,Florida,ETSU,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8507017795614711,TeamA,True
-2017,R64,SMU,USC,6,11,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.5946844917228907,TeamA,False
+2017,R64,SMU,USC,6,11,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.5946844917228908,TeamA,False
 2017,R64,Baylor,New Mexico State,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8791965543220921,TeamA,True
 2017,R64,South Carolina,Marquette,7,10,TeamA,TeamA,True,TeamB,False,TeamB,False,TeamA,True,0.7918969029162123,TeamA,True
 2017,R64,Duke,Troy,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9672319590899319,TeamA,True
 2017,R32,Villanova,Wisconsin,1,8,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.5237456103430168,TeamA,False
-2017,R32,Virginia,Florida,5,4,TeamB,TeamB,True,TeamA,False,TeamA,False,TeamB,True,0.3543050067679988,TeamB,True
+2017,R32,Virginia,Florida,5,4,TeamB,TeamB,True,TeamA,False,TeamA,False,TeamB,True,0.354305006767999,TeamB,True
 2017,R32,USC,Baylor,11,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.09189189044825796,TeamB,True
 2017,R32,South Carolina,Duke,7,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.4559319196850271,TeamB,False
 2017,S16,Wisconsin,Florida,8,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.29438874627435624,TeamB,True
-2017,S16,Baylor,South Carolina,3,7,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.4985697964759044,TeamB,True
-2017,E8,Florida,South Carolina,4,7,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.4041453638062127,TeamB,True
+2017,S16,Baylor,South Carolina,3,7,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.4985697964759043,TeamB,True
+2017,E8,Florida,South Carolina,4,7,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.40414536380621274,TeamB,True
 2017,R64,Kansas,UC-Davis,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9762599599577937,TeamA,True
 2017,R64,Miami (FL),Michigan State,8,9,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamB,True,0.3168303152838909,TeamB,True
 2017,R64,Iowa State,Nevada,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8167923407868198,TeamA,True
 2017,R64,Purdue,Vermont,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7902609272859201,TeamA,True
-2017,R64,Creighton,Rhode Island,6,11,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.5308286812783027,TeamA,False
+2017,R64,Creighton,Rhode Island,6,11,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.5308286812783028,TeamA,False
 2017,R64,Oregon,Iona,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9593873363544965,TeamA,True
 2017,R64,Michigan,Oklahoma State,7,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7565933823661044,TeamA,True
 2017,R64,Louisville,Jacksonville State,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9619193111468056,TeamA,True
@@ -595,27 +595,27 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2017,R32,Michigan,Louisville,7,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.6315499158946811,TeamA,True
 2017,S16,Kansas,Purdue,1,4,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8802308194152351,TeamA,True
 2017,S16,Oregon,Michigan,3,7,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7102427897127284,TeamA,True
-2017,E8,Kansas,Oregon,1,3,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.4944333038005257,TeamB,True
-2017,R64,UNC,Texas Southern,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9452082249314678,TeamA,True
+2017,E8,Kansas,Oregon,1,3,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.49443330380052575,TeamB,True
+2017,R64,UNC,Texas Southern,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9452082249314676,TeamA,True
 2017,R64,Arkansas,Seton Hall,8,9,TeamA,TeamA,True,TeamB,False,TeamA,True,TeamA,True,0.6840260450686094,TeamA,True
 2017,R64,Minnesota,Middle Tennessee,5,12,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.38120529941615405,TeamB,True
 2017,R64,Butler,Winthrop,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9218346622417561,TeamA,True
 2017,R64,Cincinnati,Kansas State,6,11,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8421974741465197,TeamA,True
 2017,R64,UCLA,Kent State,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9175863281060669,TeamA,True
-2017,R64,Dayton,Wichita State,7,10,TeamB,TeamA,False,TeamB,True,TeamB,True,TeamB,True,0.10227339616544066,TeamB,True
+2017,R64,Dayton,Wichita State,7,10,TeamB,TeamA,False,TeamB,True,TeamB,True,TeamB,True,0.10227339616544065,TeamB,True
 2017,R64,Kentucky,Northern Kentucky,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9744466342383027,TeamA,True
-2017,R32,UNC,Arkansas,1,8,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8737328538879151,TeamA,True
-2017,R32,Middle Tennessee,Butler,12,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.19496110980830444,TeamB,True
+2017,R32,UNC,Arkansas,1,8,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8737328538879152,TeamA,True
+2017,R32,Middle Tennessee,Butler,12,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.19496110980830436,TeamB,True
 2017,R32,Cincinnati,UCLA,6,3,TeamB,TeamB,True,TeamB,True,TeamA,False,TeamB,True,0.251112105244438,TeamB,True
-2017,R32,Wichita State,Kentucky,10,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.15527948662951493,TeamB,True
+2017,R32,Wichita State,Kentucky,10,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.1552794866295149,TeamB,True
 2017,S16,UNC,Butler,1,4,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.846844613706681,TeamA,True
-2017,S16,UCLA,Kentucky,3,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.323901810233772,TeamB,True
+2017,S16,UCLA,Kentucky,3,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.32390181023377207,TeamB,True
 2017,E8,UNC,Kentucky,1,2,TeamA,TeamA,True,TeamA,True,TeamB,False,TeamA,True,0.6851366140193413,TeamA,True
 2017,R64,Gonzaga,South Dakota State,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9427596871674286,TeamA,True
 2017,R64,Northwestern,Vanderbilt,8,9,TeamA,TeamA,True,TeamB,False,TeamB,False,TeamB,False,0.6507689493474125,TeamA,True
-2017,R64,Notre Dame,Princeton,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7750655806551882,TeamA,True
+2017,R64,Notre Dame,Princeton,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.775065580655188,TeamA,True
 2017,R64,West Virginia,Bucknell,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8723604450414002,TeamA,True
-2017,R64,Maryland,Xavier,6,11,TeamB,TeamA,False,TeamA,False,TeamB,True,TeamB,True,0.14091512185820304,TeamB,True
+2017,R64,Maryland,Xavier,6,11,TeamB,TeamA,False,TeamA,False,TeamB,True,TeamB,True,0.140915121858203,TeamB,True
 2017,R64,Florida State,Florida Gulf Coast,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9007655113256139,TeamA,True
 2017,R64,Saint Mary's,VCU,7,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7502251344988894,TeamA,True
 2017,R64,Arizona,North Dakota,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9337234742764274,TeamA,True
@@ -625,9 +625,9 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2017,R32,Saint Mary's,Arizona,7,2,TeamB,TeamB,True,TeamB,True,TeamA,False,TeamA,False,0.29876893540038607,TeamB,True
 2017,S16,Gonzaga,West Virginia,1,4,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7909469811636155,TeamA,True
 2017,S16,Xavier,Arizona,11,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.44894140450962966,TeamB,False
-2017,E8,Gonzaga,Xavier,1,11,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.820370781989567,TeamA,True
+2017,E8,Gonzaga,Xavier,1,11,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8203707819895671,TeamA,True
 2017,F4,Oregon,UNC,3,1,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.17415724376005076,TeamB,True
-2017,F4,South Carolina,Gonzaga,7,1,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.15793425227965316,TeamB,True
+2017,F4,South Carolina,Gonzaga,7,1,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.1579342522796532,TeamB,True
 2017,Championship,UNC,Gonzaga,1,1,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.6374772100455,TeamA,True
 2018,R64,Villanova,Radford,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9549126698958643,TeamA,True
 2018,R64,Virginia Tech,Alabama,8,9,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.21154584823661585,TeamB,True
@@ -639,10 +639,10 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2018,R64,Purdue,Cal State Fullerton,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.948332838530456,TeamA,True
 2018,R32,Villanova,Alabama,1,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8110994056173588,TeamA,True
 2018,R32,West Virginia,Marshall,5,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8361805556553537,TeamA,True
-2018,R32,Florida,Texas Tech,6,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.16424457210368898,TeamB,True
+2018,R32,Florida,Texas Tech,6,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.16424457210368895,TeamB,True
 2018,R32,Butler,Purdue,10,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.18051153360642835,TeamB,True
 2018,S16,Villanova,West Virginia,1,5,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8617458898222117,TeamA,True
-2018,S16,Texas Tech,Purdue,3,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.46102621206140193,TeamB,False
+2018,S16,Texas Tech,Purdue,3,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.4610262120614018,TeamB,False
 2018,E8,Villanova,Texas Tech,1,3,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8086930480052946,TeamA,True
 2018,R64,Kansas,Penn,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9438618700548947,TeamA,True
 2018,R64,Seton Hall,NC State,8,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.5756224525606793,TeamA,True
@@ -652,22 +652,22 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2018,R64,Michigan State,Bucknell,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8726352703585896,TeamA,True
 2018,R64,Rhode Island,Oklahoma,7,10,TeamA,TeamA,True,TeamB,False,TeamB,False,TeamB,False,0.6365486253557462,TeamA,True
 2018,R64,Duke,Iona,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9362626868066852,TeamA,True
-2018,R32,Kansas,Seton Hall,1,8,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8585264225796373,TeamA,True
-2018,R32,Clemson,Auburn,5,4,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamA,True,0.6245690699913897,TeamA,True
+2018,R32,Kansas,Seton Hall,1,8,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8585264225796371,TeamA,True
+2018,R32,Clemson,Auburn,5,4,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamA,True,0.6245690699913898,TeamA,True
 2018,R32,Syracuse,Michigan State,11,3,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.2769804026251128,TeamB,False
-2018,R32,Rhode Island,Duke,7,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.10604060398626279,TeamB,True
-2018,S16,Kansas,Clemson,1,5,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8522877517614411,TeamA,True
+2018,R32,Rhode Island,Duke,7,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.10604060398626276,TeamB,True
+2018,S16,Kansas,Clemson,1,5,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.852287751761441,TeamA,True
 2018,S16,Syracuse,Duke,11,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.12438582774693596,TeamB,True
 2018,E8,Kansas,Duke,1,2,TeamA,TeamA,True,TeamB,False,TeamB,False,TeamB,False,0.6825167633141898,TeamA,True
-2018,R64,Virginia,UMBC,1,16,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.8662946944164349,TeamA,False
-2018,R64,Creighton,Kansas State,8,9,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.24645760151475649,TeamB,True
+2018,R64,Virginia,UMBC,1,16,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.8662946944164348,TeamA,False
+2018,R64,Creighton,Kansas State,8,9,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.2464576015147565,TeamB,True
 2018,R64,Kentucky,Davidson,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8111812802601099,TeamA,True
 2018,R64,Arizona,Buffalo,4,13,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.5432471212977528,TeamA,False
 2018,R64,Miami (FL),Loyola (IL),6,11,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamB,True,0.3003496391561058,TeamB,True
 2018,R64,Tennessee,Wright State,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9483299912678288,TeamA,True
 2018,R64,Nevada,Texas,7,10,TeamA,TeamA,True,TeamA,True,TeamB,False,TeamA,True,0.7520956924860261,TeamA,True
 2018,R64,Cincinnati,Georgia State,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9057353759045748,TeamA,True
-2018,R32,UMBC,Kansas State,16,9,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.043904429027203755,TeamB,True
+2018,R32,UMBC,Kansas State,16,9,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.04390442902720377,TeamB,True
 2018,R32,Kentucky,Buffalo,5,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8129438079117728,TeamA,True
 2018,R32,Loyola (IL),Tennessee,11,3,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.4390160271339676,TeamB,False
 2018,R32,Nevada,Cincinnati,7,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.6082296884738124,TeamA,True
@@ -677,36 +677,36 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2018,R64,Xavier,Texas Southern,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8851381531287735,TeamA,True
 2018,R64,Missouri,Florida State,8,9,TeamB,TeamA,False,TeamB,True,TeamA,False,TeamB,True,0.2979557675748007,TeamB,True
 2018,R64,Ohio State,South Dakota State,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.881279345386987,TeamA,True
-2018,R64,Gonzaga,UNC Greensboro,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8410860778505178,TeamA,True
+2018,R64,Gonzaga,UNC Greensboro,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.841086077850518,TeamA,True
 2018,R64,Houston,San Diego State,6,11,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7858440095262808,TeamA,True
 2018,R64,Michigan,Montana,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8653268547910262,TeamA,True
-2018,R64,Texas A&M,Providence,7,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.6497919909887291,TeamA,True
+2018,R64,Texas A&M,Providence,7,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.6497919909887293,TeamA,True
 2018,R64,UNC,Lipscomb,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9246541841628495,TeamA,True
 2018,R32,Xavier,Florida State,1,9,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.609439493814354,TeamA,False
 2018,R32,Ohio State,Gonzaga,5,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.36132164708649184,TeamB,True
-2018,R32,Houston,Michigan,6,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.10152228238369237,TeamB,True
-2018,R32,Texas A&M,UNC,7,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.4050405010841158,TeamB,False
+2018,R32,Houston,Michigan,6,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.10152228238369236,TeamB,True
+2018,R32,Texas A&M,UNC,7,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.4050405010841159,TeamB,False
 2018,S16,Florida State,Gonzaga,9,4,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.42737932127705947,TeamB,False
 2018,S16,Michigan,Texas A&M,3,7,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8161691014610619,TeamA,True
 2018,E8,Florida State,Michigan,9,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.15773015633469245,TeamB,True
 2018,F4,Villanova,Kansas,1,1,TeamA,TeamB,False,TeamA,True,TeamA,True,TeamA,True,0.6681331081708491,TeamA,True
-2018,F4,Loyola (IL),Michigan,11,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.11798220278017042,TeamB,True
+2018,F4,Loyola (IL),Michigan,11,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.11798220278017041,TeamB,True
 2018,Championship,Villanova,Michigan,1,3,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.6386260455976815,TeamA,True
 2019,R64,Duke,North Dakota State,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9397884042394551,TeamA,True
 2019,R64,VCU,UCF,8,9,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamB,True,0.4720692661800099,TeamB,True
 2019,R64,Mississippi State,Liberty,5,12,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.5483624210124495,TeamA,False
 2019,R64,Virginia Tech,Saint Louis,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.808000052812168,TeamA,True
-2019,R64,Maryland,Belmont,6,11,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8125445806363014,TeamA,True
+2019,R64,Maryland,Belmont,6,11,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8125445806363013,TeamA,True
 2019,R64,LSU,Yale,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8694611469854182,TeamA,True
 2019,R64,Louisville,Minnesota,7,10,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.4111673183220559,TeamB,True
 2019,R64,Michigan State,Bradley,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9556480365635123,TeamA,True
 2019,R32,Duke,UCF,1,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8962608495259212,TeamA,True
-2019,R32,Liberty,Virginia Tech,12,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.07572709532972799,TeamB,True
+2019,R32,Liberty,Virginia Tech,12,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.07572709532972798,TeamB,True
 2019,R32,Maryland,LSU,6,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.3267716285490158,TeamB,True
 2019,R32,Minnesota,Michigan State,10,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.06019954715371135,TeamB,True
 2019,S16,Duke,Virginia Tech,1,4,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.84835483339564,TeamA,True
-2019,S16,LSU,Michigan State,3,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.11210734342199004,TeamB,True
-2019,E8,Duke,Michigan State,1,2,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamB,True,0.36776900404497603,TeamB,True
+2019,S16,LSU,Michigan State,3,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.11210734342199007,TeamB,True
+2019,E8,Duke,Michigan State,1,2,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamB,True,0.3677690040449759,TeamB,True
 2019,R64,UNC,Iona,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9677477319739323,TeamA,True
 2019,R64,Utah State,Washington,8,9,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.20790304313125932,TeamB,True
 2019,R64,Auburn,New Mexico State,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.89940771911514,TeamA,True
@@ -714,8 +714,8 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2019,R64,Iowa State,Ohio State,6,11,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.40186564866048696,TeamB,True
 2019,R64,Houston,Georgia State,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8709591886847698,TeamA,True
 2019,R64,Wofford,Seton Hall,7,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8355718446801578,TeamA,True
-2019,R64,Kentucky,Abilene Christian,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9477516020964911,TeamA,True
-2019,R32,UNC,Washington,1,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7482613331880221,TeamA,True
+2019,R64,Kentucky,Abilene Christian,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.947751602096491,TeamA,True
+2019,R32,UNC,Washington,1,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7482613331880219,TeamA,True
 2019,R32,Auburn,Kansas,5,4,TeamA,TeamB,False,TeamA,True,TeamA,True,TeamA,True,0.669324823595414,TeamA,True
 2019,R32,Ohio State,Houston,11,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.12057693190888703,TeamB,True
 2019,R32,Wofford,Kentucky,7,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.24029115034235216,TeamB,True
@@ -728,11 +728,11 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2019,R64,Kansas State,UC-Irvine,4,13,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.6908748337698214,TeamA,False
 2019,R64,Villanova,Saint Mary's,6,11,TeamA,TeamA,True,TeamA,True,TeamB,False,TeamA,True,0.8203177501706258,TeamA,True
 2019,R64,Purdue,Old Dominion,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8983318162753615,TeamA,True
-2019,R64,Cincinnati,Iowa,7,10,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.4212115003329247,TeamB,True
+2019,R64,Cincinnati,Iowa,7,10,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.42121150033292465,TeamB,True
 2019,R64,Tennessee,Colgate,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9512670598036745,TeamA,True
 2019,R32,Virginia,Oklahoma,1,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8282724474085296,TeamA,True
-2019,R32,Oregon,UC-Irvine,12,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7560484047698112,TeamA,True
-2019,R32,Villanova,Purdue,6,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.09114504367447211,TeamB,True
+2019,R32,Oregon,UC-Irvine,12,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7560484047698113,TeamA,True
+2019,R32,Villanova,Purdue,6,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.09114504367447214,TeamB,True
 2019,R32,Iowa,Tennessee,10,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.12375516943119268,TeamB,True
 2019,S16,Virginia,Oregon,1,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8824204590616278,TeamA,True
 2019,S16,Purdue,Tennessee,3,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamA,True,0.5682870735061707,TeamA,True
@@ -740,23 +740,23 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2019,R64,Gonzaga,FDU,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.915271728373292,TeamA,True
 2019,R64,Syracuse,Baylor,8,9,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamB,True,0.273148581902825,TeamB,True
 2019,R64,Marquette,Murray State,5,12,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.44571485953865686,TeamB,True
-2019,R64,Florida State,Vermont,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8925948679288521,TeamA,True
+2019,R64,Florida State,Vermont,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8925948679288522,TeamA,True
 2019,R64,Buffalo,Arizona State,6,11,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8274147206093339,TeamA,True
 2019,R64,Texas Tech,Northern Kentucky,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9432012716429222,TeamA,True
-2019,R64,Nevada,Florida,7,10,TeamB,TeamA,False,TeamA,False,TeamB,True,TeamB,True,0.3359080793617394,TeamB,True
+2019,R64,Nevada,Florida,7,10,TeamB,TeamA,False,TeamA,False,TeamB,True,TeamB,True,0.33590807936173933,TeamB,True
 2019,R64,Michigan,Montana,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9142385119225539,TeamA,True
-2019,R32,Gonzaga,Baylor,1,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8711317360569717,TeamA,True
+2019,R32,Gonzaga,Baylor,1,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8711317360569716,TeamA,True
 2019,R32,Murray State,Florida State,12,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.10368599357338322,TeamB,True
 2019,R32,Buffalo,Texas Tech,6,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.18464424857997966,TeamB,True
 2019,R32,Florida,Michigan,10,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.1295533234305116,TeamB,True
-2019,S16,Gonzaga,Florida State,1,4,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.6845114857131253,TeamA,True
+2019,S16,Gonzaga,Florida State,1,4,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.6845114857131251,TeamA,True
 2019,S16,Texas Tech,Michigan,3,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamA,True,0.5866540554506513,TeamA,True
 2019,E8,Gonzaga,Texas Tech,1,3,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.43239343119340257,TeamB,True
 2019,F4,Virginia,Auburn,1,5,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7671160490124239,TeamA,True
 2019,F4,Texas Tech,Michigan State,3,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.5196246435829714,TeamA,True
 2019,Championship,Virginia,Texas Tech,1,3,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7693699937933747,TeamA,True
 2021,R64,Michigan,Texas Southern,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9447045061196548,TeamA,True
-2021,R64,LSU,St. Bonaventure,8,9,TeamA,TeamA,True,TeamB,False,TeamB,False,TeamA,True,0.7363325261326538,TeamA,True
+2021,R64,LSU,St. Bonaventure,8,9,TeamA,TeamA,True,TeamB,False,TeamB,False,TeamA,True,0.7363325261326537,TeamA,True
 2021,R64,Colorado,Georgetown,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8224997657788682,TeamA,True
 2021,R64,Florida State,UNC Greensboro,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8214545480033015,TeamA,True
 2021,R64,BYU,UCLA,6,11,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamB,True,0.22940097845697516,TeamB,True
@@ -766,8 +766,8 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2021,R32,Michigan,LSU,1,8,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7860825017353396,TeamA,True
 2021,R32,Colorado,Florida State,5,4,TeamB,TeamB,True,TeamA,False,TeamA,False,TeamA,False,0.39505690395888693,TeamB,True
 2021,R32,UCLA,Abilene Christian,11,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8162783835904989,TeamA,True
-2021,R32,Maryland,Alabama,10,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.18628945334276137,TeamB,True
-2021,S16,Michigan,Florida State,1,4,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7908262605272031,TeamA,True
+2021,R32,Maryland,Alabama,10,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.18628945334276142,TeamB,True
+2021,S16,Michigan,Florida State,1,4,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7908262605272032,TeamA,True
 2021,S16,UCLA,Alabama,11,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.5848562958817908,TeamA,True
 2021,E8,Michigan,UCLA,1,11,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.5580768239336025,TeamA,False
 2021,R64,Illinois,Drexel,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9322680120805783,TeamA,True
@@ -778,7 +778,7 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2021,R64,West Virginia,Morehead State,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8519574664726695,TeamA,True
 2021,R64,Clemson,Rutgers,7,10,TeamB,TeamA,False,TeamB,True,TeamA,False,TeamB,True,0.3064618972867531,TeamB,True
 2021,R64,Houston,Cleveland State,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9536829457959201,TeamA,True
-2021,R32,Illinois,Loyola (IL),1,8,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.5312320655975218,TeamA,False
+2021,R32,Illinois,Loyola (IL),1,8,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.5312320655975217,TeamA,False
 2021,R32,Oregon State,Oklahoma State,12,4,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.6190390912384444,TeamA,True
 2021,R32,Syracuse,West Virginia,11,3,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.5636656531542098,TeamA,True
 2021,R32,Rutgers,Houston,10,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.14656057703456038,TeamB,True
@@ -788,20 +788,20 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2021,R64,Baylor,Hartford,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9598066016357408,TeamA,True
 2021,R64,UNC,Wisconsin,8,9,TeamB,TeamA,False,TeamB,True,TeamB,True,TeamB,True,0.22662536277853554,TeamB,True
 2021,R64,Villanova,Winthrop,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8374904356597423,TeamA,True
-2021,R64,Purdue,North Texas,4,13,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.6352214297315654,TeamA,False
-2021,R64,Texas Tech,Utah State,6,11,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.647865267144418,TeamA,True
+2021,R64,Purdue,North Texas,4,13,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.6352214297315655,TeamA,False
+2021,R64,Texas Tech,Utah State,6,11,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.6478652671444181,TeamA,True
 2021,R64,Arkansas,Colgate,3,14,TeamA,TeamA,True,TeamB,False,TeamA,True,TeamA,True,0.9230743315440146,TeamA,True
-2021,R64,Florida,Virginia Tech,7,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.6658785796955842,TeamA,True
+2021,R64,Florida,Virginia Tech,7,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.6658785796955843,TeamA,True
 2021,R64,Ohio State,Oral Roberts,2,15,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.6555897066577787,TeamA,False
-2021,R32,Baylor,Wisconsin,1,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8707048689626321,TeamA,True
+2021,R32,Baylor,Wisconsin,1,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.870704868962632,TeamA,True
 2021,R32,Villanova,North Texas,5,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7878266037741428,TeamA,True
-2021,R32,Texas Tech,Arkansas,6,3,TeamB,TeamB,True,TeamA,False,TeamA,False,TeamA,False,0.20143204100864254,TeamB,True
+2021,R32,Texas Tech,Arkansas,6,3,TeamB,TeamB,True,TeamA,False,TeamA,False,TeamA,False,0.20143204100864257,TeamB,True
 2021,R32,Florida,Oral Roberts,7,15,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.6971401568366581,TeamA,False
 2021,S16,Baylor,Villanova,1,5,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.886313825244975,TeamA,True
 2021,S16,Arkansas,Oral Roberts,3,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.854538217581412,TeamA,True
 2021,E8,Baylor,Arkansas,1,3,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8861029266003004,TeamA,True
 2021,R64,Gonzaga,Norfolk State,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9423812719672372,TeamA,True
-2021,R64,Oklahoma,Missouri,8,9,TeamA,TeamA,True,TeamA,True,TeamB,False,TeamA,True,0.43257184121677167,TeamB,False
+2021,R64,Oklahoma,Missouri,8,9,TeamA,TeamA,True,TeamA,True,TeamB,False,TeamA,True,0.4325718412167718,TeamB,False
 2021,R64,Creighton,UCSB,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.737301487379601,TeamA,True
 2021,R64,Virginia,Ohio,4,13,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.6297553226317946,TeamA,False
 2021,R64,USC,Drake,6,11,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8467605187938658,TeamA,True
@@ -813,14 +813,14 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2021,R32,USC,Kansas,6,3,TeamA,TeamB,False,TeamA,True,TeamA,True,TeamA,True,0.687156241751273,TeamA,True
 2021,R32,Oregon,Iowa,7,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.5380242010733473,TeamA,True
 2021,S16,Gonzaga,Creighton,1,5,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8665489505672802,TeamA,True
-2021,S16,USC,Oregon,6,7,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7984932043467643,TeamA,True
-2021,E8,Gonzaga,USC,1,6,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7542222070934147,TeamA,True
+2021,S16,USC,Oregon,6,7,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7984932043467641,TeamA,True
+2021,E8,Gonzaga,USC,1,6,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7542222070934146,TeamA,True
 2021,F4,Baylor,Houston,1,2,TeamA,TeamA,True,TeamA,True,TeamB,False,TeamA,True,0.7771474211392667,TeamA,True
 2021,F4,Gonzaga,UCLA,1,11,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8244020163364316,TeamA,True
 2021,Championship,Baylor,Gonzaga,1,1,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.6761896911770897,TeamA,True
 2022,R64,Baylor,Norfolk State,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9467107064355723,TeamA,True
 2022,R64,UNC,Marquette,8,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7275118626053386,TeamA,True
-2022,R64,Saint Mary's,Indiana,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.835660600560268,TeamA,True
+2022,R64,Saint Mary's,Indiana,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8356606005602679,TeamA,True
 2022,R64,UCLA,Akron,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9524661892710747,TeamA,True
 2022,R64,Texas,Virginia Tech,6,11,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7077975618463386,TeamA,True
 2022,R64,Purdue,Yale,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8883223574407124,TeamA,True
@@ -828,41 +828,41 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2022,R64,Kentucky,St. Peter's,2,15,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.5659814711172632,TeamA,False
 2022,R32,Baylor,UNC,1,8,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.5965228528579707,TeamA,False
 2022,R32,Saint Mary's,UCLA,5,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.294240694010031,TeamB,True
-2022,R32,Texas,Purdue,6,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.2787182533785523,TeamB,True
+2022,R32,Texas,Purdue,6,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.27871825337855227,TeamB,True
 2022,R32,Murray State,St. Peter's,7,15,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.6209469679408497,TeamA,False
 2022,S16,UNC,UCLA,8,4,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.5077068728971758,TeamA,True
-2022,S16,Purdue,St. Peter's,3,15,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.6132873266615432,TeamA,False
+2022,S16,Purdue,St. Peter's,3,15,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.6132873266615431,TeamA,False
 2022,E8,UNC,St. Peter's,8,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.771775777080953,TeamA,True
 2022,R64,Kansas,Texas Southern,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9686253604064609,TeamA,True
 2022,R64,San Diego State,Creighton,8,9,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.29806722908522365,TeamB,True
 2022,R64,Iowa,Richmond,5,12,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.49279244352714646,TeamB,True
-2022,R64,Providence,South Dakota State,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8064981969523218,TeamA,True
+2022,R64,Providence,South Dakota State,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8064981969523217,TeamA,True
 2022,R64,LSU,Iowa State,6,11,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.2746243020832892,TeamB,True
-2022,R64,Wisconsin,Colgate,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9448761946349812,TeamA,True
+2022,R64,Wisconsin,Colgate,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9448761946349811,TeamA,True
 2022,R64,USC,Miami (FL),7,10,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamB,True,0.2527121125903972,TeamB,True
 2022,R64,Auburn,Jacksonville State,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9697455223328368,TeamA,True
 2022,R32,Kansas,Creighton,1,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8556083091036728,TeamA,True
 2022,R32,Richmond,Providence,12,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.16817624079127824,TeamB,True
 2022,R32,Iowa State,Wisconsin,11,3,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.701038058735881,TeamA,True
 2022,R32,Miami (FL),Auburn,10,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.47500819078882667,TeamB,False
-2022,S16,Kansas,Providence,1,4,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8516286745318197,TeamA,True
+2022,S16,Kansas,Providence,1,4,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8516286745318198,TeamA,True
 2022,S16,Iowa State,Miami (FL),11,10,TeamB,TeamB,True,TeamA,False,TeamA,False,TeamB,True,0.4457878888030101,TeamB,True
 2022,E8,Kansas,Miami (FL),1,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8354051895736341,TeamA,True
 2022,R64,Arizona,Wright State,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9131225699591192,TeamA,True
-2022,R64,Seton Hall,TCU,8,9,TeamB,TeamA,False,TeamB,True,TeamB,True,TeamB,True,0.17982302226864566,TeamB,True
+2022,R64,Seton Hall,TCU,8,9,TeamB,TeamA,False,TeamB,True,TeamB,True,TeamB,True,0.1798230222686457,TeamB,True
 2022,R64,Houston,UAB,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8658378004817515,TeamA,True
 2022,R64,Illinois,Chattanooga,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7741580538012643,TeamA,True
-2022,R64,Colorado State,Michigan,6,11,TeamB,TeamA,False,TeamB,True,TeamB,True,TeamB,True,0.3174322183092024,TeamB,True
+2022,R64,Colorado State,Michigan,6,11,TeamB,TeamA,False,TeamB,True,TeamB,True,TeamB,True,0.3174322183092023,TeamB,True
 2022,R64,Tennessee,Longwood,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9627928811040216,TeamA,True
 2022,R64,Ohio State,Loyola (IL),7,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamB,False,0.595393370098636,TeamA,True
 2022,R64,Villanova,Delaware,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9506550900160272,TeamA,True
 2022,R32,Arizona,TCU,1,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7900406809969832,TeamA,True
-2022,R32,Houston,Illinois,5,4,TeamA,TeamB,False,TeamA,True,TeamA,True,TeamA,True,0.7678432862064987,TeamA,True
+2022,R32,Houston,Illinois,5,4,TeamA,TeamB,False,TeamA,True,TeamA,True,TeamA,True,0.7678432862064988,TeamA,True
 2022,R32,Michigan,Tennessee,11,3,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.3422043563977185,TeamB,False
 2022,R32,Ohio State,Villanova,7,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.09374495686235988,TeamB,True
 2022,S16,Arizona,Houston,1,5,TeamB,TeamA,False,TeamA,False,TeamB,True,TeamB,True,0.27663541880185755,TeamB,True
 2022,S16,Michigan,Villanova,11,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.13140126568023636,TeamB,True
-2022,E8,Houston,Villanova,5,2,TeamB,TeamB,True,TeamA,False,TeamA,False,TeamA,False,0.35503528213740027,TeamB,True
+2022,E8,Houston,Villanova,5,2,TeamB,TeamB,True,TeamA,False,TeamA,False,TeamA,False,0.3550352821374002,TeamB,True
 2022,R64,Gonzaga,Georgia State,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8753675770551456,TeamA,True
 2022,R64,Boise State,Memphis,8,9,TeamB,TeamA,False,TeamB,True,TeamB,True,TeamB,True,0.2386027820383639,TeamB,True
 2022,R64,UConn,New Mexico State,5,12,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.5294034191092224,TeamA,False
@@ -872,27 +872,27 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2022,R64,Michigan State,Davidson,7,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamB,False,0.7468762610250355,TeamA,True
 2022,R64,Duke,Cal State Fullerton,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9273383768565489,TeamA,True
 2022,R32,Gonzaga,Memphis,1,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7985090567920643,TeamA,True
-2022,R32,New Mexico State,Arkansas,12,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.13492310529468007,TeamB,True
-2022,R32,Notre Dame,Texas Tech,11,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.23675308748934282,TeamB,True
+2022,R32,New Mexico State,Arkansas,12,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.13492310529468005,TeamB,True
+2022,R32,Notre Dame,Texas Tech,11,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.2367530874893428,TeamB,True
 2022,R32,Michigan State,Duke,7,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.1588329918631012,TeamB,True
-2022,S16,Gonzaga,Arkansas,1,4,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.31396361650448357,TeamB,True
+2022,S16,Gonzaga,Arkansas,1,4,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.3139636165044836,TeamB,True
 2022,S16,Texas Tech,Duke,3,2,TeamB,TeamB,True,TeamA,False,TeamB,True,TeamA,False,0.4324901824079716,TeamB,True
 2022,E8,Arkansas,Duke,4,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.24870286084707513,TeamB,True
 2022,F4,Villanova,Kansas,2,1,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.20119990533326465,TeamB,True
 2022,F4,Duke,UNC,2,8,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.35897780720393174,TeamB,True
-2022,Championship,Kansas,UNC,1,8,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8270900036994216,TeamA,True
+2022,Championship,Kansas,UNC,1,8,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8270900036994215,TeamA,True
 2023,R64,Purdue,FDU,1,16,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.6305796398883091,TeamA,False
-2023,R64,Memphis,Florida Atlantic,8,9,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamB,True,0.23209722378904102,TeamB,True
+2023,R64,Memphis,Florida Atlantic,8,9,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamB,True,0.23209722378904107,TeamB,True
 2023,R64,Duke,Oral Roberts,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8205321858636986,TeamA,True
 2023,R64,Tennessee,Louisiana,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7699799776697258,TeamA,True
 2023,R64,Kentucky,Providence,6,11,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.690770432216145,TeamA,True
-2023,R64,Kansas State,Montana State,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8593151192792896,TeamA,True
+2023,R64,Kansas State,Montana State,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8593151192792897,TeamA,True
 2023,R64,Michigan State,USC,7,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.6860316519654547,TeamA,True
-2023,R64,Marquette,Vermont,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9122128125676883,TeamA,True
+2023,R64,Marquette,Vermont,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9122128125676884,TeamA,True
 2023,R32,FDU,Florida Atlantic,16,9,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.10190511190646921,TeamB,True
 2023,R32,Duke,Tennessee,5,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.3310923821469048,TeamB,True
 2023,R32,Kentucky,Kansas State,6,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.2320136429528401,TeamB,True
-2023,R32,Michigan State,Marquette,7,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.5115728997091963,TeamA,True
+2023,R32,Michigan State,Marquette,7,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.5115728997091964,TeamA,True
 2023,S16,Florida Atlantic,Tennessee,9,4,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.6223503140328079,TeamA,True
 2023,S16,Kansas State,Michigan State,3,7,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.6739917701151965,TeamA,True
 2023,E8,Florida Atlantic,Kansas State,9,3,TeamA,TeamB,False,TeamA,True,TeamB,False,TeamA,True,0.5187115530384493,TeamA,True
@@ -902,19 +902,19 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2023,R64,Indiana,Kent State,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7338551200611553,TeamA,True
 2023,R64,Iowa State,Pitt,6,11,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.4043954946749269,TeamB,True
 2023,R64,Xavier,Kennesaw State,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8512442058269405,TeamA,True
-2023,R64,Texas A&M,Penn State,7,10,TeamB,TeamA,False,TeamB,True,TeamA,False,TeamA,False,0.28244927403424214,TeamB,True
+2023,R64,Texas A&M,Penn State,7,10,TeamB,TeamA,False,TeamB,True,TeamA,False,TeamA,False,0.2824492740342421,TeamB,True
 2023,R64,Texas,Colgate,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9428126574686546,TeamA,True
 2023,R32,Houston,Auburn,1,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8068566635537346,TeamA,True
 2023,R32,Miami (FL),Indiana,5,4,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamA,True,0.528325487059067,TeamA,True
 2023,R32,Pitt,Xavier,11,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.12489178926356183,TeamB,True
-2023,R32,Penn State,Texas,10,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.24131714270754862,TeamB,True
+2023,R32,Penn State,Texas,10,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.24131714270754864,TeamB,True
 2023,S16,Houston,Miami (FL),1,5,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.6289317935415328,TeamA,False
 2023,S16,Xavier,Texas,3,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.23382928118661603,TeamB,True
-2023,E8,Miami (FL),Texas,5,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.3821900764822807,TeamB,False
+2023,E8,Miami (FL),Texas,5,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.38219007648228065,TeamB,False
 2023,R64,Alabama,Texas A&M-Corpus Christi,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9247477737079699,TeamA,True
-2023,R64,Maryland,West Virginia,8,9,TeamA,TeamA,True,TeamA,True,TeamB,False,TeamB,False,0.6243682118717394,TeamA,True
+2023,R64,Maryland,West Virginia,8,9,TeamA,TeamA,True,TeamA,True,TeamB,False,TeamB,False,0.6243682118717393,TeamA,True
 2023,R64,San Diego State,College of Charleston,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8153773761638717,TeamA,True
-2023,R64,Virginia,Furman,4,13,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.5683305762068805,TeamA,False
+2023,R64,Virginia,Furman,4,13,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.5683305762068804,TeamA,False
 2023,R64,Creighton,NC State,6,11,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.6878865995662159,TeamA,True
 2023,R64,Baylor,UCSB,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8708548609613498,TeamA,True
 2023,R64,Missouri,Utah State,7,10,TeamA,TeamA,True,TeamB,False,TeamB,False,TeamB,False,0.6816999419529716,TeamA,True
@@ -925,47 +925,47 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2023,R32,Missouri,Princeton,7,15,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.6184764383749466,TeamA,False
 2023,S16,Alabama,San Diego State,1,5,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.559940901435752,TeamA,False
 2023,S16,Creighton,Princeton,6,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7919858460217306,TeamA,True
-2023,E8,San Diego State,Creighton,5,6,TeamA,TeamA,True,TeamB,False,TeamA,True,TeamB,False,0.6194235803401115,TeamA,True
+2023,E8,San Diego State,Creighton,5,6,TeamA,TeamA,True,TeamB,False,TeamA,True,TeamB,False,0.6194235803401116,TeamA,True
 2023,R64,Kansas,Howard,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9524498950170684,TeamA,True
 2023,R64,Arkansas,Illinois,8,9,TeamA,TeamA,True,TeamB,False,TeamA,True,TeamA,True,0.6997170495207617,TeamA,True
 2023,R64,Saint Mary's,VCU,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8000693953334016,TeamA,True
 2023,R64,UConn,Iona,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8222896688785675,TeamA,True
-2023,R64,TCU,Arizona State,6,11,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.5360333095487383,TeamA,True
+2023,R64,TCU,Arizona State,6,11,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.5360333095487382,TeamA,True
 2023,R64,Gonzaga,Grand Canyon,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8656083712126471,TeamA,True
 2023,R64,Northwestern,Boise State,7,10,TeamA,TeamA,True,TeamB,False,TeamB,False,TeamB,False,0.6423574606405457,TeamA,True
 2023,R64,UCLA,UNC Asheville,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9563740761676134,TeamA,True
-2023,R32,Kansas,Arkansas,1,8,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.6743608483907726,TeamA,False
+2023,R32,Kansas,Arkansas,1,8,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.6743608483907725,TeamA,False
 2023,R32,Saint Mary's,UConn,5,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.1519064823125547,TeamB,True
-2023,R32,TCU,Gonzaga,6,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.2685953204350006,TeamB,True
+2023,R32,TCU,Gonzaga,6,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.26859532043500056,TeamB,True
 2023,R32,Northwestern,UCLA,7,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.11547678552659947,TeamB,True
 2023,S16,Arkansas,UConn,8,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.10164013883260423,TeamB,True
 2023,S16,Gonzaga,UCLA,3,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.5828005229066453,TeamA,True
 2023,E8,UConn,Gonzaga,4,3,TeamA,TeamB,False,TeamA,True,TeamA,True,TeamA,True,0.7464444519093006,TeamA,True
 2023,F4,Florida Atlantic,San Diego State,9,5,TeamB,TeamB,True,TeamA,False,TeamB,True,TeamB,True,0.22976758579036477,TeamB,True
-2023,F4,Miami (FL),UConn,5,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.1574326755626143,TeamB,True
-2023,Championship,San Diego State,UConn,5,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.1732920844352986,TeamB,True
+2023,F4,Miami (FL),UConn,5,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.15743267556261428,TeamB,True
+2023,Championship,San Diego State,UConn,5,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.17329208443529862,TeamB,True
 2024,R64,UConn,Stetson,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9561865058006379,TeamA,True
 2024,R64,Florida Atlantic,Northwestern,8,9,TeamB,TeamA,False,TeamA,False,TeamB,True,TeamB,True,0.29888463119285213,TeamB,True
 2024,R64,San Diego State,UAB,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8278026889508108,TeamA,True
 2024,R64,Auburn,Yale,4,13,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.611237090608135,TeamA,False
-2024,R64,BYU,Duquesne,6,11,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.3738125974783969,TeamB,True
+2024,R64,BYU,Duquesne,6,11,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.37381259747839685,TeamB,True
 2024,R64,Illinois,Morehead State,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8829217506496595,TeamA,True
 2024,R64,Washington State,Drake,7,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.6866973573227139,TeamA,True
 2024,R64,Iowa State,South Dakota State,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9497999717023683,TeamA,True
 2024,R32,UConn,Northwestern,1,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8808931784134023,TeamA,True
-2024,R32,San Diego State,Yale,5,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8426092439882312,TeamA,True
-2024,R32,Duquesne,Illinois,11,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.16717049417186242,TeamB,True
+2024,R32,San Diego State,Yale,5,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8426092439882313,TeamA,True
+2024,R32,Duquesne,Illinois,11,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.1671704941718624,TeamB,True
 2024,R32,Washington State,Iowa State,7,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.13653927973793076,TeamB,True
 2024,S16,UConn,San Diego State,1,5,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8326053987257387,TeamA,True
 2024,S16,Illinois,Iowa State,3,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.6554667859876251,TeamA,True
-2024,E8,UConn,Illinois,1,3,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.875441948408108,TeamA,True
+2024,E8,UConn,Illinois,1,3,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8754419484081081,TeamA,True
 2024,R64,Purdue,Grambling,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9409732729208047,TeamA,True
-2024,R64,Utah State,TCU,8,9,TeamA,TeamA,True,TeamB,False,TeamB,False,TeamB,False,0.6708480787310916,TeamA,True
+2024,R64,Utah State,TCU,8,9,TeamA,TeamA,True,TeamB,False,TeamB,False,TeamB,False,0.6708480787310918,TeamA,True
 2024,R64,Gonzaga,McNeese State,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.6688885394368466,TeamA,True
 2024,R64,Kansas,Samford,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8067274801222507,TeamA,True
 2024,R64,South Carolina,Oregon,6,11,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.24472253272644773,TeamB,True
 2024,R64,Creighton,Akron,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8917278478528837,TeamA,True
-2024,R64,Texas,Colorado State,7,10,TeamA,TeamA,True,TeamB,False,TeamA,True,TeamA,True,0.6687849582481835,TeamA,True
+2024,R64,Texas,Colorado State,7,10,TeamA,TeamA,True,TeamB,False,TeamA,True,TeamA,True,0.6687849582481834,TeamA,True
 2024,R64,Tennessee,St. Peter's,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9416337803044875,TeamA,True
 2024,R32,Purdue,Utah State,1,8,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.843902548870701,TeamA,True
 2024,R32,Gonzaga,Kansas,5,4,TeamA,TeamB,False,TeamB,False,TeamA,True,TeamA,True,0.5601931998569196,TeamA,True
@@ -976,11 +976,11 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2024,E8,Purdue,Tennessee,1,2,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7245179234585591,TeamA,True
 2024,R64,Houston,Longwood,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9415761698699081,TeamA,True
 2024,R64,Nebraska,Texas A&M,8,9,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.4250985060567729,TeamB,True
-2024,R64,Wisconsin,James Madison,5,12,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.47584406149494823,TeamB,True
+2024,R64,Wisconsin,James Madison,5,12,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.4758440614949483,TeamB,True
 2024,R64,Duke,Vermont,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8289890366371022,TeamA,True
-2024,R64,Texas Tech,NC State,6,11,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.3294516706432602,TeamB,True
-2024,R64,Kentucky,Oakland,3,14,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.552680658981435,TeamA,False
-2024,R64,Florida,Colorado,7,10,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamB,True,0.20732732782493615,TeamB,True
+2024,R64,Texas Tech,NC State,6,11,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.32945167064326025,TeamB,True
+2024,R64,Kentucky,Oakland,3,14,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.5526806589814351,TeamA,False
+2024,R64,Florida,Colorado,7,10,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamB,True,0.20732732782493618,TeamB,True
 2024,R64,Marquette,Western Kentucky,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9390113168069835,TeamA,True
 2024,R32,Houston,Texas A&M,1,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.860405960592725,TeamA,True
 2024,R32,James Madison,Duke,12,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.1257826960684109,TeamB,True
@@ -992,13 +992,13 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2024,R64,UNC,Wagner,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9323996028503784,TeamA,True
 2024,R64,Mississippi State,Michigan State,8,9,TeamB,TeamA,False,TeamB,True,TeamB,True,TeamB,True,0.3642774779502221,TeamB,True
 2024,R64,Saint Mary's,Grand Canyon,5,12,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.57805119316343,TeamA,False
-2024,R64,Alabama,College of Charleston,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8323889010482872,TeamA,True
+2024,R64,Alabama,College of Charleston,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8323889010482874,TeamA,True
 2024,R64,Clemson,New Mexico,6,11,TeamA,TeamA,True,TeamB,False,TeamB,False,TeamA,True,0.6404702757954727,TeamA,True
-2024,R64,Baylor,Colgate,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9170794864447771,TeamA,True
+2024,R64,Baylor,Colgate,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.917079486444777,TeamA,True
 2024,R64,Dayton,Nevada,7,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.5846112662591827,TeamA,True
 2024,R64,Arizona,Long Beach State,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9279722507880259,TeamA,True
-2024,R32,UNC,Michigan State,1,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8032816662016721,TeamA,True
-2024,R32,Grand Canyon,Alabama,12,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.11842220279628729,TeamB,True
+2024,R32,UNC,Michigan State,1,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8032816662016723,TeamA,True
+2024,R32,Grand Canyon,Alabama,12,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.11842220279628725,TeamB,True
 2024,R32,Clemson,Baylor,6,3,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.5058445579852527,TeamA,True
 2024,R32,Dayton,Arizona,7,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.16369919117755344,TeamB,True
 2024,S16,UNC,Alabama,1,4,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.4028491197035008,TeamB,True
@@ -1006,7 +1006,7 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2024,E8,Alabama,Clemson,4,6,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7709162459038696,TeamA,True
 2024,F4,UConn,Alabama,1,4,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8209239359962065,TeamA,True
 2024,F4,Purdue,NC State,1,11,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8157837376155517,TeamA,True
-2024,Championship,UConn,Purdue,1,1,TeamA,TeamB,False,TeamA,True,TeamA,True,TeamA,True,0.7580642951545554,TeamA,True
+2024,Championship,UConn,Purdue,1,1,TeamA,TeamB,False,TeamA,True,TeamA,True,TeamA,True,0.7580642951545555,TeamA,True
 2025,R64,Duke,Mount St. Mary's,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9642296789016358,TeamA,True
 2025,R64,Mississippi State,Baylor,8,9,TeamB,TeamA,False,TeamA,False,TeamB,True,TeamB,True,0.33344863842479144,TeamB,True
 2025,R64,Oregon,Liberty,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9121493134160725,TeamA,True
@@ -1029,16 +1029,16 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2025,R64,Illinois,Xavier,6,11,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7991600534344239,TeamA,True
 2025,R64,Kentucky,Troy,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.861538670233019,TeamA,True
 2025,R64,UCLA,Utah State,7,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7700824323984853,TeamA,True
-2025,R64,Tennessee,Wofford,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9432576200842111,TeamA,True
+2025,R64,Tennessee,Wofford,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9432576200842113,TeamA,True
 2025,R32,Houston,Gonzaga,1,8,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.881448118750901,TeamA,True
 2025,R32,McNeese State,Purdue,12,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.054611893069623836,TeamB,True
-2025,R32,Illinois,Kentucky,6,3,TeamB,TeamB,True,TeamB,True,TeamA,False,TeamB,True,0.3062538817228571,TeamB,True
+2025,R32,Illinois,Kentucky,6,3,TeamB,TeamB,True,TeamB,True,TeamA,False,TeamB,True,0.30625388172285706,TeamB,True
 2025,R32,UCLA,Tennessee,7,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.1399960906681743,TeamB,True
-2025,S16,Houston,Purdue,1,4,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8354686938031031,TeamA,True
-2025,S16,Kentucky,Tennessee,3,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.30718180076878815,TeamB,True
-2025,E8,Houston,Tennessee,1,2,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7619906702551812,TeamA,True
+2025,S16,Houston,Purdue,1,4,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8354686938031033,TeamA,True
+2025,S16,Kentucky,Tennessee,3,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.3071818007687882,TeamB,True
+2025,E8,Houston,Tennessee,1,2,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7619906702551814,TeamA,True
 2025,R64,Auburn,Alabama State,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9479614474124863,TeamA,True
-2025,R64,Louisville,Creighton,8,9,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.32433831072171393,TeamB,True
+2025,R64,Louisville,Creighton,8,9,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.324338310721714,TeamB,True
 2025,R64,Michigan,UC-San Diego,5,12,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8611028116956546,TeamA,True
 2025,R64,Texas A&M,Yale,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8903224040850091,TeamA,True
 2025,R64,Ole Miss,UNC,6,11,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.758229776284205,TeamA,True
@@ -1046,15 +1046,15 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2025,R64,Marquette,New Mexico,7,10,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.48382810942747684,TeamB,True
 2025,R64,Michigan State,Bryant,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9506788621332655,TeamA,True
 2025,R32,Auburn,Creighton,1,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9115136291077419,TeamA,True
-2025,R32,Michigan,Texas A&M,5,4,TeamA,TeamB,False,TeamB,False,TeamA,True,TeamB,False,0.6038752732567172,TeamA,True
+2025,R32,Michigan,Texas A&M,5,4,TeamA,TeamB,False,TeamB,False,TeamA,True,TeamB,False,0.6038752732567171,TeamA,True
 2025,R32,Ole Miss,Iowa State,6,3,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.7063538520885472,TeamA,True
 2025,R32,New Mexico,Michigan State,10,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.07004287326925497,TeamB,True
-2025,S16,Auburn,Michigan,1,5,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8883684131276406,TeamA,True
-2025,S16,Ole Miss,Michigan State,6,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.3910396831875081,TeamB,True
-2025,E8,Auburn,Michigan State,1,2,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8709175725402482,TeamA,True
-2025,R64,Florida,Norfolk State,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9527698136284858,TeamA,True
-2025,R64,UConn,Oklahoma,8,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.49547881664451005,TeamB,False
-2025,R64,Memphis,Colorado State,5,12,TeamB,TeamA,False,TeamA,False,TeamB,True,TeamB,True,0.19570707485506672,TeamB,True
+2025,S16,Auburn,Michigan,1,5,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8883684131276405,TeamA,True
+2025,S16,Ole Miss,Michigan State,6,2,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.39103968318750815,TeamB,True
+2025,E8,Auburn,Michigan State,1,2,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8709175725402479,TeamA,True
+2025,R64,Florida,Norfolk State,1,16,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9527698136284857,TeamA,True
+2025,R64,UConn,Oklahoma,8,9,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.49547881664451,TeamB,False
+2025,R64,Memphis,Colorado State,5,12,TeamB,TeamA,False,TeamA,False,TeamB,True,TeamB,True,0.19570707485506678,TeamB,True
 2025,R64,Maryland,Grand Canyon,4,13,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8425032801143537,TeamA,True
 2025,R64,Missouri,Drake,6,11,TeamB,TeamA,False,TeamA,False,TeamA,False,TeamA,False,0.4164073653313529,TeamB,True
 2025,R64,Texas Tech,UNC Wilmington,3,14,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9057668043603817,TeamA,True
@@ -1062,11 +1062,11 @@ Year,Round,TeamA,TeamB,SeedA,SeedB,Actual_Winner,Seeds_Pick,Seeds_Correct,PowerR
 2025,R64,St. John's (NY),Omaha,2,15,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.9355815263650481,TeamA,True
 2025,R32,Florida,UConn,1,8,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8778449392061362,TeamA,True
 2025,R32,Colorado State,Maryland,12,4,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.22090373587310477,TeamB,True
-2025,R32,Drake,Texas Tech,11,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.06722250749249876,TeamB,True
-2025,R32,Arkansas,St. John's (NY),10,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.5206341692064816,TeamA,True
+2025,R32,Drake,Texas Tech,11,3,TeamB,TeamB,True,TeamB,True,TeamB,True,TeamB,True,0.06722250749249875,TeamB,True
+2025,R32,Arkansas,St. John's (NY),10,2,TeamA,TeamB,False,TeamB,False,TeamB,False,TeamB,False,0.5206341692064814,TeamA,True
 2025,S16,Florida,Maryland,1,4,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8600045840002317,TeamA,True
 2025,S16,Texas Tech,Arkansas,3,10,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.7168231774459758,TeamA,True
-2025,E8,Florida,Texas Tech,1,3,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8770617918233463,TeamA,True
+2025,E8,Florida,Texas Tech,1,3,TeamA,TeamA,True,TeamA,True,TeamA,True,TeamA,True,0.8770617918233464,TeamA,True
 2025,F4,Auburn,Florida,1,1,TeamB,TeamB,True,TeamB,True,TeamA,False,TeamB,True,0.36601646808533334,TeamB,True
 2025,F4,Duke,Houston,1,1,TeamB,TeamB,True,TeamA,False,TeamB,True,TeamA,False,0.20897761173206697,TeamB,True
 2025,Championship,Florida,Houston,1,1,TeamA,TeamB,False,TeamA,True,TeamB,False,TeamB,False,0.512021487269597,TeamA,True
