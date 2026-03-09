@@ -310,44 +310,54 @@ def calculate_bid_guidance(team_valuations, seed_stats, winners_df, pot_info):
     team_valuations['Tier'] = team_valuations.apply(assign_tier, axis=1)
     
     # BID GUIDANCE BY PHASE
-    # Phase 1 (0-2 teams, securing anchor): Pay up for quality
-    # Phase 2 (3-5 teams, building core): Pay market for good value
-    # Phase 3 (6+ teams, value hunting): Only pay below market
+    # Phase bids based on expected points (value), not historical market
+    
+    # Target portfolio parameters
+    TARGET_POINTS = 85
+    BUDGET = 100
+    
+    # Calculate fair value based on expected points
+    team_valuations['Fair_Value'] = (
+        (team_valuations['E_Points_Blended'] / TARGET_POINTS) * BUDGET
+    ).round(1)
+    
+    # Market ceiling (don't bid more than market will bear)
+    team_valuations['Market_Ceiling'] = (team_valuations['Bid_p75'] * 1.5).round(0)
     
     def calculate_phase_bids(row):
-        market = row['Market_Price']
+        fair_value = row['Fair_Value']
         tier = row['Tier']
-        advantage = row['Points_Advantage']
+        ceiling = row['Market_Ceiling']
         
         if tier == 'ANCHOR':
-            # Phase 1: Willing to pay premium
-            phase1 = market + 5 if advantage >= 10 else market + 3
-            # Phase 2: Pay market
-            phase2 = market
+            # Phase 1: Pay premium (need foundation)
+            phase1 = min(fair_value * 1.4, ceiling)
+            # Phase 2: Pay fair value
+            phase2 = min(fair_value, ceiling)
             # Phase 3: Pass (already have anchor)
             phase3 = 0
             
         elif tier == 'FILL':
-            # Phase 1: Pay market + small premium if exceptional
-            phase1 = market + 2 if advantage >= 7 else market
-            # Phase 2: Pay market
-            phase2 = market if advantage >= 6 else market - 2
-            # Phase 3: Only if discount
-            phase3 = market - 3
+            # Phase 1: Heavy discount (save budget for anchor)
+            phase1 = min(fair_value * 0.6, ceiling)
+            # Phase 2: Pay fair value (building core)
+            phase2 = min(fair_value, ceiling)
+            # Phase 3: Discount only
+            phase3 = min(fair_value * 0.7, ceiling)
             
         elif tier == 'VALUE':
             # Phase 1: Pass (focus on anchors)
             phase1 = 0
-            # Phase 2: Pay market
-            phase2 = market
-            # Phase 3: Best value here
-            phase3 = market - 1
+            # Phase 2: Pay fair value
+            phase2 = min(fair_value, ceiling)
+            # Phase 3: Best value here (modest discount)
+            phase3 = min(fair_value * 0.8, ceiling)
             
         elif tier == 'OPPORTUNISTIC':
-            # Only bid if major discount in any phase
-            phase1 = market - 3
-            phase2 = market - 2
-            phase3 = market - 1
+            # Only bid if deep discount in any phase
+            phase1 = min(fair_value * 0.5, ceiling)
+            phase2 = min(fair_value * 0.7, ceiling)
+            phase3 = min(fair_value * 0.8, ceiling)
             
         else:  # FADE
             phase1 = 0
@@ -355,9 +365,9 @@ def calculate_bid_guidance(team_valuations, seed_stats, winners_df, pot_info):
             phase3 = 0
         
         return pd.Series({
-            'Bid_Phase1': max(0, phase1),
-            'Bid_Phase2': max(0, phase2),
-            'Bid_Phase3': max(0, phase3)
+            'Bid_Phase1': max(0, round(phase1, 0)),
+            'Bid_Phase2': max(0, round(phase2, 0)),
+            'Bid_Phase3': max(0, round(phase3, 0))
         })
     
     phase_bids = team_valuations.apply(calculate_phase_bids, axis=1)
@@ -403,8 +413,8 @@ def print_summary(team_valuations, seed_stats, winners_df, pot_info):
     if len(anchors) > 0:
         print("  TIER 1: ANCHORS (Pick 1-2, your foundation)")
         print("  " + "-" * 76)
-        print("  Team            | Seed | Pts | Advantage | Market | Phase 1 | Phase 2 | Phase 3")
-        print("  ----------------|------|-----|-----------|--------|---------|---------|--------")
+        print("  Team            | Seed | Pts | Adv | Fair$ | Phase 1 | Phase 2 | Phase 3")
+        print("  ----------------|------|-----|-----|-------|---------|---------|--------")
         for _, row in anchors.head(8).iterrows():
             p1 = f"${row['Bid_Phase1']:.0f}" if row['Bid_Phase1'] > 0 else "PASS"
             p2 = f"${row['Bid_Phase2']:.0f}" if row['Bid_Phase2'] > 0 else "PASS"
@@ -412,9 +422,12 @@ def print_summary(team_valuations, seed_stats, winners_df, pot_info):
             
             print(f"  {row['Team']:<15} | {row['Seed']:>4} | "
                   f"{row['E_Points_Blended']:>3.0f} | "
-                  f"+{row['Points_Advantage']:>5.1f}    | "
-                  f"${row['Market_Price']:>5.0f}  | "
+                  f"+{row['Points_Advantage']:>3.1f} | "
+                  f"${row['Fair_Value']:>5.0f} | "
                   f"{p1:>7} | {p2:>7} | {p3:>6}")
+        print()
+        print("  Fair$ = Fair value based on expected points (not historical market)")
+        print("  Phase 1: Pay 40% premium | Phase 2: Pay fair | Phase 3: Pass")
         print()
     
     # Tier 2: Fill
@@ -425,8 +438,8 @@ def print_summary(team_valuations, seed_stats, winners_df, pot_info):
     if len(fills) > 0:
         print("  TIER 2: QUALITY FILL (Pick 3-4, supporting cast)")
         print("  " + "-" * 76)
-        print("  Team            | Seed | Pts | Advantage | Market | Phase 1 | Phase 2 | Phase 3")
-        print("  ----------------|------|-----|-----------|--------|---------|---------|--------")
+        print("  Team            | Seed | Pts | Adv | Fair$ | Phase 1 | Phase 2 | Phase 3")
+        print("  ----------------|------|-----|-----|-------|---------|---------|--------")
         for _, row in fills.head(10).iterrows():
             p1 = f"${row['Bid_Phase1']:.0f}" if row['Bid_Phase1'] > 0 else "PASS"
             p2 = f"${row['Bid_Phase2']:.0f}" if row['Bid_Phase2'] > 0 else "PASS"
@@ -434,9 +447,11 @@ def print_summary(team_valuations, seed_stats, winners_df, pot_info):
             
             print(f"  {row['Team']:<15} | {row['Seed']:>4} | "
                   f"{row['E_Points_Blended']:>3.0f} | "
-                  f"+{row['Points_Advantage']:>5.1f}    | "
-                  f"${row['Market_Price']:>5.0f}  | "
+                  f"+{row['Points_Advantage']:>3.1f} | "
+                  f"${row['Fair_Value']:>5.0f} | "
                   f"{p1:>7} | {p2:>7} | {p3:>6}")
+        print()
+        print("  Phase 1: 60% of fair (save for anchor) | Phase 2: Fair | Phase 3: 70% of fair")
         print()
     
     # Tier 3: Value
@@ -447,8 +462,8 @@ def print_summary(team_valuations, seed_stats, winners_df, pot_info):
     if len(values) > 0:
         print("  TIER 3: VALUE PLAYS (Pick 2-3, efficiency targets)")
         print("  " + "-" * 76)
-        print("  Team            | Seed | Pts | Pts/$  | Market | Phase 1 | Phase 2 | Phase 3")
-        print("  ----------------|------|-----|--------|--------|---------|---------|--------")
+        print("  Team            | Seed | Pts | Pts/$ | Fair$ | Phase 1 | Phase 2 | Phase 3")
+        print("  ----------------|------|-----|-------|-------|---------|---------|--------")
         for _, row in values.head(8).iterrows():
             p1 = f"${row['Bid_Phase1']:.0f}" if row['Bid_Phase1'] > 0 else "PASS"
             p2 = f"${row['Bid_Phase2']:.0f}" if row['Bid_Phase2'] > 0 else "PASS"
@@ -457,8 +472,10 @@ def print_summary(team_valuations, seed_stats, winners_df, pot_info):
             print(f"  {row['Team']:<15} | {row['Seed']:>4} | "
                   f"{row['E_Points_Blended']:>3.0f} | "
                   f"{row['Pts_Per_Market_Dollar']:>6.2f} | "
-                  f"${row['Market_Price']:>5.0f}  | "
+                  f"${row['Fair_Value']:>5.0f} | "
                   f"{p1:>7} | {p2:>7} | {p3:>6}")
+        print()
+        print("  Phase 1: Pass (focus anchors) | Phase 2: Fair | Phase 3: 80% of fair")
         print()
     
     # Strategic portfolio paths
@@ -713,10 +730,29 @@ def save_outputs(team_valuations, seed_stats, winners_df):
     print("  OUTPUTS")
     print("  " + "-" * 76)
     
-    # Main bid guidance
+    # Full analysis file (all columns)
     output = team_valuations.sort_values('E_Points_Blended', ascending=False)
     output.to_csv(OUTPUT_DIR / 'team_valuations_2026.csv', index=False)
-    print(f"  ✓ team_valuations_2026.csv")
+    print(f"  ✓ team_valuations_2026.csv (full analysis)")
+    
+    # Simplified bidder's guide (auction essentials + model probabilities)
+    bidder_cols = [
+        'Team', 'Seed', 'Region',
+        'E_Points_Blended',
+        'P_R64', 'P_R32', 'P_S16', 'P_E8', 'P_F4', 'P_Championship', 'P_WIN_Championship',
+        'Tier',
+        'Bid_Phase1', 'Bid_Phase2', 'Bid_Phase3',
+        'Pts_Per_Market_Dollar'
+    ]
+    
+    bidders_guide = output[bidder_cols].copy()
+    bidders_guide = bidders_guide.rename(columns={
+        'E_Points_Blended': 'Expected_Points',
+        'Pts_Per_Market_Dollar': 'Efficiency'
+    })
+    
+    bidders_guide.to_csv(OUTPUT_DIR / 'team_bidders_2026.csv', index=False)
+    print(f"  ✓ team_bidders_2026.csv (auction cheat sheet w/ probabilities)")
     
     # Historical analysis
     seed_stats.to_csv(OUTPUT_DIR / 'historical_seed_performance.csv', index=False)
@@ -728,6 +764,12 @@ def save_outputs(team_valuations, seed_stats, winners_df):
     print()
     print("=" * 80)
     print(f"\nAll outputs saved to: {OUTPUT_DIR}/")
+    print()
+    print("  USE DURING AUCTION:")
+    print("  → team_bidders_2026.csv (model probs + bid guidance)")
+    print()
+    print("  USE FOR ANALYSIS:")
+    print("  → team_valuations_2026.csv (full details + historical data)")
     print("=" * 80)
 
 

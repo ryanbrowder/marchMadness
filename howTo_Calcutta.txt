@@ -1,0 +1,469 @@
+================================================================================
+                  CALCUTTA AUCTION WORKFLOW: ANCHOR FIRST
+================================================================================
+
+CORE PRINCIPLE: Secure your foundation (anchor) first, then build around it.
+Your model is strongest at identifying which high seeds are actually good.
+Budget discipline beats emotional bidding.
+
+KEY FILES:
+  - team_bidders_2026.csv (your auction cheat sheet)
+  - team_valuations_2026.csv (for pre-auction research)
+
+CALCUTTA RULES:
+  Entry: $20 | Budget: $100 | Pot: ~$150 | Payout: 70%/30% (1st/2nd)
+  Target: 76+ points to compete | Typical: 7-8 teams
+
+
+================================================================================
+              STEP 1: PRE-AUCTION PREP (15 minutes)
+================================================================================
+
+GOAL: Pick your strategic path and prep your cheat sheet
+
+□ Run the optimizer:
+  cd L4
+  python 02_calcutta_optimizer.py
+
+□ Read terminal output:
+  - Review TIER 1 (ANCHORS)
+  - Review TIER 2 (FILLS)
+  - Review TIER 3 (VALUES)
+  - Note the 3 STRATEGIC PATHS (A/B/C)
+
+□ Pick your path:
+  PATH A: Premium Anchor (Duke $43 + deep value)
+    → Choose if: Want one elite star, willing to hunt bargains
+    → Risk: High variance
+
+  PATH B: Dual Mid-Tier (Houston $30 + Iowa St $18 + fills)
+    → Choose if: Want balanced foundation, medium risk
+    → Risk: Medium variance
+
+  PATH C: Deep Value (Iowa St $18 + 7 value teams)
+    → Choose if: Expect hot auction, patient bargain hunter
+    → Risk: Low variance
+
+□ Prep your tools:
+  - Open: outputs/02_calcutta_optimizer/team_bidders_2026.csv
+  - Sort by: Team (alphabetical order)
+  - Print OR keep digital with Ctrl+F search ready
+
+□ Print tracking sheet:
+  Teams: [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ]
+  Budget: $100 → $__ → $__ → $__ → $__ → $__ → $__ → $__ → $__
+  Points:   0  →  __ →  __ →  __ →  __ →  __ →  __ →  __ →  __
+  Anchor?: NO  → ___ → ___ → ___ → ___ → ___ → ___ → ___ → ___
+
+
+DONE. Ready for auction.
+
+
+================================================================================
+              STEP 2: PHASE 1 - SECURE YOUR ANCHOR (Dynamic)
+================================================================================
+
+GOAL: Lock in 1 (maybe 2) anchor teams to build foundation
+
+MINDSET: "I need an anchor or I'm toast"
+
+WHEN YOU'RE IN PHASE 1:
+  You have 0-2 teams AND no anchor yet
+
+BID STRATEGY:
+
+  ANCHOR tier called:
+    □ Check Bid_Phase1 column
+    □ Start bidding at market - $5
+    □ Be willing to go to Bid_Phase1 max
+    □ If someone else bids above max → PASS (don't chase)
+    □ Result: Secured anchor → Move to Phase 2
+    □ Result: Lost anchor → Stay in Phase 1, wait for next
+
+  FILL tier called:
+    □ Check Bid_Phase3 column (save budget)
+    □ Only bid if under $10
+    □ Goal: Don't tie up budget before anchor secured
+
+  VALUE tier called:
+    □ PASS (focus on foundation)
+
+TARGETS (pick your favorite):
+  - Duke (28.8 pts): Bid up to $50 in Phase 1
+  - Michigan (25.9 pts): Bid up to $48 in Phase 1
+  - Houston (22.8 pts): Bid up to $35 in Phase 1
+  - Iowa St (17.2 pts): Bid up to $23 in Phase 1
+  - Connecticut (17.5 pts): Bid up to $33 in Phase 1
+
+DECISION POINT:
+  If 3+ anchors have been called and all went above Phase 1 max:
+    → PIVOT to Path C (deep value strategy)
+    → Start treating FILL tier as your "anchors"
+    → Move to Phase 2 mindset
+
+
+PHASE 1 COMPLETE when:
+  ✓ You have 1 anchor, OR
+  ✓ You gave up on premium anchors (pivoted to Path C)
+
+
+================================================================================
+              STEP 3: PHASE 2 - BUILD YOUR CORE (Teams 3-5)
+================================================================================
+
+GOAL: Add 3-4 quality fills to support your anchor
+
+MINDSET: "Building around my foundation"
+
+WHEN YOU'RE IN PHASE 2:
+  You have an anchor OR you're building deep value portfolio
+
+BID STRATEGY:
+
+  ANCHOR tier called:
+    □ Check Bid_Phase2 column
+    □ Bid up to market price (no premium)
+    □ If already have 1 anchor, only bid if exceptional value
+    □ Don't buy 2+ premium anchors ($90+ combined = budget killer)
+
+  FILL tier called:
+    □ Check Bid_Phase2 column
+    □ This is your bread and butter
+    □ Bid up to market price
+    □ Target: Get 3-4 of these
+
+  VALUE tier called:
+    □ Check Bid_Phase2 column
+    □ Start bidding on these
+    □ Good for rounding out portfolio
+
+TARGETS (pick 3-4):
+  - Arkansas (13.8 pts): Bid up to $11
+  - Gonzaga (14.4 pts): Bid up to $18
+  - Kansas (13.0 pts): Bid up to $14
+  - Illinois (15.0 pts): Bid up to $30
+  - Purdue (13.7 pts): Bid up to $18
+  - Wisconsin (10.1 pts): Bid up to $9
+
+BUDGET CHECK:
+  After 4 teams: Should have $30+ left AND 40+ points
+
+
+PHASE 2 COMPLETE when:
+  ✓ You have 5-6 teams, OR
+  ✓ You have 60+ points
+
+
+================================================================================
+              STEP 4: PHASE 3 - VALUE HUNTING (Teams 6-8)
+================================================================================
+
+GOAL: Cross 76-point threshold with remaining budget
+
+MINDSET: "Only bidding on bargains"
+
+WHEN YOU'RE IN PHASE 3:
+  You have 6+ teams
+
+BID STRATEGY:
+
+  ANY tier called:
+    □ Check Bid_Phase3 column
+    □ ONLY bid Phase 3 prices (discounts only)
+    □ If bidding exceeds Phase 3 → PASS
+    □ Goal: Maximize points per dollar
+
+TARGETS (efficiency plays):
+  - UCLA (8.5 pts): Bid up to $4
+  - Louisville (9.2 pts): Bid up to $8
+  - Vanderbilt (9.9 pts): Bid up to $10
+  - Texas Tech (11.5 pts): Bid up to $13
+  - St. John's (8.8 pts): Bid up to $10
+  - Alabama (10.7 pts): Bid up to $13
+
+DECISION POINT:
+  If you're at 70 points with $15 left:
+    → Ignore Phase 3 prices
+    → Pay what you need to cross 76 points
+    → Better to spend $15 on 10 pts than save $5
+
+
+PHASE 3 COMPLETE when:
+  ✓ You have 76+ points, OR
+  ✓ Budget exhausted
+
+
+================================================================================
+              QUICK DECISION TABLE
+================================================================================
+
+WHEN TEAM IS CALLED:
+
+1. Find team in bidders CSV (alphabetical sort)
+
+2. Check tier:
+   - ANCHOR, FILL, VALUE, or FADE?
+   - If FADE → Skip to step 5
+
+3. Check your phase:
+   - Do you have anchor? How many teams?
+   - Phase 1 (no anchor) / Phase 2 (have anchor) / Phase 3 (6+ teams)
+
+4. Look at your phase column:
+   - That number is your MAX BID
+
+5. Make decision:
+   - If tier = FADE → PASS
+   - If above max bid → PASS
+   - If at/below max → BID
+
+6. Update tracking:
+   - Cross off team
+   - Subtract cost from budget
+   - Add points to total
+   - Update anchor status if needed
+
+
+================================================================================
+              TIER QUICK REFERENCE
+================================================================================
+
+ANCHOR (Foundation - pick 1, maybe 2):
+  Duke, Michigan, Arizona, Houston, Connecticut, Iowa St
+
+FILL (Supporting cast - pick 3-4):
+  Illinois, Gonzaga, Arkansas, Purdue, Kansas, Wisconsin, Texas Tech,
+  Alabama, Vanderbilt, Kentucky, Louisville, Michigan St
+
+VALUE (Efficiency - pick 2-3):
+  UCLA, Louisville, Vanderbilt, St. John's, Texas Tech, Alabama, Nebraska
+
+FADE (Don't bid):
+  Any team not listed above or marked FADE in CSV
+
+
+================================================================================
+              STRATEGIC PATH EXECUTION
+================================================================================
+
+PATH A: PREMIUM ANCHOR
+  Phase 1: Secure Duke/Michigan ($45-50)
+  Phase 2: Add 3 fills at market ($10-18 each)
+  Phase 3: Add 3 values at discount ($5-10 each)
+  Result: 7 teams, ~90 points, ~$100
+
+PATH B: DUAL MID-TIER
+  Phase 1: Secure Houston ($30-35)
+  Phase 2: Add Iowa St ($18) + 3 fills ($10-15 each)
+  Phase 3: Add 2 values ($5-10 each)
+  Result: 7 teams, ~95 points, ~$95
+
+PATH C: DEEP VALUE
+  Phase 1: Pass on premium, wait for Iowa St (~$18)
+  Phase 2: Add 4-5 fills at Phase 2 prices ($10-15 each)
+  Phase 3: Add 2-3 values at Phase 3 prices ($5-10 each)
+  Result: 8 teams, ~85 points, ~$95
+
+
+ADAPT BASED ON AUCTION FLOW:
+  - Duke goes for $55? → Pivot from Path A to Path B
+  - Houston goes for $25? → Lock him in, commit to Path B
+  - Everything expensive early? → Switch to Path C, be patient
+
+
+================================================================================
+              BLIND AUCTION ADAPTATION
+================================================================================
+
+CHALLENGE: Teams called randomly, anchor might come late
+
+SOLUTION: Track "have anchor?" not just team count
+
+SCENARIO: You have 3 teams, no anchor, Duke is called
+  Question: What phase am I in?
+  
+  For ANCHORS: Phase 1 (still need foundation)
+    → Bid Phase 1 price ($50)
+  
+  For FILLS/VALUES: Phase 2 (already have 3 teams)
+    → Bid Phase 2/3 prices (save budget for anchor)
+
+RULE: You're in "Phase 1 for anchors" until you secure one,
+      but "Phase 2/3 for fills" based on team count
+
+
+================================================================================
+              COMMON PITFALLS
+================================================================================
+
+DON'T:
+  × Buy Duke + Michigan + Houston ($120+ combined)
+  × Chase every team you like (budget discipline)
+  × Pay Phase 1 prices in Phase 3 (adapt to portfolio state)
+  × Ignore when bidding exceeds your phase max (let them overpay)
+  × Underspend (leaving $20 = giving up ~15 points)
+  × Panic buy fills before securing anchor
+
+DO:
+  ✓ Secure ONE anchor early
+  ✓ Track budget/points/teams after EVERY purchase
+  ✓ Stop at your phase max (discipline > FOMO)
+  ✓ Adapt your path if auction isn't going your way
+  ✓ Cross 76-point threshold
+  ✓ Use your full budget (~$90-100)
+
+
+================================================================================
+              VERIFICATION CHECKLIST
+================================================================================
+
+Before auction ends:
+  □ Have 1-2 ANCHOR tier teams
+  □ Have 3-5 FILL tier teams  
+  □ Have 1-3 VALUE tier teams
+  □ Total: 7-8 teams
+  □ Total: 76+ expected points
+  □ Total: $90-100 spent
+  □ Average model advantage: +5 or better
+  □ No teams with negative advantage
+
+
+================================================================================
+              TRACKING TEMPLATE
+================================================================================
+
+Print or write this before auction:
+
+TEAM TRACKING:
+  1. _____________ ($___) [___ pts] [ANCHOR/FILL/VALUE]
+  2. _____________ ($___) [___ pts] [ANCHOR/FILL/VALUE]
+  3. _____________ ($___) [___ pts] [ANCHOR/FILL/VALUE]
+  4. _____________ ($___) [___ pts] [ANCHOR/FILL/VALUE]
+  5. _____________ ($___) [___ pts] [ANCHOR/FILL/VALUE]
+  6. _____________ ($___) [___ pts] [ANCHOR/FILL/VALUE]
+  7. _____________ ($___) [___ pts] [ANCHOR/FILL/VALUE]
+  8. _____________ ($___) [___ pts] [ANCHOR/FILL/VALUE]
+
+RUNNING TOTALS:
+  Budget Remaining: $100 → $__ → $__ → $__ → $__ → $__ → $__ → $__ → $__
+  Points Total:        0 →  __ →  __ →  __ →  __ →  __ →  __ →  __ →  __
+  Have Anchor?:       NO → ___ → ___ → ___ → ___ → ___ → ___ → ___ → ___
+  Current Phase:       1 → ___ → ___ → ___ → ___ → ___ → ___ → ___ → ___
+
+TARGET: 76+ points | $90-100 spent | 1-2 anchors
+
+
+================================================================================
+              2026 EXAMPLE WALKTHROUGH
+================================================================================
+
+PATH B EXECUTION (Dual Mid-Tier):
+
+Team 1 called: Wisconsin (FILL)
+  You: 0 teams, no anchor, $100 left
+  Phase: 1 for anchors, but this is FILL
+  Action: Bid Phase 3 ($6) to save budget
+  Result: Won at $6
+  Status: 1 team, $94, 10.1 pts, NO ANCHOR, Phase 1
+
+Team 2 called: Houston (ANCHOR!)
+  You: 1 team, no anchor, $94 left
+  Phase: 1 (need anchor)
+  Action: Bid Phase 1 ($35)
+  Result: Won at $32
+  Status: 2 teams, $62, 32.9 pts, HAVE ANCHOR, Phase 2
+
+Team 3 called: Arkansas (FILL)
+  You: 2 teams, have anchor, $62 left
+  Phase: 2 (building core)
+  Action: Bid Phase 2 ($11)
+  Result: Won at $10
+  Status: 3 teams, $52, 46.7 pts, have anchor, Phase 2
+
+Team 4 called: Duke (ANCHOR)
+  You: 3 teams, have anchor, $52 left
+  Phase: 2
+  Action: Bid Phase 2 ($45), someone bids $50
+  Result: PASS (above max, already have anchor)
+  Status: Still 3 teams, $52, 46.7 pts
+
+Team 5 called: Kansas (FILL)
+  You: 3 teams, have anchor, $52 left
+  Phase: 2
+  Action: Bid Phase 2 ($14)
+  Result: Won at $13
+  Status: 4 teams, $39, 59.7 pts, Phase 2
+
+Team 6 called: Iowa St (ANCHOR)
+  You: 4 teams, have anchor, $39 left
+  Phase: 2
+  Action: Bid Phase 2 ($18), lock in 2nd anchor
+  Result: Won at $18
+  Status: 5 teams, $21, 76.9 pts, Phase 2→3
+
+Team 7 called: UCLA (VALUE)
+  You: 5 teams, $21 left, 76.9 pts
+  Phase: 3 (almost done)
+  Action: Bid Phase 3 ($4)
+  Result: Won at $4
+  Status: 6 teams, $17, 85.4 pts, Phase 3
+
+Team 8 called: Louisville (VALUE)
+  You: 6 teams, $17 left, 85.4 pts
+  Phase: 3
+  Action: Bid Phase 3 ($8)
+  Result: Won at $8
+  Status: 7 teams, $9, 94.6 pts, DONE
+
+FINAL PORTFOLIO:
+  Houston ($32) + Iowa St ($18) + Arkansas ($10) + Kansas ($13) +
+  Wisconsin ($6) + UCLA ($4) + Louisville ($8)
+  = 7 teams, 94.6 expected points, $91 spent ✓
+
+
+================================================================================
+              POST-AUCTION REVIEW
+================================================================================
+
+Calculate your expected finish:
+  □ Total expected points: _____
+  □ vs 76-point threshold: _____ (above/below)
+  □ Total spent: $_____
+  □ Average model advantage: _____
+
+Compare to opponents:
+  □ Who has the most points?
+  □ Who overpaid the most?
+  □ Who got the best value?
+
+Lessons learned:
+  □ Did you stick to your path?
+  □ Did you secure your anchor early enough?
+  □ Where did you overpay vs phase bids?
+  □ Where did you get bargains?
+
+
+================================================================================
+              EXECUTION SUMMARY
+================================================================================
+
+1. Run: python 02_calcutta_optimizer.py
+2. Open: team_bidders_2026.csv (sort by Team)
+3. Pick path: A (premium) / B (balanced) / C (deep value)
+4. Print tracking template
+5. Phase 1: Secure anchor (be aggressive)
+6. Phase 2: Build core (3-4 fills at market)
+7. Phase 3: Value hunt (cross 76 points)
+8. Verify: 76+ points, $90-100 spent, 7-8 teams
+
+Total time: 15 min prep + live auction
+Expected value: Top 2 finish if execution is disciplined
+
+Your edge: Model advantage identification + systematic process + budget discipline
+
+================================================================================
+                              AUTHOR
+================================================================================
+
+Ryan Browder
+March Madness Computron

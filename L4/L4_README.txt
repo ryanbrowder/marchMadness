@@ -186,8 +186,17 @@ BRACKET STRATEGIES:
 ================================================================================
 
 PURPOSE:
-  Generate optimal bidding strategies for Calcutta-style auctions where you
-  buy teams and win money based on tournament performance.
+  Provides executable auction strategy for Calcutta pool bidding using:
+    • Historical auction data (2013-2025)
+    • L4.01 tournament simulation probabilities
+    • Tier-based bid guidance by auction phase
+    • Strategic portfolio paths
+
+CORE PRINCIPLE:
+  You're playing a budget allocation game with $100 to build a 76+ point
+  portfolio in a winner-take-all auction against 6-7 competitors. Success
+  requires: (1) securing anchor teams, (2) building supporting cast with
+  value plays, (3) adapting to auction flow dynamically.
 
 WHEN TO RUN:
   Before your Calcutta auction (after tournament bracket is announced).
@@ -199,68 +208,210 @@ HOW TO RUN:
 
 WHAT IT DOES:
   1. Loads tournament simulator probabilities (from L4.01)
-  2. Loads L3 Elite 8 predictions
-  3. Calculates Expected Value for each team
-  4. Filters to seeds 1-15 (16 seeds excluded per auction rules)
-  5. Generates tier-based bidding recommendations
-  6. Exports team valuations and strategy guide
+  2. Loads historical auction data (2013-2025)
+  3. Calculates expected points per team (base + upset bonuses)
+  4. Assigns tiers (ANCHOR / FILL / VALUE / FADE)
+  5. Generates phase-based bid guidance (Phase 1/2/3)
+  6. Builds strategic portfolio paths that fit $100 budget
+  7. Exports two files: team_bidders_2026.csv (auction cheat sheet) and
+     team_valuations_2026.csv (full analysis)
 
-CONFIGURATION (edit in script):
-  TOTAL_BUDGET = 1000      # Your auction budget
-  FIELD_SIZE = 68          # Total tournament teams (64 + 4 play-ins)
-  FILTER_16_SEEDS = True   # Exclude 16-seeds from recommendations
+CALCUTTA RULES:
+  Entry: $20 per player
+  Budget: $100 fake money per player
+  Pot: $20 × N players (typically ~$150)
+  Payout: 70% to 1st place, 30% to 2nd place
+  Teams: 60 teams (excludes 16-seeds)
+  Format: Blind auction (teams called randomly)
   
-  PAYOUT_STRUCTURE = {
-    'R64': 0,
-    'R32': 5,
-    'S16': 10,
-    'E8': 20,
-    'FF': 35,
-    'Championship': 50,
-    'Champion': 100
-  }
+  Scoring:
+    R64: 2 pts  | R32: 4 pts  | S16: 6 pts  | E8: 8 pts
+    F4: 10 pts  | Championship: 12 pts
+    
+    Upset Bonus: If lower seed beats higher seed, add seed difference to points
+    Example: Nevada (10) beats Gonzaga (2) in R32 = 4 + 8 = 12 pts
 
 OUTPUTS:
   All files saved to: outputs/02_calcutta_optimizer/
+  
+  team_bidders_2026.csv - AUCTION CHEAT SHEET (use during auction)
+    Columns: Team, Seed, Region, Expected_Points, P_R64-P_WIN_Championship,
+             Tier, Bid_Phase1, Bid_Phase2, Bid_Phase3, Efficiency
+    Sort by: Team (alphabetical) for quick lookup during auction
+  
+  team_valuations_2026.csv - FULL ANALYSIS (for pre-auction prep)
+    Contains: Everything in bidders file + historical data
+    Use: Pre-auction research, post-auction review, understanding WHY
+  
+  historical_seed_performance.csv - Historical ROI by seed
+  historical_winners.csv - Past winners' portfolios
 
-  team_valuations_2026.csv - Expected value and recommended bids for each team
-  auction_strategy.txt - Bid recommendations by tier
+KEY FEATURES:
+  ✓ Tier-based team assignments (ANCHOR/FILL/VALUE)
+  ✓ Phase-based dynamic bidding (0-2 teams / 3-5 teams / 6+ teams)
+  ✓ Three strategic portfolio paths (~$100 each)
+  ✓ Historical ROI patterns (fade overpriced seeds)
+  ✓ Model advantage identification (+8 vs historical avg)
+  ✓ Tournament type adjustment (2026 = 80% CHALK)
 
-KEY CONCEPTS:
-  • Expected Value = Sum of (round probability × payout)
-  • Recommended Max Bid = % of budget based on EV tier
-  • Tier classification based on championship probability and EV
+TIER SYSTEM:
 
-READING THE OUTPUT:
+  ANCHOR (Pick 1-2): Your foundation, high-floor teams
+    Criteria: 20+ pts with +5 advantage OR 15+ pts with +8 advantage
+    Examples: Duke (28.8 pts), Houston (22.8 pts), Iowa St (17.2 pts)
+    Strategy: Secure one early, build around them
+  
+  FILL (Pick 3-4): Solid supporting cast with good model advantage
+    Criteria: 12+ pts with +4 advantage OR 10+ pts with +6 advantage
+    Examples: Gonzaga (14.4 pts), Arkansas (13.8 pts), Kansas (13.0 pts)
+    Strategy: Core of your portfolio, pay market prices
+  
+  VALUE (Pick 2-3): Efficiency plays to round out portfolio
+    Criteria: 8+ pts with 1.1+ pts/$ OR 8+ pts with +3 advantage
+    Examples: UCLA (8.5 pts), Wisconsin (10.1 pts), Louisville (9.2 pts)
+    Strategy: Only buy at discounts, maximize points per dollar
+  
+  FADE: Teams model doesn't like or with negative advantage
+    Strategy: Pass entirely
 
-  team_valuations_2026.csv:
-    Team = Team name
-    Seed = Tournament seed
-    Region = Tournament region
-    P_Champion = Probability of winning championship
-    Expected_Value = Expected payout based on probabilities
-    Recommended_Max_Bid = Maximum you should bid (as % of budget)
-    Tier = Value tier (Tier 1 = Top Value, Tier 2 = Good Value, etc.)
+PHASE-BASED BIDDING:
 
-  auction_strategy.txt:
-    TIER 1 - TOP VALUE (Spend 40-60% of budget):
-      Teams with highest expected value
-      Premium targets, bid aggressively
-    
-    TIER 2 - GOOD VALUE (Spend 20-30% of budget):
-      Solid value, bid moderately
-    
-    TIER 3 - LOTTERY TICKETS (Spend <10% of budget):
-      Low probability but potential upside
+  Phase 1 (0-2 teams, no anchor yet):
+    MINDSET: "I need an anchor or I'm toast"
+    ANCHORS: Pay up (market + $3-5)
+    FILLS: Pass or bid cheap (save budget)
+    VALUES: Pass (focus on foundation)
+  
+  Phase 2 (3-5 teams, have anchor OR building deep roster):
+    MINDSET: "Building my core"
+    ANCHORS: Pay market only (no premium)
+    FILLS: Pay market prices
+    VALUES: Start bidding market prices
+  
+  Phase 3 (6+ teams, close to 76 points):
+    MINDSET: "Value hunting to cross threshold"
+    ANCHORS: Pass (already have foundation)
+    FILLS: Only bid below market
+    VALUES: Best opportunities here
 
-BIDDING STRATEGY:
-  • Allocate 40-60% of budget to Tier 1 teams
-  • Allocate 20-30% to Tier 2 teams
-  • Allocate <10% to Tier 3 teams
-  • Reserve 10% for mid-auction opportunities
-  • Diversify across regions
-  • Don't spend >60% on a single team
-  • Avoid 16-seeds (filtered automatically)
+STRATEGIC PORTFOLIO PATHS:
+
+  PATH A: PREMIUM ANCHOR (~$100)
+    Strategy: 1 elite anchor + deep value supporting cast
+    Example: Duke $43 + 6 value/fill teams at ~$9 each
+    When: Premium anchor available at reasonable price early
+    Risk: High variance (Duke carries you or you're screwed)
+  
+  PATH B: DUAL MID-TIER (~$96)
+    Strategy: 2 solid anchors + balanced supporting cast
+    Example: Houston $30 + Iowa St $18 + 5 fills/values
+    When: Premium anchors too expensive, pivot to balance
+    Risk: Medium variance (diversified foundation)
+  
+  PATH C: DEEP VALUE (~$95)
+    Strategy: 1 cheap anchor + 7-8 value/fill teams
+    Example: Iowa St $18 + 7 teams at ~$11 each
+    When: Everything expensive, wait for deals
+    Risk: Low variance (lots of shots on goal)
+
+HISTORICAL SEED ROI (2013-2025):
+
+  Market systematically overpays for high seeds:
+    Seed 6: -74.5% ROI (worst - AVOID)
+    Seed 2: -71.4% ROI
+    Seed 3: -65.4% ROI
+    Seed 1: -61.7% ROI
+  
+  Model edge: Identifies WHICH high seeds are actually good
+    Duke (1): +11.7 advantage over avg 1-seed
+    Houston (2): +14.0 advantage over avg 2-seed
+    Iowa St (3): +10.4 advantage over avg 3-seed
+
+WINNING REQUIREMENTS:
+
+  Historical Benchmarks (2013-2025):
+    Average winning total: 86.1 points
+    25th percentile winner: 76 points (minimum to compete)
+    Typical portfolio: 7-8 teams, $90-100 spent
+  
+  Target Portfolio:
+    ✓ 76-85 expected points
+    ✓ $90-100 spent (don't leave money on table)
+    ✓ 1-2 ANCHOR tier teams
+    ✓ 3-5 FILL tier teams
+    ✓ 1-3 VALUE tier teams
+    ✓ Average model advantage: +5 or better
+
+AUCTION EXECUTION:
+
+  Pre-Auction (15 min):
+    □ Run optimizer, review terminal output
+    □ Pick your strategic path (A/B/C)
+    □ Open team_bidders_2026.csv, sort by Team
+    □ Print tracking template
+  
+  During Auction:
+    □ Track: teams owned, budget left, points total, have anchor?
+    □ Team called → Find in CSV → Check phase → Bid to max
+    □ Stop at phase max (discipline beats FOMO)
+    □ If bidding exceeds max → LET THEM HAVE IT
+    □ Update tracking after each purchase
+  
+  Decision Rules:
+    1. Find team in bidders CSV
+    2. Check tier (ANCHOR / FILL / VALUE / FADE)
+    3. Check your phase (do you have anchor? how many teams?)
+    4. Look at appropriate phase bid column
+    5. That's your max bid
+
+BLIND AUCTION ADAPTATION:
+
+  Key Challenge: You might need an anchor but it comes late
+  
+  Solution: Track "have anchor?" not just team count
+  
+  Modified Phase Logic:
+    Phase 1 = No anchor yet (regardless of team count)
+    Phase 2 = Have anchor OR gave up on premium anchors
+    Phase 3 = 6+ teams
+  
+  Example: If you have 4 weak teams but no anchor, and Duke comes up:
+    → You're in "Phase 1" for anchors (bid aggressively)
+    → But "Phase 3" for values (pass or bid cheap)
+
+CHALK YEAR STRATEGY (2026):
+
+  Tournament Type: 80% CHALK, 15% NORMAL, 5% CHAOS
+  
+  Implications:
+    • High seeds (1-4) MORE valuable than usual
+    • Upset bonuses LESS likely
+    • Low seeds (12-15) have MINIMAL value
+    • Anchors are CRITICAL (reduce variance)
+  
+  Adjustments:
+    • Premium on high-floor anchors (Duke, Houston)
+    • Fade overseeded teams (Florida, Purdue per L3 analysis)
+    • Don't chase 12-15 seeds even if cheap
+    • Build around 1-2 anchors, not deep value strategy
+
+COMMON MISTAKES:
+
+  DON'T:
+    × Buy 2+ premium anchors (Duke + Michigan = $90, no money left)
+    × Chase every team you like (budget discipline matters)
+    × Pay Phase 1 prices in Phase 3 (adapt to portfolio state)
+    × Ignore historical ROI patterns (don't overpay for 2/6 seeds)
+    × Build portfolio without anchor (need foundation)
+    × Underspend (leaving $20 on table = giving up ~15 points)
+  
+  DO:
+    ✓ Pick ONE strategic path before auction (A/B/C)
+    ✓ Track: teams owned, budget left, points total, have anchor?
+    ✓ Use phase bids as MAX, not TARGET (get discounts when possible)
+    ✓ Adapt if your path isn't working (pivot A→B→C as needed)
+    ✓ Focus on model advantage (+8 or better)
+    ✓ Cross 76-point threshold with budget remaining
 
 
 ================================================================================
@@ -784,22 +935,38 @@ BRACKET POOL STRATEGY:
 
 CALCUTTA STRATEGY:
 
-  Budget allocation:
-    • 40-60% on Tier 1 (high EV teams)
-    • 20-30% on Tier 2 (good value)
-    • <10% on Tier 3 (lottery tickets)
-    • Reserve 10% for mid-auction opportunities
-
-  Bidding tactics:
-    • Let others bid up 1-seeds early
-    • Target 2-4 seeds with high model probability
-    • Avoid 16-seeds (filtered automatically)
-    • Watch for teams with seed boost <-5pp (undervalued)
-
+  Pre-auction preparation:
+    • Pick strategic path: A (premium anchor), B (dual mid-tier), or C (deep value)
+    • Open team_bidders_2026.csv, sort by Team (alphabetical)
+    • Print tracking template (teams, budget, points, anchor?)
+  
+  Phase 1 execution (0-2 teams, no anchor):
+    • ANCHOR tier: Pay up (market + $3-5), must secure foundation
+    • FILL/VALUE tier: Pass or bid cheap (save budget)
+    • Goal: Secure 1 anchor before moving to Phase 2
+  
+  Phase 2 execution (3-5 teams, have anchor):
+    • ANCHOR tier: Pay market only (no premium)
+    • FILL tier: Pay market prices (core of portfolio)
+    • VALUE tier: Start bidding at market
+    • Goal: Build supporting cast, get to 60+ points
+  
+  Phase 3 execution (6+ teams):
+    • All tiers: Only bid below market (discounts only)
+    • Goal: Cross 76-point threshold with remaining budget
+  
+  Budget discipline:
+    • Use phase bids as MAX, not TARGET (get discounts when possible)
+    • Stop at your phase max (discipline beats FOMO)
+    • Track running totals: teams, budget, points, anchor status
+    • Adapt path if auction doesn't go your way (A→B→C pivot)
+  
   Risk management:
-    • Diversify across regions
-    • Don't spend >60% on a single team
-    • Balance high-floor (Elite 8) vs high-ceiling (Championship) teams
+    • Don't buy 2+ premium anchors (leaves no budget for depth)
+    • Focus on model advantage (+8 or better)
+    • Target: 76-85 pts, $90-100 spent, 7-8 teams
+    • Historical fade: Seeds 2/6 have worst ROI (-70%+)
+
 
 LIVE BETTING STRATEGY:
 
