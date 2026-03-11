@@ -5,169 +5,169 @@
 FIRST FOUR (Play-In Games)
 --------------------------------------------------------------------------------
 
-  MIDWEST - 11-seed:
-    Auburn vs VCU
-    → Auburn 57.8%
-
   MIDWEST - 16-seed:
-    UMBC vs LIU
-    → LIU 71.9%
+    Bethune Cookman vs Lehigh
+    → Lehigh 71.1%
 
   EAST - 11-seed:
     Santa Clara vs SMU
-    → Santa Clara 66.3%
+    → Santa Clara 64.8%
+
+  SOUTH - 11-seed:
+    Auburn vs VCU
+    → Auburn 58.7%
 
   SOUTH - 16-seed:
-    Howard vs Bethune Cookman
-    → Bethune Cookman 80.4%
+    Furman vs Howard
+    → Howard 72.1%
 
 
 ROUND OF 64
 --------------------------------------------------------------------------------
 
   East Region:
-    (1.0) Michigan vs (16.0) Bethune Cookman
-      → Michigan 96.9%
-    (8.0) Saint Louis vs (9.0) UCLA
-      → UCLA 83.5%
-    (5.0) St. John's vs (12.0) Liberty
-      → St. John's 87.0%
-    (4.0) Texas Tech vs (13.0) Stephen F. Austin
-      → Texas Tech 83.4%
-    (6.0) Kentucky vs (11.0) Miami OH
-      → Kentucky 75.7%
-    (3.0) Purdue vs (14.0) UC Irvine
-      → Purdue 85.1%
-    (7.0) Saint Mary's vs (10.0) Texas A&M
-      → Saint Mary's 70.2%
-    (2.0) Connecticut vs (15.0) Illinois Chicago
-      → Connecticut 95.5%
+    (1.0) Michigan vs (16.0) LIU
+      → Michigan 95.7%
+    (8.0) Georgia vs (9.0) Ohio St.
+      → Ohio St. 61.3%
+    (5.0) St. John's vs (12.0) High Point
+      → St. John's 92.9%
+    (4.0) Gonzaga vs (13.0) Utah Valley
+      → Gonzaga 86.7%
+    (6.0) North Carolina vs (11.0) Auburn
+      → North Carolina 69.5%
+    (3.0) Purdue vs (14.0) Hofstra
+      → Purdue 84.4%
+    (7.0) Saint Mary's vs (10.0) Missouri
+      → Saint Mary's 76.1%
+    (2.0) Connecticut vs (15.0) Queens
+      → Connecticut 96.0%
 
   Midwest Region:
-    (1.0) Florida vs (16.0) LIU
-      → Florida 93.5%
-    (8.0) Utah St. vs (9.0) TCU
-      → Utah St. 64.6%
-    (5.0) Arkansas vs (12.0) South Florida
-      → Arkansas 84.9%
-    (4.0) Virginia vs (13.0) UNC Wilmington
-      → Virginia 89.0%
-    (6.0) Wisconsin vs (11.0) UCF
-      → Wisconsin 77.2%
-    (3.0) Nebraska vs (14.0) East Tennessee St.
-      → Nebraska 97.4%
-    (7.0) Villanova vs (10.0) Missouri
-      → Villanova 86.1%
-    (2.0) Houston vs (15.0) Merrimack
-      → Houston 95.8%
+    (1.0) Florida vs (16.0) Lehigh
+      → Florida 93.4%
+    (8.0) UCLA vs (9.0) Saint Louis
+      → UCLA 71.6%
+    (5.0) Arkansas vs (12.0) Yale
+      → Arkansas 82.0%
+    (4.0) Virginia vs (13.0) Stephen F. Austin
+      → Virginia 83.5%
+    (6.0) BYU vs (11.0) Santa Clara
+      → Santa Clara 55.1%
+    (3.0) Nebraska vs (14.0) UC Irvine
+      → Nebraska 91.8%
+    (7.0) Villanova vs (10.0) N.C. State
+      → Villanova 75.6%
+    (2.0) Illinois vs (15.0) Tennessee St.
+      → Illinois 93.5%
 
   South Region:
-    (1.0) Arizona vs (16.0) Portland St.
-      → Arizona 96.9%
-    (8.0) Clemson vs (9.0) Iowa
-      → Iowa 72.5%
-    (5.0) Tennessee vs (12.0) High Point
-      → Tennessee 74.0%
-    (4.0) Kansas vs (13.0) North Dakota St.
-      → Kansas 92.2%
-    (6.0) Louisville vs (11.0) Auburn
-      → Louisville 83.9%
-    (3.0) Gonzaga vs (14.0) Navy
-      → Gonzaga 93.7%
-    (7.0) BYU vs (10.0) Texas
-      → BYU 81.4%
-    (2.0) Illinois vs (15.0) Central Arkansas
-      → Illinois 92.3%
+    (1.0) Arizona vs (16.0) Howard
+      → Arizona 94.3%
+    (8.0) Clemson vs (9.0) TCU
+      → Clemson 50.3%
+    (5.0) Tennessee vs (12.0) Northern Iowa
+      → Tennessee 85.2%
+    (4.0) Kansas vs (13.0) Liberty
+      → Kansas 90.9%
+    (6.0) Louisville vs (11.0) UCF
+      → Louisville 77.2%
+    (3.0) Alabama vs (14.0) Troy
+      → Alabama 95.0%
+    (7.0) Miami FL vs (10.0) Iowa
+      → Iowa 53.7%
+    (2.0) Houston vs (15.0) Merrimack
+      → Houston 95.5%
 
   West Region:
-    (1.0) Duke vs (16.0) Tennessee St.
-      → Duke 96.6%
-    (8.0) Miami FL vs (9.0) Ohio St.
-      → Ohio St. 56.4%
-    (5.0) Vanderbilt vs (12.0) Yale
-      → Vanderbilt 81.9%
-    (4.0) Alabama vs (13.0) Cal Baptist
-      → Alabama 86.2%
-    (6.0) North Carolina vs (11.0) Santa Clara
-      → North Carolina 60.0%
-    (3.0) Iowa St. vs (14.0) Troy
-      → Iowa St. 96.6%
-    (7.0) Georgia vs (10.0) N.C. State
-      → Georgia 58.2%
-    (2.0) Michigan St. vs (15.0) Wright St.
-      → Michigan St. 96.2%
+    (1.0) Duke vs (16.0) UMBC
+      → Duke 91.6%
+    (8.0) Utah St. vs (9.0) Texas A&M
+      → Utah St. 56.2%
+    (5.0) Vanderbilt vs (12.0) South Florida
+      → Vanderbilt 83.5%
+    (4.0) Texas Tech vs (13.0) North Dakota St.
+      → Texas Tech 89.9%
+    (6.0) Wisconsin vs (11.0) Miami OH
+      → Wisconsin 81.5%
+    (3.0) Iowa St. vs (14.0) Wright St.
+      → Iowa St. 96.5%
+    (7.0) Kentucky vs (10.0) Texas
+      → Kentucky 75.2%
+    (2.0) Michigan St. vs (15.0) Portland St.
+      → Michigan St. 96.6%
 
 
 ROUND OF 32 (Expected Matchups Based on R64 Favorites)
 --------------------------------------------------------------------------------
 
   East Region:
-    (1.0) Michigan vs (9.0) UCLA
-      → Michigan 82.0%
-    (5.0) St. John's vs (4.0) Texas Tech
-      → Texas Tech 72.4%
-    (6.0) Kentucky vs (3.0) Purdue
-      → Purdue 76.9%
+    (1.0) Michigan vs (9.0) Ohio St.
+      → Michigan 84.9%
+    (5.0) St. John's vs (4.0) Gonzaga
+      → Gonzaga 69.8%
+    (6.0) North Carolina vs (3.0) Purdue
+      → Purdue 86.1%
     (7.0) Saint Mary's vs (2.0) Connecticut
-      → Connecticut 75.1%
+      → Connecticut 80.5%
 
   Midwest Region:
-    (1.0) Florida vs (8.0) Utah St.
-      → Florida 81.9%
+    (1.0) Florida vs (8.0) UCLA
+      → Florida 80.4%
     (5.0) Arkansas vs (4.0) Virginia
-      → Arkansas 72.8%
-    (6.0) Wisconsin vs (3.0) Nebraska
-      → Wisconsin 56.9%
-    (7.0) Villanova vs (2.0) Houston
-      → Houston 86.8%
+      → Arkansas 72.7%
+    (11.0) Santa Clara vs (3.0) Nebraska
+      → Santa Clara 55.7%
+    (7.0) Villanova vs (2.0) Illinois
+      → Illinois 82.5%
 
   South Region:
-    (1.0) Arizona vs (9.0) Iowa
-      → Arizona 81.0%
+    (1.0) Arizona vs (8.0) Clemson
+      → Arizona 83.7%
     (5.0) Tennessee vs (4.0) Kansas
-      → Kansas 76.5%
-    (6.0) Louisville vs (3.0) Gonzaga
-      → Gonzaga 68.1%
-    (7.0) BYU vs (2.0) Illinois
-      → Illinois 73.5%
+      → Kansas 76.6%
+    (6.0) Louisville vs (3.0) Alabama
+      → Alabama 55.7%
+    (10.0) Iowa vs (2.0) Houston
+      → Houston 87.1%
 
   West Region:
-    (1.0) Duke vs (9.0) Ohio St.
-      → Duke 91.6%
-    (5.0) Vanderbilt vs (4.0) Alabama
-      → Vanderbilt 50.9%
-    (6.0) North Carolina vs (3.0) Iowa St.
-      → Iowa St. 74.9%
-    (7.0) Georgia vs (2.0) Michigan St.
-      → Georgia 54.1%
+    (1.0) Duke vs (8.0) Utah St.
+      → Duke 83.5%
+    (5.0) Vanderbilt vs (4.0) Texas Tech
+      → Texas Tech 56.2%
+    (6.0) Wisconsin vs (3.0) Iowa St.
+      → Iowa St. 52.8%
+    (7.0) Kentucky vs (2.0) Michigan St.
+      → Michigan St. 77.0%
 
 
 SWEET 16 (Expected Matchups Based on R32 Favorites)
 --------------------------------------------------------------------------------
 
   East Region:
-    (1.0) Michigan vs (4.0) Texas Tech
-      → Michigan 86.7%
+    (1.0) Michigan vs (4.0) Gonzaga
+      → Michigan 80.0%
     (3.0) Purdue vs (2.0) Connecticut
-      → Connecticut 60.7%
+      → Connecticut 60.8%
 
   Midwest Region:
     (1.0) Florida vs (5.0) Arkansas
       → Florida 72.0%
-    (6.0) Wisconsin vs (2.0) Houston
-      → Houston 68.2%
+    (11.0) Santa Clara vs (2.0) Illinois
+      → Illinois 82.0%
 
   South Region:
     (1.0) Arizona vs (4.0) Kansas
-      → Arizona 82.2%
-    (3.0) Gonzaga vs (2.0) Illinois
-      → Illinois 52.5%
+      → Arizona 82.5%
+    (3.0) Alabama vs (2.0) Houston
+      → Alabama 55.6%
 
   West Region:
-    (1.0) Duke vs (5.0) Vanderbilt
-      → Duke 90.0%
-    (3.0) Iowa St. vs (7.0) Georgia
-      → Iowa St. 83.4%
+    (1.0) Duke vs (4.0) Texas Tech
+      → Duke 87.3%
+    (3.0) Iowa St. vs (2.0) Michigan St.
+      → Iowa St. 62.6%
 
 
 ELITE 8 (Expected Matchups Based on S16 Favorites)
@@ -175,15 +175,15 @@ ELITE 8 (Expected Matchups Based on S16 Favorites)
 
   East Region:
     (1.0) Michigan vs (2.0) Connecticut
-      → Michigan 75.6% (Regional Champion)
+      → Michigan 75.3% (Regional Champion)
 
   Midwest Region:
-    (1.0) Florida vs (2.0) Houston
-      → Houston 72.3% (Regional Champion)
+    (1.0) Florida vs (2.0) Illinois
+      → Illinois 52.5% (Regional Champion)
 
   South Region:
-    (1.0) Arizona vs (2.0) Illinois
-      → Arizona 72.8% (Regional Champion)
+    (1.0) Arizona vs (3.0) Alabama
+      → Arizona 86.6% (Regional Champion)
 
   West Region:
     (1.0) Duke vs (3.0) Iowa St.
@@ -194,12 +194,12 @@ FINAL FOUR (Expected Matchups Based on E8 Favorites)
 --------------------------------------------------------------------------------
 
   East Champion vs Midwest Champion:
-    (1.0) Michigan vs (2.0) Houston
-      → Michigan 55.3%
+    (1.0) Michigan vs (2.0) Illinois
+      → Michigan 81.4%
 
   South Champion vs West Champion:
     (1.0) Arizona vs (1.0) Duke
-      → Duke 74.8%
+      → Duke 74.7%
 
 
 CHAMPIONSHIP (Expected Matchup Based on FF Favorites)

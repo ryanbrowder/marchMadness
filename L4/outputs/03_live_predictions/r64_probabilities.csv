@@ -1,33 +1,33 @@
 Region,Team1,Seed1,Team2,Seed2,Team1_Prob,Team2_Prob,Favorite,Favorite_Prob,Confidence
-East,Michigan,1,Tennessee St.,16,0.9577,0.0423,Michigan,0.9577,LOCK
-East,Saint Louis,8,UCLA,9,0.165,0.835,UCLA,0.835,STRONG
-East,St. John's,5,High Point,12,0.9254,0.0746,St. John's,0.9254,LOCK
-East,Texas Tech,4,Stephen F. Austin,13,0.8339,0.1661,Texas Tech,0.8339,STRONG
-East,North Carolina,6,UCF,11,0.7897,0.2103,North Carolina,0.7897,STRONG
-East,Purdue,3,UC Irvine,14,0.8511,0.1489,Purdue,0.8511,STRONG
-East,Saint Mary's,7,Texas,10,0.8049,0.1951,Saint Mary's,0.8049,STRONG
-East,Connecticut,2,Merrimack,15,0.95,0.05,Connecticut,0.95,LOCK
-Midwest,Florida,1,Bethune Cookman,16,0.9506,0.0494,Florida,0.9506,LOCK
-Midwest,Utah St.,8,TCU,9,0.6465,0.3535,Utah St.,0.6465,LEAN
-Midwest,Arkansas,5,Yale,12,0.8194,0.1806,Arkansas,0.8194,STRONG
-Midwest,Virginia,4,UNC Wilmington,13,0.8896,0.1104,Virginia,0.8896,STRONG
-Midwest,Louisville,6,Auburn,11,0.8394,0.1606,Louisville,0.8394,STRONG
-Midwest,Nebraska,3,Troy,14,0.9284,0.0716,Nebraska,0.9284,LOCK
-Midwest,Villanova,7,Missouri,10,0.8612,0.1388,Villanova,0.8612,STRONG
-Midwest,Houston,2,Illinois Chicago,15,0.9673,0.0327,Houston,0.9673,LOCK
-South,Arizona,1,UMBC,16,0.8895,0.1105,Arizona,0.8895,STRONG
-South,Miami FL,8,Ohio St.,9,0.4359,0.5641,Ohio St.,0.5641,SLIGHT
-South,Tennessee,5,South Florida,12,0.7331,0.2669,Tennessee,0.7331,STRONG
-South,Kansas,4,North Dakota St.,13,0.9217,0.0783,Kansas,0.9217,LOCK
-South,Kentucky,6,Santa Clara,11,0.3619,0.6381,Santa Clara,0.6381,LEAN
-South,Gonzaga,3,Navy,14,0.937,0.063,Gonzaga,0.937,LOCK
-South,BYU,7,N.C. State,10,0.6133,0.3867,BYU,0.6133,LEAN
-South,Illinois,2,Wright St.,15,0.9466,0.0534,Illinois,0.9466,LOCK
-West,Duke,1,Howard,16,0.9361,0.0639,Duke,0.9361,LOCK
-West,Clemson,8,Iowa,9,0.275,0.725,Iowa,0.725,STRONG
-West,Vanderbilt,5,Liberty,12,0.8571,0.1429,Vanderbilt,0.8571,STRONG
-West,Alabama,4,Cal Baptist,13,0.862,0.138,Alabama,0.862,STRONG
-West,Wisconsin,6,VCU,11,0.7942,0.2058,Wisconsin,0.7942,STRONG
-West,Iowa St.,3,East Tennessee St.,14,0.9863,0.0137,Iowa St.,0.9863,LOCK
-West,Georgia,7,Texas A&M,10,0.5259,0.4741,Georgia,0.5259,TOSS-UP
-West,Michigan St.,2,Central Arkansas,15,0.9502,0.0498,Michigan St.,0.9502,LOCK
+East,Michigan,1,LIU,16,0.9569,0.0431,Michigan,0.9569,LOCK
+East,Utah St.,8,Ohio St.,9,0.5392,0.4608,Utah St.,0.5392,TOSS-UP
+East,St. John's,5,South Florida,12,0.9074,0.0926,St. John's,0.9074,LOCK
+East,Texas Tech,4,North Dakota St.,13,0.8994,0.1006,Texas Tech,0.8994,STRONG
+East,Wisconsin,6,Santa Clara,11,0.5531,0.4469,Wisconsin,0.5531,SLIGHT
+East,Alabama,3,UC Irvine,14,0.8459,0.1541,Alabama,0.8459,STRONG
+East,Villanova,7,Iowa,10,0.5083,0.4917,Villanova,0.5083,TOSS-UP
+East,Houston,2,Portland St.,15,0.9761,0.0239,Houston,0.9761,LOCK
+Midwest,Florida,1,Howard,16,0.9447,0.0553,Florida,0.9447,LOCK
+Midwest,UCLA,8,TCU,9,0.7839,0.2161,UCLA,0.7839,STRONG
+Midwest,Vanderbilt,5,High Point,12,0.8275,0.1725,Vanderbilt,0.8275,STRONG
+Midwest,Virginia,4,Utah Valley,13,0.8533,0.1467,Virginia,0.8533,STRONG
+Midwest,BYU,6,SMU,11,0.6069,0.3931,BYU,0.6069,LEAN
+Midwest,Purdue,3,Hofstra,14,0.8441,0.1559,Purdue,0.8441,STRONG
+Midwest,Saint Mary's,7,Missouri,10,0.7611,0.2389,Saint Mary's,0.7611,STRONG
+Midwest,Michigan St.,2,Tennessee St.,15,0.92,0.08,Michigan St.,0.92,LOCK
+South,Arizona,1,UMBC,16,0.9081,0.0919,Arizona,0.9081,LOCK
+South,Georgia,8,Saint Louis,9,0.7275,0.2725,Georgia,0.7275,STRONG
+South,Tennessee,5,Northern Iowa,12,0.8521,0.1479,Tennessee,0.8521,STRONG
+South,Gonzaga,4,Stephen F. Austin,13,0.9137,0.0863,Gonzaga,0.9137,LOCK
+South,Louisville,6,UCF,11,0.7716,0.2284,Louisville,0.7716,STRONG
+South,Iowa St.,3,Troy,14,0.9657,0.0343,Iowa St.,0.9657,LOCK
+South,Kentucky,7,Texas,10,0.7516,0.2484,Kentucky,0.7516,STRONG
+South,Connecticut,2,Queens,15,0.9603,0.0397,Connecticut,0.9603,LOCK
+West,Duke,1,Furman,16,0.9787,0.0213,Duke,0.9787,LOCK
+West,Clemson,8,Texas A&M,9,0.3339,0.6661,Texas A&M,0.6661,LEAN
+West,Arkansas,5,Yale,12,0.8195,0.1805,Arkansas,0.8195,STRONG
+West,Kansas,4,Liberty,13,0.9091,0.0909,Kansas,0.9091,LOCK
+West,North Carolina,6,Miami OH,11,0.8146,0.1854,North Carolina,0.8146,STRONG
+West,Nebraska,3,Wright St.,14,0.9246,0.0754,Nebraska,0.9246,LOCK
+West,Miami FL,7,N.C. State,10,0.6476,0.3524,Miami FL,0.6476,LEAN
+West,Illinois,2,Merrimack,15,0.8986,0.1014,Illinois,0.8986,STRONG

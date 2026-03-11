@@ -1,68 +1,68 @@
 Round,Region,Seed,Team1,Team2,Team1_Prob,Team2_Prob,Favorite,Favorite_Prob
-Play-In,MIDWEST,11,Auburn,VCU,0.5778,0.4222,Auburn,0.5778
-Play-In,MIDWEST,16,UMBC,LIU,0.2811,0.7189,LIU,0.7189
-Play-In,EAST,11,Santa Clara,SMU,0.6628,0.3372,Santa Clara,0.6628
-Play-In,SOUTH,16,Howard,Bethune Cookman,0.1959,0.8041,Bethune Cookman,0.8041
-R64,East,1.0 vs 16.0,Michigan,Bethune Cookman,0.9689,0.0311,Michigan,0.9689
-R64,East,8.0 vs 9.0,Saint Louis,UCLA,0.165,0.835,UCLA,0.835
-R64,East,5.0 vs 12.0,St. John's,Liberty,0.8701,0.1299,St. John's,0.8701
-R64,East,4.0 vs 13.0,Texas Tech,Stephen F. Austin,0.8339,0.1661,Texas Tech,0.8339
-R64,East,6.0 vs 11.0,Kentucky,Miami OH,0.7573,0.2427,Kentucky,0.7573
-R64,East,3.0 vs 14.0,Purdue,UC Irvine,0.8511,0.1489,Purdue,0.8511
-R64,East,7.0 vs 10.0,Saint Mary's,Texas A&M,0.7022,0.2978,Saint Mary's,0.7022
-R64,East,2.0 vs 15.0,Connecticut,Illinois Chicago,0.955,0.045,Connecticut,0.955
-R64,Midwest,1.0 vs 16.0,Florida,LIU,0.9351,0.0649,Florida,0.9351
-R64,Midwest,8.0 vs 9.0,Utah St.,TCU,0.6465,0.3535,Utah St.,0.6465
-R64,Midwest,5.0 vs 12.0,Arkansas,South Florida,0.8488,0.1512,Arkansas,0.8488
-R64,Midwest,4.0 vs 13.0,Virginia,UNC Wilmington,0.8896,0.1104,Virginia,0.8896
-R64,Midwest,6.0 vs 11.0,Wisconsin,UCF,0.772,0.228,Wisconsin,0.772
-R64,Midwest,3.0 vs 14.0,Nebraska,East Tennessee St.,0.9737,0.0263,Nebraska,0.9737
-R64,Midwest,7.0 vs 10.0,Villanova,Missouri,0.8612,0.1388,Villanova,0.8612
-R64,Midwest,2.0 vs 15.0,Houston,Merrimack,0.958,0.042,Houston,0.958
-R64,South,1.0 vs 16.0,Arizona,Portland St.,0.9694,0.0306,Arizona,0.9694
-R64,South,8.0 vs 9.0,Clemson,Iowa,0.275,0.725,Iowa,0.725
-R64,South,5.0 vs 12.0,Tennessee,High Point,0.7404,0.2596,Tennessee,0.7404
-R64,South,4.0 vs 13.0,Kansas,North Dakota St.,0.9217,0.0783,Kansas,0.9217
-R64,South,6.0 vs 11.0,Louisville,Auburn,0.8394,0.1606,Louisville,0.8394
-R64,South,3.0 vs 14.0,Gonzaga,Navy,0.937,0.063,Gonzaga,0.937
-R64,South,7.0 vs 10.0,BYU,Texas,0.8139,0.1861,BYU,0.8139
-R64,South,2.0 vs 15.0,Illinois,Central Arkansas,0.923,0.077,Illinois,0.923
-R64,West,1.0 vs 16.0,Duke,Tennessee St.,0.9657,0.0343,Duke,0.9657
-R64,West,8.0 vs 9.0,Miami FL,Ohio St.,0.4359,0.5641,Ohio St.,0.5641
-R64,West,5.0 vs 12.0,Vanderbilt,Yale,0.8185,0.1815,Vanderbilt,0.8185
-R64,West,4.0 vs 13.0,Alabama,Cal Baptist,0.862,0.138,Alabama,0.862
-R64,West,6.0 vs 11.0,North Carolina,Santa Clara,0.6004,0.3996,North Carolina,0.6004
-R64,West,3.0 vs 14.0,Iowa St.,Troy,0.9662,0.0338,Iowa St.,0.9662
-R64,West,7.0 vs 10.0,Georgia,N.C. State,0.5825,0.4175,Georgia,0.5825
-R64,West,2.0 vs 15.0,Michigan St.,Wright St.,0.9619,0.0381,Michigan St.,0.9619
-R32,East,1.0 vs 9.0,Michigan,UCLA,0.8196,0.1804,Michigan,0.8196
-R32,East,5.0 vs 4.0,St. John's,Texas Tech,0.2759,0.7241,Texas Tech,0.7241
-R32,East,6.0 vs 3.0,Kentucky,Purdue,0.2312,0.7688,Purdue,0.7688
-R32,East,7.0 vs 2.0,Saint Mary's,Connecticut,0.2493,0.7507,Connecticut,0.7507
-R32,Midwest,1.0 vs 8.0,Florida,Utah St.,0.8192,0.1808,Florida,0.8192
-R32,Midwest,5.0 vs 4.0,Arkansas,Virginia,0.7278,0.2722,Arkansas,0.7278
-R32,Midwest,6.0 vs 3.0,Wisconsin,Nebraska,0.569,0.431,Wisconsin,0.569
-R32,Midwest,7.0 vs 2.0,Villanova,Houston,0.1316,0.8684,Houston,0.8684
-R32,South,1.0 vs 9.0,Arizona,Iowa,0.8095,0.1905,Arizona,0.8095
-R32,South,5.0 vs 4.0,Tennessee,Kansas,0.2351,0.7649,Kansas,0.7649
-R32,South,6.0 vs 3.0,Louisville,Gonzaga,0.3193,0.6807,Gonzaga,0.6807
-R32,South,7.0 vs 2.0,BYU,Illinois,0.2654,0.7346,Illinois,0.7346
-R32,West,1.0 vs 9.0,Duke,Ohio St.,0.9165,0.0835,Duke,0.9165
-R32,West,5.0 vs 4.0,Vanderbilt,Alabama,0.5094,0.4906,Vanderbilt,0.5094
-R32,West,6.0 vs 3.0,North Carolina,Iowa St.,0.2509,0.7491,Iowa St.,0.7491
-R32,West,7.0 vs 2.0,Georgia,Michigan St.,0.5408,0.4592,Georgia,0.5408
-S16,East,1.0 vs 4.0,Michigan,Texas Tech,0.8671,0.1329,Michigan,0.8671
-S16,East,3.0 vs 2.0,Purdue,Connecticut,0.3928,0.6072,Connecticut,0.6072
-S16,Midwest,1.0 vs 5.0,Florida,Arkansas,0.7203,0.2797,Florida,0.7203
-S16,Midwest,6.0 vs 2.0,Wisconsin,Houston,0.3176,0.6824,Houston,0.6824
-S16,South,1.0 vs 4.0,Arizona,Kansas,0.8224,0.1776,Arizona,0.8224
-S16,South,3.0 vs 2.0,Gonzaga,Illinois,0.4752,0.5248,Illinois,0.5248
-S16,West,1.0 vs 5.0,Duke,Vanderbilt,0.9,0.1,Duke,0.9
-S16,West,3.0 vs 7.0,Iowa St.,Georgia,0.8341,0.1659,Iowa St.,0.8341
-E8,East,1.0 vs 2.0,Michigan,Connecticut,0.7559,0.2441,Michigan,0.7559
-E8,Midwest,1.0 vs 2.0,Florida,Houston,0.2768,0.7232,Houston,0.7232
-E8,South,1.0 vs 2.0,Arizona,Illinois,0.7282,0.2718,Arizona,0.7282
-E8,West,1.0 vs 3.0,Duke,Iowa St.,0.8457,0.1543,Duke,0.8457
-FF,East vs Midwest,1.0 vs 2.0,Michigan,Houston,0.5529,0.4471,Michigan,0.5529
-FF,South vs West,1.0 vs 1.0,Arizona,Duke,0.2521,0.7479,Duke,0.7479
-Championship,National,1.0 vs 1.0,Michigan,Duke,0.3822,0.6178,Duke,0.6178
+Play-In,MIDWEST,16,Bethune Cookman,Lehigh,0.2887,0.7113,Lehigh,0.7113
+Play-In,EAST,11,Santa Clara,SMU,0.6481,0.3519,Santa Clara,0.6481
+Play-In,SOUTH,11,Auburn,VCU,0.5866,0.4134,Auburn,0.5866
+Play-In,SOUTH,16,Furman,Howard,0.2789,0.7211,Howard,0.7211
+R64,East,1.0 vs 16.0,Michigan,LIU,0.9569,0.0431,Michigan,0.9569
+R64,East,8.0 vs 9.0,Georgia,Ohio St.,0.3867,0.6133,Ohio St.,0.6133
+R64,East,5.0 vs 12.0,St. John's,High Point,0.9293,0.0707,St. John's,0.9293
+R64,East,4.0 vs 13.0,Gonzaga,Utah Valley,0.8668,0.1332,Gonzaga,0.8668
+R64,East,6.0 vs 11.0,North Carolina,Auburn,0.6952,0.3048,North Carolina,0.6952
+R64,East,3.0 vs 14.0,Purdue,Hofstra,0.8441,0.1559,Purdue,0.8441
+R64,East,7.0 vs 10.0,Saint Mary's,Missouri,0.7611,0.2389,Saint Mary's,0.7611
+R64,East,2.0 vs 15.0,Connecticut,Queens,0.9603,0.0397,Connecticut,0.9603
+R64,Midwest,1.0 vs 16.0,Florida,Lehigh,0.9337,0.0663,Florida,0.9337
+R64,Midwest,8.0 vs 9.0,UCLA,Saint Louis,0.7157,0.2843,UCLA,0.7157
+R64,Midwest,5.0 vs 12.0,Arkansas,Yale,0.8195,0.1805,Arkansas,0.8195
+R64,Midwest,4.0 vs 13.0,Virginia,Stephen F. Austin,0.835,0.165,Virginia,0.835
+R64,Midwest,6.0 vs 11.0,BYU,Santa Clara,0.4485,0.5515,Santa Clara,0.5515
+R64,Midwest,3.0 vs 14.0,Nebraska,UC Irvine,0.9182,0.0818,Nebraska,0.9182
+R64,Midwest,7.0 vs 10.0,Villanova,N.C. State,0.7557,0.2443,Villanova,0.7557
+R64,Midwest,2.0 vs 15.0,Illinois,Tennessee St.,0.9347,0.0653,Illinois,0.9347
+R64,South,1.0 vs 16.0,Arizona,Howard,0.9432,0.0568,Arizona,0.9432
+R64,South,8.0 vs 9.0,Clemson,TCU,0.503,0.497,Clemson,0.503
+R64,South,5.0 vs 12.0,Tennessee,Northern Iowa,0.8521,0.1479,Tennessee,0.8521
+R64,South,4.0 vs 13.0,Kansas,Liberty,0.9091,0.0909,Kansas,0.9091
+R64,South,6.0 vs 11.0,Louisville,UCF,0.7716,0.2284,Louisville,0.7716
+R64,South,3.0 vs 14.0,Alabama,Troy,0.9503,0.0497,Alabama,0.9503
+R64,South,7.0 vs 10.0,Miami FL,Iowa,0.4633,0.5367,Iowa,0.5367
+R64,South,2.0 vs 15.0,Houston,Merrimack,0.9554,0.0446,Houston,0.9554
+R64,West,1.0 vs 16.0,Duke,UMBC,0.9157,0.0843,Duke,0.9157
+R64,West,8.0 vs 9.0,Utah St.,Texas A&M,0.5621,0.4379,Utah St.,0.5621
+R64,West,5.0 vs 12.0,Vanderbilt,South Florida,0.8352,0.1648,Vanderbilt,0.8352
+R64,West,4.0 vs 13.0,Texas Tech,North Dakota St.,0.8994,0.1006,Texas Tech,0.8994
+R64,West,6.0 vs 11.0,Wisconsin,Miami OH,0.8147,0.1853,Wisconsin,0.8147
+R64,West,3.0 vs 14.0,Iowa St.,Wright St.,0.9646,0.0354,Iowa St.,0.9646
+R64,West,7.0 vs 10.0,Kentucky,Texas,0.7516,0.2484,Kentucky,0.7516
+R64,West,2.0 vs 15.0,Michigan St.,Portland St.,0.9657,0.0343,Michigan St.,0.9657
+R32,East,1.0 vs 9.0,Michigan,Ohio St.,0.8493,0.1507,Michigan,0.8493
+R32,East,5.0 vs 4.0,St. John's,Gonzaga,0.3025,0.6975,Gonzaga,0.6975
+R32,East,6.0 vs 3.0,North Carolina,Purdue,0.139,0.861,Purdue,0.861
+R32,East,7.0 vs 2.0,Saint Mary's,Connecticut,0.1953,0.8047,Connecticut,0.8047
+R32,Midwest,1.0 vs 8.0,Florida,UCLA,0.8035,0.1965,Florida,0.8035
+R32,Midwest,5.0 vs 4.0,Arkansas,Virginia,0.7273,0.2727,Arkansas,0.7273
+R32,Midwest,11.0 vs 3.0,Santa Clara,Nebraska,0.5567,0.4433,Santa Clara,0.5567
+R32,Midwest,7.0 vs 2.0,Villanova,Illinois,0.175,0.825,Illinois,0.825
+R32,South,1.0 vs 8.0,Arizona,Clemson,0.8369,0.1631,Arizona,0.8369
+R32,South,5.0 vs 4.0,Tennessee,Kansas,0.2345,0.7655,Kansas,0.7655
+R32,South,6.0 vs 3.0,Louisville,Alabama,0.4428,0.5572,Alabama,0.5572
+R32,South,10.0 vs 2.0,Iowa,Houston,0.1291,0.8709,Houston,0.8709
+R32,West,1.0 vs 8.0,Duke,Utah St.,0.8354,0.1646,Duke,0.8354
+R32,West,5.0 vs 4.0,Vanderbilt,Texas Tech,0.4379,0.5621,Texas Tech,0.5621
+R32,West,6.0 vs 3.0,Wisconsin,Iowa St.,0.472,0.528,Iowa St.,0.528
+R32,West,7.0 vs 2.0,Kentucky,Michigan St.,0.2303,0.7697,Michigan St.,0.7697
+S16,East,1.0 vs 4.0,Michigan,Gonzaga,0.7999,0.2001,Michigan,0.7999
+S16,East,3.0 vs 2.0,Purdue,Connecticut,0.3923,0.6077,Connecticut,0.6077
+S16,Midwest,1.0 vs 5.0,Florida,Arkansas,0.7204,0.2796,Florida,0.7204
+S16,Midwest,11.0 vs 2.0,Santa Clara,Illinois,0.1799,0.8201,Illinois,0.8201
+S16,South,1.0 vs 4.0,Arizona,Kansas,0.8249,0.1751,Arizona,0.8249
+S16,South,3.0 vs 2.0,Alabama,Houston,0.5564,0.4436,Alabama,0.5564
+S16,West,1.0 vs 4.0,Duke,Texas Tech,0.8731,0.1269,Duke,0.8731
+S16,West,3.0 vs 2.0,Iowa St.,Michigan St.,0.6258,0.3742,Iowa St.,0.6258
+E8,East,1.0 vs 2.0,Michigan,Connecticut,0.7527,0.2473,Michigan,0.7527
+E8,Midwest,1.0 vs 2.0,Florida,Illinois,0.4747,0.5253,Illinois,0.5253
+E8,South,1.0 vs 3.0,Arizona,Alabama,0.8664,0.1336,Arizona,0.8664
+E8,West,1.0 vs 3.0,Duke,Iowa St.,0.8459,0.1541,Duke,0.8459
+FF,East vs Midwest,1.0 vs 2.0,Michigan,Illinois,0.8143,0.1857,Michigan,0.8143
+FF,South vs West,1.0 vs 1.0,Arizona,Duke,0.2526,0.7474,Duke,0.7474
+Championship,National,1.0 vs 1.0,Michigan,Duke,0.3825,0.6175,Duke,0.6175
