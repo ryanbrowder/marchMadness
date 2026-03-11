@@ -457,12 +457,18 @@ def calculate_bid_guidance(predictions_df, seed_stats, winners_df, pot_info):
 
         if pts < 6:
             return 'PASS'
-        if tier == 'FADE':
-            return 'FADE'
+        # Check gap% BEFORE tier — gap% is the primary signal.
+        # tier==FADE is set by pts/adv/eff thresholds in assign_tier, not by market value.
+        # A team with gap% >= -15% should never be FADE: the market is pricing it
+        # at or below fair value regardless of tier. Virginia at 0% gap = COMPETE.
+        # Saint Mary's at +43% gap = BUY. Tier can't override that.
         if gap_pct >= 0.15:
             return 'BUY'
         if gap_pct >= -0.15:
             return 'COMPETE'
+        # Only below -15% gap does tier matter
+        if tier == 'FADE':
+            return 'FADE'
         if pts > 10:
             return 'DISCOUNT_ONLY'
         return 'FADE'
@@ -550,6 +556,9 @@ def build_ranked_bid_list(df):
         a2 = remaining.sort_values('Gap_Pct', ascending=False).iloc[0]
         used_anchor_names.add(a2['Team'])
         gap_pct_a2 = a2['Value_Gap'] / a2['Market_Price'] if a2['Market_Price'] > 0 else 0
+        a2_note_gap = f'Best gap% among anchors ({gap_pct_a2:+.0%}). ' if gap_pct_a2 >= 0 else f'Closest to fair value among anchors ({gap_pct_a2:+.0%}). '
+        a1_mkt_for_compare = int(a1['Market_Price']) if len(anchor_pool) >= 1 else 0
+        a2_note_budget = f'More budget for fills (${BUDGET - int(a2["Market_Price"])} remaining).' if int(a2['Market_Price']) < a1_mkt_for_compare else ''
         anchors[a2['Team']] = {
             'Team':         a2['Team'],
             'Seed':         int(a2['Seed']),
@@ -560,9 +569,9 @@ def build_ranked_bid_list(df):
             'Action':       a2['Action'],
             'Chalk_Risk':   a2['Chalk_Risk'],
             'Budget_After': BUDGET - int(a2['Market_Price']),
-            'Note':         f'Best gap% among anchors ({gap_pct_a2:+.0%}). '
-                            f'{"Genuine edge — expect to win near market." if gap_pct_a2 >= 0.15 else "Fair fight up to Fair$."} '
-                            f'More budget for fills (${BUDGET - int(a2["Market_Price"])} remaining).'
+            'Note':         (a2_note_gap +
+                            f'{"Genuine edge — expect to win near market." if gap_pct_a2 >= 0.15 else "Fair fight up to Fair$."} ' +
+                            a2_note_budget).strip()
         }
 
     anchor_name_1 = list(anchors.keys())[0] if len(anchors) >= 1 else None
@@ -640,10 +649,14 @@ def build_ranked_bid_list(df):
         f['Rem_A2'] = BUDGET - cum_a2
 
     # ── Pivot scenarios ──────────────────────────────────────────────────────
-    def run_greedy(budget, exclude_teams):
+    def run_greedy(budget, exclude_teams, skip_high_risk=False):
         portfolio, rem = [], budget
         for f in fills:
             if f['Team'] in exclude_teams:
+                continue
+            # Pivot 2 uses skip_high_risk=True — after winning an anchor you're
+            # already at market, so adding HIGH chalk-risk teams compounds exposure
+            if skip_high_risk and f.get('Chalk_Risk') == 'HIGH':
                 continue
             if rem >= f['Mkt']:
                 portfolio.append(f)
@@ -652,7 +665,7 @@ def build_ranked_bid_list(df):
 
     pivots = {}
 
-    # Pivot 1: Lost anchor entirely — full budget for fills
+    # Pivot 1: Lost anchor entirely — include all chalk risks (you need volume)
     p1_teams, p1_rem = run_greedy(BUDGET, set())
     pivots['lost_anchor'] = {
         'label': 'LOST ANCHOR BID',
@@ -662,12 +675,11 @@ def build_ranked_bid_list(df):
         'pts':   sum(f['E_Pts'] for f in p1_teams[:8]),
     }
 
-    # Pivot 2: Anchor 1 won, top contested fills lost
-    # Dynamically identify the top 2 contested fills and exclude them
+    # Pivot 2: Anchor 1 won, top contested fills lost — skip HIGH chalk risk fills
     top_contested = [f['Team'] for f in fills if f['Contested']][:2]
     a1_mkt = anchors[anchor_name_1]['Mkt'] if anchor_name_1 else 0
     a1_pts = anchors[anchor_name_1]['E_Pts'] if anchor_name_1 else 0
-    p2_teams, p2_rem = run_greedy(BUDGET - a1_mkt, set(top_contested))
+    p2_teams, p2_rem = run_greedy(BUDGET - a1_mkt, set(top_contested), skip_high_risk=True)
     contested_desc = ' & '.join(top_contested) if top_contested else 'top fills'
     pivots['anchor1_contested_lost'] = {
         'label':       f'{anchor_name_1 or "ANCHOR 1"} WON + {contested_desc} LOST',
@@ -748,7 +760,18 @@ def print_summary(df, seed_stats, winners_df, pot_info):
     print()
     print("  NEVER bid above Fair_Bid. Path Exp$ = Market_Price (what you need to WIN the team).")
     print("  Dynamic ceiling mid-auction: (Team_E_Pts / Pts_Still_Needed) × Budget_Left")
-    print("  Example: Houston 22.8 pts, you need 47 more, $70 left → (22.8/47)×70 = $34")
+    # Build example from actual Anchor 1 so numbers match the live field
+    _ex_anchors = df[(df['Tier'] == 'ANCHOR') & df['Action'].isin(['BUY', 'COMPETE'])].sort_values('E_Points_Blended', ascending=False)
+    if len(_ex_anchors) > 0:
+        _ex      = _ex_anchors.iloc[0]
+        _ex_pts  = round(_ex['E_Points_Blended'], 1)
+        _ex_need = round(TARGET_POINTS - _ex_pts)
+        _ex_left = BUDGET - int(_ex['Market_Price'])
+        _ex_ceil = round((_ex_pts / max(_ex_need, 1)) * _ex_left)
+        print(f"  Example: {_ex['Team']} {_ex_pts} pts, you need {_ex_need} more, "
+              f"${_ex_left} left → ({_ex_pts}/{_ex_need})×{_ex_left} = ${_ex_ceil}")
+    else:
+        print("  Example: Top team 20 pts, you need 50 more, $70 left → (20/50)×70 = $28")
     print()
 
     # ── ACTION KEY ───────────────────────────────────────────────────────────
@@ -757,22 +780,38 @@ def print_summary(df, seed_stats, winners_df, pot_info):
         (df['Tier'] == 'ANCHOR') & df['Action'].isin(['BUY', 'COMPETE'])
     ].copy()
     _anchor_pool['Gap_Pct'] = _anchor_pool['Value_Gap'] / _anchor_pool['Market_Price']
-    _buy_example     = _anchor_pool[_anchor_pool['Action'] == 'BUY'].sort_values('Gap_Pct', ascending=False)
+    _buy_anchors  = _anchor_pool[_anchor_pool['Action'] == 'BUY'].sort_values('Gap_Pct', ascending=False)
+    if len(_buy_anchors) > 0:
+        _buy_example = _buy_anchors
+    else:
+        # No BUY anchors — fall back to best BUY fill.
+        # Priority: FILL tier > VALUE > OPPORTUNISTIC, then LOW chalk risk, then gap%.
+        # Avoids surfacing HIGH-risk Cinderella teams as the headline BUY example.
+        _TIER_ORDER = {'FILL': 0, 'VALUE': 1, 'OPPORTUNISTIC': 2}
+        _buy_fills_all = df[
+            (df['Action'] == 'BUY') & (~df['Tier'].isin(['FADE']))
+        ].copy()
+        _buy_fills_all['Gap_Pct']   = _buy_fills_all['Value_Gap_Pct']
+        _buy_fills_all['_TierRank'] = _buy_fills_all['Tier'].map(_TIER_ORDER).fillna(3)
+        _buy_fills_all['_RiskRank'] = (_buy_fills_all['Chalk_Risk'] != 'LOW').astype(int)
+        _buy_example = _buy_fills_all.sort_values(
+            ['_TierRank', '_RiskRank', 'Gap_Pct'], ascending=[True, True, False]
+        )
     # COMPETE anchor example: prefer positive gap% (teams you can actually win) over
-    # highest E_Pts. Duke at -13% is technically COMPETE but you'll almost never win it.
-    # Houston at +10% is the useful example — fair fight with a positive edge.
+    # highest E_Pts. A -13% COMPETE anchor is nearly impossible to win at market.
     _compete_pool    = _anchor_pool[_anchor_pool['Action'] == 'COMPETE'].copy()
     _compete_pos     = _compete_pool[_compete_pool['Gap_Pct'] >= 0].sort_values('E_Points_Blended', ascending=False)
     _compete_example = _compete_pos if len(_compete_pos) > 0 else _compete_pool.sort_values('E_Points_Blended', ascending=False)
+    _buy_label   = "is BUY" if len(_buy_anchors) > 0 else "leads BUY fills"
     _buy_str     = (f"{_buy_example.iloc[0]['Team']} ({_buy_example.iloc[0]['Gap_Pct']:+.0%})"
-                    if len(_buy_example) > 0 else "best BUY anchor")
+                    if len(_buy_example) > 0 else "top BUY fill")
     _compete_str = (f"{_compete_example.iloc[0]['Team']} ({_compete_example.iloc[0]['Gap_Pct']:+.0%})"
                     if len(_compete_example) > 0 else "best COMPETE anchor")
 
     print("  ACTION GUIDE  (gap% = Value_Gap ÷ Market_Price — one metric throughout)")
     print("  " + "-" * 76)
     print("  BUY           gap% ≥ +15%.  Market meaningfully underprices you.")
-    print(f"                Genuine edge — expect to win near market. {_buy_str} is BUY.")
+    print(f"                Genuine edge — expect to win near market. {_buy_str} {_buy_label}.")
     print("  COMPETE       −15% ≤ gap% < +15%.  Fair fight.")
     print("                You can win this team but expect resistance.")
     print("                Hard ceiling is Fair_Bid — walk away above it.")
@@ -804,8 +843,15 @@ def print_summary(df, seed_stats, winners_df, pot_info):
         else:
             action_marker = "  COMPETE"
         crisk = row.get('Chalk_Risk', '?')
-        # DISC.ONLY teams cannot function as fills — suppress tier to avoid false signal
-        tier_str = "—" if row['Action'] == 'DISCOUNT_ONLY' else row['Tier']
+        # Suppress tier when it contradicts the Action signal:
+        # - DISC.ONLY: tier is irrelevant (can't use as fill)
+        # - BUY/COMPETE with Tier=FADE: gap% overrode the tier — showing FADE is confusing
+        if row['Action'] == 'DISCOUNT_ONLY':
+            tier_str = "—"
+        elif row['Action'] in ('BUY', 'COMPETE') and row['Tier'] == 'FADE':
+            tier_str = "—"
+        else:
+            tier_str = row['Tier']
         # Flag HIGH chalk risk in table too, not just in ranked list
         chalk_flag = " ⚠" if crisk == 'HIGH' else ""
         print(f"  {row['Team']:<18} {int(row['Seed']):>3} "
@@ -894,6 +940,13 @@ def print_summary(df, seed_stats, winners_df, pot_info):
               f"${a['Fair']:>5} ${a['Mkt']:>4} {gap_str:>6}  "
               f"${a['Budget_After']:>5}  {a['Note']}")
     print()
+    # Warn when no anchor has positive gap% — the room is overpriced on all elite teams
+    _all_neg = all(a['Gap_Pct'] < 0 for a in anchors.values())
+    if _all_neg and len(anchors) > 0:
+        print("  ⚠  No anchor has a positive gap%. Market overprices all ANCHOR-tier teams.")
+        print("     Consider the no-anchor path: load BUY fills only, target 8-10 teams.")
+        print("     Only pursue an anchor if it stalls well below Fair$.")
+        print()
     print("  No anchor: $100 for fills. 8-10 teams. Needs volume. Higher variance in chalk year.")
     print()
 
@@ -902,18 +955,35 @@ def print_summary(df, seed_stats, winners_df, pot_info):
     print("  STEP 2 — RANKED BID LIST  (use during auction — cross off as teams go)")
     print("  " + "─" * 76)
     print(f"  Fair$ = your ceiling (NEVER exceed)  |  Mkt$ = what you need to win")
-    print(f"  Rem$ = budget remaining AFTER this team  "
-          f"(left col = {anchor_name_1} anchor, right = {anchor_name_2})")
+
+    # Collapse to single Rem$ column if both anchor costs are identical
+    _a1_mkt = anchors[anchor_name_1]['Mkt'] if anchor_name_1 else 0
+    _a2_mkt = anchors[anchor_name_2]['Mkt'] if anchor_name_2 else 0
+    _single_rem_col = (_a1_mkt == _a2_mkt)
+
+    if _single_rem_col:
+        print(f"  Rem$ = budget remaining AFTER this team  (both anchors cost ${_a1_mkt})")
+    else:
+        print(f"  Rem$ = budget remaining AFTER this team  "
+              f"(left col = {anchor_name_1} anchor, right = {anchor_name_2})")
     print(f"  ⚔  = contested pair — plan to win ONE, not both")
     print(f"  ⚠  = HIGH chalk risk — points depend on upsets that may not happen")
     print()
-    col1 = f"Rem$({lbl_1})"
-    col2 = f"Rem$({lbl_2})"
-    print(f"  {'#':>3}  {'Team':<16} {'Sd':>3} {'E_Pts':>6} {'Fair$':>6} {'Mkt$':>5} "
-          f"{'Action':<9} {col1:>12} {col2:>12}  Notes")
+    if _single_rem_col:
+        print(f"  {'#':>3}  {'Team':<16} {'Sd':>3} {'E_Pts':>6} {'Fair$':>6} {'Mkt$':>5} "
+              f"{'Action':<9} {'Rem$':>8}  Notes")
+    else:
+        col1 = f"Rem$({lbl_1})"
+        col2 = f"Rem$({lbl_2})"
+        print(f"  {'#':>3}  {'Team':<16} {'Sd':>3} {'E_Pts':>6} {'Fair$':>6} {'Mkt$':>5} "
+              f"{'Action':<9} {col1:>12} {col2:>12}  Notes")
     print("  " + "─" * 92)
 
     for i, f in enumerate(fills, 1):
+        if _single_rem_col:
+            rem_str = f"${f['Rem_A1']:>+4}" if f['Rem_A1'] >= 0 else f"[OVER ${abs(f['Rem_A1'])}]"
+        else:
+            rem_str  = None
         rem_a1_str = f"${f['Rem_A1']:>+4}" if f['Rem_A1'] >= 0 else f"[OVER ${abs(f['Rem_A1'])}]"
         rem_a2_str = f"${f['Rem_A2']:>+4}" if f['Rem_A2'] >= 0 else f"[OVER ${abs(f['Rem_A2'])}]"
 
@@ -926,17 +996,25 @@ def print_summary(df, seed_stats, winners_df, pot_info):
             notes.append("~ med risk")
         note_str = "  " + " | ".join(notes) if notes else ""
 
-        # Budget cut lines — insert once at the first team that pushes each anchor over budget
+        # Budget cut lines
         prev_a1 = fills[i-2]['Rem_A1'] if i > 1 else BUDGET
         prev_a2 = fills[i-2]['Rem_A2'] if i > 1 else BUDGET
         if f['Rem_A1'] < 0 and prev_a1 >= 0:
-            print(f"  ───  ─── {anchor_name_1} budget limit (teams below need {anchor_name_2} or no-anchor) ───")
-        if f['Rem_A2'] < 0 and prev_a2 >= 0:
+            if _single_rem_col:
+                print(f"  ───  ─── budget limit — teams below need no-anchor path ───")
+            else:
+                print(f"  ───  ─── {anchor_name_1} budget limit (teams below need {anchor_name_2} or no-anchor) ───")
+        if not _single_rem_col and f['Rem_A2'] < 0 and prev_a2 >= 0:
             print(f"  ───  ─── {anchor_name_2} budget limit (teams below need no-anchor path) ───")
 
-        print(f"  {i:>3}  {f['Team']:<16} {f['Seed']:>3} {f['E_Pts']:>6.1f} "
-              f"${f['Fair']:>5} ${f['Mkt']:>4} "
-              f"{f['Action']:<9} {rem_a1_str:>12} {rem_a2_str:>12} {note_str}")
+        if _single_rem_col:
+            print(f"  {i:>3}  {f['Team']:<16} {f['Seed']:>3} {f['E_Pts']:>6.1f} "
+                  f"${f['Fair']:>5} ${f['Mkt']:>4} "
+                  f"{f['Action']:<9} {rem_str:>8} {note_str}")
+        else:
+            print(f"  {i:>3}  {f['Team']:<16} {f['Seed']:>3} {f['E_Pts']:>6.1f} "
+                  f"${f['Fair']:>5} ${f['Mkt']:>4} "
+                  f"{f['Action']:<9} {rem_a1_str:>12} {rem_a2_str:>12} {note_str}")
 
     print()
 
