@@ -8,539 +8,539 @@ ALL MATCHUPS
 --------------------------------------------------------------------------------
 
   East:
-    (1) Michigan vs (16) LIU
-      → Michigan 95.7% [LOCK]
+    (1) Michigan vs (16) Southern
+      → Michigan 94.2% [LOCK]
       LINE VALUE:
-        MAX BET: -712 or better (EV: $0.091/$ | 6-10 units)
-        STRONG BET: -974 or better (EV: $0.055 per $1 | 2-4 units)
-        VALUE BET: -1485 or better (EV: $0.021 per $1 | 1-2 units)
-        BREAKEVEN: -2221 (EV: $0.000 | 0 units - PASS)
+        MAX BET: -624 or better (EV: $0.093/$ | 6-10 units)
+        STRONG BET: -826 or better (EV: $0.056 per $1 | 2-4 units)
+        VALUE BET: -1183 or better (EV: $0.022 per $1 | 1-2 units)
+        BREAKEVEN: -1626 (EV: $0.000 | 0 units - PASS)
     (8) Utah St. vs (9) Ohio St.
-      → Utah St. 53.9% [TOSS-UP]
+      → Utah St. 52.6% [TOSS-UP]
       LINE VALUE:
-        MAX BET: +117 or better (EV: $0.170/$ | 6-10 units)
-        STRONG BET: +104 or better (EV: $0.100 per $1 | 2-4 units)
-        VALUE BET: -107 or better (EV: $0.043 per $1 | 1-2 units)
-        BREAKEVEN: -117 (EV: $0.000 | 0 units - PASS)
-    (5) St. John's vs (12) South Florida
-      → St. John's 90.7% [LOCK]
+        MAX BET: +124 or better (EV: $0.179/$ | 6-10 units)
+        STRONG BET: +109 or better (EV: $0.100 per $1 | 2-4 units)
+        VALUE BET: -102 or better (EV: $0.042 per $1 | 1-2 units)
+        BREAKEVEN: -111 (EV: $0.000 | 0 units - PASS)
+    (5) St. John's vs (12) Yale
+      → St. John's 84.8% [STRONG]
       LINE VALUE:
-        MAX BET: -479 or better (EV: $0.097/$ | 6-10 units)
-        STRONG BET: -601 or better (EV: $0.058 per $1 | 2-4 units)
-        VALUE BET: -787 or better (EV: $0.023 per $1 | 1-2 units)
-        BREAKEVEN: -979 (EV: $0.000 | 0 units - PASS)
-    (4) Texas Tech vs (13) North Dakota St.
-      → Texas Tech 89.9% [STRONG]
+        MAX BET: -331 or better (EV: $0.105/$ | 6-10 units)
+        STRONG BET: -396 or better (EV: $0.063 per $1 | 2-4 units)
+        VALUE BET: -482 or better (EV: $0.024 per $1 | 1-2 units)
+        BREAKEVEN: -559 (EV: $0.000 | 0 units - PASS)
+    (4) Kansas vs (13) Hofstra
+      → Kansas 82.7% [STRONG]
       LINE VALUE:
-        MAX BET: -453 or better (EV: $0.098/$ | 6-10 units)
-        STRONG BET: -563 or better (EV: $0.059 per $1 | 2-4 units)
-        VALUE BET: -729 or better (EV: $0.023 per $1 | 1-2 units)
-        BREAKEVEN: -893 (EV: $0.000 | 0 units - PASS)
-    (6) Wisconsin vs (11) Santa Clara
-      → Wisconsin 55.3% [SLIGHT]
+        MAX BET: -294 or better (EV: $0.108/$ | 6-10 units)
+        STRONG BET: -347 or better (EV: $0.065 per $1 | 2-4 units)
+        VALUE BET: -417 or better (EV: $0.025 per $1 | 1-2 units)
+        BREAKEVEN: -477 (EV: $0.000 | 0 units - PASS)
+    (6) Wisconsin vs (11) Miami OH
+      → Wisconsin 81.5% [STRONG]
       LINE VALUE:
-        MAX BET: +111 or better (EV: $0.167/$ | 6-10 units)
-        STRONG BET: -101 or better (EV: $0.101 per $1 | 2-4 units)
-        VALUE BET: -114 or better (EV: $0.038 per $1 | 1-2 units)
-        BREAKEVEN: -123 (EV: $0.000 | 0 units - PASS)
+        MAX BET: -277 or better (EV: $0.109/$ | 6-10 units)
+        STRONG BET: -325 or better (EV: $0.066 per $1 | 2-4 units)
+        VALUE BET: -387 or better (EV: $0.025 per $1 | 1-2 units)
+        BREAKEVEN: -440 (EV: $0.000 | 0 units - PASS)
     (3) Alabama vs (14) UC Irvine
-      → Alabama 84.6% [STRONG]
+      → Alabama 84.5% [STRONG]
       LINE VALUE:
-        MAX BET: -327 or better (EV: $0.105/$ | 6-10 units)
-        STRONG BET: -389 or better (EV: $0.063 per $1 | 2-4 units)
-        VALUE BET: -474 or better (EV: $0.024 per $1 | 1-2 units)
-        BREAKEVEN: -548 (EV: $0.000 | 0 units - PASS)
-    (7) Villanova vs (10) Iowa
-      → Villanova 50.8% [TOSS-UP]
+        MAX BET: -325 or better (EV: $0.105/$ | 6-10 units)
+        STRONG BET: -388 or better (EV: $0.063 per $1 | 2-4 units)
+        VALUE BET: -472 or better (EV: $0.024 per $1 | 1-2 units)
+        BREAKEVEN: -545 (EV: $0.000 | 0 units - PASS)
+    (7) Villanova vs (10) Santa Clara
+      → Villanova 63.9% [LEAN]
       LINE VALUE:
-        MAX BET: +133 or better (EV: $0.184/$ | 6-10 units)
-        STRONG BET: +118 or better (EV: $0.108 per $1 | 2-4 units)
-        VALUE BET: +104 or better (EV: $0.037 per $1 | 1-2 units)
-        BREAKEVEN: -103 (EV: $0.000 | 0 units - PASS)
-    (2) Houston vs (15) Portland St.
-      → Houston 97.6% [LOCK]
+        MAX BET: -126 or better (EV: $0.146/$ | 6-10 units)
+        STRONG BET: -143 or better (EV: $0.086 per $1 | 2-4 units)
+        VALUE BET: -162 or better (EV: $0.033 per $1 | 1-2 units)
+        BREAKEVEN: -176 (EV: $0.000 | 0 units - PASS)
+    (2) Houston vs (15) Furman
+      → Houston 97.0% [LOCK]
       LINE VALUE:
-        MAX BET: -862 or better (EV: $0.089/$ | 6-10 units)
-        STRONG BET: -1253 or better (EV: $0.054 per $1 | 2-4 units)
-        VALUE BET: -2179 or better (EV: $0.021 per $1 | 1-2 units)
-        BREAKEVEN: -4088 (EV: $0.000 | 0 units - PASS)
+        MAX BET: -812 or better (EV: $0.090/$ | 6-10 units)
+        STRONG BET: -1156 or better (EV: $0.054 per $1 | 2-4 units)
+        VALUE BET: -1915 or better (EV: $0.021 per $1 | 1-2 units)
+        BREAKEVEN: -3276 (EV: $0.000 | 0 units - PASS)
 
   Midwest:
     (1) Florida vs (16) Howard
-      → Florida 94.5% [LOCK]
+      → Florida 94.8% [LOCK]
       LINE VALUE:
-        MAX BET: -638 or better (EV: $0.093/$ | 6-10 units)
-        STRONG BET: -849 or better (EV: $0.056 per $1 | 2-4 units)
-        VALUE BET: -1227 or better (EV: $0.022 per $1 | 1-2 units)
-        BREAKEVEN: -1707 (EV: $0.000 | 0 units - PASS)
-    (8) UCLA vs (9) TCU
-      → UCLA 78.4% [STRONG]
+        MAX BET: -656 or better (EV: $0.092/$ | 6-10 units)
+        STRONG BET: -877 or better (EV: $0.056 per $1 | 2-4 units)
+        VALUE BET: -1283 or better (EV: $0.022 per $1 | 1-2 units)
+        BREAKEVEN: -1813 (EV: $0.000 | 0 units - PASS)
+    (8) TCU vs (9) Texas A&M
+      → Texas A&M 69.5% [LEAN]
       LINE VALUE:
-        MAX BET: -237 or better (EV: $0.115/$ | 6-10 units)
-        STRONG BET: -275 or better (EV: $0.069 per $1 | 2-4 units)
-        VALUE BET: -323 or better (EV: $0.027 per $1 | 1-2 units)
-        BREAKEVEN: -362 (EV: $0.000 | 0 units - PASS)
+        MAX BET: -159 or better (EV: $0.132/$ | 6-10 units)
+        STRONG BET: -181 or better (EV: $0.079 per $1 | 2-4 units)
+        VALUE BET: -207 or better (EV: $0.031 per $1 | 1-2 units)
+        BREAKEVEN: -227 (EV: $0.000 | 0 units - PASS)
     (5) Vanderbilt vs (12) High Point
-      → Vanderbilt 82.8% [STRONG]
+      → Vanderbilt 84.1% [STRONG]
       LINE VALUE:
-        MAX BET: -296 or better (EV: $0.107/$ | 6-10 units)
-        STRONG BET: -349 or better (EV: $0.065 per $1 | 2-4 units)
-        VALUE BET: -419 or better (EV: $0.025 per $1 | 1-2 units)
-        BREAKEVEN: -479 (EV: $0.000 | 0 units - PASS)
-    (4) Virginia vs (13) Utah Valley
-      → Virginia 85.3% [STRONG]
+        MAX BET: -317 or better (EV: $0.106/$ | 6-10 units)
+        STRONG BET: -377 or better (EV: $0.064 per $1 | 2-4 units)
+        VALUE BET: -457 or better (EV: $0.025 per $1 | 1-2 units)
+        BREAKEVEN: -527 (EV: $0.000 | 0 units - PASS)
+    (4) Purdue vs (13) Utah Valley
+      → Purdue 75.9% [STRONG]
       LINE VALUE:
-        MAX BET: -341 or better (EV: $0.103/$ | 6-10 units)
-        STRONG BET: -408 or better (EV: $0.062 per $1 | 2-4 units)
-        VALUE BET: -499 or better (EV: $0.024 per $1 | 1-2 units)
-        BREAKEVEN: -581 (EV: $0.000 | 0 units - PASS)
-    (6) BYU vs (11) SMU
-      → BYU 60.7% [LEAN]
+        MAX BET: -211 or better (EV: $0.119/$ | 6-10 units)
+        STRONG BET: -243 or better (EV: $0.071 per $1 | 2-4 units)
+        VALUE BET: -283 or better (EV: $0.027 per $1 | 1-2 units)
+        BREAKEVEN: -314 (EV: $0.000 | 0 units - PASS)
+    (6) BYU vs (11) Texas
+      → BYU 81.2% [STRONG]
       LINE VALUE:
-        MAX BET: -111 or better (EV: $0.154/$ | 6-10 units)
-        STRONG BET: -125 or better (EV: $0.092 per $1 | 2-4 units)
-        VALUE BET: -142 or better (EV: $0.034 per $1 | 1-2 units)
-        BREAKEVEN: -154 (EV: $0.000 | 0 units - PASS)
-    (3) Purdue vs (14) Hofstra
-      → Purdue 84.4% [STRONG]
+        MAX BET: -273 or better (EV: $0.110/$ | 6-10 units)
+        STRONG BET: -320 or better (EV: $0.066 per $1 | 2-4 units)
+        VALUE BET: -380 or better (EV: $0.026 per $1 | 1-2 units)
+        BREAKEVEN: -432 (EV: $0.000 | 0 units - PASS)
+    (3) Gonzaga vs (14) Troy
+      → Gonzaga 96.6% [LOCK]
       LINE VALUE:
-        MAX BET: -323 or better (EV: $0.105/$ | 6-10 units)
-        STRONG BET: -385 or better (EV: $0.063 per $1 | 2-4 units)
-        VALUE BET: -468 or better (EV: $0.025 per $1 | 1-2 units)
-        BREAKEVEN: -541 (EV: $0.000 | 0 units - PASS)
-    (7) Saint Mary's vs (10) Missouri
-      → Saint Mary's 76.1% [STRONG]
+        MAX BET: -777 or better (EV: $0.090/$ | 6-10 units)
+        STRONG BET: -1090 or better (EV: $0.055 per $1 | 2-4 units)
+        VALUE BET: -1753 or better (EV: $0.021 per $1 | 1-2 units)
+        BREAKEVEN: -2844 (EV: $0.000 | 0 units - PASS)
+    (7) Saint Mary's vs (10) UCF
+      → Saint Mary's 80.2% [STRONG]
       LINE VALUE:
-        MAX BET: -213 or better (EV: $0.118/$ | 6-10 units)
-        STRONG BET: -246 or better (EV: $0.071 per $1 | 2-4 units)
-        VALUE BET: -286 or better (EV: $0.027 per $1 | 1-2 units)
-        BREAKEVEN: -318 (EV: $0.000 | 0 units - PASS)
+        MAX BET: -259 or better (EV: $0.111/$ | 6-10 units)
+        STRONG BET: -302 or better (EV: $0.067 per $1 | 2-4 units)
+        VALUE BET: -357 or better (EV: $0.026 per $1 | 1-2 units)
+        BREAKEVEN: -403 (EV: $0.000 | 0 units - PASS)
     (2) Michigan St. vs (15) Tennessee St.
       → Michigan St. 92.0% [LOCK]
       LINE VALUE:
         MAX BET: -524 or better (EV: $0.096/$ | 6-10 units)
-        STRONG BET: -668 or better (EV: $0.058 per $1 | 2-4 units)
+        STRONG BET: -669 or better (EV: $0.058 per $1 | 2-4 units)
         VALUE BET: -899 or better (EV: $0.022 per $1 | 1-2 units)
         BREAKEVEN: -1149 (EV: $0.000 | 0 units - PASS)
 
   South:
-    (1) Arizona vs (16) UMBC
-      → Arizona 90.8% [LOCK]
+    (1) Arizona vs (16) Siena
+      → Arizona 96.3% [LOCK]
       LINE VALUE:
-        MAX BET: -481 or better (EV: $0.097/$ | 6-10 units)
-        STRONG BET: -604 or better (EV: $0.058 per $1 | 2-4 units)
-        VALUE BET: -793 or better (EV: $0.023 per $1 | 1-2 units)
-        BREAKEVEN: -988 (EV: $0.000 | 0 units - PASS)
-    (8) Georgia vs (9) Saint Louis
-      → Georgia 72.7% [STRONG]
+        MAX BET: -753 or better (EV: $0.091/$ | 6-10 units)
+        STRONG BET: -1047 or better (EV: $0.055 per $1 | 2-4 units)
+        VALUE BET: -1649 or better (EV: $0.021 per $1 | 1-2 units)
+        BREAKEVEN: -2591 (EV: $0.000 | 0 units - PASS)
+    (8) UCLA vs (9) Iowa
+      → UCLA 58.8% [SLIGHT]
       LINE VALUE:
-        MAX BET: -183 or better (EV: $0.125/$ | 6-10 units)
-        STRONG BET: -210 or better (EV: $0.074 per $1 | 2-4 units)
-        VALUE BET: -241 or better (EV: $0.029 per $1 | 1-2 units)
-        BREAKEVEN: -266 (EV: $0.000 | 0 units - PASS)
+        MAX BET: -103 or better (EV: $0.160/$ | 6-10 units)
+        STRONG BET: -116 or better (EV: $0.096 per $1 | 2-4 units)
+        VALUE BET: -131 or better (EV: $0.037 per $1 | 1-2 units)
+        BREAKEVEN: -142 (EV: $0.000 | 0 units - PASS)
     (5) Tennessee vs (12) Northern Iowa
-      → Tennessee 85.2% [STRONG]
+      → Tennessee 85.1% [STRONG]
       LINE VALUE:
-        MAX BET: -338 or better (EV: $0.104/$ | 6-10 units)
-        STRONG BET: -405 or better (EV: $0.062 per $1 | 2-4 units)
-        VALUE BET: -495 or better (EV: $0.024 per $1 | 1-2 units)
-        BREAKEVEN: -576 (EV: $0.000 | 0 units - PASS)
-    (4) Gonzaga vs (13) Stephen F. Austin
-      → Gonzaga 91.4% [LOCK]
+        MAX BET: -337 or better (EV: $0.104/$ | 6-10 units)
+        STRONG BET: -403 or better (EV: $0.063 per $1 | 2-4 units)
+        VALUE BET: -492 or better (EV: $0.024 per $1 | 1-2 units)
+        BREAKEVEN: -572 (EV: $0.000 | 0 units - PASS)
+    (4) Virginia vs (13) McNeese St.
+      → Virginia 78.2% [STRONG]
       LINE VALUE:
-        MAX BET: -501 or better (EV: $0.096/$ | 6-10 units)
-        STRONG BET: -633 or better (EV: $0.058 per $1 | 2-4 units)
-        VALUE BET: -840 or better (EV: $0.023 per $1 | 1-2 units)
-        BREAKEVEN: -1059 (EV: $0.000 | 0 units - PASS)
-    (6) Louisville vs (11) UCF
-      → Louisville 77.2% [STRONG]
+        MAX BET: -235 or better (EV: $0.115/$ | 6-10 units)
+        STRONG BET: -273 or better (EV: $0.069 per $1 | 2-4 units)
+        VALUE BET: -320 or better (EV: $0.027 per $1 | 1-2 units)
+        BREAKEVEN: -359 (EV: $0.000 | 0 units - PASS)
+    (6) Louisville vs (11) SMU
+      → Louisville 88.1% [STRONG]
       LINE VALUE:
-        MAX BET: -224 or better (EV: $0.116/$ | 6-10 units)
-        STRONG BET: -259 or better (EV: $0.070 per $1 | 2-4 units)
-        VALUE BET: -302 or better (EV: $0.027 per $1 | 1-2 units)
-        BREAKEVEN: -337 (EV: $0.000 | 0 units - PASS)
-    (3) Iowa St. vs (14) Troy
-      → Iowa St. 96.6% [LOCK]
+        MAX BET: -403 or better (EV: $0.100/$ | 6-10 units)
+        STRONG BET: -492 or better (EV: $0.060 per $1 | 2-4 units)
+        VALUE BET: -621 or better (EV: $0.023 per $1 | 1-2 units)
+        BREAKEVEN: -742 (EV: $0.000 | 0 units - PASS)
+    (3) Iowa St. vs (14) Wright St.
+      → Iowa St. 97.1% [LOCK]
       LINE VALUE:
-        MAX BET: -775 or better (EV: $0.090/$ | 6-10 units)
-        STRONG BET: -1086 or better (EV: $0.055 per $1 | 2-4 units)
-        VALUE BET: -1743 or better (EV: $0.021 per $1 | 1-2 units)
-        BREAKEVEN: -2818 (EV: $0.000 | 0 units - PASS)
-    (7) Kentucky vs (10) Texas
-      → Kentucky 75.2% [STRONG]
+        MAX BET: -817 or better (EV: $0.090/$ | 6-10 units)
+        STRONG BET: -1165 or better (EV: $0.054 per $1 | 2-4 units)
+        VALUE BET: -1939 or better (EV: $0.021 per $1 | 1-2 units)
+        BREAKEVEN: -3345 (EV: $0.000 | 0 units - PASS)
+    (7) Kentucky vs (10) Saint Louis
+      → Kentucky 53.8% [TOSS-UP]
       LINE VALUE:
-        MAX BET: -204 or better (EV: $0.120/$ | 6-10 units)
-        STRONG BET: -235 or better (EV: $0.071 per $1 | 2-4 units)
-        VALUE BET: -272 or better (EV: $0.028 per $1 | 1-2 units)
-        BREAKEVEN: -302 (EV: $0.000 | 0 units - PASS)
-    (2) Connecticut vs (15) Queens
-      → Connecticut 96.0% [LOCK]
+        MAX BET: +118 or better (EV: $0.173/$ | 6-10 units)
+        STRONG BET: +104 or better (EV: $0.098 per $1 | 2-4 units)
+        VALUE BET: -107 or better (EV: $0.041 per $1 | 1-2 units)
+        BREAKEVEN: -116 (EV: $0.000 | 0 units - PASS)
+    (2) Connecticut vs (15) UMBC
+      → Connecticut 93.3% [LOCK]
       LINE VALUE:
-        MAX BET: -735 or better (EV: $0.091/$ | 6-10 units)
-        STRONG BET: -1015 or better (EV: $0.055 per $1 | 2-4 units)
-        VALUE BET: -1576 or better (EV: $0.021 per $1 | 1-2 units)
-        BREAKEVEN: -2421 (EV: $0.000 | 0 units - PASS)
+        MAX BET: -581 or better (EV: $0.094/$ | 6-10 units)
+        STRONG BET: -756 or better (EV: $0.057 per $1 | 2-4 units)
+        VALUE BET: -1052 or better (EV: $0.022 per $1 | 1-2 units)
+        BREAKEVEN: -1397 (EV: $0.000 | 0 units - PASS)
 
   West:
-    (1) Duke vs (16) Furman
-      → Duke 97.9% [LOCK]
+    (1) Duke vs (16) Idaho
+      → Duke 96.9% [LOCK]
       LINE VALUE:
-        MAX BET: -887 or better (EV: $0.089/$ | 6-10 units)
-        STRONG BET: -1302 or better (EV: $0.054 per $1 | 2-4 units)
-        VALUE BET: -2322 or better (EV: $0.021 per $1 | 1-2 units)
-        BREAKEVEN: -4598 (EV: $0.000 | 0 units - PASS)
-    (8) Clemson vs (9) Texas A&M
-      → Texas A&M 66.6% [LEAN]
+        MAX BET: -801 or better (EV: $0.090/$ | 6-10 units)
+        STRONG BET: -1135 or better (EV: $0.054 per $1 | 2-4 units)
+        VALUE BET: -1863 or better (EV: $0.021 per $1 | 1-2 units)
+        BREAKEVEN: -3133 (EV: $0.000 | 0 units - PASS)
+    (8) Miami FL vs (9) Clemson
+      → Miami FL 56.6% [SLIGHT]
       LINE VALUE:
-        MAX BET: -141 or better (EV: $0.138/$ | 6-10 units)
-        STRONG BET: -160 or better (EV: $0.082 per $1 | 2-4 units)
-        VALUE BET: -182 or better (EV: $0.032 per $1 | 1-2 units)
-        BREAKEVEN: -199 (EV: $0.000 | 0 units - PASS)
-    (5) Arkansas vs (12) Yale
-      → Arkansas 82.0% [STRONG]
+        MAX BET: +105 or better (EV: $0.160/$ | 6-10 units)
+        STRONG BET: -106 or better (EV: $0.100 per $1 | 2-4 units)
+        VALUE BET: -120 or better (EV: $0.037 per $1 | 1-2 units)
+        BREAKEVEN: -130 (EV: $0.000 | 0 units - PASS)
+    (5) Arkansas vs (12) South Florida
+      → Arkansas 84.7% [STRONG]
       LINE VALUE:
-        MAX BET: -283 or better (EV: $0.109/$ | 6-10 units)
-        STRONG BET: -333 or better (EV: $0.066 per $1 | 2-4 units)
-        VALUE BET: -398 or better (EV: $0.025 per $1 | 1-2 units)
-        BREAKEVEN: -454 (EV: $0.000 | 0 units - PASS)
-    (4) Kansas vs (13) Liberty
-      → Kansas 90.9% [LOCK]
+        MAX BET: -329 or better (EV: $0.104/$ | 6-10 units)
+        STRONG BET: -392 or better (EV: $0.063 per $1 | 2-4 units)
+        VALUE BET: -478 or better (EV: $0.024 per $1 | 1-2 units)
+        BREAKEVEN: -553 (EV: $0.000 | 0 units - PASS)
+    (4) Texas Tech vs (13) Sam Houston St.
+      → Texas Tech 88.0% [STRONG]
       LINE VALUE:
-        MAX BET: -485 or better (EV: $0.097/$ | 6-10 units)
-        STRONG BET: -609 or better (EV: $0.058 per $1 | 2-4 units)
-        VALUE BET: -802 or better (EV: $0.023 per $1 | 1-2 units)
-        BREAKEVEN: -1000 (EV: $0.000 | 0 units - PASS)
-    (6) North Carolina vs (11) Miami OH
-      → North Carolina 81.5% [STRONG]
+        MAX BET: -399 or better (EV: $0.100/$ | 6-10 units)
+        STRONG BET: -486 or better (EV: $0.061 per $1 | 2-4 units)
+        VALUE BET: -612 or better (EV: $0.023 per $1 | 1-2 units)
+        BREAKEVEN: -730 (EV: $0.000 | 0 units - PASS)
+    (6) North Carolina vs (11) VCU
+      → North Carolina 80.2% [STRONG]
       LINE VALUE:
-        MAX BET: -276 or better (EV: $0.110/$ | 6-10 units)
-        STRONG BET: -324 or better (EV: $0.066 per $1 | 2-4 units)
-        VALUE BET: -386 or better (EV: $0.026 per $1 | 1-2 units)
-        BREAKEVEN: -439 (EV: $0.000 | 0 units - PASS)
-    (3) Nebraska vs (14) Wright St.
-      → Nebraska 92.5% [LOCK]
+        MAX BET: -259 or better (EV: $0.111/$ | 6-10 units)
+        STRONG BET: -302 or better (EV: $0.067 per $1 | 2-4 units)
+        VALUE BET: -358 or better (EV: $0.026 per $1 | 1-2 units)
+        BREAKEVEN: -404 (EV: $0.000 | 0 units - PASS)
+    (3) Nebraska vs (14) North Dakota St.
+      → Nebraska 92.0% [LOCK]
       LINE VALUE:
-        MAX BET: -543 or better (EV: $0.095/$ | 6-10 units)
-        STRONG BET: -697 or better (EV: $0.057 per $1 | 2-4 units)
-        VALUE BET: -948 or better (EV: $0.022 per $1 | 1-2 units)
-        BREAKEVEN: -1226 (EV: $0.000 | 0 units - PASS)
-    (7) Miami FL vs (10) N.C. State
-      → Miami FL 64.8% [LEAN]
+        MAX BET: -523 or better (EV: $0.095/$ | 6-10 units)
+        STRONG BET: -666 or better (EV: $0.058 per $1 | 2-4 units)
+        VALUE BET: -895 or better (EV: $0.022 per $1 | 1-2 units)
+        BREAKEVEN: -1143 (EV: $0.000 | 0 units - PASS)
+    (7) Georgia vs (10) N.C. State
+      → Georgia 50.2% [TOSS-UP]
       LINE VALUE:
-        MAX BET: -131 or better (EV: $0.142/$ | 6-10 units)
-        STRONG BET: -148 or better (EV: $0.085 per $1 | 2-4 units)
-        VALUE BET: -168 or better (EV: $0.033 per $1 | 1-2 units)
-        BREAKEVEN: -183 (EV: $0.000 | 0 units - PASS)
-    (2) Illinois vs (15) Merrimack
-      → Illinois 89.9% [STRONG]
+        MAX BET: +137 or better (EV: $0.189/$ | 6-10 units)
+        STRONG BET: +121 or better (EV: $0.108 per $1 | 2-4 units)
+        VALUE BET: +107 or better (EV: $0.038 per $1 | 1-2 units)
+        BREAKEVEN: -100 (EV: $0.000 | 0 units - PASS)
+    (2) Illinois vs (15) Queens
+      → Illinois 91.2% [LOCK]
       LINE VALUE:
-        MAX BET: -451 or better (EV: $0.098/$ | 6-10 units)
-        STRONG BET: -560 or better (EV: $0.059 per $1 | 2-4 units)
-        VALUE BET: -723 or better (EV: $0.023 per $1 | 1-2 units)
-        BREAKEVEN: -885 (EV: $0.000 | 0 units - PASS)
+        MAX BET: -496 or better (EV: $0.096/$ | 6-10 units)
+        STRONG BET: -626 or better (EV: $0.058 per $1 | 2-4 units)
+        VALUE BET: -829 or better (EV: $0.022 per $1 | 1-2 units)
+        BREAKEVEN: -1041 (EV: $0.000 | 0 units - PASS)
 
 
 ================================================================================
                     BETTING TIERS
 ================================================================================
 
-LOCKS (>90% - Bet Heavy) [12 games]
+LOCKS (>90% - Bet Heavy) [11 games]
 --------------------------------------------------------------------------------
-  Michigan vs LIU
-    → Michigan 95.7%
-    - Model gives Michigan 95 of 100 wins
+  Michigan vs Southern
+    → Michigan 94.2%
+    - Model gives Michigan 94 of 100 wins
     LINE VALUE:
-      MAX BET: -712 or better
-      STRONG BET: -974 or better
-      VALUE BET: -1485 or better
-      PASS if worse than: -2221
+      MAX BET: -624 or better
+      STRONG BET: -826 or better
+      VALUE BET: -1183 or better
+      PASS if worse than: -1626
 
-  St. John's vs South Florida
-    → St. John's 90.7%
-    - Model gives St. John's 90 of 100 wins
-    LINE VALUE:
-      MAX BET: -479 or better
-      STRONG BET: -601 or better
-      VALUE BET: -787 or better
-      PASS if worse than: -979
-
-  Houston vs Portland St.
-    → Houston 97.6%
+  Houston vs Furman
+    → Houston 97.0%
     - Model gives Houston 97 of 100 wins
     LINE VALUE:
-      MAX BET: -862 or better
-      STRONG BET: -1253 or better
-      VALUE BET: -2179 or better
-      PASS if worse than: -4088
+      MAX BET: -812 or better
+      STRONG BET: -1156 or better
+      VALUE BET: -1915 or better
+      PASS if worse than: -3276
 
   Florida vs Howard
-    → Florida 94.5%
+    → Florida 94.8%
     - Model gives Florida 94 of 100 wins
     LINE VALUE:
-      MAX BET: -638 or better
-      STRONG BET: -849 or better
-      VALUE BET: -1227 or better
-      PASS if worse than: -1707
+      MAX BET: -656 or better
+      STRONG BET: -877 or better
+      VALUE BET: -1283 or better
+      PASS if worse than: -1813
+
+  Gonzaga vs Troy
+    → Gonzaga 96.6%
+    - Model gives Gonzaga 96 of 100 wins
+    LINE VALUE:
+      MAX BET: -777 or better
+      STRONG BET: -1090 or better
+      VALUE BET: -1753 or better
+      PASS if worse than: -2844
 
   Michigan St. vs Tennessee St.
     → Michigan St. 92.0%
     - Model gives Michigan St. 91 of 100 wins
     LINE VALUE:
       MAX BET: -524 or better
-      STRONG BET: -668 or better
+      STRONG BET: -669 or better
       VALUE BET: -899 or better
       PASS if worse than: -1149
 
-  Arizona vs UMBC
-    → Arizona 90.8%
-    - Model gives Arizona 90 of 100 wins
+  Arizona vs Siena
+    → Arizona 96.3%
+    - Model gives Arizona 96 of 100 wins
     LINE VALUE:
-      MAX BET: -481 or better
-      STRONG BET: -604 or better
-      VALUE BET: -793 or better
-      PASS if worse than: -988
+      MAX BET: -753 or better
+      STRONG BET: -1047 or better
+      VALUE BET: -1649 or better
+      PASS if worse than: -2591
 
-  Gonzaga vs Stephen F. Austin
-    → Gonzaga 91.4%
-    - Model gives Gonzaga 91 of 100 wins
+  Iowa St. vs Wright St.
+    → Iowa St. 97.1%
+    - Model gives Iowa St. 97 of 100 wins
     LINE VALUE:
-      MAX BET: -501 or better
-      STRONG BET: -633 or better
-      VALUE BET: -840 or better
-      PASS if worse than: -1059
+      MAX BET: -817 or better
+      STRONG BET: -1165 or better
+      VALUE BET: -1939 or better
+      PASS if worse than: -3345
 
-  Iowa St. vs Troy
-    → Iowa St. 96.6%
-    - Model gives Iowa St. 96 of 100 wins
+  Connecticut vs UMBC
+    → Connecticut 93.3%
+    - Model gives Connecticut 93 of 100 wins
     LINE VALUE:
-      MAX BET: -775 or better
-      STRONG BET: -1086 or better
-      VALUE BET: -1743 or better
-      PASS if worse than: -2818
+      MAX BET: -581 or better
+      STRONG BET: -756 or better
+      VALUE BET: -1052 or better
+      PASS if worse than: -1397
 
-  Connecticut vs Queens
-    → Connecticut 96.0%
-    - Model gives Connecticut 96 of 100 wins
+  Duke vs Idaho
+    → Duke 96.9%
+    - Model gives Duke 96 of 100 wins
     LINE VALUE:
-      MAX BET: -735 or better
-      STRONG BET: -1015 or better
-      VALUE BET: -1576 or better
-      PASS if worse than: -2421
+      MAX BET: -801 or better
+      STRONG BET: -1135 or better
+      VALUE BET: -1863 or better
+      PASS if worse than: -3133
 
-  Duke vs Furman
-    → Duke 97.9%
-    - Model gives Duke 97 of 100 wins
+  Nebraska vs North Dakota St.
+    → Nebraska 92.0%
+    - Model gives Nebraska 91 of 100 wins
     LINE VALUE:
-      MAX BET: -887 or better
-      STRONG BET: -1302 or better
-      VALUE BET: -2322 or better
-      PASS if worse than: -4598
+      MAX BET: -523 or better
+      STRONG BET: -666 or better
+      VALUE BET: -895 or better
+      PASS if worse than: -1143
 
-  Kansas vs Liberty
-    → Kansas 90.9%
-    - Model gives Kansas 90 of 100 wins
+  Illinois vs Queens
+    → Illinois 91.2%
+    - Model gives Illinois 91 of 100 wins
     LINE VALUE:
-      MAX BET: -485 or better
-      STRONG BET: -609 or better
-      VALUE BET: -802 or better
-      PASS if worse than: -1000
-
-  Nebraska vs Wright St.
-    → Nebraska 92.5%
-    - Model gives Nebraska 92 of 100 wins
-    LINE VALUE:
-      MAX BET: -543 or better
-      STRONG BET: -697 or better
-      VALUE BET: -948 or better
-      PASS if worse than: -1226
+      MAX BET: -496 or better
+      STRONG BET: -626 or better
+      VALUE BET: -829 or better
+      PASS if worse than: -1041
 
 STRONG FAVORITES (70-90% - Bet Moderate) [14 games]
 --------------------------------------------------------------------------------
-  Texas Tech vs North Dakota St.
-    → Texas Tech 89.9%
+  St. John's vs Yale
+    → St. John's 84.8%
     - Good betting opportunity with solid edge
     LINE VALUE:
-      MAX BET: -453 or better
-      STRONG BET: -563 or better
-      VALUE BET: -729 or better
-      PASS if worse than: -893
+      MAX BET: -331 or better
+      STRONG BET: -396 or better
+      VALUE BET: -482 or better
+      PASS if worse than: -559
+
+  Kansas vs Hofstra
+    → Kansas 82.7%
+    - Good betting opportunity with solid edge
+    LINE VALUE:
+      MAX BET: -294 or better
+      STRONG BET: -347 or better
+      VALUE BET: -417 or better
+      PASS if worse than: -477
+
+  Wisconsin vs Miami OH
+    → Wisconsin 81.5%
+    - Good betting opportunity with solid edge
+    LINE VALUE:
+      MAX BET: -277 or better
+      STRONG BET: -325 or better
+      VALUE BET: -387 or better
+      PASS if worse than: -440
 
   Alabama vs UC Irvine
-    → Alabama 84.6%
+    → Alabama 84.5%
     - Good betting opportunity with solid edge
     LINE VALUE:
-      MAX BET: -327 or better
-      STRONG BET: -389 or better
-      VALUE BET: -474 or better
-      PASS if worse than: -548
-
-  UCLA vs TCU
-    → UCLA 78.4%
-    - Good betting opportunity with solid edge
-    LINE VALUE:
-      MAX BET: -237 or better
-      STRONG BET: -275 or better
-      VALUE BET: -323 or better
-      PASS if worse than: -362
+      MAX BET: -325 or better
+      STRONG BET: -388 or better
+      VALUE BET: -472 or better
+      PASS if worse than: -545
 
   Vanderbilt vs High Point
-    → Vanderbilt 82.8%
+    → Vanderbilt 84.1%
     - Good betting opportunity with solid edge
     LINE VALUE:
-      MAX BET: -296 or better
-      STRONG BET: -349 or better
-      VALUE BET: -419 or better
-      PASS if worse than: -479
+      MAX BET: -317 or better
+      STRONG BET: -377 or better
+      VALUE BET: -457 or better
+      PASS if worse than: -527
 
-  Virginia vs Utah Valley
-    → Virginia 85.3%
+  Purdue vs Utah Valley
+    → Purdue 75.9%
     - Good betting opportunity with solid edge
     LINE VALUE:
-      MAX BET: -341 or better
-      STRONG BET: -408 or better
-      VALUE BET: -499 or better
-      PASS if worse than: -581
+      MAX BET: -211 or better
+      STRONG BET: -243 or better
+      VALUE BET: -283 or better
+      PASS if worse than: -314
 
-  Purdue vs Hofstra
-    → Purdue 84.4%
+  BYU vs Texas
+    → BYU 81.2%
     - Good betting opportunity with solid edge
     LINE VALUE:
-      MAX BET: -323 or better
-      STRONG BET: -385 or better
-      VALUE BET: -468 or better
-      PASS if worse than: -541
+      MAX BET: -273 or better
+      STRONG BET: -320 or better
+      VALUE BET: -380 or better
+      PASS if worse than: -432
 
-  Saint Mary's vs Missouri
-    → Saint Mary's 76.1%
+  Saint Mary's vs UCF
+    → Saint Mary's 80.2%
     - Good betting opportunity with solid edge
     LINE VALUE:
-      MAX BET: -213 or better
-      STRONG BET: -246 or better
-      VALUE BET: -286 or better
-      PASS if worse than: -318
-
-  Georgia vs Saint Louis
-    → Georgia 72.7%
-    - Good betting opportunity with solid edge
-    LINE VALUE:
-      MAX BET: -183 or better
-      STRONG BET: -210 or better
-      VALUE BET: -241 or better
-      PASS if worse than: -266
+      MAX BET: -259 or better
+      STRONG BET: -302 or better
+      VALUE BET: -357 or better
+      PASS if worse than: -403
 
   Tennessee vs Northern Iowa
-    → Tennessee 85.2%
+    → Tennessee 85.1%
     - Good betting opportunity with solid edge
     LINE VALUE:
-      MAX BET: -338 or better
-      STRONG BET: -405 or better
-      VALUE BET: -495 or better
-      PASS if worse than: -576
+      MAX BET: -337 or better
+      STRONG BET: -403 or better
+      VALUE BET: -492 or better
+      PASS if worse than: -572
 
-  Louisville vs UCF
-    → Louisville 77.2%
+  Virginia vs McNeese St.
+    → Virginia 78.2%
     - Good betting opportunity with solid edge
     LINE VALUE:
-      MAX BET: -224 or better
-      STRONG BET: -259 or better
-      VALUE BET: -302 or better
-      PASS if worse than: -337
+      MAX BET: -235 or better
+      STRONG BET: -273 or better
+      VALUE BET: -320 or better
+      PASS if worse than: -359
 
-  Kentucky vs Texas
-    → Kentucky 75.2%
+  Louisville vs SMU
+    → Louisville 88.1%
     - Good betting opportunity with solid edge
     LINE VALUE:
-      MAX BET: -204 or better
-      STRONG BET: -235 or better
-      VALUE BET: -272 or better
-      PASS if worse than: -302
+      MAX BET: -403 or better
+      STRONG BET: -492 or better
+      VALUE BET: -621 or better
+      PASS if worse than: -742
 
-  Arkansas vs Yale
-    → Arkansas 82.0%
+  Arkansas vs South Florida
+    → Arkansas 84.7%
     - Good betting opportunity with solid edge
     LINE VALUE:
-      MAX BET: -283 or better
-      STRONG BET: -333 or better
-      VALUE BET: -398 or better
-      PASS if worse than: -454
+      MAX BET: -329 or better
+      STRONG BET: -392 or better
+      VALUE BET: -478 or better
+      PASS if worse than: -553
 
-  North Carolina vs Miami OH
-    → North Carolina 81.5%
+  Texas Tech vs Sam Houston St.
+    → Texas Tech 88.0%
     - Good betting opportunity with solid edge
     LINE VALUE:
-      MAX BET: -276 or better
-      STRONG BET: -324 or better
-      VALUE BET: -386 or better
-      PASS if worse than: -439
+      MAX BET: -399 or better
+      STRONG BET: -486 or better
+      VALUE BET: -612 or better
+      PASS if worse than: -730
 
-  Illinois vs Merrimack
-    → Illinois 89.9%
+  North Carolina vs VCU
+    → North Carolina 80.2%
     - Good betting opportunity with solid edge
     LINE VALUE:
-      MAX BET: -451 or better
-      STRONG BET: -560 or better
-      VALUE BET: -723 or better
-      PASS if worse than: -885
+      MAX BET: -259 or better
+      STRONG BET: -302 or better
+      VALUE BET: -358 or better
+      PASS if worse than: -404
 
-LEANS (60-70% - Small Bet) [3 games]
+LEANS (60-70% - Small Bet) [2 games]
 --------------------------------------------------------------------------------
-  BYU vs SMU
-    → BYU 60.7%
+  Villanova vs Santa Clara
+    → Villanova 63.9%
     - Modest edge, small bet recommended
     LINE VALUE:
-      MAX BET: -111 or better
-      STRONG BET: -125 or better
-      VALUE BET: -142 or better
-      PASS if worse than: -154
+      MAX BET: -126 or better
+      STRONG BET: -143 or better
+      VALUE BET: -162 or better
+      PASS if worse than: -176
 
-  Texas A&M vs Clemson
-    → Texas A&M 66.6%
+  Texas A&M vs TCU
+    → Texas A&M 69.5%
     - Modest edge, small bet recommended
     LINE VALUE:
-      MAX BET: -141 or better
-      STRONG BET: -160 or better
-      VALUE BET: -182 or better
-      PASS if worse than: -199
+      MAX BET: -159 or better
+      STRONG BET: -181 or better
+      VALUE BET: -207 or better
+      PASS if worse than: -227
 
-  Miami FL vs N.C. State
-    → Miami FL 64.8%
-    - Modest edge, small bet recommended
-    LINE VALUE:
-      MAX BET: -131 or better
-      STRONG BET: -148 or better
-      VALUE BET: -168 or better
-      PASS if worse than: -183
-
-SLIGHT EDGES (55-60% - Minimal Bet or Pass) [1 games]
+SLIGHT EDGES (55-60% - Minimal Bet or Pass) [2 games]
 --------------------------------------------------------------------------------
-  Wisconsin vs Santa Clara
-    → Wisconsin 55.3%
+  UCLA vs Iowa
+    → UCLA 58.8%
     - Very small edge, consider passing
     LINE VALUE:
-      MAX BET: +111 or better
-      STRONG BET: -101 or better
-      VALUE BET: -114 or better
-      PASS if worse than: -123
+      MAX BET: -103 or better
+      STRONG BET: -116 or better
+      VALUE BET: -131 or better
+      PASS if worse than: -142
 
-TOSS-UPS (<55% - Avoid or Hedge) [2 games]
+  Miami FL vs Clemson
+    → Miami FL 56.6%
+    - Very small edge, consider passing
+    LINE VALUE:
+      MAX BET: +105 or better
+      STRONG BET: -106 or better
+      VALUE BET: -120 or better
+      PASS if worse than: -130
+
+TOSS-UPS (<55% - Avoid or Hedge) [3 games]
 --------------------------------------------------------------------------------
   Utah St. vs Ohio St.
-    → Near 50/50 (53.9% vs 46.1%)
+    → Near 50/50 (52.6% vs 47.4%)
     - No clear edge, avoid betting or bet underdog for value
     LINE VALUE (on Utah St.):
-      MAX BET: +117 or better
+      MAX BET: +124 or better
+      STRONG BET: +109 or better
+      VALUE BET: -102 or better
+      PASS if worse than: -111
+
+  Kentucky vs Saint Louis
+    → Near 50/50 (53.8% vs 46.2%)
+    - No clear edge, avoid betting or bet underdog for value
+    LINE VALUE (on Kentucky):
+      MAX BET: +118 or better
       STRONG BET: +104 or better
       VALUE BET: -107 or better
-      PASS if worse than: -117
+      PASS if worse than: -116
 
-  Villanova vs Iowa
-    → Near 50/50 (50.8% vs 49.2%)
+  Georgia vs N.C. State
+    → Near 50/50 (50.2% vs 49.8%)
     - No clear edge, avoid betting or bet underdog for value
-    LINE VALUE (on Villanova):
-      MAX BET: +133 or better
-      STRONG BET: +118 or better
-      VALUE BET: +104 or better
-      PASS if worse than: -103
+    LINE VALUE (on Georgia):
+      MAX BET: +137 or better
+      STRONG BET: +121 or better
+      VALUE BET: +107 or better
+      PASS if worse than: -100
 
 ================================================================================
 
